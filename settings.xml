@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings
+        xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <!-- This proxy section is used to publish artefacts to Nexus On-Premises Instances -->
+    <proxies>
+        <proxy>
+            <id>onefiserv.net</id>
+            <active>true</active>
+            <protocol>https</protocol>
+            <username>${NEXUS_USERNAME}</username>
+            <password>${NEXUS_PASSWORD}</password>
+            <host>10.96.131.84</host>
+            <port>8008</port>
+            <nonProxyHosts>
+                *.onefiserv.net*|*.1dc.com*|*10.70.156.54*|*10.70.30.*|*firstdatacorp.net.br*|*firstdatacorp.com.br*|*firstdatacorp.com.ar*|*fdconosur.com.ar*|*10.30.79.*|192.168.1.*|*intranet.fdconosur.com.ar*|10.30.48.*|*.1dc.com|10.96.*.*|10.70.162.*|sharedashnoc.firstdata.net.ar|monitoreonoc.firstdata.net.ar|10.96*|*localhost*|*10.70.184.155*|*10.70.184.225*|*10.70.184.129*|*10.70.184.163*|*10.70.184.186*
+            </nonProxyHosts>
+        </proxy>
+    </proxies>
+
+    <servers>
+        <server>
+            <id>Maven_Central</id>
+            <username>${NEXUS_CI_USER}</username>
+            <password>${NEXUS_CI_PASSWORD}</password>
+        </server>
+        <server>
+            <id>QA_SNAPSHOTS</id>
+            <username>${NEXUS_CI_USER}</username>
+            <password>${NEXUS_CI_PASSWORD}</password>
+        </server>
+        <server>
+            <id>QA_RELEASES</id>
+            <username>${NEXUS_CI_USER}</username>
+            <password>${NEXUS_CI_PASSWORD}</password>
+        </server>
+    </servers>
+
+    <mirrors>
+        <mirror>
+            <id>Maven_Central</id>
+            <mirrorOf>central</mirrorOf>
+            <name>Nexus CI Maven Central Mirror</name>
+            <url>${NEXUS_CI_MAVEN_CENTRAL}</url>
+        </mirror>
+        <mirror>
+            <id>QA_SNAPSHOTS</id>
+            <mirrorOf>qa_ci_snapshots</mirrorOf>
+            <name>Nexus CI QA Snapshots Mirror</name>
+            <url>${NEXUS_CI_QA_SNAPSHOTS}</url>
+        </mirror>
+        <mirror>
+            <id>QA_RELEASES</id>
+            <mirrorOf>qa_ci_releases</mirrorOf>
+            <name>Nexus CI QA Releases Mirror</name>
+            <url>${NEXUS_CI_QA_RELEASES}</url>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <id>fiserv-repositories</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>Maven_Central</id>
+                    <url>${NEXUS_CI_MAVEN_CENTRAL}</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>QA_SNAPSHOTS</id>
+                    <url>${NEXUS_CI_QA_SNAPSHOTS}</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>false</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>QA_RELEASES</id>
+                    <url>${NEXUS_CI_QA_RELEASES}</url>
+                    <layout>default</layout>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                        <updatePolicy>never</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+</settings>
