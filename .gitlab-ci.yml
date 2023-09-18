@@ -1,0 +1,12 @@
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+  MAVEN_CLI_OPTS: "--no-transfer-progress --batch-mode --settings settings.xml"
+  UPDATE_DEPS: "no"
+
+stages:
+  - 'update-deps'
+
+include:
+  - project: 'devsecops-brazil/qa/coe/cicd-templates-for-qa'
+    ref: main
+    file: 'gitlab/java17/job/maven-dependency-update-bot-job.yml'
