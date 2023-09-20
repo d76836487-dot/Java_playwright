@@ -1,5 +1,5 @@
 # language: pt
-@playwright
+@playwright @demo
 Funcionalidade: Gitlab
 
   Cenario: Acessar pagina inicial do gitlab

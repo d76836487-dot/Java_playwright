@@ -4,7 +4,13 @@ variables:
   UPDATE_DEPS: "no"
 
 stages:
+  - 'build'
   - 'update-deps'
+
+build:
+  image: fmk.nexus-ci.onefiserv.net/fmk/java/playwright-java:FMK-09-19-23
+  script: |
+    mvn clean verify -Dcucumber.filter.tags=@demo
 
 include:
   - project: 'devsecops-brazil/qa/coe/cicd-templates-for-qa'
