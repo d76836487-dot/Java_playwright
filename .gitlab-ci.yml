@@ -7,7 +7,8 @@ stages:
   - 'build'
   - 'update-deps'
 
-build:
+maven:
+  stage: build
   image: fmk.nexus-ci.onefiserv.net/fmk/java/playwright-java:FMK-09-19-23
   script: |
     mvn clean verify -Dcucumber.filter.tags=@demo
