@@ -11,7 +11,7 @@ maven:
   stage: build
   image: fmk-prod.nexus-ci.onefiserv.net/fmk/java/playwright-java:FMK-09-20-23
   script: |
-    mvn clean verify -Dcucumber.filter.tags=@demo
+    mvn $MAVEN_CLI_OPTS clean verify -Dcucumber.filter.tags=@demo
 
 include:
   - project: 'devsecops-brazil/qa/coe/cicd-templates-for-qa'
