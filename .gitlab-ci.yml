@@ -10,8 +10,6 @@ stages:
 maven:
   stage: build
   image: fmk-prod.nexus-ci.onefiserv.net/fmk/java/playwright-java:FMK-09-20-23
-  before_script:
-    - mvn $MAVEN_CLI_OPTS exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install chrome"
   script:
     - mvn $MAVEN_CLI_OPTS clean verify -Dcucumber.filter.tags=@demo
 
