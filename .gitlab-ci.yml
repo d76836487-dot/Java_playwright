@@ -12,6 +12,9 @@ maven:
   image: fmk-prod.nexus-ci.onefiserv.net/fmk/java/playwright-java:FMK-09-20-23
   script:
     - mvn $MAVEN_CLI_OPTS clean verify -Dcucumber.filter.tags=@demo
+  artifacts:
+    paths:
+      - target/cucumber
 
 include:
   - project: 'devsecops-brazil/qa/coe/cicd-templates-for-qa'
