@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.fiserv.qabrazil</groupId>
         <artifactId>framework-parent-cucumber</artifactId>
-        <version>2023-09-06-1418bbeb</version>
+        <version>2023-09-21-b9d1875f</version>
     </parent>
 
     <artifactId>playwright-demo</artifactId>

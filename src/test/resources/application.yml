@@ -4,7 +4,7 @@ framework:
   playwright:
     launch-options:
       # Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary"
-      channel: chrome
+      # channel: chrome
       # headless: true
       # slowMo: 100
       # timeout: 30000
