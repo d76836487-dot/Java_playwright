@@ -2,12 +2,17 @@ variables:
   MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
   MAVEN_CLI_OPTS: "--no-transfer-progress --batch-mode --settings settings.xml"
   UPDATE_DEPS: "no"
+  ZEPHYR_SYNC: "yes"
 
 stages:
+  - 'zephyr-sync'
   - 'build'
   - 'update-deps'
 
 include:
+  - project: 'devsecops-brazil/qa/coe/cicd-templates-for-qa'
+    ref: main
+    file: 'gitlab/java17/job/zephyr-sync-job.yml'
   - project: 'devsecops-brazil/qa/coe/cicd-templates-for-qa'
     ref: main
     file: 'gitlab/java17/job/compile-job.yml'

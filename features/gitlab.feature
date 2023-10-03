@@ -1,5 +1,8 @@
 # language: pt
-@playwright @demo
+@demo
+@playwright
+@Zephyr:ProjectKey=LBBCT
+@Zephyr:Folder=PlaywrightDemo
 Funcionalidade: Gitlab
 
   Cenario: Acessar pagina inicial do gitlab
