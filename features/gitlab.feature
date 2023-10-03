@@ -1,10 +1,10 @@
-# language: pt
+# language: en
 @demo
 @playwright
 @Zephyr:ProjectKey=LBBCT
-@Zephyr:Folder=PlaywrightDemo
-Funcionalidade: Gitlab
+@Zephyr:Folder=/PlaywrightDemo
+Feature: Gitlab
 
-  Cenario: Acessar pagina inicial do gitlab
+  Scenario: Acessar pagina inicial do gitlab
     * quando acesso o gitlab
     * entao estou na tela de login
