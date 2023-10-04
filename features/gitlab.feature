@@ -10,3 +10,6 @@ Feature: Gitlab
     * quando acesso o gitlab
     * entao estou na tela de login
 
+  Scenario: Acessar pagina inicial do gitlab 2
+    * quando acesso o gitlab
+    * entao estou na tela de login
