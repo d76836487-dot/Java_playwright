@@ -2,7 +2,7 @@
 @demo
 @playwright
 @Zephyr:ProjectKey=LBBCT
-@Zephyr:Folder=/PlaywrightDemo
+@Zephyr:Folder=/PlaywrightOtherDemo
 Feature: Gitlab
 
   @TestCaseKey=LBBCT-T225
