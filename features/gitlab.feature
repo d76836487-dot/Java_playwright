@@ -11,7 +11,10 @@ Feature: Gitlab
     * entao estou na tela de login
 
   @TestCaseKey=LBBCT-T228
-  Scenario: Acessar pagina inicial do gitlab 2
+  Scenario: DHAuduasdhuas
     * quando acesso o gitlab
     * entao estou na tela de login
 
+  Scenario: Acessar pagina inicial do gitlab 3
+    * quando acesso o gitlab
+    * entao estou na tela de login
