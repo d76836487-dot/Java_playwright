@@ -3,6 +3,8 @@
 @playwright
 @Zephyr:ProjectKey=LBBCT
 @Zephyr:Folder=/PlaywrightOtherDemo
+@Zephyr:Status=Approved
+@Zephyr:Priority=Low
 Feature: Gitlab
 
   @TestCaseKey=LBBCT-T225
