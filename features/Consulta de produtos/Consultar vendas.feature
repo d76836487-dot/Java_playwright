@@ -16,7 +16,7 @@ Feature: Consulta de venda
 
   @Zephyr:Status=Draft
   @Zephyr:Priority=Normal
-  Scenario: Acessar voucher via dashboard Últimas Vendas
+  Scenario: Acessar voucher via dashboard Últimas Vendas 2
   Given usuário está logado no Merchant Portal utilizando o CPF
   When  usuário clica no “Ver tudo” do dashboard “Últimas Vendas”
   And usuário clica na aba Voucher
