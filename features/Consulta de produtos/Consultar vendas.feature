@@ -1,7 +1,7 @@
 # language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do-Cliente/Consulta_de_Produtos/
+@Zephyr:Folder=/Portal_do_Cliente/Consulta_de_Produtos/Consulta_vendas
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 
