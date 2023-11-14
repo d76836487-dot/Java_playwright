@@ -24,7 +24,6 @@ Feature: Consulta de venda
 
   @Zephyr:Status=Draft
   @Zephyr:Priority=Normal
-  @TestCaseKey=SMP-T4
   Scenario: Acessar Teste apagar depois
     Given usuário está logado no Merchant Portal utilizando o CPF
     When  usuário clica no “Ver tudo” do dashboard “Últimas Vendas”
