@@ -15,6 +15,13 @@ Feature: Consulta vendas
     * clicar no botão entrar
     * usuário será redirecionado para home logada
 
+  @Zephyr:CustomFields=Ambiente=SIT
+  Scenario: Fazer o login usuario bin 004
+    * Acesso a url do login "acassoQa"
+    * incluir login e senha
+    * clicar no botão entrar
+    * usuário será redirecionado para home logada
+
   @Zephyr:Status=Draft
   @Zephyr:Priority=Normal
   @TestCaseKey=SMP-T2
