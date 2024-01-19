@@ -4,7 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Consulta_de_Produtos/Consulta_vendas
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
-Feature: Validar Home Logada
+Feature: Consulta vendas
 
   @TestCaseKey=SMP-T3
   Scenario: Fazer o login usuario bin 03
