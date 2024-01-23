@@ -1,0 +1,29 @@
+package com.fiserv.qabrazil.steps;
+
+import com.fiserv.qabrazil.pages.LoginPage;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import static org.testng.AssertJUnit.assertTrue;
+
+public class LoginSteps {
+    @Autowired
+    LoginPage loginPage;
+
+    @When("Usuário tenta logar na aplicacao")
+    public void login() {
+        loginPage.login();
+    }
+
+    @When("Usuário tenta logar na aplicacao em {string} com {string} e {string}")
+    public void login(String url, String user, String pwd, Object ignoredDataTable) {
+        loginPage.login(url, user, pwd);
+    }
+
+    @Then("Usuário estará com acesso")
+    public void userHasAcessGranted() {
+        boolean accessGranted = loginPage.userIsLogged();
+        assertTrue(accessGranted);
+    }
+}
