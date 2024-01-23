@@ -22,8 +22,10 @@ public class RecordingHook {
     @SneakyThrows(IOException.class)
     public void after(Scenario scenario) throws IOException {
         context.close();
-        byte[] video = Files.readAllBytes(page.video().path());
-        scenario.attach(video, "video/mp4", scenario.getName());
-        page.video().delete();
+        if (!page.isClosed()) {
+            byte[] video = Files.readAllBytes(page.video().path());
+            scenario.attach(video, "video/mp4", scenario.getName());
+            page.video().delete();
+        }
     }
 }
