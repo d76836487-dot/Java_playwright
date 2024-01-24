@@ -1,6 +1,7 @@
 #language: en
-@Zephyr:ProjectKey=SQUCRED
-@Zephyr:Folder=/Fiserv_online/Mensagem_de_erro_para_dados_bancários_incorretos
+@playwright
+@Zephyr:ProjectKey=SMP
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Hoje_com_CNPJ
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 Feature: Tela Vendas Hoje com CNPJ
