@@ -5,15 +5,15 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ContractConfig {
-    @Value("${contract.url:azulzinha.qa.portaldocliente.fiserv.com}")
+    @Value("${contract_url}")
     public String site;
 
-    @Value("${contract.user:62716352000103}")
+    @Value("${contract_user}")
     public String user;
 
-    @Value("${contract.password:Fiserv@1234}")
+    @Value("${contract_password}")
     public String password;
 
-    @Value("${contract.identity:azulzinha}")
+    @Value("${contract_identity}")
     public String identity;
 }
