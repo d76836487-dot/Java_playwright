@@ -15,7 +15,7 @@ Feature: Tela Vendas Hoje com CNPJ
     When Usuário acessa Vendas Hoje
     Then Página conterá mensagem com a "<descricao>" do resumo de vendas
     Examples:
-      | descricao |
+      | descricao                                                                                                                                                                                                                                                          |
       | Visualize suas vendas realizadas no dia. Não achou a venda que estava procurando? Ela pode levar até 15 minutos para ser apresentada aqui. E lembre-se, essas vendas estão em processamento, vendas estornadas ou não efetivadas aparecem aqui até o final do dia. |
 
   @TestCaseKey=SMP-T6
