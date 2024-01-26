@@ -11,3 +11,6 @@ Feature: Login
     When Usuário tenta logar na aplicacao
     Then Usuário estará com acesso
 
+  Scenario: Usuário não encontrado no GA1 nem no GA2 e sem cadastro na Fiserv
+    When Usuário tenta logar na aplicacao com "71633816000210" e "Fiserv@123"
+    Then Usuário verá mensagem "Parece que você ainda não é nosso cliente"

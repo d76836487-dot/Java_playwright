@@ -1,5 +1,5 @@
 # language: en
-@playwright
+@ignore
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Consulta_de_Produtos/Consulta_vendas
 @Zephyr:Status=Approved

@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.LoginPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,6 +11,9 @@ import static org.testng.AssertJUnit.assertTrue;
 public class LoginSteps {
     @Autowired
     LoginPage loginPage;
+
+    @Autowired
+    ContractConfig config;
 
     @When("Usuário tenta logar na aplicacao")
     public void login() {
@@ -26,4 +30,10 @@ public class LoginSteps {
         boolean accessGranted = loginPage.userIsLogged();
         assertTrue(accessGranted);
     }
+
+    @When("Usuário tenta logar na aplicacao com {string} e {string}")
+    public void userTriesToLoginWith(String login, String password) {
+        loginPage.login(config.getUrl(), login, password);
+    }
+
 }
