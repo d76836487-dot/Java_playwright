@@ -1,3 +1,8 @@
+user-profile:
+  url: ${CONTRACT_URL}
+  user: ${CONTRACT_USER}
+  password: ${CONTRACT_PASSWORD}
+  identity: ${CONTRACT_IDENTITY}
 urls:
   gitlab: https://gitlab.onefiserv.net/
 framework:

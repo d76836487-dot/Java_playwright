@@ -11,11 +11,15 @@ Ainda preciso documentar isso, mas ta indo!
 These are UI tests for portaldocliente.fiserv.com
 
 
-# Running tests per profile
-Each profile is associated to one contract and one user.
+# Running tests per configuration
+Each configuration is associated to one contract and one user.
 
-To run it for a specific profile add this option in VM Options when running with IntelliJ:
-- -Dspring.profiles.active=azulzinha-cnpj
+To run it for a specific configuration add these options in Environment Variables when running with IntelliJ:
+
+- CONTRACT_URL
+- CONTRACT_USER
+- CONTRACT_PASSWORD
+- CONTRACT_IDENTITY
 
 # Command to get ids
 npx playwright codegen playwright.dev

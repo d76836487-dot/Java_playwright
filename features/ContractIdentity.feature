@@ -1,3 +1,5 @@
+# language: en
+@playwright
 Feature: Verifica se portal tem identidade do contrato
 
   Scenario: Nome da página é igual ao contrato

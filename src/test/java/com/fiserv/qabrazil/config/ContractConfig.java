@@ -1,19 +1,48 @@
 package com.fiserv.qabrazil.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ConfigurationProperties(prefix = "user-profile")
 public class ContractConfig {
-    @Value("${contract.url:azulzinha.qa.portaldocliente.fiserv.com}")
-    public String site;
+    private String url;
 
-    @Value("${contract.user:62716352000103}")
-    public String user;
+    private String user;
 
-    @Value("${contract.password:Fiserv@1234}")
-    public String password;
+    private String password;
 
-    @Value("${contract.identity:azulzinha}")
-    public String identity;
+    private String identity;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity;
+    }
 }

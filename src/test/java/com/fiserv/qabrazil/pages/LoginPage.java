@@ -25,7 +25,7 @@ public class LoginPage extends BasePage {
     }
 
     public void login() {
-        retryUntilTrue(() -> login(contractConfig.site, contractConfig.user, contractConfig.password),
+        retryUntilTrue(() -> login(contractConfig.getUrl(), contractConfig.getUser(), contractConfig.getPassword()),
                 this::userIsLogged);
     }
 
@@ -37,7 +37,7 @@ public class LoginPage extends BasePage {
     }
 
     public void navigateTo() {
-        navigateTo(contractConfig.site);
+        navigateTo(contractConfig.getUrl());
     }
 
     public void navigateTo(String url) {
