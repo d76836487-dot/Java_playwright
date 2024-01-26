@@ -25,8 +25,7 @@ public class LoginPage extends BasePage {
     }
 
     public void login() {
-        retryUntilTrue(() -> login(contractConfig.getUrl(), contractConfig.getUser(), contractConfig.getPassword()),
-                this::userIsLogged);
+        login(contractConfig.getUrl(), contractConfig.getUser(), contractConfig.getPassword());
     }
 
     public void login(String url, String user, String pwd) {
