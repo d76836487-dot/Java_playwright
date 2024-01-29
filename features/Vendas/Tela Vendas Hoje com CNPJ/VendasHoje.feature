@@ -14,7 +14,6 @@ Feature: Tela Vendas Hoje com CNPJ
   Scenario Outline: Mensagem de Resumo de Vendas
     When Usuário acessa Vendas Hoje
     Then Usuário verá mensagem "<descricao>"
-
     @pt-br
     Examples:
       | descricao                                                                                                                                                                                                                                                          |
@@ -29,11 +28,10 @@ Feature: Tela Vendas Hoje com CNPJ
   Scenario Outline: Rodapé de Vendas Hoje
     When Usuário acessa Vendas Hoje
     Then Página conterá rodapé "<descricao>" com o ano atual
-
-  @pt-br
+    @pt-br
     Examples:
-      | descricao                                                                          |
-      | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s  |
+      | descricao                                                                             |
+      | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
 
   @TestCaseKey=SMP-T8
   Scenario: O menu expande quando o usuário passa o mouse
