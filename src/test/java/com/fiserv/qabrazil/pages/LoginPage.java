@@ -42,10 +42,6 @@ public class LoginPage extends BasePage {
         page.getByTestId("entrar").click();
     }
 
-    public void navigateTo() {
-        navigateTo(contractConfig.getUrl());
-    }
-
     public void navigateTo(String url) {
         page.navigate("https://" + url);
         assertThat(page).hasTitle(Pattern.compile(".+"));
@@ -65,5 +61,10 @@ public class LoginPage extends BasePage {
             sleep(Duration.ofSeconds(3));
         }
         page = swipePage;
+    }
+
+    public void clickOnForgotMyPasswordButton() {
+        page.getByText("Esqueci minha senha").click();
+        page.waitForURL(Pattern.compile("^.*/EsqueceuSenha$"));
     }
 }

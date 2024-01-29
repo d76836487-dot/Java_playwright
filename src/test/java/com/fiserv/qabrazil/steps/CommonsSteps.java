@@ -4,6 +4,7 @@ import com.fiserv.qabrazil.pages.CommonsPage;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,6 +25,11 @@ public class CommonsSteps {
                     "image/png", "Screen Shot");
             scenario.attach(page.content(), "text/html", "Content");
         }
+    }
+
+    @Given("Usuário acessou o portal")
+    public void userAccessedThePortal() {
+        commonsPage.navigateToRoot();
     }
 
     @Then("Usuário verá mensagem {string}")

@@ -1,0 +1,16 @@
+#language: en
+@playwright
+@Zephyr:ProjectKey=SMP
+@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Esqueci_Minha_Senha
+@Zephyr:Status=Draft
+@Zephyr:Priority=Normal
+Feature: Esqueci Minha Senha
+
+  Background:
+    Given Usuário acessou o portal
+    And Usuário clicou no botão esqueci minha senha
+
+  Scenario: Usuário não existente no GA1 nem no GA2 e sem cadastro na Fiserv
+    When Usuário tenta recuperar senha com "71633816000210"
+    Then Usuário verá mensagem "Parece que você ainda não é nosso cliente"
+

@@ -2,7 +2,6 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.LoginPage;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,11 +14,6 @@ public class ContractIdentity {
 
     @Autowired
     ContractConfig contractConfig;
-
-    @Given("Usuário acessou o portal")
-    public void navigatePortal() {
-        loginPage.navigateTo();
-    }
 
     @Then("Nome da página é Portal <contrato> - Login")
     public void thenCheckPageName() {
