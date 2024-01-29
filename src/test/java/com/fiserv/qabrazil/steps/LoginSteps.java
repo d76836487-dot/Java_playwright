@@ -2,10 +2,12 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.LoginPage;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class LoginSteps {
@@ -36,4 +38,21 @@ public class LoginSteps {
         loginPage.login(config.getUrl(), login, password);
     }
 
+    @Given("Usuário logou na aplicacao")
+    public void userHasLoggedIn() {
+        login();
+        userHasAcessGranted();
+    }
+
+    @Then("Usuário será direcionado para tela de login")
+    public void userIsAtLoginScreen() {
+        loginPage.reload();
+        boolean accessGranted = loginPage.userIsLogged();
+        assertFalse(accessGranted);
+    }
+
+    @When("Usuário loga em outra sessão")
+    public void userLogsAnotherSession() {
+        loginPage.loginAnotherSession();
+    }
 }

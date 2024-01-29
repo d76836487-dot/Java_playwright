@@ -34,6 +34,19 @@ public abstract class BasePage {
         throw new RuntimeException("Nao atingiu condição de sucesso...");
     }
 
+    protected boolean waitUntilTrue(Supplier<Boolean> untilTrue)  {
+        for(int numTries = 0; numTries < 3; numTries++) {
+            System.out.printf("retry: %d%n\n", numTries);
+            try {
+                if (untilTrue.get()) {
+                    return true;
+                }
+            } catch (RuntimeException ignored) {}
+            sleep(Duration.ofSeconds(5));
+        }
+        return false;
+    }
+
     public String getTextFromElement(String testId) {
         assertThat(page.getByTestId(testId)).hasCount(1);
         return page.getByTestId(testId).textContent();
@@ -41,6 +54,11 @@ public abstract class BasePage {
 
     public String getTitle() {
         return page.title();
+    }
+
+    public void reload() {
+        page.reload();
+        sleep(Duration.ofSeconds(3));
     }
 }
 

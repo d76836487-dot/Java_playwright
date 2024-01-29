@@ -2,11 +2,13 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
-import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.Duration;
 import java.util.regex.Pattern;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -15,6 +17,9 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class LoginPage extends BasePage {
     @Autowired
     ContractConfig contractConfig;
+
+    @Autowired
+    Browser browser;
 
     public boolean pageHasImageWith(String contract) {
         Pattern pattern = Pattern.compile(String.format(".*%s", contract));
@@ -47,8 +52,18 @@ public class LoginPage extends BasePage {
     }
 
     public boolean userIsLogged() {
-        Locator locator = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Sair")).first(); // TODO: use data-testid
-        assertThat(locator).isVisible();
-        return true;
+        return waitUntilTrue(() ->
+                page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Sair")).first().isVisible());
+    }
+
+    public void loginAnotherSession() {
+        Page swipePage = page;
+        try (BrowserContext newBrowserContext = browser.newContext();
+             Page newPage = newBrowserContext.newPage()) {
+            page = newPage;
+            login();
+            sleep(Duration.ofSeconds(3));
+        }
+        page = swipePage;
     }
 }
