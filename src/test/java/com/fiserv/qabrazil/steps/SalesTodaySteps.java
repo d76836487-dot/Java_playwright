@@ -1,14 +1,14 @@
 package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.pages.SalesTodayPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.*;
 
 public class SalesTodaySteps {
     @Autowired
@@ -45,5 +45,19 @@ public class SalesTodaySteps {
     @Then("O menu de vendas expande")
     public void lateralMenuExpands() {
         assertTrue("Menu lateral não está espandido", salesTodayPage.lateralMenuHasExpanded());
+    }
+
+    @And("Existem vendas com status {string}")
+    public void thereIsSalesWithStatus(String salesStatus) {
+        boolean foundSalesWithStatus = salesTodayPage.thereAreSalesWithStatus(salesStatus);
+
+        String messageAssert = String.format("Não há vendas do tipo %s na primeira página", salesStatus);
+        assertTrue(messageAssert, foundSalesWithStatus);
+    }
+
+    @Then("Serão filtradas as vendas com {string}")
+    public void thereIsNoSalesWithStatus(String salesStatus) {
+        boolean foundSalesWithStatus = salesTodayPage.thereAreSalesWithStatus(salesStatus);
+        assertFalse(foundSalesWithStatus);
     }
 }

@@ -28,6 +28,7 @@ Feature: Tela Vendas Hoje com CNPJ
   Scenario Outline: Rodapé de Vendas Hoje
     When Usuário acessa Vendas Hoje
     Then Página conterá rodapé "<descricao>" com o ano atual
+
     @pt-br
     Examples:
       | descricao                                                                             |
@@ -38,3 +39,15 @@ Feature: Tela Vendas Hoje com CNPJ
     When Usuário passa o mouse sobre vendas
     Then O menu de vendas expande
 
+  Scenario Outline: Filtrar histórico de vendas
+    When Usuário acessa Vendas Hoje
+    And Existem vendas com status "<statusvenda>"
+    When Usuário filtra por tudo, exceto "<statusvenda>", em "<grupofiltro>"
+    Then Serão filtradas as vendas com "<statusvenda>"
+
+    @pt-br
+    Examples:
+      | statusvenda | grupofiltro |
+      | Autorizada  | Status (0)  |
+      | Recusada    | Status (0)  |
+      | Estornada   | Status (0)  |

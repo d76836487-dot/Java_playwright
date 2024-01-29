@@ -38,4 +38,10 @@ public class SalesTodayPage extends BasePage {
     private Locator getLateralMenuLocator() {
         return page.getByTestId("menu-vendas").last();
     }
+
+    public boolean thereAreSalesWithStatus(String salesStatus) {
+        Locator salesStatusLabel = page.getByTestId(Pattern.compile("vendas-hoje-coluna-status\\d"));
+        return waitUntilTrue(() ->
+                salesStatusLabel.filter(new Locator.FilterOptions().setHasText(salesStatus)).count() > 0);
+    }
 }
