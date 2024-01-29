@@ -19,10 +19,10 @@ public class SalesTodaySteps {
         salesTodayPage.navigateTo();
     }
 
-    @Then("Página conterá rodapé com o ano atual")
-    public void pageWillContainFooterWithCurrentYear() {
+    @Then("Página conterá rodapé {string} com o ano atual")
+    public void pageWillContainFooterWithCurrentYear(String expected_footer) {
         String footerText = salesTodayPage.getTextFromElement("footer-text");
-        String expected = String.format("© %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. | ", LocalDate.now().getYear());
+        String expected = String.format(expected_footer, LocalDate.now().getYear());
         assertEquals(expected, footerText);
     }
 
