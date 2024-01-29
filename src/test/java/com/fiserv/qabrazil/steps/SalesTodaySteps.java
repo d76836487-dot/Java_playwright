@@ -22,8 +22,8 @@ public class SalesTodaySteps {
     @Then("Página conterá rodapé {string} com o ano atual")
     public void pageWillContainFooterWithCurrentYear(String expected_footer) {
         String footerText = salesTodayPage.getTextFromElement("footer-text");
-        String expected = String.format(expected_footer, LocalDate.now().getYear());
-        assertEquals(expected, footerText);
+        String expected = String.format(expected_footer, LocalDate.now().getYear(), "|");
+        assertEquals(expected.trim(), footerText.trim());
     }
 
     @Then("Página conterá mensagem com a {string} do resumo de vendas")

@@ -33,7 +33,7 @@ Feature: Tela Vendas Hoje com CNPJ
   @pt-br
     Examples:
       | descricao                                                                          |
-      | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. \| |
+      | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s  |
 
   @TestCaseKey=SMP-T8
   Scenario: O menu expande quando o usuário passa o mouse
