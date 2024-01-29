@@ -16,15 +16,17 @@ Feature: Login
     When Usuário tenta logar na aplicacao com "71633816000210" e "Fiserv@123"
     Then Usuário verá mensagem "Parece que você ainda não é nosso cliente"
 
+  @TestCaseKey=SMP-T12
   Scenario: Usuário perdeu a sessão e deve logar-se novamente
     Given Usuário logou na aplicacao
     When Usuário loga em outra sessão
 
+  @TestCaseKey=SMP-T13
   Scenario Outline: Usuário tenta logar com senha errada
     When Usuário loga com senha errada
     Then Usuário verá mensagem "<descricao>"
-
     @pt-br
     Examples:
       | descricao                                                                                           |
       | Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
+
