@@ -55,4 +55,9 @@ public class LoginSteps {
     public void userLogsAnotherSession() {
         loginPage.loginAnotherSession();
     }
+
+    @When("Usuário loga com senha errada")
+    public void usuárioLogaComSenhaErrada() {
+        loginPage.login(config.getUrl(), config.getUser(), "senhaerrada");
+    }
 }

@@ -19,4 +19,12 @@ Feature: Login
   Scenario: Usuário perdeu a sessão e deve logar-se novamente
     Given Usuário logou na aplicacao
     When Usuário loga em outra sessão
-    Then Usuário será direcionado para tela de login
+
+  Scenario Outline: Usuário tenta logar com senha errada
+    When Usuário loga com senha errada
+    Then Usuário verá mensagem "<descricao>"
+
+    @pt-br
+    Examples:
+      | descricao                                                                                           |
+      | Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
