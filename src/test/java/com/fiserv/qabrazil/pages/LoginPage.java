@@ -2,9 +2,11 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.Duration;
 import java.util.regex.Pattern;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -45,7 +47,8 @@ public class LoginPage extends BasePage {
     }
 
     public boolean userIsLogged() {
-        sleep(Duration.ofSeconds(3));
-        return page.locator("//span[contains(text(),'Sair')]").first().isVisible();
+        Locator locator = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Sair")).first(); // TODO: use data-testid
+        assertThat(locator).isVisible();
+        return true;
     }
 }
