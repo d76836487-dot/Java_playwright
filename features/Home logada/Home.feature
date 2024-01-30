@@ -20,24 +20,39 @@ Feature: Home Logada
       | descricao                           | texto botao |
       | Veja as vantagens da sua maquininha | Confira     |
 
-#*Dado* que eu faça o login no Portal
-#*Quando* abrir a tela principal “início”
-#*Então* devo visualizar um banner de comunicação comercial na parte supeior da tela, logo baixo do logo (Banner deve funcionar com Liga/DESLIGA)
+  @MDRPadrao @skip-azulzinha
+  Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
+    Given Usuário acessou o Home
+    Then Usuário verá card Antecipação
+    And Usuário verá botão com texto "<texto botao>"
+    @pt-br
+    Examples:
+      | texto botao         |
+      | Ir para antecipação |
+
+  #*Dado* que loguei no Portal com um EC com plano de recebimento MDR Padrão
+#*Quando* estiver na tela “início”
+#*Então* devo visualizar o card “Receba antes” e o botão antecipar
+
+
 # História não é testável...
 #*Dado* que eu faça o login no Portal
 #*Quando* abrir a tela principal “início”
 #*Então* devo visualizar a nova Home com todos os componentes de acordo com o Figma
 #https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
+  #
 # História não é testável...
 #*Dado* que eu faça o login no Portal
 #*Quando* abrir a tela principal “início”
 #*Então* devo visualizar a tabbar de acordo com o Figma (Frame 8364)
 #https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
 # Será coberto por cada uma das opções, ex: VendasHoje testará o botão vendas
+  #
 #*Dado* que eu faça o login no Portal
 #*Quando* abrir a tela principal “início”
 #*E* passar o mouse sobre os ícones do menu lateral (qualquer ícone)
 #*Então* o menu deve expandir para a direita sobrepondo os itens da come com os respectivos nomes (Frame 8364)
+  #
 # Quais valores? O que são respectivos? História não é testável...
 #*Dado* que eu faça o login no Portal
 #*Quando* abrir a tela principal “início”
@@ -48,13 +63,10 @@ Feature: Home Logada
 #*Quando* realizar vendas usando a minha máquina
 #*Então* devo visualizar as minhas últimas três vendas – limitado ao último mês - listadas com detalhes como bandeira, valor, modalidade, horário e parcelas se for pertinente
 #
+  # não vamos testar mdf flex
 #*Dado* que loguei no Portal com um EC com plano de recebimento MDR FLEX
 #*Quando* estiver na tela “início”
 #*Então* não devo visualizar o card “Receba antes” e o botão antecipar
-#
-#*Dado* que loguei no Portal com um EC com plano de recebimento MDR Padrão
-#*Quando* estiver na tela “início”
-#*Então* devo visualizar o card “Receba antes” e o botão antecipar
 #
 #{panel}
 #{panel:title=CENÁRIO DE TESTE|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=2}

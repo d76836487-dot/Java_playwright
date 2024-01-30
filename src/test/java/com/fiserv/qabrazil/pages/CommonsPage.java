@@ -12,10 +12,7 @@ import java.util.regex.Pattern;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
-public class CommonsPage {
-
-    @Autowired
-    Page page;
+public class CommonsPage extends BasePage{
 
     @Autowired
     ContractConfig contractConfig;
@@ -30,7 +27,7 @@ public class CommonsPage {
     }
 
     public String getWholeTextIfVisible(Locator locator) {
-        assertThat(locator).hasCount(1);
+        waitUntilTrue(3, () -> locator.count() == 1);
 
         if (!locator.isVisible()) {
             return "Not visible";
