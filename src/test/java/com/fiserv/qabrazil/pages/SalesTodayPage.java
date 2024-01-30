@@ -15,9 +15,18 @@ public class SalesTodayPage extends BasePage {
         page.waitForURL(Pattern.compile("^.*/Hoje$"));
     }
 
+    public boolean assertWholeTextIsVisible(String text, String testId) {
+        assertThat(page.getByTestId(testId)).hasText(text);
+        Locator element = page.getByTestId(testId);
+        return element.textContent().equalsIgnoreCase(text) && element.isVisible();
+    }
+
     public String getWholeTextIfVisible(String message) {
         Locator element = page.locator(String.format("//*[contains(text(),'%s')]", message));
+        return getWholeTextIfVisible(element);
+    }
 
+    public String getWholeTextIfVisible(Locator element) {
         if(element == null)
             return "Not found";
         if (!element.isVisible()) {
@@ -40,8 +49,18 @@ public class SalesTodayPage extends BasePage {
     }
 
     public boolean thereAreSalesWithStatus(String salesStatus) {
-        Locator salesStatusLabel = page.getByTestId(Pattern.compile("vendas-hoje-coluna-status\\d"));
-        return waitUntilTrue(() ->
-                salesStatusLabel.filter(new Locator.FilterOptions().setHasText(salesStatus)).count() > 0);
+        Locator paginationBtn = page.locator("//button[contains(@class,'pagination-button')]").last();
+
+        boolean foundSaleWithStatus;
+        do {
+            Locator salesStatusLabel = page.getByTestId(Pattern.compile("vendas-hoje-coluna-status\\d"));
+
+            foundSaleWithStatus = waitUntilTrue(1, () ->
+                    salesStatusLabel.filter(new Locator.FilterOptions().setHasText(salesStatus)).count() > 0);
+
+            paginationBtn.click();
+        } while (paginationBtn.isEnabled() && !foundSaleWithStatus);
+
+        return foundSaleWithStatus;
     }
 }

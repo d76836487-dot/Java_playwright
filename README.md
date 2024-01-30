@@ -22,4 +22,6 @@ To run it for a specific configuration add these options in Environment Variable
 - CONTRACT_IDENTITY
 
 # Command to get ids
+```
 npx playwright codegen playwright.dev
+```

@@ -32,9 +32,15 @@ public class SalesTodaySteps {
         assertEquals("Mensagem não encontrada na página", expectedMessage, message);
     }
 
-    @Then("Página conterá todos os elementos do resumo de vendas")
-    public void pageWillContainAllElementsOfSalesSummary() {
-//        assertTrue(salesTodayPage.);
+    @Then("Página conterá na seção Resumo de Vendas {string}, total de vendas {string}, e valor bruto {string}")
+    public void pageWillContainAllElementsOfSalesSummary(String expectedDescription, String totalSales, String grossValue) {
+        pageWillContainMessageDescribingSalesSummary(expectedDescription);
+
+        boolean totalSalesWasFound = salesTodayPage.assertWholeTextIsVisible( totalSales, "vendas-hoje-card-total-vendas");
+        assertTrue("Total de Vendas não encontrado na página", totalSalesWasFound);
+
+        boolean grossValueWasFound = salesTodayPage.assertWholeTextIsVisible(grossValue, "vendas-hoje-card-vlr-bruto");
+        assertTrue("Valor Bruto não encontrado na página", grossValueWasFound);
     }
 
     @When("Usuário passa o mouse sobre vendas")
@@ -51,7 +57,7 @@ public class SalesTodaySteps {
     public void thereIsSalesWithStatus(String salesStatus) {
         boolean foundSalesWithStatus = salesTodayPage.thereAreSalesWithStatus(salesStatus);
 
-        String messageAssert = String.format("Não há vendas do tipo %s na primeira página", salesStatus);
+        String messageAssert = String.format("Não há vendas do tipo %s", salesStatus);
         assertTrue(messageAssert, foundSalesWithStatus);
     }
 
