@@ -4,6 +4,7 @@ import com.fiserv.qabrazil.pages.CommonsPage;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,15 @@ public class CommonsSteps {
 
     @Then("Usuário verá mensagem {string}")
     public void userWillSeeMessage(String expectedMessage) {
-        String message = commonsPage.getWholeTextIfVisible(expectedMessage.substring(0, 10));
+        String message = commonsPage.getWholeTextIfVisible(
+                expectedMessage.substring(0, Math.min(expectedMessage.length(), 10)));
         assertEquals("Mensagem não encontrada na página", expectedMessage, message);
     }
 
+    @And("Usuário verá botão com texto {string}")
+    public void userWillSeeButtonWithText(String expectedButtonText) {
+        String message = commonsPage.getButtonWithTextIfVisible(
+                expectedButtonText.substring(0, Math.min(expectedButtonText.length(), 10)));
+        assertEquals("Botão não encontrado na página", expectedButtonText, message);
+    }
 }

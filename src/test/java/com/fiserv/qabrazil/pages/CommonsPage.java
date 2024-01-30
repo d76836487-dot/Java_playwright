@@ -4,6 +4,7 @@ import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.regex.Pattern;
@@ -20,14 +21,21 @@ public class CommonsPage {
     ContractConfig contractConfig;
 
     public String getWholeTextIfVisible(String message) {
-        assertThat(page.locator(String.format("//*[contains(text(),'%s')]", message))).hasCount(1);
+        return getWholeTextIfVisible(page.locator(String.format("//*[contains(text(),'%s')]", message)));
+    }
 
-        Locator element = page.locator(String.format("//*[contains(text(),'%s')]", message));
+    public String getButtonWithTextIfVisible(String buttonTitle) {
+        return getWholeTextIfVisible(page.getByRole(AriaRole.BUTTON,
+                new Page.GetByRoleOptions().setName(buttonTitle)));
+    }
 
-        if (!element.isVisible()) {
+    public String getWholeTextIfVisible(Locator locator) {
+        assertThat(locator).hasCount(1);
+
+        if (!locator.isVisible()) {
             return "Not visible";
         }
-        return element.textContent();
+        return locator.textContent();
     }
 
     public void navigateToRoot() {

@@ -6,29 +6,48 @@
 @Zephyr:Priority=Normal
 Feature: Home Logada
 
+  Background:
+    When Usuário tenta logar na aplicacao
+    Then Usuário estará com acesso
+
+  Scenario Outline: Banner de comunicação comercial
+    Given Usuário acessou o Home
+    Then Usuário verá mensagem "<descricao>"
+    And Usuário verá botão com texto "<texto botao>"
+    @pt-br
+    Examples:
+      | descricao                           | texto botao |
+      | Veja as vantagens da sua maquininha | Confira     |
+
+
+  #*Dado* que eu faça o login no Portal
+#*Quando* abrir a tela principal “início”
+#*Então* devo visualizar um banner de comunicação comercial na parte supeior da tela, logo baixo do logo (Banner deve funcionar com Liga/DESLIGA)
+
+# História não é testável...
 #*Dado* que eu faça o login no Portal
 #*Quando* abrir a tela principal “início”
 #*Então* devo visualizar a nova Home com todos os componentes de acordo com o Figma
 #https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
-#
+
+# História não é testável...
 #*Dado* que eu faça o login no Portal
 #*Quando* abrir a tela principal “início”
 #*Então* devo visualizar a tabbar de acordo com o Figma (Frame 8364)
 #https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
-#
+
+# Será coberto por cada uma das opções, ex: VendasHoje testará o botão vendas
 #*Dado* que eu faça o login no Portal
 #*Quando* abrir a tela principal “início”
 #*E* passar o mouse sobre os ícones do menu lateral (qualquer ícone)
 #*Então* o menu deve expandir para a direita sobrepondo os itens da come com os respectivos nomes (Frame 8364)
-#
+
+# Quais valores? O que são respectivos? História não é testável...
 #*Dado* que eu faça o login no Portal
 #*Quando* abrir a tela principal “início”
 #*E* tiver valores para exibir
 #*Então* devo visualizar valores nos respectivos boxes da home
-#
-#*Dado* que eu faça o login no Portal
-#*Quando* abrir a tela principal “início”
-#*Então* devo visualizar um banner de comunicação comercial na parte supeior da tela, logo baixo do logo (Banner deve funcionar com Liga/DESLIGA)
+
 #
 #*Dado* que estou na tela “início” do Portal
 #*Quando* realizar vendas usando a minha máquina
