@@ -38,6 +38,12 @@ public class CommonsPage {
         return locator.textContent();
     }
 
+    public boolean assertWholeTextIsVisible(String text, String testId) {
+        assertThat(page.getByTestId(testId)).hasText(text);
+        Locator element = page.getByTestId(testId);
+        return element.textContent().equalsIgnoreCase(text) && element.isVisible();
+    }
+
     public void navigateToRoot() {
         page.navigate("https://" + contractConfig.getUrl());
         assertThat(page).hasTitle(Pattern.compile(".+"));

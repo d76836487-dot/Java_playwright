@@ -15,26 +15,6 @@ public class SalesTodayPage extends BasePage {
         page.waitForURL(Pattern.compile("^.*/Hoje$"));
     }
 
-    public boolean assertWholeTextIsVisible(String text, String testId) {
-        assertThat(page.getByTestId(testId)).hasText(text);
-        Locator element = page.getByTestId(testId);
-        return element.textContent().equalsIgnoreCase(text) && element.isVisible();
-    }
-
-    public String getWholeTextIfVisible(String message) {
-        Locator element = page.locator(String.format("//*[contains(text(),'%s')]", message));
-        return getWholeTextIfVisible(element);
-    }
-
-    public String getWholeTextIfVisible(Locator element) {
-        if(element == null)
-            return "Not found";
-        if (!element.isVisible()) {
-            return "Not visible";
-        }
-        return element.textContent();
-    }
-
     public void hoverMenuOnSalesMenu() {
         getLateralMenuLocator().hover();
     }

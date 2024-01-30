@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.SalesTodayPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -13,6 +14,9 @@ import static org.testng.AssertJUnit.*;
 public class SalesTodaySteps {
     @Autowired
     SalesTodayPage salesTodayPage;
+
+    @Autowired
+    CommonsPage commonsPage;
 
     @When("Usuário acessa Vendas Hoje")
     public void goTo() {
@@ -28,7 +32,7 @@ public class SalesTodaySteps {
 
     @Then("Página conterá mensagem com a {string} do resumo de vendas")
     public void pageWillContainMessageDescribingSalesSummary(String expectedMessage) {
-        String message = salesTodayPage.getWholeTextIfVisible(expectedMessage.substring(0, 10));
+        String message = commonsPage.getWholeTextIfVisible(expectedMessage.substring(0, 10));
         assertEquals("Mensagem não encontrada na página", expectedMessage, message);
     }
 
@@ -36,10 +40,10 @@ public class SalesTodaySteps {
     public void pageWillContainAllElementsOfSalesSummary(String expectedDescription, String totalSales, String grossValue) {
         pageWillContainMessageDescribingSalesSummary(expectedDescription);
 
-        boolean totalSalesWasFound = salesTodayPage.assertWholeTextIsVisible( totalSales, "vendas-hoje-card-total-vendas");
+        boolean totalSalesWasFound = commonsPage.assertWholeTextIsVisible( totalSales, "vendas-hoje-card-total-vendas");
         assertTrue("Total de Vendas não encontrado na página", totalSalesWasFound);
 
-        boolean grossValueWasFound = salesTodayPage.assertWholeTextIsVisible(grossValue, "vendas-hoje-card-vlr-bruto");
+        boolean grossValueWasFound = commonsPage.assertWholeTextIsVisible(grossValue, "vendas-hoje-card-vlr-bruto");
         assertTrue("Valor Bruto não encontrado na página", grossValueWasFound);
     }
 
