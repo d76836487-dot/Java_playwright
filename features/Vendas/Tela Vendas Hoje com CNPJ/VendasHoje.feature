@@ -24,7 +24,7 @@ Feature: Tela Vendas Hoje com CNPJ
     When Usuário acessa Vendas Hoje
     Then Página conterá na seção Resumo de Vendas "<descricao>", total de vendas "<total>", e valor bruto "<valor>"
     Examples:
-      | total | valor | descricao                                                                                                                                                                                                                                                          |
+      | total | valor        | descricao                                                                                                                                                                                                                                                          |
       | 59    | R$ 47.100,00 | Visualize suas vendas realizadas no dia. Não achou a venda que estava procurando? Ela pode levar até 15 minutos para ser apresentada aqui. E lembre-se, essas vendas estão em processamento, vendas estornadas ou não efetivadas aparecem aqui até o final do dia. |
 
   @TestCaseKey=SMP-T7
