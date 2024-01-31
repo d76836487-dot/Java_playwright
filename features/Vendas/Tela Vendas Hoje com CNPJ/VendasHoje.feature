@@ -54,9 +54,6 @@ Feature: Tela Vendas Hoje com CNPJ
       | Recusada    | Status (0)  |
       | Estornada   | Status (0)  |
 
-  # getByTestId("generic-filter-check-all-bandeiras")
-  # getByTestId("generic-filter-div-bandeira-Mastercard")
-  @TestCaseKey=SMP-T21
   Scenario Outline: Filtrar histórico de vendas por bandeira
     When Usuário acessa Vendas Hoje
     And Existem vendas com bandeira "<bandeira>"
@@ -68,17 +65,16 @@ Feature: Tela Vendas Hoje com CNPJ
       | Mastercard | Bandeiras (0) |
       | Visa       | Bandeiras (0) |
 
-#      | Maestro     | Bandeiras (0) |
-#      | Cabal       | Bandeiras (0) |
-#      | Elo         | Bandeiras (0) |
-#      | Banese      | Bandeiras (0) |
-#      | Ticket      | Bandeiras (0) |
-#      | Alelo       | Bandeiras (0) |
-#      | Sorocred    | Bandeiras (0) |
-#      | Amex        | Bandeiras (0) |
-#      | Hipercard   | Bandeiras (0) |
-#      | Sodexo      | Bandeiras (0) |
-#      | VR          | Bandeiras (0) |
-#      | Softnex     | Bandeiras (0) |
-#      | Redecompras | Bandeiras (0) |
-#      | Fepas       | Bandeiras (0) |
+  Scenario Outline: Filtrar histórico de vendas por status e bandeira
+    When Usuário acessa Vendas Hoje
+    And Existem vendas com status "<statusvenda>"
+    And Existem vendas com bandeira "<bandeira>"
+    When Usuário filtra por tudo, exceto "<statusvenda>", em "<filtrostatus>"
+    And Usuário filtra por tudo, exceto "<bandeira>", em "<filtrobandeira>"
+    Then Serão filtradas as vendas com bandeira "<bandeira>"
+    And Serão filtradas as vendas com status "<statusvenda>"
+    @pt-br
+    Examples:
+      | statusvenda | filtrostatus | bandeira   | filtrobandeira |
+      | Autorizada  | Status (0)   | Mastercard | Bandeiras (0)  |
+      | Recusada    | Status (0)   | Visa       | Bandeiras (0)  |

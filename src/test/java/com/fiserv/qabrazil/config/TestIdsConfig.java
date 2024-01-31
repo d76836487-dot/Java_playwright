@@ -9,7 +9,7 @@ public class TestIdsConfig {
             "Filter - Accordion - Bandeiras (0)", "generic-filter-accordion-title-bandeira",
             "Filter - Status (0) - Check all", "generic-filter-check-all-status",
             "Filter - Bandeiras (0) - Check all", "generic-filter-check-all-bandeiras",
-            "Filter - Status (0) - Test root", "generic-filter-div-status-",
+            "Filter - Status (0) - Test root", "generic-filter-check-status-",
             "Filter - Bandeiras (0) - Test root", "generic-filter-div-bandeira-");
 
     public static String getTestId(String identifier) {

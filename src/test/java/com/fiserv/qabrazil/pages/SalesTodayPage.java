@@ -3,6 +3,7 @@ package com.fiserv.qabrazil.pages;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.microsoft.playwright.Locator;
 
+import java.time.Duration;
 import java.util.regex.Pattern;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -29,6 +30,8 @@ public class SalesTodayPage extends BasePage {
     }
 
     public boolean thereAreSalesWithStatus(String salesStatus) {
+        rewindPagination();
+
         Locator paginationBtn = page.locator("//button[contains(@class,'pagination-button')]").last();
 
         boolean foundSaleWithStatus;
@@ -42,6 +45,14 @@ public class SalesTodayPage extends BasePage {
         } while (paginationBtn.isEnabled() && !foundSaleWithStatus);
 
         return foundSaleWithStatus;
+    }
+
+    private void rewindPagination() {
+        Locator paginationBtn = page.locator("//button[contains(@class,'pagination-button')]").first();
+        while (paginationBtn.isEnabled()) {
+            paginationBtn.click();
+            sleep(Duration.ofMillis(500));
+        }
     }
 
     public boolean thereAreSalesWithBrandName(String brandName) {
