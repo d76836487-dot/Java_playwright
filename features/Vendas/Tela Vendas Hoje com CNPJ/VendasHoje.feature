@@ -50,9 +50,9 @@ Feature: Tela Vendas Hoje com CNPJ
     @pt-br
     Examples:
       | status venda | grupo filtro |
-      | Autorizada  | Status (0)  |
-      | Recusada    | Status (0)  |
-      | Estornada   | Status (0)  |
+      | Autorizada   | Status (0)   |
+      | Recusada     | Status (0)   |
+      | Estornada    | Status (0)   |
 
   @TestCaseKey=SMP-T21
   Scenario Outline: Filtrar histórico de vendas por bandeira
@@ -62,7 +62,7 @@ Feature: Tela Vendas Hoje com CNPJ
     Then Serão filtradas as vendas com bandeira "<bandeira>"
     @pt-br
     Examples:
-      | bandeira   | grupo filtro   |
+      | bandeira   | grupo filtro  |
       | Mastercard | Bandeiras (0) |
       | Visa       | Bandeiras (0) |
 
@@ -78,6 +78,6 @@ Feature: Tela Vendas Hoje com CNPJ
     @pt-br
     Examples:
       | status venda | filtro status | bandeira   | filtro bandeira |
-      | Autorizada  | Status (0)   | Mastercard | Bandeiras (0)  |
-      | Recusada    | Status (0)   | Visa       | Bandeiras (0)  |
+      | Autorizada   | Status (0)    | Mastercard | Bandeiras (0)   |
+      | Recusada     | Status (0)    | Visa       | Bandeiras (0)   |
 
