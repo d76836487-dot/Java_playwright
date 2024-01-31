@@ -23,7 +23,7 @@ Feature: Home Logada
   @TestCaseKey=SMP-T19
   Scenario: Usuário será direcionado ao Vendas Hoje ao clicar em Ver Tudo da seção Vendas Hoje
     Given Usuário acessou o Home
-    When na seção Vendas Hoje clicar no botão "Ver tudo"
+    When usuário clica "na seção Vendas Hoje - Ver Tudo"
     Then será direcionado ao menu "Vendas Hoje"
 
   # TODO: fix to use anticipation linked to data-testid

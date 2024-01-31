@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.After;
@@ -7,6 +8,7 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.testng.AssertJUnit.assertEquals;
@@ -46,4 +48,11 @@ public class CommonsSteps {
                 expectedButtonText.substring(0, Math.min(expectedButtonText.length(), 10)));
         assertEquals("Botão não encontrado na página", expectedButtonText, message);
     }
+
+    @When("usuário clica {string}")
+    public void userClicks(String identifier) {
+        String testId = TestIdsConfig.getTestId(identifier);
+        commonsPage.clickButtonTestId(testId);
+    }
+
 }
