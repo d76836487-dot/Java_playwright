@@ -9,7 +9,7 @@ Feature: Consulta vendas
 
   @Zephyr:CustomFields=Ambiente=UAT
   @TestCaseKey=SMP-T3
-  Scenario: Fazer o login usuario bin 003
+  Scenario: Fazer o login usuário bin 003
     * Acesso a url do login "acassoQa"
     * incluir login e senha
     * clicar no botão entrar

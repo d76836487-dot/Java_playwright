@@ -7,33 +7,33 @@
 Feature: Tela Vendas Hoje com CNPJ
 
   Background:
-    When Usuário tenta logar na aplicacao
+    When Usuário tenta logar na aplicação
     Then Usuário estará com acesso
 
   @TestCaseKey=SMP-T9
   Scenario Outline: Mensagem de Resumo de Vendas
     When Usuário acessa Vendas Hoje
-    Then Usuário verá mensagem "<descricao>"
+    Then Usuário verá mensagem "<descrição>"
     @pt-br
     Examples:
-      | descricao                                                                                                                                                                                                                                                          |
+      | descrição                                                                                                                                                                                                                                                          |
       | Visualize suas vendas realizadas no dia. Não achou a venda que estava procurando? Ela pode levar até 15 minutos para ser apresentada aqui. E lembre-se, essas vendas estão em processamento, vendas estornadas ou não efetivadas aparecem aqui até o final do dia. |
 
   @TestCaseKey=SMP-T6
   Scenario Outline: Visualização do Campo Resumo de Vendas
     When Usuário acessa Vendas Hoje
-    Then Página conterá na seção Resumo de Vendas "<descricao>", total de vendas "<total>", e valor bruto "<valor>"
+    Then Página conterá na seção Resumo de Vendas "<descrição>", total de vendas "<total>", e valor bruto "<valor>"
     Examples:
-      | total | valor        | descricao                                                                                                                                                                                                                                                          |
+      | total | valor        | descrição                                                                                                                                                                                                                                                          |
       | 59    | R$ 47.100,00 | Visualize suas vendas realizadas no dia. Não achou a venda que estava procurando? Ela pode levar até 15 minutos para ser apresentada aqui. E lembre-se, essas vendas estão em processamento, vendas estornadas ou não efetivadas aparecem aqui até o final do dia. |
 
   @TestCaseKey=SMP-T7
   Scenario Outline: Rodapé de Vendas Hoje
     When Usuário acessa Vendas Hoje
-    Then Página conterá rodapé "<descricao>" com o ano atual
+    Then Página conterá rodapé "<descrição>" com o ano atual
     @pt-br
     Examples:
-      | descricao                                                                             |
+      | descrição                                                                             |
       | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
 
   @TestCaseKey=SMP-T8
@@ -44,12 +44,12 @@ Feature: Tela Vendas Hoje com CNPJ
   @TestCaseKey=SMP-T15
   Scenario Outline: Filtrar histórico de vendas por status
     When Usuário acessa Vendas Hoje
-    And Existem vendas com status "<statusvenda>"
-    When Usuário filtra por tudo, exceto "<statusvenda>", em "<grupofiltro>"
-    Then Serão filtradas as vendas com status "<statusvenda>"
+    And Existem vendas com status "<status venda>"
+    When Usuário filtra por tudo, exceto "<status venda>", em "<grupo filtro>"
+    Then Serão filtradas as vendas com status "<status venda>"
     @pt-br
     Examples:
-      | statusvenda | grupofiltro |
+      | status venda | grupo filtro |
       | Autorizada  | Status (0)  |
       | Recusada    | Status (0)  |
       | Estornada   | Status (0)  |
@@ -58,26 +58,26 @@ Feature: Tela Vendas Hoje com CNPJ
   Scenario Outline: Filtrar histórico de vendas por bandeira
     When Usuário acessa Vendas Hoje
     And Existem vendas com bandeira "<bandeira>"
-    When Usuário filtra por tudo, exceto "<bandeira>", em "<grupofiltro>"
+    When Usuário filtra por tudo, exceto "<bandeira>", em "<grupo filtro>"
     Then Serão filtradas as vendas com bandeira "<bandeira>"
     @pt-br
     Examples:
-      | bandeira   | grupofiltro   |
+      | bandeira   | grupo filtro   |
       | Mastercard | Bandeiras (0) |
       | Visa       | Bandeiras (0) |
 
   @TestCaseKey=SMP-T22
   Scenario Outline: Filtrar histórico de vendas por status e bandeira
     When Usuário acessa Vendas Hoje
-    And Existem vendas com status "<statusvenda>"
+    And Existem vendas com status "<status venda>"
     And Existem vendas com bandeira "<bandeira>"
-    When Usuário filtra por tudo, exceto "<statusvenda>", em "<filtrostatus>"
-    And Usuário filtra por tudo, exceto "<bandeira>", em "<filtrobandeira>"
+    When Usuário filtra por tudo, exceto "<status venda>", em "<filtro status>"
+    And Usuário filtra por tudo, exceto "<bandeira>", em "<filtro bandeira>"
     Then Serão filtradas as vendas com bandeira "<bandeira>"
-    And Serão filtradas as vendas com status "<statusvenda>"
+    And Serão filtradas as vendas com status "<status venda>"
     @pt-br
     Examples:
-      | statusvenda | filtrostatus | bandeira   | filtrobandeira |
+      | status venda | filtro status | bandeira   | filtro bandeira |
       | Autorizada  | Status (0)   | Mastercard | Bandeiras (0)  |
       | Recusada    | Status (0)   | Visa       | Bandeiras (0)  |
 

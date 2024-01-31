@@ -17,12 +17,12 @@ public class LoginSteps {
     @Autowired
     ContractConfig config;
 
-    @When("Usuário tenta logar na aplicacao")
+    @When("Usuário tenta logar na aplicação")
     public void login() {
         loginPage.login();
     }
 
-    @When("Usuário tenta logar na aplicacao em {string} com {string} e {string}")
+    @When("Usuário tenta logar na aplicação em {string} com {string} e {string}")
     public void login(String url, String user, String pwd, Object ignoredDataTable) {
         loginPage.login(url, user, pwd);
     }
@@ -33,12 +33,12 @@ public class LoginSteps {
         assertTrue(accessGranted);
     }
 
-    @When("Usuário tenta logar na aplicacao com {string} e {string}")
+    @When("Usuário tenta logar na aplicação com {string} e {string}")
     public void userTriesToLoginWith(String login, String password) {
         loginPage.login(config.getUrl(), login, password);
     }
 
-    @Given("Usuário logou na aplicacao")
+    @Given("Usuário logou na aplicação")
     public void userHasLoggedIn() {
         login();
         userHasAcessGranted();

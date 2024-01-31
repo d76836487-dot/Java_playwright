@@ -7,17 +7,17 @@
 Feature: Home Logada
 
   Background:
-    When Usuário tenta logar na aplicacao
+    When Usuário tenta logar na aplicação
     Then Usuário estará com acesso
 
   @TestCaseKey=SMP-T16
   Scenario Outline: Banner de comunicação comercial
     Given Usuário acessou o Home
-    Then Usuário verá mensagem "<descricao>"
-    And Usuário verá botão com texto "<texto botao>"
+    Then Usuário verá mensagem "<descrição>"
+    And Usuário verá botão com texto "<texto botão>"
     @pt-br
     Examples:
-      | descricao                           | texto botao |
+      | descrição                           | texto botão |
       | Veja as vantagens da sua maquininha | Confira     |
 
   @TestCaseKey=SMP-T19
@@ -27,20 +27,20 @@ Feature: Home Logada
     Then será direcionado ao menu "Vendas Hoje"
 
   # TODO: fix to use anticipation linked to data-testid
-  @MDRPadrao @skip-azulzinha
+  @MDRPadrão @skip-azulzinha
   @TestCaseKey=SMP-T17
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
     Given Usuário acessou o Home
     Then Usuário verá card Antecipação
-    And Usuário verá botão com texto "<texto botao>"
+    And Usuário verá botão com texto "<texto botão>"
     @pt-br
     Examples:
-      | texto botao         |
+      | texto botão         |
       | Ir para antecipação |
 
   # TODO: fix to use anticipation linked to data-testid
-  # TODO: fix this: And Usuário não verá botão com texto "<texto botao>"
-  @MDRPadrao @skip-bin
+  # TODO: fix this: And Usuário não verá botão com texto "<texto botão>"
+  @MDRPadrão @skip-bin
   @TestCaseKey=SMP-T18
   Scenario: Usuário MDR Padrão NÃO verá card "Receba antes"
     Given Usuário acessou o Home
