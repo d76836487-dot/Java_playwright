@@ -54,8 +54,9 @@ Feature: Tela Vendas Hoje com CNPJ
       | Recusada    | Status (0)  |
       | Estornada   | Status (0)  |
 
-    # getByTestId("generic-filter-check-all-bandeiras")
-    # getByTestId("generic-filter-div-bandeira-Mastercard")
+  # getByTestId("generic-filter-check-all-bandeiras")
+  # getByTestId("generic-filter-div-bandeira-Mastercard")
+  @TestCaseKey=SMP-T21
   Scenario Outline: Filtrar histórico de vendas por bandeira
     When Usuário acessa Vendas Hoje
     And Existem vendas com bandeira "<bandeira>"
@@ -63,9 +64,10 @@ Feature: Tela Vendas Hoje com CNPJ
     Then Serão filtradas as vendas com bandeira "<bandeira>"
     @pt-br
     Examples:
-      | bandeira    | grupofiltro   |
-      | Mastercard  | Bandeiras (0) |
-      | Visa        | Bandeiras (0) |
+      | bandeira   | grupofiltro   |
+      | Mastercard | Bandeiras (0) |
+      | Visa       | Bandeiras (0) |
+
 #      | Maestro     | Bandeiras (0) |
 #      | Cabal       | Bandeiras (0) |
 #      | Elo         | Bandeiras (0) |
