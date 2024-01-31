@@ -30,16 +30,23 @@ public class SalesTodayPage extends BasePage {
     }
 
     public boolean thereAreSalesWithStatus(String salesStatus) {
+        return thereAreSalesWithSomeCharacteristics(salesStatus, "vendas-hoje-coluna-status\\d");
+    }
+
+    public boolean thereAreSalesWithBrandName(String brandName) {
+        return thereAreSalesWithSomeCharacteristics(brandName, "vendas-hoje-coluna-bandeira");
+    }
+    private boolean thereAreSalesWithSomeCharacteristics(String textLookingFor, String testId) {
         rewindPagination();
 
         Locator paginationBtn = page.locator("//button[contains(@class,'pagination-button')]").last();
 
         boolean foundSaleWithStatus;
         do {
-            Locator salesStatusLabel = page.getByTestId(Pattern.compile("vendas-hoje-coluna-status\\d"));
+            Locator salesStatusLabel = page.getByTestId(Pattern.compile(testId));
 
             foundSaleWithStatus = waitUntilTrue(1, () ->
-                    salesStatusLabel.filter(new Locator.FilterOptions().setHasText(salesStatus)).count() > 0);
+                    salesStatusLabel.filter(new Locator.FilterOptions().setHasText(textLookingFor)).count() > 0);
 
             paginationBtn.click();
         } while (paginationBtn.isEnabled() && !foundSaleWithStatus);
@@ -53,21 +60,5 @@ public class SalesTodayPage extends BasePage {
             paginationBtn.click();
             sleep(Duration.ofMillis(500));
         }
-    }
-
-    public boolean thereAreSalesWithBrandName(String brandName) {
-        Locator paginationBtn = page.locator("//button[contains(@class,'pagination-button')]").last();
-
-        boolean foundSaleWithBrandName;
-        do {
-            Locator salesBrandName = page.getByTestId("vendas-hoje-coluna-bandeira");
-
-            foundSaleWithBrandName = waitUntilTrue(1, () ->
-                    salesBrandName.filter(new Locator.FilterOptions().setHasText(brandName)).count() > 0);
-
-            paginationBtn.click();
-        } while (paginationBtn.isEnabled() && !foundSaleWithBrandName);
-
-        return foundSaleWithBrandName;
     }
 }

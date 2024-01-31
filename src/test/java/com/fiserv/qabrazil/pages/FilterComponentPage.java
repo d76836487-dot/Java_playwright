@@ -15,8 +15,8 @@ public class FilterComponentPage extends BasePage {
         openAccordion(accordionName);
         checkAll(accordionName);
 
-        String testIdRoot = TestIdsConfig.getTestId("Filter - " + accordionName + " - Test root");
-        Locator filterButton = page.getByTestId(testIdRoot + filterValue);
+        String testId = TestIdsConfig.getTestId("Filter - " + accordionName + " - " + filterValue);
+        Locator filterButton = page.getByTestId(testId);
         assertThat(filterButton).isVisible();
         filterButton.click();
 
