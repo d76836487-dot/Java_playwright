@@ -43,4 +43,20 @@ public class SalesTodayPage extends BasePage {
 
         return foundSaleWithStatus;
     }
+
+    public boolean thereAreSalesWithBrandName(String brandName) {
+        Locator paginationBtn = page.locator("//button[contains(@class,'pagination-button')]").last();
+
+        boolean foundSaleWithBrandName;
+        do {
+            Locator salesBrandName = page.getByTestId("vendas-hoje-coluna-bandeira");
+
+            foundSaleWithBrandName = waitUntilTrue(1, () ->
+                    salesBrandName.filter(new Locator.FilterOptions().setHasText(brandName)).count() > 0);
+
+            paginationBtn.click();
+        } while (paginationBtn.isEnabled() && !foundSaleWithBrandName);
+
+        return foundSaleWithBrandName;
+    }
 }

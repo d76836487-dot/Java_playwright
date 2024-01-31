@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.microsoft.playwright.Locator;
 
 import java.time.Duration;
@@ -12,17 +13,19 @@ public class FilterComponentPage extends BasePage {
     public void filterAllExcept(String filterValue, String accordionName) {
         openFilterOptions();
         openAccordion(accordionName);
-        checkAll();
+        checkAll(accordionName);
 
-        Locator filterButton = page.getByTestId(String.format("generic-filter-check-status-%s", filterValue));
+        String testIdRoot = TestIdsConfig.getTestId("Filter - " + accordionName + " - Test root");
+        Locator filterButton = page.getByTestId(testIdRoot + filterValue);
         assertThat(filterButton).isVisible();
-        filterButton.uncheck();
+        filterButton.click();
 
         clickToFilter();
     }
 
-    private void checkAll() {
-        Locator checkAllButton = page.getByTestId("generic-filter-check-all-status");
+    private void checkAll(String accordionName) {
+        String checkAllTestId = TestIdsConfig.getTestId("Filter - " + accordionName + " - Check all");
+        Locator checkAllButton = page.getByTestId(checkAllTestId);
         assertThat(checkAllButton).isVisible();
         checkAllButton.check();
     }
@@ -32,8 +35,8 @@ public class FilterComponentPage extends BasePage {
     }
 
     private void openAccordion(String accordionName) {
-        Locator accordion = page.getByTestId("generic-filter-accordion-title-status").
-                filter(new Locator.FilterOptions().setHasText(accordionName));
+        String accordionTestId = TestIdsConfig.getTestId("Filter - Accordion - " + accordionName);
+        Locator accordion = page.getByTestId(accordionTestId);
         assertThat(accordion).isVisible();
         accordion.click();
     }

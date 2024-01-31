@@ -65,9 +65,23 @@ public class SalesTodaySteps {
         assertTrue(messageAssert, foundSalesWithStatus);
     }
 
-    @Then("Serão filtradas as vendas com {string}")
+    @Then("Serão filtradas as vendas com status {string}")
     public void thereIsNoSalesWithStatus(String salesStatus) {
         boolean foundSalesWithStatus = salesTodayPage.thereAreSalesWithStatus(salesStatus);
         assertFalse(foundSalesWithStatus);
+    }
+
+    @And("Existem vendas com bandeira {string}")
+    public void existemVendasComBandeira(String brandName) {
+        boolean foundSalesWithBrandName = salesTodayPage.thereAreSalesWithBrandName(brandName);
+
+        String messageAssert = String.format("Não há vendas do tipo %s", brandName);
+        assertTrue(messageAssert, foundSalesWithBrandName);
+    }
+
+    @Then("Serão filtradas as vendas com bandeira {string}")
+    public void serãoFiltradasAsVendasComBandeira(String brandName) {
+        boolean foundSalesWithBrandName = salesTodayPage.thereAreSalesWithBrandName(brandName);
+        assertFalse(foundSalesWithBrandName);
     }
 }
