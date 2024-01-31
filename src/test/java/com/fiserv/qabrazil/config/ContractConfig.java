@@ -14,6 +14,8 @@ public class ContractConfig {
 
     private String identity;
 
+    private Boolean allowAdvancePayment;
+
     public String getUrl() {
         return url;
     }
@@ -44,5 +46,13 @@ public class ContractConfig {
 
     public void setIdentity(String identity) {
         this.identity = identity;
+    }
+
+    public Boolean getAllowAdvancePayment() {
+        return allowAdvancePayment;
+    }
+
+    public void setAllowAdvancePayment(Boolean allowAdvancePayment) {
+        this.allowAdvancePayment = allowAdvancePayment;
     }
 }

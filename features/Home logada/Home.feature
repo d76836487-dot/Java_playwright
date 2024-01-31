@@ -27,9 +27,10 @@ Feature: Home Logada
     Then será direcionado ao menu "Vendas Hoje"
 
   # TODO: fix to use anticipation linked to data-testid
-  @MDRPadrão @skip-azulzinha
+  @MDRPadrao
   @TestCaseKey=SMP-T17
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
+    Given assumindo: inst permite antecipação
     Given Usuário acessou o Home
     Then Usuário verá card Antecipação
     And Usuário verá botão com texto "<texto botão>"
@@ -40,9 +41,10 @@ Feature: Home Logada
 
   # TODO: fix to use anticipation linked to data-testid
   # TODO: fix this: And Usuário não verá botão com texto "<texto botão>"
-  @MDRPadrão @skip-bin
+  @MDRPadrao
   @TestCaseKey=SMP-T18
   Scenario: Usuário MDR Padrão NÃO verá card "Receba antes"
+    Given assumindo: inst não permite antecipação
     Given Usuário acessou o Home
     Then Usuário não verá card Antecipação
 

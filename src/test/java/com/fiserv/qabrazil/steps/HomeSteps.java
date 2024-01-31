@@ -1,15 +1,21 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.HomePage;
 import io.cucumber.java.ParameterType;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.assertj.core.api.Assumptions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.testng.AssertJUnit.*;
 
 public class HomeSteps {
+
+    @Autowired
+    ContractConfig contractConfig;
 
     @Autowired
     CommonsPage commonsPage;
@@ -48,4 +54,15 @@ public class HomeSteps {
         commonsPage.clickButtonWithText(buttonText);
     }
 
+    @Given("assumindo: inst permite antecipação")
+    public void institutionAllowAdvance() {
+        Assumptions.assumeThat(contractConfig.getAllowAdvancePayment())
+                .isTrue();
+    }
+
+    @Given("assumindo: inst não permite antecipação")
+    public void institutionDoNotAllowAdvance() {
+        Assumptions.assumeThat(contractConfig.getAllowAdvancePayment())
+                .isFalse();
+    }
 }
