@@ -45,4 +45,8 @@ public class CommonsPage extends BasePage{
         page.navigate("https://" + contractConfig.getUrl());
         assertThat(page).hasTitle(Pattern.compile(".+"));
     }
+
+    public void clickButtonWithText(String buttonText) {
+        page.getByText(buttonText).click();
+    }
 }

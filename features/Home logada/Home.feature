@@ -111,11 +111,16 @@ Feature: Home Logada
 #
 #*Dado* que estou na tela “início” do Portal
 #*Então* devo visualizar uma espécie de carrossel com quatro funcionalidades “default” sendo elas “Antecipação”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
-#
-#*Dado* que estou na tela “início” do Portal
-#*Quando* clicar no botão “Personalizar”
-#*Então* devo visualizar a um modal com demais funcionalidades para escolher (Frame 5540)
-#
+
+    Scenario Outline: Abrir Modal Personalizar Acesso Rápido
+      Given Usuário acessou o Home
+      When clicar no botão "Personalizar"
+      Then devo visualizar a um modal com demais <funcionalidades> para escolher
+      @pt-br
+      Examples:
+        | funcionalidades                                                                             |
+        | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+
 #*Dado* que estou na tela “início” do Portal
 #*Quando* realizar vendas usando a minha máquina naquele determinado dia
 #*Então* devo visualizar o valor em “Vendas hoje” com um botão “ver tudo”
