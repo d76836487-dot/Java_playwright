@@ -54,6 +54,7 @@ Feature: Tela Vendas Hoje com CNPJ
       | Recusada    | Status (0)  |
       | Estornada   | Status (0)  |
 
+  @TestCaseKey=SMP-T21
   Scenario Outline: Filtrar histórico de vendas por bandeira
     When Usuário acessa Vendas Hoje
     And Existem vendas com bandeira "<bandeira>"
@@ -65,6 +66,7 @@ Feature: Tela Vendas Hoje com CNPJ
       | Mastercard | Bandeiras (0) |
       | Visa       | Bandeiras (0) |
 
+  @TestCaseKey=SMP-T22
   Scenario Outline: Filtrar histórico de vendas por status e bandeira
     When Usuário acessa Vendas Hoje
     And Existem vendas com status "<statusvenda>"
@@ -78,3 +80,4 @@ Feature: Tela Vendas Hoje com CNPJ
       | statusvenda | filtrostatus | bandeira   | filtrobandeira |
       | Autorizada  | Status (0)   | Mastercard | Bandeiras (0)  |
       | Recusada    | Status (0)   | Visa       | Bandeiras (0)  |
+
