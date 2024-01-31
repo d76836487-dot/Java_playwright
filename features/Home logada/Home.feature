@@ -20,12 +20,13 @@ Feature: Home Logada
       | descricao                           | texto botao |
       | Veja as vantagens da sua maquininha | Confira     |
 
+  @TestCaseKey=SMP-T19
   Scenario: Usuário será direcionado ao Vendas Hoje ao clicar em Ver Tudo da seção Vendas Hoje
     Given Usuário acessou o Home
     When na seção Vendas Hoje clicar no botão "Ver tudo"
     Then será direcionado ao menu "Vendas Hoje"
 
-    # TODO: fix to use anticipation linked to data-testid
+  # TODO: fix to use anticipation linked to data-testid
   @MDRPadrao @skip-azulzinha
   @TestCaseKey=SMP-T17
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
@@ -37,94 +38,95 @@ Feature: Home Logada
       | texto botao         |
       | Ir para antecipação |
 
-    # TODO: fix to use anticipation linked to data-testid
-    # TODO: fix this: And Usuário não verá botão com texto "<texto botao>"
+  # TODO: fix to use anticipation linked to data-testid
+  # TODO: fix this: And Usuário não verá botão com texto "<texto botao>"
   @MDRPadrao @skip-bin
+  @TestCaseKey=SMP-T18
   Scenario: Usuário MDR Padrão NÃO verá card "Receba antes"
     Given Usuário acessou o Home
     Then Usuário não verá card Antecipação
 
-#*Dado* que loguei no Portal com um EC com plano de recebimento MDR Padrão
-#*Quando* estiver na tela “início”
-#*Então* devo visualizar o card “Receba antes” e o botão antecipar
-# História não é testável...
-#*Dado* que eu faça o login no Portal
-#*Quando* abrir a tela principal “início”
-#*Então* devo visualizar a nova Home com todos os componentes de acordo com o Figma
-#https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
-#
-# História não é testável...
-#*Dado* que eu faça o login no Portal
-#*Quando* abrir a tela principal “início”
-#*Então* devo visualizar a tabbar de acordo com o Figma (Frame 8364)
-#https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
-# Será coberto por cada uma das opções, ex: VendasHoje testará o botão vendas
-#
-#*Dado* que eu faça o login no Portal
-#*Quando* abrir a tela principal “início”
-#*E* passar o mouse sobre os ícones do menu lateral (qualquer ícone)
-#*Então* o menu deve expandir para a direita sobrepondo os itens da come com os respectivos nomes (Frame 8364)
-#
-# Quais valores? O que são respectivos? História não é testável...
-#*Dado* que eu faça o login no Portal
-#*Quando* abrir a tela principal “início”
-#*E* tiver valores para exibir
-#*Então* devo visualizar valores nos respectivos boxes da home
-#
-#*Dado* que estou na tela “início” do Portal
-#*Quando* realizar vendas usando a minha máquina
-#*Então* devo visualizar as minhas últimas três vendas – limitado ao último mês - listadas com detalhes como bandeira, valor, modalidade, horário e parcelas se for pertinente
-#
-# não vamos testar mdf flex
-#*Dado* que loguei no Portal com um EC com plano de recebimento MDR FLEX
-#*Quando* estiver na tela “início”
-#*Então* não devo visualizar o card “Receba antes” e o botão antecipar
-#
-#{panel}
-#{panel:title=CENÁRIO DE TESTE|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=2}
-#h6. *CENÁRIOS: VALIDAÇÕES DE DIRECIONAMENTOS DOS BOXES DA HOME *
-#
-#*Dado* que eu faça login no Portal
-#*Quando* abrir a tela principal “início”
-#*E* clicar no ícone “notificações”
-#*Então* o Portal deve abrir as minhas notificações
-#
-#*Dado* que eu faça login no App e tenha mais de um EC vinculado ao meu documento
-#*Quando* abrir a tela principal “início”
-#*E* clicar no ícone “v” no boxe com o nome, CNPJ e EC
-#*Então* devo visualizar o modal “Alterar estabelecimento” com todos os ECs atrelados ao meu documento
-#
-#*Dado* que eu troquei o meu EC dentro do App
-#*Quando* as informações carregarem
-#*Então* devo visualizar os valores do EC selecionado
-#
-#*Dado* que sou um cliente MDR Flex
-#*Quando* estiver na tela “início” do Portal
-#*Então* não devo visualizar o carde de Antecipação
-#
-#*Dado* que sou um cliente MDR Padrão e estou na tela “início” do Portal
-#*Quando* eu tiver valores livres para antecipar
-#*Então* devo visualizá-los no card “Receba antes” e o botão “Antecipar” habilitado
-#
-#*Dado* que sou um cliente MDR Padrão e estou na tela “início” do Portal
-#*Quando* eu não tiver valores livres para antecipar
-#*Então* devo visualizar o card “Antecipação” com a mensagem “Você não possui valores disponíveis para antecipar” (Frame 8368)
-#
-#*Dado* que sou um cliente MDR Padrão e estou na tela “início” do Portal
-#*Quando* eu já tiver antecipação automática cadastrada
-#*Então* devo visualizar o card “Antecipação” com a mensagem “Você possui antecipação automática cadastrada” (Frame 8369)
-#
-#*Dado* que estou na tela “início” do Portal
-#*Então* devo visualizar uma espécie de carrossel com quatro funcionalidades “default” sendo elas “Antecipação”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
-
-    Scenario Outline: Abrir Modal Personalizar Acesso Rápido
-      Given Usuário acessou o Home
-      When clicar no botão "Personalizar"
-      Then devo visualizar a um modal com demais <funcionalidades> para escolher
-      @pt-br
-      Examples:
-        | funcionalidades                                                                             |
-        | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+  #*Dado* que loguei no Portal com um EC com plano de recebimento MDR Padrão
+  #*Quando* estiver na tela “início”
+  #*Então* devo visualizar o card “Receba antes” e o botão antecipar
+  # História não é testável...
+  #*Dado* que eu faça o login no Portal
+  #*Quando* abrir a tela principal “início”
+  #*Então* devo visualizar a nova Home com todos os componentes de acordo com o Figma
+  #https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
+  #
+  # História não é testável...
+  #*Dado* que eu faça o login no Portal
+  #*Quando* abrir a tela principal “início”
+  #*Então* devo visualizar a tabbar de acordo com o Figma (Frame 8364)
+  #https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
+  # Será coberto por cada uma das opções, ex: VendasHoje testará o botão vendas
+  #
+  #*Dado* que eu faça o login no Portal
+  #*Quando* abrir a tela principal “início”
+  #*E* passar o mouse sobre os ícones do menu lateral (qualquer ícone)
+  #*Então* o menu deve expandir para a direita sobrepondo os itens da come com os respectivos nomes (Frame 8364)
+  #
+  # Quais valores? O que são respectivos? História não é testável...
+  #*Dado* que eu faça o login no Portal
+  #*Quando* abrir a tela principal “início”
+  #*E* tiver valores para exibir
+  #*Então* devo visualizar valores nos respectivos boxes da home
+  #
+  #*Dado* que estou na tela “início” do Portal
+  #*Quando* realizar vendas usando a minha máquina
+  #*Então* devo visualizar as minhas últimas três vendas – limitado ao último mês - listadas com detalhes como bandeira, valor, modalidade, horário e parcelas se for pertinente
+  #
+  # não vamos testar mdf flex
+  #*Dado* que loguei no Portal com um EC com plano de recebimento MDR FLEX
+  #*Quando* estiver na tela “início”
+  #*Então* não devo visualizar o card “Receba antes” e o botão antecipar
+  #
+  #{panel}
+  #{panel:title=CENÁRIO DE TESTE|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=2}
+  #h6. *CENÁRIOS: VALIDAÇÕES DE DIRECIONAMENTOS DOS BOXES DA HOME *
+  #
+  #*Dado* que eu faça login no Portal
+  #*Quando* abrir a tela principal “início”
+  #*E* clicar no ícone “notificações”
+  #*Então* o Portal deve abrir as minhas notificações
+  #
+  #*Dado* que eu faça login no App e tenha mais de um EC vinculado ao meu documento
+  #*Quando* abrir a tela principal “início”
+  #*E* clicar no ícone “v” no boxe com o nome, CNPJ e EC
+  #*Então* devo visualizar o modal “Alterar estabelecimento” com todos os ECs atrelados ao meu documento
+  #
+  #*Dado* que eu troquei o meu EC dentro do App
+  #*Quando* as informações carregarem
+  #*Então* devo visualizar os valores do EC selecionado
+  #
+  #*Dado* que sou um cliente MDR Flex
+  #*Quando* estiver na tela “início” do Portal
+  #*Então* não devo visualizar o carde de Antecipação
+  #
+  #*Dado* que sou um cliente MDR Padrão e estou na tela “início” do Portal
+  #*Quando* eu tiver valores livres para antecipar
+  #*Então* devo visualizá-los no card “Receba antes” e o botão “Antecipar” habilitado
+  #
+  #*Dado* que sou um cliente MDR Padrão e estou na tela “início” do Portal
+  #*Quando* eu não tiver valores livres para antecipar
+  #*Então* devo visualizar o card “Antecipação” com a mensagem “Você não possui valores disponíveis para antecipar” (Frame 8368)
+  #
+  #*Dado* que sou um cliente MDR Padrão e estou na tela “início” do Portal
+  #*Quando* eu já tiver antecipação automática cadastrada
+  #*Então* devo visualizar o card “Antecipação” com a mensagem “Você possui antecipação automática cadastrada” (Frame 8369)
+  #
+  #*Dado* que estou na tela “início” do Portal
+  #*Então* devo visualizar uma espécie de carrossel com quatro funcionalidades “default” sendo elas “Antecipação”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
+  @TestCaseKey=SMP-T20
+  Scenario Outline: Abrir Modal Personalizar Acesso Rápido
+    Given Usuário acessou o Home
+    When clicar no botão "Personalizar"
+    Then devo visualizar a um modal com demais <funcionalidades> para escolher
+    @pt-br
+    Examples:
+      | funcionalidades                                                                             |
+      | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
 
 #*Dado* que estou na tela “início” do Portal
 #*Quando* realizar vendas usando a minha máquina naquele determinado dia
