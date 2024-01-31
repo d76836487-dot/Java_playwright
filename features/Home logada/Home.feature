@@ -20,6 +20,11 @@ Feature: Home Logada
       | descricao                           | texto botao |
       | Veja as vantagens da sua maquininha | Confira     |
 
+  Scenario:
+    Given Usuário acessou o Home
+    When na seção Vendas Hoje clicar no botão "Ver tudo"
+    Then será direcionado ao menu "Vendas Hoje"
+
   @MDRPadrao @skip-azulzinha
   @TestCaseKey=SMP-T17
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
@@ -31,6 +36,9 @@ Feature: Home Logada
       | texto botao         |
       | Ir para antecipação |
 
+#*Dado* que eu faça o login no Portal
+#*Quando* abrir a tela principal “início”
+#*Então* devo visualizar um banner de comunicação comercial na parte supeior da tela, logo baixo do logo (Banner deve funcionar com Liga/DESLIGA)
 #*Dado* que loguei no Portal com um EC com plano de recebimento MDR Padrão
 #*Quando* estiver na tela “início”
 #*Então* devo visualizar o card “Receba antes” e o botão antecipar
@@ -112,9 +120,6 @@ Feature: Home Logada
 #*Quando* realizar vendas usando a minha máquina naquele determinado dia
 #*Então* devo visualizar o valor em “Vendas hoje” com um botão “ver tudo”
 #
-#*Dado* que estou na tela “início” do Portal
-#*Quando* estiver visualizando os valores em “Vendas hoje” e clicar no botão “ver tudo”
-#*Então* devo ser direcionado ao menu “Vendas”
 #
 #*Dado* que estou na tela “início” do Portal
 #*Quando* realizar vendas usando a minha máquina

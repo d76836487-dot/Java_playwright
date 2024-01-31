@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Duration;
 import java.util.function.Supplier;
+import java.util.regex.Pattern;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -63,6 +64,11 @@ public abstract class BasePage {
     public void reload() {
         page.reload();
         sleep(Duration.ofSeconds(3));
+    }
+
+    public void hasRedirectedTo(String uri) {
+        final String url = String.format("^.*%s$", uri);
+        assertThat(page).hasURL(Pattern.compile(url));
     }
 }
 

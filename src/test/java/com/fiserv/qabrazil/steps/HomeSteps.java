@@ -21,4 +21,14 @@ public class HomeSteps {
         boolean cardAnticipation = homePage.anticipationCardIsVisible();
         assertTrue("Card antecipação não é visível", cardAnticipation);
     }
+
+    @When("na seção Vendas Hoje clicar no botão \"Ver tudo\"")
+    public void clickOnButtonSeeAllInSalesTodaySection() {
+        homePage.clickOnButtonSeeAllInSalesTodaySection();
+    }
+
+    @Then("será direcionado ao menu \"Vendas Hoje\"")
+    public void shouldNavigateToSalesTodayPage() {
+        homePage.hasRedirectedTo("/Hoje");
+    }
 }

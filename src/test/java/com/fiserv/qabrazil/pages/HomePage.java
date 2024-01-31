@@ -16,4 +16,11 @@ public class HomePage extends BasePage {
         // TODO: change for data-testid
         return waitUntilTrue(() -> page.locator("#LadoDireito").getByText("Antecipação", new Locator.GetByTextOptions().setExact(true)).count() == 1);
     }
+
+    public void clickOnButtonSeeAllInSalesTodaySection() {
+        // TODO: fix selector
+        Locator btn = page.locator("//a[@href=\"/Hoje\"]/*/span");
+        assert btn.textContent().equals("Ver tudo");
+        btn.click();
+    }
 }
