@@ -20,7 +20,7 @@ Feature: Home Logada
       | descricao                           | texto botao |
       | Veja as vantagens da sua maquininha | Confira     |
 
-  Scenario:
+  Scenario: Usuário será direcionado ao Vendas Hoje ao clicar em Ver Tudo da seção Vendas Hoje
     Given Usuário acessou o Home
     When na seção Vendas Hoje clicar no botão "Ver tudo"
     Then será direcionado ao menu "Vendas Hoje"
@@ -40,7 +40,7 @@ Feature: Home Logada
     # TODO: fix to use anticipation linked to data-testid
     # TODO: fix this: And Usuário não verá botão com texto "<texto botao>"
   @MDRPadrao @skip-bin
-  Scenario Outline: Usuário MDR Padrão NÃO verá card "Receba antes"
+  Scenario: Usuário MDR Padrão NÃO verá card "Receba antes"
     Given Usuário acessou o Home
     Then Usuário não verá card Antecipação
 
