@@ -2,11 +2,12 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.HomePage;
+import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.*;
 
 public class HomeSteps {
 
@@ -21,10 +22,15 @@ public class HomeSteps {
         homePage.ensureWeAreAtHome();
     }
 
-    @Then("Usuário verá card Antecipação")
-    public void userSeesAnticipationCard() {
+    @Then("Usuário {booleanValue} card Antecipação")
+    public void userSeesAnticipationCard(boolean cardShouldBeVisible) {
         boolean cardAnticipation = homePage.anticipationCardIsVisible();
-        assertTrue("Card antecipação não é visível", cardAnticipation);
+        assertEquals("Visibilidade do card inesperada", cardAnticipation, cardShouldBeVisible);
+    }
+
+    @ParameterType(value = "verá|não verá")
+    public Boolean booleanValue(String value) {
+        return value.equals("verá");
     }
 
     @When("na seção Vendas Hoje clicar no botão \"Ver tudo\"")

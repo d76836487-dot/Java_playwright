@@ -25,6 +25,7 @@ Feature: Home Logada
     When na seção Vendas Hoje clicar no botão "Ver tudo"
     Then será direcionado ao menu "Vendas Hoje"
 
+    # TODO: fix to use anticipation linked to data-testid
   @MDRPadrao @skip-azulzinha
   @TestCaseKey=SMP-T17
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
@@ -36,9 +37,17 @@ Feature: Home Logada
       | texto botao         |
       | Ir para antecipação |
 
-#*Dado* que eu faça o login no Portal
-#*Quando* abrir a tela principal “início”
-#*Então* devo visualizar um banner de comunicação comercial na parte supeior da tela, logo baixo do logo (Banner deve funcionar com Liga/DESLIGA)
+    # TODO: fix to use anticipation linked to data-testid
+  @MDRPadrao @skip-bin
+  Scenario Outline: Usuário MDR Padrão NÃO verá card "Receba antes"
+    Given Usuário acessou o Home
+    Then Usuário não verá card Antecipação
+    # And Usuário não verá botão com texto "<texto botao>"
+    @pt-br
+    Examples:
+      | texto botao         |
+      | Ir para antecipação |
+
 #*Dado* que loguei no Portal com um EC com plano de recebimento MDR Padrão
 #*Quando* estiver na tela “início”
 #*Então* devo visualizar o card “Receba antes” e o botão antecipar
