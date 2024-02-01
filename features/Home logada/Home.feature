@@ -28,7 +28,7 @@ Feature: Home Logada
 
   # TODO: fix to use anticipation linked to data-testid
   @MDRPadrão @PermiteAdiantamento
-    @TestCaseKey=SMP-T17
+  @TestCaseKey=SMP-T17
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
     Given Usuário acessou o Home
     Then Usuário verá card Antecipação
@@ -46,8 +46,9 @@ Feature: Home Logada
     Given Usuário acessou o Home
     Then Usuário não verá card Antecipação
 
-    # TODO: fix me when we have 'rebatedores'
+  # TODO: fix me when we have 'rebatedores'
   @ignore
+  @TestCaseKey=SMP-T24
   Scenario Outline: Valor de vendas hoje e percentual no card Vendas Hoje do Home
     Given Usuário acessou o Home
     Then Usuário verá em "Home - Card Vendas Hoje - Valor Vendas Hoje" o valor "<valor venda>"
