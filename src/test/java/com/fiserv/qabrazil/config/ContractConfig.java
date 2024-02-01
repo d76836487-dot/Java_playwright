@@ -14,7 +14,9 @@ public class ContractConfig {
 
     private String identity;
 
-    private Boolean allowAdvancePayment;
+    private String institutionTags;
+
+    private String clientTags;
 
     public String getUrl() {
         return url;
@@ -48,11 +50,19 @@ public class ContractConfig {
         this.identity = identity;
     }
 
-    public Boolean getAllowAdvancePayment() {
-        return allowAdvancePayment;
+    public String getInstitutionTags() {
+        return institutionTags;
     }
 
-    public void setAllowAdvancePayment(Boolean allowAdvancePayment) {
-        this.allowAdvancePayment = allowAdvancePayment;
+    public void setInstitutionTags(String institutionTags) {
+        this.institutionTags = institutionTags;
+    }
+
+    public String getClientTags() {
+        return clientTags;
+    }
+
+    public void setClientTags(String clientTags) {
+        this.clientTags = clientTags;
     }
 }
