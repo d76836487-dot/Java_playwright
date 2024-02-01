@@ -1,7 +1,7 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Hoje_com_CNPJ/Filtros_Historico_de_Vendas
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Hoje_com_CNPJ/VendasHojeFiltros
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 Feature: Filtros Histórico de Vendas
