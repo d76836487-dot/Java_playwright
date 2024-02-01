@@ -50,9 +50,10 @@ public class CommonsSteps {
     }
 
     @When("usuário clica {string}")
+    @When("usuário clica em/no {string}")
     public void userClicks(String identifier) {
-        String testId = TestIdsConfig.getTestId(identifier);
-        commonsPage.clickButtonTestId(testId);
+        String elementSelector = TestIdsConfig.getQuerySelector(identifier);
+        commonsPage.clickButton(elementSelector);
     }
 
     @Then("Usuário verá em {string} o valor {string}")

@@ -39,7 +39,21 @@ public class TestIdsConfig {
             );
 
 
+    // TODO: trocar por data-testid
+    private static final Map<String, String> otherSelectors = Map.ofEntries(
+            Map.entry("item Antecipação no acesso rápido", ".ContainersDesktop [href='/Antecipacao']")
+    );
+
     public static String getTestId(String identifier) {
         return testIdMaps.getOrDefault(identifier, "Didn't find test id for " + identifier);
+    }
+
+    public static String getQuerySelector(String identifier) {
+        if (testIdMaps.containsKey(identifier)) {
+            return "[data-testid=" + getTestId(identifier) + "]";
+        } else if (otherSelectors.containsKey(identifier)) {
+            return otherSelectors.get(identifier);
+        }
+        throw new IllegalArgumentException("No selector found for " + identifier);
     }
 }

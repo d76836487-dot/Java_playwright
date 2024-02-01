@@ -44,8 +44,8 @@ public class CommonsPage extends BasePage{
         page.getByText(buttonText).click();
     }
 
-    public void clickButtonTestId(String testId) {
-        Locator locator = page.getByTestId(testId);
+    public void clickButton(String selector) {
+        Locator locator = page.locator(selector);
         waitUntilTrue(locator::isVisible);
         locator.click();
     }

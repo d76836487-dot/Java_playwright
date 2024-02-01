@@ -1,5 +1,7 @@
 package com.fiserv.qabrazil.pages;
 
+import com.fiserv.qabrazil.config.ContractConfig;
+import com.fiserv.qabrazil.utils.RegexUtils;
 import com.microsoft.playwright.Page;
 import org.awaitility.Awaitility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,9 @@ import java.util.regex.Pattern;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public abstract class BasePage {
+
+    @Autowired
+    ContractConfig contractConfig;
 
     @Autowired
     protected Page page;
@@ -67,7 +72,7 @@ public abstract class BasePage {
     }
 
     public void hasRedirectedTo(String uri) {
-        final String url = String.format("^.*%s$", uri);
+        String url = "^https?://" + RegexUtils.escape(contractConfig.getUrl() + uri) + "$";
         assertThat(page).hasURL(Pattern.compile(url));
     }
 }
