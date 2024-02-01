@@ -31,4 +31,43 @@ Feature: Filtros Histórico de Vendas
       | Benefícios            |
       | Multiplo              |
 
+  @TestCaseKey=SMP-T15
+  Scenario Outline: Filtrar histórico de vendas por status
+    When Usuário acessa Vendas Hoje
+    And Existem vendas com status "<status venda>"
+    When Usuário filtra por tudo, exceto "<status venda>", em "<grupo filtro>"
+    Then Serão filtradas as vendas com status "<status venda>"
+    @pt-br
+    Examples:
+      | status venda | grupo filtro |
+      | Autorizada   | Status (0)   |
+      | Recusada     | Status (0)   |
+      | Estornada    | Status (0)   |
+
+  @TestCaseKey=SMP-T21
+  Scenario Outline: Filtrar histórico de vendas por bandeira
+    When Usuário acessa Vendas Hoje
+    And Existem vendas com bandeira "<bandeira>"
+    When Usuário filtra por tudo, exceto "<bandeira>", em "<grupo filtro>"
+    Then Serão filtradas as vendas com bandeira "<bandeira>"
+    @pt-br
+    Examples:
+      | bandeira   | grupo filtro  |
+      | Mastercard | Bandeiras (0) |
+      | Visa       | Bandeiras (0) |
+
+  @TestCaseKey=SMP-T22
+  Scenario Outline: Filtrar histórico de vendas por status e bandeira
+    When Usuário acessa Vendas Hoje
+    And Existem vendas com status "<status venda>"
+    And Existem vendas com bandeira "<bandeira>"
+    When Usuário filtra por tudo, exceto "<status venda>", em "<filtro status>"
+    And Usuário filtra por tudo, exceto "<bandeira>", em "<filtro bandeira>"
+    Then Serão filtradas as vendas com bandeira "<bandeira>"
+    And Serão filtradas as vendas com status "<status venda>"
+    @pt-br
+    Examples:
+      | status venda | filtro status | bandeira   | filtro bandeira |
+      | Autorizada   | Status (0)    | Mastercard | Bandeiras (0)   |
+      | Recusada     | Status (0)    | Visa       | Bandeiras (0)   |
 
