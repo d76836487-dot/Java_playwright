@@ -58,6 +58,10 @@ Feature: Home Logada
       | valor venda  | percentual |
       | R$ 55.400,00 | 21%        |
 
+  Scenario: Total de Recebimentos na Home deve ser igual ao de hoje de futuro previstos
+    Given Usuário acessou o Home
+    Then Total de Recebimentos será igual ao recebimento de hoje + futuro previsto
+
   # História não é testável...
   #*Dado* que eu faça o login no Portal
   #*Quando* abrir a tela principal “início”

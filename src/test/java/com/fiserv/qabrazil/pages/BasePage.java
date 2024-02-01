@@ -57,6 +57,12 @@ public abstract class BasePage {
         return false;
     }
 
+    public double getNumbersFromElement(String testId) {
+        String onlyNumbersAndComma = getTextFromElement(testId).
+                replaceAll("[^\\d,]", "");
+        return Double.parseDouble(onlyNumbersAndComma.replace(',', '.'));
+    }
+
     public String getTextFromElement(String testId) {
         assertThat(page.getByTestId(testId)).hasCount(1);
         return page.getByTestId(testId).textContent();
