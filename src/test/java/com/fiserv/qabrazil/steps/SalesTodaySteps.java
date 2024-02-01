@@ -59,10 +59,7 @@ public class SalesTodaySteps {
 
     @And("Existem vendas com status {string}")
     public void thereIsSalesWithStatus(String salesStatus) {
-        boolean foundSalesWithStatus = salesTodayPage.thereAreSalesWithStatus(salesStatus);
-
-        String messageAssert = String.format("Não há vendas com status %s", salesStatus);
-        assertTrue(messageAssert, foundSalesWithStatus);
+        thereAreSalesWith("status", salesStatus);
     }
 
     @Then("Serão filtradas as vendas com status {string}")
@@ -83,5 +80,19 @@ public class SalesTodaySteps {
     public void thereAreNoSalesWithBrandName(String brandName) {
         boolean foundSalesWithBrandName = salesTodayPage.thereAreSalesWithBrandName(brandName);
         assertFalse(foundSalesWithBrandName);
+    }
+
+    @When("Existem vendas com {string} tipo {string}")
+    public void thereAreSalesWith(String testIdColumn, String value) {
+        boolean wereFoundSalesContainingValue = salesTodayPage.thereAreSalesWith(value, testIdColumn);
+
+        String messageAssert = String.format("Não há vendas do tipo %s", value);
+        assertTrue(messageAssert, wereFoundSalesContainingValue);
+    }
+
+    @Then("Serão filtradas as vendas com {string} tipo {string}")
+    public void thereIsNoSalesWithStatus(String testIdColumn, String value) {
+        boolean foundSalesWithStatus = salesTodayPage.thereAreSalesWith(value, testIdColumn);
+        assertFalse(foundSalesWithStatus);
     }
 }
