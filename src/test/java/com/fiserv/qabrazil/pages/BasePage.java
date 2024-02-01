@@ -36,18 +36,18 @@ public abstract class BasePage {
     }
 
     protected boolean waitUntilTrue(Supplier<Boolean> untilTrue) {
-        return waitUntilTrue(5, untilTrue);
+        return waitUntilTrue(30, untilTrue);
     }
 
-    protected boolean waitUntilTrue(int seconds, Supplier<Boolean> untilTrue)  {
-        for(int numTries = 0; numTries < 3; numTries++) {
+    protected boolean waitUntilTrue(int totalRetries, Supplier<Boolean> untilTrue)  {
+        for(int numTries = 0; numTries < totalRetries; numTries++) {
             System.out.printf("retry: %d%n\n", numTries);
             try {
                 if (untilTrue.get()) {
                     return true;
                 }
             } catch (RuntimeException ignored) {}
-            sleep(Duration.ofSeconds(seconds));
+            sleep(Duration.ofMillis(500));
         }
         return false;
     }

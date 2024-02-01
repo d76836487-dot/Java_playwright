@@ -56,7 +56,7 @@ public class SalesTodayPage extends BasePage {
 
     private boolean foundSalesWithingCurrentPage(String textLookingFor, String testId) {
         Locator salesStatusLabel = page.getByTestId(Pattern.compile(testId));
-        return waitUntilTrue(1, () ->
+        return waitUntilTrue(2, () ->
                 salesStatusLabel.filter(new Locator.FilterOptions().setHasText(textLookingFor)).count() > 0);
     }
 
