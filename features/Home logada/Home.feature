@@ -28,7 +28,7 @@ Feature: Home Logada
 
   # TODO: fix to use anticipation linked to data-testid
   @MDRPadrão @PermiteAdiantamento
-  @TestCaseKey=SMP-T17
+    @TestCaseKey=SMP-T17
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
     Given Usuário acessou o Home
     Then Usuário verá card Antecipação
@@ -46,9 +46,17 @@ Feature: Home Logada
     Given Usuário acessou o Home
     Then Usuário não verá card Antecipação
 
-  #*Dado* que loguei no Portal com um EC com plano de recebimento MDR Padrão
-  #*Quando* estiver na tela “início”
-  #*Então* devo visualizar o card “Receba antes” e o botão antecipar
+    # TODO: fix me when we have 'rebatedores'
+  @ignore
+  Scenario Outline: Valor de vendas hoje e percentual no card Vendas Hoje do Home
+    Given Usuário acessou o Home
+    Then Usuário verá em "Home - Card Vendas Hoje - Valor Vendas Hoje" o valor "<valor venda>"
+    And Usuário verá em "Home - Card Vendas Hoje - Percentual Vendas Hoje" o valor "<percentual>"
+    @pt-br
+    Examples:
+      | valor venda  | percentual |
+      | R$ 55.400,00 | 21%        |
+
   # História não é testável...
   #*Dado* que eu faça o login no Portal
   #*Quando* abrir a tela principal “início”
@@ -128,9 +136,6 @@ Feature: Home Logada
       | funcionalidades                                                                             |
       | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
 
-#*Dado* que estou na tela “início” do Portal
-#*Quando* realizar vendas usando a minha máquina naquele determinado dia
-#*Então* devo visualizar o valor em “Vendas hoje” com um botão “ver tudo”
 #
 #
 #*Dado* que estou na tela “início” do Portal

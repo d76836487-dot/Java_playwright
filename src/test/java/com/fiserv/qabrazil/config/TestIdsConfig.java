@@ -32,7 +32,12 @@ public class TestIdsConfig {
             entry("Filter - Bandeiras (0) - Visa", "generic-filter-div-bandeira-Visa"),
 
             entry("Vendas Hoje - Resumo - Quantidade Vendas", "vendas-hoje-card-total-vendas"),
-            entry("Vendas Hoje - Resumo - Valor Vendas", "vendas-hoje-card-vlr-bruto"));
+            entry("Vendas Hoje - Resumo - Valor Vendas", "vendas-hoje-card-vlr-bruto"),
+
+            entry("Home - Card Vendas Hoje - Valor Vendas Hoje", "home-card-vendas-hoje-text-vlr"),
+            entry("Home - Card Vendas Hoje - Percentual Vendas Hoje", "home-card-vendas-hoje-text-percentual-down")
+            );
+
 
     public static String getTestId(String identifier) {
         return testIdMaps.getOrDefault(identifier, "Didn't find test id for " + identifier);
