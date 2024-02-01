@@ -7,7 +7,7 @@
 Feature: Filtros Histórico de Vendas
 
   Background:
-    Given Usuário logou na aplicacao
+    Given Usuário logou na aplicação
     And Usuário acessa Vendas Hoje
 
   Scenario Outline: Filtrar histórico de vendas por Produtos
