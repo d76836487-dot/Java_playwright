@@ -39,25 +39,30 @@ public class SalesTodayPage extends BasePage {
     public boolean thereAreSalesWith(String value, String testId) {
         rewindPagination();
 
-        Locator paginationBtn = page.locator("//button[contains(@class,'pagination-button')]").last();
-
+        // TODO: fix for testid
+        Locator nextPageBtn = page.locator("//button[contains(@class,'pagination-button')]").last();
         boolean foundSaleWithValue;
         do {
-            Locator salesElements = page.getByTestId(Pattern.compile(testId));
-
-            foundSaleWithValue = waitUntilTrue(1, () ->
-                    salesElements.filter(new Locator.FilterOptions().setHasText(value)).count() > 0);
-
-            paginationBtn.click();
-        } while (paginationBtn.isEnabled() && !foundSaleWithValue);
+            foundSaleWithValue = foundSalesWithingCurrentPage(textLookingFor, testId);
+            nextPageBtn.click();
+        } while (nextPageBtn.isEnabled() && !foundSaleWithStatus);
 
         return foundSaleWithValue;
     }
 
+    private boolean foundSalesWithingCurrentPage(String textLookingFor, String testId) {
+        boolean foundSaleWithValue;
+        Locator salesStatusLabel = page.getByTestId(Pattern.compile(testId));
+
+        foundSaleWithValue = waitUntilTrue(1, () ->
+                salesStatusLabel.filter(new Locator.FilterOptions().setHasText(textLookingFor)).count() > 0);
+        return foundSaleWithValue;
+    }
+
     private void rewindPagination() {
-        Locator paginationBtn = page.locator("//button[contains(@class,'pagination-button')]").first();
-        while (paginationBtn.isEnabled()) {
-            paginationBtn.click();
+        Locator previousPageBtn = page.locator("//button[contains(@class,'pagination-button')]").first();
+        while (previousPageBtn.isEnabled()) {
+            previousPageBtn.click();
             sleep(Duration.ofMillis(500));
         }
     }
