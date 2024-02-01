@@ -29,7 +29,10 @@ public class TestIdsConfig {
             entry("Filter - Produtos (0) - Mutiplo", "generic-filter-check-produto-Multiplo"),
 
             entry("Filter - Bandeiras (0) - Mastercard", "generic-filter-div-bandeira-Mastercard"),
-            entry("Filter - Bandeiras (0) - Visa", "generic-filter-div-bandeira-Visa"));
+            entry("Filter - Bandeiras (0) - Visa", "generic-filter-div-bandeira-Visa"),
+
+            entry("Vendas Hoje - Resumo - Quantidade Vendas", "vendas-hoje-card-total-vendas"),
+            entry("Vendas Hoje - Resumo - Valor Vendas", "vendas-hoje-card-vlr-bruto"));
 
     public static String getTestId(String identifier) {
         return testIdMaps.getOrDefault(identifier, "Didn't find test id for " + identifier);

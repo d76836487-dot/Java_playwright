@@ -36,17 +36,6 @@ public class SalesTodaySteps {
         assertEquals("Mensagem não encontrada na página", expectedMessage, message);
     }
 
-    @Then("Página conterá na seção Resumo de Vendas {string}, total de vendas {string}, e valor bruto {string}")
-    public void pageWillContainAllElementsOfSalesSummary(String expectedDescription, String totalSales, String grossValue) {
-        pageWillContainMessageDescribingSalesSummary(expectedDescription);
-
-        boolean totalSalesWasFound = commonsPage.assertWholeTextIsVisible( totalSales, "vendas-hoje-card-total-vendas");
-        assertTrue("Total de Vendas não encontrado na página", totalSalesWasFound);
-
-        boolean grossValueWasFound = commonsPage.assertWholeTextIsVisible(grossValue, "vendas-hoje-card-vlr-bruto");
-        assertTrue("Valor Bruto não encontrado na página", grossValueWasFound);
-    }
-
     @When("Usuário passa o mouse sobre vendas")
     public void userHoversMenu() {
         salesTodayPage.hoverMenuOnSalesMenu();

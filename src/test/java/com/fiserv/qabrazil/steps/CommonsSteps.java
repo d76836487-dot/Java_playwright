@@ -55,4 +55,10 @@ public class CommonsSteps {
         commonsPage.clickButtonTestId(testId);
     }
 
+    @Then("Usuário verá em {string} o valor {string}")
+    public void matchValuePerField(String identifier, String expectedText) {
+        String testId = TestIdsConfig.getTestId(identifier);
+        String textFound = commonsPage.getTextFromElement(testId);
+        assertEquals(expectedText, textFound);
+    }
 }

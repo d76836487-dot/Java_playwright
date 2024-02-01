@@ -19,13 +19,17 @@ Feature: Tela Vendas Hoje com CNPJ
       | descrição                                                                                                                                                                                                                                                          |
       | Visualize suas vendas realizadas no dia. Não achou a venda que estava procurando? Ela pode levar até 15 minutos para ser apresentada aqui. E lembre-se, essas vendas estão em processamento, vendas estornadas ou não efetivadas aparecem aqui até o final do dia. |
 
+  # TODO: fix me when we have 'rebatedores'
+  @ignore
   @TestCaseKey=SMP-T6
-  Scenario Outline: Visualização do Campo Resumo de Vendas
+  Scenario Outline: Visualização da Quantidade e Valor de Vendas Hoje
     When Usuário acessa Vendas Hoje
-    Then Página conterá na seção Resumo de Vendas "<descrição>", total de vendas "<total>", e valor bruto "<valor>"
+    Then Usuário verá em "Vendas Hoje - Resumo - Quantidade Vendas" o valor "0"
+    And Usuário verá em "Vendas Hoje - Resumo - Valor Vendas" o valor "<valor vendas>"
+    @pt-br
     Examples:
-      | total | valor        | descrição                                                                                                                                                                                                                                                          |
-      | 59    | R$ 47.100,00 | Visualize suas vendas realizadas no dia. Não achou a venda que estava procurando? Ela pode levar até 15 minutos para ser apresentada aqui. E lembre-se, essas vendas estão em processamento, vendas estornadas ou não efetivadas aparecem aqui até o final do dia. |
+      | valor vendas |
+      | R$ 47.100,00 |
 
   @TestCaseKey=SMP-T7
   Scenario Outline: Rodapé de Vendas Hoje
