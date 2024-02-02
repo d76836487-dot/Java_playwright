@@ -36,7 +36,7 @@ public class CommonsPage extends BasePage{
     }
 
     public void navigateToRoot() {
-        page.navigate("https://" + contractConfig.getUrl());
+        page.navigate(contractConfig.getUrl());
         assertThat(page).hasTitle(Pattern.compile(".+"));
     }
 

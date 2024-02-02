@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.automation.playwright.configuration.StorageState;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
@@ -19,6 +20,9 @@ public class LoginPage extends BasePage {
     ContractConfig contractConfig;
 
     @Autowired
+    BrowserContext browserContext;
+
+    @Autowired
     Browser browser;
 
     public boolean pageHasImageWith(String contract) {
@@ -31,8 +35,12 @@ public class LoginPage extends BasePage {
         return page.getByTestId("header-brand-img").isVisible();
     }
 
-    public void login() {
-        login(contractConfig.getUrl(), contractConfig.getUser(), contractConfig.getPassword());
+    public synchronized void login() {
+        if (StorageState.stateIsReady()) {
+            navigateTo(StorageState.loggedUrl);
+        } else {
+            login(contractConfig.getUrl(), contractConfig.getUser(), contractConfig.getPassword());
+        }
     }
 
     public void login(String url, String user, String pwd) {
@@ -43,13 +51,22 @@ public class LoginPage extends BasePage {
     }
 
     public void navigateTo(String url) {
-        page.navigate("https://" + url);
+        page.navigate(url);
         assertThat(page).hasTitle(Pattern.compile(".+"));
     }
 
-    public boolean userIsLogged() {
-        return waitUntilTrue(() ->
+    public synchronized boolean userIsLogged() {
+        boolean isLogged = waitUntilTrue(() ->
                 page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Sair")).first().isVisible());
+        saveStorageState();
+        return isLogged;
+    }
+
+    private void saveStorageState() {
+        if (StorageState.stateIsReady()) return;
+
+        StorageState.storageState = browserContext.storageState();
+        StorageState.loggedUrl = page.url();
     }
 
     public void loginAnotherSession() {
