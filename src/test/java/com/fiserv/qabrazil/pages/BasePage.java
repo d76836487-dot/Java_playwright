@@ -2,10 +2,12 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.utils.RegexUtils;
+import com.fiserv.qabrazil.util.Currency;
 import com.microsoft.playwright.Page;
 import org.awaitility.Awaitility;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.ParseException;
 import java.time.Duration;
 import java.util.function.Supplier;
 import java.util.regex.Pattern;
@@ -57,10 +59,14 @@ public abstract class BasePage {
         return false;
     }
 
-    public double getNumbersFromElement(String testId) {
-        String onlyNumbersAndComma = getTextFromElement(testId).
-                replaceAll("[^\\d,]", "");
-        return Double.parseDouble(onlyNumbersAndComma.replace(',', '.'));
+    public Number getNumberFromCurrencyElement(String testId) {
+        String textFromElement = getTextFromElement(testId);
+        try {
+            return Currency.parseCurrency(textFromElement);
+        } catch (ParseException e) {
+            throw new RuntimeException(
+                    String.format("Failed parsing currency %s with testId %s", textFromElement, testId));
+        }
     }
 
     public String getTextFromElement(String testId) {

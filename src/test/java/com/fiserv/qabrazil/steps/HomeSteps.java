@@ -57,11 +57,11 @@ public class HomeSteps {
         String todayReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Hoje");
         String foreseenReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Previsto");
 
-        double totalReceivable = commonsPage.getNumbersFromElement(totalReceivableId);
-        double todayReceivable = commonsPage.getNumbersFromElement(todayReceivableId);
-        double foreseenReceivable = commonsPage.getNumbersFromElement(foreseenReceivableId);
+        Number totalReceivable = commonsPage.getNumberFromCurrencyElement(totalReceivableId);
+        Number todayReceivable = commonsPage.getNumberFromCurrencyElement(todayReceivableId);
+        Number foreseenReceivable = commonsPage.getNumberFromCurrencyElement(foreseenReceivableId);
 
         assertEquals("Total of receivable not matching sum for today and foreseen",
-                totalReceivable, todayReceivable + foreseenReceivable);
+                totalReceivable.doubleValue(), todayReceivable.doubleValue() + foreseenReceivable.doubleValue());
     }
 }

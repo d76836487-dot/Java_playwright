@@ -18,6 +18,8 @@ public class ContractConfig {
 
     private String clientTags;
 
+    private String locale;
+
     public String getUrl() {
         return url;
     }
@@ -64,5 +66,13 @@ public class ContractConfig {
 
     public void setClientTags(String clientTags) {
         this.clientTags = clientTags;
+    }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
     }
 }
