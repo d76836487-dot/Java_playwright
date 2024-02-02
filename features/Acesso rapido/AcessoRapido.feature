@@ -5,29 +5,31 @@
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 Feature: Acesso Rápido
+
   OBJETIVO:
-    Essa história tem como objetivo a criação de uma nova home logada para o cliente obter informações em real time quando
-    se logar no Portal, além de navegar em uma jornada com novo Design Sistem.
-    Essa demanda é para todas as alianças usuárias do App: Bin, FBD, Caixa, Afinz, Sicredi e Redepop.
+  Essa história tem como objetivo a criação de uma nova home logada para o cliente obter informações em real time quando
+  se logar no Portal, além de navegar em uma jornada com novo Design Sistem.
+  Essa demanda é para todas as alianças usuárias do App: Bin, FBD, Caixa, Afinz, Sicredi e Redepop.
   VISÃO DO USUÁRIO:
-    *Eu como* usuário do Portal
-    *Quero* visualizar uma nova Home logada
-    *Para* ter acesso a informações real time com um novo Design Sistem
+  *Eu como* usuário do Portal
+  *Quero* visualizar uma nova Home logada
+  *Para* ter acesso a informações real time com um novo Design Sistem
   TIPO DE MANUTENÇÃO:
-    Criação
+  Criação
   ESCOPO:
-    - Visualizar sessão “Acesso rápido” com botão “Personalizar” no canto direito
-    - CLIENTE MDR PADRÃO - Visualizar quatro box que por default serão “Antecipação”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
-    - CLIENTE MDR FLEX - Visualizar quatro box que por default serão “Meu negócio”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
-    - Visualização de um modal quando o cliente clicar em “personalizar” com duas linhas, uma com os “Atalhos selecionados” e outra com “Outros serviços”
-    - CLIENTE MDR PADRÃO - Devemos permitir que o cliente selecione Antecipação, Relatórios, Documentos, Informe de rendimento, Vendas, Detalhe de pagamentos, Meu negócio e solicitações.
-    - CLIENTE MDR FLEX - Devemos permitir que o cliente selecione Meu negócio, Relatórios, Documentos, Informe de rendimento, Vendas, Detalhe de pagamentos e solicitações.
+  - Visualizar sessão “Acesso rápido” com botão “Personalizar” no canto direito
+  - CLIENTE MDR PADRÃO - Visualizar quatro box que por default serão “Antecipação”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
+  - CLIENTE MDR FLEX - Visualizar quatro box que por default serão “Meu negócio”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
+  - Visualização de um modal quando o cliente clicar em “personalizar” com duas linhas, uma com os “Atalhos selecionados” e outra com “Outros serviços”
+  - CLIENTE MDR PADRÃO - Devemos permitir que o cliente selecione Antecipação, Relatórios, Documentos, Informe de rendimento, Vendas, Detalhe de pagamentos, Meu negócio e solicitações.
+  - CLIENTE MDR FLEX - Devemos permitir que o cliente selecione Meu negócio, Relatórios, Documentos, Informe de rendimento, Vendas, Detalhe de pagamentos e solicitações.
 
   Background:
     When Usuário tenta logar na aplicação
     Then Usuário estará com acesso
 
   @PermiteAdiantamento
+  @TestCaseKey=SMP-T25
   Scenario: Antecipação no acesso rápido
     Given que estou na tela “início” do Portal
     When usuário clica no "item Antecipação no acesso rápido"
