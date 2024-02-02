@@ -1,6 +1,6 @@
-package com.fiserv.qabrazil.utils;
+package com.fiserv.qabrazil.util;
 
-public class RegexUtils {
+public class RegexUtil {
 
     public static String escape(String text) {
         return text.replaceAll("[-\\[\\]{}()*+?.,^$|#]", "\\\\$0");
