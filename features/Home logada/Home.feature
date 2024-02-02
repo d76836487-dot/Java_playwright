@@ -58,6 +58,7 @@ Feature: Home Logada
       | valor venda  | percentual |
       | R$ 55.400,00 | 21%        |
 
+  @TestCaseKey=SMP-T26
   Scenario: Total de Recebimentos na Home deve ser igual ao de hoje de futuro previstos
     Given Usuário acessou o Home
     Then Total de Recebimentos será igual ao recebimento de hoje + futuro previsto
