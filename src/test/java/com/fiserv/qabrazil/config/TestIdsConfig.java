@@ -45,7 +45,8 @@ public class TestIdsConfig {
 
     // TODO: trocar por data-testid
     private static final Map<String, String> otherSelectors = Map.ofEntries(
-            Map.entry("item Antecipação no acesso rápido", ".ContainersDesktop [href='/Antecipacao']")
+            entry("item Antecipação no acesso rápido", ".ContainersDesktop [href='/Antecipacao']"),
+            entry("item Relatórios no acesso rápido", ".ContainersDesktop #Link_Relatorios")
     );
 
     public static String getTestId(String identifier) {

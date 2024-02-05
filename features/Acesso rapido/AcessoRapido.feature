@@ -35,10 +35,11 @@ Feature: Acesso Rápido
     When usuário clica no "item Antecipação no acesso rápido"
     Then será direcionado para a jornada de Antecipação
 
-#*Dado* que estou na tela “início” do Portal
-#*Quando* clicar no item Relatórios no acesso rápido
-#*Então* devo ser direcionado para a jornada de Relatórios
-#
+  Scenario: Relatórios no acesso rápido
+    Given que estou na tela “início” do Portal
+    When usuário clica no "item Relatórios no acesso rápido"
+    Then será direcionado para a jornada de Relatórios
+
 #*Dado* que estou na tela “início” do Portal
 #*Quando* clicar no item Documentos no acesso rápido
 #*Então* devo ser direcionado para a jornada de Documentos
