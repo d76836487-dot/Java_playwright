@@ -41,10 +41,10 @@ Feature: Acesso Rápido
     When usuário clica no "item Relatórios no acesso rápido"
     Then será direcionado para a jornada de "Relatórios"
 
-#*Dado* que estou na tela “início” do Portal
-#*Quando* clicar no item Documentos no acesso rápido
-#*Então* devo ser direcionado para a jornada de Documentos
-
+  #*Dado* que estou na tela “início” do Portal
+  #*Quando* clicar no item Documentos no acesso rápido
+  #*Então* devo ser direcionado para a jornada de Documentos
+  @TestCaseKey=SMP-T28
   Scenario: Informe de rendimentos no acesso rápido
     Given que estou na tela “início” do Portal
     When usuário clica no "item Informe de rendimento no acesso rápido" e uma nova aba se abre
