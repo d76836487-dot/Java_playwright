@@ -2,9 +2,8 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
-import com.microsoft.playwright.Page;
-import io.cucumber.java.After;
-import io.cucumber.java.Scenario;
+import com.fiserv.qabrazil.pages.PageObject;
+import com.fiserv.qabrazil.util.UrlCheckers;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,16 +18,9 @@ public class CommonsSteps {
     CommonsPage commonsPage;
 
     @Autowired
-    Page page;
+    UrlCheckers urlCheckers;
 
-    @After
-    public void tearDown(Scenario scenario) {
-        if (scenario.isFailed()) {
-            scenario.attach(page.screenshot(new Page.ScreenshotOptions().setFullPage(true)),
-                    "image/png", "Screen Shot");
-            scenario.attach(page.content(), "text/html", "Content");
-        }
-    }
+    private PageObject newTab;
 
     @Given("Usuário acessou o portal")
     public void userAccessedThePortal() {
@@ -56,10 +48,26 @@ public class CommonsSteps {
         commonsPage.clickButton(elementSelector);
     }
 
+    @When("usuário clica em/no {string} e uma nova aba se abre")
+    public void userClicksAndNewTabOpens(String identifier) {
+        String elementSelector = TestIdsConfig.getQuerySelector(identifier);
+        newTab = commonsPage.clickButtonAndNewTabOpens(elementSelector);
+    }
+
     @Then("Usuário verá em {string} o valor {string}")
     public void matchValuePerField(String identifier, String expectedText) {
         String testId = TestIdsConfig.getTestId(identifier);
         String textFound = commonsPage.getTextFromElement(testId);
         assertEquals(expectedText, textFound);
+    }
+
+    @Then("será direcionado para a jornada de {string}")
+    public void ensureWeAreAtTheRightPage(String pageName) {
+        urlCheckers.forPage(pageName).ensureWeAreAtTheCorrectPage();
+    }
+
+    @Then("será direcionado para a jornada de {string} na nova aba")
+    public void ensureWeAreAtTheRightPageInANewTab(String pageName) {
+        urlCheckers.forPage(pageName).ensureWeAreAtTheCorrectPage(newTab);
     }
 }

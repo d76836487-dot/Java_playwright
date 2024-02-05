@@ -39,14 +39,16 @@ public class TestIdsConfig {
 
             entry("Home - Card Recebimento - Total Recebimento", "home-card-recebimentos-text-vlrliquido"),
             entry("Home - Card Recebimento - Recebimento Hoje", "home-card-recebimentos-text-vlrliquido-hoje"),
-            entry("Home - Card Recebimento - Recebimento Previsto", "home-card-recebimentos-text-vlrliquido-previsto")
+            entry("Home - Card Recebimento - Recebimento Previsto", "home-card-recebimentos-text-vlrliquido-previsto"),
+
+            entry("item Antecipação no acesso rápido", "home-card-personalizar-link-antecipacao"),
+            entry("item Relatórios no acesso rápido", "home-card-personalizar-link-relatorios"),
+            entry("item Informe de rendimento no acesso rápido", "home-card-personalizar-link-informe-rendimento")
             );
 
 
     // TODO: trocar por data-testid
     private static final Map<String, String> otherSelectors = Map.ofEntries(
-            entry("item Antecipação no acesso rápido", ".ContainersDesktop [href='/Antecipacao']"),
-            entry("item Relatórios no acesso rápido", ".ContainersDesktop #Link_Relatorios")
     );
 
     public static String getTestId(String identifier) {

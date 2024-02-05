@@ -1,12 +1,15 @@
 package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
 
 @ScenarioComponent
-public class ReportsPage extends BasePage {
-    public void ensureWeAreAtReportsPage() {
-        page.waitForURL(Pattern.compile("^.*/Relatorios$"));
+@Component("Relatórios")
+public class ReportsPage extends CheckedBasePage {
+
+    public ReportsPage() {
+        super(Pattern.compile("^.*/Relatorios$"));
     }
 }

@@ -18,6 +18,15 @@ public class RecordingHook {
     @Autowired
     private BrowserContext context;
 
+    @After
+    public void tearDown(Scenario scenario) {
+        if (scenario.isFailed()) {
+            scenario.attach(page.screenshot(new Page.ScreenshotOptions().setFullPage(true)),
+                    "image/png", "Screen Shot");
+            scenario.attach(page.content(), "text/html", "Content");
+        }
+    }
+
     @After("@playwright and not @ignore")
     @SneakyThrows(IOException.class)
     public void after(Scenario scenario) {

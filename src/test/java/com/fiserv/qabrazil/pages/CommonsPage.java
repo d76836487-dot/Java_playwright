@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
-public class CommonsPage extends BasePage{
+public class CommonsPage extends BasePage {
 
     @Autowired
     ContractConfig contractConfig;
@@ -48,5 +48,12 @@ public class CommonsPage extends BasePage{
         Locator locator = page.locator(selector);
         waitUntilTrue(locator::isVisible);
         locator.click();
+    }
+
+    public PageObject clickButtonAndNewTabOpens(String selector) {
+        Locator locator = page.locator(selector);
+        waitUntilTrue(locator::isVisible);
+        Page newTab = context.waitForPage(locator::click);
+        return new PageObject(newTab);
     }
 }

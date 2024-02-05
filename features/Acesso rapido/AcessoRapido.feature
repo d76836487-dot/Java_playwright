@@ -33,22 +33,23 @@ Feature: Acesso Rápido
   Scenario: Antecipação no acesso rápido
     Given que estou na tela “início” do Portal
     When usuário clica no "item Antecipação no acesso rápido"
-    Then será direcionado para a jornada de Antecipação
+    Then será direcionado para a jornada de "Antecipação"
 
   @TestCaseKey=SMP-T27
   Scenario: Relatórios no acesso rápido
     Given que estou na tela “início” do Portal
     When usuário clica no "item Relatórios no acesso rápido"
-    Then será direcionado para a jornada de Relatórios
+    Then será direcionado para a jornada de "Relatórios"
 
 #*Dado* que estou na tela “início” do Portal
 #*Quando* clicar no item Documentos no acesso rápido
 #*Então* devo ser direcionado para a jornada de Documentos
-#
-#*Dado* que estou na tela “início” do Portal
-#*Quando* clicar no item Informe de rendimento no acesso rápido
-#*Então* devo ser direcionado para a jornada de Informe de rendimento
-#
+
+  Scenario: Informe de rendimentos no acesso rápido
+    Given que estou na tela “início” do Portal
+    When usuário clica no "item Informe de rendimento no acesso rápido" e uma nova aba se abre
+    Then será direcionado para a jornada de "Informe de rendimento" na nova aba
+
 #*Dado* que estou na tela “início” do Portal
 #*Quando* clicar no item Vendas no acesso rápido
 #*Então* devo ser direcionado para a jornada de Vendas

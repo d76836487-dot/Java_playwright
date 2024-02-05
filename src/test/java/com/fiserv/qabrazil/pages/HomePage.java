@@ -6,10 +6,14 @@ import com.microsoft.playwright.Locator;
 import java.util.regex.Pattern;
 
 @ScenarioComponent
-public class HomePage extends BasePage {
+public class HomePage extends CheckedBasePage {
+
+    public HomePage() {
+        super(Pattern.compile("^.*/Home$"));
+    }
 
     public void ensureWeAreAtHome() {
-        page.waitForURL(Pattern.compile("^.*/Home$"));
+        ensureWeAreAtTheCorrectPage();
     }
 
     public boolean anticipationCardIsVisible() {
