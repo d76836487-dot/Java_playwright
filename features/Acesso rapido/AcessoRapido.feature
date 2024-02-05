@@ -35,6 +35,7 @@ Feature: Acesso Rápido
     When usuário clica no "item Antecipação no acesso rápido"
     Then será direcionado para a jornada de Antecipação
 
+  @TestCaseKey=SMP-T27
   Scenario: Relatórios no acesso rápido
     Given que estou na tela “início” do Portal
     When usuário clica no "item Relatórios no acesso rápido"
