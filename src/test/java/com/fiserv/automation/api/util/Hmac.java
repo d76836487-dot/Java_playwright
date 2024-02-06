@@ -11,13 +11,8 @@ public class Hmac {
     public static final String CLIENT_CHANNEL_ID = "09b609197bb3eb06cd4c42af586c2825451cd2fc";
 
     public static String generateHMAC(String messageToSign) {
-        try {
-            byte[] result = new HmacUtils(HmacAlgorithms.HMAC_SHA_256, API_SECRET).
-                    hmac(messageToSign);
-            return Base64.encodeBase64String(result);
-        } catch (Exception ex) {
-            System.out.println("exception " + ex);
-        }
-        return null;
+        byte[] result = new HmacUtils(HmacAlgorithms.HMAC_SHA_256, API_SECRET).
+                hmac(messageToSign);
+        return Base64.encodeBase64String(result);
     }
 }

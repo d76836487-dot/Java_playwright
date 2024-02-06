@@ -1,18 +1,14 @@
 package com.fiserv.qabrazil.steps;
 
-import com.fiserv.automation.api.BwaAuthorization;
-import com.fiserv.automation.api.BwaRest;
+import com.fiserv.automation.api.service.ApiAuthorizationsService;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.HomePage;
-import com.fiserv.qabrazil.util.LocalStorage;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.io.IOException;
 
 import static org.testng.AssertJUnit.*;
 
@@ -25,10 +21,7 @@ public class HomeSteps {
     HomePage homePage;
 
     @Autowired
-    BwaAuthorization bwaAuthorization;
-
-    @Autowired
-    LocalStorage localStorage;
+    ApiAuthorizationsService apiAuthorizationsService;
 
     @When("Usuário acessou o Home")
     @Given("que estou na tela “início” do Portal")
@@ -77,14 +70,12 @@ public class HomeSteps {
     }
 
     @Then("Total de {string} será igual à API")
-    public void totalDeSeráIgualÀAPI(String identifier) throws IOException {
+    public void compareTotalSalesPageAndApi(String identifier) throws Exception {
         String testId = TestIdsConfig.getTestId(identifier);
-        String textFound = commonsPage.getTextFromElement(testId);
 
-        String apiAccessToken = localStorage.getApiAccessToken();
+        Number salesTodayPage = commonsPage.getNumberFromCurrencyElement(testId);
+        Number salesTodayApi = apiAuthorizationsService.getSalesTodayAllEcs();
 
-        BwaRest.PagedSummaryDto answer = bwaAuthorization.getSummarySevenDays(apiAccessToken, "99990095");
-
-        System.out.println("Author: " + answer);
+        assertEquals("Total de vendas da página é diferente da api", salesTodayApi, salesTodayPage);
     }
 }

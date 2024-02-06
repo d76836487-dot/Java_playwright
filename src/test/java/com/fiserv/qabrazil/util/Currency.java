@@ -17,6 +17,7 @@ public class Currency {
 
     public static NumberFormat currencyInstance;
 
+
     @PostConstruct
     public void init() {
         currencyInstance = DecimalFormat.getCurrencyInstance(Locale.forLanguageTag(contractConfig.getLocale()));
