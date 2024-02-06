@@ -22,9 +22,37 @@ public class BwaAuthorization {
     @Autowired
     ContractConfig contractConfig;
 
-    public PagedSummaryDto getSummarySevenDays(String accessToken, String merchant) throws Exception {
+    public PagedSummaryDto getLastAuthorizations(String apiAccessToken, String merchant) throws Exception {
         String sevenDaysAgo = formattedDate(7);
         String today = formattedDate(0);
+        BwaRest bwaRest = getBwaRest(apiAccessToken);
+
+        Response<PagedSummaryDto> execute = bwaRest.authorizations(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
+
+        if (execute.code() != 200) {
+            throw new Exception(
+                    String.format("Erro ao obter autorizações %s: %s", execute.code(), execute.message()));
+        }
+
+        return execute.body();
+    }
+
+    public PagedSummaryDto getSummarySevenDays(String apiAccessToken, String merchant) throws Exception {
+        String sevenDaysAgo = formattedDate(7);
+        String today = formattedDate(0);
+        BwaRest bwaRest = getBwaRest(apiAccessToken);
+
+        Response<PagedSummaryDto> execute = bwaRest.summarization(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
+
+        if (execute.code() != 200) {
+            throw new Exception(
+                    String.format("Erro ao obter autorizações %s: %s", execute.code(), execute.message()));
+        }
+
+        return execute.body();
+    }
+
+    private BwaRest getBwaRest(String apiAccessToken) {
         long timestamp = new Date().getTime();
         String payload = "";
 
@@ -39,7 +67,7 @@ public class BwaAuthorization {
                     .addHeader("Message-Signature", Hmac.generateHMAC(getMsgToSign(timestamp, payload)))
                     .addHeader("Timestamp", String.valueOf(timestamp))
                     .addHeader("ChannelClientId", Hmac.CLIENT_CHANNEL_ID)
-                    .addHeader("Authorization", accessToken)
+                    .addHeader("Authorization", apiAccessToken)
                     .build();
 
             return chain.proceed(request);
@@ -52,13 +80,7 @@ public class BwaAuthorization {
                 .client(httpClient.build())
                 .build();
 
-        BwaRest bwaSomething = retrofit.create(BwaRest.class);
-        Response<PagedSummaryDto> execute = bwaSomething.summarization(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
-        if (execute.code() != 200) {
-            throw new Exception(
-                    String.format("Erro ao obter autorizações %s: %s", execute.code(), execute.message()));
-        }
-        return execute.body();
+        return retrofit.create(BwaRest.class);
     }
 
     private String getMsgToSign(long timestamp, String payload) {

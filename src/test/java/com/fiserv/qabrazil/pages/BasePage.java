@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
 import java.time.Duration;
+import java.util.List;
 import java.util.function.Supplier;
 import java.util.regex.Pattern;
 
@@ -61,6 +62,13 @@ public abstract class BasePage {
         return false;
     }
 
+    public List<Number> getAllNumbersFromCurrencyElement(String testId) {
+        List<String> textFromElement = getAllTextsFromElement(testId);
+        return textFromElement.stream()
+                .map(BasePage::convertToNumber)
+                .toList();
+    }
+
     public Number getNumberFromCurrencyElement(String testId) {
         String textFromElement = getTextFromElement(testId);
         try {
@@ -69,6 +77,11 @@ public abstract class BasePage {
             throw new RuntimeException(
                     String.format("Failed parsing currency %s with testId %s", textFromElement, testId));
         }
+    }
+
+    public List<String> getAllTextsFromElement(String testId) {
+        waitUntilTrue(() -> page.getByTestId(testId).count() >= 1);
+        return page.getByTestId(testId).allTextContents();
     }
 
     public String getTextFromElement(String testId) {
@@ -88,6 +101,14 @@ public abstract class BasePage {
     public void hasRedirectedTo(String uri) {
         String url = "^" + RegexUtil.escape(contractConfig.getUrl() + uri) + "$";
         assertThat(page).hasURL(Pattern.compile(url));
+    }
+
+    private static Number convertToNumber(String text) {
+        try {
+            return Currency.parseCurrency(text);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

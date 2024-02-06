@@ -28,7 +28,7 @@ Feature: Home Logada
 
   # TODO: fix to use anticipation linked to data-testid
   @MDRPadrão @PermiteAdiantamento
-  @TestCaseKey=SMP-T17
+    @TestCaseKey=SMP-T17
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
     Given Usuário acessou o Home
     Then Usuário verá card Antecipação
@@ -46,9 +46,8 @@ Feature: Home Logada
     Given Usuário acessou o Home
     Then Usuário não verá card Antecipação
 
-  # TODO: fix me when we have 'rebatedores'
-  @ignore
-  @TestCaseKey=SMP-T24
+  @rebatedor
+    @TestCaseKey=SMP-T24
   Scenario Outline: Valor de vendas hoje e percentual no card Vendas Hoje do Home
     Given Usuário acessou o Home
     Then Usuário verá em "Home - Card Vendas Hoje - Valor Vendas Hoje" o valor "<valor venda>"
@@ -63,10 +62,16 @@ Feature: Home Logada
     Given Usuário acessou o Home
     Then Total de Recebimentos será igual ao recebimento de hoje + futuro previsto
 
+    @api
   @TestCaseKey=SMP-T29
   Scenario: Valor de Vendas Hoje na Home é igual à API
     Given Usuário acessou o Home
     Then Total de "Home - Card Vendas Hoje - Valor Vendas Hoje" será igual à API
+
+    @api
+  Scenario: Compara últimas vendas na Home com a API
+    Given Usuário acessou o Home
+    Then 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API
 
   # História não é testável...
   #*Dado* que eu faça o login no Portal
@@ -92,9 +97,6 @@ Feature: Home Logada
   #*E* tiver valores para exibir
   #*Então* devo visualizar valores nos respectivos boxes da home
   #
-  #*Dado* que estou na tela “início” do Portal
-  #*Quando* realizar vendas usando a minha máquina
-  #*Então* devo visualizar as minhas últimas três vendas – limitado ao último mês - listadas com detalhes como bandeira, valor, modalidade, horário e parcelas se for pertinente
   #
   # não vamos testar mdf flex
   #*Dado* que loguei no Portal com um EC com plano de recebimento MDR FLEX

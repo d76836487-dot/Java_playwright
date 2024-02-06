@@ -9,6 +9,7 @@ public class PagedSummaryDto {
     public int totalElements;
     public int pageNumber;
     public int size;
+    public List<AuthorizationsDto> autorizacoes;
     public List<SummaryDto> sumarizacao;
 
     @Override

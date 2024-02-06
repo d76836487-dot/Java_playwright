@@ -14,6 +14,13 @@ public interface BwaRest {
             @Path("fromDate") String fromDate,
             @Path("toDate") String toDate);
 
+    @GET("autorizacoes/v2/{institution}/{merchant}/{fromDate}/{toDate}?status=Autorizada")
+    Call<PagedSummaryDto> authorizations(
+            @Path("institution") String institution,
+            @Path("merchant") String merchant,
+            @Path("fromDate") String fromDate,
+            @Path("toDate") String toDate);
+
     @GET("access-management-api-qa/v1/public/users/details")
     Call<UserDetailDto> userDetail();
 }

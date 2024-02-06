@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fiserv.automation.api.dto.AuthorizationsDto;
 import com.fiserv.automation.api.service.ApiAuthorizationsService;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
@@ -10,6 +11,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.fiserv.automation.api.util.DateUtil.convertDateFromPageToDateApi;
+import static com.fiserv.automation.api.util.DateUtil.convertTimeFromPageToDateApi;
 import static org.testng.AssertJUnit.*;
 
 public class HomeSteps {
@@ -77,5 +83,43 @@ public class HomeSteps {
         Number salesTodayApi = apiAuthorizationsService.getSalesTodayAllEcs();
 
         assertEquals("Total de vendas da página é diferente da api", salesTodayApi, salesTodayPage);
+    }
+
+    @Then("'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API")
+    public void lastSalesMatchApi() throws Exception {
+        List<AuthorizationsDto> lastSalesPage = getLastSalesAsDto();
+        List<AuthorizationsDto> lastSalesApi = apiAuthorizationsService.getValueLastSales();
+
+        boolean allSalesInPageMatchApi = lastSalesPage.stream()
+                .allMatch(dto -> lastSalesApi.stream()
+                        .anyMatch(dto::equals));
+
+        String message = String.format("Valor das últimas vendas da página é diferente da api.\n Esperado: %s\n retornado %s",
+                lastSalesApi, lastSalesPage);
+        assertTrue(message, allSalesInPageMatchApi);
+    }
+
+    private List<AuthorizationsDto> getLastSalesAsDto() {
+        String saleTypesId = TestIdsConfig.getTestId("Home - Card Últimas Vendas - Tipo");
+        String saleValuesId = TestIdsConfig.getTestId("Home - Card Últimas Vendas - Valor");
+        String saleDateId = TestIdsConfig.getTestId("Home - Card Últimas Vendas - Data");
+        String saleTimeId = TestIdsConfig.getTestId("Home - Card Últimas Vendas - Hora");
+
+        List<String> salesTypes = commonsPage.getAllTextsFromElement(saleTypesId);
+        List<Number> salesValues = commonsPage.getAllNumbersFromCurrencyElement(saleValuesId);
+        List<String> saleDate = commonsPage.getAllTextsFromElement(saleDateId);
+        List<String> saleTime = commonsPage.getAllTextsFromElement(saleTimeId);
+
+        List<AuthorizationsDto> lastSalesPage = new ArrayList<>();
+        for(int i = 0; i < salesTypes.size(); i++) {
+            AuthorizationsDto dto = new AuthorizationsDto()
+                    .setTipoAutorizacao(salesTypes.get(i))
+                    .setValorTransacao(String.valueOf(salesValues.get(i)))
+                    .setData(convertDateFromPageToDateApi(saleDate.get(i)))
+                    .setHora(convertTimeFromPageToDateApi(saleTime.get(i)));
+            lastSalesPage.add(dto);
+        }
+
+        return lastSalesPage;
     }
 }

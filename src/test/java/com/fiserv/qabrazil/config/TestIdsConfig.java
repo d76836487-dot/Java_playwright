@@ -41,6 +41,11 @@ public class TestIdsConfig {
             entry("Home - Card Recebimento - Recebimento Hoje", "home-card-recebimentos-text-vlrliquido-hoje"),
             entry("Home - Card Recebimento - Recebimento Previsto", "home-card-recebimentos-text-vlrliquido-previsto"),
 
+            entry("Home - Card Últimas Vendas - Valor", "home-card-ultimas-vendas-text-valor-venda"),
+            entry("Home - Card Últimas Vendas - Tipo", "home-card-ultimas-vendas-text-tipo-venda"),
+            entry("Home - Card Últimas Vendas - Data", "home-card-ultimas-vendas-text-data-venda"),
+            entry("Home - Card Últimas Vendas - Hora", "home-card-ultimas-vendas-text-hora-venda"),
+
             entry("item Antecipação no acesso rápido", "home-card-personalizar-link-antecipacao"),
             entry("item Relatórios no acesso rápido", "home-card-personalizar-link-relatorios"),
             entry("item Informe de rendimento no acesso rápido", "home-card-personalizar-link-informe-rendimento"),
