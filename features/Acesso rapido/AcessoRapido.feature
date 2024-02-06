@@ -50,6 +50,7 @@ Feature: Acesso Rápido
     When usuário clica no "item Informe de rendimento no acesso rápido" e uma nova aba se abre
     Then será direcionado para a jornada de "Informe de rendimento" na nova aba
 
+  @TestCaseKey=SMP-T30
   Scenario: Vendas no acesso rápido
     Given que estou na tela “início” do Portal
     When usuário clica no "item Vendas no acesso rápido"
