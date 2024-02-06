@@ -7,6 +7,9 @@ user-profile:
   clientTags: ${CLIENT_TAGS}
   allowAdvancePayment: ${ALLOW_ADVANCE_PAYMENT}
   locale: ${LOCALE}
+  apiHost: ${API_HOST}
+  serviceContract: ${SERVICE_CONTRACT}
+  institution: ${INSTITUTION}
 urls:
   gitlab: https://gitlab.onefiserv.net/
 framework:

@@ -63,6 +63,10 @@ Feature: Home Logada
     Given Usuário acessou o Home
     Then Total de Recebimentos será igual ao recebimento de hoje + futuro previsto
 
+  Scenario: Valor de Vendas Hoje na Home é igual à API
+    Given Usuário acessou o Home
+    Then Total de "Home - Card Vendas Hoje - Valor Vendas Hoje" será igual à API
+
   # História não é testável...
   #*Dado* que eu faça o login no Portal
   #*Quando* abrir a tela principal “início”

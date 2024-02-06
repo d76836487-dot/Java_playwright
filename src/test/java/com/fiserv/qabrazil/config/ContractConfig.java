@@ -20,6 +20,12 @@ public class ContractConfig {
 
     private String locale;
 
+    private String apiHost;
+
+    private String serviceContract;
+
+    private String institution;
+
     public String getUrl() {
         return url;
     }
@@ -74,5 +80,29 @@ public class ContractConfig {
 
     public void setLocale(String locale) {
         this.locale = locale;
+    }
+
+    public String getApiHost() {
+        return apiHost;
+    }
+
+    public void setApiHost(String apiHost) {
+        this.apiHost = apiHost;
+    }
+
+    public String getServiceContract() {
+        return serviceContract;
+    }
+
+    public void setServiceContract(String serviceContract) {
+        this.serviceContract = serviceContract;
+    }
+
+    public String getInstitution() {
+        return institution;
+    }
+
+    public void setInstitution(String institution) {
+        this.institution = institution;
     }
 }

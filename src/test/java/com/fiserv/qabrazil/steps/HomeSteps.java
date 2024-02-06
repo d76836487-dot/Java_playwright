@@ -1,5 +1,7 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fiserv.automation.api.BwaAuthorization;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.HomePage;
@@ -8,6 +10,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.IOException;
 
 import static org.testng.AssertJUnit.*;
 
@@ -18,6 +22,9 @@ public class HomeSteps {
 
     @Autowired
     HomePage homePage;
+
+    @Autowired
+    BwaAuthorization bwaAuthorization;
 
     @When("Usuário acessou o Home")
     @Given("que estou na tela “início” do Portal")
@@ -63,5 +70,17 @@ public class HomeSteps {
 
         assertEquals("Total of receivable not matching sum for today and foreseen",
                 totalReceivable.doubleValue(), todayReceivable.doubleValue() + foreseenReceivable.doubleValue());
+    }
+
+    @Then("Total de {string} será igual à API")
+    public void totalDeSeráIgualÀAPI(String identifier) throws IOException {
+        String testId = TestIdsConfig.getTestId(identifier);
+        String textFound = commonsPage.getTextFromElement(testId);
+
+        String apiAccessToken = commonsPage.getApiAccessToken();
+
+        String answer = bwaAuthorization.getSummarySevenDays(apiAccessToken, "99990095");
+
+        System.out.println("Author: " + answer);
     }
 }
