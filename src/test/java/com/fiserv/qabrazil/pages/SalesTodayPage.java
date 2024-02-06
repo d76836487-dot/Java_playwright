@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.microsoft.playwright.Locator;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.util.regex.Pattern;
@@ -9,7 +10,12 @@ import java.util.regex.Pattern;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
-public class SalesTodayPage extends BasePage {
+@Component("Vendas Hoje")
+public class SalesTodayPage extends CheckedBasePage {
+
+    public SalesTodayPage() {
+        super(Pattern.compile("^.*/Hoje$"));
+    }
 
     public void navigateTo() {
         getLateralMenuLocator().click();

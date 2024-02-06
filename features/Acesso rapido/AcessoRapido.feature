@@ -50,10 +50,11 @@ Feature: Acesso Rápido
     When usuário clica no "item Informe de rendimento no acesso rápido" e uma nova aba se abre
     Then será direcionado para a jornada de "Informe de rendimento" na nova aba
 
-#*Dado* que estou na tela “início” do Portal
-#*Quando* clicar no item Vendas no acesso rápido
-#*Então* devo ser direcionado para a jornada de Vendas
-#
+  Scenario: Vendas no acesso rápido
+    Given que estou na tela “início” do Portal
+    When usuário clica no "item Vendas no acesso rápido"
+    Then será direcionado para a jornada de "Vendas Hoje"
+
 #*Dado* que estou na tela “início” do Portal
 #*Quando* clicar no item Detalhe de pagamentos no acesso rápido
 #*Então* devo ser direcionado para a jornada de Detalhe de pagamentos

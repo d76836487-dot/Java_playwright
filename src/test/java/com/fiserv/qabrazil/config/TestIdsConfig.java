@@ -43,7 +43,8 @@ public class TestIdsConfig {
 
             entry("item Antecipação no acesso rápido", "home-card-personalizar-link-antecipacao"),
             entry("item Relatórios no acesso rápido", "home-card-personalizar-link-relatorios"),
-            entry("item Informe de rendimento no acesso rápido", "home-card-personalizar-link-informe-rendimento")
+            entry("item Informe de rendimento no acesso rápido", "home-card-personalizar-link-informe-rendimento"),
+            entry("item Vendas no acesso rápido", "home-card-personalizar-link-vendas")
             );
 
 
