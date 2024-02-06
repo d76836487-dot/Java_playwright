@@ -1,7 +1,7 @@
 package com.fiserv.qabrazil.steps;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fiserv.automation.api.BwaAuthorization;
+import com.fiserv.automation.api.BwaRest;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.HomePage;
@@ -79,7 +79,7 @@ public class HomeSteps {
 
         String apiAccessToken = commonsPage.getApiAccessToken();
 
-        String answer = bwaAuthorization.getSummarySevenDays(apiAccessToken, "99990095");
+        BwaRest.PagedSummaryDto answer = bwaAuthorization.getSummarySevenDays(apiAccessToken, "99990095");
 
         System.out.println("Author: " + answer);
     }

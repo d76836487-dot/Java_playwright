@@ -1,67 +1,62 @@
 package com.fiserv.automation.api;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fiserv.automation.api.util.Hmac;
 import com.fiserv.qabrazil.config.ContractConfig;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.methods.RequestBuilder;
-import org.apache.http.impl.client.HttpClients;
+import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 @Component
 public class BwaAuthorization {
-    private static final String API_AUTHENTICATION = "/access-management-api-qa/v1/public/authenticate-api/no-mfa";
-    private static final String API_AUTHORIZATION_SUMMARY = "%s/autorizacoes/v2/%s/%s/%s/%s?tipoSumarizacao=D";
 
     @Autowired
     ContractConfig contractConfig;
 
-    public String getSummarySevenDays(String accessToken, String merchant) throws IOException {
+    public BwaRest.PagedSummaryDto getSummarySevenDays(String accessToken, String merchant) throws IOException {
         String sevenDaysAgo = formattedDate(7);
         String today = formattedDate(0);
-        String url = String.format(API_AUTHORIZATION_SUMMARY,
-                contractConfig.getApiHost(), contractConfig.getInstitution(), merchant, sevenDaysAgo, today);
         long timestamp = new Date().getTime();
         String payload = "";
 
-        RequestBuilder request = RequestBuilder.get(url);
-        request.addHeader("Content-Type", "application/json");
-        request.addHeader("ServiceContract", contractConfig.getServiceContract()); //"110"
-        request.addHeader("InstitutionCod", contractConfig.getInstitution()); //"00000004"
-        request.addHeader("Client-Request-Id", Hmac.REQUEST_ID);
-        request.addHeader("Api-Key", Hmac.API_KEY);
-        request.addHeader("Message-Signature", Hmac.generateHMAC(getMsgToSign(timestamp, payload)));
-        request.addHeader("Timestamp", String.valueOf(timestamp));
-        request.addHeader("ChannelClientId", Hmac.CLIENT_CHANNEL_ID);
-        request.addHeader("auth", accessToken);
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        httpClient.addInterceptor(chain -> {
+            okhttp3.Request request = chain.request().newBuilder()
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("ServiceContract", contractConfig.getServiceContract()) //"110"
+                    .addHeader("InstitutionCod", contractConfig.getInstitution()) //"00000004"
+                    .addHeader("Client-Request-Id", Hmac.REQUEST_ID)
+                    .addHeader("Api-Key", Hmac.API_KEY)
+                    .addHeader("Message-Signature", Hmac.generateHMAC(getMsgToSign(timestamp, payload)))
+                    .addHeader("Timestamp", String.valueOf(timestamp))
+                    .addHeader("ChannelClientId", Hmac.CLIENT_CHANNEL_ID)
+                    .addHeader("auth", accessToken)
+                    .build();
 
-        HttpUriRequest patchReq = request.build();
-        HttpClient httpclient = HttpClients.createDefault();
+            return chain.proceed(request);
+        });
 
-        HttpResponse response2 = httpclient.execute(patchReq);
-        System.out.println("Response Code : " + response2.getStatusLine().getStatusCode() + " " + response2.getStatusLine().getReasonPhrase());
-        System.out.println(response2.toString());
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(JacksonConverterFactory.create(new ObjectMapper()
+                        .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)))
+                .baseUrl(contractConfig.getApiHost())
+                .client(httpClient.build())
+                .build();
 
-        BufferedReader rd = null;
-        StringBuffer result = new StringBuffer();
-        String line = "";
-        rd = new BufferedReader(new InputStreamReader(response2.getEntity().getContent()));
-        while ((line = rd.readLine()) != null) {
-            line = line.replaceAll(",", " ,\n");
-            System.out.println(line);
-            result.append(line);
-        }
-
-        return result.toString();
+        BwaRest bwaSomething = retrofit.create(BwaRest.class);
+        Response<BwaRest.PagedSummaryDto> execute = bwaSomething.summarization(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
+        System.out.println("Response Code : " + execute.code());
+        System.out.println("Message: " + execute.message());
+        return execute.body();
     }
 
     private String getMsgToSign(long timestamp, String payload) {
