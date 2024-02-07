@@ -28,7 +28,7 @@ Feature: Home Logada
 
   # TODO: fix to use anticipation linked to data-testid
   @MDRPadrão @PermiteAdiantamento
-    @TestCaseKey=SMP-T17
+  @TestCaseKey=SMP-T17
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
     Given Usuário acessou o Home
     Then Usuário verá card Antecipação
@@ -47,7 +47,7 @@ Feature: Home Logada
     Then Usuário não verá card Antecipação
 
   @rebatedor
-    @TestCaseKey=SMP-T24
+  @TestCaseKey=SMP-T24
   Scenario Outline: Valor de vendas hoje e percentual no card Vendas Hoje do Home
     Given Usuário acessou o Home
     Then Usuário verá em "Home - Card Vendas Hoje - Valor Vendas Hoje" o valor "<valor venda>"
@@ -62,13 +62,14 @@ Feature: Home Logada
     Given Usuário acessou o Home
     Then Total de Recebimentos será igual ao recebimento de hoje + futuro previsto
 
-    @api
+  @api
   @TestCaseKey=SMP-T29
   Scenario: Valor de Vendas Hoje na Home é igual à API
     Given Usuário acessou o Home
     Then Total de "Home - Card Vendas Hoje - Valor Vendas Hoje" será igual à API
 
-    @api
+  @api
+  @TestCaseKey=SMP-T31
   Scenario: Compara últimas vendas na Home com a API
     Given Usuário acessou o Home
     Then 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API
