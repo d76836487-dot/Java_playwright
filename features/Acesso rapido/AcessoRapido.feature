@@ -63,10 +63,15 @@ Feature: Acesso Rápido
   #*Dado* que estou na tela “início” do Portal
   #*Quando* clicar no item Detalhe de pagamentos no acesso rápido
   #*Então* devo ser direcionado para a jornada de Detalhe de pagamentos
-  #
-  #*Dado* que estou na tela “início” do Portal
-  #*Quando* clicar no item Meu negócio no acesso rápido
-  #*Então* devo ser direcionado para a jornada de Meu negócio
+
+  # TODO: aguardar corrigir o testId
+  @ignore
+  Scenario: Negócio no acesso rápido
+    Given que estou na tela “início” do Portal
+    And "item Meu negócio" está disponível na "Home - acesso rápido"
+    When usuário clica no "item Meu negócio" na "Home - acesso rápido"
+    Then será direcionado para a jornada de "Negócio"
+
   @TestCaseKey=SMP-T32
   Scenario: Solicitações no acesso rápido
     Given que estou na tela “início” do Portal

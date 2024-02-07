@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.config.TestIdsConfig;
+import com.fiserv.qabrazil.util.Identifier;
 import com.microsoft.playwright.ElementHandle;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -32,7 +33,7 @@ public class HomeCustomizeModal extends BasePage {
     }
 
     public void select(String identifier) {
-        String selector = TestIdsConfig.getQuerySelector("Home - personalizar - " + identifier);
+        String selector = Identifier.from("Home - personalizar - " + identifier).selector();
         List<String> selectorList = TestIdsConfig.getAllQuerySelector("Home - personalizar -");
         Map<String, Boolean> checkMap = selectorList.stream()
                 .collect(Collectors.toMap(x -> x, x -> page.isChecked(x)));
