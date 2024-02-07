@@ -70,6 +70,7 @@ public abstract class BasePage {
     }
 
     public Number getNumberFromCurrencyElement(String testId) {
+        waitUntilTrue(() -> !getTextFromElement(testId).equals("R$ 0,00")); // it returns R$ 0,00 before setting the real value...
         String textFromElement = getTextFromElement(testId);
         try {
             return Currency.parseCurrency(textFromElement);
