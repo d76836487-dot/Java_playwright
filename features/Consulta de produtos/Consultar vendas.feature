@@ -1,5 +1,5 @@
 # language: en
-@playwright
+@ignore
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Consulta_de_Produtos/Consulta_vendas
 @Zephyr:Status=Approved
@@ -9,7 +9,7 @@ Feature: Consulta vendas
 
   @Zephyr:CustomFields=Ambiente=UAT
   @TestCaseKey=SMP-T3
-  Scenario: Fazer o login usuario bin 003
+  Scenario: Fazer o login usuário bin 003
     * Acesso a url do login "acassoQa"
     * incluir login e senha
     * clicar no botão entrar

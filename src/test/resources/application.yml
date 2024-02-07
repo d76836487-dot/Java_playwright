@@ -1,3 +1,15 @@
+user-profile:
+  url: ${CONTRACT_URL}
+  user: ${CONTRACT_USER}
+  password: ${CONTRACT_PASSWORD}
+  identity: ${CONTRACT_IDENTITY}
+  institutionTags: ${INSTITUTION_TAGS}
+  clientTags: ${CLIENT_TAGS}
+  allowAdvancePayment: ${ALLOW_ADVANCE_PAYMENT}
+  locale: ${LOCALE}
+  apiHost: ${API_HOST}
+  serviceContract: ${SERVICE_CONTRACT}
+  institution: ${INSTITUTION}
 urls:
   gitlab: https://gitlab.onefiserv.net/
 framework:
@@ -5,8 +17,8 @@ framework:
     launch-options:
       # Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary"
       # channel: chrome
-      # headless: true
-      # slowMo: 100
+      headless: false
+      slowMo: 300
       # timeout: 30000
       # args:
       #   - --ignore-certificate-errors

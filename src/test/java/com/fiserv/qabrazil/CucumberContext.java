@@ -2,7 +2,7 @@ package com.fiserv.qabrazil;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fiserv.automation.framework.configuration.CommonConfiguration;
-import com.fiserv.automation.playwright.configuration.PlaywrightConfiguration;
+import com.fiserv.automation.playwright.configuration.AuthenticatedPlaywrightConfiguration;
 import io.cucumber.java.DefaultDataTableCellTransformer;
 import io.cucumber.java.DefaultDataTableEntryTransformer;
 import io.cucumber.java.DefaultParameterTransformer;
@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.lang.reflect.Type;
 
-@SpringBootTest(classes = {PlaywrightConfiguration.class, CommonConfiguration.class})
+@SpringBootTest(classes = {AuthenticatedPlaywrightConfiguration.class, CommonConfiguration.class})
 @CucumberContextConfiguration
 public class CucumberContext {
 
