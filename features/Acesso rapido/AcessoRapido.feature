@@ -63,9 +63,9 @@ Feature: Acesso Rápido
   #*Dado* que estou na tela “início” do Portal
   #*Quando* clicar no item Detalhe de pagamentos no acesso rápido
   #*Então* devo ser direcionado para a jornada de Detalhe de pagamentos
-
   # TODO: aguardar corrigir o testId
   @ignore
+  @TestCaseKey=SMP-T84
   Scenario: Negócio no acesso rápido
     Given que estou na tela “início” do Portal
     And "item Meu negócio" está disponível na "Home - acesso rápido"

@@ -63,11 +63,12 @@ Feature: Home Logada
     Then Total de Recebimentos será igual ao recebimento de hoje + futuro previsto
 
   @api
+  @TestCaseKey=SMP-T118
   Scenario: Recebimentos Hoje no card Recebimentos é igual a API
     Given Usuário acessou o Home
     Then Total de 'Home - Recebimentos - Recebimentos hoje' será igual à API
 
-    @api
+  @api
   @TestCaseKey=SMP-T29
   Scenario: Valor de Vendas Hoje na Home é igual à API
     Given Usuário acessou o Home
