@@ -4,6 +4,7 @@ import com.fiserv.automation.api.dto.AuthorizationsDto;
 import com.fiserv.automation.api.service.ApiAuthorizationsService;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
+import com.fiserv.qabrazil.pages.HomeCustomizeModal;
 import com.fiserv.qabrazil.pages.HomePage;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
@@ -25,6 +26,9 @@ public class HomeSteps {
 
     @Autowired
     HomePage homePage;
+
+    @Autowired
+    HomeCustomizeModal homeCustomizeModal;
 
     @Autowired
     ApiAuthorizationsService apiAuthorizationsService;
@@ -121,5 +125,14 @@ public class HomeSteps {
         }
 
         return lastSalesPage;
+    }
+
+    @Given("{string} está disponível na \"Home - acesso rápido\"")
+    public void quickAccessContainsItem(String identifier) {
+        String elementSelector = TestIdsConfig.getQuerySelector("Home - acesso rápido - " + identifier);
+        if (!commonsPage.elementIsVisible(elementSelector)) {
+            commonsPage.clickButtonWithText("Personalizar");
+            homeCustomizeModal.select(identifier);
+        }
     }
 }

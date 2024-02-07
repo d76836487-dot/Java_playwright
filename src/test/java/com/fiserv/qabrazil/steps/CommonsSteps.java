@@ -42,15 +42,20 @@ public class CommonsSteps {
     }
 
     @When("usuário clica {string}")
-    @When("usuário clica em/no {string}")
     public void userClicks(String identifier) {
         String elementSelector = TestIdsConfig.getQuerySelector(identifier);
         commonsPage.clickButton(elementSelector);
     }
 
-    @When("usuário clica em/no {string} e uma nova aba se abre")
-    public void userClicksAndNewTabOpens(String identifier) {
-        String elementSelector = TestIdsConfig.getQuerySelector(identifier);
+    @When("usuário clica no {string} no/na {string}")
+    public void userClicks(String identifier, String section) {
+        String elementSelector = TestIdsConfig.getQuerySelector(section + " - " + identifier);
+        commonsPage.clickButton(elementSelector);
+    }
+
+    @When("usuário clica em/no {string} no/na {string} e uma nova aba se abre")
+    public void userClicksAndNewTabOpens(String identifier, String section) {
+        String elementSelector = TestIdsConfig.getQuerySelector(section + " - " + identifier);
         newTab = commonsPage.clickButtonAndNewTabOpens(elementSelector);
     }
 

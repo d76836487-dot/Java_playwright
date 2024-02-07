@@ -56,4 +56,9 @@ public class CommonsPage extends BasePage {
         Page newTab = context.waitForPage(locator::click);
         return new PageObject(newTab);
     }
+
+    public boolean elementIsVisible(String selector) {
+        Locator locator = page.locator(selector);
+        return waitUntilTrue(locator::isVisible);
+    }
 }

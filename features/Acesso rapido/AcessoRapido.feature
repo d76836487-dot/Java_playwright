@@ -32,28 +32,33 @@ Feature: Acesso Rápido
   @TestCaseKey=SMP-T25
   Scenario: Antecipação no acesso rápido
     Given que estou na tela “início” do Portal
-    When usuário clica no "item Antecipação no acesso rápido"
+    And "item Antecipação" está disponível na "Home - acesso rápido"
+    When usuário clica no "item Antecipação" na "Home - acesso rápido"
     Then será direcionado para a jornada de "Antecipação"
 
   @TestCaseKey=SMP-T27
   Scenario: Relatórios no acesso rápido
     Given que estou na tela “início” do Portal
-    When usuário clica no "item Relatórios no acesso rápido"
+    And "item Relatórios" está disponível na "Home - acesso rápido"
+    When usuário clica no "item Relatórios" na "Home - acesso rápido"
     Then será direcionado para a jornada de "Relatórios"
 
   #*Dado* que estou na tela “início” do Portal
   #*Quando* clicar no item Documentos no acesso rápido
   #*Então* devo ser direcionado para a jornada de Documentos
+
   @TestCaseKey=SMP-T28
   Scenario: Informe de rendimentos no acesso rápido
     Given que estou na tela “início” do Portal
-    When usuário clica no "item Informe de rendimento no acesso rápido" e uma nova aba se abre
+    And "item Informe de rendimento" está disponível na "Home - acesso rápido"
+    When usuário clica no "item Informe de rendimento" na "Home - acesso rápido" e uma nova aba se abre
     Then será direcionado para a jornada de "Informe de rendimento" na nova aba
 
   @TestCaseKey=SMP-T30
   Scenario: Vendas no acesso rápido
     Given que estou na tela “início” do Portal
-    When usuário clica no "item Vendas no acesso rápido"
+    And "item Vendas" está disponível na "Home - acesso rápido"
+    When usuário clica no "item Vendas" na "Home - acesso rápido"
     Then será direcionado para a jornada de "Vendas Hoje"
 
 #*Dado* que estou na tela “início” do Portal
@@ -63,11 +68,13 @@ Feature: Acesso Rápido
 #*Dado* que estou na tela “início” do Portal
 #*Quando* clicar no item Meu negócio no acesso rápido
 #*Então* devo ser direcionado para a jornada de Meu negócio
-#
-#*Dado* que estou na tela “início” do Portal
-#*Quando* clicar no item solicitações no acesso rápido
-#*Então* devo ser direcionado para a jornada de solicitações
-#
+
+  Scenario: Solicitações no acesso rápido
+    Given que estou na tela “início” do Portal
+    And "item Solicitações" está disponível na "Home - acesso rápido"
+    When usuário clica no "item Solicitações" na "Home - acesso rápido"
+    Then será direcionado para a jornada de "Solicitações"
+
 #*Dado* que eu sou um cliente MDR FLEX
 #*Quando* me logar ao Portal
 #*Então* não devo visualizar no acesso rápido a opção “Antecipação”

@@ -1,6 +1,10 @@
 package com.fiserv.qabrazil.config;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static java.util.Map.entry;
 
 public class TestIdsConfig {
@@ -46,10 +50,17 @@ public class TestIdsConfig {
             entry("Home - Card Últimas Vendas - Data", "home-card-ultimas-vendas-text-data-venda"),
             entry("Home - Card Últimas Vendas - Hora", "home-card-ultimas-vendas-text-hora-venda"),
 
-            entry("item Antecipação no acesso rápido", "home-card-personalizar-link-antecipacao"),
-            entry("item Relatórios no acesso rápido", "home-card-personalizar-link-relatorios"),
-            entry("item Informe de rendimento no acesso rápido", "home-card-personalizar-link-informe-rendimento"),
-            entry("item Vendas no acesso rápido", "home-card-personalizar-link-vendas")
+            entry("Home - acesso rápido - item Antecipação", "home-card-personalizar-link-antecipacao"),
+            entry("Home - acesso rápido - item Relatórios", "home-card-personalizar-link-relatorios"),
+            entry("Home - acesso rápido - item Informe de rendimento", "home-card-personalizar-link-informe-rendimento"),
+            entry("Home - acesso rápido - item Vendas", "home-card-personalizar-link-vendas"),
+            entry("Home - acesso rápido - item Solicitações", "home-card-personalizar-link-solicitacoes"),
+
+            entry("Home - personalizar - item Antecipação", "home-personalizar-check-antecipacao"),
+            entry("Home - personalizar - item Relatórios", "home-personalizar-check-relatorios"),
+            entry("Home - personalizar - item Informe de rendimento", "home-personalizar-check-informe-rendimento"),
+            entry("Home - personalizar - item Vendas", "home-personalizar-check-vendas"),
+            entry("Home - personalizar - item Solicitações", "home-personalizar-check-solicitacoes")
             );
 
 
@@ -68,5 +79,19 @@ public class TestIdsConfig {
             return otherSelectors.get(identifier);
         }
         throw new IllegalArgumentException("No selector found for " + identifier);
+    }
+
+    public static List<String> getAllQuerySelector(String prefix) {
+        Stream<String> stream1 = testIdMaps.entrySet().stream()
+                .filter(keyValue -> keyValue.getKey().startsWith(prefix))
+                .map(Map.Entry::getValue)
+                .map(testId -> "[data-testid=" + testId + "]");
+
+        Stream<String> stream2 = otherSelectors.entrySet().stream()
+                .filter(keyValue -> keyValue.getKey().startsWith(prefix))
+                .map(Map.Entry::getValue);
+
+        return Stream.concat(stream1, stream2)
+                .collect(Collectors.toList());
     }
 }
