@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.config;
 
 import java.util.List;
 import java.util.Map;
+
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -62,12 +63,14 @@ public class TestIdsConfig {
             entry("Home - personalizar - item Informe de rendimento", "home-personalizar-check-informe-rendimento"),
             entry("Home - personalizar - item Vendas", "home-personalizar-check-vendas"),
             entry("Home - personalizar - item Solicitações", "home-personalizar-check-solicitacoes"),
-            entry("Home - personalizar - item Meu negócio", "home-personalizar-check-negocio")
+            entry("Home - personalizar - item Meu negócio", "home-personalizar-check-negocio"),
+            entry("Menu Lateral - Vendas", "menu-vendas")
             );
 
 
     // TODO: trocar por data-testid
     private static final Map<String, String> otherSelectors = Map.ofEntries(
+            entry("Menu Lateral - Relatórios", ".om-root-menu .om-root-menu-list nav li[opt='relatorios'] a")
     );
 
     public static String getTestId(String identifier) {

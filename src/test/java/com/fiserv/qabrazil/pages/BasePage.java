@@ -1,8 +1,8 @@
 package com.fiserv.qabrazil.pages;
 
 import com.fiserv.qabrazil.config.ContractConfig;
-import com.fiserv.qabrazil.util.RegexUtil;
 import com.fiserv.qabrazil.util.Currency;
+import com.fiserv.qabrazil.util.RegexUtil;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import org.awaitility.Awaitility;
@@ -100,7 +100,7 @@ public abstract class BasePage {
     }
 
     public void hasRedirectedTo(String uri) {
-        String url = "^" + RegexUtil.escape(contractConfig.getUrl() + uri) + "$";
+        String url = toUrl(uri);
         assertThat(page).hasURL(Pattern.compile(url));
     }
 
@@ -110,6 +110,15 @@ public abstract class BasePage {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void goTo(String path) {
+        page.navigate(path);
+        assertThat(page).hasTitle(Pattern.compile(".+"));
+    }
+
+    public String toUrl(String uri) {
+        return "^" + RegexUtil.escape(contractConfig.getUrl() + uri) + "$";
     }
 }
 

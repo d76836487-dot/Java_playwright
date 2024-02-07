@@ -37,22 +37,17 @@ public class LoginPage extends BasePage {
 
     public synchronized void login() {
         if (StorageState.stateIsReady()) {
-            navigateTo(StorageState.loggedUrl);
+            goTo(StorageState.loggedUrl);
         } else {
             login(contractConfig.getUrl(), contractConfig.getUser(), contractConfig.getPassword());
         }
     }
 
     public void login(String url, String user, String pwd) {
-        navigateTo(url);
+        goTo(url);
         page.getByTestId("login").pressSequentially(user);
         page.getByTestId("password").fill(pwd);
         page.getByTestId("entrar").click();
-    }
-
-    public void navigateTo(String url) {
-        page.navigate(url);
-        assertThat(page).hasTitle(Pattern.compile(".+"));
     }
 
     public synchronized boolean userIsLogged() {

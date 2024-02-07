@@ -41,11 +41,6 @@ public class SalesTodaySteps {
         salesTodayPage.hoverMenuOnSalesMenu();
     }
 
-    @Then("O menu de vendas expande")
-    public void lateralMenuExpands() {
-        assertTrue("Menu lateral não está espandido", salesTodayPage.lateralMenuHasExpanded());
-    }
-
     @And("Existem vendas com status {string}")
     public void thereIsSalesWithStatus(String salesStatus) {
         thereAreSalesWith("status", salesStatus);

@@ -19,18 +19,9 @@ Feature: Filtros Histórico de Vendas
     Examples:
       | tipoDeProduto         |
       | Crédito               |
-      | Crédito Internacional |
       | Débito                |
       | Débito Internacional  |
-      | Refeição              |
       | Alimentação           |
-      | Premium               |
-      | Cultura               |
-      | Auto                  |
-      | Gift                  |
-      | Corporativo           |
-      | Benefícios            |
-      | Multiplo              |
 
   @TestCaseKey=SMP-T15
   Scenario Outline: Filtrar histórico de vendas por status

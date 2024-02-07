@@ -42,6 +42,5 @@ Feature: Tela Vendas Hoje com CNPJ
 
   @TestCaseKey=SMP-T8
   Scenario: O menu expande quando o usuário passa o mouse
-    When Usuário passa o mouse sobre vendas
-    Then O menu de vendas expande
-
+    When Usuário passa o mouse sobre "Menu Lateral - Vendas"
+    Then O menu lateral expandiu contendo "Vendas"

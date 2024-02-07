@@ -10,6 +10,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 @ScenarioComponent
 public class FilterComponentPage extends BasePage {
+
     public void filterAllExcept(String filterValue, String accordionName) {
         openFilterOptions();
         openAccordion(accordionName);

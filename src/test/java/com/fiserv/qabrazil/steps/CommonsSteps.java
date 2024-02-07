@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageObject;
 import com.fiserv.qabrazil.util.Identifier;
@@ -11,6 +12,7 @@ import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class CommonsSteps {
 
@@ -75,5 +77,16 @@ public class CommonsSteps {
     @Then("será direcionado para a jornada de {string} na nova aba")
     public void ensureWeAreAtTheRightPageInANewTab(String pageName) {
         urlCheckers.forPage(pageName).ensureWeAreAtTheCorrectPage(newTab);
+    }
+
+    @When("Usuário passa o mouse sobre {string}")
+    public void userHoversOver(String identifier) {
+        String elementSelector = TestIdsConfig.getQuerySelector(identifier);
+        commonsPage.hoverOver(elementSelector);
+    }
+
+    @Then("O menu lateral expandiu contendo {string}")
+    public void lateralMenuExpandsContaining(String identifier) {
+        assertTrue("Menu lateral não está expandido", commonsPage.lateralMenuHasExpandedContaining(identifier));
     }
 }
