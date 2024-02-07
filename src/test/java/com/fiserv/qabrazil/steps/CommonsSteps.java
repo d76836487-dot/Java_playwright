@@ -1,8 +1,8 @@
 package com.fiserv.qabrazil.steps;
 
-import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageObject;
+import com.fiserv.qabrazil.util.Identifier;
 import com.fiserv.qabrazil.util.UrlCheckers;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -41,27 +41,22 @@ public class CommonsSteps {
         assertEquals("Botão não encontrado na página", expectedButtonText, message);
     }
 
-    @When("usuário clica {string}")
-    public void userClicks(String identifier) {
-        String elementSelector = TestIdsConfig.getQuerySelector(identifier);
+    @When("usuário clica {identifier}")
+    @When("usuário clica no {identifierAndSection}")
+    public void userClicks(Identifier identifier) {
+        String elementSelector = identifier.selector();
         commonsPage.clickButton(elementSelector);
     }
 
-    @When("usuário clica no {string} no/na {string}")
-    public void userClicks(String identifier, String section) {
-        String elementSelector = TestIdsConfig.getQuerySelector(section + " - " + identifier);
-        commonsPage.clickButton(elementSelector);
-    }
-
-    @When("usuário clica em/no {string} no/na {string} e uma nova aba se abre")
-    public void userClicksAndNewTabOpens(String identifier, String section) {
-        String elementSelector = TestIdsConfig.getQuerySelector(section + " - " + identifier);
+    @When("usuário clica em/no {identifierAndSection} e uma nova aba se abre")
+    public void userClicksAndNewTabOpens(Identifier identifier) {
+        String elementSelector = identifier.selector();
         newTab = commonsPage.clickButtonAndNewTabOpens(elementSelector);
     }
 
-    @Then("Usuário verá em {string} o valor {string}")
-    public void matchValuePerField(String identifier, String expectedText) {
-        String testId = TestIdsConfig.getTestId(identifier);
+    @Then("Usuário verá em {identifier} o valor {string}")
+    public void matchValuePerField(Identifier identifier, String expectedText) {
+        String testId = identifier.testId();
         String textFound = commonsPage.getTextFromElement(testId);
         assertEquals(expectedText, textFound);
     }

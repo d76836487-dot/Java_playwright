@@ -6,6 +6,7 @@ import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.HomeCustomizeModal;
 import com.fiserv.qabrazil.pages.HomePage;
+import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -79,9 +80,9 @@ public class HomeSteps {
                 totalReceivable.doubleValue(), todayReceivable.doubleValue() + foreseenReceivable.doubleValue());
     }
 
-    @Then("Total de {string} será igual à API")
-    public void compareTotalSalesPageAndApi(String identifier) throws Exception {
-        String testId = TestIdsConfig.getTestId(identifier);
+    @Then("Total de {identifier} será igual à API")
+    public void compareTotalSalesPageAndApi(Identifier identifier) throws Exception {
+        String testId = identifier.testId();
 
         Number salesTodayPage = commonsPage.getNumberFromCurrencyElement(testId);
         Number salesTodayApi = apiAuthorizationsService.getSalesTodayAllEcs();
@@ -129,7 +130,7 @@ public class HomeSteps {
 
     @Given("{string} está disponível na \"Home - acesso rápido\"")
     public void quickAccessContainsItem(String identifier) {
-        String elementSelector = TestIdsConfig.getQuerySelector("Home - acesso rápido - " + identifier);
+        String elementSelector = Identifier.from("Home - acesso rápido - " + identifier).selector();
         if (!commonsPage.elementIsVisible(elementSelector)) {
             commonsPage.clickButtonWithText("Personalizar");
             homeCustomizeModal.select(identifier);
