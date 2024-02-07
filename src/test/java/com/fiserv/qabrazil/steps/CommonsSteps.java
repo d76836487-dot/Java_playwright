@@ -33,6 +33,12 @@ public class CommonsSteps {
                 expectedMessage.substring(0, Math.min(expectedMessage.length(), 10)));
         assertEquals("Mensagem não encontrada na página", expectedMessage, message);
     }
+    @Then("Usuário NÃO verá mensagem {string}")
+    public void userWillNotSeeMessage(String expectedMessage) {
+        String message = commonsPage.getWholeTextIfVisible(
+                expectedMessage.substring(0, Math.min(expectedMessage.length(), 10)));
+        assertEquals("Mensagem não encontrada na página", "Not visible", message);
+    }
 
     @And("Usuário verá botão com texto {string}")
     public void userWillSeeButtonWithText(String expectedButtonText) {

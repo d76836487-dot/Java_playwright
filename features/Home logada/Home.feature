@@ -63,15 +63,21 @@ Feature: Home Logada
     Then Total de Recebimentos será igual ao recebimento de hoje + futuro previsto
 
   @api
+  Scenario: Recebimentos Hoje no card Recebimentos é igual a API
+    Given Usuário acessou o Home
+    Then Total de 'Home - Recebimentos - Recebimentos hoje' será igual à API
+
+    @api
   @TestCaseKey=SMP-T29
   Scenario: Valor de Vendas Hoje na Home é igual à API
     Given Usuário acessou o Home
-    Then Total de "Home - Card Vendas Hoje - Valor Vendas Hoje" será igual à API
+    Then Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API
 
   @api
   @TestCaseKey=SMP-T31
   Scenario: Compara últimas vendas na Home com a API
     Given Usuário acessou o Home
+    And Usuário NÃO verá mensagem "Você não possui nenhuma venda no último mês"
     Then 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API
 
   # História não é testável...

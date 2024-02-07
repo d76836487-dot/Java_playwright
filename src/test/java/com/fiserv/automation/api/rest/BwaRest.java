@@ -1,5 +1,6 @@
 package com.fiserv.automation.api.rest;
 
+import com.fiserv.automation.api.dto.PagedPaymentDto;
 import com.fiserv.automation.api.dto.PagedSummaryDto;
 import com.fiserv.automation.api.dto.UserDetailDto;
 import retrofit2.Call;
@@ -16,6 +17,13 @@ public interface BwaRest {
 
     @GET("autorizacoes-historico/resources/v2/{institution}/{merchant}/{fromDate}/{toDate}?status=Autorizada")
     Call<PagedSummaryDto> authorizations(
+            @Path("institution") String institution,
+            @Path("merchant") String merchant,
+            @Path("fromDate") String fromDate,
+            @Path("toDate") String toDate);
+
+    @GET("pagamentos/resources/v1/{institution}/{merchant}/{fromDate}/{toDate}?tipoSumarizacao=D")
+    Call<PagedPaymentDto> paymentSummarized(
             @Path("institution") String institution,
             @Path("merchant") String merchant,
             @Path("fromDate") String fromDate,
