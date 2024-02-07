@@ -28,7 +28,7 @@ public class LoginSteps {
     }
 
     @Then("Usuário estará com acesso")
-    public void userHasAcessGranted() {
+    public void userHasAccessGranted() {
         boolean accessGranted = loginPage.userIsLogged();
         assertTrue(accessGranted);
     }
@@ -41,7 +41,7 @@ public class LoginSteps {
     @Given("Usuário logou na aplicação")
     public void userHasLoggedIn() {
         login();
-        userHasAcessGranted();
+        userHasAccessGranted();
     }
 
     @Then("Usuário será direcionado para tela de login")
