@@ -55,12 +55,14 @@ public class TestIdsConfig {
             entry("Home - acesso rápido - item Informe de rendimento", "home-card-personalizar-link-informe-rendimento"),
             entry("Home - acesso rápido - item Vendas", "home-card-personalizar-link-vendas"),
             entry("Home - acesso rápido - item Solicitações", "home-card-personalizar-link-solicitacoes"),
+            entry("Home - acesso rápido - item Meu negócio", "home-card-personalizar-link-negocio"),
 
             entry("Home - personalizar - item Antecipação", "home-personalizar-check-antecipacao"),
             entry("Home - personalizar - item Relatórios", "home-personalizar-check-relatorios"),
             entry("Home - personalizar - item Informe de rendimento", "home-personalizar-check-informe-rendimento"),
             entry("Home - personalizar - item Vendas", "home-personalizar-check-vendas"),
-            entry("Home - personalizar - item Solicitações", "home-personalizar-check-solicitacoes")
+            entry("Home - personalizar - item Solicitações", "home-personalizar-check-solicitacoes"),
+            entry("Home - personalizar - item Meu negócio", "home-personalizar-check-negocio")
             );
 
 
