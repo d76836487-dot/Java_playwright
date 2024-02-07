@@ -46,7 +46,6 @@ Feature: Acesso Rápido
   #*Dado* que estou na tela “início” do Portal
   #*Quando* clicar no item Documentos no acesso rápido
   #*Então* devo ser direcionado para a jornada de Documentos
-
   @TestCaseKey=SMP-T28
   Scenario: Informe de rendimentos no acesso rápido
     Given que estou na tela “início” do Portal
@@ -61,14 +60,14 @@ Feature: Acesso Rápido
     When usuário clica no "item Vendas" na "Home - acesso rápido"
     Then será direcionado para a jornada de "Vendas Hoje"
 
-#*Dado* que estou na tela “início” do Portal
-#*Quando* clicar no item Detalhe de pagamentos no acesso rápido
-#*Então* devo ser direcionado para a jornada de Detalhe de pagamentos
-#
-#*Dado* que estou na tela “início” do Portal
-#*Quando* clicar no item Meu negócio no acesso rápido
-#*Então* devo ser direcionado para a jornada de Meu negócio
-
+  #*Dado* que estou na tela “início” do Portal
+  #*Quando* clicar no item Detalhe de pagamentos no acesso rápido
+  #*Então* devo ser direcionado para a jornada de Detalhe de pagamentos
+  #
+  #*Dado* que estou na tela “início” do Portal
+  #*Quando* clicar no item Meu negócio no acesso rápido
+  #*Então* devo ser direcionado para a jornada de Meu negócio
+  @TestCaseKey=SMP-T32
   Scenario: Solicitações no acesso rápido
     Given que estou na tela “início” do Portal
     And "item Solicitações" está disponível na "Home - acesso rápido"
