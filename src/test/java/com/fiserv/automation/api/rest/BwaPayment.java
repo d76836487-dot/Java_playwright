@@ -15,9 +15,9 @@ public class BwaPayment {
     ContractConfig contractConfig;
 
     public PagedPaymentDto getPaymentSummarized(String apiAccessToken, String merchant) throws Exception {
-        String sevenDaysAgo = formattedDate(7);
+        String sevenDaysAgo = formattedDate(-7);
         String today = formattedDate(0);
-        BwaRest bwaRest = BwaHeader.getBwaRest(apiAccessToken);
+        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken);
 
         Response<PagedPaymentDto> execute = bwaRest.paymentSummarized(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
 

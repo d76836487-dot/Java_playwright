@@ -4,9 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class DateUtil {
-    public static String formattedDate(int daysAgo) {
+    public static String formattedDate(int daysToAdd) {
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DAY_OF_MONTH, daysAgo * -1);
+        cal.add(Calendar.DAY_OF_MONTH, daysToAdd);
         SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyyMMdd");
         return simpleFormat.format(cal.getTime());
     }

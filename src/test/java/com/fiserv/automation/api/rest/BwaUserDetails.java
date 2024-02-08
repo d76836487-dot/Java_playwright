@@ -8,7 +8,7 @@ import retrofit2.Response;
 @Component
 public class BwaUserDetails {
     public UserDetailDto getUserDetails(String apiAccessToken) throws Exception {
-        BwaRest bwaSomething = BwaHeader.getBwaRest(apiAccessToken);
+        BwaRest bwaSomething = BwaHeader.getBwaRequest(apiAccessToken);
         Response<UserDetailDto> execute = bwaSomething.userDetail().execute();
         if (execute.code() != 200) {
             throw new Exception(

@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.automation.api.dto.AuthorizationsDto;
 import com.fiserv.automation.api.service.ApiAuthorizationsService;
+import com.fiserv.automation.api.service.ApiPrepaymentService;
 import com.fiserv.automation.api.service.ApiReceivableService;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
@@ -38,6 +39,9 @@ public class HomeSteps {
 
     @Autowired
     private ApiReceivableService apiReceivableService;
+
+    @Autowired
+    private ApiPrepaymentService apiPrepaymentService;
 
     @When("Usuário acessou o Home")
     @Given("que estou na tela “início” do Portal")
@@ -143,12 +147,22 @@ public class HomeSteps {
     }
 
     @Then("Total de 'Home - Recebimentos - Recebimentos hoje' será igual à API")
-    public void compareReceivableApi() throws Exception {
+    public void comparePaymentApi() throws Exception {
         String todayReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Hoje");
 
         Number todayPaymentPage = commonsPage.getNumberFromCurrencyElement(todayReceivableId);
         BigDecimal todayPaymentApi = apiReceivableService.getPaymentToday();
 
         assertEquals("Total de recebíveis hoje da página é diferente da api", todayPaymentApi.floatValue(), todayPaymentPage.floatValue());
+    }
+
+    @Then("Total de 'Home - Card Recebimento - Recebimento Previsto' será igual à API")
+    public void compareReceivableApi() throws Exception {
+        String receivablePageId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Previsto");
+
+        Number receivablePage = commonsPage.getNumberFromCurrencyElement(receivablePageId);
+        BigDecimal receivableApi = apiPrepaymentService.getTotalSalesReceivables();
+
+        assertEquals("Total de recebíveis futuros da página é diferente da api", receivableApi.floatValue(), receivablePage.floatValue());
     }
 }

@@ -16,9 +16,9 @@ public class BwaAuthorization {
     ContractConfig contractConfig;
 
     public PagedSummaryDto getLastAuthorizations(String apiAccessToken, String merchant) throws Exception {
-        String sevenDaysAgo = formattedDate(7);
+        String sevenDaysAgo = formattedDate(-7);
         String today = formattedDate(0);
-        BwaRest bwaRest = BwaHeader.getBwaRest(apiAccessToken);
+        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken);
 
         Response<PagedSummaryDto> execute = bwaRest.authorizations(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
 
@@ -31,9 +31,9 @@ public class BwaAuthorization {
     }
 
     public PagedSummaryDto getSummarySevenDays(String apiAccessToken, String merchant) throws Exception {
-        String sevenDaysAgo = formattedDate(7);
+        String sevenDaysAgo = formattedDate(-7);
         String today = formattedDate(0);
-        BwaRest bwaRest = BwaHeader.getBwaRest(apiAccessToken);
+        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken);
 
         Response<PagedSummaryDto> execute = bwaRest.summarization(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
 

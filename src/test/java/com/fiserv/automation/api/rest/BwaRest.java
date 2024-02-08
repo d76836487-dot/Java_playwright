@@ -1,10 +1,9 @@
 package com.fiserv.automation.api.rest;
 
-import com.fiserv.automation.api.dto.PagedPaymentDto;
-import com.fiserv.automation.api.dto.PagedSummaryDto;
-import com.fiserv.automation.api.dto.UserDetailDto;
+import com.fiserv.automation.api.dto.*;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface BwaRest {
@@ -29,6 +28,14 @@ public interface BwaRest {
             @Path("fromDate") String fromDate,
             @Path("toDate") String toDate);
 
+    @POST("vendas/resources/v3/receber/{fromDate}/{toDate}?tipoSumarizacao=D")
+    Call<PageSalesDto> receivableSalesSummarized(
+            @Path("fromDate") String fromDate,
+            @Path("toDate") String toDate);
+    @POST("wsm/v2/prepayments/consultations/consultPrepayment")
+    Call<PrepaymentDto> prepaymentConsultation();
+
     @GET("access-management-api-qa/v1/public/users/details")
     Call<UserDetailDto> userDetail();
+
 }

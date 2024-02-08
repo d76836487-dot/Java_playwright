@@ -5,13 +5,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fiserv.automation.api.rest.BwaRest;
 import com.fiserv.qabrazil.config.ContractConfig;
 import jakarta.annotation.PostConstruct;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.util.Date;
+import java.util.Map;
 
 @Component
 public class BwaHeader {
@@ -25,13 +29,16 @@ public class BwaHeader {
         BwaHeader.staticContractConfig = contractConfig;
     }
 
-    public static BwaRest getBwaRest(String apiAccessToken) {
+    public static BwaRest getBwaRequest(String apiAccessToken) {
+        return getBwaRequest(apiAccessToken, Map.of(), "");
+    }
+
+    public static BwaRest getBwaRequest(String apiAccessToken, Map<String, String> extraHeaderInfo, String payload) {
         long timestamp = new Date().getTime();
-        String payload = "";
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(chain -> {
-            okhttp3.Request request = chain.request().newBuilder()
+            Request.Builder requestBuilder = chain.request().newBuilder()
                     .addHeader("Content-Type", "application/json")
                     .addHeader("ServiceContract", staticContractConfig.getServiceContract())
                     .addHeader("InstitutionCod", staticContractConfig.getInstitution())
@@ -41,7 +48,16 @@ public class BwaHeader {
                     .addHeader("Timestamp", String.valueOf(timestamp))
                     .addHeader("ChannelClientId", Hmac.CLIENT_CHANNEL_ID)
                     .addHeader("Authorization", apiAccessToken)
-                    .build();
+                    .addHeader("auth", apiAccessToken);
+
+            extraHeaderInfo.forEach(requestBuilder::addHeader);
+
+            if (!payload.isEmpty()) {
+                RequestBody formBody = RequestBody.create(payload, MediaType.parse("application/json"));
+                requestBuilder.post(formBody);
+            }
+
+            okhttp3.Request request = requestBuilder.build();
 
             return chain.proceed(request);
         });
