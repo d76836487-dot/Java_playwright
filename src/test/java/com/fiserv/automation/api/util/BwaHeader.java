@@ -5,15 +5,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fiserv.automation.api.rest.BwaRest;
 import com.fiserv.qabrazil.config.ContractConfig;
 import jakarta.annotation.PostConstruct;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okio.Buffer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Map;
 
@@ -30,15 +31,25 @@ public class BwaHeader {
     }
 
     public static BwaRest getBwaRequest(String apiAccessToken) {
-        return getBwaRequest(apiAccessToken, Map.of(), "");
+        return getBwaRequest(apiAccessToken, Map.of());
     }
 
-    public static BwaRest getBwaRequest(String apiAccessToken, Map<String, String> extraHeaderInfo, String payload) {
+    public static BwaRest getBwaRequest(String apiAccessToken, Map<String, String> extraHeaderInfo) {
         long timestamp = new Date().getTime();
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(chain -> {
-            Request.Builder requestBuilder = chain.request().newBuilder()
+            Request originalRequest = chain.request();
+            RequestBody originalBody = originalRequest.body();
+            String payload = "";
+            if (originalBody != null) {
+                try (Buffer sink = new Buffer()) {
+                    originalBody.writeTo(sink);
+                    sink.flush();
+                    payload = sink.readByteString().string(StandardCharsets.UTF_8);
+                }
+            }
+            Request.Builder requestBuilder = originalRequest.newBuilder()
                     .addHeader("Content-Type", "application/json")
                     .addHeader("ServiceContract", staticContractConfig.getServiceContract())
                     .addHeader("InstitutionCod", staticContractConfig.getInstitution())
@@ -51,11 +62,6 @@ public class BwaHeader {
                     .addHeader("auth", apiAccessToken);
 
             extraHeaderInfo.forEach(requestBuilder::addHeader);
-
-            if (!payload.isEmpty()) {
-                RequestBody formBody = RequestBody.create(payload, MediaType.parse("application/json"));
-                requestBuilder.post(formBody);
-            }
 
             okhttp3.Request request = requestBuilder.build();
 

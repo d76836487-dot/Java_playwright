@@ -1,5 +1,6 @@
 package com.fiserv.automation.api.rest;
 
+import com.fiserv.automation.api.dto.PrepaymentConsultationRequestDto;
 import com.fiserv.automation.api.dto.PrepaymentDto;
 import com.fiserv.automation.api.util.BwaHeader;
 import com.fiserv.qabrazil.config.ContractConfig;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import retrofit2.Response;
 
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -17,14 +19,16 @@ public class BwaPrepayment {
 
     public PrepaymentDto getPrepayment(String apiAccessToken, String ec) throws Exception {
         Map<String, String> extraHeaderInfo = Map.of();
-        String payload = String.format("{\"consultPrepayments\": [{" +
-                "      \"institutionNumber\": \"%s\"," +
-                "      \"merchantID\": \"%s\"," +
-                "      \"userID\": \"%s\"" +
-                "    }]}", contractConfig.getInstitution(), ec, USER_ID);
-        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo, payload);
+        PrepaymentConsultationRequestDto request = new PrepaymentConsultationRequestDto(List.of(
+                new PrepaymentConsultationRequestDto.ItemDto(
+                        contractConfig.getInstitution(),
+                        ec,
+                        USER_ID
+                )
+        ));
+        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo);
 
-        Response<PrepaymentDto> execute = bwaRest.prepaymentConsultation().execute();
+        Response<PrepaymentDto> execute = bwaRest.prepaymentConsultation(request).execute();
 
         if (execute.code() != 200) {
             throw new Exception(

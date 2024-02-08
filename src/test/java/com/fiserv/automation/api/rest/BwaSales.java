@@ -1,6 +1,7 @@
 package com.fiserv.automation.api.rest;
 
 import com.fiserv.automation.api.dto.PageSalesDto;
+import com.fiserv.automation.api.dto.ReceivableSalesSummarizedRequestDto;
 import com.fiserv.automation.api.util.BwaHeader;
 import com.fiserv.qabrazil.config.ContractConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +26,10 @@ public class BwaSales {
                 "estabelecimento", merchants.get(0)
         );
 
-        String payload = String.format("{\"merchants\":[%s]}",
-                String.join(",", merchants));
-        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo, payload);
+        ReceivableSalesSummarizedRequestDto request = new ReceivableSalesSummarizedRequestDto(merchants);
+        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo);
 
-        Response<PageSalesDto> execute = bwaRest.receivableSalesSummarized(oneDayAhead, thirdDaysAhead).execute();
+        Response<PageSalesDto> execute = bwaRest.receivableSalesSummarized(oneDayAhead, thirdDaysAhead, request).execute();
 
         if (execute.code() != 200) {
             throw new Exception(
