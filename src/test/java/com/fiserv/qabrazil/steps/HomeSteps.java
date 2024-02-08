@@ -85,9 +85,9 @@ public class HomeSteps {
                 totalReceivable.doubleValue(), todayReceivable.doubleValue() + foreseenReceivable.doubleValue());
     }
 
-    @Then("Total de {identifier} será igual à API")
-    public void compareTotalSalesPageAndApi(Identifier identifier) throws Exception {
-        String testId = identifier.testId();
+    @Then("Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API")
+    public void compareTotalSalesPageAndApi() throws Exception {
+        String testId = TestIdsConfig.getTestId("Home - Card Vendas Hoje - Valor Vendas Hoje");
 
         Number salesTodayPage = commonsPage.getNumberFromCurrencyElement(testId);
         Number salesTodayApi = apiAuthorizationsService.getSalesTodayAllEcs();
