@@ -4,6 +4,7 @@ import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.RegexUtil;
 import com.microsoft.playwright.BrowserContext;
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import org.awaitility.Awaitility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,12 +83,20 @@ public abstract class BasePage {
 
     public List<String> getAllTextsFromElement(String testId) {
         waitUntilTrue(() -> page.getByTestId(testId).count() >= 1);
-        return page.getByTestId(testId).allTextContents();
+        Locator locator = page.getByTestId(testId);
+        if (locator.count() >= 1) {
+            locator.first().scrollIntoViewIfNeeded();
+            locator.first().highlight();
+        }
+        return locator.allTextContents();
     }
 
     public String getTextFromElement(String testId) {
         waitUntilTrue(() -> page.getByTestId(testId).count() == 1);
-        return page.getByTestId(testId).textContent();
+        Locator locator = page.getByTestId(testId);
+        locator.scrollIntoViewIfNeeded();
+        locator.highlight();
+        return locator.textContent();
     }
 
     public String getTitle() {

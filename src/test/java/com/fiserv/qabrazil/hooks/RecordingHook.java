@@ -32,13 +32,11 @@ public class RecordingHook {
     public void after(Scenario scenario) {
         context.close();
         if (!page.isClosed()) {
-            byte[] video = Files.readAllBytes(page.video().path());
-            scenario.attach(video, "video/mp4", scenario.getName());
-            page.video().delete();
-
-            scenario.attach(page.screenshot(new Page.ScreenshotOptions().setFullPage(true)),
-                    "image/png", "Screen Shot");
-            scenario.attach(page.content(), "text/html", "Content");
+            try {
+                byte[] video = Files.readAllBytes(page.video().path());
+                scenario.attach(video, "video/mp4", scenario.getName());
+                page.video().delete();
+            } catch (IOException ignore) {}
         }
     }
 }
