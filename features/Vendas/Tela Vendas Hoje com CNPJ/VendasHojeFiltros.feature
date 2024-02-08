@@ -17,11 +17,11 @@ Feature: Filtros Histórico de Vendas
     Then Serão filtradas as vendas com "produto" tipo "<tipoDeProduto>"
     @pt-br
     Examples:
-      | tipoDeProduto         |
-      | Crédito               |
-      | Débito                |
-      | Débito Internacional  |
-      | Alimentação           |
+      | tipoDeProduto        |
+      | Crédito              |
+      | Débito               |
+      | Débito Internacional |
+      | Alimentação          |
 
   @TestCaseKey=SMP-T15
   Scenario Outline: Filtrar histórico de vendas por status
