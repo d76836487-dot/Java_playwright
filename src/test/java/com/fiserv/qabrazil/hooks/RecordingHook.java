@@ -29,14 +29,12 @@ public class RecordingHook {
 
     @After("@playwright and not @ignore")
     @SneakyThrows(IOException.class)
-    public void after(Scenario scenario) {
+    public void after(Scenario scenario) throws IOException {
         context.close();
         if (!page.isClosed()) {
-            try {
-                byte[] video = Files.readAllBytes(page.video().path());
-                scenario.attach(video, "video/mp4", scenario.getName());
-                page.video().delete();
-            } catch (IOException ignore) {}
+            byte[] video = Files.readAllBytes(page.video().path());
+            scenario.attach(video, "video/mp4", scenario.getName());
+            page.video().delete();
         }
     }
 }
