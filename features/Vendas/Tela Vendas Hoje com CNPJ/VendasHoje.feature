@@ -44,3 +44,4 @@ Feature: Tela Vendas Hoje com CNPJ
   Scenario: O menu expande quando o usuário passa o mouse
     When Usuário passa o mouse sobre "Menu Lateral - Vendas"
     Then O menu lateral expandiu contendo "Vendas"
+
