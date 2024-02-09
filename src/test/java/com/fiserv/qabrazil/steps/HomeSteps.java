@@ -68,7 +68,7 @@ public class HomeSteps {
         Number foreseenReceivable = commonsPage.getNumberFromCurrencyElement(foreseenReceivableId);
 
         assertEquals("Total of receivable not matching sum for today and foreseen",
-                totalReceivable.doubleValue(), todayReceivable.doubleValue() + foreseenReceivable.doubleValue());
+                totalReceivable.doubleValue(), todayReceivable.doubleValue() + foreseenReceivable.doubleValue(), 0.001);
     }
 
     @Given("{string} está disponível na \"Home - acesso rápido\"")

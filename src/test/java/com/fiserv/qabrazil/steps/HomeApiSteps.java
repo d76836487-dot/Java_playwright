@@ -73,7 +73,7 @@ public class HomeApiSteps {
         BigDecimal todayPaymentApi = apiReceivableService.getPaymentToday();
         Number todayPaymentPage = commonsPage.getNumberFromCurrencyElement(todayReceivableId);
 
-        assertEquals("Total de recebíveis hoje da página é diferente da api", todayPaymentApi.floatValue(), todayPaymentPage.floatValue());
+        assertEquals("Total de recebíveis hoje da página é diferente da api", todayPaymentApi.doubleValue(), todayPaymentPage.doubleValue(), 0.001);
     }
 
     @Then("Total de 'Home - Card Recebimento - Recebimento Previsto' será igual à API")
@@ -83,7 +83,7 @@ public class HomeApiSteps {
         BigDecimal receivableApi = apiPrepaymentService.getTotalSalesReceivables();
         Number receivablePage = commonsPage.getNumberFromCurrencyElement(receivablePageId);
 
-        assertEquals("Total de recebíveis futuros da página é diferente da api", receivableApi.floatValue(), receivablePage.floatValue());
+        assertEquals("Total de recebíveis futuros da página é diferente da api", receivableApi.doubleValue(), receivablePage.doubleValue(), 0.001);
     }
 
     @Then("Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API")
