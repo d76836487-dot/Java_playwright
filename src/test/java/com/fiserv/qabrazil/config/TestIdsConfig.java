@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import static java.util.Map.entry;
 
 public class TestIdsConfig {
-    private static final Map<String, String> testIdMaps = Map.ofEntries(
+    private static final Map<String, String> testIdMaps = Map.<String, String>ofEntries(
             entry("na seção Vendas Hoje - Ver Tudo", "home-card-vendas-hoje-link-ver-tudo"),
             entry("Filter - Accordion - Status (0)", "generic-filter-accordion-title-status"),
             entry("Filter - Accordion - Bandeiras (0)", "generic-filter-accordion-title-bandeira"),
@@ -64,13 +64,43 @@ public class TestIdsConfig {
             entry("Home - personalizar - item Vendas", "home-personalizar-check-vendas"),
             entry("Home - personalizar - item Solicitações", "home-personalizar-check-solicitacoes"),
             entry("Home - personalizar - item Meu negócio", "home-personalizar-check-negocio"),
-            entry("Menu Lateral - Vendas", "menu-vendas")
-            );
+
+            entry("Menu Lateral - Vendas", "menu-vendas"),
+            entry("Menu Lateral - Home", "menu-home"),
+            entry("Menu Lateral - Recebimentos", "menu-recebimentos"),
+            entry("Menu Lateral - Recebimentos Resumo", "menu-recebimentos-resumo"),
+            entry("Menu Lateral - Recebimentos Agenda", "menu-recebimentos-agenda"),
+            entry("Menu Lateral - Antecipação", "menu-antecipacao"),
+            entry("Menu Lateral - Solicitação", "menu-solicitacao"),
+            entry("Menu Lateral - Relatórios", "menu-relatorios"),
+            entry("Menu Lateral - Negócio", "menu-negocio"),
+            entry("Menu Lateral - Ajuda", "menu-ajuda"),
+            entry("Menu Lateral - Gestor Acessos", "menu-gestor-acessos"),
+            entry("Menu Lateral - Sair", "menu-sair"),
+
+            entry("Relatórios - Busca Palavra Chave", "relatorios-input-chave"),
+            entry("Relatórios - Botão - Filtros", "relatorios-link-filtrar"),
+            entry("Relatórios - Botão - Gerar Relatórios", "relatorios-btn-gerar-relatorio"),
+            entry("Relatórios - Tabela - Header Nome Arquivo", "relatorios-table-header-nome-arquivo"),
+            entry("Relatórios - Tabela - Header Documento", "relatorios-table-header-documento"),
+            entry("Relatórios - Tabela - Header tipo Arquivo", "relatorios-table-header-tipo-arquivo"),
+            entry("Relatórios - Tabela - Header Solicitado Em", "relatorios-table-header-solicitado-em"),
+            entry("Relatórios - Tabela - Header Período", "relatorios-table-header-periodo"),
+            entry("Relatórios - Tabela - Header Baixar", "relatorios-table-header-baixar"),
+            entry("Relatórios - Tabela - Linha Nome Arquivo", "relatorios-table-row-nome-arquivo"),
+            entry("Relatórios - Tabela - Linha Documento", "relatorios-table-row-documento"),
+            entry("Relatórios - Tabela - Linha Tipo Arquivo", "relatorios-table-row-tipo-arquivo"),
+            entry("Relatórios - Tabela - Linha Solicitado Em", "relatorios-table-row-solicitado-em"),
+            entry("Relatórios - Tabela - Linha Período", "relatorios-table-row-periodo"),
+            entry("Relatórios - Tabela - Linha Ícone Download Ok", "relatorios-table-row-download-ok"),
+            entry("Relatórios - Tabela - Linha Ícone Download Falha", "relatorios-table-row-download-fail"),
+            entry("Relatórios - Tabela - Linha Ícone Download Aguardando", "relatorios-table-row-download-wait")
+
+    );
 
 
     // TODO: trocar por data-testid
     private static final Map<String, String> otherSelectors = Map.ofEntries(
-            entry("Menu Lateral - Relatórios", ".om-root-menu .om-root-menu-list nav li[opt='relatorios'] a")
     );
 
     public static String getTestId(String identifier) {
