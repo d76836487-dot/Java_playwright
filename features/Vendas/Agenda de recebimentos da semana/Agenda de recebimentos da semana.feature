@@ -32,18 +32,19 @@ Feature: Agenda de recebimentos da semana
   @TestCaseKey=SMP-T144
   Scenario: conteúdo correto da Agenda de recebimentos da semana
     Given que estou na tela “início” do Portal
-    Given Agenda de recebimentos da semana carregou
+    And existir Agenda de recebimentos da semana para exibir
     When visualizar o box "Agenda de recebimentos da semana"
-    Then devo visualizar 5 dias com as respectivas informações data, mês, dia da semana, valor líquido, e quantidade de depósitos realizados
+    Then usuário visualizará 5 dias com as respectivas informações data, mês, dia da semana, valor líquido, e quantidade de depósitos realizados
 
 #  *Dado* que estou na tela “início” do Portal
 #  *Quando* visualizar o box “Agenda de recebimentos da semana”
 #  *Então* devo visualizar o dia “hoje” destacado e os dias anteriores com valores verdes e os próximos com letras pretas
-#
-#  *Dado* que estou na tela “início” do Portal
-#  *Quando* não tiver agenda de recebimentos da semana para exibir
-#  *Então* devo visualizar a mensagem “Você não possui nenhum recebimento previsto para essa semana”
-#  *E* um botão “Ver recebimentos detalhado”
+
+  Scenario: Agenda de recebimentos da semana vazia
+    Given que estou na tela “início” do Portal
+    And não existir Agenda de recebimentos da semana para exibir
+    Then usuário visualizará a mensagem “Você não possui nenhum recebimento previsto para essa semana”
+    And usuário visualizará um botão "Ver recebimentos detalhado"
 #
 #  {panel}
 #  {panel:title=CENÁRIO DE TESTE|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=2}

@@ -1,6 +1,8 @@
 package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.pages.WeekReceiptScheduleComponent;
+import io.cucumber.java.ParameterType;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,10 +15,10 @@ public class WeekReceiptScheduleSteps {
     @Autowired
     private WeekReceiptScheduleComponent weekReceiptScheduleComponent;
 
-    @Given("Agenda de recebimentos da semana carregou")
-    public void weekReceiptScheduleLoadedCorrectly() {
+    @Given("{shakespeareBoolean} Agenda de recebimentos da semana para exibir")
+    public void weekReceiptScheduleLoadedCorrectly(boolean value) {
         assumeThat(weekReceiptScheduleComponent.receivablesAvailable())
-                .isTrue();
+                .isEqualTo(value);
     }
 
     @When("visualizar o box \"Agenda de recebimentos da semana\"")
@@ -24,10 +26,25 @@ public class WeekReceiptScheduleSteps {
         weekReceiptScheduleComponent.isVisible();
     }
 
-    @Then("devo visualizar 5 dias com as respectivas informações data, mês, dia da semana, valor líquido, e quantidade de depósitos realizados")
+    @Then("usuário visualizará 5 dias com as respectivas informações data, mês, dia da semana, valor líquido, e quantidade de depósitos realizados")
     public void shouldSeeAllRequiredInformation() {
         weekReceiptScheduleComponent.containsDatesAndMonths();
         weekReceiptScheduleComponent.containsWeekDates();
         weekReceiptScheduleComponent.containsNetValueAndNumberOfDeposits();
+    }
+
+    @Then("usuário visualizará a mensagem “Você não possui nenhum recebimento previsto para essa semana”")
+    public void shouldSeeAMessageDoNotHaveReceiptForThisWeek() {
+        weekReceiptScheduleComponent.assertThatThereAreNoReceivablesAvailableMessage();
+    }
+
+    @And("usuário visualizará um botão \"Ver recebimentos detalhado\"")
+    public void shouldSeeViewDetailedReceiptsButton() {
+        weekReceiptScheduleComponent.assertThatViewDetailedReceiptsButtonIsVisible();
+    }
+
+    @ParameterType("existir|não existir")
+    public boolean shakespeareBoolean(String value) {
+        return value.equals("existir");
     }
 }

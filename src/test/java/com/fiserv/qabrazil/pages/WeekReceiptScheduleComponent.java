@@ -78,6 +78,19 @@ public class WeekReceiptScheduleComponent extends BasePage {
         assertThat(page.locator("#b12-Sexta .text-align-right span")).containsText(netValueAndNumberOfDeposits(friday));
     }
 
+    public void assertThatThereAreNoReceivablesAvailableMessage() {
+        // TODO: trocar para testId
+        Locator locator = page.locator("#CtnAgendaRecebimentosSemana2");
+        assertThat(locator).containsText("Agenda de recebimentos da semanaVocê não possui nenhum recebimento previsto para essa semana.");
+    }
+
+    public void assertThatViewDetailedReceiptsButtonIsVisible() {
+        // TODO: trocar para testId
+        Locator locator = page.locator("#CtnAgendaRecebimentosSemana2 .padding-top-s.text-align-right");
+        assertThat(locator).isVisible();
+        assertThat(locator).containsText("Ver recebimentos detalhado");
+    }
+
     private String[] dateAndMonth(LocalDate date) {
         String day = date.format(DateTimeFormatter.ofPattern("dd", locale));
 
