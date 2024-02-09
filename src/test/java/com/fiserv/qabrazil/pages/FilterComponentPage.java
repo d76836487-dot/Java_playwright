@@ -6,6 +6,7 @@ import com.microsoft.playwright.Locator;
 
 import java.time.Duration;
 
+import static com.fiserv.qabrazil.util.WaitUtil.sleep;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent

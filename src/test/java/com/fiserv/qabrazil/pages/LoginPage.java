@@ -3,15 +3,16 @@ package com.fiserv.qabrazil.pages;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.automation.playwright.configuration.StorageState;
 import com.fiserv.qabrazil.config.ContractConfig;
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
-import com.microsoft.playwright.Page;
+import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Duration;
 import java.util.regex.Pattern;
 
+import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
+import static com.fiserv.qabrazil.util.WaitUtil.sleep;
+import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
@@ -41,6 +42,7 @@ public class LoginPage extends BasePage {
         } else {
             login(contractConfig.getUrl(), contractConfig.getUser(), contractConfig.getPassword());
         }
+        startMonitoringRequests(page, contractConfig);
     }
 
     public void login(String url, String user, String pwd) {

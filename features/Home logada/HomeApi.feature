@@ -9,6 +9,7 @@ Feature: Home Logada Conferindo Com Api
   Background:
     When Usuário tenta logar na aplicação
     Then Usuário estará com acesso
+    And Todas as requisições HTTP foram respondidas
 
   @TestCaseKey=SMP-T118
   Scenario: Recebimentos Hoje no card Recebimentos é igual a API

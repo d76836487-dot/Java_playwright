@@ -9,6 +9,7 @@ Feature: Home Logada
   Background:
     When Usuário tenta logar na aplicação
     Then Usuário estará com acesso
+    And Todas as requisições HTTP foram respondidas
 
   @TestCaseKey=SMP-T16
   Scenario Outline: Banner de comunicação comercial

@@ -2,7 +2,6 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.components.Paginator;
-import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.microsoft.playwright.Locator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +9,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
 
+import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
 @Component("Relatórios")
 public class ReportsPage extends CheckedBasePage {
-
-    @Autowired
-    private ContractConfig contractConfig;
-
     @Autowired
     private Paginator paginator;
 

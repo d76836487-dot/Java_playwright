@@ -6,15 +6,15 @@ import com.fiserv.qabrazil.util.RegexUtil;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import org.awaitility.Awaitility;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
 import java.time.Duration;
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.regex.Pattern;
 
+import static com.fiserv.qabrazil.util.WaitUtil.sleep;
+import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public abstract class BasePage {
@@ -27,41 +27,6 @@ public abstract class BasePage {
 
     @Autowired
     protected Page page;
-
-    public void sleep(Duration duration) {
-        Awaitility.await()
-                .pollInSameThread()
-                .pollDelay(duration)
-                .forever()
-                .until(() -> true);
-    }
-
-    protected void retryUntilTrue(Runnable runToTry, Supplier<Boolean> untilTrue)  {
-        for(int numTries = 0; numTries < 3; numTries++) {
-            runToTry.run();
-            if (untilTrue.get()) {
-                return;
-            }
-            sleep(Duration.ofSeconds(5));
-        }
-        throw new RuntimeException("Nao atingiu condição de sucesso...");
-    }
-
-    protected boolean waitUntilTrue(Supplier<Boolean> untilTrue) {
-        return waitUntilTrue(30, untilTrue);
-    }
-
-    protected boolean waitUntilTrue(int totalRetries, Supplier<Boolean> untilTrue)  {
-        for(int numTries = 0; numTries < totalRetries; numTries++) {
-            try {
-                if (untilTrue.get()) {
-                    return true;
-                }
-            } catch (RuntimeException ignored) {}
-            sleep(Duration.ofMillis(500));
-        }
-        return false;
-    }
 
     public List<Number> getAllNumbersFromCurrencyElement(String testId) {
         List<String> textFromElement = getAllTextsFromElement(testId);

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.time.Duration;
 import java.util.function.Supplier;
 
+import static com.fiserv.qabrazil.util.WaitUtil.sleep;
+import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 
 @ScenarioComponent

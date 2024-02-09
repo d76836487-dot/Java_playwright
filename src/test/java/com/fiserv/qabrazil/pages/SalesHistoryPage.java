@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.regex.Pattern;
 
+import static com.fiserv.qabrazil.util.WaitUtil.retryUntilTrue;
+
 @ScenarioComponent
 public class SalesHistoryPage extends BasePage {
     @Autowired

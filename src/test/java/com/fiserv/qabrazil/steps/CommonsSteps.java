@@ -11,6 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -88,5 +89,10 @@ public class CommonsSteps {
     @Then("O menu lateral expandiu contendo {string}")
     public void lateralMenuExpandsContaining(String identifier) {
         assertTrue("Menu lateral não está expandido", commonsPage.lateralMenuHasExpandedContaining(identifier));
+    }
+
+    @And("Todas as requisições HTTP foram respondidas")
+    public void ensureAllHttpRequestsGotAnswer() {
+        ensureNoFlyingRequests();
     }
 }
