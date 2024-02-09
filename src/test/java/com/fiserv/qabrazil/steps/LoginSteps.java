@@ -52,7 +52,7 @@ public class LoginSteps {
     }
 
     @When("Usuário loga em outra sessão")
-    public void userLogsAnotherSession() {
+    public void userLogsAnotherSession() throws Exception {
         loginPage.loginAnotherSession();
     }
 

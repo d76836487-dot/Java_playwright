@@ -7,11 +7,9 @@ import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.Duration;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
-import static com.fiserv.qabrazil.util.WaitUtil.sleep;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -66,13 +64,15 @@ public class LoginPage extends BasePage {
         StorageState.loggedUrl = page.url();
     }
 
-    public void loginAnotherSession() {
+    public void loginAnotherSession() throws Exception {
         Page swipePage = page;
         try (BrowserContext newBrowserContext = browser.newContext();
              Page newPage = newBrowserContext.newPage()) {
             page = newPage;
-            login();
-            sleep(Duration.ofSeconds(3));
+            login(contractConfig.getUrl(), contractConfig.getUser(), contractConfig.getPassword());
+            if (!userIsLogged()) {
+                throw new Exception("Não foi possível logar em outra sessão.");
+            }
         }
         page = swipePage;
     }
