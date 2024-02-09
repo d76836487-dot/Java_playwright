@@ -10,15 +10,12 @@ Feature: Agenda de recebimentos da semana
   Essa história tem como objetivo a criação de uma nova home logada para o cliente obter informações em real time quando
   se logar no Portal, além de navegar em uma jornada com novo Design Sistem.
   Essa demanda é para todas as alianças usuárias do App: Bin, FBD, Caixa, Afinz, Sicredi e Redepop.
-
   VISÃO DO USUÁRIO
   *Eu como* usuário do Portal
   *Quero* visualizar uma nova Home logada
   *Para* ter acesso a informações real time com um novo Design Sistem
-
   TIPO DE MANUTENÇÃO:
   Criação
-
   ESCOPO - Lista de Funcionalidades:
   - Visualização de “Agenda de recebimentos da semana” com informações sobre os recebimentos dos 5 dias da semana
   - Visualização da data, mês, dia da semana, valor líquido, e quantidade de depósitos realizados.
@@ -32,6 +29,7 @@ Feature: Agenda de recebimentos da semana
     Then Usuário estará com acesso
     And Todas as requisições HTTP foram respondidas
 
+  @TestCaseKey=SMP-T144
   Scenario: conteúdo correto da Agenda de recebimentos da semana
     Given que estou na tela “início” do Portal
     Given Agenda de recebimentos da semana carregou
