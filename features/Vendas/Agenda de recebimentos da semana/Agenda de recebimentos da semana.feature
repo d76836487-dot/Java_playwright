@@ -1,5 +1,9 @@
-
+#language: en
 @playwright
+@Zephyr:ProjectKey=SMP
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Agenda_de_recebimentos_da_semana
+@Zephyr:Status=Draft
+@Zephyr:Priority=Normal
 Feature: Agenda de recebimentos da semana
 
   OBJETIVO:
