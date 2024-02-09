@@ -1,11 +1,14 @@
 package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.WaitUtil;
 import com.microsoft.playwright.Locator;
 
+import java.time.Duration;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
 public class HomePage extends CheckedBasePage {
@@ -26,7 +29,15 @@ public class HomePage extends CheckedBasePage {
     public void clickOnButtonSeeAllInSalesTodaySection() {
         // TODO: fix selector
         Locator btn = page.locator("//a[@href=\"/Hoje\"]/*/span");
-        assert btn.textContent().equals("Ver tudo");
+        assertThat(btn).containsText("Ver tudo");
         btn.click();
+    }
+
+    public void closeAllPopups() {
+        Locator closeButton = page.locator(".popup-dialog a");
+        while (closeButton.count() != 0) {
+            closeButton.click();
+            WaitUtil.sleep(Duration.ofMillis(500));
+        }
     }
 }

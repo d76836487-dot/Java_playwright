@@ -28,6 +28,7 @@ public class HomeSteps {
     @Given("que estou na tela “início” do Portal")
     public void ensureWeAreAtHome() {
         homePage.ensureWeAreAtHome();
+        homePage.closeAllPopups();
     }
 
     @Then("Usuário {booleanValue} card Antecipação")
