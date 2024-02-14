@@ -1,15 +1,11 @@
 package com.fiserv.qabrazil.pages;
 
+import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.microsoft.playwright.Locator;
-import jakarta.annotation.PostConstruct;
-import org.apache.commons.lang3.StringUtils;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
-import java.util.Locale;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
@@ -18,18 +14,12 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 @ScenarioComponent
 public class WeekReceiptScheduleComponent extends BasePage {
 
-    private Locale locale;
     private final LocalDate today = LocalDate.now();
     private final LocalDate monday = today.with(DayOfWeek.MONDAY);
     private final LocalDate tuesday = today.with(DayOfWeek.TUESDAY);
     private final LocalDate wednesday = today.with(DayOfWeek.WEDNESDAY);
     private final LocalDate thursday = today.with(DayOfWeek.THURSDAY);
     private final LocalDate friday = today.with(DayOfWeek.FRIDAY);
-
-    @PostConstruct
-    public void init() {
-        locale = Locale.forLanguageTag(contractConfig.getLocale());
-    }
 
     public void isVisible() {
         // TODO: trocar para testId
@@ -47,19 +37,19 @@ public class WeekReceiptScheduleComponent extends BasePage {
 
     public void containsDatesAndMonths() {
         // TODO: trocar para testId
-        assertThat(page.locator("#b12-Segunda .margin-left-xs span")).containsText(dateAndMonth(monday));
-        assertThat(page.locator("#b12-Terca .margin-left-xs span")).containsText(dateAndMonth(tuesday));
-        assertThat(page.locator("#b12-Quarta .margin-left-xs span")).containsText(dateAndMonth(wednesday));
-        assertThat(page.locator("#b12-Quinta .margin-left-xs span")).containsText(dateAndMonth(thursday));
-        assertThat(page.locator("#b12-Sexta .margin-left-xs span")).containsText(dateAndMonth(friday));
+        assertThat(page.locator("#b12-Segunda .margin-left-xs span")).containsText(DateUtil.dateAndMonth(monday));
+        assertThat(page.locator("#b12-Terca .margin-left-xs span")).containsText(DateUtil.dateAndMonth(tuesday));
+        assertThat(page.locator("#b12-Quarta .margin-left-xs span")).containsText(DateUtil.dateAndMonth(wednesday));
+        assertThat(page.locator("#b12-Quinta .margin-left-xs span")).containsText(DateUtil.dateAndMonth(thursday));
+        assertThat(page.locator("#b12-Sexta .margin-left-xs span")).containsText(DateUtil.dateAndMonth(friday));
     }
 
     public void containsWeekDates() {
-        String expectedMonday = weekday(DayOfWeek.MONDAY);
-        String expectedTuesday = weekday(DayOfWeek.TUESDAY);
-        String expectedWednesday = weekday(DayOfWeek.WEDNESDAY);
-        String expectedThursday = weekday(DayOfWeek.THURSDAY);
-        String expectedFriday = weekday(DayOfWeek.FRIDAY);
+        String expectedMonday = DateUtil.weekday(DayOfWeek.MONDAY);
+        String expectedTuesday = DateUtil.weekday(DayOfWeek.TUESDAY);
+        String expectedWednesday = DateUtil.weekday(DayOfWeek.WEDNESDAY);
+        String expectedThursday = DateUtil.weekday(DayOfWeek.THURSDAY);
+        String expectedFriday = DateUtil.weekday(DayOfWeek.FRIDAY);
 
         // TODO: trocar para testId
         assertThat(page.locator("#b12-Segunda .padding-top-s")).containsText(expectedMonday);
@@ -89,19 +79,6 @@ public class WeekReceiptScheduleComponent extends BasePage {
         Locator locator = page.locator("#CtnAgendaRecebimentosSemana2").getByText("Ver recebimentos detalhado");
         assertThat(locator).isVisible();
         assertThat(locator).containsText("Ver recebimentos detalhado");
-    }
-
-    private String[] dateAndMonth(LocalDate date) {
-        String day = date.format(DateTimeFormatter.ofPattern("dd", locale));
-
-        String monthName = date.getMonth().getDisplayName(TextStyle.FULL, locale);
-        monthName = StringUtils.capitalize(monthName).substring(0, 3);
-
-        return new String[] {day, monthName};
-    }
-
-    private String weekday(DayOfWeek dayOfWeek) {
-        return today.getDayOfWeek().equals(dayOfWeek) ? "Hoje" : StringUtils.capitalize(dayOfWeek.getDisplayName(TextStyle.FULL, locale));
     }
 
     private Pattern[] netValueAndNumberOfDeposits(LocalDate date) {

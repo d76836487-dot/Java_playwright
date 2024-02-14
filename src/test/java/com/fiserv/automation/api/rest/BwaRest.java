@@ -22,7 +22,7 @@ public interface BwaRest {
             @Path("fromDate") String fromDate,
             @Path("toDate") String toDate);
 
-    @GET("pagamentos/resources/v1/{institution}/{merchant}/{fromDate}/{toDate}?tipoSumarizacao=D")
+    @GET("pagamentos/resources/v1/{institution}/{merchant}/{fromDate}/{toDate}?tipoSumarizacao=D&situacaoPagto=Pago")
     Call<PagedPaymentDto> paymentSummarized(
             @Path("institution") String institution,
             @Path("merchant") String merchant,
@@ -40,5 +40,4 @@ public interface BwaRest {
 
     @GET("access-management-api-qa/v1/public/users/details")
     Call<UserDetailDto> userDetail();
-
 }

@@ -3,7 +3,7 @@ package com.fiserv.automation.api.dto;
 import java.util.List;
 
 public class ReceivableSalesSummarizedRequestDto {
-    List<String> merchants;
+    public List<String> merchants;
 
     public ReceivableSalesSummarizedRequestDto() {
     }

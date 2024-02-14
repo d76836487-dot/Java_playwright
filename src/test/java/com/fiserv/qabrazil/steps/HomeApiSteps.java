@@ -1,8 +1,9 @@
 package com.fiserv.qabrazil.steps;
 
 import com.fiserv.automation.api.dto.AuthorizationsDto;
+import com.fiserv.automation.api.dto.WeeklyScheduleDto;
 import com.fiserv.automation.api.service.ApiAuthorizationsService;
-import com.fiserv.automation.api.service.ApiReceivableService;
+import com.fiserv.automation.api.service.ApiPaymentsService;
 import com.fiserv.automation.api.service.ApiSalesService;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static com.fiserv.automation.api.util.DateUtil.convertDateFromPageToDateApi;
 import static com.fiserv.automation.api.util.DateUtil.convertTimeFromPageToDateApi;
@@ -24,7 +26,7 @@ public class HomeApiSteps {
     @Autowired
     private ApiAuthorizationsService apiAuthorizationsService;
     @Autowired
-    private ApiReceivableService apiReceivableService;
+    private ApiPaymentsService apiPaymentsService;
     @Autowired
     private ApiSalesService apiPrepaymentService;
 
@@ -70,7 +72,7 @@ public class HomeApiSteps {
     public void comparePaymentApi() throws Exception {
         String todayReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Hoje");
 
-        BigDecimal todayPaymentApi = apiReceivableService.getPaymentToday();
+        BigDecimal todayPaymentApi = apiPaymentsService.getPaymentToday();
         Number todayPaymentPage = commonsPage.getNumberFromCurrencyElement(todayReceivableId);
 
         assertEquals("Total de recebíveis hoje da página é diferente da api", todayPaymentApi.doubleValue(), todayPaymentPage.doubleValue(), 0.001);
@@ -94,5 +96,47 @@ public class HomeApiSteps {
         Number salesTodayPage = commonsPage.getNumberFromCurrencyElement(testId);
 
         assertEquals("Total de vendas da página é diferente da api", salesTodayApi, salesTodayPage);
+    }
+
+    @Then("'Home - Card agenda semana' será igual a API")
+    public void compareWeeklyScheduleWithApi() throws Exception {
+        List<WeeklyScheduleDto> weeklySchedule = getScheduleThisWeek();
+
+        List<Number> valuesFromPage = new ArrayList<>();
+        List<Number> valuesFromApi = new ArrayList<>();
+        List<String> allWeekDays = List.of("Segunda", "Terca", "Quarta", "Quinta", "Sexta");
+        for(String weekDay: allWeekDays) {
+            String dayPageId = TestIdsConfig.getTestId("Home - Agenda Recebimento - Dia " + weekDay);
+            String valuePageId = TestIdsConfig.getTestId("Home - Agenda Recebimento - Valor " + weekDay);
+
+            String dayPage = commonsPage.getTextFromElement(dayPageId);
+            Number valuePage = commonsPage.getNumberFromCurrencyElement(valuePageId);
+            Number valueApi = getValueForDay(weeklySchedule, dayPage);
+
+            valuesFromPage.add(valuePage);
+            valuesFromApi.add(valueApi);
+        }
+
+        assertEquals("Os valores de recebimento da agenda semanal não são iguais", valuesFromApi, valuesFromPage);
+    }
+
+    private Number getValueForDay(List<WeeklyScheduleDto> weeklySchedule, String dayPage) {
+        return weeklySchedule.stream()
+                .filter(weeklyScheduleDto -> weeklyScheduleDto.monthDay.equals(dayPage))
+                .mapToDouble(WeeklyScheduleDto::getValues)
+                .sum();
+    }
+
+    private List<WeeklyScheduleDto> getScheduleThisWeek() throws Exception {
+        List<WeeklyScheduleDto> payments = apiPaymentsService.getPaymentMondayUntilToday();
+        List<WeeklyScheduleDto> sales = apiPrepaymentService.getTotalSalesThisWeek();
+        for (WeeklyScheduleDto payment : payments) {
+            System.out.println(payment);
+        }
+        for (WeeklyScheduleDto sale : sales) {
+            System.out.println(sale);
+        }
+
+        return Stream.concat(payments.stream(),sales.stream()).toList();
     }
 }

@@ -14,16 +14,29 @@ public class BwaPayment {
     @Autowired
     ContractConfig contractConfig;
 
-    public PagedPaymentDto getPaymentSummarized(String apiAccessToken, String merchant) throws Exception {
-        String sevenDaysAgo = formattedDate(-7);
+    public PagedPaymentDto getPaymentSummarizedToday(String apiAccessToken, String merchant) throws Exception {
         String today = formattedDate(0);
+
+        return getPaymentSummarized(apiAccessToken, merchant, today, today);
+    }
+
+    public PagedPaymentDto getPaymentSummarized(String apiAccessToken, String merchant, String fromDate, String toDate) throws Exception {
         BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken);
 
-        Response<PagedPaymentDto> execute = bwaRest.paymentSummarized(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
+        Response<PagedPaymentDto> execute = bwaRest
+                .paymentSummarized(contractConfig.getInstitution(), merchant, fromDate, toDate).execute();
+
+        if (execute.code() == 404) {
+            return new PagedPaymentDto();
+        }
 
         if (execute.code() != 200) {
+            String errorBody = "";
+            if (execute.errorBody() != null) {
+                errorBody = execute.errorBody().string();
+            }
             throw new Exception(
-                    String.format("Erro ao obter autorizações %s: %s", execute.code(), execute.message()));
+                    String.format("Erro ao obter autorizações %s: %s - %s", execute.code(), execute.message(), errorBody));
         }
 
         return execute.body();

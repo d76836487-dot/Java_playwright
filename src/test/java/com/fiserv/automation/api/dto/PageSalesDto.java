@@ -11,4 +11,10 @@ public class PageSalesDto {
     public int size;
     public List<SalesDto> vendas;
     public List<SalesSummaryDto> sumarizacao;
+
+    public PageSalesDto() {
+        size = 0;
+        vendas = List.of();
+        sumarizacao = List.of();
+    }
 }

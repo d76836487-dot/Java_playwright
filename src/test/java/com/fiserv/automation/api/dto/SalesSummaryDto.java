@@ -11,4 +11,12 @@ public class SalesSummaryDto {
     public BigDecimal valorLiquidoMedio;
     public BigDecimal valorBrutoMedio;
     public String quantidade;
+
+    public String getData() {
+        return data;
+    }
+
+    public double getValorLiquidoParcela() {
+        return valorLiquidoParcela.doubleValue();
+    }
 }

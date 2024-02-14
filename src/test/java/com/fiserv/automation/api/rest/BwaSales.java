@@ -18,25 +18,37 @@ public class BwaSales {
     @Autowired
     ContractConfig contractConfig;
 
-    public PageSalesDto getReceivableSalesSummarized(String apiAccessToken, List<String> merchants) throws Exception {
+    public PageSalesDto getReceivableSalesSummarized(String apiAccessToken, List<String> ecs) throws Exception {
         String oneDayAhead = formattedDate(1);
         String thirdDaysAhead = formattedDate(30);
+
+        return getSalesSummarized(apiAccessToken, ecs, oneDayAhead, thirdDaysAhead);
+    }
+
+    public PageSalesDto getSalesSummarized(String apiAccessToken, List<String> ecs, String today, String friday) throws Exception {
         Map<String, String> extraHeaderInfo = Map.of(
                 "instituicao", contractConfig.getInstitution(),
-                "estabelecimento", merchants.get(0)
+                "estabelecimento", ecs.get(0)
         );
 
-        ReceivableSalesSummarizedRequestDto request = new ReceivableSalesSummarizedRequestDto(merchants);
+        ReceivableSalesSummarizedRequestDto request = new ReceivableSalesSummarizedRequestDto(ecs);
         BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo);
 
-        Response<PageSalesDto> execute = bwaRest.receivableSalesSummarized(oneDayAhead, thirdDaysAhead, request).execute();
+        Response<PageSalesDto> execute = bwaRest.receivableSalesSummarized(today, friday, request).execute();
+
+        if (execute.code() == 404) {
+            return new PageSalesDto();
+        }
 
         if (execute.code() != 200) {
+            String errorBody = "";
+            if (execute.errorBody() != null) {
+                errorBody = execute.errorBody().string();
+            }
             throw new Exception(
-                    String.format("Erro ao obter autorizações %s: %s. Merchant: %s",
-                            execute.code(), execute.message(), merchants));
+                    String.format("Erro ao obter autorizações %s: %s. Merchant: %s. ErrorBody: %s",
+                            execute.code(), execute.message(), ecs, errorBody));
         }
-        System.out.printf("Rodou para merchant: %s\n", merchants);
 
         return execute.body();
     }

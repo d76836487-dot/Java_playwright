@@ -10,4 +10,9 @@ public class PagedPaymentDto {
     public int pageNumber;
     public int size;
     public List<PaymentSummaryDto> sumarizacao;
+
+    public PagedPaymentDto() {
+        size = 0;
+        sumarizacao = List.of();
+    }
 }
