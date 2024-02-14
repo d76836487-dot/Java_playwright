@@ -4,7 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Hoje_com_CNPJ/Filtros_Histórico_de_Vendas
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo de teste=Regressivo
+@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Filtros Histórico de Vendas
 
   Background:

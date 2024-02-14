@@ -4,11 +4,11 @@
 @Zephyr:Folder=/Portal_do_Cliente/Consulta_de_Produtos/Consulta_vendas
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
-@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo de teste=Regressivo
+@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 #noinspection CucumberUndefinedStep
 Feature: Consulta vendas
 
-  @Zephyr:CustomFields=Ambiente=UAT
+  @Zephyr:"CustomFields=Ambiente=UAT"
   @TestCaseKey=SMP-T3
   Scenario: Fazer o login usuário bin 003
     * Acesso a url do login "acassoQa"
@@ -16,7 +16,7 @@ Feature: Consulta vendas
     * clicar no botão entrar
     * usuário será redirecionado para home logada
 
-  @Zephyr:CustomFields=Ambiente=SIT
+  @Zephyr:"CustomFields=Ambiente=SIT"
   @TestCaseKey=SMP-T5
   Scenario: Fazer o login usuario bin 004
     * Acesso a url do login "acassoQa"
