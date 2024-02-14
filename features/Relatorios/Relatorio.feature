@@ -41,3 +41,8 @@ Feature: Consultar Relatorios
       | colunas                                                                    |
       | Nome Do Arquivo, Documento/EC, Tipo do Arq, Solicitado em, Periodo, Baixar |
 
+  Scenario: Colunas nome do arquivo
+    Given Usuário acessa página de Relatórios
+    And Existem relatórios já extraídos
+    Then Usuário visualizará o nome do relatório sendo NOMEALIANÇA_TipoDoArquivo_dd-mm-yyyy_dd-mm-yyyy
+

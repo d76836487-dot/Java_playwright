@@ -26,6 +26,8 @@ public class ContractConfig {
 
     private String institution;
 
+    private String allianceName;
+
     public String getUrl() {
         return url;
     }
@@ -104,5 +106,13 @@ public class ContractConfig {
 
     public void setInstitution(String institution) {
         this.institution = institution;
+    }
+
+    public String getAllianceName() {
+        return allianceName;
+    }
+
+    public void setAllianceName(String allianceName) {
+        this.allianceName = allianceName;
     }
 }

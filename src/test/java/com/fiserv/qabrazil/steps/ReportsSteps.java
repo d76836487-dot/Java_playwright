@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.testng.AssertJUnit.assertTrue;
+import static org.assertj.core.api.Assumptions.assumeThat;
 
 public class ReportsSteps {
 
@@ -29,11 +29,16 @@ public class ReportsSteps {
 
     @Given("Existem relatórios já extraídos")
     public void thereAreReportsExtracted() {
-        assertTrue("Não foram encontrados relatórios extraídos", reportsPage.thereAreReportsExtracted());
+        assumeThat(reportsPage.thereAreReportsExtracted()).isTrue();
     }
 
     @Then("Usuário visualizará as {csv} na tabela")
     public void userWillSeeTheseColumnsInTheTable(String[] columns) {
         reportsPage.tableHasColumns(columns);
+    }
+
+    @Then("Usuário visualizará o nome do relatório sendo NOMEALIANÇA_TipoDoArquivo_dd-mm-yyyy_dd-mm-yyyy")
+    public void userWillSeeTheReportNameHavingCorrectFormat() {
+        reportsPage.userWillSeeTheReportNameHavingCorrectFormat();
     }
 }

@@ -10,6 +10,7 @@ user-profile:
   apiHost: ${API_HOST}
   serviceContract: ${SERVICE_CONTRACT}
   institution: ${INSTITUTION}
+  allianceName: ${ALLIANCE_NAME}
 urls:
   gitlab: https://gitlab.onefiserv.net/
 framework:

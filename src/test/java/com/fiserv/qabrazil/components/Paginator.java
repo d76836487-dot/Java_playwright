@@ -24,9 +24,9 @@ public class Paginator extends BasePage {
     @Autowired
     private Page page;
 
-    public boolean thereIsPagination() {
+    public boolean thereIsNothingToPaginate() {
         // TODO: fix for testid
-        return waitUntilTrue(
+        return !waitUntilTrue(
                 () -> page.locator("//button[contains(@class,'pagination-button')]").count() > 0);
     }
 
@@ -39,8 +39,15 @@ public class Paginator extends BasePage {
         }
     }
 
+    public void forEach(Runnable runnable) {
+        if (this.thereIsNothingToPaginate()) return;
+        this.rewindPagination();
+
+        new PageIterator(page).stream().forEach(x -> runnable.run());
+    }
+
     public Boolean anyMatch(Supplier<Boolean> condition) {
-        if (!this.thereIsPagination()) return false;
+        if (this.thereIsNothingToPaginate()) return false;
         this.rewindPagination();
 
         return new PageIterator(page).anyMatch(condition);
