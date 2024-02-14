@@ -42,7 +42,7 @@ public class WeekReceiptScheduleComponent extends BasePage {
     public boolean receivablesAvailable() {
         // TODO: trocar para testId
         Locator locator = page.locator("#CtnAgendaRecebimentosSemana2");
-        return waitUntilTrue(3, () -> !locator.textContent().equals("Agenda de recebimentos da semanaVocê não possui nenhum recebimento previsto para essa semana."));
+        return waitUntilTrue(3, () -> !locator.textContent().equals("Agenda de recebimentos da semanaVocê não possui nenhum recebimento previsto para essa semana.Ver recebimentos detalhado"));
     }
 
     public void containsDatesAndMonths() {
@@ -86,7 +86,7 @@ public class WeekReceiptScheduleComponent extends BasePage {
 
     public void assertThatViewDetailedReceiptsButtonIsVisible() {
         // TODO: trocar para testId
-        Locator locator = page.locator("#CtnAgendaRecebimentosSemana2 .padding-top-s.text-align-right");
+        Locator locator = page.locator("#CtnAgendaRecebimentosSemana2").getByText("Ver recebimentos detalhado");
         assertThat(locator).isVisible();
         assertThat(locator).containsText("Ver recebimentos detalhado");
     }

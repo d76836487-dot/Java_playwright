@@ -18,6 +18,7 @@ public class WeekReceiptScheduleSteps {
     @Given("{shakespeareBoolean} Agenda de recebimentos da semana para exibir")
     public void weekReceiptScheduleLoadedCorrectly(boolean value) {
         assumeThat(weekReceiptScheduleComponent.receivablesAvailable())
+                .withFailMessage("Esperava *%s* agenda de recebimentos", value ? "existir" : "não existir")
                 .isEqualTo(value);
     }
 
