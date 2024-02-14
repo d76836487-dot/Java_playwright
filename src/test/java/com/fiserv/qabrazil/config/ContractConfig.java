@@ -14,6 +14,8 @@ public class ContractConfig {
 
     private String identity;
 
+    private String primaryCssClass;
+
     private String institutionTags;
 
     private String clientTags;
@@ -58,6 +60,14 @@ public class ContractConfig {
 
     public void setIdentity(String identity) {
         this.identity = identity;
+    }
+
+    public String getPrimaryCssClass() {
+        return primaryCssClass;
+    }
+
+    public void setPrimaryCssClass(String primaryCssClass) {
+        this.primaryCssClass = primaryCssClass;
     }
 
     public String getInstitutionTags() {

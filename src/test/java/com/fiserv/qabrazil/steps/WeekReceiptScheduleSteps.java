@@ -36,6 +36,11 @@ public class WeekReceiptScheduleSteps {
         weekReceiptScheduleComponent.containsNumberOfDeposits();
     }
 
+    @Then("usuário visualizará o dia \"hoje\" destacado e os dias anteriores com valores verdes e os próximos com letras pretas")
+    public void devoVisualizarODiaHojeDestacadoEOsDiasAnterioresComValoresVerdesEOsPróximosComLetrasPretas() {
+        weekReceiptScheduleComponent.containsHighlightedInformation();
+    }
+
     @Then("usuário visualizará a mensagem “Você não possui nenhum recebimento previsto para essa semana”")
     public void shouldSeeAMessageDoNotHaveReceiptForThisWeek() {
         weekReceiptScheduleComponent.assertThatThereAreNoReceivablesAvailableMessage();

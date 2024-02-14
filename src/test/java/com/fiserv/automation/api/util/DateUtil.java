@@ -23,6 +23,11 @@ public class DateUtil {
     @Autowired
     protected ContractConfig contractConfig;
 
+    public static boolean isWeekend(LocalDate date) {
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+        return DayOfWeek.SATURDAY.equals(dayOfWeek) || DayOfWeek.SUNDAY.equals(dayOfWeek);
+    }
+
     @PostConstruct
     public void init() {
         locale = Locale.forLanguageTag(contractConfig.getLocale());
@@ -53,6 +58,10 @@ public class DateUtil {
 
     public static String weekday(DayOfWeek dayOfWeek) {
         return today.getDayOfWeek().equals(dayOfWeek) ? "Hoje" : StringUtils.capitalize(dayOfWeek.getDisplayName(TextStyle.FULL, locale));
+    }
+
+    public static String shortWeekday(DayOfWeek dayOfWeek) {
+        return StringUtils.substringBefore(StringUtils.capitalize(dayOfWeek.getDisplayName(TextStyle.FULL, locale)), "-");
     }
 
     public static String month(LocalDate date) {

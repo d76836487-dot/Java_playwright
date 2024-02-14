@@ -3,6 +3,7 @@ package com.fiserv.qabrazil.pages;
 import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.util.Identifier;
+import com.fiserv.qabrazil.util.RegexUtil;
 import com.microsoft.playwright.Locator;
 
 import java.time.DayOfWeek;
@@ -11,6 +12,7 @@ import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static org.assertj.core.api.Assumptions.assumeThat;
 
 @ScenarioComponent
 public class WeekReceiptScheduleComponent extends BasePage {
@@ -114,6 +116,38 @@ public class WeekReceiptScheduleComponent extends BasePage {
         }
     }
 
+    public void containsHighlightedInformation() {
+        assumeThat(DateUtil.isWeekend(today))
+                .withFailMessage("Today is weekend.")
+                .isFalse();
+
+        Pattern orangeClass = Pattern.compile(contractConfig.getPrimaryCssClass());
+        Pattern grayClass = Pattern.compile("cor-cinza-claro");
+        Pattern greenColor = Pattern.compile(RegexUtil.escape("color: rgb(88, 207, 33)"));
+        Pattern grayColor = Pattern.compile(RegexUtil.escape("color: rgb(156, 156, 156)"));
+
+        for (LocalDate date : new LocalDate[] { monday, tuesday, wednesday, thursday, friday }) {
+            String dayOfWeek = DateUtil.shortWeekday(date.getDayOfWeek());
+
+            Locator weekday = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Dia da semana " + dayOfWeek).testId());
+            Locator netValue = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Valor " + dayOfWeek).testId());
+            Locator deposits = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Qtd Depósitos " + dayOfWeek).testId());
+
+            if (date.equals(today)) {
+                assertThat(weekday).hasClass(orangeClass);
+            } else {
+                assertThat(weekday).not().hasClass(orangeClass);
+            }
+
+            if (date.isAfter(today)) {
+                assertThat(netValue).hasAttribute("style", grayColor);
+            } else {
+                assertThat(netValue).hasAttribute("style", greenColor);
+                assertThat(deposits).hasClass(grayClass);
+            }
+        }
+    }
+
     public void assertThatThereAreNoReceivablesAvailableMessage() {
         // TODO: trocar para testId
         Locator locator = page.locator("#CtnAgendaRecebimentosSemana2");
@@ -125,16 +159,6 @@ public class WeekReceiptScheduleComponent extends BasePage {
         Locator locator = page.locator("#CtnAgendaRecebimentosSemana2").getByText("Ver recebimentos detalhado");
         assertThat(locator).isVisible();
         assertThat(locator).containsText("Ver recebimentos detalhado");
-    }
-
-    private Pattern[] netValueAndNumberOfDeposits(LocalDate date) {
-        Pattern netValue = netValue();
-        Pattern numberOfDeposits = numberOfDeposits();
-        if (date.isAfter(today)) {
-            return new Pattern[] {netValue};
-        } else {
-            return new Pattern[] {netValue, numberOfDeposits};
-        }
     }
 
     private static Pattern netValue() {

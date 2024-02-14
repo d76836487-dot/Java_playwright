@@ -3,6 +3,7 @@ user-profile:
   user: ${CONTRACT_USER}
   password: ${CONTRACT_PASSWORD}
   identity: ${CONTRACT_IDENTITY}
+  primaryCssClass: ${PRIMARY_CSS_CLASS}
   institutionTags: ${INSTITUTION_TAGS}
   clientTags: ${CLIENT_TAGS}
   allowAdvancePayment: ${ALLOW_ADVANCE_PAYMENT}
