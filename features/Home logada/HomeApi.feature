@@ -4,6 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada_Conferindo_Com_Api
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
+@Zephyr:Automation=Automated
 Feature: Home Logada Conferindo Com Api
 
   Background:

@@ -4,6 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Vendas/Agenda_de_recebimentos_da_semana
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
+@Zephyr:Automation=Automated
 Feature: Agenda de recebimentos da semana
 
   OBJETIVO:

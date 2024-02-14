@@ -4,6 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Consulta_de_Produtos/Consulta_vendas
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
+@Zephyr:Automation=Automated
 #noinspection CucumberUndefinedStep
 Feature: Consulta vendas
 

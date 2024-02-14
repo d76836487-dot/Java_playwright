@@ -4,6 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Relatorios/Consultar_Relatorios
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
+@Zephyr:Automation=Automated
 Feature: Consultar Relatorios
 
   # TODO: fix all scenarios when we have data-testid for side menu

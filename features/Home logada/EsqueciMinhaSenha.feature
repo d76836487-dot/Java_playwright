@@ -4,6 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Home_logada/Esqueci_Minha_Senha
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
+@Zephyr:Automation=Automated
 Feature: Esqueci Minha Senha
 
   Background:

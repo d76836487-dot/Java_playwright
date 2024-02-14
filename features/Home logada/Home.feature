@@ -4,6 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
+@Zephyr:Automation=Automated
 Feature: Home Logada
 
   Background:

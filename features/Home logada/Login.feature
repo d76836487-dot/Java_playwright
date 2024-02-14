@@ -4,6 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Home_logada/Login
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
+@Zephyr:Automation=Automated
 Feature: Login
 
   @TestCaseKey=SMP-T10

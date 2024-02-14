@@ -4,6 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Acesso_Rapido/Acesso_Rápido
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
+@Zephyr:Automation=Automated
 Feature: Acesso Rápido
 
   OBJETIVO:
