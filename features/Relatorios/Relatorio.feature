@@ -41,6 +41,7 @@ Feature: Consultar Relatorios
       | colunas                                                                    |
       | Nome Do Arquivo, Documento/EC, Tipo do Arq, Solicitado em, Periodo, Baixar |
 
+  @TestCaseKey=SMP-T147
   Scenario: Colunas nome do arquivo
     Given Usuário acessa página de Relatórios
     And Existem relatórios já extraídos
