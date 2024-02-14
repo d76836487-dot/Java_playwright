@@ -73,6 +73,7 @@ Feature: Acesso Rápido
     When usuário clica no "item Meu negócio" na "Home - acesso rápido"
     Then será direcionado para a jornada de "Negócio"
 
+    @NaoPermiteSolicitações
   @TestCaseKey=SMP-T32
   Scenario: Solicitações no acesso rápido
     Given que estou na tela “início” do Portal

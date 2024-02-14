@@ -14,6 +14,7 @@ public class TagHook {
     static private final List<Set<String>> tagGroups = List.of(
             Set.of("@pt-br","@es-ar"),
             Set.of("@PermiteAdiantamento","@NaoPermiteAdiantamento"),
+            Set.of("@PermiteSolicitações","@NaoPermiteSolicitações"),
             Set.of("@MDRPadrão","@MDRFlex"));
 
     @Autowired
