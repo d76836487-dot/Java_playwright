@@ -25,6 +25,7 @@ public class RequestMonitoring {
     public static void startMonitoringRequests(Page page, ContractConfig contractConfig) {
         hostToMonitor = contractConfig.getUrl();
         startMonitoringRequests = (new Date()).getTime();
+        requestsWithoutResponse = 0;
         page.onRequest(RequestMonitoring::newRequest);
         page.onResponse(RequestMonitoring::gotResponse);
     }
@@ -49,7 +50,7 @@ public class RequestMonitoring {
     }
 
     public static void ensureNoFlyingRequests() {
-        if (!waitUntilTrue(() -> requestsWithoutResponse == 0)) {
+        if (!waitUntilTrue(() -> requestsWithoutResponse <= 0)) {
             log.warn(String.format("Ainda existem %d requisições HTTP sem respostas. Seus testes podem ter variação e falsos positivos", requestsWithoutResponse));
         }
     }
