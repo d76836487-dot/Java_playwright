@@ -4,7 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Acesso_Rapido/Acesso_Rápido
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:Automation=Automated
+@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Acesso Rápido
 
   OBJETIVO:
