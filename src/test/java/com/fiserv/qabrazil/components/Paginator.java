@@ -7,7 +7,12 @@ import com.microsoft.playwright.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import static com.fiserv.qabrazil.util.WaitUtil.sleep;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
@@ -38,20 +43,41 @@ public class Paginator extends BasePage {
         if (!this.thereIsPagination()) return false;
         this.rewindPagination();
 
-        return paginateUntil(condition);
+        return new PageIterator(page).anyMatch(condition);
     }
 
-    private boolean paginateUntil(Supplier<Boolean> supplier) {
-        // TODO: fix for testid
-        Locator nextPageBtn = page.locator("//button[contains(@class,'pagination-button')]").last();
-        boolean anyMatches;
-        do {
-            anyMatches = supplier.get();
-            if(nextPageBtn.isEnabled()) {
+    private static class PageIterator implements Iterator<Void> {
+
+        final Locator nextPageBtn;
+        private boolean firstIteration;
+
+        PageIterator(Page page) {
+            // TODO: fix for testid
+            this.nextPageBtn = page.locator("//button[contains(@class,'pagination-button')]").last();
+            firstIteration = true;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return firstIteration || nextPageBtn.isEnabled();
+        }
+
+        @Override
+        public Void next() {
+            if (firstIteration) {
+                firstIteration = false;
+            } else {
                 nextPageBtn.click();
             }
-        } while (nextPageBtn.isEnabled() && !anyMatches);
+            return null;
+        }
 
-        return anyMatches;
+        public boolean anyMatch(Supplier<Boolean> supplier) {
+            return stream().anyMatch(x -> supplier.get());
+        }
+
+        private Stream<Object> stream() {
+            return StreamSupport.stream(Spliterators.spliteratorUnknownSize(this, Spliterator.ORDERED), false);
+        }
     }
 }
