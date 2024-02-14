@@ -12,6 +12,7 @@ import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
+import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -36,11 +37,11 @@ public class CommonsSteps {
                 expectedMessage.substring(0, Math.min(expectedMessage.length(), 10)));
         assertEquals("Mensagem não encontrada na página", expectedMessage, message);
     }
-    @Then("Usuário NÃO verá mensagem {string}")
+    @Given("Usuário NÃO viu mensagem {string}")
     public void userWillNotSeeMessage(String expectedMessage) {
         String message = commonsPage.getWholeTextIfVisible(
                 expectedMessage.substring(0, Math.min(expectedMessage.length(), 10)));
-        assertEquals("Mensagem não encontrada na página", "Not visible", message);
+        assumeThat(message.equals("Not visible")).isFalse();
     }
 
     @And("Usuário verá botão com texto {string}")

@@ -30,7 +30,7 @@ Feature: Home Logada Conferindo Com Api
   @TestCaseKey=SMP-T31
   Scenario: Compara últimas vendas na Home com a API
     Given Usuário acessou o Home
-    And Usuário NÃO verá mensagem "Você não possui nenhuma venda no último mês"
+    And Usuário NÃO viu mensagem "Você não possui nenhuma venda no último mês"
     Then 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API
 
   @ignore
