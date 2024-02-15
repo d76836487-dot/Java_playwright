@@ -125,7 +125,7 @@ public class HomeApiSteps {
     }
 
     private int getQtyDeposits(String weekDay) {
-        String qtyDepositsPageId = TestIdsConfig.getTestId("Home - Agenda Recebimento - Qtd Depositos " + weekDay);
+        String qtyDepositsPageId = TestIdsConfig.getTestId("Home - Agenda Recebimento - Qtd Depósitos " + weekDay);
         if (!commonsPage.elementIsVisibleNoWait(qtyDepositsPageId)) return 0;
         return Integer.parseInt(
                     commonsPage.getTextFromElement(qtyDepositsPageId).replaceAll("\\D", ""));
