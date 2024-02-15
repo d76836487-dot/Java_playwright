@@ -97,37 +97,3 @@ Feature: Acesso Rápido
 #*Dado* que estou na tela “início” do Portal
 #*Então* devo visualizar uma espécie de carrossel com quatro funcionalidades “default” sendo elas “Antecipação”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
 #
-#*Dado* que estou na tela “início” do Portal
-#*Quando* clicar no botão “Personalizar”
-#*Então* devo visualizar a um modal com essas funcionalidades para escolher - Antecipação, Relatórios, Documentos, Informe de rendimento, Vendas, Detalhe de pagamentos, Meu negócio e solicitações. (Frame 5540)
-#
-#{panel}
-#h2. INFORMAÇÕES ADICIONAIS
-#{panel:title=SISTEMAS ENVOLVIDOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1} Preencher lista de sistemas
-#{panel}
-#{panel:title=CANAIS ENVOLVIDOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1} Portal
-#{panel}
-#{panel:title=FORA DO ESCOPO|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#Mudanças nas jornadas que decorrem do botão “ver tudo”
-#{panel}
-#{panel:title=TECNOLOGIAS ENVOLVIDAS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1} Preencher lista de sistemas
-#{panel}
-#{panel:title=ARTEFATOS GERADOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#FIGMA https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
-#{panel}
-#{panel:title=INTEGRAÇÕES|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#integração com API do BW
-#{panel}
-#{panel:title=TELAS/PROTÓTIPOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
-#{panel}
-#{panel:title=TAQUEAMENTO|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#Solicito tagueamento da jornada end to end conforme PPT anexado na story.
-#{panel}
-#{panel:title=SISTEMA CROSS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#integração com BW
-#{panel}
-#{panel:title=LIGA/DESLIGA|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#Sim. Necessário desenvolver todos os cards com feature toggle.
-#{panel}
-#

@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.automation.playwright.configuration.StorageState;
+import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.AriaRole;
@@ -24,6 +25,9 @@ public class LoginPage extends BasePage {
     @Autowired
     Browser browser;
 
+    @Autowired
+    HeaderComponent headerComponent;
+
     public boolean pageHasImageWith(String contract) {
         Pattern pattern = Pattern.compile(String.format(".*%s", contract));
         System.out.println(page.getByTestId("header-brand-img"));
@@ -41,6 +45,7 @@ public class LoginPage extends BasePage {
             login(contractConfig.getUrl(), contractConfig.getUser(), contractConfig.getPassword());
         }
         startMonitoringRequests(page, contractConfig);
+        headerComponent.selectShowValuesButton(true);
     }
 
     public void loginAndStartMonitoringRequests(String url, String user, String pwd) {
