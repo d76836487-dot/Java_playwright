@@ -64,6 +64,7 @@ Feature: Home Logada
     Given Usuário acessou o Home
     Then Total de Recebimentos será igual ao recebimento de hoje + futuro previsto
 
+  @TestCaseKey=SMP-T148
   Scenario: Ocultar valores da Home
     Given Usuário acessou o Home
     When usuário clica no "Ocultar Valores" no "Header"
@@ -78,7 +79,6 @@ Feature: Home Logada
     And Usuário verá em "Home - Agenda Recebimento - Valor Quarta" o valor "R$ ••••" - se existir
     And Usuário verá em "Home - Agenda Recebimento - Valor Quinta" o valor "R$ ••••" - se existir
     And Usuário verá em "Home - Agenda Recebimento - Valor Sexta" o valor "R$ ••••" - se existir
-
 
   # História não é testável...
   #*Dado* que eu faça o login no Portal
