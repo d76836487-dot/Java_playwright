@@ -11,6 +11,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.assertEquals;
@@ -69,6 +71,24 @@ public class CommonsSteps {
         String testId = identifier.testId();
         String textFound = commonsPage.getTextFromElement(testId);
         assertEquals(expectedText, textFound);
+    }
+
+    @Then("Usuário verá em {identifier} o valor {string} - se existir")
+    public void matchValuePerFieldOptional(Identifier identifier, String expectedText) {
+        String testId = identifier.testId();
+        if (commonsPage.elementIsVisibleNoWait(testId)) {
+            String textFound = commonsPage.getTextFromElement(testId);
+            assertEquals(expectedText, textFound);
+        }
+    }
+
+    @Then("Usuário verá em todos os campos {identifier} o valor {string} - se existir")
+    public void matchValueAllField(Identifier identifier, String expectedText) {
+        String testId = identifier.testId();
+        List<String> allTextsFound = commonsPage.getAllTextsFromElement(testId);
+        for (String textFound: allTextsFound) {
+            assertEquals(expectedText, textFound);
+        }
     }
 
     @Then("será direcionado para a jornada de {string}")

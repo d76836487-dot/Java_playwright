@@ -64,6 +64,22 @@ Feature: Home Logada
     Given Usuário acessou o Home
     Then Total de Recebimentos será igual ao recebimento de hoje + futuro previsto
 
+  Scenario: Ocultar valores da Home
+    Given Usuário acessou o Home
+    When usuário clica no "Ocultar Valores" no "Header"
+    Then Usuário verá em "Home - Card Vendas Hoje - Valor Vendas Hoje" o valor "R$ ••••"
+    And Usuário verá em "Home - Card Recebimento - Total Recebimento" o valor "R$ ••••"
+    And Usuário verá em "Home - Card Recebimento - Recebimento Hoje" o valor "R$ ••••"
+    And Usuário verá em "Home - Card Recebimento - Recebimento Previsto" o valor "R$ ••••"
+    And Usuário verá em todos os campos "Home - Card Últimas Vendas - Valor" o valor "R$ ••••" - se existir
+    And Usuário verá em todos os campos "Home - Card Antecipação - Valor" o valor "R$ •••• /" - se existir
+    And Usuário verá em "Home - Agenda Recebimento - Valor Segunda" o valor "R$ ••••" - se existir
+    And Usuário verá em "Home - Agenda Recebimento - Valor Terça" o valor "R$ ••••" - se existir
+    And Usuário verá em "Home - Agenda Recebimento - Valor Quarta" o valor "R$ ••••" - se existir
+    And Usuário verá em "Home - Agenda Recebimento - Valor Quinta" o valor "R$ ••••" - se existir
+    And Usuário verá em "Home - Agenda Recebimento - Valor Sexta" o valor "R$ ••••" - se existir
+
+
   # História não é testável...
   #*Dado* que eu faça o login no Portal
   #*Quando* abrir a tela principal “início”

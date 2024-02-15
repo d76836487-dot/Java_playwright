@@ -53,6 +53,8 @@ public class TestIdsConfig {
             entry("Home - Card Últimas Vendas - Data", "home-card-ultimas-vendas-text-data-venda"),
             entry("Home - Card Últimas Vendas - Hora", "home-card-ultimas-vendas-text-hora-venda"),
 
+            entry("Home - Card Antecipação - Valor", "home-card-antecipacao-text-valor"),
+
             entry("Home - acesso rápido - item Antecipação", "home-card-personalizar-link-antecipacao"),
             entry("Home - acesso rápido - item Relatórios", "home-card-personalizar-link-relatorios"),
             entry("Home - acesso rápido - item Informe de rendimento", "home-card-personalizar-link-informe-rendimento"),
@@ -129,6 +131,7 @@ public class TestIdsConfig {
 
     // TODO: trocar por data-testid
     private static final Map<String, String> otherSelectors = Map.ofEntries(
+            entry("Header - Ocultar Valores", "//span[contains(text(),'Ocultar valores')]")
     );
 
     public static String getTestId(String identifier) {
