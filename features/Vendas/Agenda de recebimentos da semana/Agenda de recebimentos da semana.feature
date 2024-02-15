@@ -37,6 +37,7 @@ Feature: Agenda de recebimentos da semana
     When visualizar o box "Agenda de recebimentos da semana"
     Then usuário visualizará 5 dias com as respectivas informações data, mês, dia da semana, valor líquido, e quantidade de depósitos realizados
 
+  @TestCaseKey=SMP-T150
   Scenario: destaque para as informações da agenda de recebimentos
     Given que estou na tela “início” do Portal
     And existir Agenda de recebimentos da semana para exibir
@@ -49,3 +50,4 @@ Feature: Agenda de recebimentos da semana
     And não existir Agenda de recebimentos da semana para exibir
     Then usuário visualizará a mensagem “Você não possui nenhum recebimento previsto para essa semana”
     And usuário visualizará um botão "Ver recebimentos detalhado"
+
