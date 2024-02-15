@@ -104,7 +104,7 @@ public class HomeApiSteps {
 
         List<Number> valuesFromPage = new ArrayList<>();
         List<Number> valuesFromApi = new ArrayList<>();
-        List<String> allWeekDays = List.of("Segunda", "Terca", "Quarta", "Quinta", "Sexta");
+        List<String> allWeekDays = List.of("Segunda", "Terça", "Quarta", "Quinta", "Sexta");
         for(String weekDay: allWeekDays) {
             String dayPageId = TestIdsConfig.getTestId("Home - Agenda Recebimento - Dia " + weekDay);
             String valuePageId = TestIdsConfig.getTestId("Home - Agenda Recebimento - Valor " + weekDay);

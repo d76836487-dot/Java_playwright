@@ -47,16 +47,20 @@ public class DateUtil {
         return LocalDate.parse(dateFromPage, DateTimeFormatter.ofPattern("yyyyMMdd"));
     }
 
+    public static String day(LocalDate date) {
+        return date.format(DateTimeFormatter.ofPattern("dd", locale));
+    }
+
     public static String weekday(DayOfWeek dayOfWeek) {
         return today.getDayOfWeek().equals(dayOfWeek) ? "Hoje" : StringUtils.capitalize(dayOfWeek.getDisplayName(TextStyle.FULL, locale));
     }
 
-    public static String[] dateAndMonth(LocalDate date) {
-        String day = date.format(DateTimeFormatter.ofPattern("dd", locale));
-
+    public static String month(LocalDate date) {
         String monthName = date.getMonth().getDisplayName(TextStyle.FULL, locale);
-        monthName = StringUtils.capitalize(monthName).substring(0, 3);
+        return StringUtils.capitalize(monthName).substring(0, 3);
+    }
 
-        return new String[] {day, monthName};
+    public static String[] dateAndMonth(LocalDate date) {
+        return new String[] {day(date), month(date)};
     }
 }

@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.Identifier;
 import com.microsoft.playwright.Locator;
 
 import java.time.DayOfWeek;
@@ -35,37 +36,82 @@ public class WeekReceiptScheduleComponent extends BasePage {
         return waitUntilTrue(3, () -> !locator.textContent().equals("Agenda de recebimentos da semanaVocê não possui nenhum recebimento previsto para essa semana.Ver recebimentos detalhado"));
     }
 
-    public void containsDatesAndMonths() {
-        // TODO: trocar para testId
-        assertThat(page.locator("#b12-Segunda .margin-left-xs span")).containsText(DateUtil.dateAndMonth(monday));
-        assertThat(page.locator("#b12-Terca .margin-left-xs span")).containsText(DateUtil.dateAndMonth(tuesday));
-        assertThat(page.locator("#b12-Quarta .margin-left-xs span")).containsText(DateUtil.dateAndMonth(wednesday));
-        assertThat(page.locator("#b12-Quinta .margin-left-xs span")).containsText(DateUtil.dateAndMonth(thursday));
-        assertThat(page.locator("#b12-Sexta .margin-left-xs span")).containsText(DateUtil.dateAndMonth(friday));
+    public void containsDates() {
+        Locator mondayDay = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Dia Segunda").testId());
+        Locator tuesdayDay = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Dia Terça").testId());
+        Locator wednesdayDay = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Dia Quarta").testId());
+        Locator thursdayDay = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Dia Quinta").testId());
+        Locator fridayDay = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Dia Sexta").testId());
+
+        assertThat(mondayDay).containsText(DateUtil.day(monday));
+        assertThat(tuesdayDay).containsText(DateUtil.day(tuesday));
+        assertThat(wednesdayDay).containsText(DateUtil.day(wednesday));
+        assertThat(thursdayDay).containsText(DateUtil.day(thursday));
+        assertThat(fridayDay).containsText(DateUtil.day(friday));
+    }
+
+    public void containsMonths() {
+        Locator mondayMonth = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Mês Segunda").testId());
+        Locator tuesdayMonth = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Mês Terça").testId());
+        Locator wednesdayMonth = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Mês Quarta").testId());
+        Locator thursdayMonth = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Mês Quinta").testId());
+        Locator fridayMonth = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Mês Sexta").testId());
+
+        assertThat(mondayMonth).containsText(DateUtil.month(monday));
+        assertThat(tuesdayMonth).containsText(DateUtil.month(tuesday));
+        assertThat(wednesdayMonth).containsText(DateUtil.month(wednesday));
+        assertThat(thursdayMonth).containsText(DateUtil.month(thursday));
+        assertThat(fridayMonth).containsText(DateUtil.month(friday));
     }
 
     public void containsWeekDates() {
-        String expectedMonday = DateUtil.weekday(DayOfWeek.MONDAY);
-        String expectedTuesday = DateUtil.weekday(DayOfWeek.TUESDAY);
-        String expectedWednesday = DateUtil.weekday(DayOfWeek.WEDNESDAY);
-        String expectedThursday = DateUtil.weekday(DayOfWeek.THURSDAY);
-        String expectedFriday = DateUtil.weekday(DayOfWeek.FRIDAY);
+        Locator mondayWeekday = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Dia da semana Segunda").testId());
+        Locator tuesdayWeekday = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Dia da semana Terça").testId());
+        Locator wednesdayWeekday = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Dia da semana Quarta").testId());
+        Locator thursdayWeekday = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Dia da semana Quinta").testId());
+        Locator fridayWeekday = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Dia da semana Sexta").testId());
 
-        // TODO: trocar para testId
-        assertThat(page.locator("#b12-Segunda .padding-top-s")).containsText(expectedMonday);
-        assertThat(page.locator("#b12-Terca .padding-top-s")).containsText(expectedTuesday);
-        assertThat(page.locator("#b12-Quarta .padding-top-s")).containsText(expectedWednesday);
-        assertThat(page.locator("#b12-Quinta .padding-top-s")).containsText(expectedThursday);
-        assertThat(page.locator("#b12-Sexta .padding-top-s")).containsText(expectedFriday);
+        assertThat(mondayWeekday).containsText(DateUtil.weekday(DayOfWeek.MONDAY));
+        assertThat(tuesdayWeekday).containsText(DateUtil.weekday(DayOfWeek.TUESDAY));
+        assertThat(wednesdayWeekday).containsText(DateUtil.weekday(DayOfWeek.WEDNESDAY));
+        assertThat(thursdayWeekday).containsText(DateUtil.weekday(DayOfWeek.THURSDAY));
+        assertThat(fridayWeekday).containsText(DateUtil.weekday(DayOfWeek.FRIDAY));
     }
 
-    public void containsNetValueAndNumberOfDeposits() {
-        // TODO: trocar para testId
-        assertThat(page.locator("#b12-Segunda .text-align-right span")).containsText(netValueAndNumberOfDeposits(monday));
-        assertThat(page.locator("#b12-Terca .text-align-right span")).containsText(netValueAndNumberOfDeposits(tuesday));
-        assertThat(page.locator("#b12-Quarta .text-align-right span")).containsText(netValueAndNumberOfDeposits(wednesday));
-        assertThat(page.locator("#b12-Quinta .text-align-right span")).containsText(netValueAndNumberOfDeposits(thursday));
-        assertThat(page.locator("#b12-Sexta .text-align-right span")).containsText(netValueAndNumberOfDeposits(friday));
+    public void containsNetValues() {
+        Locator mondayNetValue = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Valor Segunda").testId());
+        Locator tuesdayNetValue = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Valor Terça").testId());
+        Locator wednesdayNetValue = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Valor Quarta").testId());
+        Locator thursdayNetValue = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Valor Quinta").testId());
+        Locator fridayNetValue = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Valor Sexta").testId());
+
+        assertThat(mondayNetValue).containsText(netValue());
+        assertThat(tuesdayNetValue).containsText(netValue());
+        assertThat(wednesdayNetValue).containsText(netValue());
+        assertThat(thursdayNetValue).containsText(netValue());
+        assertThat(fridayNetValue).containsText(netValue());
+    }
+
+    public void containsNumberOfDeposits() {
+        Locator mondayDeposits = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Qtd Depósitos Segunda").testId());
+        Locator tuesdayDeposits = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Qtd Depósitos Terça").testId());
+        Locator wednesdayDeposits = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Qtd Depósitos Quarta").testId());
+        Locator thursdayDeposits = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Qtd Depósitos Quinta").testId());
+        Locator fridayDeposits = page.getByTestId(Identifier.from("Home - Agenda Recebimento - Qtd Depósitos Sexta").testId());
+
+        assertNumberOfDeposits(monday, mondayDeposits);
+        assertNumberOfDeposits(tuesday, tuesdayDeposits);
+        assertNumberOfDeposits(wednesday, wednesdayDeposits);
+        assertNumberOfDeposits(thursday, thursdayDeposits);
+        assertNumberOfDeposits(friday, fridayDeposits);
+    }
+
+    private void assertNumberOfDeposits(LocalDate date, Locator mondayDeposits) {
+        if (!date.isAfter(today)) {
+            assertThat(mondayDeposits).containsText(numberOfDeposits());
+        } else {
+            assertThat(mondayDeposits).hasCount(0);
+        }
     }
 
     public void assertThatThereAreNoReceivablesAvailableMessage() {
@@ -82,12 +128,20 @@ public class WeekReceiptScheduleComponent extends BasePage {
     }
 
     private Pattern[] netValueAndNumberOfDeposits(LocalDate date) {
-        Pattern netValue = Pattern.compile("R\\$[\\d.]+,\\d\\d");
-        Pattern numberOfDeposits = Pattern.compile("\\d+ depositos");
+        Pattern netValue = netValue();
+        Pattern numberOfDeposits = numberOfDeposits();
         if (date.isAfter(today)) {
             return new Pattern[] {netValue};
         } else {
             return new Pattern[] {netValue, numberOfDeposits};
         }
+    }
+
+    private static Pattern netValue() {
+        return Pattern.compile("R\\$[\\d.]+,\\d\\d");
+    }
+
+    private static Pattern numberOfDeposits() {
+        return Pattern.compile("\\d+ depositos");
     }
 }

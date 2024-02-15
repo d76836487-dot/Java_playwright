@@ -29,9 +29,11 @@ public class WeekReceiptScheduleSteps {
 
     @Then("usuário visualizará 5 dias com as respectivas informações data, mês, dia da semana, valor líquido, e quantidade de depósitos realizados")
     public void shouldSeeAllRequiredInformation() {
-        weekReceiptScheduleComponent.containsDatesAndMonths();
+        weekReceiptScheduleComponent.containsDates();
+        weekReceiptScheduleComponent.containsMonths();
         weekReceiptScheduleComponent.containsWeekDates();
-        weekReceiptScheduleComponent.containsNetValueAndNumberOfDeposits();
+        weekReceiptScheduleComponent.containsNetValues();
+        weekReceiptScheduleComponent.containsNumberOfDeposits();
     }
 
     @Then("usuário visualizará a mensagem “Você não possui nenhum recebimento previsto para essa semana”")
