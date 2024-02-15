@@ -15,7 +15,7 @@ Feature: Filtros Histórico de Vendas
   Scenario Outline: Filtrar histórico de vendas por Produtos
     When Existem vendas com "produto" tipo "<tipoDeProduto>"
     And Usuário filtra por tudo, exceto "<tipoDeProduto>", em "Produtos (0)"
-    Then Serão filtradas as vendas com "produto" tipo "<tipoDeProduto>"
+    Then Serão filtradas as vendas com produto "<tipoDeProduto>"
     @pt-br
     Examples:
       | tipoDeProduto        |
@@ -39,7 +39,7 @@ Feature: Filtros Histórico de Vendas
 
   @TestCaseKey=SMP-T21
   Scenario Outline: Filtrar histórico de vendas por bandeira
-    When Usuário acessa Vendas Hoje
+    Given Usuário acessa Vendas Hoje
     And Existem vendas com bandeira "<bandeira>"
     When Usuário filtra por tudo, exceto "<bandeira>", em "<grupo filtro>"
     Then Serão filtradas as vendas com bandeira "<bandeira>"
@@ -51,7 +51,7 @@ Feature: Filtros Histórico de Vendas
 
   @TestCaseKey=SMP-T22
   Scenario Outline: Filtrar histórico de vendas por status e bandeira
-    When Usuário acessa Vendas Hoje
+    Given Usuário acessa Vendas Hoje
     And Existem vendas com status "<status venda>"
     And Existem vendas com bandeira "<bandeira>"
     When Usuário filtra por tudo, exceto "<status venda>", em "<filtro status>"

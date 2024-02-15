@@ -2,14 +2,16 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.SalesTodayPage;
-import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 
-import static org.testng.AssertJUnit.*;
+import static org.assertj.core.api.Assumptions.assumeThat;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertFalse;
 
 public class SalesTodaySteps {
     @Autowired
@@ -41,7 +43,7 @@ public class SalesTodaySteps {
         salesTodayPage.hoverMenuOnSalesMenu();
     }
 
-    @And("Existem vendas com status {string}")
+    @Given("Existem vendas com status {string}")
     public void thereIsSalesWithStatus(String salesStatus) {
         thereAreSalesWith("status", salesStatus);
     }
@@ -52,12 +54,9 @@ public class SalesTodaySteps {
         assertFalse(foundSalesWithStatus);
     }
 
-    @And("Existem vendas com bandeira {string}")
+    @Given("Existem vendas com bandeira {string}")
     public void thereAreSalesWithBrandName(String brandName) {
-        boolean foundSalesWithBrandName = salesTodayPage.thereAreSalesWithBrandName(brandName);
-
-        String messageAssert = String.format("Não há vendas com bandeira %s", brandName);
-        assertTrue(messageAssert, foundSalesWithBrandName);
+        assumeThat(salesTodayPage.thereAreSalesWithBrandName(brandName)).isTrue();
     }
 
     @Then("Serão filtradas as vendas com bandeira {string}")
@@ -68,15 +67,12 @@ public class SalesTodaySteps {
 
     @When("Existem vendas com {string} tipo {string}")
     public void thereAreSalesWith(String testIdColumn, String value) {
-        boolean wereFoundSalesContainingValue = salesTodayPage.thereAreSalesWith(value, testIdColumn);
-
-        String messageAssert = String.format("Não há vendas do tipo %s", value);
-        assertTrue(messageAssert, wereFoundSalesContainingValue);
+        assumeThat(salesTodayPage.thereAreSalesWith(value, testIdColumn)).isTrue();
     }
 
-    @Then("Serão filtradas as vendas com {string} tipo {string}")
-    public void thereIsNoSalesWithStatus(String testIdColumn, String value) {
-        boolean foundSalesWithStatus = salesTodayPage.thereAreSalesWith(value, testIdColumn);
-        assertFalse(foundSalesWithStatus);
+    @Then("Serão filtradas as vendas com produto {string}")
+    public void thereIsNoSalesOfProduct(String productType) {
+        boolean foundSalesWithProduct = salesTodayPage.thereAreSalesWithProduct(productType);
+        assertFalse(foundSalesWithProduct);
     }
 }

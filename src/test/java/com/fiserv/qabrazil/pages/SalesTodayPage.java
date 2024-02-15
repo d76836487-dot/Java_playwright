@@ -42,6 +42,10 @@ public class SalesTodayPage extends CheckedBasePage {
     public boolean thereAreSalesWithBrandName(String brandName) {
         return thereAreSalesWith(brandName, "vendas-hoje-coluna-bandeira");
     }
+
+    public boolean thereAreSalesWithProduct(String brandName) {
+        return thereAreSalesWith(brandName, "vendas-hoje-coluna-produto");
+    }
     public boolean thereAreSalesWith(String textLookingFor, String testId) {
         return paginator.anyMatch(() -> findSalesWithinPage(textLookingFor, testId));
     }
@@ -49,6 +53,6 @@ public class SalesTodayPage extends CheckedBasePage {
     private boolean findSalesWithinPage(String textLookingFor, String testId) {
         Locator salesStatusLabel = page.getByTestId(Pattern.compile(testId));
         return waitUntilTrue(2, () ->
-                salesStatusLabel.filter(new Locator.FilterOptions().setHasText(textLookingFor)).count() > 0);
+                salesStatusLabel.allTextContents().stream().anyMatch(text -> text.equals(textLookingFor)));
     }
 }
