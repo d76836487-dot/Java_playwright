@@ -58,8 +58,9 @@ public class LoginSteps {
 
     @When("Usuário loga com senha errada")
     public void userLogsInWithWrongPassword() {
-        loginPage.login(config.getUrl(), config.getUser(), "senhaerrada");
+        loginPage.loginAndStartMonitoringRequests(config.getUrl(), config.getUser(), "senhaerrada");
     }
+
     @Given("Usuário clicou no botão esqueci minha senha")
     public void userClickedForgotMyPasswordButton() {
         loginPage.clickOnForgotMyPasswordButton();

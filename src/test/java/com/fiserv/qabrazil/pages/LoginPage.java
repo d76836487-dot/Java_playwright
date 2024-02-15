@@ -43,6 +43,11 @@ public class LoginPage extends BasePage {
         startMonitoringRequests(page, contractConfig);
     }
 
+    public void loginAndStartMonitoringRequests(String url, String user, String pwd) {
+        login(url, user, pwd);
+        startMonitoringRequests(page, contractConfig);
+    }
+
     public void login(String url, String user, String pwd) {
         goTo(url);
         page.getByTestId("login").pressSequentially(user);

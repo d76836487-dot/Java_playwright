@@ -25,6 +25,7 @@ Feature: Login
   @TestCaseKey=SMP-T13
   Scenario Outline: Usuário tenta logar com senha errada
     When Usuário loga com senha errada
+    And Todas as requisições HTTP foram respondidas
     Then Usuário verá mensagem "<descrição>"
     @pt-br
     Examples:
