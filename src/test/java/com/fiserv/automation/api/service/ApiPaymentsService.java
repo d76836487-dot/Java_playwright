@@ -68,11 +68,14 @@ public class ApiPaymentsService {
         double totalPayment = dailyPayment.getValue().stream()
                 .mapToDouble(PaymentSummaryDto::getPagamentoLiquidoTotal)
                 .sum();
+        int qtyDeposits = dailyPayment.getValue().stream()
+                .mapToInt(PaymentSummaryDto::getQuantidade)
+                .sum();
         String[] weekDayMonth = dateAndMonth(convertDateFromPageToLocale(paymentDate));
 
         return new WeeklyScheduleDto(
                 paymentDate.substring(6, 8),
-                weekDayMonth[1], weekDayMonth[0], totalPayment, dailyPayment.getValue().size());
+                weekDayMonth[1], weekDayMonth[0], totalPayment, qtyDeposits);
     }
 
     private PagedPaymentDto getPayments(String apiAccessToken, String ec, String monday, String today) {

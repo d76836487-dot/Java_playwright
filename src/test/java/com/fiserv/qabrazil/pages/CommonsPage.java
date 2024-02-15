@@ -59,6 +59,11 @@ public class CommonsPage extends BasePage {
         return new PageObject(newTab);
     }
 
+    public boolean elementIsVisibleNoWait(String dataTestId) {
+        Locator locator = page.getByTestId(dataTestId);
+        return locator.count() > 0 && locator.isVisible();
+    }
+
     public boolean elementIsVisible(String selector) {
         Locator locator = page.locator(selector);
         return waitUntilTrue(locator::isVisible);

@@ -33,7 +33,6 @@ Feature: Home Logada Conferindo Com Api
     And Usuário NÃO viu mensagem "Você não possui nenhuma venda no último mês"
     Then 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API
 
-  @ignore
   @TestCaseKey=SMP-T146
   Scenario: Compara agenda de recebimento da semana com a API
     Given Usuário acessou o Home

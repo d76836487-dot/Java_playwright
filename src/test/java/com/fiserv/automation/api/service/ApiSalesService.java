@@ -70,7 +70,7 @@ public class ApiSalesService {
 
         return new WeeklyScheduleDto(
                 paymentDate.substring(6, 8),
-                weekDayMonth[1], weekDayMonth[0], totalPayment, dailyPayment.getValue().size());
+                weekDayMonth[1], weekDayMonth[0], totalPayment, 0);
     }
 
     private int getDaysUntilFriday() {

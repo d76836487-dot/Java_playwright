@@ -9,7 +9,7 @@ public class PaymentSummaryDto {
     public String codigoStatusPgto;
     public String descStatusPagamento;
     public String statusPagamento;
-    public String quantidade;
+    public int quantidade;
     public String quantidadeCedido;
 
     public String getDataEfetivaPgto() {
@@ -18,5 +18,9 @@ public class PaymentSummaryDto {
 
     public double getPagamentoLiquidoTotal() {
         return pagamentoLiquidoTotal.doubleValue();
+    }
+
+    public int getQuantidade() {
+        return quantidade;
     }
 }

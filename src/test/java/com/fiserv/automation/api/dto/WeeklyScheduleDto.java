@@ -5,18 +5,22 @@ public class WeeklyScheduleDto {
     public String month;
     public String weekday;
     public double values;
-    public int occurences;
+    public int occurrences;
 
-    public WeeklyScheduleDto(String monthDay, String month, String weekday, double values, int occurences) {
+    public WeeklyScheduleDto(String monthDay, String month, String weekday, double values, int occurrences) {
         this.monthDay = monthDay;
         this.month = month;
         this.weekday = weekday;
         this.values = values;
-        this.occurences = occurences;
+        this.occurrences = occurrences;
     }
 
     public double getValues() {
         return values;
+    }
+
+    public int getOccurrences() {
+        return occurrences;
     }
 
     @Override
@@ -26,7 +30,7 @@ public class WeeklyScheduleDto {
                 ", month='" + month + '\'' +
                 ", weekday='" + weekday + '\'' +
                 ", values=" + values +
-                ", occurences=" + occurences +
+                ", occurences=" + occurrences +
                 '}';
     }
 }

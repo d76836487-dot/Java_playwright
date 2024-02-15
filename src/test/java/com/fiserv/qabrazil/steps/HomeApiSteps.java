@@ -102,28 +102,46 @@ public class HomeApiSteps {
     public void compareWeeklyScheduleWithApi() throws Exception {
         List<WeeklyScheduleDto> weeklySchedule = getScheduleThisWeek();
 
-        List<Number> valuesFromPage = new ArrayList<>();
-        List<Number> valuesFromApi = new ArrayList<>();
-        List<String> allWeekDays = List.of("Segunda", "Terça", "Quarta", "Quinta", "Sexta");
-        for(String weekDay: allWeekDays) {
-            String dayPageId = TestIdsConfig.getTestId("Home - Agenda Recebimento - Dia " + weekDay);
-            String valuePageId = TestIdsConfig.getTestId("Home - Agenda Recebimento - Valor " + weekDay);
+        compareValueAndDepositsForOneDay("Segunda", weeklySchedule);
+        compareValueAndDepositsForOneDay("Terça", weeklySchedule);
+        compareValueAndDepositsForOneDay("Quarta", weeklySchedule);
+        compareValueAndDepositsForOneDay("Quinta", weeklySchedule);
+        compareValueAndDepositsForOneDay("Sexta", weeklySchedule);
+    }
 
-            String dayPage = commonsPage.getTextFromElement(dayPageId);
-            Number valuePage = commonsPage.getNumberFromCurrencyElement(valuePageId);
-            Number valueApi = getValueForDay(weeklySchedule, dayPage);
+    private void compareValueAndDepositsForOneDay(String weekDay, List<WeeklyScheduleDto> weeklySchedule) {
+        String dayPage = commonsPage.getTextFromElement(
+                TestIdsConfig.getTestId("Home - Agenda Recebimento - Dia " + weekDay));
+        Number valuePage = commonsPage.getNumberFromCurrencyElement(
+                TestIdsConfig.getTestId("Home - Agenda Recebimento - Valor " + weekDay));
+        int qtyDepositsPage = getQtyDeposits(weekDay);
+        Number valueApi = getValueForDay(weeklySchedule, dayPage);
+        int qtyDepositsApi = getQuantityDepositsForDay(weeklySchedule, dayPage);
 
-            valuesFromPage.add(valuePage);
-            valuesFromApi.add(valueApi);
-        }
+        assertEquals("Os valores de recebimento da agenda semanal não é igual para %s".formatted(weekDay),
+                valueApi.doubleValue(), valuePage.doubleValue(), 0.001);
+        assertEquals("O número de depósitos da agenda semanal não é igual para %s".formatted(weekDay),
+                qtyDepositsApi, qtyDepositsPage);
+    }
 
-        assertEquals("Os valores de recebimento da agenda semanal não são iguais", valuesFromApi, valuesFromPage);
+    private int getQtyDeposits(String weekDay) {
+        String qtyDepositsPageId = TestIdsConfig.getTestId("Home - Agenda Recebimento - Qtd Depositos " + weekDay);
+        if (!commonsPage.elementIsVisibleNoWait(qtyDepositsPageId)) return 0;
+        return Integer.parseInt(
+                    commonsPage.getTextFromElement(qtyDepositsPageId).replaceAll("\\D", ""));
     }
 
     private Number getValueForDay(List<WeeklyScheduleDto> weeklySchedule, String dayPage) {
         return weeklySchedule.stream()
                 .filter(weeklyScheduleDto -> weeklyScheduleDto.monthDay.equals(dayPage))
                 .mapToDouble(WeeklyScheduleDto::getValues)
+                .sum();
+    }
+
+    private int getQuantityDepositsForDay(List<WeeklyScheduleDto> weeklySchedule, String dayPage) {
+        return weeklySchedule.stream()
+                .filter(weeklyScheduleDto -> weeklyScheduleDto.monthDay.equals(dayPage))
+                .mapToInt(WeeklyScheduleDto::getOccurrences)
                 .sum();
     }
 
