@@ -46,7 +46,6 @@ Feature: Tela Vendas Hoje com CNPJ
     When Usuário passa o mouse sobre "Menu Lateral - Vendas"
     Then O menu lateral expandiu contendo "Vendas"
 
-
   @TestCaseKey=SMP-T149
   Scenario: Ocultar valores de Vendas Hoje
     Given Usuário acessa Vendas Hoje
