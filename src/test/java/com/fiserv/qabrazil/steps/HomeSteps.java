@@ -58,13 +58,13 @@ public class HomeSteps {
 
     @Then("Total de Recebimentos será igual ao recebimento de hoje + futuro previsto")
     public void totalReceivableMatches() {
-        Identifier totalReceivableId = Identifier.from("Home - Card Recebimento - Total Recebimento");
-        Identifier todayReceivableId = Identifier.from("Home - Card Recebimento - Recebimento Hoje");
-        Identifier foreseenReceivableId = Identifier.from("Home - Card Recebimento - Recebimento Previsto");
+        String todayReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Hoje");
+        String foreseenReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Previsto");
+        String totalReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Total Recebimento");
 
-        Number totalReceivable = commonsPage.getNumberFromCurrencyElement(totalReceivableId);
         Number todayReceivable = commonsPage.getNumberFromCurrencyElement(todayReceivableId);
         Number foreseenReceivable = commonsPage.getNumberFromCurrencyElement(foreseenReceivableId);
+        Number totalReceivable = commonsPage.getNumberFromCurrencyElement(totalReceivableId);
 
         assertEquals("Total of receivable not matching sum for today and foreseen",
                 totalReceivable.doubleValue(), todayReceivable.doubleValue() + foreseenReceivable.doubleValue(), 0.001);
