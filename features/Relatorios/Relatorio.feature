@@ -41,7 +41,7 @@ Feature: Consultar Relatorios
       | colunas                                                                    |
       | Nome Do Arquivo, Documento/EC, Tipo do Arq, Solicitado em, Periodo, Baixar |
 
-#  Por motivos de performance do teste, o passo "Usuário visualizará o nome do relatório sendo NOMEALIANÇA_TipoDoArquivo_dd-mm-yyyy_dd-mm-yyyy"
+#  Por motivos de performance do teste, o passo "Usuário visualizará a listagem do relatório com valores corretos"
 #  aplica as seguintes validações:
 #  - Usuário visualizará o nome do relatório sendo NOMEALIANÇA_TipoDoArquivo_dd-mm-yyyy_dd-mm-yyyy
 #  - Usuário visualizará a coluna Documento/EC contendo o documento CNPJ, CPF ou EC
