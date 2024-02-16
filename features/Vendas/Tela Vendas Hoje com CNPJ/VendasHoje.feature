@@ -46,3 +46,12 @@ Feature: Tela Vendas Hoje com CNPJ
     When Usuário passa o mouse sobre "Menu Lateral - Vendas"
     Then O menu lateral expandiu contendo "Vendas"
 
+
+  @TestCaseKey=SMP-T149
+  Scenario: Ocultar valores de Vendas Hoje
+    When Usuário acessa Vendas Hoje
+    When usuário clica no "Ocultar Valores" no "Header"
+    Then Usuário verá em "Vendas Hoje - Resumo - Valor Vendas" o valor "...."
+    And Usuário verá em "Vendas Hoje - Resumo - Quantidade Vendas" o valor "...."
+    And Usuário verá em todos os campos "Vendas Hoje - Histórico - Coluna Valor Bruto" o valor "••••" - se existir
+

@@ -40,6 +40,7 @@ public class TestIdsConfig {
 
             entry("Vendas Hoje - Resumo - Quantidade Vendas", "vendas-hoje-card-total-vendas"),
             entry("Vendas Hoje - Resumo - Valor Vendas", "vendas-hoje-card-vlr-bruto"),
+            entry("Vendas Hoje - Histórico - Coluna Valor Bruto", "vendas-hoje-coluna-vlr-bruto\\d"),
 
             entry("Home - Card Vendas Hoje - Valor Vendas Hoje", "home-card-vendas-hoje-text-vlr"),
             entry("Home - Card Vendas Hoje - Percentual Vendas Hoje", "home-card-vendas-hoje-text-percentual-down"),

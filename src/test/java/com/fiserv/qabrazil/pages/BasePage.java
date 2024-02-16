@@ -47,6 +47,10 @@ public abstract class BasePage {
     }
 
     public List<String> getAllTextsFromElement(String testId) {
+        return getAllTextsFromElement(Pattern.compile(testId));
+    }
+
+    public List<String> getAllTextsFromElement(Pattern testId) {
         waitUntilTrue(() -> page.getByTestId(testId).count() >= 1);
         Locator locator = page.getByTestId(testId);
         if (locator.count() >= 1) {
