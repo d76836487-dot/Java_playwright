@@ -7,6 +7,7 @@ import com.fiserv.automation.api.service.ApiPaymentsService;
 import com.fiserv.automation.api.service.ApiSalesService;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
+import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -70,30 +71,24 @@ public class HomeApiSteps {
 
     @Then("Total de 'Home - Recebimentos - Recebimentos hoje' será igual à API")
     public void comparePaymentApi() throws Exception {
-        String todayReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Hoje");
-
         BigDecimal todayPaymentApi = apiPaymentsService.getPaymentToday();
-        Number todayPaymentPage = commonsPage.getNumberFromCurrencyElement(todayReceivableId);
+        Number todayPaymentPage = commonsPage.getNumberFromCurrencyElement(Identifier.from("Home - Card Recebimento - Recebimento Hoje"));
 
         assertEquals("Total de recebíveis hoje da página é diferente da api", todayPaymentApi.doubleValue(), todayPaymentPage.doubleValue(), 0.001);
     }
 
     @Then("Total de 'Home - Card Recebimento - Recebimento Previsto' será igual à API")
     public void compareReceivableApi() throws Exception {
-        String receivablePageId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Previsto");
-
         BigDecimal receivableApi = apiPrepaymentService.getTotalSalesReceivables();
-        Number receivablePage = commonsPage.getNumberFromCurrencyElement(receivablePageId);
+        Number receivablePage = commonsPage.getNumberFromCurrencyElement(Identifier.from("Home - Card Recebimento - Recebimento Previsto"));
 
         assertEquals("Total de recebíveis futuros da página é diferente da api", receivableApi.doubleValue(), receivablePage.doubleValue(), 0.001);
     }
 
     @Then("Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API")
     public void compareTotalSalesPageAndApi() throws Exception {
-        String testId = TestIdsConfig.getTestId("Home - Card Vendas Hoje - Valor Vendas Hoje");
-
         Number salesTodayApi = apiAuthorizationsService.getSalesTodayAllEcs();
-        Number salesTodayPage = commonsPage.getNumberFromCurrencyElement(testId);
+        Number salesTodayPage = commonsPage.getNumberFromCurrencyElement(Identifier.from("Home - Card Vendas Hoje - Valor Vendas Hoje"));
 
         assertEquals("Total de vendas da página é diferente da api", salesTodayApi, salesTodayPage);
     }
@@ -111,9 +106,9 @@ public class HomeApiSteps {
 
     private void compareValueAndDepositsForOneDay(String weekDay, List<WeeklyScheduleDto> weeklySchedule) {
         String dayPage = commonsPage.getTextFromElement(
-                TestIdsConfig.getTestId("Home - Agenda Recebimento - Dia " + weekDay));
+                Identifier.from("Home - Agenda Recebimento - Dia " + weekDay));
         Number valuePage = commonsPage.getNumberFromCurrencyElement(
-                TestIdsConfig.getTestId("Home - Agenda Recebimento - Valor " + weekDay));
+                Identifier.from("Home - Agenda Recebimento - Valor " + weekDay));
         int qtyDepositsPage = getQtyDeposits(weekDay);
         Number valueApi = getValueForDay(weeklySchedule, dayPage);
         int qtyDepositsApi = getQuantityDepositsForDay(weeklySchedule, dayPage);
@@ -125,10 +120,11 @@ public class HomeApiSteps {
     }
 
     private int getQtyDeposits(String weekDay) {
-        String qtyDepositsPageId = TestIdsConfig.getTestId("Home - Agenda Recebimento - Qtd Depósitos " + weekDay);
+        Identifier identifier = Identifier.from("Home - Agenda Recebimento - Qtd Depósitos " + weekDay);
+        String qtyDepositsPageId = identifier.testId();
         if (!commonsPage.elementIsVisibleNoWait(qtyDepositsPageId)) return 0;
         return Integer.parseInt(
-                    commonsPage.getTextFromElement(qtyDepositsPageId).replaceAll("\\D", ""));
+                    commonsPage.getTextFromElement(identifier).replaceAll("\\D", ""));
     }
 
     private Number getValueForDay(List<WeeklyScheduleDto> weeklySchedule, String dayPage) {

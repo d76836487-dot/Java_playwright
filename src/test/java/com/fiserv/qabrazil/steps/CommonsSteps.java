@@ -68,8 +68,7 @@ public class CommonsSteps {
 
     @Then("Usuário verá em {identifier} o valor {string}")
     public void matchValuePerField(Identifier identifier, String expectedText) {
-        String testId = identifier.testId();
-        String textFound = commonsPage.getTextFromElement(testId);
+        String textFound = commonsPage.getTextFromElement(identifier);
         assertEquals(expectedText, textFound);
     }
 
@@ -77,7 +76,7 @@ public class CommonsSteps {
     public void matchValuePerFieldOptional(Identifier identifier, String expectedText) {
         String testId = identifier.testId();
         if (commonsPage.elementIsVisibleNoWait(testId)) {
-            String textFound = commonsPage.getTextFromElement(testId);
+            String textFound = commonsPage.getTextFromElement(identifier);
             assertEquals(expectedText, textFound);
         }
     }

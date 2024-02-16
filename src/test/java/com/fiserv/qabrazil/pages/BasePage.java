@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.util.Currency;
+import com.fiserv.qabrazil.util.Identifier;
 import com.fiserv.qabrazil.util.RegexUtil;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
@@ -35,14 +36,14 @@ public abstract class BasePage {
                 .toList();
     }
 
-    public Number getNumberFromCurrencyElement(String testId) {
-        waitUntilTrue(() -> !getTextFromElement(testId).equals("R$ 0,00")); // it returns R$ 0,00 before setting the real value...
-        String textFromElement = getTextFromElement(testId);
+    public Number getNumberFromCurrencyElement(Identifier identifier) {
+        waitUntilTrue(() -> !getTextFromElement(identifier).equals("R$ 0,00")); // it returns R$ 0,00 before setting the real value...
+        String textFromElement = getTextFromElement(identifier);
         try {
             return Currency.parseCurrency(textFromElement);
         } catch (ParseException e) {
             throw new RuntimeException(
-                    String.format("Failed parsing currency %s with testId %s", textFromElement, testId));
+                    String.format("Failed parsing currency %s with testId %s", textFromElement, identifier.selector()));
         }
     }
 
@@ -58,6 +59,10 @@ public abstract class BasePage {
             locator.first().highlight();
         }
         return locator.allTextContents();
+    }
+
+    public String getTextFromElement(Identifier identifier) {
+        return getTextFromElement(identifier.testId());
     }
 
     public String getTextFromElement(String testId) {

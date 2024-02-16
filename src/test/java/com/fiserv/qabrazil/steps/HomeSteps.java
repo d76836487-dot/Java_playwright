@@ -1,6 +1,5 @@
 package com.fiserv.qabrazil.steps;
 
-import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.HomeCustomizeModal;
 import com.fiserv.qabrazil.pages.HomePage;
@@ -59,9 +58,9 @@ public class HomeSteps {
 
     @Then("Total de Recebimentos será igual ao recebimento de hoje + futuro previsto")
     public void totalReceivableMatches() {
-        String totalReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Total Recebimento");
-        String todayReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Hoje");
-        String foreseenReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Previsto");
+        Identifier totalReceivableId = Identifier.from("Home - Card Recebimento - Total Recebimento");
+        Identifier todayReceivableId = Identifier.from("Home - Card Recebimento - Recebimento Hoje");
+        Identifier foreseenReceivableId = Identifier.from("Home - Card Recebimento - Recebimento Previsto");
 
         Number totalReceivable = commonsPage.getNumberFromCurrencyElement(totalReceivableId);
         Number todayReceivable = commonsPage.getNumberFromCurrencyElement(todayReceivableId);
