@@ -11,6 +11,8 @@ Feature: Tela Vendas Hoje com CNPJ com API
     When Usuário tenta logar na aplicação
     Then Usuário estará com acesso
 
+  @TestCaseKey=SMP-T151
   Scenario: Quantidade de vendas é igual a API
     Given Usuário acessou Vendas Hoje
     Then Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API
+
