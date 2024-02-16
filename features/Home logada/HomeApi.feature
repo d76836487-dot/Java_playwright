@@ -1,5 +1,5 @@
 #language: en
-@playwright, @api
+@playwright @api
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada_Conferindo_Com_Api
 @Zephyr:Status=Draft

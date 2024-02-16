@@ -58,9 +58,9 @@ public class HomeSteps {
 
     @Then("Total de Recebimentos será igual ao recebimento de hoje + futuro previsto")
     public void totalReceivableMatches() {
-        String todayReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Hoje");
-        String foreseenReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Recebimento Previsto");
-        String totalReceivableId = TestIdsConfig.getTestId("Home - Card Recebimento - Total Recebimento");
+        Identifier todayReceivableId = Identifier.from("Home - Card Recebimento - Recebimento Hoje");
+        Identifier foreseenReceivableId = Identifier.from("Home - Card Recebimento - Recebimento Previsto");
+        Identifier totalReceivableId = Identifier.from("Home - Card Recebimento - Total Recebimento");
 
         Number todayReceivable = commonsPage.getNumberFromCurrencyElement(todayReceivableId);
         Number foreseenReceivable = commonsPage.getNumberFromCurrencyElement(foreseenReceivableId);

@@ -2,7 +2,7 @@ package com.fiserv.automation.api.dto;
 
 import java.math.BigDecimal;
 
-public class SalesSummaryDto {
+public class ReceivableSaleSummaryDto {
     public String numeroMerchant;
     public String data;
     public BigDecimal valorBrutoParcela;

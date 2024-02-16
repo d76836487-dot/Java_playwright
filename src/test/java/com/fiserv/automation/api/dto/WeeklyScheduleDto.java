@@ -1,6 +1,9 @@
 package com.fiserv.automation.api.dto;
 
 public class WeeklyScheduleDto {
+    public static final WeeklyScheduleDto NULL =
+            new WeeklyScheduleDto("", "", "", 0.0, 0);
+
     public String monthDay;
     public String month;
     public String weekday;

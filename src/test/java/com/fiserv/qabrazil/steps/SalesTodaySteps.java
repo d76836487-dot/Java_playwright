@@ -20,6 +20,7 @@ public class SalesTodaySteps {
     @Autowired
     CommonsPage commonsPage;
 
+    @Given("Usuário acessou Vendas Hoje")
     @When("Usuário acessa Vendas Hoje")
     public void goTo() {
         salesTodayPage.navigateTo();

@@ -29,12 +29,20 @@ public interface BwaRest {
             @Path("fromDate") String fromDate,
             @Path("toDate") String toDate);
 
-    @POST("vendas/resources/v3/receber/{fromDate}/{toDate}?tipoSumarizacao=D")
-    Call<PageSalesDto> receivableSalesSummarized(
+    @POST("vendas/resources/v3/receber/{fromDate}/{toDate}?tipoSumarizacao=D&status=Autorizada")
+    Call<PageReceivableDto> receivableSalesSummarized(
             @Path("fromDate") String fromDate,
             @Path("toDate") String toDate,
             @Body ReceivableSalesSummarizedRequestDto request
     );
+
+    @POST("vendas/resources/v3/realizadas/transacao/{fromDate}/{toDate}?tipoSumarizacao=D&status=Autorizada")
+    Call<PageRealizedSalesDto> realizedSalesSummarized(
+            @Path("fromDate") String fromDate,
+            @Path("toDate") String toDate,
+            @Body ReceivableSalesSummarizedRequestDto request
+    );
+
     @POST("wsm/v2/prepayments/consultations/consultPrepayment")
     Call<PrepaymentDto> prepaymentConsultation(@Body PrepaymentConsultationRequestDto request);
 

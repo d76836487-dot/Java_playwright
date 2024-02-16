@@ -2,7 +2,7 @@ package com.fiserv.automation.api.dto;
 
 import java.util.List;
 
-public class PageSalesDto {
+public class PageRealizedSalesDto {
     public String codigoRetorno;
     public String descricaoRetorno;
     public int totalPages;
@@ -10,9 +10,9 @@ public class PageSalesDto {
     public int pageNumber;
     public int size;
     public List<SalesDto> vendas;
-    public List<SalesSummaryDto> sumarizacao;
+    public List<RealizedSaleSummaryDto> sumarizacao;
 
-    public PageSalesDto() {
+    public PageRealizedSalesDto() {
         size = 0;
         vendas = List.of();
         sumarizacao = List.of();

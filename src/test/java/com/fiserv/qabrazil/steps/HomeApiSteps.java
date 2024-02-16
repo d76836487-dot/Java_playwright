@@ -4,7 +4,7 @@ import com.fiserv.automation.api.dto.AuthorizationsDto;
 import com.fiserv.automation.api.dto.WeeklyScheduleDto;
 import com.fiserv.automation.api.service.ApiAuthorizationsService;
 import com.fiserv.automation.api.service.ApiPaymentsService;
-import com.fiserv.automation.api.service.ApiSalesService;
+import com.fiserv.automation.api.service.ApiReceivablesService;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.util.Identifier;
@@ -29,7 +29,7 @@ public class HomeApiSteps {
     @Autowired
     private ApiPaymentsService apiPaymentsService;
     @Autowired
-    private ApiSalesService apiPrepaymentService;
+    private ApiReceivablesService apiReceivablesService;
 
     @Then("'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API")
     public void lastSalesMatchApi() throws Exception {
@@ -79,7 +79,7 @@ public class HomeApiSteps {
 
     @Then("Total de 'Home - Card Recebimento - Recebimento Previsto' será igual à API")
     public void compareReceivableApi() throws Exception {
-        BigDecimal receivableApi = apiPrepaymentService.getTotalSalesReceivables();
+        BigDecimal receivableApi = apiReceivablesService.getTotalSalesReceivables();
         Number receivablePage = commonsPage.getNumberFromCurrencyElement(Identifier.from("Home - Card Recebimento - Recebimento Previsto"));
 
         assertEquals("Total de recebíveis futuros da página é diferente da api", receivableApi.doubleValue(), receivablePage.doubleValue(), 0.001);
@@ -143,7 +143,7 @@ public class HomeApiSteps {
 
     private List<WeeklyScheduleDto> getScheduleThisWeek() throws Exception {
         List<WeeklyScheduleDto> payments = apiPaymentsService.getPaymentMondayUntilToday();
-        List<WeeklyScheduleDto> sales = apiPrepaymentService.getTotalSalesThisWeek();
+        List<WeeklyScheduleDto> sales = apiReceivablesService.getTotalReceivableSalesUntilEndOfWeek();
         for (WeeklyScheduleDto payment : payments) {
             System.out.println(payment);
         }

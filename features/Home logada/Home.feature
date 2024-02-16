@@ -128,14 +128,6 @@ Feature: Home Logada
   #*Quando* as informações carregarem
   #*Então* devo visualizar os valores do EC selecionado
   #
-  #*Dado* que sou um cliente MDR Flex
-  #*Quando* estiver na tela “início” do Portal
-  #*Então* não devo visualizar o carde de Antecipação
-  #
-  #*Dado* que sou um cliente MDR Padrão e estou na tela “início” do Portal
-  #*Quando* eu tiver valores livres para antecipar
-  #*Então* devo visualizá-los no card “Receba antes” e o botão “Antecipar” habilitado
-  #
   #*Dado* que sou um cliente MDR Padrão e estou na tela “início” do Portal
   #*Quando* eu não tiver valores livres para antecipar
   #*Então* devo visualizar o card “Antecipação” com a mensagem “Você não possui valores disponíveis para antecipar” (Frame 8368)
@@ -156,11 +148,6 @@ Feature: Home Logada
       | funcionalidades                                                                             |
       | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
 
-#
-#
-#*Dado* que estou na tela “início” do Portal
-#*Quando* realizar vendas usando a minha máquina
-#*Então* devo visualizar as últimas três vendas listadas com detalhes como bandeira, valor, modalidade, horário e número de parcelas se pertinente
 #
 #*Dado* que estou na tela “início” do Portal
 #*Quando* eu tiver valores a receber ou recebidos no dia

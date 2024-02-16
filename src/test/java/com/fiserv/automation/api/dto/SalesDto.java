@@ -1,5 +1,7 @@
 package com.fiserv.automation.api.dto;
 
+import java.math.BigDecimal;
+
 public class SalesDto {
     public String numeroTransacao;
     public String dataTransacao;
@@ -13,7 +15,7 @@ public class SalesDto {
     public String descTipoTransacao;
     public String numeroParcela;
     public String qtdeParcelas;
-    public String valorTotalPlano;
+    public BigDecimal valorTotalPlano;
     public String codAutorizacao;
     public String numCartao;
     public String numTerminal;
@@ -23,7 +25,7 @@ public class SalesDto {
     public String descTipoCartao;
     public String valorBrutoParcela;
     public String valorDescontoParcela;
-    public String valorLiquidoParcela;
+    public BigDecimal valorLiquidoParcela;
     public String indicadorCredDeb;
     public String indicadorCancelVenda;
     public String numeroParcelado;
@@ -40,4 +42,12 @@ public class SalesDto {
     public String numeroOrdemPagto;
     public String indicadorPrepago;
     public String networkToken;
+
+    public String getDataTransacao() {
+        return dataTransacao;
+    }
+
+    public double getValorTotalPlano() {
+        return valorTotalPlano.doubleValue();
+    }
 }
