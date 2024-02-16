@@ -1,13 +1,19 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.qabrazil.pages.ReportsPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assumptions.assumeThat;
 
 public class ReportsSteps {
+
+    @Autowired
+    ApiUserDetailsService apiUserDetailsService;
 
     @Autowired
     ReportsPage reportsPage;
@@ -37,8 +43,9 @@ public class ReportsSteps {
         reportsPage.tableHasColumns(columns);
     }
 
-    @Then("Usuário visualizará o nome do relatório sendo NOMEALIANÇA_TipoDoArquivo_dd-mm-yyyy_dd-mm-yyyy")
-    public void userWillSeeTheReportNameHavingCorrectFormat() {
-        reportsPage.userWillSeeTheReportNameHavingCorrectFormat();
+    @Then("Usuário visualizará a listagem do relatório com valores corretos")
+    public void userWillSeeTheReportListingContainingCorrectValues() throws Exception {
+        List<String> ecs = apiUserDetailsService.getEcs();
+        reportsPage.userWillSeeTheReportListingContainingCorrectValues(ecs);
     }
 }

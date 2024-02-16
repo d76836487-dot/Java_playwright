@@ -41,9 +41,17 @@ Feature: Consultar Relatorios
       | colunas                                                                    |
       | Nome Do Arquivo, Documento/EC, Tipo do Arq, Solicitado em, Periodo, Baixar |
 
+#  Por motivos de performance do teste, o passo "Usuário visualizará o nome do relatório sendo NOMEALIANÇA_TipoDoArquivo_dd-mm-yyyy_dd-mm-yyyy"
+#  aplica as seguintes validações:
+#  - Usuário visualizará o nome do relatório sendo NOMEALIANÇA_TipoDoArquivo_dd-mm-yyyy_dd-mm-yyyy
+#  - Usuário visualizará a coluna Documento/EC contendo o documento CNPJ, CPF ou EC
+#  - Usuário visualizará a coluna Tipo de Arquivo contendo Vendas ou Pagamentos
+#  - Usuário visualizará a coluna Solicitado Em contendo a data no formato dia/mês/ano
+#  - Usuário visualizará a coluna Período contendo a data de início no formato dia/mês/ano e a data de final no formato dia/mês/ano
+  @api
   @TestCaseKey=SMP-T147
   Scenario: Colunas nome do arquivo
     Given Usuário acessa página de Relatórios
     And Existem relatórios já extraídos
-    Then Usuário visualizará o nome do relatório sendo NOMEALIANÇA_TipoDoArquivo_dd-mm-yyyy_dd-mm-yyyy
+    Then Usuário visualizará a listagem do relatório com valores corretos
 

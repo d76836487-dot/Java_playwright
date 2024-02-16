@@ -72,4 +72,14 @@ public class DateUtil {
     public static String[] dateAndMonth(LocalDate date) {
         return new String[] {day(date), month(date)};
     }
+
+    public static boolean isInFormat(String format, String stringDate) {
+        LocalDate date = LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(format));
+        String formatted = date.format(DateTimeFormatter.ofPattern(format));
+        return formatted.equals(stringDate);
+    }
+
+    public static LocalDate toLocalDate(String date, String format) {
+        return LocalDate.parse(date, DateTimeFormatter.ofPattern(format));
+    }
 }
