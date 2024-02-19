@@ -14,6 +14,7 @@ public class TestIdsConfig {
             entry("Filter - Accordion - Status (0)", "generic-filter-accordion-title-status"),
             entry("Filter - Accordion - Bandeiras (0)", "generic-filter-accordion-title-bandeira"),
             entry("Filter - Accordion - Produtos (0)", "generic-filter-accordion-title-produtos"),
+            entry("Filter - Accordion - Estabelecimento (0)", "generic-filter-accordion-title-estabelecimentos"),
             entry("Filter - Status (0) - Check all", "generic-filter-check-all-status"),
             entry("Filter - Bandeiras (0) - Check all", "generic-filter-check-all-bandeiras"),
             entry("Filter - Produtos (0) - Check all", "generic-filter-check-all-produtos"),
@@ -37,6 +38,8 @@ public class TestIdsConfig {
 
             entry("Filter - Bandeiras (0) - Mastercard", "generic-filter-div-bandeira-Mastercard"),
             entry("Filter - Bandeiras (0) - Visa", "generic-filter-div-bandeira-Visa"),
+
+            entry("Filter - Estabelecimentos (0)", "generic-filter-check-estabelecimento-.*"),
 
             entry("Vendas Hoje - Resumo - Quantidade Vendas", "vendas-hoje-card-total-vendas"),
             entry("Vendas Hoje - Resumo - Valor Vendas", "vendas-hoje-card-vlr-bruto"),

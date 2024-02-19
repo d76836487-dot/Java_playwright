@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.regex.Pattern;
 
+import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
@@ -23,6 +24,7 @@ public class SalesTodayPage extends CheckedBasePage {
 
     public void navigateTo() {
         getLateralMenuLocator().click();
+        startMonitoringRequests(page, contractConfig);
         page.waitForURL(Pattern.compile("^.*/Hoje$"));
     }
 

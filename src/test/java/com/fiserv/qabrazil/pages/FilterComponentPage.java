@@ -6,6 +6,7 @@ import com.microsoft.playwright.Locator;
 
 import java.time.Duration;
 
+import static com.fiserv.qabrazil.util.WaitUtil.retryIfGotException;
 import static com.fiserv.qabrazil.util.WaitUtil.sleep;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -13,7 +14,6 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class FilterComponentPage extends BasePage {
 
     public void filterAllExcept(String filterValue, String accordionName) {
-        openFilterOptions();
         openAccordion(accordionName);
         checkAll(accordionName);
 
@@ -32,15 +32,22 @@ public class FilterComponentPage extends BasePage {
         checkAllButton.check();
     }
 
-    private void openFilterOptions() {
-        page.getByTestId("vendas-hoje-link-filtrar").click();
-    }
-
-    private void openAccordion(String accordionName) {
+    public void openAccordion(String accordionName) {
         String accordionTestId = TestIdsConfig.getTestId("Filter - Accordion - " + accordionName);
         Locator accordion = page.getByTestId(accordionTestId);
-        assertThat(accordion).isVisible();
-        accordion.click();
+
+        retryIfGotException(() -> {
+            openFilterOptions();
+            accordion.highlight();
+            accordion.click();
+        });
+    }
+
+    private void openFilterOptions() {
+        assertThat(page.getByTestId("vendas-hoje-link-filtrar")).isVisible();
+        assertThat(page.getByTestId("vendas-hoje-link-filtrar")).isEnabled();
+
+        page.getByTestId("vendas-hoje-link-filtrar").click();
     }
 
     private void clickToFilter() {

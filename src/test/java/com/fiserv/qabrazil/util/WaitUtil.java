@@ -29,6 +29,17 @@ public class WaitUtil {
         return waitUntilTrue(30, untilTrue);
     }
 
+    public static void retryIfGotException(Runnable runnable) {
+        boolean gotException = !waitUntilTrue(30, () -> {
+            runnable.run();
+            return true;
+        });
+
+        if (gotException) {
+            throw new RuntimeException("Falhou número de tentativas");
+        }
+    }
+
     public static boolean waitUntilTrue(int totalRetries, Supplier<Boolean> untilTrue)  {
         for(int numTries = 0; numTries < totalRetries; numTries++) {
             try {
@@ -40,5 +51,4 @@ public class WaitUtil {
         }
         return false;
     }
-
 }

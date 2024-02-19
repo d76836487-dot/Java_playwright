@@ -50,8 +50,9 @@ public class RequestMonitoring {
     }
 
     public static void ensureNoFlyingRequests() {
-        if (!waitUntilTrue(() -> requestsWithoutResponse <= 0)) {
+        if (!waitUntilTrue(() -> requestsWithoutResponse == 0)) {
             log.warn(String.format("Ainda existem %d requisições HTTP sem respostas. Seus testes podem ter variação e falsos positivos", requestsWithoutResponse));
         }
+        log.debug("Saindo do monitor com %d requisições HTTP sem respostas".formatted(requestsWithoutResponse));
     }
 }

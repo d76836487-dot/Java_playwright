@@ -8,6 +8,7 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
@@ -80,5 +81,12 @@ public class CommonsPage extends BasePage {
         assertThat(button).isVisible();
         assertThat(button.getByText(identifier)).isVisible();
         return true;
+    }
+
+    public List<String> getAllDataTestIds(String testId) {
+        Locator allLocator = page.getByTestId(Pattern.compile(testId));
+        return allLocator.all().stream()
+                .map(locator -> locator.getAttribute("data-testid"))
+                .toList();
     }
 }

@@ -9,7 +9,7 @@ public class FilterSteps {
     FilterComponentPage filterComponentPage;
 
     @When("Usuário filtra por tudo, exceto {string}, em {string}")
-    public void usuárioFiltraPor(String filterValue, String accordionName) {
+    public void userFiltersBy(String filterValue, String accordionName) {
         filterComponentPage.filterAllExcept(filterValue, accordionName);
     }
 }

@@ -8,11 +8,18 @@
 Feature: Tela Vendas Hoje com CNPJ com API
 
   Background:
-    When Usuário tenta logar na aplicação
-    Then Usuário estará com acesso
+    Given Usuário logou na aplicação
+    And Usuário acessa Vendas Hoje
 
   @TestCaseKey=SMP-T151
   Scenario: Quantidade de vendas é igual a API
     Given Usuário acessou Vendas Hoje
     Then Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API
 
+  Scenario Outline: Estabelecimentos no filtro é igual a API
+    Given Usuário abriu a opção "<accordion>" no filtro de Vendas Hoje
+    Then Opções do filtro correspondem aos ECs da API
+    @pt-br
+    Examples:
+      | accordion           |
+      | Estabelecimento (0) |
