@@ -55,3 +55,11 @@ Feature: Consultar Relatorios
     And Existem relatórios já extraídos
     Then Usuário visualizará a listagem do relatório com valores corretos
 
+  Scenario: Coluna baixar
+    Given Usuário acessa página de Relatórios
+    And Existem relatórios já extraídos disponíveis para download
+    Then botão download possui ícone com seta para baixo
+    When tenta baixar o primeiro relatório ao clicar no ícone de download
+    Then o download do relatório começará
+    And o nome do arquivo baixado seguirá o da listagem (primeiro relatório da lista)
+

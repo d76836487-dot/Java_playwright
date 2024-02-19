@@ -5,8 +5,10 @@ import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.dto.ReportDto;
 import com.fiserv.qabrazil.pages.ReportsPage;
+import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
@@ -31,6 +33,11 @@ public class ReportsSteps {
     @Then("será direcionado para a jornada de Relatórios")
     public void shouldBeAtReportsPage() {
         reportsPage.ensureWeAreAtReportsPage();
+    }
+
+    @Given("Existem relatórios já extraídos disponíveis para download")
+    public void thereAreReportsExtractedAvailableForDownload() {
+        assumeThat(reportsPage.areAnyReportsInTableAvailbleForDownload()).isTrue();
     }
 
     @Given("Usuário acessa página de Relatórios( através do menu lateral)")
@@ -65,6 +72,12 @@ public class ReportsSteps {
             reportRangeIsCorrect(report.getRange());
             fileNameIsCorrect(report.getName(), report.getFileType());
         });
+    }
+
+    @Then("botão download possui ícone com seta para baixo")
+    public void hasIconWithDownArrow() {
+        Identifier button = Identifier.from("Relatórios - Botão Download Ok");
+        assertTrue("Ícone de download não identificado", reportsPage.downloadIconIsDownArrow(button));
     }
 
     private static void fileTypeIsCorrect(String fileType) {
@@ -124,5 +137,22 @@ public class ReportsSteps {
         String fileExt = ".[a-z]+";
 
         return contractConfig.getAllianceName() + "_" + reportType + "_" + startDate + "_" + endDate + fileExt;
+    }
+
+    @Then("o download do relatório começará")
+    public void theDownloadOfTheReportStarted() {
+        assertTrue("O Download do relatório não iniciou como esperado",
+                reportsPage.theDownloadOfTheReportStarted());
+    }
+
+    @When("tenta baixar o primeiro relatório ao clicar no ícone de download")
+    public void userTriesToDownloadTheFirstReport() {
+        reportsPage.clickOnTheFirstDownloadButton();
+    }
+
+    @Then("o nome do arquivo baixado seguirá o da listagem \\(primeiro relatório da lista)")
+    public void theNameOfTheReportIsEqualToTheListedInTheFirstReport() {
+        assertTrue("O nome do relatório baixado difere do nome do relatório listado",
+                reportsPage.theFirstNameOfTheReportIsEqualToTheFirstReportDownloaded());
     }
 }

@@ -123,14 +123,14 @@ public class TestIdsConfig {
             entry("Relatórios - Tabela Header - Solicitado Em", "relatorios-table-header-solicitado-em"),
             entry("Relatórios - Tabela Header - Período", "relatorios-table-header-periodo"),
             entry("Relatórios - Tabela Header - Baixar", "relatorios-table-header-baixar"),
-            entry("Relatórios - Tabela Linha - Nome Arquivo", "relatorios-table-row-nome-arquivo"),
-            entry("Relatórios - Tabela Linha - Documento", "relatorios-table-row-documento"),
-            entry("Relatórios - Tabela Linha - Tipo Arquivo", "relatorios-table-row-tipo-arquivo"),
-            entry("Relatórios - Tabela Linha - Solicitado Em", "relatorios-table-row-solicitado-em"),
-            entry("Relatórios - Tabela Linha - Período", "relatorios-table-row-periodo"),
-            entry("Relatórios - Tabela Linha - Ícone Download Ok", "relatorios-table-row-download-ok"),
-            entry("Relatórios - Tabela Linha - Ícone Download Falha", "relatorios-table-row-download-fail"),
-            entry("Relatórios - Tabela Linha - Ícone Download Aguardando", "relatorios-table-row-download-wait"),
+            entry("Relatórios - Item - Nome Arquivo", "relatorios-table-row-nome-arquivo"),
+            entry("Relatórios - Item - Documento", "relatorios-table-row-documento"),
+            entry("Relatórios - Item - Tipo Arquivo", "relatorios-table-row-tipo-arquivo"),
+            entry("Relatórios - Item - Solicitado Em", "relatorios-table-row-solicitado-em"),
+            entry("Relatórios - Item - Período", "relatorios-table-row-periodo"),
+            entry("Relatórios - Botão Download Ok", "relatorios-table-row-download-ok"),
+            entry("Relatórios - Botão Download Falha", "relatorios-table-row-download-fail"),
+            entry("Relatórios - Botão Download Aguardando", "relatorios-table-row-download-wait")
 
             entry("Header - Ocultar Valores", "head-ocultar-valores")
     );
