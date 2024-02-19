@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
@@ -70,6 +71,13 @@ public class CommonsSteps {
     public void matchValuePerField(Identifier identifier, String expectedText) {
         String textFound = commonsPage.getTextFromElement(identifier);
         assertEquals(expectedText, textFound);
+    }
+
+
+    @Then("usuário verá em {identifier} valor maior que {double}")
+    public void valueGreaterThan(Identifier identifier, double value) {
+        assertThat(commonsPage.getNumberFromCurrencyElement(identifier).doubleValue())
+                .isGreaterThan(value);
     }
 
     @Then("Usuário verá em {identifier} o valor {string} - se existir")

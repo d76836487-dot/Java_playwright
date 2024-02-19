@@ -156,15 +156,17 @@ Feature: Home Logada
 #*Dado* que estou na tela “início” do Portal
 #*Quando* eu não tiver valores a receber ou recebidos no dia
 #*Então* devo visualizar R$ 0,00 no boxe Recebimentos > “Recebimentos de hoje”
-#
-#*Dado* que estou na tela “início” do Portal
-#*Quando* eu tiver valores futuros a receber
-#*Então* devo visualizá-los no boxe Recebimentos > “Recebimentos futuros previstos”
-#
-#*Dado* que estou na tela “início” do Portal
-#*Quando* não tiver valores futuros para receber
-#*Então* devo visualizar 0,00 no boxe Recebimentos > “Recebimentos futuros previstos”
-#
+
+  Scenario: recebimentos futuros existem
+    Given que estou na tela “início” do Portal
+    And existem valores futuros a receber
+    Then usuário verá em "Home - Card Recebimento - Recebimento Previsto" valor maior que 0,00
+
+  Scenario: recebimentos futuros não existem
+    Given que estou na tela “início” do Portal
+    And não existem valores futuros para receber
+    Then Usuário verá em "Home - Card Recebimento - Recebimento Previsto" o valor "0,00"
+
 #*Dado* que estou na tela “início” do Portal
 #*Quando* não tiver agenda de recebimentos da semana para exibir
 #*Então* devo visualizar a mensagem “Você não possui nenhum recebimento previsto para essa semana”

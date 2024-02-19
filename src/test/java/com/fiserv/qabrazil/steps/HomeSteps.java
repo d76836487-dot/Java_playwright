@@ -10,7 +10,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.testng.AssertJUnit.*;
+import static org.assertj.core.api.Assumptions.assumeThat;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class HomeSteps {
 
@@ -76,6 +77,17 @@ public class HomeSteps {
         if (!commonsPage.elementIsVisible(elementSelector)) {
             commonsPage.clickButtonWithText("Personalizar");
             homeCustomizeModal.select(identifier);
+        }
+    }
+
+    @Given("{shakespeareBoolean} valores futuros a/para receber")
+    public void thereAreValuesToReceiveInTheFuture(boolean value) {
+        Number totalReceivable = commonsPage.getNumberFromCurrencyElement(Identifier.from("Home - Card Recebimento - Recebimento Previsto"));
+        var assumption = assumeThat(totalReceivable.doubleValue());
+        if (value) {
+            assumption.isGreaterThan(0);
+        } else {
+            assumption.isEqualTo(0);
         }
     }
 }

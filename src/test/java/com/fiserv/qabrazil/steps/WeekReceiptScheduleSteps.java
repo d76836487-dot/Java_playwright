@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.assertj.core.api.Assumptions.assumeThat;
@@ -51,8 +52,8 @@ public class WeekReceiptScheduleSteps {
         weekReceiptScheduleComponent.assertThatViewDetailedReceiptsButtonIsVisible();
     }
 
-    @ParameterType("existir|não existir")
-    public boolean shakespeareBoolean(String value) {
-        return value.equals("existir");
+    @ParameterType("(não )?(existir|existem)")
+    public boolean shakespeareBoolean(String not, String ignoredValue) {
+        return StringUtils.isEmpty(not);
     }
 }
