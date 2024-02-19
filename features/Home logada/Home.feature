@@ -148,20 +148,21 @@ Feature: Home Logada
       | funcionalidades                                                                             |
       | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
 
-#
-#*Dado* que estou na tela “início” do Portal
-#*Quando* eu tiver valores a receber ou recebidos no dia
-#*Então* devo visualizá-los no boxe Recebimentos > “Recebimentos de hoje”
-#
-#*Dado* que estou na tela “início” do Portal
-#*Quando* eu não tiver valores a receber ou recebidos no dia
-#*Então* devo visualizar R$ 0,00 no boxe Recebimentos > “Recebimentos de hoje”
-
+  #
+  #*Dado* que estou na tela “início” do Portal
+  #*Quando* eu tiver valores a receber ou recebidos no dia
+  #*Então* devo visualizá-los no boxe Recebimentos > “Recebimentos de hoje”
+  #
+  #*Dado* que estou na tela “início” do Portal
+  #*Quando* eu não tiver valores a receber ou recebidos no dia
+  #*Então* devo visualizar R$ 0,00 no boxe Recebimentos > “Recebimentos de hoje”
+  @TestCaseKey=SMP-T152
   Scenario: recebimentos futuros existem
     Given que estou na tela “início” do Portal
     And existem valores futuros a receber
     Then usuário verá em "Home - Card Recebimento - Recebimento Previsto" valor maior que 0,00
 
+  @TestCaseKey=SMP-T153
   Scenario: recebimentos futuros não existem
     Given que estou na tela “início” do Portal
     And não existem valores futuros para receber
