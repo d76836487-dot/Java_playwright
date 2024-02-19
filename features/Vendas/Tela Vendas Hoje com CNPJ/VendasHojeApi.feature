@@ -16,6 +16,7 @@ Feature: Tela Vendas Hoje com CNPJ com API
     Given Usuário acessou Vendas Hoje
     Then Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API
 
+  @TestCaseKey=SMP-T154
   Scenario Outline: Estabelecimentos no filtro é igual a API
     Given Usuário abriu a opção "<accordion>" no filtro de Vendas Hoje
     Then Opções do filtro correspondem aos ECs da API
@@ -23,3 +24,4 @@ Feature: Tela Vendas Hoje com CNPJ com API
     Examples:
       | accordion           |
       | Estabelecimento (0) |
+
