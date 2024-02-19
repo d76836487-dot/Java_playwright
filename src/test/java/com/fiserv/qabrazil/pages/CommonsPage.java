@@ -30,7 +30,7 @@ public class CommonsPage extends BasePage {
     }
 
     public String getWholeTextIfVisible(Locator locator) {
-        waitUntilTrue(9, () -> locator.count() == 1);
+        waitUntilTrue(() -> locator.count() == 1);
 
         if (!locator.isVisible()) {
             return "Not visible";
