@@ -1,8 +1,8 @@
-package com.fiserv.qabrazil.steps;
+package com.fiserv.qabrazil.steps.home;
 
 import com.fiserv.qabrazil.pages.CommonsPage;
-import com.fiserv.qabrazil.pages.HomeCustomizeModal;
-import com.fiserv.qabrazil.pages.HomePage;
+import com.fiserv.qabrazil.pages.home.HomeCustomizeModal;
+import com.fiserv.qabrazil.pages.home.HomePage;
 import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;

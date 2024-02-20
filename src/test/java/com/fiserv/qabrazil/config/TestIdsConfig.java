@@ -130,14 +130,15 @@ public class TestIdsConfig {
             entry("Relatórios - Tabela Linha - Período", "relatorios-table-row-periodo"),
             entry("Relatórios - Tabela Linha - Ícone Download Ok", "relatorios-table-row-download-ok"),
             entry("Relatórios - Tabela Linha - Ícone Download Falha", "relatorios-table-row-download-fail"),
-            entry("Relatórios - Tabela Linha - Ícone Download Aguardando", "relatorios-table-row-download-wait")
+            entry("Relatórios - Tabela Linha - Ícone Download Aguardando", "relatorios-table-row-download-wait"),
 
+            entry("Header - Ocultar Valores", "head-ocultar-valores")
     );
 
 
     // TODO: trocar por data-testid
     private static final Map<String, String> otherSelectors = Map.ofEntries(
-            entry("Header - Ocultar Valores", "//span[contains(text(),'Ocultar valores')]")
+            entry("Vendas - Histórico Vendas - Período - Descrição", "//span[contains(text(),'Período')]/../span[2]")
     );
 
     public static String getTestId(String identifier) {

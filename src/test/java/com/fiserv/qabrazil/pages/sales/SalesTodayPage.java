@@ -1,7 +1,8 @@
-package com.fiserv.qabrazil.pages;
+package com.fiserv.qabrazil.pages.sales;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.components.Paginator;
+import com.fiserv.qabrazil.pages.CheckedBasePage;
 import com.microsoft.playwright.Locator;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -27,6 +27,7 @@ public class LoginSteps {
         loginPage.login(url, user, pwd);
     }
 
+    @Given("Usuário acessou com sucesso")
     @Then("Usuário estará com acesso")
     public void userHasAccessGranted() {
         boolean accessGranted = loginPage.userIsLogged();

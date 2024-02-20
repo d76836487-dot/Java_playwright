@@ -1,6 +1,7 @@
-package com.fiserv.qabrazil.pages;
+package com.fiserv.qabrazil.pages.home;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.pages.CheckedBasePage;
 import com.fiserv.qabrazil.util.WaitUtil;
 import com.microsoft.playwright.Locator;
 

@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.components;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.Identifier;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
@@ -12,8 +13,7 @@ public class HeaderComponent {
     Page page;
 
     public void selectShowValuesButton(boolean show) {
-        // TODO: trocar por data-testid
-        Locator button = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Ocultar valores"));
+        Locator button = page.getByTestId(Identifier.from("Header - Ocultar Valores").testId());
         String innerHtml = button.innerHTML();
         int numberOfTagsWithPath = innerHtml.split("<path").length - 1;
 

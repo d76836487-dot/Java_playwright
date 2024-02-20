@@ -2,6 +2,7 @@ package com.fiserv.automation.playwright.configuration;
 
 
 import com.fiserv.automation.framework.annotations.ScenarioScope;
+import com.fiserv.qabrazil.pages.PageField;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
@@ -39,6 +40,8 @@ public class AuthenticatedPlaywrightConfiguration {
             proxyMode = ScopedProxyMode.NO
     )
     public Page authenticatedPage(BrowserContext browserContext) {
-        return browserContext.newPage();
+        Page page = browserContext.newPage();
+        PageField.page = page;
+        return page;
     }
 }

@@ -4,6 +4,7 @@ import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageObject;
 import com.fiserv.qabrazil.util.Identifier;
+import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.UrlCheckers;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -67,9 +68,9 @@ public class CommonsSteps {
         newTab = commonsPage.clickButtonAndNewTabOpens(elementSelector);
     }
 
-    @Then("Usuário verá em {identifier} o valor {string}")
-    public void matchValuePerField(Identifier identifier, String expectedText) {
-        String textFound = commonsPage.getTextFromElement(identifier);
+    @Then("Usuário verá em {pageField} o valor {string}")
+    public void matchValuePerField(PageField pageField, String expectedText) {
+        String textFound = pageField.getAsText();
         assertEquals(expectedText, textFound);
     }
 

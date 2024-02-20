@@ -1,4 +1,4 @@
-package com.fiserv.qabrazil.steps;
+package com.fiserv.qabrazil.steps.sales;
 
 import com.fiserv.automation.api.dto.WeeklyScheduleDto;
 import com.fiserv.automation.api.service.ApiSalesService;
@@ -6,6 +6,7 @@ import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.FilterComponentPage;
 import com.fiserv.qabrazil.util.Identifier;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;

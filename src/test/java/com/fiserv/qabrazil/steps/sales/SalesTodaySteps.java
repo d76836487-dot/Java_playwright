@@ -1,7 +1,7 @@
-package com.fiserv.qabrazil.steps;
+package com.fiserv.qabrazil.steps.sales;
 
 import com.fiserv.qabrazil.pages.CommonsPage;
-import com.fiserv.qabrazil.pages.SalesTodayPage;
+import com.fiserv.qabrazil.pages.sales.SalesTodayPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

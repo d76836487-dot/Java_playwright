@@ -1,4 +1,4 @@
-package com.fiserv.qabrazil.steps;
+package com.fiserv.qabrazil.steps.home;
 
 import com.fiserv.automation.api.dto.AuthorizationsDto;
 import com.fiserv.automation.api.dto.WeeklyScheduleDto;
