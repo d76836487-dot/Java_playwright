@@ -12,6 +12,7 @@ Feature: Vendas Histórico com CNPJ
     And Usuário acessou com sucesso
     And Usuário acessou Vendas - Histórico de Vendas
 
+  @TestCaseKey=SMP-T157
   Scenario Outline: Rodapé de Vendas Hoje
     When Usuário acessa Vendas Hoje
     Then Página conterá rodapé "<descrição>" com o ano atual
@@ -20,9 +21,11 @@ Feature: Vendas Histórico com CNPJ
       | descrição                                                                             |
       | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
 
+  @TestCaseKey=SMP-T156
   Scenario Outline: Trás como padrão Ontem no filtro do período
     Then Usuário verá em "Vendas - Histórico Vendas - Período - Descrição" o valor "<período>"
     @pt-br
     Examples:
-      | período                                                                             |
-      | Ontem |
+      | período |
+      | Ontem   |
+
