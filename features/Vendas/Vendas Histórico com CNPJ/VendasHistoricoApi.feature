@@ -12,6 +12,7 @@ Feature: Vendas Histórico com CNPJ com API
     And Usuário acessou com sucesso
     And Usuário acessou Vendas - Histórico de Vendas
 
+  @TestCaseKey=SMP-T161
   Scenario Outline: Compara valores bruto, líquido e total de vendas com api
     Given Usuário viu "<período>" em "Vendas - Histórico Vendas - Período - Descrição"
     Then Valor bruto será igual a API
@@ -21,3 +22,4 @@ Feature: Vendas Histórico com CNPJ com API
     Examples:
       | período |
       | Ontem   |
+
