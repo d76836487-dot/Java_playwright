@@ -87,9 +87,13 @@ public class HomeSteps {
         Currency totalReceivable = PageField.from("Home - Card Recebimento - Recebimento Previsto").getAsCurrency();
         var assumption = assumeThat(totalReceivable.doubleValue());
         if (value) {
-            assumption.isGreaterThan(0);
+            assumption
+                    .withFailMessage("Não existem valores futuros a receber")
+                    .isGreaterThan(0);
         } else {
-            assumption.isEqualTo(0);
+            assumption
+                    .withFailMessage("Existem valores futuros a receber")
+                    .isEqualTo(0);
         }
     }
 }

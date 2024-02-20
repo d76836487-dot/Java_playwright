@@ -10,11 +10,12 @@ Feature: Filtros Histórico de Vendas
   Background:
     Given Usuário logou na aplicação
     And Usuário acessa Vendas Hoje
+    And Todas as requisições HTTP foram respondidas
 
   @TestCaseKey=SMP-T23
   Scenario Outline: Filtrar histórico de vendas por Produtos
-    When Existem vendas com "produto" tipo "<tipoDeProduto>"
-    And Usuário filtra por tudo, exceto "<tipoDeProduto>", em "Produtos (0)"
+    Given Existem vendas com "produto" tipo "<tipoDeProduto>"
+    When Usuário filtra por tudo, exceto "<tipoDeProduto>", em "Produtos (0)"
     Then Serão filtradas as vendas com produto "<tipoDeProduto>"
     @pt-br
     Examples:
