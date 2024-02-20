@@ -27,16 +27,16 @@ public class ApiAuthorizationsService {
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
 
-    public Number getGrossSalesTodayAllEcs() throws Exception {
+    public Number getSalesTodayAllEcs() throws Exception {
         String apiAccessToken = browserLocalStorage.getApiAccessToken();
         List<String> ecs = apiUserDetailsService.getEcs();
 
         return ecs.stream()
-                .mapToDouble(ec -> getGrossSalesEcToday(apiAccessToken, ec))
+                .mapToLong(ec -> getSalesEcToday(apiAccessToken, ec))
                 .sum();
     }
 
-    private double getGrossSalesEcToday(String apiAccessToken, String ec) {
+    private long getSalesEcToday(String apiAccessToken, String ec) {
         String today = formattedDate(0);
         PagedSummaryDto answer;
         try {
@@ -47,7 +47,7 @@ public class ApiAuthorizationsService {
 
         return answer.sumarizacao.stream()
                 .filter(summary -> summary.tipoSumarizacao.equals(today))
-                .mapToDouble(SummaryDto::getSumarizacao)
+                .mapToLong(SummaryDto::getSumarizacao)
                 .sum();
     }
 

@@ -89,7 +89,7 @@ public class HomeApiSteps {
 
     @Then("Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API")
     public void compareTotalSalesPageAndApi() throws Exception {
-        Number salesTodayApi = apiAuthorizationsService.getGrossSalesTodayAllEcs();
+        Number salesTodayApi = apiAuthorizationsService.getSalesTodayAllEcs().doubleValue();
         Number salesTodayPage = PageField.from("Home - Card Vendas Hoje - Valor Vendas Hoje").getAsCurrency().doubleValue();
 
         assertEquals("Total de vendas da página é diferente da api", salesTodayApi, salesTodayPage);

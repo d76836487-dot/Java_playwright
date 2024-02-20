@@ -15,6 +15,7 @@ public class PageField {
     public static Page page;
     private final String displayName;
     private final String selector;
+    private final Locator locator;
 
     public static PageField from(String displayName) {
         return new PageField(displayName);
@@ -23,13 +24,12 @@ public class PageField {
     private PageField(String displayName) {
         this.displayName = displayName;
         selector = TestIdsConfig.getQuerySelector(displayName);
+        locator = page.locator(selector);
     }
 
     public String getAsText() {
-        Locator locator = page.locator(selector);
-
-        if (!waitUntilTrue(9, () -> fieldIsOk(locator))) {
-            fail("Found none or more than one");
+        if (!fieldIsOneVisibleAndEnabled()) {
+            fail("Found none or more than one/Not visible/Not enabled");
         }
 
         locator.scrollIntoViewIfNeeded();
@@ -53,8 +53,8 @@ public class PageField {
         return locator.textContent();
     }
 
-    private static boolean fieldIsOk(Locator locator) {
-        return locator.count() == 1 && locator.isVisible() && locator.isEnabled();
+    public boolean fieldIsOneVisibleAndEnabled() {
+        return waitUntilTrue(9, () -> locator.count() == 1 && locator.isVisible() && locator.isEnabled());
     }
 
     @ParameterType("\"([^\"]+)\"")

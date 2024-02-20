@@ -35,19 +35,6 @@ public class CommonsSteps {
         commonsPage.navigateToRoot();
     }
 
-    @Then("Usuário verá mensagem {string}")
-    public void userWillSeeMessage(String expectedMessage) {
-        String message = commonsPage.getWholeTextIfVisible(
-                expectedMessage.substring(0, Math.min(expectedMessage.length(), 10)));
-        assertEquals("Mensagem não encontrada na página", expectedMessage, message);
-    }
-    @Given("Usuário NÃO viu mensagem {string}")
-    public void userWillNotSeeMessage(String expectedMessage) {
-        String message = commonsPage.getWholeTextIfVisible(
-                expectedMessage.substring(0, Math.min(expectedMessage.length(), 10)));
-        assumeThat(message.equals("Not visible")).isFalse();
-    }
-
     @Then("Usuário verá botão com texto {string}")
     public void userWillSeeButtonWithText(String expectedButtonText) {
         String message = commonsPage.getButtonWithTextIfVisible(
@@ -130,5 +117,10 @@ public class CommonsSteps {
     @And("Todas as requisições HTTP foram respondidas")
     public void ensureAllHttpRequestsGotAnswer() {
         ensureNoFlyingRequests();
+    }
+
+    @Given("{shakespeareBoolean} o campo {pageField}")
+    public void fieldIsOneVisibleAndEnabled(boolean value, PageField pageField) {
+        assumeThat(pageField.fieldIsOneVisibleAndEnabled()).isEqualTo(value);
     }
 }

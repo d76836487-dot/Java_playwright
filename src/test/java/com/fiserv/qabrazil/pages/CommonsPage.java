@@ -20,10 +20,6 @@ public class CommonsPage extends BasePage {
     @Autowired
     ContractConfig contractConfig;
 
-    public String getWholeTextIfVisible(String message) {
-        return getWholeTextIfVisible(page.locator(String.format("//*[contains(text(),'%s')]", message)));
-    }
-
     public String getButtonWithTextIfVisible(String buttonTitle) {
         return getWholeTextIfVisible(page.getByRole(AriaRole.BUTTON,
                 new Page.GetByRoleOptions().setName(buttonTitle)));
