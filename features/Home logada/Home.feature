@@ -113,12 +113,12 @@ Feature: Home Logada
   #{panel}
   #{panel:title=CENÁRIO DE TESTE|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=2}
   #h6. *CENÁRIOS: VALIDAÇÕES DE DIRECIONAMENTOS DOS BOXES DA HOME *
-  #
-  #*Dado* que eu faça login no Portal
-  #*Quando* abrir a tela principal “início”
-  #*E* clicar no ícone “notificações”
-  #*Então* o Portal deve abrir as minhas notificações
-  #
+
+    Scenario: abrir notificações
+      Given Usuário acessou o Home
+      When usuário clica no "Notificações" na "Header"
+      Then o Portal deve abrir as "Minhas Notificações"
+
   #*Dado* que eu faça login no App e tenha mais de um EC vinculado ao meu documento
   #*Quando* abrir a tela principal “início”
   #*E* clicar no ícone “v” no boxe com o nome, CNPJ e EC

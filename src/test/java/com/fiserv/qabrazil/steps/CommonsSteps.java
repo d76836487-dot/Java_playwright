@@ -99,6 +99,7 @@ public class CommonsSteps {
     }
 
     @Then("será direcionado para a jornada de {string}")
+    @Then("o Portal deve abrir as {string}")
     public void ensureWeAreAtTheRightPage(String pageName) {
         urlCheckers.forPage(pageName).ensureWeAreAtTheCorrectPage();
     }
