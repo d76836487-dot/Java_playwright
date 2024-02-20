@@ -54,7 +54,7 @@ public class PageField {
     }
 
     private static boolean fieldIsOk(Locator locator) {
-        return locator.count() == 1;
+        return locator.count() == 1 && locator.isVisible() && locator.isEnabled();
     }
 
     @ParameterType("\"([^\"]+)\"")
