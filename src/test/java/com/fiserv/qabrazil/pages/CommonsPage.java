@@ -21,7 +21,6 @@ public class CommonsPage extends BasePage {
     ContractConfig contractConfig;
 
     public String getWholeTextIfVisible(String message) {
-        waitUntilTrue(() -> page.locator(String.format("//*[contains(text(),'%s')]", message)).count() == 1);
         return getWholeTextIfVisible(page.locator(String.format("//*[contains(text(),'%s')]", message)));
     }
 
@@ -31,7 +30,7 @@ public class CommonsPage extends BasePage {
     }
 
     public String getWholeTextIfVisible(Locator locator) {
-        waitUntilTrue(() -> locator.count() == 1);
+        waitUntilTrue(9, () -> locator.count() == 1);
 
         if (!locator.isVisible()) {
             return "Not visible";

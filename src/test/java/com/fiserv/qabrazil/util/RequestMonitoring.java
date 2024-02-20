@@ -17,7 +17,7 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 @Component
 public class RequestMonitoring {
     private static int requestsWithoutResponse = 0;
-    private static final Set<String> monitoredRequests = new HashSet<>();
+    private static Set<String> monitoredRequests;
     private static long startMonitoringRequests;
     private static String hostToMonitor;
     private static final Logger log = LoggerFactory.getLogger(RequestMonitoring.class);
@@ -26,6 +26,7 @@ public class RequestMonitoring {
         hostToMonitor = contractConfig.getUrl();
         startMonitoringRequests = (new Date()).getTime();
         requestsWithoutResponse = 0;
+        monitoredRequests = new HashSet<>();
         page.onRequest(RequestMonitoring::newRequest);
         page.onResponse(RequestMonitoring::gotResponse);
     }
