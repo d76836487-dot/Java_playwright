@@ -31,6 +31,7 @@ Feature: Consultar Relatorios
       | descrição                                                                             |
       | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
 
+  @TestCaseKey=SMP-T159
   Scenario Outline: Visualização de mensagem informativa
     Given Usuário acessa página de Relatórios
     Then Usuário verá em "Relatórios - Texto Descritivo" o valor "<descrição>"
@@ -63,14 +64,17 @@ Feature: Consultar Relatorios
     And Existem relatórios já extraídos
     Then Usuário visualizará a listagem do relatório com valores corretos
 
+  @TestCaseKey=SMP-T158
   Scenario: Coluna baixar
     Given Usuário acessa página de Relatórios
     And Existem relatórios já extraídos disponíveis para download
     Then botão download possui ícone com seta para baixo
 
+  @TestCaseKey=SMP-T160
   Scenario: Fazer download do arquivo de relatório
     Given Usuário acessa página de Relatórios
     And Existem relatórios já extraídos disponíveis para download
     When tenta baixar o primeiro relatório ao clicar no ícone de download
     Then o download do relatório começará
     And o nome do arquivo baixado seguirá o da listagem (primeiro relatório da lista)
+
