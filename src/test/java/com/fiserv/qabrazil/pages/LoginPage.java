@@ -5,7 +5,6 @@ import com.fiserv.automation.playwright.configuration.StorageState;
 import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.regex.Pattern;
@@ -61,8 +60,7 @@ public class LoginPage extends BasePage {
     }
 
     public synchronized boolean userIsLogged() {
-        boolean isLogged = waitUntilTrue(() ->
-                page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Sair")).first().isVisible());
+        boolean isLogged = waitUntilTrue(() -> page.getByTestId("head-sair").isVisible());
         saveStorageState();
         return isLogged;
     }
