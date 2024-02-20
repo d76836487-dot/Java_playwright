@@ -141,6 +141,9 @@ public class TestIdsConfig {
     // TODO: trocar por data-testid
     private static final Map<String, String> otherSelectors = Map.ofEntries(
             entry("Vendas - Histórico Vendas - Período - Descrição", "//span[contains(text(),'Período')]/../span[2]"),
+            entry("Vendas - Histórico Vendas - Valor Bruto Total", "//span[contains(text(),'Valor bruto') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
+            entry("Vendas - Histórico Vendas - Valor Líquido Total", "//span[contains(text(),'Valor líquido') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
+            entry("Vendas - Histórico Vendas - Total de vendas", "//span[contains(text(),'Total de vendas') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
             entry("Relatórios - Texto Descritivo", "//span[contains(text(),'Caso já tenha gerado')]"),
             entry("Login - Esqueceu senha - Título", "h4"),
             entry("Home - Maquininha", ".title-maquinha"),

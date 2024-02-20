@@ -4,7 +4,6 @@ import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.util.Identifier;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ScenarioComponent

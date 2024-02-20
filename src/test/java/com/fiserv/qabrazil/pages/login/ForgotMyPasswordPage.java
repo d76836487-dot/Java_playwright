@@ -1,4 +1,4 @@
-package com.fiserv.qabrazil.pages;
+package com.fiserv.qabrazil.pages.login;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.microsoft.playwright.Page;

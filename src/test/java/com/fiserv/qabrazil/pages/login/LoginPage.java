@@ -1,9 +1,10 @@
-package com.fiserv.qabrazil.pages;
+package com.fiserv.qabrazil.pages.login;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.automation.playwright.configuration.StorageState;
 import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
+import com.fiserv.qabrazil.pages.BasePage;
 import com.microsoft.playwright.*;
 import org.springframework.beans.factory.annotation.Autowired;
 

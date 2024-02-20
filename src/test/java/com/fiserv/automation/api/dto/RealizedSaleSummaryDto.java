@@ -19,4 +19,12 @@ public class RealizedSaleSummaryDto {
     public double getValorTotalPlano() {
         return valorTotalPlano.doubleValue();
     }
+
+    public double getValorTotalLiquidoPlano() {
+        return valorTotalLiquidoPlano.doubleValue();
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
 }

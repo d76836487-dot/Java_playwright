@@ -75,7 +75,7 @@ public class ApiReceivablesService {
 
         return new WeeklyScheduleDto(
                 paymentDate.substring(6, 8),
-                weekDayMonth[1], weekDayMonth[0], totalPayment, 0);
+                weekDayMonth[1], weekDayMonth[0], totalPayment, 0, 0);
     }
 
     private int getDaysUntilFriday() {

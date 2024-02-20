@@ -2,24 +2,26 @@ package com.fiserv.automation.api.dto;
 
 public class WeeklyScheduleDto {
     public static final WeeklyScheduleDto NULL =
-            new WeeklyScheduleDto("", "", "", 0.0, 0);
+            new WeeklyScheduleDto("", "", "", 0, 0.0, 0);
 
     public String monthDay;
     public String month;
     public String weekday;
-    public double values;
+    public double grossValues;
+    public double netValues;
     public int occurrences;
 
-    public WeeklyScheduleDto(String monthDay, String month, String weekday, double values, int occurrences) {
+    public WeeklyScheduleDto(String monthDay, String month, String weekday, double values, double netValues, int occurrences) {
         this.monthDay = monthDay;
         this.month = month;
         this.weekday = weekday;
-        this.values = values;
+        this.grossValues = values;
+        this.netValues = netValues;
         this.occurrences = occurrences;
     }
 
-    public double getValues() {
-        return values;
+    public double getGrossValues() {
+        return grossValues;
     }
 
     public int getOccurrences() {
@@ -32,7 +34,8 @@ public class WeeklyScheduleDto {
                 "monthDay='" + monthDay + '\'' +
                 ", month='" + month + '\'' +
                 ", weekday='" + weekday + '\'' +
-                ", values=" + values +
+                ", grossValues=" + grossValues +
+                ", netValues=" + netValues +
                 ", occurences=" + occurrences +
                 '}';
     }

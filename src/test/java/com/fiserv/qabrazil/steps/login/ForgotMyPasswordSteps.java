@@ -1,6 +1,6 @@
-package com.fiserv.qabrazil.steps;
+package com.fiserv.qabrazil.steps.login;
 
-import com.fiserv.qabrazil.pages.ForgotMyPasswordPage;
+import com.fiserv.qabrazil.pages.login.ForgotMyPasswordPage;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 

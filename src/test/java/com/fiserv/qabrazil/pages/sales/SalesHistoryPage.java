@@ -19,6 +19,7 @@ public class SalesHistoryPage extends BasePage {
 
     public void navigateTo() {
         salesTodayPage.navigateTo();
+        // TODO: change for data-testid
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Histórico de vendas")).first().click();
         startMonitoringRequests(page, contractConfig);
         page.waitForURL(Pattern.compile("^.*/HistoricodeVendas.*$"));

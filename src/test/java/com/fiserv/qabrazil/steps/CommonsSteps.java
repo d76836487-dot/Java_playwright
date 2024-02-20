@@ -48,7 +48,7 @@ public class CommonsSteps {
         assumeThat(message.equals("Not visible")).isFalse();
     }
 
-    @And("Usuário verá botão com texto {string}")
+    @Then("Usuário verá botão com texto {string}")
     public void userWillSeeButtonWithText(String expectedButtonText) {
         String message = commonsPage.getButtonWithTextIfVisible(
                 expectedButtonText.substring(0, Math.min(expectedButtonText.length(), 10)));
@@ -66,6 +66,12 @@ public class CommonsSteps {
     public void userClicksAndNewTabOpens(Identifier identifier) {
         String elementSelector = identifier.selector();
         newTab = commonsPage.clickButtonAndNewTabOpens(elementSelector);
+    }
+
+    @Given("Usuário viu {string} em {pageField}")
+    public void matchValuePerField(String expectedText, PageField pageField) {
+        String textFound = pageField.getAsText();
+        assumeThat(expectedText).isEqualTo(textFound);
     }
 
     @Then("Usuário verá em {pageField} o valor {string}")

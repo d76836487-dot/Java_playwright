@@ -1,6 +1,6 @@
-package com.fiserv.qabrazil.steps;
+package com.fiserv.qabrazil.steps.home;
 
-import com.fiserv.qabrazil.pages.WeekReceiptScheduleComponent;
+import com.fiserv.qabrazil.pages.home.WeekReceiptScheduleComponent;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

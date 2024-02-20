@@ -75,7 +75,7 @@ public class ApiPaymentsService {
 
         return new WeeklyScheduleDto(
                 paymentDate.substring(6, 8),
-                weekDayMonth[1], weekDayMonth[0], totalPayment, qtyDeposits);
+                weekDayMonth[1], weekDayMonth[0], 0, totalPayment, qtyDeposits);
     }
 
     private PagedPaymentDto getPayments(String apiAccessToken, String ec, String monday, String today) {

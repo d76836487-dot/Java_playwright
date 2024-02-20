@@ -22,7 +22,7 @@ Feature: Vendas Histórico com CNPJ
       | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
 
   @TestCaseKey=SMP-T156
-  Scenario Outline: Trás como padrão Ontem no filtro do período
+  Scenario Outline: Traz como padrão Ontem no filtro do período
     Then Usuário verá em "Vendas - Histórico Vendas - Período - Descrição" o valor "<período>"
     @pt-br
     Examples:

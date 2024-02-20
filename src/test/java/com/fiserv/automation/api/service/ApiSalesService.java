@@ -4,6 +4,7 @@ import com.fiserv.automation.api.dto.*;
 import com.fiserv.automation.api.rest.BwaSales;
 import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.qabrazil.browser.BrowserLocalStorage;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,16 @@ public class ApiSalesService {
 
     public List<WeeklyScheduleDto> getTotalSalesToday() throws Exception {
         String today = DateUtil.formattedDate(0);
+        return getTotalSales(today);
+    }
+
+    public List<WeeklyScheduleDto> getTotalSalesYesterday() throws Exception {
+        String today = DateUtil.formattedDate(-1);
+        return getTotalSales(today);
+    }
+
+    @NotNull
+    private List<WeeklyScheduleDto> getTotalSales(String today) throws Exception {
         List<WeeklyScheduleDto> dto = getTotalRealizedSales(today, today);
 
         if (dto.isEmpty()) return List.of(WeeklyScheduleDto.NULL);
@@ -61,13 +72,19 @@ public class ApiSalesService {
 
     private WeeklyScheduleDto createNewDailyScheduleSales(Map.Entry<String, List<RealizedSaleSummaryDto>> dailyPayment)  {
         String paymentDate = dailyPayment.getKey();
-        double totalPayment = dailyPayment.getValue().stream()
+        double total = dailyPayment.getValue().stream()
                 .mapToDouble(RealizedSaleSummaryDto::getValorTotalPlano)
                 .sum();
+        double netTotal = dailyPayment.getValue().stream()
+                .mapToDouble(RealizedSaleSummaryDto::getValorTotalLiquidoPlano)
+                .sum();
         String[] weekDayMonth = dateAndMonth(convertDateFromPageToLocale(paymentDate));
+        int occurrences = dailyPayment.getValue().stream()
+                .mapToInt(RealizedSaleSummaryDto::getQuantidade)
+                .sum();
 
         return new WeeklyScheduleDto(
                 paymentDate.substring(6, 8),
-                weekDayMonth[1], weekDayMonth[0], totalPayment, 0);
+                weekDayMonth[1], weekDayMonth[0], total, netTotal, occurrences);
     }
 }

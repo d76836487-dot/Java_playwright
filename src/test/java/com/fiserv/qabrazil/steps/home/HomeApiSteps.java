@@ -131,7 +131,7 @@ public class HomeApiSteps {
     private Number getValueForDay(List<WeeklyScheduleDto> weeklySchedule, String dayPage) {
         return weeklySchedule.stream()
                 .filter(weeklyScheduleDto -> weeklyScheduleDto.monthDay.equals(dayPage))
-                .mapToDouble(WeeklyScheduleDto::getValues)
+                .mapToDouble(WeeklyScheduleDto::getGrossValues)
                 .sum();
     }
 

@@ -1,7 +1,8 @@
-package com.fiserv.qabrazil.pages;
+package com.fiserv.qabrazil.pages.home;
 
 import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.util.Identifier;
 import com.fiserv.qabrazil.util.RegexUtil;
 import com.microsoft.playwright.Locator;

@@ -1,7 +1,7 @@
 package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.config.ContractConfig;
-import com.fiserv.qabrazil.pages.LoginPage;
+import com.fiserv.qabrazil.pages.login.LoginPage;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 

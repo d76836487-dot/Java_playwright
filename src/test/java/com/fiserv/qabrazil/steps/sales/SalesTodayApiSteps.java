@@ -39,7 +39,7 @@ public class SalesTodayApiSteps {
         String qtySales = qtySalesId.getAsText();
         Currency valueSales = valueSalesId.getAsCurrency();
 
-        assertEquals("Valor de vendas não é igual a API", dto.getValues(), valueSales.doubleValue(), 0.001);
+        assertEquals("Valor de vendas não é igual a API", dto.getGrossValues(), valueSales.doubleValue(), 0.001);
         assertEquals("Quantidade de vendas não é igual a API", String.valueOf(dto.getOccurrences()), qtySales);
     }
 
