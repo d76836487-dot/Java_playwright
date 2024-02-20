@@ -68,7 +68,7 @@ Feature: Consultar Relatorios
     And Existem relatórios já extraídos disponíveis para download
     Then botão download possui ícone com seta para baixo
 
-  Scenario: Coluna baixar
+  Scenario: Fazer download do arquivo de relatório
     Given Usuário acessa página de Relatórios
     And Existem relatórios já extraídos disponíveis para download
     When tenta baixar o primeiro relatório ao clicar no ícone de download
