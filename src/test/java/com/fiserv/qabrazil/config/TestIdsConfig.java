@@ -130,7 +130,7 @@ public class TestIdsConfig {
             entry("Relatórios - Item - Período", "relatorios-table-row-periodo"),
             entry("Relatórios - Botão Download Ok", "relatorios-table-row-download-ok"),
             entry("Relatórios - Botão Download Falha", "relatorios-table-row-download-fail"),
-            entry("Relatórios - Botão Download Aguardando", "relatorios-table-row-download-wait")
+            entry("Relatórios - Botão Download Aguardando", "relatorios-table-row-download-wait"),
 
             entry("Header - Ocultar Valores", "head-ocultar-valores")
     );
@@ -138,7 +138,8 @@ public class TestIdsConfig {
 
     // TODO: trocar por data-testid
     private static final Map<String, String> otherSelectors = Map.ofEntries(
-            entry("Vendas - Histórico Vendas - Período - Descrição", "//span[contains(text(),'Período')]/../span[2]")
+            entry("Vendas - Histórico Vendas - Período - Descrição", "//span[contains(text(),'Período')]/../span[2]"),
+            entry("Relatórios - Texto Descritivo", "//span[contains(text(),'Caso já tenha gerado')]")
     );
 
     public static String getTestId(String identifier) {

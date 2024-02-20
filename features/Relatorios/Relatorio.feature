@@ -31,6 +31,14 @@ Feature: Consultar Relatorios
       | descrição                                                                             |
       | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
 
+  Scenario Outline: Visualização de mensagem informativa
+    Given Usuário acessa página de Relatórios
+    Then Usuário verá em "Relatórios - Texto Descritivo" o valor "<descrição>"
+    @pt-br
+    Examples:
+      | descrição                                                                                                              |
+      | Caso já tenha gerado um relatório, aguarde o processamento de até 1 dia para o mesmo ser exibido para baixar na tabela |
+
   @TestCaseKey=SMP-T143
   Scenario Outline: Colunas dos relatórios na tela inicial
     Given Usuário acessa página de Relatórios
@@ -59,7 +67,10 @@ Feature: Consultar Relatorios
     Given Usuário acessa página de Relatórios
     And Existem relatórios já extraídos disponíveis para download
     Then botão download possui ícone com seta para baixo
+
+  Scenario: Coluna baixar
+    Given Usuário acessa página de Relatórios
+    And Existem relatórios já extraídos disponíveis para download
     When tenta baixar o primeiro relatório ao clicar no ícone de download
     Then o download do relatório começará
     And o nome do arquivo baixado seguirá o da listagem (primeiro relatório da lista)
-

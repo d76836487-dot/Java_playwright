@@ -6,7 +6,7 @@ import com.fiserv.qabrazil.dto.ReportDto;
 import com.fiserv.qabrazil.util.Identifier;
 import com.microsoft.playwright.Download;
 import com.microsoft.playwright.Locator;
-import jakarta.annotation.PostConstruct;
+import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +15,11 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import static com.fiserv.qabrazil.config.TestIdsConfig.getQuerySelector;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static org.testng.AssertJUnit.fail;
 
 @ScenarioComponent
 @Component("Relatórios")
@@ -30,15 +30,10 @@ public class ReportsPage extends CheckedBasePage {
     @Autowired
     private Paginator paginator;
 
-    private final List<Download> downloads = new ArrayList<>();
+    private Pair<String, Download> download;
 
     public ReportsPage() {
         super(Pattern.compile("^.*/Relatorios$"));
-    }
-
-    @PostConstruct
-    public void init() {
-        page.onDownload(downloads::add);
     }
 
     public void ensureWeAreAtReportsPage() {
@@ -101,8 +96,8 @@ public class ReportsPage extends CheckedBasePage {
                         .setRequestedIn(cellsRequestedIn.get(i).textContent())
                         .setRange(cellsReportRange.get(i).textContent())
                 );
-
             }
+
         });
 
         return reports;
@@ -114,27 +109,53 @@ public class ReportsPage extends CheckedBasePage {
     }
 
     public boolean theDownloadOfTheReportStarted() {
-        log.info("Number of downloads initialized in this test: {}", downloads.size());
-        log.info("Being: {}", downloads.stream().map(Download::suggestedFilename).collect(Collectors.joining()));
-        return downloads.size() == 1;
+        return download != null;
     }
 
     public void clickOnTheFirstDownloadButton() {
-        String testId = Identifier.from("Relatórios - Botão Download Ok").selector();
-        Locator button = page.locator(testId).first();
-        button.click();
+        String downloadTestId = Identifier.from("Relatórios - Botão Download Ok").testId();
+        String failTestId = Identifier.from("Relatórios - Botão Download Falha").selector();
+        String waitingTestId = Identifier.from("Relatórios - Botão Download Aguardando").selector();
+        String fileNameTestId = Identifier.from("Relatórios - Item - Nome Arquivo").selector();
+
+        List<Locator> downloadCells = page.getByTestId(downloadTestId)
+                .or(page.locator(waitingTestId))
+                .or(page.locator(failTestId))
+                .all();
+
+        List<Locator> fileNames = page.locator(fileNameTestId).all();
+
+        for (int i = 0; i < fileNames.size(); i++) {
+            Locator icon = downloadCells.get(i);
+
+            if(isDownloadAvailable(icon, downloadTestId)) {
+                downloadReport(icon, fileNames.get(i));
+                break;
+            }
+        }
+    }
+
+    private void downloadReport(Locator icon, Locator fileName) {
+        Download file = page.waitForDownload(icon::click);
+
+        download = Pair.of(fileName.textContent(), file);
+    }
+
+    private static boolean isDownloadAvailable(Locator icon, String downloadTestId) {
+        return icon.getAttribute("data-testid").equals(downloadTestId);
     }
 
     public boolean theFirstNameOfTheReportIsEqualToTheFirstReportDownloaded() {
-        String testId = Identifier.from("Relatórios - Item - Nome Arquivo").selector();
-        Locator fileName = page.locator(testId).first();
+        if(download == null) {
+            fail("Couldn't compare the download file name with the listed one. No download found.");
+        }
 
-        String listedFileName = fileName.textContent();
-        String downloadedFileName = downloads.get(0).suggestedFilename();
+        String listedFileName = download.getKey();
+        String downloadedFileName = download.getValue().suggestedFilename();
 
         log.info("Comparing reports:");
         log.info("Report in the table: {}", listedFileName);
         log.info("Actual downloaded file name: {}", downloadedFileName);
-        return downloads.size() == 1 && listedFileName.equals(downloadedFileName);
+        return listedFileName.equals(downloadedFileName);
     }
 }
