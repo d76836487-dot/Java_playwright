@@ -33,17 +33,6 @@ public class SalesTodaySteps {
         assertEquals(expected.trim(), footerText.trim());
     }
 
-    @Then("Página conterá mensagem com a {string} do resumo de vendas")
-    public void pageWillContainMessageDescribingSalesSummary(String expectedMessage) {
-        String message = commonsPage.getWholeTextIfVisible(expectedMessage.substring(0, 10));
-        assertEquals("Mensagem não encontrada na página", expectedMessage, message);
-    }
-
-    @When("Usuário passa o mouse sobre vendas")
-    public void userHoversMenu() {
-        salesTodayPage.hoverMenuOnSalesMenu();
-    }
-
     @Given("Existem vendas com status {string}")
     public void thereIsSalesWithStatus(String salesStatus) {
         thereAreSalesWith("status", salesStatus);

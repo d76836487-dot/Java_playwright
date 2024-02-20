@@ -15,7 +15,7 @@ Feature: Login
   @TestCaseKey=SMP-T11
   Scenario: Usuário não encontrado no GA1 nem no GA2 e sem cadastro na Fiserv
     When Usuário tenta logar na aplicação com "71633816000210" e "Fiserv@123"
-    Then Usuário verá mensagem "Parece que você ainda não é nosso cliente"
+    Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
 
   @TestCaseKey=SMP-T12
   Scenario: Usuário perdeu a sessão e deve logar-se novamente
@@ -26,7 +26,7 @@ Feature: Login
   Scenario Outline: Usuário tenta logar com senha errada
     When Usuário loga com senha errada
     And Todas as requisições HTTP foram respondidas
-    Then Usuário verá mensagem "<descrição>"
+    Then Usuário verá em "Login - mensagem de erro" o valor "<descrição>"
     @pt-br
     Examples:
       | descrição                                                                                           |

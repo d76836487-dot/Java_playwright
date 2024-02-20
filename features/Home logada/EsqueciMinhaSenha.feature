@@ -14,5 +14,5 @@ Feature: Esqueci Minha Senha
   @TestCaseKey=SMP-T14
   Scenario: Usuário não existente no GA1 nem no GA2 e sem cadastro na Fiserv
     When Usuário tenta recuperar senha com "71633816000210"
-    Then Usuário verá mensagem "Parece que você ainda não é nosso cliente"
+    Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
 

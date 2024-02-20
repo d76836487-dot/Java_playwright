@@ -14,7 +14,7 @@ Feature: Tela Vendas Hoje com CNPJ
   @TestCaseKey=SMP-T9
   Scenario Outline: Mensagem de Resumo de Vendas
     When Usuário acessa Vendas Hoje
-    Then Usuário verá mensagem "<descrição>"
+    Then Usuário verá em "Home - Resumo" o valor "<descrição>"
     @pt-br
     Examples:
       | descrição                                                                                                                                                                                                                                                          |

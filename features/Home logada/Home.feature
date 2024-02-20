@@ -15,7 +15,7 @@ Feature: Home Logada
   @TestCaseKey=SMP-T16
   Scenario Outline: Banner de comunicação comercial
     Given Usuário acessou o Home
-    Then Usuário verá mensagem "<descrição>"
+    Then Usuário verá em "Home - Maquininha" o valor "<descrição>"
     And Usuário verá botão com texto "<texto botão>"
     @pt-br
     Examples:

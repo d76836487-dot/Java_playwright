@@ -30,6 +30,8 @@ public class TagHook {
                 tag -> contractConfig.getInstitutionTags().contains(tag) ||
                        contractConfig.getClientTags().contains(tag));
 
-        assumeThat(tagsInTagGroup.isEmpty() || allTagsInGroupMatchInstitution).isTrue();
+        assumeThat(tagsInTagGroup.isEmpty() || allTagsInGroupMatchInstitution)
+                .withFailMessage("Scenario " + scenario.getName() + " didn't match all necessary tags")
+                .isTrue();
     }
 }
