@@ -1,11 +1,17 @@
 package com.fiserv.automation.api.dto;
 
+import java.math.BigDecimal;
+
 public class SummaryDto {
     public String estabelecimento;
     public String tipoSumarizacao;
     public String quantidade;
-    public String sumarizacao;
+    public BigDecimal sumarizacao;
     public String sumarizacaoConfirmado;
+
+    public double getSumarizacao() {
+        return sumarizacao.doubleValue();
+    }
 
     @Override
     public String toString() {

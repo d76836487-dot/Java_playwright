@@ -2,6 +2,7 @@ package com.fiserv.automation.api.service;
 
 import com.fiserv.automation.api.dto.AuthorizationsDto;
 import com.fiserv.automation.api.dto.PagedSummaryDto;
+import com.fiserv.automation.api.dto.SummaryDto;
 import com.fiserv.automation.api.rest.BwaAuthorization;
 import com.fiserv.qabrazil.browser.BrowserLocalStorage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +27,16 @@ public class ApiAuthorizationsService {
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
 
-    public Number getSalesTodayAllEcs() throws Exception {
+    public Number getGrossSalesTodayAllEcs() throws Exception {
         String apiAccessToken = browserLocalStorage.getApiAccessToken();
         List<String> ecs = apiUserDetailsService.getEcs();
 
         return ecs.stream()
-                .mapToLong(ec -> getSalesEcToday(apiAccessToken, ec))
+                .mapToDouble(ec -> getGrossSalesEcToday(apiAccessToken, ec))
                 .sum();
     }
 
-    private long getSalesEcToday(String apiAccessToken, String ec) {
+    private double getGrossSalesEcToday(String apiAccessToken, String ec) {
         String today = formattedDate(0);
         PagedSummaryDto answer;
         try {
@@ -46,10 +47,7 @@ public class ApiAuthorizationsService {
 
         return answer.sumarizacao.stream()
                 .filter(summary -> summary.tipoSumarizacao.equals(today))
-                .mapToLong(summary -> {
-                    System.out.printf("sumarização em %s para EC %s: %s\n", today, ec, summary.sumarizacao);
-                    return Long.parseLong(summary.sumarizacao);
-                })
+                .mapToDouble(SummaryDto::getSumarizacao)
                 .sum();
     }
 
