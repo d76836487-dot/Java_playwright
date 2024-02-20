@@ -75,9 +75,9 @@ public class CommonsSteps {
     }
 
 
-    @Then("usuário verá em {identifier} valor maior que {double}")
-    public void valueGreaterThan(Identifier identifier, double value) {
-        assertThat(commonsPage.getNumberFromCurrencyElement(identifier).doubleValue())
+    @Then("usuário verá em {pageField} valor maior que {double}")
+    public void valueGreaterThan(PageField pageField, double value) {
+        assertThat(pageField.getAsCurrency().doubleValue())
                 .isGreaterThan(value);
     }
 

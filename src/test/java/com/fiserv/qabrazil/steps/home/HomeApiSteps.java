@@ -7,6 +7,8 @@ import com.fiserv.automation.api.service.ApiPaymentsService;
 import com.fiserv.automation.api.service.ApiReceivablesService;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
+import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +74,7 @@ public class HomeApiSteps {
     @Then("Total de 'Home - Recebimentos - Recebimentos hoje' será igual à API")
     public void comparePaymentApi() throws Exception {
         BigDecimal todayPaymentApi = apiPaymentsService.getPaymentToday();
-        Number todayPaymentPage = commonsPage.getNumberFromCurrencyElement(Identifier.from("Home - Card Recebimento - Recebimento Hoje"));
+        Currency todayPaymentPage = PageField.from("Home - Card Recebimento - Recebimento Hoje").getAsCurrency();
 
         assertEquals("Total de recebíveis hoje da página é diferente da api", todayPaymentApi.doubleValue(), todayPaymentPage.doubleValue(), 0.001);
     }
@@ -80,7 +82,7 @@ public class HomeApiSteps {
     @Then("Total de 'Home - Card Recebimento - Recebimento Previsto' será igual à API")
     public void compareReceivableApi() throws Exception {
         BigDecimal receivableApi = apiReceivablesService.getTotalSalesReceivables();
-        Number receivablePage = commonsPage.getNumberFromCurrencyElement(Identifier.from("Home - Card Recebimento - Recebimento Previsto"));
+        Currency receivablePage = PageField.from("Home - Card Recebimento - Recebimento Previsto").getAsCurrency();
 
         assertEquals("Total de recebíveis futuros da página é diferente da api", receivableApi.doubleValue(), receivablePage.doubleValue(), 0.001);
     }
@@ -88,7 +90,7 @@ public class HomeApiSteps {
     @Then("Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API")
     public void compareTotalSalesPageAndApi() throws Exception {
         Number salesTodayApi = apiAuthorizationsService.getSalesTodayAllEcs();
-        Number salesTodayPage = commonsPage.getNumberFromCurrencyElement(Identifier.from("Home - Card Vendas Hoje - Valor Vendas Hoje"));
+        Number salesTodayPage = PageField.from("Home - Card Vendas Hoje - Valor Vendas Hoje").getAsCurrency().doubleValue();
 
         assertEquals("Total de vendas da página é diferente da api", salesTodayApi, salesTodayPage);
     }
@@ -107,8 +109,7 @@ public class HomeApiSteps {
     private void compareValueAndDepositsForOneDay(String weekDay, List<WeeklyScheduleDto> weeklySchedule) {
         String dayPage = commonsPage.getTextFromElement(
                 Identifier.from("Home - Agenda Recebimento - Dia " + weekDay));
-        Number valuePage = commonsPage.getNumberFromCurrencyElement(
-                Identifier.from("Home - Agenda Recebimento - Valor " + weekDay));
+        Number valuePage = PageField.from("Home - Agenda Recebimento - Valor " + weekDay).getAsCurrency().doubleValue();
         int qtyDepositsPage = getQtyDeposits(weekDay);
         Number valueApi = getValueForDay(weeklySchedule, dayPage);
         int qtyDepositsApi = getQuantityDepositsForDay(weeklySchedule, dayPage);

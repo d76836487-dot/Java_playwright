@@ -1,8 +1,10 @@
 package com.fiserv.qabrazil.steps.home;
 
 import com.fiserv.qabrazil.pages.CommonsPage;
+import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.home.HomeCustomizeModal;
 import com.fiserv.qabrazil.pages.home.HomePage;
+import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
@@ -59,13 +61,13 @@ public class HomeSteps {
 
     @Then("Total de Recebimentos será igual ao recebimento de hoje + futuro previsto")
     public void totalReceivableMatches() {
-        Identifier todayReceivableId = Identifier.from("Home - Card Recebimento - Recebimento Hoje");
-        Identifier foreseenReceivableId = Identifier.from("Home - Card Recebimento - Recebimento Previsto");
-        Identifier totalReceivableId = Identifier.from("Home - Card Recebimento - Total Recebimento");
+        PageField todayReceivableId = PageField.from("Home - Card Recebimento - Recebimento Hoje");
+        PageField foreseenReceivableId = PageField.from("Home - Card Recebimento - Recebimento Previsto");
+        PageField totalReceivableId = PageField.from("Home - Card Recebimento - Total Recebimento");
 
-        Number todayReceivable = commonsPage.getNumberFromCurrencyElement(todayReceivableId);
-        Number foreseenReceivable = commonsPage.getNumberFromCurrencyElement(foreseenReceivableId);
-        Number totalReceivable = commonsPage.getNumberFromCurrencyElement(totalReceivableId);
+        Currency todayReceivable = todayReceivableId.getAsCurrency();
+        Currency foreseenReceivable = foreseenReceivableId.getAsCurrency();
+        Currency totalReceivable = totalReceivableId.getAsCurrency();
 
         assertEquals("Total of receivable not matching sum for today and foreseen",
                 totalReceivable.doubleValue(), todayReceivable.doubleValue() + foreseenReceivable.doubleValue(), 0.001);
@@ -82,7 +84,7 @@ public class HomeSteps {
 
     @Given("{shakespeareBoolean} valores futuros a/para receber")
     public void thereAreValuesToReceiveInTheFuture(boolean value) {
-        Number totalReceivable = commonsPage.getNumberFromCurrencyElement(Identifier.from("Home - Card Recebimento - Recebimento Previsto"));
+        Currency totalReceivable = PageField.from("Home - Card Recebimento - Recebimento Previsto").getAsCurrency();
         var assumption = assumeThat(totalReceivable.doubleValue());
         if (value) {
             assumption.isGreaterThan(0);

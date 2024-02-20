@@ -5,8 +5,9 @@ import com.fiserv.automation.api.service.ApiSalesService;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.FilterComponentPage;
+import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.Identifier;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,10 @@ public class SalesTodayApiSteps {
         WeeklyScheduleDto dto = apiSalesService.getTotalSalesToday().get(0);
         System.out.println(dto);
 
-        Identifier qtySalesId = Identifier.from("Vendas Hoje - Resumo - Quantidade Vendas");
-        Identifier valueSalesId = Identifier.from("Vendas Hoje - Resumo - Valor Vendas");
-        String qtySales = commonsPage.getTextFromElement(qtySalesId);
-        Number valueSales = commonsPage.getNumberFromCurrencyElement(valueSalesId);
+        PageField qtySalesId = PageField.from("Vendas Hoje - Resumo - Quantidade Vendas");
+        PageField valueSalesId = PageField.from("Vendas Hoje - Resumo - Valor Vendas");
+        String qtySales = qtySalesId.getAsText();
+        Currency valueSales = valueSalesId.getAsCurrency();
 
         assertEquals("Valor de vendas não é igual a API", dto.getValues(), valueSales.doubleValue(), 0.001);
         assertEquals("Quantidade de vendas não é igual a API", String.valueOf(dto.getOccurrences()), qtySales);

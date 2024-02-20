@@ -36,17 +36,6 @@ public abstract class BasePage {
                 .toList();
     }
 
-    public Number getNumberFromCurrencyElement(Identifier identifier) {
-        waitUntilTrue(() -> !getTextFromElement(identifier).equals("R$ 0,00")); // it returns R$ 0,00 before setting the real value...
-        String textFromElement = getTextFromElement(identifier);
-        try {
-            return Currency.parseCurrency(textFromElement);
-        } catch (ParseException e) {
-            throw new RuntimeException(
-                    String.format("Failed parsing currency %s with testId %s", textFromElement, identifier.selector()));
-        }
-    }
-
     public List<String> getAllTextsFromElement(String testId) {
         return getAllTextsFromElement(Pattern.compile(testId));
     }

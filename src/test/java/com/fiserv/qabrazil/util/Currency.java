@@ -10,19 +10,37 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
 
-@Component
 public class Currency {
-    @Autowired
-    ContractConfig contractConfig;
 
-    public static NumberFormat currencyInstance;
+    @Component
+    static class Config {
 
+        @Autowired
+        ContractConfig contractConfig;
 
-    @PostConstruct
-    public void init() {
-        currencyInstance = DecimalFormat.getCurrencyInstance(Locale.forLanguageTag(contractConfig.getLocale()));
+        @PostConstruct
+        public void init() {
+            currencyInstance = DecimalFormat.getCurrencyInstance(Locale.forLanguageTag(contractConfig.getLocale()));
+        }
     }
+
+    private static NumberFormat currencyInstance;
+
+    private final double value;
+
+    public Currency(double value) {
+        this.value = value;
+    }
+
     public static Number parseCurrency(String currency) throws ParseException {
         return currencyInstance.parse(currency.replace(' ', '\u00A0'));
+    }
+
+    public static Currency parse(String text) throws ParseException {
+        return new Currency(currencyInstance.parse(text.replace(' ', '\u00A0')).doubleValue());
+    }
+
+    public double doubleValue() {
+        return value;
     }
 }
