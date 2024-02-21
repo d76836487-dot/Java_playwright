@@ -16,7 +16,7 @@ Feature: Home Logada
   Scenario Outline: Banner de comunicação comercial
     Given Usuário acessou o Home
     Then Usuário verá em "Home - Maquininha" o valor "<descrição>"
-    And Usuário verá botão com texto "<texto botão>"
+    And Usuário verá em "Home - Maquininha - Botão Confira" o valor "<texto botão>"
     @pt-br
     Examples:
       | descrição                           | texto botão |
@@ -34,7 +34,7 @@ Feature: Home Logada
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
     Given Usuário acessou o Home
     Then Usuário verá card Antecipação
-    And Usuário verá botão com texto "<texto botão>"
+    And Usuário verá em "Home - Card Antecipação - Botão Ir" o valor "<texto botão>"
     @pt-br
     Examples:
       | texto botão         |

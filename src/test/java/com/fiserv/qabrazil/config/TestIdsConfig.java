@@ -60,6 +60,7 @@ public class TestIdsConfig {
             entry("Home - Card Últimas Vendas - Hora", "home-card-ultimas-vendas-text-hora-venda"),
 
             entry("Home - Card Antecipação - Valor", "home-card-antecipacao-text-valor"),
+            entry("Home - Card Antecipação - Botão Ir", "home-card-antecipacao-btn-antecipacao"),
 
             entry("Home - acesso rápido - item Antecipação", "home-card-personalizar-link-antecipacao"),
             entry("Home - acesso rápido - item Relatórios", "home-card-personalizar-link-relatorios"),
@@ -147,6 +148,7 @@ public class TestIdsConfig {
             entry("Relatórios - Texto Descritivo", "//span[contains(text(),'Caso já tenha gerado')]"),
             entry("Login - Esqueceu senha - Título", "h4"),
             entry("Home - Maquininha", ".title-maquinha"),
+            entry("Home - Maquininha - Botão Confira", "//button[span[contains(text(),'Confira')]]"),
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]")
     );
 
