@@ -39,6 +39,8 @@ Feature: Home Logada Conferindo Com Api
     Then 'Home - Card agenda semana' será igual a API
 
   @MDRPadrão @PermiteAdiantamento
+  @TestCaseKey=SMP-T162
   Scenario: Está trazendo todos os ECs no card Adiantamento igual a API
     Given Usuário acessou o Home
     Then 'Home - Card Antecipação - ECs' são os mesmos que a API
+
