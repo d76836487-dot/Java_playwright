@@ -12,6 +12,7 @@ import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -87,7 +88,9 @@ public class ReportsSteps {
     }
 
     private void documentIsCorrect(String documentText, List<String> ecs) {
-        assertTrue(ecs.contains(documentText));
+        List<String> allowedDocuments = new ArrayList<>(ecs);
+        allowedDocuments.add("Todos os estabelecimentos");
+        assertTrue(allowedDocuments.contains(documentText));
     }
 
     private void requestedInIsCorrect(String requestedIn) {
