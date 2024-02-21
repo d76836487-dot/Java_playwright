@@ -4,6 +4,7 @@ import com.fiserv.automation.api.dto.AuthorizationsDto;
 import com.fiserv.automation.api.dto.WeeklyScheduleDto;
 import com.fiserv.automation.api.service.ApiAuthorizationsService;
 import com.fiserv.automation.api.service.ApiPaymentsService;
+import com.fiserv.automation.api.service.ApiPrepaymentService;
 import com.fiserv.automation.api.service.ApiReceivablesService;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
@@ -32,6 +33,8 @@ public class HomeApiSteps {
     private ApiPaymentsService apiPaymentsService;
     @Autowired
     private ApiReceivablesService apiReceivablesService;
+    @Autowired
+    private ApiPrepaymentService apiPrepaymentService;
 
     @Then("'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API")
     public void lastSalesMatchApi() throws Exception {
@@ -81,10 +84,11 @@ public class HomeApiSteps {
 
     @Then("Total de 'Home - Card Recebimento - Recebimento Previsto' será igual à API")
     public void compareReceivableApi() throws Exception {
-        BigDecimal receivableApi = apiReceivablesService.getTotalSalesReceivables();
+        BigDecimal receivableApi = apiPrepaymentService.getTotalSalesReceivables();
         Currency receivablePage = PageField.from("Home - Card Recebimento - Recebimento Previsto").getAsCurrency();
 
-        assertEquals("Total de recebíveis futuros da página é diferente da api", receivableApi.doubleValue(), receivablePage.doubleValue(), 0.001);
+        assertEquals("Total de recebíveis futuros da página é diferente da api",
+                receivableApi.doubleValue(), receivablePage.doubleValue(), 0.001);
     }
 
     @Then("Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API")
