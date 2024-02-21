@@ -50,6 +50,6 @@ Feature: Tela Vendas Hoje com CNPJ
   Scenario: Ocultar valores de Vendas Hoje
     Given Usuário acessa Vendas Hoje
     When usuário clica no "Ocultar Valores" no "Header"
-    Then Usuário verá em "Vendas Hoje - Resumo - Quantidade Vendas" o valor "...."
-    And Usuário verá em "Vendas Hoje - Resumo - Valor Vendas" o valor "R$ ...."
+    Then Usuário verá em "Vendas Hoje - Resumo - Quantidade Vendas" o valor "••••"
+    And Usuário verá em "Vendas Hoje - Resumo - Valor Vendas" o valor "R$ ••••"
 
