@@ -2,10 +2,7 @@ package com.fiserv.qabrazil.steps.home;
 
 import com.fiserv.automation.api.dto.AuthorizationsDto;
 import com.fiserv.automation.api.dto.WeeklyScheduleDto;
-import com.fiserv.automation.api.service.ApiAuthorizationsService;
-import com.fiserv.automation.api.service.ApiPaymentsService;
-import com.fiserv.automation.api.service.ApiPrepaymentService;
-import com.fiserv.automation.api.service.ApiReceivablesService;
+import com.fiserv.automation.api.service.*;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
@@ -35,6 +32,8 @@ public class HomeApiSteps {
     private ApiReceivablesService apiReceivablesService;
     @Autowired
     private ApiPrepaymentService apiPrepaymentService;
+    @Autowired
+    private ApiUserDetailsService apiUserDetailsService;
 
     @Then("'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API")
     public void lastSalesMatchApi() throws Exception {
@@ -157,5 +156,17 @@ public class HomeApiSteps {
         }
 
         return Stream.concat(payments.stream(),sales.stream()).toList();
+    }
+
+    @Then("'Home - Card Antecipação - ECs' são os mesmos que a API")
+    public void anticipationSameEcsThanApi() throws Exception {
+        List<String> ecs = apiUserDetailsService.getEcs().stream()
+                .sorted()
+                .toList();
+        List<String> allEcsPage = PageField.from("Home - Card Antecipação - ECs").getAllAsText().stream()
+                .sorted()
+                .toList();
+
+        assertEquals("Os ecs da API não correspondem ao Card Antecipação", ecs, allEcsPage);
     }
 }

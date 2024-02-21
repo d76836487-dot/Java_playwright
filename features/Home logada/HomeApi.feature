@@ -38,3 +38,7 @@ Feature: Home Logada Conferindo Com Api
     Given Usuário acessou o Home
     Then 'Home - Card agenda semana' será igual a API
 
+  @MDRPadrão @PermiteAdiantamento
+  Scenario: Está trazendo todos os ECs no card Adiantamento igual a API
+    Given Usuário acessou o Home
+    Then 'Home - Card Antecipação - ECs' são os mesmos que a API

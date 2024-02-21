@@ -47,6 +47,15 @@ public class PageField {
         return locator.textContent();
     }
 
+    public List<String> getAllAsText() {
+        if (elementIsVisible()) {
+            locator.scrollIntoViewIfNeeded();
+            locator.highlight();
+        }
+
+        return locator.allTextContents();
+    }
+
     public Currency getAsCurrency() {
         waitUntilTrue(() -> !quickGetTextContent().equals("R$ 0,00")); // it returns R$ 0,00 before setting the real value...
         String textFromElement = quickGetTextContent();

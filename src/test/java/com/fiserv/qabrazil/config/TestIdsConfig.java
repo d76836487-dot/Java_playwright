@@ -61,6 +61,7 @@ public class TestIdsConfig {
             entry("Home - Card Últimas Vendas - Data", "home-card-ultimas-vendas-text-data-venda"),
             entry("Home - Card Últimas Vendas - Hora", "home-card-ultimas-vendas-text-hora-venda"),
 
+            entry("Home - Card Antecipação - ECs", "home-card-antecipacao-text-ec"),
             entry("Home - Card Antecipação - Valor", "home-card-antecipacao-text-valor"),
             entry("Home - Card Antecipação - Botão Ir", "home-card-antecipacao-btn-antecipacao"),
 
