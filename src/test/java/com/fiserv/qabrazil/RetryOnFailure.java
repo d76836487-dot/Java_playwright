@@ -25,7 +25,7 @@ public class RetryOnFailure implements IRetryAnalyzer {
             }
             String featureName = feature.toString();
             String scenarioName = scenario.toString();
-            log.info("Will retry {} > {}",featureName, scenarioName);
+            log.warn("Will retry {} > {}", featureName, scenarioName, result.getThrowable());
             retryCount++;
             return true;
         }
