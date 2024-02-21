@@ -14,7 +14,7 @@ Feature: Login
 
   @TestCaseKey=SMP-T11
   Scenario: Usuário não encontrado no GA1 nem no GA2 e sem cadastro na Fiserv
-    When Usuário tenta logar na aplicação com "71633816000210" e "Fiserv@123"
+    When Usuário tenta logar na aplicação com "81633816000210" e "Fiserv@123"
     Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
 
   @TestCaseKey=SMP-T12
