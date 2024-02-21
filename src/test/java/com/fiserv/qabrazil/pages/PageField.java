@@ -2,16 +2,20 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.util.Currency;
+import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.ParameterType;
 
 import java.text.ParseException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static org.testng.Assert.fail;
 
 public class PageField {
+    public static BrowserContext context;
     public static Page page;
     private final String displayName;
     private final String selector;
@@ -19,6 +23,12 @@ public class PageField {
 
     public static PageField from(String displayName) {
         return new PageField(displayName);
+    }
+
+    public static List<PageField> allWithPrefix(String prefix) {
+        return TestIdsConfig.getAllQuerySelector(prefix).stream()
+                .map(pair -> from(pair.getKey()))
+                .collect(Collectors.toList());
     }
 
     private PageField(String displayName) {
@@ -55,6 +65,36 @@ public class PageField {
 
     public boolean fieldIsOneVisibleAndEnabled() {
         return waitUntilTrue(9, () -> locator.count() == 1 && locator.isVisible() && locator.isEnabled());
+    }
+
+    public boolean elementIsVisible() {
+        Locator locator = page.locator(selector);
+        return waitUntilTrue(locator::isVisible);
+    }
+
+    public boolean isChecked() {
+        return page.locator(selector).isChecked();
+    }
+
+    public void check() {
+        page.locator(selector).check();
+    }
+
+    public void uncheck() {
+        page.locator(selector).uncheck();
+    }
+
+    public void click() {
+        Locator locator = page.locator(selector);
+        waitUntilTrue(locator::isVisible);
+        locator.click();
+    }
+
+    public PageObject clickAndNewTabOpens() {
+        Locator locator = page.locator(selector);
+        waitUntilTrue(locator::isVisible);
+        Page newTab = context.waitForPage(locator::click);
+        return new PageObject(newTab);
     }
 
     @ParameterType("\"([^\"]+)\"")

@@ -149,12 +149,6 @@ public class WeekReceiptScheduleComponent extends BasePage {
         }
     }
 
-    public void assertThatThereAreNoReceivablesAvailableMessage() {
-        // TODO: trocar para testId
-        Locator locator = page.locator("#CtnAgendaRecebimentosSemana2");
-        assertThat(locator).containsText("Agenda de recebimentos da semanaVocê não possui nenhum recebimento previsto para essa semana.");
-    }
-
     public void assertThatViewDetailedReceiptsButtonIsVisible() {
         // TODO: trocar para testId
         Locator locator = page.locator("#CtnAgendaRecebimentosSemana2").getByText("Ver recebimentos detalhado");

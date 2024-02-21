@@ -43,27 +43,9 @@ public class CommonsPage extends BasePage {
         page.getByText(buttonText).click();
     }
 
-    public void clickButton(String selector) {
-        Locator locator = page.locator(selector);
-        waitUntilTrue(locator::isVisible);
-        locator.click();
-    }
-
-    public PageObject clickButtonAndNewTabOpens(String selector) {
-        Locator locator = page.locator(selector);
-        waitUntilTrue(locator::isVisible);
-        Page newTab = context.waitForPage(locator::click);
-        return new PageObject(newTab);
-    }
-
     public boolean elementIsVisibleNoWait(String dataTestId) {
         Locator locator = page.getByTestId(dataTestId);
         return locator.count() > 0 && locator.isVisible();
-    }
-
-    public boolean elementIsVisible(String selector) {
-        Locator locator = page.locator(selector);
-        return waitUntilTrue(locator::isVisible);
     }
 
     public void hoverOver(String selector) {

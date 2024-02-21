@@ -42,11 +42,6 @@ public class WeekReceiptScheduleSteps {
         weekReceiptScheduleComponent.containsHighlightedInformation();
     }
 
-    @Then("usuário visualizará a mensagem “Você não possui nenhum recebimento previsto para essa semana”")
-    public void shouldSeeAMessageDoNotHaveReceiptForThisWeek() {
-        weekReceiptScheduleComponent.assertThatThereAreNoReceivablesAvailableMessage();
-    }
-
     @And("usuário visualizará um botão \"Ver recebimentos detalhado\"")
     public void shouldSeeViewDetailedReceiptsButton() {
         weekReceiptScheduleComponent.assertThatViewDetailedReceiptsButtonIsVisible();

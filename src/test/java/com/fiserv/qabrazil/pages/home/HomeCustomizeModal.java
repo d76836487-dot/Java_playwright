@@ -1,10 +1,9 @@
 package com.fiserv.qabrazil.pages.home;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.CommonsPage;
-import com.fiserv.qabrazil.util.Identifier;
+import com.fiserv.qabrazil.pages.PageField;
 import com.microsoft.playwright.ElementHandle;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -35,19 +34,19 @@ public class HomeCustomizeModal extends BasePage {
     }
 
     public void select(String identifier) {
-        String selector = Identifier.from("Home - personalizar - " + identifier).selector();
-        List<String> selectorList = TestIdsConfig.getAllQuerySelector("Home - personalizar -");
-        Map<String, Boolean> checkMap = selectorList.stream()
-                .collect(Collectors.toMap(x -> x, x -> page.isChecked(x)));
+        PageField selector = PageField.from("Home - personalizar - " + identifier);
+        List<PageField> selectorList = PageField.allWithPrefix("Home - personalizar - item");
+        Map<PageField, Boolean> checkMap = selectorList.stream()
+                .collect(Collectors.toMap(x -> x, PageField::isChecked));
 
         Collections.shuffle(selectorList);
-        for (String itemSelector : selectorList) {
+        for (PageField itemSelector : selectorList) {
             if (checkMap.get(itemSelector)) {
-                page.uncheck(itemSelector);
+                itemSelector.uncheck();
                 break;
             }
         }
-        page.check(selector);
-        commonsPage.clickButton("[data-testid=home-personalizar-btn-personalizar]");
+        selector.check();
+        PageField.from("Home - personalizar - botão confirmar").click();
     }
 }

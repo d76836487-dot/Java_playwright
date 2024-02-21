@@ -1,5 +1,7 @@
 package com.fiserv.qabrazil.config;
 
+import org.apache.commons.lang3.tuple.Pair;
+
 import java.util.List;
 import java.util.Map;
 
@@ -75,6 +77,7 @@ public class TestIdsConfig {
             entry("Home - personalizar - item Vendas", "home-personalizar-check-vendas"),
             entry("Home - personalizar - item Solicitações", "home-personalizar-check-solicitacoes"),
             entry("Home - personalizar - item Meu negócio", "home-personalizar-check-negocio"),
+            entry("Home - personalizar - botão confirmar", "home-personalizar-btn-personalizar"),
 
             entry("Home - Agenda Recebimento - Dia Segunda", "home-card-recebimentos-semana-text-dia-segunda"),
             entry("Home - Agenda Recebimento - Mês Segunda", "home-card-recebimentos-semana-text-mes-segunda"),
@@ -149,7 +152,8 @@ public class TestIdsConfig {
             entry("Login - Esqueceu senha - Título", "h4"),
             entry("Home - Maquininha", ".title-maquinha"),
             entry("Home - Maquininha - Botão Confira", "//button[span[contains(text(),'Confira')]]"),
-            entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]")
+            entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
+            entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana div:nth-child(2)")
     );
 
     public static String getTestId(String identifier) {
@@ -165,15 +169,14 @@ public class TestIdsConfig {
         throw new IllegalArgumentException("No selector found for " + identifier);
     }
 
-    public static List<String> getAllQuerySelector(String prefix) {
-        Stream<String> stream1 = testIdMaps.entrySet().stream()
+    public static List<Pair<String, String>> getAllQuerySelector(String prefix) {
+        Stream<Pair<String, String>> stream1 = testIdMaps.entrySet().stream()
                 .filter(keyValue -> keyValue.getKey().startsWith(prefix))
-                .map(Map.Entry::getValue)
-                .map(testId -> "[data-testid=" + testId + "]");
+                .map(entry -> Pair.of(entry.getKey(),"[data-testid=" + entry.getValue() + "]"));
 
-        Stream<String> stream2 = otherSelectors.entrySet().stream()
+        Stream<Pair<String, String>> stream2 = otherSelectors.entrySet().stream()
                 .filter(keyValue -> keyValue.getKey().startsWith(prefix))
-                .map(Map.Entry::getValue);
+                .map(entry -> Pair.of(entry.getKey(), entry.getValue()));
 
         return Stream.concat(stream1, stream2)
                 .collect(Collectors.toList());

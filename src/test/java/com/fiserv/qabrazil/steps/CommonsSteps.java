@@ -42,17 +42,15 @@ public class CommonsSteps {
         assertEquals("Botão não encontrado na página", expectedButtonText, message);
     }
 
-    @When("usuário clica {identifier}")
-    @When("usuário clica no {identifierAndSection}")
-    public void userClicks(Identifier identifier) {
-        String elementSelector = identifier.selector();
-        commonsPage.clickButton(elementSelector);
+    @When("usuário clica {pageField}")
+    @When("usuário clica no {pageFieldWithSection}")
+    public void userClicks(PageField identifier) {
+        identifier.click();
     }
 
-    @When("usuário clica em/no {identifierAndSection} e uma nova aba se abre")
-    public void userClicksAndNewTabOpens(Identifier identifier) {
-        String elementSelector = identifier.selector();
-        newTab = commonsPage.clickButtonAndNewTabOpens(elementSelector);
+    @When("usuário clica em/no {pageFieldWithSection} e uma nova aba se abre")
+    public void userClicksAndNewTabOpens(PageField identifier) {
+        newTab = identifier.clickAndNewTabOpens();
     }
 
     @Given("Usuário viu {string} em {pageField}")

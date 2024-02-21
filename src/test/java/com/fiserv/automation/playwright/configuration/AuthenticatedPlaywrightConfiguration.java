@@ -31,7 +31,9 @@ public class AuthenticatedPlaywrightConfiguration {
         if (StorageState.storageState != null) {
             newContextOptions = newContextOptions.setStorageState(StorageState.storageState);
         }
-        return browser.newContext(newContextOptions.setRecordVideoDir(Paths.get("target/temp/")));
+        BrowserContext browserContext = browser.newContext(newContextOptions.setRecordVideoDir(Paths.get("target/temp/")));
+        PageField.context = browserContext;
+        return browserContext;
     }
 
     @Bean

@@ -75,8 +75,8 @@ public class HomeSteps {
 
     @Given("{string} está disponível na \"Home - acesso rápido\"")
     public void quickAccessContainsItem(String identifier) {
-        String elementSelector = Identifier.from("Home - acesso rápido - " + identifier).selector();
-        if (!commonsPage.elementIsVisible(elementSelector)) {
+        PageField elementSelector = PageField.from("Home - acesso rápido - " + identifier);
+        if (!elementSelector.elementIsVisible()) {
             commonsPage.clickButtonWithText("Personalizar");
             homeCustomizeModal.select(identifier);
         }
