@@ -2,10 +2,7 @@ package com.fiserv.automation.api.rest;
 
 import com.fiserv.automation.api.dto.*;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
+import retrofit2.http.*;
 
 public interface BwaRest {
     @GET("autorizacoes-historico/resources/v2/{institution}/{merchant}/{fromDate}/{toDate}?tipoSumarizacao=D&status=Autorizada")
@@ -16,11 +13,19 @@ public interface BwaRest {
             @Path("toDate") String toDate);
 
     @GET("autorizacoes-historico/resources/v2/{institution}/{merchant}/{fromDate}/{toDate}?status=Autorizada")
-    Call<PagedSummaryDto> authorizations(
+    Call<PagedSummaryDto> authorizationsHistory(
             @Path("institution") String institution,
             @Path("merchant") String merchant,
             @Path("fromDate") String fromDate,
             @Path("toDate") String toDate);
+
+    @GET("autorizacoes/v2/{institution}/{merchant}/{fromDate}/{toDate}")
+    Call<PagedSummaryDto> authorizations(
+            @Path("institution") String institution,
+            @Path("merchant") String merchant,
+            @Path("fromDate") String fromDate,
+            @Path("toDate") String toDate,
+            @Query("page") int page);
 
     @GET("pagamentos/resources/v1/{institution}/{merchant}/{fromDate}/{toDate}?tipoSumarizacao=D&situacaoPagto=Pago")
     Call<PagedPaymentDto> paymentSummarized(
@@ -40,6 +45,14 @@ public interface BwaRest {
     Call<PageRealizedSalesDto> realizedSalesSummarized(
             @Path("fromDate") String fromDate,
             @Path("toDate") String toDate,
+            @Body ReceivableSalesSummarizedRequestDto request
+    );
+
+    @POST("vendas/resources/v3/realizadas/transacao/{fromDate}/{toDate}?size=2000")
+    Call<PageRealizedSalesDto> realizedSales(
+            @Path("fromDate") String fromDate,
+            @Path("toDate") String toDate,
+            @Query("page") int page,
             @Body ReceivableSalesSummarizedRequestDto request
     );
 

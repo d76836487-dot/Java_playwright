@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.Calendar;
@@ -38,6 +39,24 @@ public class DateUtil {
         cal.add(Calendar.DAY_OF_MONTH, daysToAdd);
         SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyyMMdd");
         return simpleFormat.format(cal.getTime());
+    }
+
+    public static LocalDateTime convertToDateTimeFromPage(String dateTimeFromPage) {
+        String onlyNumbers = dateTimeFromPage.replaceAll("\\D", "");
+        return LocalDateTime.of(Integer.parseInt(onlyNumbers.substring(4, 8)),
+                Integer.parseInt(onlyNumbers.substring(2, 4)),
+                Integer.parseInt(onlyNumbers.substring(0, 2)),
+                Integer.parseInt(onlyNumbers.substring(8, 10)),
+                Integer.parseInt(onlyNumbers.substring(10, 12)));
+    }
+
+    public static LocalDateTime convertToDateTimeFromApi(String dateTimeFromApi) {
+        String onlyNumbers = dateTimeFromApi.replaceAll("\\D", "");
+        return LocalDateTime.of(Integer.parseInt(onlyNumbers.substring(0, 4)),
+                Integer.parseInt(onlyNumbers.substring(4, 6)),
+                Integer.parseInt(onlyNumbers.substring(6, 8)),
+                Integer.parseInt(onlyNumbers.substring(8, 10)),
+                Integer.parseInt(onlyNumbers.substring(10, 12)));
     }
 
     public static String convertDateFromPageToDateApi(String dateFromPage) {

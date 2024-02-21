@@ -10,6 +10,7 @@ Feature: Tela Vendas Hoje com CNPJ com API
   Background:
     Given Usuário logou na aplicação
     And Usuário acessa Vendas Hoje
+    And Todas as requisições HTTP foram respondidas
 
   @TestCaseKey=SMP-T151
   Scenario: Quantidade de vendas é igual a API
@@ -25,3 +26,6 @@ Feature: Tela Vendas Hoje com CNPJ com API
       | accordion           |
       | Estabelecimento (0) |
 
+  Scenario: Compara primeira página do histórico de venda hoje com API
+    Given Usuário acessou Vendas Hoje
+    Then Primeira página do histórico de venda hoje serão equivalentes com a API

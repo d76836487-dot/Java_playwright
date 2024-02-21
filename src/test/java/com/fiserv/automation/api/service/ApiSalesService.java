@@ -1,22 +1,29 @@
 package com.fiserv.automation.api.service;
 
 import com.fiserv.automation.api.dto.*;
+import com.fiserv.automation.api.rest.BwaAuthorization;
 import com.fiserv.automation.api.rest.BwaSales;
 import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.qabrazil.browser.BrowserLocalStorage;
+import com.fiserv.qabrazil.steps.sales.SalesTodayApiSteps;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.fiserv.automation.api.util.DateUtil.convertDateFromPageToLocale;
 import static com.fiserv.automation.api.util.DateUtil.dateAndMonth;
 
 @Component
 public class ApiSalesService {
+    private static final Logger log = LoggerFactory.getLogger(ApiSalesService.class);
+
     @Autowired
     BrowserLocalStorage browserLocalStorage;
 
@@ -25,6 +32,9 @@ public class ApiSalesService {
 
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
+
+    @Autowired
+    private BwaAuthorization bwaAuthorization;
 
 
     public List<WeeklyScheduleDto> getTotalSalesToday() throws Exception {
@@ -37,6 +47,52 @@ public class ApiSalesService {
         return getTotalSales(today);
     }
 
+    public HashSet<SaleAuthorizationDto> getFirstSalesToday() throws Exception {
+        String apiAccessToken = browserLocalStorage.getApiAccessToken();
+        List<String> ecs = apiUserDetailsService.getEcs();
+
+        String today = DateUtil.formattedDate(0);
+        List<SaleAuthorizationDto> sales = bwaSales.getRealizedSales(apiAccessToken, ecs, today, today).vendas.stream()
+                .map(SaleAuthorizationDto::new)
+                .toList();
+
+        List<SaleAuthorizationDto> authorizations = ecs.stream()
+                .flatMap(ec -> getAuthorizationsToday(apiAccessToken, ec).stream())
+                .map(SaleAuthorizationDto::new)
+                .toList();
+
+        List<SaleAuthorizationDto> salesAuthorizations = Stream.concat(sales.stream(), authorizations.stream()).toList();
+
+        log.info("*All* sales/authorizations from api: total {}", salesAuthorizations.size());
+        for(SaleAuthorizationDto s: salesAuthorizations) {
+            log.info(s.toString());
+        }
+        return new HashSet<SaleAuthorizationDto>(salesAuthorizations);
+    }
+
+    private List<AuthorizationsDto> getAuthorizationsToday(String apiAccessToken, String ec) {
+        try {
+            return bwaAuthorization.getAuthorizationsToday(apiAccessToken, ec).autorizacoes;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<SaleAuthorizationDto> limitSales(HashSet<SaleAuthorizationDto> sales, int numOfSales) {
+        if (sales.size() <= numOfSales) return sales.stream().toList();
+
+        List<LocalDateTime> firstDateTime = sales.stream()
+                .sorted(Comparator.comparing(o -> o.dataHora))
+                .toList()
+                .subList(sales.size() - numOfSales, sales.size()).stream()
+                .map(SaleAuthorizationDto::getDataHora)
+                .toList();
+
+        return sales.stream()
+                .filter(dto -> firstDateTime.contains((dto.getDataHora())))
+                .toList();
+    }
+
     @NotNull
     private List<WeeklyScheduleDto> getTotalSales(String today) throws Exception {
         List<WeeklyScheduleDto> dto = getTotalRealizedSales(today, today);
@@ -46,8 +102,7 @@ public class ApiSalesService {
         return dto;
     }
 
-
-    public List<WeeklyScheduleDto> getTotalRealizedSales(String initialDate, String endDate) throws Exception {
+    private List<WeeklyScheduleDto> getTotalRealizedSales(String initialDate, String endDate) throws Exception {
         String apiAccessToken = browserLocalStorage.getApiAccessToken();
         List<String> ecs = apiUserDetailsService.getEcs();
 

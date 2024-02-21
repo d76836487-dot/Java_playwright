@@ -1,22 +1,30 @@
 package com.fiserv.qabrazil.steps.sales;
 
+import com.fiserv.automation.api.dto.SaleAuthorizationDto;
 import com.fiserv.automation.api.dto.WeeklyScheduleDto;
 import com.fiserv.automation.api.service.ApiSalesService;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
+import com.fiserv.qabrazil.dto.SalesDtoPage;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.FilterComponentPage;
 import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.pages.sales.SalesTodayPage;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashSet;
 import java.util.List;
 
-import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.*;
 
 public class SalesTodayApiSteps {
+    private static final Logger log = LoggerFactory.getLogger(SalesTodayApiSteps.class);
+
     @Autowired
     CommonsPage commonsPage;
 
@@ -28,6 +36,8 @@ public class SalesTodayApiSteps {
 
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
+    @Autowired
+    private SalesTodayPage salesTodayPage;
 
     @Then("Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API")
     public void qtySalesSameApi() throws Exception {
@@ -48,7 +58,7 @@ public class SalesTodayApiSteps {
         filterComponentPage.openAccordion(accordionName);
     }
 
-    @Then("Opções do filtro correspondem aos ECs da API")
+    @Then("Opções do filtro corresponderão aos ECs da API")
     public void matchOptionsWithApi() throws Exception {
         List<String> ecs = apiUserDetailsService.getEcs().stream()
                 .sorted()
@@ -62,4 +72,27 @@ public class SalesTodayApiSteps {
                 .toList();
         assertEquals("ECs do filtro não são iguais a API", ecs, ecNumber);
     }
+
+    @Then("Primeira página do histórico de venda hoje serão equivalentes com a API")
+    public void firstPageIsEquivalentToApi() throws Exception {
+        List<SalesDtoPage> firstPageSalesTodayPage = salesTodayPage.getSalesAsDto();
+        HashSet<SaleAuthorizationDto> hashSalesTodayApi = apiSalesService.getFirstSalesToday();
+        List<SaleAuthorizationDto> salesTodayApi = apiSalesService.limitSales(hashSalesTodayApi, firstPageSalesTodayPage.size());
+
+        log.info("*Unique* sales/authorizations from api: total {}", hashSalesTodayApi.size());
+        for(SaleAuthorizationDto dto: hashSalesTodayApi) {
+            log.info(dto.toString());
+        }
+
+        for(SalesDtoPage dtoPage: firstPageSalesTodayPage) {
+            assertTrue("Venda hoje não retornada pela api: %s".formatted(dtoPage),
+                    salesTodayApi.stream()
+                            .anyMatch(dtoPage::compareToDtoApi));
+        }
+
+        if (!salesTodayApi.isEmpty() && firstPageSalesTodayPage.isEmpty()) {
+            fail("A API trouxe %d vendas, e a página zero".formatted(salesTodayApi.size()));
+        }
+    }
+
 }

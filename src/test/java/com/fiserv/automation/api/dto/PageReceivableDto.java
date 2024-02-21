@@ -3,6 +3,8 @@ package com.fiserv.automation.api.dto;
 import java.util.List;
 
 public class PageReceivableDto {
+    public static final PageReceivableDto NULL = new PageReceivableDto();
+
     public String codigoRetorno;
     public String descricaoRetorno;
     public int totalPages;

@@ -74,7 +74,7 @@ public class ApiAuthorizationsService {
         List<AuthorizationsDto> authorizationsDtos = ecs.parallelStream()
                 .flatMap(merchant -> {
                     try {
-                        List<AuthorizationsDto> r = bwaAuthorization.getLastAuthorizations(apiAccessToken, merchant).autorizacoes;
+                        List<AuthorizationsDto> r = bwaAuthorization.getAuthorizationsHistory(apiAccessToken, merchant).autorizacoes;
                         return r.stream();
                     } catch (Exception e) {
                         throw new RuntimeException(e);

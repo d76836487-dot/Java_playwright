@@ -46,6 +46,13 @@ public class TestIdsConfig {
             entry("Vendas Hoje - Resumo - Quantidade Vendas", "vendas-hoje-card-total-vendas"),
             entry("Vendas Hoje - Resumo - Valor Vendas", "vendas-hoje-card-vlr-bruto"),
             entry("Vendas Hoje - Histórico - Coluna Valor Bruto", "vendas-hoje-coluna-vlr-bruto\\d"),
+            entry("Vendas Hoje - Histórico - Coluna Data Hora", "vendas-hoje-coluna-data-venda"),
+            entry("Vendas Hoje - Histórico - Coluna Produto", "vendas-hoje-coluna-produto"),
+            entry("Vendas Hoje - Histórico - Coluna Parcela", "vendas-hoje-coluna-parcela"),
+            entry("Vendas Hoje - Histórico - Coluna Canal", "vendas-hoje-coluna-canal"),
+            entry("Vendas Hoje - Histórico - Coluna Terminal", "vendas-hoje-coluna-terminal"),
+            entry("Vendas Hoje - Histórico - Coluna Status", "vendas-hoje-coluna-status\\d"),
+            entry("Vendas Hoje - Histórico - Coluna Estabelecimento", "vendas-hoje-coluna-estabelecimento\\d"),
 
             entry("Header - Notificações", "head-notificacoes"),
 
@@ -159,6 +166,10 @@ public class TestIdsConfig {
 
     public static String getTestId(String identifier) {
         return testIdMaps.getOrDefault(identifier, "Didn't find test id for " + identifier);
+    }
+
+    public static String getTestIdOrNull(String identifier) {
+        return testIdMaps.get(identifier);
     }
 
     public static String getQuerySelector(String identifier) {

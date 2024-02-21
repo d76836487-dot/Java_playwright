@@ -1,6 +1,9 @@
 package com.fiserv.automation.api.dto;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import static com.fiserv.automation.api.util.DateUtil.convertToDateTimeFromApi;
 
 public class SalesDto {
     public String numeroTransacao;
@@ -42,12 +45,30 @@ public class SalesDto {
     public String numeroOrdemPagto;
     public String indicadorPrepago;
     public String networkToken;
+    public String numeroMerchant;
 
     public String getDataTransacao() {
         return dataTransacao;
     }
 
+    public String getHoraTransacaoCompactada() {
+        return horaTransacao.replaceAll("\\D", "").substring(0, 4);
+    }
+
+    public LocalDateTime getDataHora() {
+        return convertToDateTimeFromApi(dataTransacao + horaTransacao);
+    }
+
     public double getValorTotalPlano() {
         return valorTotalPlano.doubleValue();
+    }
+
+    @Override
+    public String toString() {
+        return "SalesDto{" +
+                "dataTransacao='" + dataTransacao + '\'' +
+                ", horaTransacao='" + horaTransacao + '\'' +
+                ", valorTotalPlano=" + valorTotalPlano +
+                '}';
     }
 }

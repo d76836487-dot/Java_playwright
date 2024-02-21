@@ -1,6 +1,9 @@
 package com.fiserv.automation.api.dto;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
+
+import static com.fiserv.automation.api.util.DateUtil.convertToDateTimeFromApi;
 
 public class AuthorizationsDto {
     public String codAutorizacao;
@@ -43,6 +46,10 @@ public class AuthorizationsDto {
     public AuthorizationsDto setValorTransacao(String valorTransacao) {
         this.valorTransacao = valorTransacao;
         return this;
+    }
+
+    public LocalDateTime getDataHora() {
+        return convertToDateTimeFromApi(data + hora);
     }
 
     @Override

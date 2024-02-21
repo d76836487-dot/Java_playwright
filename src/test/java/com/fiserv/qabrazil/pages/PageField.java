@@ -6,9 +6,11 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.ParameterType;
+import org.jetbrains.annotations.NotNull;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
@@ -18,6 +20,7 @@ public class PageField {
     public static BrowserContext context;
     public static Page page;
     private final String displayName;
+    private final String dataTestId;
     private final String selector;
     private final Locator locator;
 
@@ -33,8 +36,14 @@ public class PageField {
 
     private PageField(String displayName) {
         this.displayName = displayName;
+
+        dataTestId = TestIdsConfig.getTestIdOrNull(displayName);
         selector = TestIdsConfig.getQuerySelector(displayName);
-        locator = page.locator(selector);
+        if (dataTestId != null) {
+            locator = page.getByTestId(Pattern.compile(dataTestId));
+        } else {
+            locator = page.locator(selector);
+        }
     }
 
     public String getAsText() {
@@ -48,9 +57,9 @@ public class PageField {
     }
 
     public List<String> getAllAsText() {
-        if (elementIsVisible()) {
-            locator.scrollIntoViewIfNeeded();
-            locator.highlight();
+        if (waitUntilTrue(3, () -> locator.count() > 0)) {
+            locator.all().get(0).scrollIntoViewIfNeeded();
+            locator.all().get(0).highlight();
         }
 
         return locator.allTextContents();
@@ -59,6 +68,18 @@ public class PageField {
     public Currency getAsCurrency() {
         waitUntilTrue(() -> !quickGetTextContent().equals("R$ 0,00")); // it returns R$ 0,00 before setting the real value...
         String textFromElement = quickGetTextContent();
+        return getParsed(textFromElement);
+    }
+
+    public List<Currency> getAllAsCurrency() {
+        List<String> textFromElement = getAllAsText();
+        return textFromElement.stream()
+                .map(this::getParsed)
+                .toList();
+    }
+
+    @NotNull
+    private Currency getParsed(String textFromElement) {
         try {
             return Currency.parse(textFromElement);
         } catch (ParseException ex) {
