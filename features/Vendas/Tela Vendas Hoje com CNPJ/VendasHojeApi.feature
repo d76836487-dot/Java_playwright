@@ -19,7 +19,7 @@ Feature: Tela Vendas Hoje com CNPJ com API
   @TestCaseKey=SMP-T154
   Scenario Outline: Estabelecimentos no filtro é igual a API
     Given Usuário abriu a opção "<accordion>" no filtro de Vendas Hoje
-    Then Opções do filtro correspondem aos ECs da API
+    Then Opções do filtro corresponderão aos ECs da API
     @pt-br
     Examples:
       | accordion           |
