@@ -41,7 +41,7 @@ public class RequestMonitoring {
         log.debug(">> %s %s at %d seg".formatted(request.method(), request.url(), lapseTime));
     }
 
-    private static synchronized  void gotResponse(Response response) {
+    private static synchronized void gotResponse(Response response) {
         if (!monitoredRequests.contains(response.url())) return;
 
         requestsWithoutResponse--;

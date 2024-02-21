@@ -55,9 +55,11 @@ public class SalesTodaySteps {
         assertFalse(foundSalesWithBrandName);
     }
 
-    @When("Existem vendas com {string} tipo {string}")
+    @Given("Existem vendas com {string} tipo {string}")
     public void thereAreSalesWith(String testIdColumn, String value) {
-        assumeThat(salesTodayPage.thereAreSalesWith(value, testIdColumn)).isTrue();
+        assumeThat(salesTodayPage.thereAreSalesWith(value, testIdColumn))
+                .withFailMessage("No sales of type %s found", value)
+                .isTrue();
     }
 
     @Then("Serão filtradas as vendas com produto {string}")

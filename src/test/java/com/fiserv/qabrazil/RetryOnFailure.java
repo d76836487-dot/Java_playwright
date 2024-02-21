@@ -2,10 +2,14 @@ package com.fiserv.qabrazil;
 
 import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
 public class RetryOnFailure implements IRetryAnalyzer {
+
+    private static final Logger log = LoggerFactory.getLogger(RetryOnFailure.class);
 
     private int retryCount = 0;
     private static final int maxRetryCount = 1;
@@ -21,7 +25,7 @@ public class RetryOnFailure implements IRetryAnalyzer {
             }
             String featureName = feature.toString();
             String scenarioName = scenario.toString();
-            System.out.println("Will retry " + featureName + " > " + scenarioName);
+            log.info("Will retry {} > {}",featureName, scenarioName);
             retryCount++;
             return true;
         }
