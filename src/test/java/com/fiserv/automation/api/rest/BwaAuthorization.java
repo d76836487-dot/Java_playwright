@@ -1,6 +1,5 @@
 package com.fiserv.automation.api.rest;
 
-import com.fiserv.automation.api.dto.PageRealizedSalesDto;
 import com.fiserv.automation.api.dto.PagedSummaryDto;
 import com.fiserv.automation.api.util.BwaHeader;
 import com.fiserv.qabrazil.config.ContractConfig;
