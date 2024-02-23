@@ -60,7 +60,8 @@ Feature: Consultar Relatorios
   @api
   @TestCaseKey=SMP-T147
   Scenario: Colunas nome do arquivo
-    Given Usuário acessa página de Relatórios
+    Given Todos os estabelecimentos foram selecionados no header
+    And Usuário acessa página de Relatórios
     And Existem relatórios já extraídos
     Then Usuário visualizará a listagem do relatório com valores corretos
 

@@ -145,6 +145,9 @@ public class TestIdsConfig {
             entry("Relatórios - Botão Download Aguardando", "relatorios-table-row-download-wait"),
 
             entry("Header - Ocultar Valores", "head-ocultar-valores"),
+            entry("Header - Trocar Estabelecimento", "head-trocar-estabelecimentos"),
+            entry("Header - Trocar Estabelecimento - Modal - Padrao", "alterar-matriz-selecionar-padrao"),
+            entry("Header - Trocar Estabelecimento - Modal - Acessar", "alterar-matriz-button-acessar"),
 
             entry("Login - mensagem de erro", "login-usuario-incorreto")
     );
@@ -161,7 +164,8 @@ public class TestIdsConfig {
             entry("Home - Maquininha", ".title-maquinha"),
             entry("Home - Maquininha - Botão Confira", "//button[span[contains(text(),'Confira')]]"),
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
-            entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana div:nth-child(2)")
+            entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana div:nth-child(2)"),
+            entry("Header - Trocar Estabelecimento - Modal - Todos", "//input[@value='Todos']")
     );
 
     public static String getTestId(String identifier) {

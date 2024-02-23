@@ -20,7 +20,6 @@ public class PageField {
     public static BrowserContext context;
     public static Page page;
     private final String displayName;
-    private final String dataTestId;
     private final String selector;
     private final Locator locator;
 
@@ -37,13 +36,17 @@ public class PageField {
     private PageField(String displayName) {
         this.displayName = displayName;
 
-        dataTestId = TestIdsConfig.getTestIdOrNull(displayName);
+        String dataTestId = TestIdsConfig.getTestIdOrNull(displayName);
         selector = TestIdsConfig.getQuerySelector(displayName);
         if (dataTestId != null) {
             locator = page.getByTestId(Pattern.compile(dataTestId));
         } else {
             locator = page.locator(selector);
         }
+    }
+
+    public Locator getLocator() {
+        return locator;
     }
 
     public String getAsText() {
