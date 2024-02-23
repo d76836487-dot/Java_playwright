@@ -26,6 +26,8 @@ Feature: Tela Vendas Hoje com CNPJ com API
       | accordion           |
       | Estabelecimento (0) |
 
+  @TestCaseKey=SMP-T163
   Scenario: Compara primeira página do histórico de venda hoje com API
     Given Usuário acessou Vendas Hoje
     Then Primeira página do histórico de venda hoje serão equivalentes com a API
+
