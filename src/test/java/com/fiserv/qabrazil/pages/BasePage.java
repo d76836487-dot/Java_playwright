@@ -4,7 +4,6 @@ import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.Identifier;
 import com.fiserv.qabrazil.util.RegexUtil;
-import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public abstract class BasePage {
     protected ContractConfig contractConfig;
 
     @Autowired
-    protected BrowserContext context;
+    protected PageField.Factory pageField;
 
     @Autowired
     protected Page page;

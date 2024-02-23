@@ -1,7 +1,7 @@
 package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.components.DateRangerPage;
-import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.steps.home.BaseSteps;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import java.util.Calendar;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class CalendarSteps {
+public class CalendarSteps extends BaseSteps {
     @Autowired
     DateRangerPage calendarPage;
 
@@ -21,8 +21,8 @@ public class CalendarSteps {
 
     @Then("Data seleciona representa dia anterior")
     public void confirmYesterdayIsSelected() {
-        int initialDate = PageField.from("Date ranger - Início Data Selecionada").getAsNumber();
-        int finalDate = PageField.from("Date ranger - Fim Data Selecionada").getAsNumber();
+        int initialDate = pageField.from("Date ranger - Início Data Selecionada").getAsNumber();
+        int finalDate = pageField.from("Date ranger - Fim Data Selecionada").getAsNumber();
 
         Calendar yesterday = Calendar.getInstance();
         yesterday.add(Calendar.DAY_OF_MONTH, -1);

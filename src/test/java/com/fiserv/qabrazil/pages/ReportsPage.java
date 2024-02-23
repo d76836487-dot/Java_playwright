@@ -104,7 +104,7 @@ public class ReportsPage extends CheckedBasePage {
     }
 
     public boolean downloadIconIsDownArrow(Identifier identifier) {
-        List<Locator> icons = page.locator(identifier.selector() + " i.fa-arrow-down").all();
+        List<Locator> icons = page.locator(identifier.selector()).locator("i.fa-arrow-down").all();
         return icons.stream().allMatch(Locator::isVisible);
     }
 

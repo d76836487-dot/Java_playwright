@@ -46,7 +46,7 @@ public class SalesTodayPage extends CheckedBasePage {
         List<SalesDtoPage> allSales = new ArrayList<>();
         boolean gotSomething = waitUntilTrue(90, () ->
                 page.locator("//*[contains(text(), 'Nenhum resultado encontrado')]").count() == 1 ||
-                        !PageField.from("Vendas Hoje - Histórico - Coluna Valor Bruto").getAllAsCurrency().isEmpty()
+                        !pageField.from("Vendas Hoje - Histórico - Coluna Valor Bruto").getAllAsCurrency().isEmpty()
         );
         if (!gotSomething) {
             throw new RuntimeException("O histórico de vendas hoje está demorando muito para responder.");
@@ -55,14 +55,14 @@ public class SalesTodayPage extends CheckedBasePage {
             return allSales;
         }
 
-        List<String> ec = PageField.from("Vendas Hoje - Histórico - Coluna Estabelecimento").getAllAsText();
-        List<String> product = PageField.from("Vendas Hoje - Histórico - Coluna Produto").getAllAsText();
-        List<String> installments = PageField.from("Vendas Hoje - Histórico - Coluna Parcela").getAllAsText();
-        List<String> channel = PageField.from("Vendas Hoje - Histórico - Coluna Canal").getAllAsText();
-        List<String> terminal = PageField.from("Vendas Hoje - Histórico - Coluna Terminal").getAllAsText();
-        List<String> status = PageField.from("Vendas Hoje - Histórico - Coluna Status").getAllAsText();
-        List<String> dateTime = PageField.from("Vendas Hoje - Histórico - Coluna Data Hora").getAllAsText();
-        List<Double> grossValue = PageField.from("Vendas Hoje - Histórico - Coluna Valor Bruto")
+        List<String> ec = pageField.from("Vendas Hoje - Histórico - Coluna Estabelecimento").getAllAsText();
+        List<String> product = pageField.from("Vendas Hoje - Histórico - Coluna Produto").getAllAsText();
+        List<String> installments = pageField.from("Vendas Hoje - Histórico - Coluna Parcela").getAllAsText();
+        List<String> channel = pageField.from("Vendas Hoje - Histórico - Coluna Canal").getAllAsText();
+        List<String> terminal = pageField.from("Vendas Hoje - Histórico - Coluna Terminal").getAllAsText();
+        List<String> status = pageField.from("Vendas Hoje - Histórico - Coluna Status").getAllAsText();
+        List<String> dateTime = pageField.from("Vendas Hoje - Histórico - Coluna Data Hora").getAllAsText();
+        List<Double> grossValue = pageField.from("Vendas Hoje - Histórico - Coluna Valor Bruto")
                 .getAllAsCurrency().stream()
                 .map(Currency::doubleValue)
                 .toList();

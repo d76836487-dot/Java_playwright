@@ -2,7 +2,6 @@ package com.fiserv.automation.api.rest;
 
 import com.fiserv.automation.api.dto.PrepaymentConsultationRequestDto;
 import com.fiserv.automation.api.dto.PrepaymentDto;
-import com.fiserv.automation.api.util.BwaHeader;
 import com.fiserv.qabrazil.config.ContractConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,8 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class BwaPrepayment {
+public class BwaPrepayment extends BwaBase {
     private static final String USER_ID = "100350";
+
     @Autowired
     ContractConfig contractConfig;
 
@@ -26,7 +26,7 @@ public class BwaPrepayment {
                         USER_ID
                 )
         ));
-        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo);
+        BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo);
 
         Response<PrepaymentDto> execute = bwaRest.prepaymentConsultation(request).execute();
 

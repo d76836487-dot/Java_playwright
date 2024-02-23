@@ -8,6 +8,7 @@ import com.fiserv.qabrazil.dto.SalesDtoPage;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.FilterComponentPage;
 import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.pages.sales.SalesTodayPage;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.Identifier;
@@ -22,7 +23,7 @@ import java.util.List;
 
 import static org.testng.AssertJUnit.*;
 
-public class SalesTodayApiSteps {
+public class SalesTodayApiSteps extends BaseSteps {
     private static final Logger log = LoggerFactory.getLogger(SalesTodayApiSteps.class);
 
     @Autowired
@@ -44,8 +45,8 @@ public class SalesTodayApiSteps {
         WeeklyScheduleDto dto = apiSalesService.getTotalSalesToday().get(0);
         System.out.println(dto);
 
-        PageField qtySalesId = PageField.from("Vendas Hoje - Resumo - Quantidade Vendas");
-        PageField valueSalesId = PageField.from("Vendas Hoje - Resumo - Valor Vendas");
+        PageField qtySalesId = pageField.from("Vendas Hoje - Resumo - Quantidade Vendas");
+        PageField valueSalesId = pageField.from("Vendas Hoje - Resumo - Valor Vendas");
         String qtySales = qtySalesId.getAsText();
         Currency valueSales = valueSalesId.getAsCurrency();
 

@@ -2,10 +2,13 @@ package com.fiserv.qabrazil.steps.home;
 
 import com.fiserv.automation.api.dto.AuthorizationsDto;
 import com.fiserv.automation.api.dto.WeeklyScheduleDto;
-import com.fiserv.automation.api.service.*;
+import com.fiserv.automation.api.service.ApiAuthorizationsService;
+import com.fiserv.automation.api.service.ApiPaymentsService;
+import com.fiserv.automation.api.service.ApiPrepaymentService;
+import com.fiserv.automation.api.service.ApiReceivablesService;
+import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
-import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.en.Then;
@@ -21,7 +24,7 @@ import static com.fiserv.automation.api.util.DateUtil.convertTimeFromPageToDateA
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
-public class HomeApiSteps {
+public class HomeApiSteps extends BaseSteps {
     @Autowired
     private CommonsPage commonsPage;
     @Autowired
@@ -76,7 +79,7 @@ public class HomeApiSteps {
     @Then("Total de 'Home - Recebimentos - Recebimentos hoje' será igual à API")
     public void comparePaymentApi() throws Exception {
         BigDecimal todayPaymentApi = apiPaymentsService.getPaymentToday();
-        Currency todayPaymentPage = PageField.from("Home - Card Recebimento - Recebimento Hoje").getAsCurrency();
+        Currency todayPaymentPage = pageField.from("Home - Card Recebimento - Recebimento Hoje").getAsCurrency();
 
         assertEquals("Total de recebíveis hoje da página é diferente da api", todayPaymentApi.doubleValue(), todayPaymentPage.doubleValue(), 0.001);
     }
@@ -84,7 +87,7 @@ public class HomeApiSteps {
     @Then("Total de 'Home - Card Recebimento - Recebimento Previsto' será igual à API")
     public void compareReceivableApi() throws Exception {
         BigDecimal receivableApi = apiPrepaymentService.getTotalSalesReceivables();
-        Currency receivablePage = PageField.from("Home - Card Recebimento - Recebimento Previsto").getAsCurrency();
+        Currency receivablePage = pageField.from("Home - Card Recebimento - Recebimento Previsto").getAsCurrency();
 
         assertEquals("Total de recebíveis futuros da página é diferente da api",
                 receivableApi.doubleValue(), receivablePage.doubleValue(), 0.001);
@@ -93,7 +96,7 @@ public class HomeApiSteps {
     @Then("Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API")
     public void compareTotalSalesPageAndApi() throws Exception {
         Number salesTodayApi = apiAuthorizationsService.getSalesTodayAllEcs().doubleValue();
-        Number salesTodayPage = PageField.from("Home - Card Vendas Hoje - Valor Vendas Hoje").getAsCurrency().doubleValue();
+        Number salesTodayPage = pageField.from("Home - Card Vendas Hoje - Valor Vendas Hoje").getAsCurrency().doubleValue();
 
         assertEquals("Total de vendas da página é diferente da api", salesTodayApi, salesTodayPage);
     }
@@ -112,7 +115,7 @@ public class HomeApiSteps {
     private void compareValueAndDepositsForOneDay(String weekDay, List<WeeklyScheduleDto> weeklySchedule) {
         String dayPage = commonsPage.getTextFromElement(
                 Identifier.from("Home - Agenda Recebimento - Dia " + weekDay));
-        Number valuePage = PageField.from("Home - Agenda Recebimento - Valor " + weekDay).getAsCurrency().doubleValue();
+        Number valuePage = pageField.from("Home - Agenda Recebimento - Valor " + weekDay).getAsCurrency().doubleValue();
         int qtyDepositsPage = getQtyDeposits(weekDay);
         Number valueApi = getValueForDay(weeklySchedule, dayPage);
         int qtyDepositsApi = getQuantityDepositsForDay(weeklySchedule, dayPage);
@@ -163,7 +166,7 @@ public class HomeApiSteps {
         List<String> ecs = apiUserDetailsService.getEcs().stream()
                 .sorted()
                 .toList();
-        List<String> allEcsPage = PageField.from("Home - Card Antecipação - ECs").getAllAsText().stream()
+        List<String> allEcsPage = pageField.from("Home - Card Antecipação - ECs").getAllAsText().stream()
                 .sorted()
                 .toList();
 

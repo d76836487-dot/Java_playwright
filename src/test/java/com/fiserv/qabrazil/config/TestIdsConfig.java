@@ -4,7 +4,6 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
 import java.util.Map;
-
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -177,7 +176,7 @@ public class TestIdsConfig {
             entry("Home - Maquininha", ".title-maquinha"),
             entry("Home - Maquininha - Botão Confira", "//button[span[contains(text(),'Confira')]]"),
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
-            entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana div:nth-child(2)"),
+            entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana2 > div > div > div:nth-child(2)"),
             entry("Header - Trocar Estabelecimento - Modal - Todos", "//input[@value='Todos']")
     );
 
@@ -191,7 +190,7 @@ public class TestIdsConfig {
 
     public static String getQuerySelector(String identifier) {
         if (testIdMaps.containsKey(identifier)) {
-            return "[data-testid=" + getTestId(identifier) + "]";
+            return "internal:attr=[data-testid=/^" + getTestId(identifier) + "$/]";
         } else if (otherSelectors.containsKey(identifier)) {
             return otherSelectors.get(identifier);
         }

@@ -1,7 +1,7 @@
 package com.fiserv.qabrazil.components;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.pages.BasePage;
 import com.microsoft.playwright.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,14 +10,14 @@ import java.time.Duration;
 import static com.fiserv.qabrazil.util.WaitUtil.sleep;
 
 @ScenarioComponent
-public class DateRangerPage {
+public class DateRangerPage extends BasePage {
     @Autowired
     Page page;
 
     public void userSelectsYesterday() {
         bandaidSMP57();
-        PageField.from("Date ranger - Image").click();
-        PageField.from("Date ranger - Ontem").click();
+        pageField.from("Date ranger - Image").click();
+        pageField.from("Date ranger - Ontem").click();
     }
 
     private void bandaidSMP57() {

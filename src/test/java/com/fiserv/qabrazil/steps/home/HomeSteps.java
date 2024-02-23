@@ -5,7 +5,6 @@ import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.home.HomeCustomizeModal;
 import com.fiserv.qabrazil.pages.home.HomePage;
 import com.fiserv.qabrazil.util.Currency;
-import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class HomeSteps {
+public class HomeSteps extends BaseSteps {
 
     @Autowired
     CommonsPage commonsPage;
@@ -61,9 +60,9 @@ public class HomeSteps {
 
     @Then("Total de Recebimentos será igual ao recebimento de hoje + futuro previsto")
     public void totalReceivableMatches() {
-        PageField todayReceivableId = PageField.from("Home - Card Recebimento - Recebimento Hoje");
-        PageField foreseenReceivableId = PageField.from("Home - Card Recebimento - Recebimento Previsto");
-        PageField totalReceivableId = PageField.from("Home - Card Recebimento - Total Recebimento");
+        PageField todayReceivableId = pageField.from("Home - Card Recebimento - Recebimento Hoje");
+        PageField foreseenReceivableId = pageField.from("Home - Card Recebimento - Recebimento Previsto");
+        PageField totalReceivableId = pageField.from("Home - Card Recebimento - Total Recebimento");
 
         Currency todayReceivable = todayReceivableId.getAsCurrency();
         Currency foreseenReceivable = foreseenReceivableId.getAsCurrency();
@@ -75,7 +74,7 @@ public class HomeSteps {
 
     @Given("{string} está disponível na \"Home - acesso rápido\"")
     public void quickAccessContainsItem(String identifier) {
-        PageField elementSelector = PageField.from("Home - acesso rápido - " + identifier);
+        PageField elementSelector = pageField.from("Home - acesso rápido - " + identifier);
         if (!elementSelector.elementIsVisible()) {
             commonsPage.clickButtonWithText("Personalizar");
             homeCustomizeModal.select(identifier);
@@ -84,7 +83,7 @@ public class HomeSteps {
 
     @Given("{shakespeareBoolean} valores futuros a/para receber")
     public void thereAreValuesToReceiveInTheFuture(boolean value) {
-        Currency totalReceivable = PageField.from("Home - Card Recebimento - Recebimento Previsto").getAsCurrency();
+        Currency totalReceivable = pageField.from("Home - Card Recebimento - Recebimento Previsto").getAsCurrency();
         var assumption = assumeThat(totalReceivable.doubleValue());
         if (value) {
             assumption

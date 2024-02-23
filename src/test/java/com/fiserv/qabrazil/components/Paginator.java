@@ -21,9 +21,6 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 @ScenarioComponent
 public class Paginator extends BasePage {
 
-    @Autowired
-    private Page page;
-
     public boolean thereIsNothingToPaginate() {
         // TODO: fix for testid
         return !waitUntilTrue(

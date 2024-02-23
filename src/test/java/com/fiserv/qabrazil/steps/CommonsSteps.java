@@ -2,9 +2,9 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
+import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.PageObject;
 import com.fiserv.qabrazil.util.Identifier;
-import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.UrlCheckers;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

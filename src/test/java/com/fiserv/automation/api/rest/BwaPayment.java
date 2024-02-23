@@ -1,7 +1,6 @@
 package com.fiserv.automation.api.rest;
 
 import com.fiserv.automation.api.dto.PagedPaymentDto;
-import com.fiserv.automation.api.util.BwaHeader;
 import com.fiserv.qabrazil.config.ContractConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,7 +9,8 @@ import retrofit2.Response;
 import static com.fiserv.automation.api.util.DateUtil.formattedDate;
 
 @Component
-public class BwaPayment {
+public class BwaPayment extends BwaBase {
+
     @Autowired
     ContractConfig contractConfig;
 
@@ -21,7 +21,7 @@ public class BwaPayment {
     }
 
     public PagedPaymentDto getPaymentSummarized(String apiAccessToken, String merchant, String fromDate, String toDate) throws Exception {
-        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken);
+        BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken);
 
         Response<PagedPaymentDto> execute = bwaRest
                 .paymentSummarized(contractConfig.getInstitution(), merchant, fromDate, toDate).execute();

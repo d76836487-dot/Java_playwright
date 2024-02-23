@@ -3,7 +3,6 @@ package com.fiserv.automation.api.rest;
 import com.fiserv.automation.api.dto.PageRealizedSalesDto;
 import com.fiserv.automation.api.dto.PageReceivableDto;
 import com.fiserv.automation.api.dto.ReceivableSalesSummarizedRequestDto;
-import com.fiserv.automation.api.util.BwaHeader;
 import com.fiserv.qabrazil.config.ContractConfig;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,8 @@ import java.util.stream.Stream;
 import static com.fiserv.automation.api.util.DateUtil.formattedDate;
 
 @Component
-public class BwaSales {
+public class BwaSales extends BwaBase {
+
     @Autowired
     ContractConfig contractConfig;
 
@@ -33,7 +33,7 @@ public class BwaSales {
         Map<String, String> extraHeaderInfo = getExtraHeaderInfo(ecs);
 
         ReceivableSalesSummarizedRequestDto request = new ReceivableSalesSummarizedRequestDto(ecs);
-        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo);
+        BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo);
 
         Response<PageReceivableDto> execute = bwaRest.receivableSalesSummarized(initialDate, finalDate, request).execute();
 
@@ -56,7 +56,7 @@ public class BwaSales {
         Map<String, String> extraHeaderInfo = getExtraHeaderInfo(ecs);
 
         ReceivableSalesSummarizedRequestDto request = new ReceivableSalesSummarizedRequestDto(ecs);
-        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo);
+        BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo);
 
         Response<PageRealizedSalesDto> execute = bwaRest.realizedSalesSummarized(initialDate, finalDate, request).execute();
 
@@ -70,7 +70,7 @@ public class BwaSales {
         Map<String, String> extraHeaderInfo = getExtraHeaderInfo(ecs);
 
         ReceivableSalesSummarizedRequestDto request = new ReceivableSalesSummarizedRequestDto(ecs);
-        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo);
+        BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken, extraHeaderInfo);
 
         int page = 1;
         Response<PageRealizedSalesDto> execute;

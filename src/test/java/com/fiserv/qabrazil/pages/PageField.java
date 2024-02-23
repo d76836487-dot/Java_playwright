@@ -6,43 +6,56 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.ParameterType;
-import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
 import java.util.List;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static org.testng.Assert.fail;
 
 public class PageField {
-    public static BrowserContext context;
-    public static Page page;
+    public static class Factory {
+
+        @Autowired
+        private BrowserContext context;
+        @Autowired
+        private Page page;
+
+        public PageField from(String displayName) {
+            return new PageField(displayName, context, page);
+        }
+
+        public List<PageField> allWithPrefix(String prefix) {
+            return TestIdsConfig.getAllQuerySelector(prefix).stream()
+                    .map(pair -> from(pair.getKey()))
+                    .collect(Collectors.toList());
+        }
+
+        @ParameterType("\"([^\"]+)\"")
+        public PageField pageField(String displayName) {
+            return from(displayName);
+        }
+
+        @ParameterType("\"([^\"]+)\" (?:no|na) \"([^\"]+)\"")
+        public PageField pageFieldWithSection(String displayName, String section) {
+            return from(section + " - " + displayName);
+        }
+
+    }
+
     private final String displayName;
+    private final BrowserContext context;
     private final String selector;
     private final Locator locator;
 
-    public static PageField from(String displayName) {
-        return new PageField(displayName);
-    }
-
-    public static List<PageField> allWithPrefix(String prefix) {
-        return TestIdsConfig.getAllQuerySelector(prefix).stream()
-                .map(pair -> from(pair.getKey()))
-                .collect(Collectors.toList());
-    }
-
-    private PageField(String displayName) {
+    private PageField(String displayName, BrowserContext context, Page page) {
         this.displayName = displayName;
+        this.context = context;
 
-        String dataTestId = TestIdsConfig.getTestIdOrNull(displayName);
         selector = TestIdsConfig.getQuerySelector(displayName);
-        if (dataTestId != null) {
-            locator = page.getByTestId(Pattern.compile(dataTestId));
-        } else {
-            locator = page.locator(selector);
-        }
+        locator = page.locator(selector);
     }
 
     public Locator getLocator() {
@@ -80,7 +93,6 @@ public class PageField {
                 .toList();
     }
 
-    @NotNull
     private Currency getParsed(String textFromElement) {
         try {
             return Currency.parse(textFromElement);
@@ -91,7 +103,6 @@ public class PageField {
     }
 
     private String quickGetTextContent() {
-        Locator locator = page.locator(selector);
         return locator.textContent();
     }
 
@@ -100,20 +111,19 @@ public class PageField {
     }
 
     public boolean elementIsVisible() {
-        Locator locator = page.locator(selector);
         return waitUntilTrue(locator::isVisible);
     }
 
     public boolean isChecked() {
-        return page.locator(selector).isChecked();
+        return locator.isChecked();
     }
 
     public void check() {
-        page.locator(selector).check();
+        locator.check();
     }
 
     public void uncheck() {
-        page.locator(selector).uncheck();
+        locator.uncheck();
     }
 
     public void click() {
@@ -132,20 +142,9 @@ public class PageField {
     }
 
     public PageObject clickAndNewTabOpens() {
-        Locator locator = page.locator(selector);
         waitUntilTrue(locator::isVisible);
         Page newTab = context.waitForPage(locator::click);
         return new PageObject(newTab);
-    }
-
-    @ParameterType("\"([^\"]+)\"")
-    public static PageField pageField(String displayName) {
-        return from(displayName);
-    }
-
-    @ParameterType("\"([^\"]+)\" (?:no|na) \"([^\"]+)\"")
-    public static PageField pageFieldWithSection(String displayName, String section) {
-        return from(section + " - " + displayName);
     }
 
     @Override

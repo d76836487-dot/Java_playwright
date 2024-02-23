@@ -2,7 +2,7 @@ package com.fiserv.qabrazil.components;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
-import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.util.Identifier;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -12,7 +12,7 @@ import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
 import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
 
 @ScenarioComponent
-public class HeaderComponent {
+public class HeaderComponent extends BasePage {
     @Autowired
     Page page;
     @Autowired
@@ -26,15 +26,15 @@ public class HeaderComponent {
     }
 
     public void selectAllDocuments() {
-        Locator changeButton = PageField.from("Header - Trocar Estabelecimento").getLocator();
+        Locator changeButton = pageField.from("Header - Trocar Estabelecimento").getLocator();
         if (noDocumentHasBeenSelected(changeButton)) return;
 
         changeButton.click();
-        PageField.from("Header - Trocar Estabelecimento - Modal - Todos").click();
-        PageField.from("Header - Trocar Estabelecimento - Modal - Padrao").click();
+        pageField.from("Header - Trocar Estabelecimento - Modal - Todos").click();
+        pageField.from("Header - Trocar Estabelecimento - Modal - Padrao").click();
 
         startMonitoringRequests(page, contractConfig);
-        PageField.from("Header - Trocar Estabelecimento - Modal - Acessar").click();
+        pageField.from("Header - Trocar Estabelecimento - Modal - Acessar").click();
         ensureNoFlyingRequests();
     }
 

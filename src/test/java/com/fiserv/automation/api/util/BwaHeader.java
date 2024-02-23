@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fiserv.automation.api.rest.BwaRest;
 import com.fiserv.qabrazil.config.ContractConfig;
-import jakarta.annotation.PostConstruct;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -23,18 +22,11 @@ public class BwaHeader {
     @Autowired
     ContractConfig contractConfig;
 
-    private static ContractConfig staticContractConfig;
-
-    @PostConstruct
-    public void init() {
-        BwaHeader.staticContractConfig = contractConfig;
-    }
-
-    public static BwaRest getBwaRequest(String apiAccessToken) {
+    public BwaRest getBwaRequest(String apiAccessToken) {
         return getBwaRequest(apiAccessToken, Map.of());
     }
 
-    public static BwaRest getBwaRequest(String apiAccessToken, Map<String, String> extraHeaderInfo) {
+    public BwaRest getBwaRequest(String apiAccessToken, Map<String, String> extraHeaderInfo) {
         long timestamp = new Date().getTime();
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -51,8 +43,8 @@ public class BwaHeader {
             }
             Request.Builder requestBuilder = originalRequest.newBuilder()
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("ServiceContract", staticContractConfig.getServiceContract())
-                    .addHeader("InstitutionCod", staticContractConfig.getInstitution())
+                    .addHeader("ServiceContract", contractConfig.getServiceContract())
+                    .addHeader("InstitutionCod", contractConfig.getInstitution())
                     .addHeader("Client-Request-Id", Hmac.REQUEST_ID)
                     .addHeader("Api-Key", Hmac.API_KEY)
                     .addHeader("Message-Signature", Hmac.generateHMAC(getMsgToSign(timestamp, payload)))
@@ -71,7 +63,7 @@ public class BwaHeader {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(JacksonConverterFactory.create(new ObjectMapper()
                         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)))
-                .baseUrl(staticContractConfig.getApiHost())
+                .baseUrl(contractConfig.getApiHost())
                 .client(httpClient.build())
                 .build();
 

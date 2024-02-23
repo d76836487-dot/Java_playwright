@@ -1,7 +1,6 @@
 package com.fiserv.automation.api.rest;
 
 import com.fiserv.automation.api.dto.PagedSummaryDto;
-import com.fiserv.automation.api.util.BwaHeader;
 import com.fiserv.qabrazil.config.ContractConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,7 +12,7 @@ import java.util.stream.Stream;
 import static com.fiserv.automation.api.util.DateUtil.formattedDate;
 
 @Component
-public class BwaAuthorization {
+public class BwaAuthorization extends BwaBase {
 
     @Autowired
     ContractConfig contractConfig;
@@ -21,7 +20,7 @@ public class BwaAuthorization {
     public PagedSummaryDto getAuthorizationsHistory(String apiAccessToken, String merchant) throws Exception {
         String sevenDaysAgo = formattedDate(-7);
         String today = formattedDate(0);
-        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken);
+        BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken);
 
         Response<PagedSummaryDto> execute = bwaRest.authorizationsHistory(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
 
@@ -32,7 +31,7 @@ public class BwaAuthorization {
 
     public PagedSummaryDto getAuthorizationsToday(String apiAccessToken, String merchant) throws Exception {
         String today = formattedDate(0);
-        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken);
+        BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken);
 
         int page = 1;
         PagedSummaryDto response = new PagedSummaryDto();
@@ -54,7 +53,7 @@ public class BwaAuthorization {
     public PagedSummaryDto getSummarySevenDays(String apiAccessToken, String merchant) throws Exception {
         String sevenDaysAgo = formattedDate(-7);
         String today = formattedDate(0);
-        BwaRest bwaRest = BwaHeader.getBwaRequest(apiAccessToken);
+        BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken);
 
         Response<PagedSummaryDto> execute = bwaRest.summarization(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
 

@@ -34,8 +34,8 @@ public class HomeCustomizeModal extends BasePage {
     }
 
     public void select(String identifier) {
-        PageField selector = PageField.from("Home - personalizar - " + identifier);
-        List<PageField> selectorList = PageField.allWithPrefix("Home - personalizar - item");
+        PageField selector = pageField.from("Home - personalizar - " + identifier);
+        List<PageField> selectorList = pageField.allWithPrefix("Home - personalizar - item");
         Map<PageField, Boolean> checkMap = selectorList.stream()
                 .collect(Collectors.toMap(x -> x, PageField::isChecked));
 
@@ -47,6 +47,6 @@ public class HomeCustomizeModal extends BasePage {
             }
         }
         selector.check();
-        PageField.from("Home - personalizar - botão confirmar").click();
+        pageField.from("Home - personalizar - botão confirmar").click();
     }
 }
