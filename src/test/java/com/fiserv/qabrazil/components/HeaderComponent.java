@@ -13,10 +13,8 @@ public class HeaderComponent {
 
     public void selectShowValuesButton(boolean show) {
         Locator button = page.getByTestId(Identifier.from("Header - Ocultar Valores").testId());
-        String innerHtml = button.innerHTML();
-        int numberOfTagsWithPath = innerHtml.split("<path").length - 1;
+        if (button.getAttribute("status").equals("on") == show) return;
 
-        if (show && numberOfTagsWithPath > 1) button.click();
-        if (!show && numberOfTagsWithPath <= 1) button.click();
+        button.click();
     }
 }
