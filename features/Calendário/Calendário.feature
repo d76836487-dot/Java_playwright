@@ -11,8 +11,10 @@ Feature: Componente calendário
     Given Usuário tenta logar na aplicação
     And Usuário acessou com sucesso
 
-    @ignore
+  @ignore
+  @TestCaseKey=SMP-T164
   Scenario: Selecionar Ontem seleciona o dia anterior
     Given Usuário acessou Vendas - Histórico de Vendas
     When Usuário seleciona Ontem
     Then Data seleciona representa dia anterior
+
