@@ -149,12 +149,25 @@ public class TestIdsConfig {
             entry("Header - Trocar Estabelecimento - Modal - Padrao", "alterar-matriz-selecionar-padrao"),
             entry("Header - Trocar Estabelecimento - Modal - Acessar", "alterar-matriz-button-acessar"),
 
-            entry("Login - mensagem de erro", "login-usuario-incorreto")
+            entry("Login - mensagem de erro", "login-usuario-incorreto"),
+
+            entry("Date ranger - Ontem", "generic-calendar-pill-ontem"),
+            entry("Date ranger - Últimos 7 dias", "generic-calendar-pill-últimos-7-dias"),
+            entry("Date ranger - Últimos 14 dias", "generic-calendar-pill-últimos-14-dias"),
+            entry("Date ranger - Dia inicial", "generic-calendar-input-init-date"),
+            entry("Date ranger - Dia final", "generic-calendar-input-end-date"),
+            entry("Date ranger - Aplicar", "generic-calendar-button-aplicar")
     );
 
 
-    // TODO: trocar por data-testid
     private static final Map<String, String> otherSelectors = Map.ofEntries(
+            entry("Date ranger - Image", "//*[@data-testid='generic-calendar-icon-calendar']//img"),
+            entry("Date ranger - Ano", "//input[@aria-label='Year']"),
+            entry("Date ranger - Mês", "//input[@aria-label='Month']"),
+            entry("Date ranger - Início Data Selecionada", "//span[contains(@class,'startRange')]"),
+            entry("Date ranger - Fim Data Selecionada", "//span[contains(@class,'endRange')]"),
+
+            // TODO: maps below should be changed for data-testid
             entry("Vendas - Histórico Vendas - Período - Descrição", "//span[contains(text(),'Período')]/../span[2]"),
             entry("Vendas - Histórico Vendas - Valor Bruto Total", "//span[contains(text(),'Valor bruto') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
             entry("Vendas - Histórico Vendas - Valor Líquido Total", "//span[contains(text(),'Valor líquido') and @class='cor-cinza-escuro']/../following-sibling::div/span"),

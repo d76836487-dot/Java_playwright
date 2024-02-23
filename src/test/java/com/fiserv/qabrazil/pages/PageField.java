@@ -49,13 +49,12 @@ public class PageField {
         return locator;
     }
 
-    public String getAsText() {
-        if (!fieldIsOneVisibleAndEnabled()) {
-            fail("Found none or more than one/Not visible/Not enabled - %s".formatted(selector));
-        }
+    public int getAsNumber() {
+        return Integer.parseInt(getAsText());
+    }
 
-        locator.scrollIntoViewIfNeeded();
-        locator.highlight();
+    public String getAsText() {
+        validateIsUsableAndHighlight();
         return locator.textContent();
     }
 
@@ -118,9 +117,17 @@ public class PageField {
     }
 
     public void click() {
-        Locator locator = page.locator(selector);
-        waitUntilTrue(locator::isVisible);
+        validateIsUsableAndHighlight();
         locator.click();
+    }
+
+    private void validateIsUsableAndHighlight() {
+        if (!waitUntilTrue(() -> locator.count() == 1)) fail("Encontrei mais de um - %s".formatted(selector));
+        if (!waitUntilTrue(locator::isVisible)) fail("Não é visível - %s".formatted(selector));
+        if (!waitUntilTrue(locator::isEnabled)) fail("Não está habilitado - %s".formatted(selector));
+
+        locator.scrollIntoViewIfNeeded();
+        locator.highlight();
     }
 
     public PageObject clickAndNewTabOpens() {
