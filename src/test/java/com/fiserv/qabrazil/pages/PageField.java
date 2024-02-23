@@ -94,7 +94,7 @@ public class PageField {
     }
 
     public boolean fieldIsOneVisibleAndEnabled() {
-        return waitUntilTrue(9, () -> locator.count() == 1 && locator.isVisible() && locator.isEnabled());
+        return waitUntilTrue(() -> locator.count() == 1 && locator.isVisible() && locator.isEnabled());
     }
 
     public boolean elementIsVisible() {
