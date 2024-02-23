@@ -37,7 +37,7 @@ Feature: Consultar Relatorios
     Then Usuário verá em "Relatórios - Texto Descritivo" o valor "<descrição>"
     @pt-br
     Examples:
-      | descrição                                                                                                              |
+      | descrição                                                                                                               |
       | Caso já tenha gerado um relatório, aguarde o processamento de até 1 dia para o mesmo ser exibido para baixar na tabela. |
 
   @TestCaseKey=SMP-T143
