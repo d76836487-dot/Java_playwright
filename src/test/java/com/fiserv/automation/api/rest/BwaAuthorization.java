@@ -59,6 +59,7 @@ public class BwaAuthorization {
 
         Response<PagedSummaryDto> execute = bwaRest.summarization(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
 
+        if (execute.code() == 404) return PagedSummaryDto.NULL;
         raiseIfGotError(execute, merchant);
 
         return execute.body();

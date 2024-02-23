@@ -48,7 +48,7 @@ public class PageField {
 
     public String getAsText() {
         if (!fieldIsOneVisibleAndEnabled()) {
-            fail("Found none or more than one/Not visible/Not enabled");
+            fail("Found none or more than one/Not visible/Not enabled - %s".formatted(selector));
         }
 
         locator.scrollIntoViewIfNeeded();

@@ -38,7 +38,7 @@ Feature: Consultar Relatorios
     @pt-br
     Examples:
       | descrição                                                                                                              |
-      | Caso já tenha gerado um relatório, aguarde o processamento de até 1 dia para o mesmo ser exibido para baixar na tabela |
+      | Caso já tenha gerado um relatório, aguarde o processamento de até 1 dia para o mesmo ser exibido para baixar na tabela. |
 
   @TestCaseKey=SMP-T143
   Scenario Outline: Colunas dos relatórios na tela inicial
