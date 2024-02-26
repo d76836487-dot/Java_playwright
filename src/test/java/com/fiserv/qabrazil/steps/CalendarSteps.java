@@ -27,8 +27,8 @@ public class CalendarSteps extends BaseSteps {
         calendarPage.userSelectsThisMonth();
     }
 
-    @When("Usuário seleciona Últimos {int} Dias")
-    public void usuárioSelecionaÚltimosDias(int arg0) {
+    @When("Usuário seleciona Últimos 7 Dias")
+    public void usuárioSelecionaÚltimosDias() {
         calendarPage.userSelectsLastSevenDays();
     }
 
