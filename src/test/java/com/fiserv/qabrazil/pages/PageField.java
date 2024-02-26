@@ -122,10 +122,11 @@ public class PageField {
     }
 
     private void validateIsUsableAndHighlight() {
+        if (!waitUntilTrue(() -> locator.count() == 1)) fail("Encontrei mais de um - %s".formatted(selector));
+
         locator.scrollIntoViewIfNeeded();
         locator.highlight();
 
-        if (!waitUntilTrue(() -> locator.count() == 1)) fail("Encontrei mais de um - %s".formatted(selector));
         if (!waitUntilTrue(locator::isVisible)) fail("Não é visível - %s".formatted(selector));
         if (!waitUntilTrue(locator::isEnabled)) fail("Não está habilitado - %s".formatted(selector));
     }
