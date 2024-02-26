@@ -71,6 +71,11 @@ public class PageField {
         return locator.textContent();
     }
 
+    public String getInputValue() {
+        validateIsUsableAndHighlight();
+        return locator.inputValue();
+    }
+
     public List<String> getAllAsText() {
         if (waitUntilTrue(3, () -> locator.count() > 0)) {
             locator.all().get(0).scrollIntoViewIfNeeded();

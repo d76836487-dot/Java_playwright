@@ -153,8 +153,7 @@ public class TestIdsConfig {
             entry("Date ranger - Ontem", "generic-calendar-pill-ontem"),
             entry("Date ranger - Últimos 7 dias", "generic-calendar-pill-últimos-7-dias"),
             entry("Date ranger - Últimos 14 dias", "generic-calendar-pill-últimos-14-dias"),
-            entry("Date ranger - Dia inicial", "generic-calendar-input-init-date"),
-            entry("Date ranger - Dia final", "generic-calendar-input-end-date"),
+            entry("Date ranger - Mês Atual", "generic-calendar-pill-mês-atual"),
             entry("Date ranger - Aplicar", "generic-calendar-button-aplicar")
     );
 
@@ -165,6 +164,8 @@ public class TestIdsConfig {
             entry("Date ranger - Mês", "//input[@aria-label='Month']"),
             entry("Date ranger - Início Data Selecionada", "//span[contains(@class,'startRange')]"),
             entry("Date ranger - Fim Data Selecionada", "//span[contains(@class,'endRange')]"),
+            entry("Date ranger - Dia inicial Digitado", "//*[@data-testid='generic-calendar-input-init-date']//input"),
+            entry("Date ranger - Dia final Digitado", "//*[@data-testid='generic-calendar-input-end-date']//input"),
 
             // TODO: maps below should be changed for data-testid
             entry("Vendas - Histórico Vendas - Período - Descrição", "//span[contains(text(),'Período')]/../span[2]"),

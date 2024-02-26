@@ -20,6 +20,12 @@ public class DateRangerPage extends BasePage {
         pageField.from("Date ranger - Ontem").click();
     }
 
+    public void userSelectsThisMonth() {
+        bandaidSMP57();
+        PageField.from("Date ranger - Image").click();
+        PageField.from("Date ranger - Mês Atual").click();
+    }
+
     private void bandaidSMP57() {
         // TODO: remove after SMP-57 has been closed
         sleep(Duration.ofSeconds(2));
