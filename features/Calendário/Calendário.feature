@@ -20,12 +20,12 @@ Feature: Componente calendário
     And 'Date ranger - Dia inicial Digitado' representará 'data de ontem'
     And 'Date ranger - Dia final Digitado' representará 'data de ontem'
 
- Scenario: Selecionar Mês Atual seleciona o dia anterior
+  @TestCaseKey=SMP-T165
+  Scenario: Selecionar Mês Atual seleciona o dia anterior
     Given Usuário acessou Vendas - Histórico de Vendas
     When Usuário seleciona Mês Atual
     Then 'Date ranger - Início Data Selecionada' representará 'dia início do mês'
     And 'Date ranger - Fim Data Selecionada' representará 'dia de ontem'
     And 'Date ranger - Dia inicial Digitado' representará 'data início do mês'
     And 'Date ranger - Dia final Digitado' representará 'data de ontem'
-
 
