@@ -11,6 +11,7 @@ Feature: Vendas Histórico com CNPJ
     Given Usuário tenta logar na aplicação
     And Usuário acessou com sucesso
     And Usuário acessou Vendas - Histórico de Vendas
+    And Todas as requisições HTTP foram respondidas
 
   @TestCaseKey=SMP-T157
   Scenario Outline: Rodapé de Vendas Hoje
@@ -28,4 +29,11 @@ Feature: Vendas Histórico com CNPJ
     Examples:
       | período |
       | Ontem   |
+
+  Scenario: Ocultar valores de Vendas - Histórico de Vendas
+    When usuário clica no "Ocultar Valores" no "Header"
+    Then Usuário verá em "Vendas - Histórico de Vendas - Resumo - Quantidade de vendas" o valor "••••"
+    And Usuário verá em "Vendas - Histórico de Vendas - Resumo - Valor bruto" o valor "R$ ••••"
+    And Usuário verá em "Vendas - Histórico de Vendas - Resumo - Valor líquido" o valor "R$ ••••"
+    And Usuário verá em "Vendas - Histórico de Vendas - Resumo - Valor cancelado" o valor "R$ ••••"
 

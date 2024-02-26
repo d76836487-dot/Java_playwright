@@ -137,13 +137,22 @@ public class PageField {
     }
 
     private void validateIsUsableAndHighlight() {
-        if (!waitUntilTrue(() -> locator.count() == 1)) fail("Encontrei mais de um - %s".formatted(selector));
+        if (foundNone()) fail("Não encontrei nenhum - %s".formatted(selector));
+        if (foundMany()) fail("Encontrei mais de um - %s".formatted(selector));
 
         locator.scrollIntoViewIfNeeded();
         locator.highlight();
 
         if (!waitUntilTrue(locator::isVisible)) fail("Não é visível - %s".formatted(selector));
         if (!waitUntilTrue(locator::isEnabled)) fail("Não está habilitado - %s".formatted(selector));
+    }
+
+    private boolean foundMany() {
+        return !waitUntilTrue(() -> locator.count() <= 1);
+    }
+
+    private boolean foundNone() {
+        return !waitUntilTrue(() -> locator.count() > 0);
     }
 
     public PageObject clickAndNewTabOpens() {
