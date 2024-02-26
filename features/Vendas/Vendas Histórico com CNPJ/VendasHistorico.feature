@@ -30,6 +30,7 @@ Feature: Vendas Histórico com CNPJ
       | período |
       | Ontem   |
 
+  @TestCaseKey=SMP-T167
   Scenario: Ocultar valores de Vendas - Histórico de Vendas
     When usuário clica no "Ocultar Valores" no "Header"
     Then Usuário verá em "Vendas - Histórico de Vendas - Resumo - Quantidade de vendas" o valor "••••"
