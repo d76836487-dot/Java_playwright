@@ -27,6 +27,11 @@ public class CalendarSteps extends BaseSteps {
         calendarPage.userSelectsThisMonth();
     }
 
+    @When("Usuário seleciona Últimos {int} Dias")
+    public void usuárioSelecionaÚltimosDias(int arg0) {
+        calendarPage.userSelectsLastSevenDays();
+    }
+
     @Then("{selectedDayOnCalendar} representará {expectedDay}")
     public void selectedDay(int dayOnCalendar, int expectedDay) {
         assertEquals(expectedDay, dayOnCalendar);
@@ -42,13 +47,13 @@ public class CalendarSteps extends BaseSteps {
         return pageField.from(displayName).getAsNumber();
     }
 
-    @ParameterType("'(dia início do mês|dia de ontem)'")
+    @ParameterType("'(dia início do mês|dia de ontem|dia de sete dias atrás)'")
     public int expectedDay(String expectedDate) {
         Calendar day = calculateCalendar(expectedDate);
         return day.get(Calendar.DAY_OF_MONTH);
     }
 
-    @ParameterType("'(data início do mês|data de ontem)'")
+    @ParameterType("'(data início do mês|data de ontem|data de sete dias atrás)'")
     public String expectedYearMonthDay(String expectedDate) {
         Calendar day = calculateCalendar(expectedDate);
         return new SimpleDateFormat("yyyy-MM-dd").format(day.getTime());
@@ -65,6 +70,10 @@ public class CalendarSteps extends BaseSteps {
             case "dia início do mês":
             case "data início do mês":
                 day.set(Calendar.DAY_OF_MONTH, 1);
+                break;
+            case "dia de sete dias atrás":
+            case "data de sete dias atrás":
+                day.add(Calendar.DAY_OF_MONTH, -7);
                 break;
             case "dia de ontem":
             case "data de ontem":

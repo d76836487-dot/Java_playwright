@@ -29,3 +29,11 @@ Feature: Componente calendário
     And 'Date ranger - Dia inicial Digitado' representará 'data início do mês'
     And 'Date ranger - Dia final Digitado' representará 'data de ontem'
 
+  Scenario: Selecionar Últimos 7 Dias seleciona 7 dias anteriores
+    Given Usuário acessou Vendas - Histórico de Vendas
+    When Usuário seleciona Últimos 7 Dias
+    Then 'Date ranger - Início Data Selecionada' representará 'dia de sete dias atrás'
+    And 'Date ranger - Fim Data Selecionada' representará 'dia de ontem'
+    And 'Date ranger - Dia inicial Digitado' representará 'data de sete dias atrás'
+    And 'Date ranger - Dia final Digitado' representará 'data de ontem'
+

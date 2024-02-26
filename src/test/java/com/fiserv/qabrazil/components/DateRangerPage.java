@@ -22,8 +22,14 @@ public class DateRangerPage extends BasePage {
 
     public void userSelectsThisMonth() {
         bandaidSMP57();
-        PageField.from("Date ranger - Image").click();
-        PageField.from("Date ranger - Mês Atual").click();
+        pageField.from("Date ranger - Image").click();
+        pageField.from("Date ranger - Mês Atual").click();
+    }
+
+    public void userSelectsLastSevenDays() {
+        bandaidSMP57();
+        pageField.from("Date ranger - Image").click();
+        pageField.from("Date ranger - Últimos 7 dias").click();
     }
 
     private void bandaidSMP57() {
