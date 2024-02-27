@@ -2,9 +2,7 @@ package com.fiserv.qabrazil.pages.home;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.pages.BasePage;
-import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collections;
 import java.util.List;
@@ -23,14 +21,7 @@ public class HomeCustomizeModal extends BasePage {
                 .locator(".fundo-branco")
                 .allTextContents();
 
-        assertThat(expectedOptions)
-                .withFailMessage("Opções esperadas %s são diferentes da encontrada %s".formatted(expectedOptions, foundOptions))
-                .hasSameSizeAs(foundOptions);
-        for(String option: expectedOptions) {
-            assertThat(foundOptions)
-                    .withFailMessage("Não encontrei a opção %s na modal Personalização da Home".formatted(option))
-                    .contains(option);
-        }
+        assertThat(foundOptions).containsExactlyInAnyOrder(expectedOptions);
     }
 
     public void select(String identifier) {
