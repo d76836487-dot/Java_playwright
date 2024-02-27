@@ -139,7 +139,6 @@ Feature: Home Logada
   #
   #*Dado* que estou na tela “início” do Portal
   #*Então* devo visualizar uma espécie de carrossel com quatro funcionalidades “default” sendo elas “Antecipação”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
-
   @PermiteAdiantamento
   @TestCaseKey=SMP-T20
   Scenario Outline: Abrir Modal Personalizar Acesso Rápido (inclui Adiantamento)
@@ -151,14 +150,15 @@ Feature: Home Logada
       | funcionalidades                                                                             |
       | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
 
- @NaoPermiteAdiantamento
- Scenario Outline: Abrir Modal Personalizar Acesso Rápido (exclui Adiantamento)
+  @NaoPermiteAdiantamento
+  @TestCaseKey=SMP-T169
+  Scenario Outline: Abrir Modal Personalizar Acesso Rápido (exclui Adiantamento)
     Given Usuário acessou o Home
     When clicar no botão "Personalizar"
     Then devo visualizar a um modal com demais <funcionalidades> para escolher
     @pt-br
     Examples:
-      | funcionalidades                                                                             |
+      | funcionalidades                                                                |
       | Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
 
   #
