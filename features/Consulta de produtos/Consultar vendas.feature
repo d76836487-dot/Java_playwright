@@ -41,4 +41,11 @@ Feature: Consulta vendas
     When usuário clica no “Ver tudo” do dashboard “Últimas Vendas”
     And usuário clica na aba Voucher
     Then usuário será direcionado para a página de Voucher
-
+  @Zephyr:Status=Draft
+  @Zephyr:Priority=Normal
+    #modificaçao do anderson pra o demetrios
+  Scenario: Acessar Teste apagar depois
+    Given usuário está logado no Merchant Portal utilizando o CPF
+    When  usuário clica no “Ver tudo” do dashboard “Últimas Vendas”
+    And usuário clica na aba Voucher
+    Then usuário será direcionado para a página de Voucher
