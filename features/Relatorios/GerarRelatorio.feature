@@ -11,6 +11,7 @@ Feature: Gerar Relatorio
     Given Usuário logou na aplicação
     And Usuário acessa página de Relatórios
 
+  @TestCaseKey=SMP-T171
   Scenario: Validar rótulos dos campos na geração de relatórios
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     Then Usuário verá em "Modal Gerar Relatórios - Título" o valor "Gerar relatório"
@@ -26,6 +27,7 @@ Feature: Gerar Relatorio
       | O relatório leva até 24 horas para ser exibido para download. |
 
   @api
+  @TestCaseKey=SMP-T170
   Scenario: Validar campos na geração de relatórios
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     Then usuário visualizará o modal de geração de relatórios contendo nome do cliente, junto de seu CPF ou CNPJ
@@ -33,3 +35,4 @@ Feature: Gerar Relatorio
     And "Todos os estabelecimentos" estará selecionado por padrão, caso haja mais de um
     And Usuário verá em "Modal Gerar Relatórios - Select Tipo Opções" as opções "Pagamentos, Vendas"
     And Usuário verá em "Modal Gerar Relatórios - Select Tipo Arquivo Opções" as opções ".XLSX (Excel), .CSV"
+
