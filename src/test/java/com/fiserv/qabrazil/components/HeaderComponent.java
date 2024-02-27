@@ -3,6 +3,7 @@ package com.fiserv.qabrazil.components;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.BasePage;
+import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.Identifier;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -26,7 +27,7 @@ public class HeaderComponent extends BasePage {
     }
 
     public void selectAllDocuments() {
-        Locator changeButton = pageField.from("Header - Trocar Estabelecimento").getLocator();
+        PageField changeButton = pageField.from("Header - Trocar Estabelecimento");
         if (noDocumentHasBeenSelected(changeButton)) return;
 
         changeButton.click();
@@ -38,7 +39,7 @@ public class HeaderComponent extends BasePage {
         ensureNoFlyingRequests();
     }
 
-    private static boolean noDocumentHasBeenSelected(Locator button) {
-        return button.textContent().replaceAll("\\D", "").isEmpty();
+    private static boolean noDocumentHasBeenSelected(PageField button) {
+        return button.getAsText().replaceAll("\\D", "").isEmpty();
     }
 }
