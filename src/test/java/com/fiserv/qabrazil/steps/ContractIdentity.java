@@ -17,13 +17,13 @@ public class ContractIdentity {
 
     @Then("Nome da página é Portal <contrato> - Login")
     public void thenCheckPageName() {
-        String expected = String.format("portal %s - login", contractConfig.getIdentity());
+        String expected = String.format("portal %s - login", contractConfig.getActiveUserProfile().identity());
         assertEquals(expected, loginPage.getTitle().toLowerCase());
     }
 
     @Then("Imagem da página é referente ao contrato")
     public void thenCheckImage() {
-        assertTrue(String.format("Imagem da página deve conter: %s", contractConfig.getIdentity()),
-                loginPage.pageHasImageWith(contractConfig.getIdentity()));
+        assertTrue(String.format("Imagem da página deve conter: %s", contractConfig.getActiveUserProfile().identity()),
+                loginPage.pageHasImageWith(contractConfig.getActiveUserProfile().identity()));
     }
 }

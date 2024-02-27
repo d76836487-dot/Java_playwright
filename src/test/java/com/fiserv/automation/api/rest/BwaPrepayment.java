@@ -21,7 +21,7 @@ public class BwaPrepayment extends BwaBase {
         Map<String, String> extraHeaderInfo = Map.of();
         PrepaymentConsultationRequestDto request = new PrepaymentConsultationRequestDto(List.of(
                 new PrepaymentConsultationRequestDto.ItemDto(
-                        contractConfig.getInstitution(),
+                        contractConfig.getActiveUserProfile().institution(),
                         ec,
                         USER_ID
                 )

@@ -20,7 +20,7 @@ public class Currency {
 
         @PostConstruct
         public void init() {
-            currencyInstance = DecimalFormat.getCurrencyInstance(Locale.forLanguageTag(contractConfig.getLocale()));
+            currencyInstance = DecimalFormat.getCurrencyInstance(Locale.forLanguageTag(contractConfig.getActiveUserProfile().locale()));
         }
     }
 

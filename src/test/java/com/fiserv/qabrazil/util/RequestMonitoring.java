@@ -23,7 +23,7 @@ public class RequestMonitoring {
     private static final Logger log = LoggerFactory.getLogger(RequestMonitoring.class);
 
     public static void startMonitoringRequests(Page page, ContractConfig contractConfig) {
-        hostToMonitor = contractConfig.getUrl();
+        hostToMonitor = contractConfig.getActiveUserProfile().url();
         startMonitoringRequests = (new Date()).getTime();
         requestsWithoutResponse = 0;
         monitoredRequests = new HashSet<>();

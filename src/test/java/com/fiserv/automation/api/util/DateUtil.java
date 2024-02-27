@@ -31,7 +31,7 @@ public class DateUtil {
 
     @PostConstruct
     public void init() {
-        locale = Locale.forLanguageTag(contractConfig.getLocale());
+        locale = Locale.forLanguageTag(contractConfig.getActiveUserProfile().locale());
     }
 
     public static String formattedDate(int daysToAdd) {

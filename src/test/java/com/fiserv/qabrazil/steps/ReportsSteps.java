@@ -136,7 +136,7 @@ public class ReportsSteps {
         String endDate = "(\\d{2})-(\\d{2})-(\\d{4})";
         String fileExt = ".[a-z]+";
 
-        return contractConfig.getAllianceName() + "_" + reportType + "_" + startDate + "_" + endDate + fileExt;
+        return contractConfig.getActiveUserProfile().allianceName() + "_" + reportType + "_" + startDate + "_" + endDate + fileExt;
     }
 
     @Then("o download do relatório começará")

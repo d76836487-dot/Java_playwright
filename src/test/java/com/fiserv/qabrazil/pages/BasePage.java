@@ -89,7 +89,7 @@ public abstract class BasePage {
     }
 
     public String toUrl(String uri) {
-        return "^" + RegexUtil.escape(contractConfig.getUrl() + uri) + "$";
+        return "^" + RegexUtil.escape(contractConfig.getActiveUserProfile().url() + uri) + "$";
     }
 }
 

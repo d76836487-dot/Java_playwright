@@ -122,7 +122,7 @@ public class WeekReceiptScheduleComponent extends BasePage {
                 .withFailMessage("Today is weekend.")
                 .isFalse();
 
-        Pattern orangeClass = Pattern.compile(contractConfig.getPrimaryCssClass());
+        Pattern orangeClass = Pattern.compile(contractConfig.getActiveUserProfile().primaryCssClass());
         Pattern grayClass = Pattern.compile("cor-cinza-claro");
         Pattern greenColor = Pattern.compile(RegexUtil.escape("color: rgb(88, 207, 33)"));
         Pattern grayColor = Pattern.compile(RegexUtil.escape("color: rgb(156, 156, 156)"));

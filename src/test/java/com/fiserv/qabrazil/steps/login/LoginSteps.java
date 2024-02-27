@@ -15,7 +15,7 @@ public class LoginSteps {
     LoginPage loginPage;
 
     @Autowired
-    ContractConfig config;
+    ContractConfig contractConfig;
 
     @When("Usuário tenta logar na aplicação")
     public void login() {
@@ -36,7 +36,7 @@ public class LoginSteps {
 
     @When("Usuário tenta logar na aplicação com {string} e {string}")
     public void userTriesToLoginWith(String login, String password) {
-        loginPage.login(config.getUrl(), login, password);
+        loginPage.login(contractConfig.getActiveUserProfile().url(), login, password);
     }
 
     @Given("Usuário logou na aplicação")
@@ -59,7 +59,7 @@ public class LoginSteps {
 
     @When("Usuário loga com senha errada")
     public void userLogsInWithWrongPassword() {
-        loginPage.loginAndStartMonitoringRequests(config.getUrl(), config.getUser(), "senhaerrada");
+        loginPage.loginAndStartMonitoringRequests(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), "senhaerrada");
     }
 
     @Given("Usuário clicou no botão esqueci minha senha")

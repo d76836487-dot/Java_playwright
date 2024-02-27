@@ -22,7 +22,7 @@ public class BwaAuthorization extends BwaBase {
         String today = formattedDate(0);
         BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken);
 
-        Response<PagedSummaryDto> execute = bwaRest.authorizationsHistory(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
+        Response<PagedSummaryDto> execute = bwaRest.authorizationsHistory(contractConfig.getActiveUserProfile().institution(), merchant, sevenDaysAgo, today).execute();
 
         raiseIfGotError(execute, merchant);
 
@@ -37,7 +37,7 @@ public class BwaAuthorization extends BwaBase {
         PagedSummaryDto response = new PagedSummaryDto();
         Response<PagedSummaryDto> execute;
         do {
-            execute = bwaRest.authorizations(contractConfig.getInstitution(), merchant, today, today, page).execute();
+            execute = bwaRest.authorizations(contractConfig.getActiveUserProfile().institution(), merchant, today, today, page).execute();
 
             if (execute.code() == 404) return PagedSummaryDto.NULL;
             raiseIfGotError(execute, merchant);
@@ -55,7 +55,7 @@ public class BwaAuthorization extends BwaBase {
         String today = formattedDate(0);
         BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken);
 
-        Response<PagedSummaryDto> execute = bwaRest.summarization(contractConfig.getInstitution(), merchant, sevenDaysAgo, today).execute();
+        Response<PagedSummaryDto> execute = bwaRest.summarization(contractConfig.getActiveUserProfile().institution(), merchant, sevenDaysAgo, today).execute();
 
         if (execute.code() == 404) return PagedSummaryDto.NULL;
         raiseIfGotError(execute, merchant);

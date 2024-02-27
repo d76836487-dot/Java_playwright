@@ -46,7 +46,7 @@ public class BwaSales extends BwaBase {
     @NotNull
     private Map<String, String> getExtraHeaderInfo(List<String> ecs) {
         Map<String, String> extraHeaderInfo = Map.of(
-                "instituicao", contractConfig.getInstitution(),
+                "instituicao", contractConfig.getActiveUserProfile().institution(),
                 "estabelecimento", ecs.get(0)
         );
         return extraHeaderInfo;

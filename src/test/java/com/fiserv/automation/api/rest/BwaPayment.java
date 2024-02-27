@@ -24,7 +24,7 @@ public class BwaPayment extends BwaBase {
         BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken);
 
         Response<PagedPaymentDto> execute = bwaRest
-                .paymentSummarized(contractConfig.getInstitution(), merchant, fromDate, toDate).execute();
+                .paymentSummarized(contractConfig.getActiveUserProfile().institution(), merchant, fromDate, toDate).execute();
 
         if (execute.code() == 404) {
             return new PagedPaymentDto();

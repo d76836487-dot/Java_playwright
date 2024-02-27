@@ -43,8 +43,8 @@ public class BwaHeader {
             }
             Request.Builder requestBuilder = originalRequest.newBuilder()
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("ServiceContract", contractConfig.getServiceContract())
-                    .addHeader("InstitutionCod", contractConfig.getInstitution())
+                    .addHeader("ServiceContract", contractConfig.getActiveUserProfile().serviceContract())
+                    .addHeader("InstitutionCod", contractConfig.getActiveUserProfile().institution())
                     .addHeader("Client-Request-Id", Hmac.REQUEST_ID)
                     .addHeader("Api-Key", Hmac.API_KEY)
                     .addHeader("Message-Signature", Hmac.generateHMAC(getMsgToSign(timestamp, payload)))
@@ -63,7 +63,7 @@ public class BwaHeader {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(JacksonConverterFactory.create(new ObjectMapper()
                         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)))
-                .baseUrl(contractConfig.getApiHost())
+                .baseUrl(contractConfig.getActiveUserProfile().apiHost())
                 .client(httpClient.build())
                 .build();
 

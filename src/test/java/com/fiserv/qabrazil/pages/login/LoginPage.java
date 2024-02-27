@@ -42,7 +42,7 @@ public class LoginPage extends BasePage {
         if (StorageState.stateIsReady()) {
             goTo(StorageState.loggedUrl);
         } else {
-            login(contractConfig.getUrl(), contractConfig.getUser(), contractConfig.getPassword());
+            login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
         }
         startMonitoringRequests(page, contractConfig);
         headerComponent.selectShowValuesButton(true);
@@ -78,7 +78,7 @@ public class LoginPage extends BasePage {
         try (BrowserContext newBrowserContext = browser.newContext();
              Page newPage = newBrowserContext.newPage()) {
             page = newPage;
-            login(contractConfig.getUrl(), contractConfig.getUser(), contractConfig.getPassword());
+            login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
             if (!userIsLogged()) {
                 throw new Exception("Não foi possível logar em outra sessão.");
             }

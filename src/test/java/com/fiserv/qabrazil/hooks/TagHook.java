@@ -27,8 +27,8 @@ public class TagHook {
                         tagGroup -> tagGroup.contains(tag))).toList();
 
         boolean allTagsInGroupMatchInstitution = tagsInTagGroup.stream().allMatch(
-                tag -> contractConfig.getInstitutionTags().contains(tag) ||
-                       contractConfig.getClientTags().contains(tag));
+                tag -> contractConfig.getActiveUserProfile().institutionTags().contains(tag) ||
+                       contractConfig.getActiveUserProfile().clientTags().contains(tag));
 
         assumeThat(tagsInTagGroup.isEmpty() || allTagsInGroupMatchInstitution)
                 .withFailMessage("Scenario " + scenario.getName() + " didn't match all necessary tags")

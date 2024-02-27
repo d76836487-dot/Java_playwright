@@ -1,17 +1,82 @@
-user-profile:
-  url: ${CONTRACT_URL}
-  user: ${CONTRACT_USER}
-  password: ${CONTRACT_PASSWORD}
-  identity: ${CONTRACT_IDENTITY}
-  primaryCssClass: ${PRIMARY_CSS_CLASS}
-  institutionTags: ${INSTITUTION_TAGS}
-  clientTags: ${CLIENT_TAGS}
-  allowAdvancePayment: ${ALLOW_ADVANCE_PAYMENT}
-  locale: ${LOCALE}
-  apiHost: ${API_HOST}
-  serviceContract: ${SERVICE_CONTRACT}
-  institution: ${INSTITUTION}
-  allianceName: ${ALLIANCE_NAME}
+user-profiles:
+  afinz:
+    url: https://afinz.qa.portaldocliente.fiserv.com
+    user: ${AFINZ_CONTRACT_USER}
+    password: ${AFINZ_CONTRACT_PASSWORD}
+    identity: afinz
+    primaryCssClass: cor-azul
+    institutionTags: '@pt-br,@NaoPermiteAdiantamento,@NaoPermiteSolicitações'
+    clientTags: '@MDRFlex'
+    locale: pt-br
+    apiHost: https://cat.api.firstdata.com/bwa/
+    serviceContract: 143
+    institution: 00000010
+    allianceName: AFINZ
+  azulzinha:
+    url: https://azulzinha.qa.portaldocliente.fiserv.com
+    user: ${AZULZINHA_CONTRACT_USER}
+    password: ${AZULZINHA_CONTRACT_PASSWORD}
+    identity: azulzinha
+    primaryCssClass: cor-azulzinha
+    institutionTags: '@pt-br,@NaoPermiteAdiantamento,@PermiteSolicitações'
+    clientTags: '@MDRPadrão'
+    locale: pt-br
+    apiHost: https://cat.api.firstdata.com/bwa/
+    serviceContract: 149
+    institution: 00000007
+    allianceName: CAIXA
+  ota-azulzinha:
+    url: https://azulzinha.qa.portaldocliente.fiserv.com
+    user: ${OTA_AZULZINHA_CONTRACT_USER}
+    password: ${OTA_AZULZINHA_CONTRACT_PASSWORD}
+    identity: azulzinha
+    primaryCssClass: cor-azulzinha
+    institutionTags: '@pt-br,@NaoPermiteAdiantamento,@PermiteSolicitações'
+    clientTags: '@MDRPadrão'
+    locale: pt-br
+    apiHost: https://cat.api.firstdata.com/bwa/
+    serviceContract: 149
+    institution: 00000007
+    allianceName: CAIXA
+  bin:
+    url: https://bin.qa.portaldocliente.fiserv.com
+    user: ${BIN_CONTRACT_USER}
+    password: ${BIN_CONTRACT_PASSWORD}
+    identity: bin
+    primaryCssClass: cor-laranja
+    institutionTags: '@pt-br,@PermiteAdiantamento,@PermiteSolicitações'
+    clientTags: '@MDRPadrão'
+    locale: pt-br
+    apiHost: https://cat.api.firstdata.com/bwa/
+    serviceContract: 101
+    institution: 00000007
+    allianceName: BIN
+  sicredi:
+    url: https://sicredi.qa.portaldocliente.fiserv.com
+    user: ${SICREDI_CONTRACT_USER}
+    password: ${SICREDI_CONTRACT_PASSWORD}
+    identity: sicredi
+    primaryCssClass: cor-verde
+    institutionTags: '@pt-br,@PermiteAdiantamento,@PermiteSolicitações'
+    clientTags: '@MDRPadrão'
+    locale: pt-br
+    apiHost: https://cat.api.firstdata.com/bwa/
+    serviceContract: 110
+    institution: 00000004
+    allianceName: SICREDI
+  oto-sicredi:
+    url: https://sicredi.qa.portaldocliente.fiserv.com
+    user: ${OTO_SICREDI_CONTRACT_USER}
+    password: ${OTO_SICREDI_CONTRACT_PASSWORD}
+    identity: sicredi
+    primaryCssClass: cor-verde
+    institutionTags: '@pt-br,@PermiteAdiantamento,@PermiteSolicitações'
+    clientTags: '@MDRPadrão'
+    locale: pt-br
+    apiHost: https://cat.api.firstdata.com/bwa/
+    serviceContract: 110
+    institution: 00000004
+    allianceName: SICREDI
 urls:
   gitlab: https://gitlab.onefiserv.net/
 framework:
