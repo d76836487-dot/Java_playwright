@@ -1,13 +1,14 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/UR/Master
+@Zephyr:Folder=/Portal_do_Cliente/Agenda_de_recebimentos_por_UR/Agenda_de_recebimentos_por_UR_Perfil_Master
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 #noinspection CucumberUndefinedStep
 
-Feature:Agenda de recebimentos por UR
+Feature:Agenda de recebimentos por UR Perfil Master
 
+  O nome da Feature [Agenda de recebimentos por UR] devia ser igual ao nome do ultimo sub-folder listado na tag @Zephyr:Folder [Master], inclusive letras maiusculas e minusculas, exceto underline ('_'). (local [/builds/devsecops-brazil/qa/sqd-portal-do-cliente/portal-do-cliente/portal-do-cliente/features/Agenda de recebimentos por UR/URs Perfil Master.feature])
 
   Scenario:Acesso Menu lateral
     Given Usuário Master esta logado no Portal
