@@ -95,4 +95,11 @@ public class HomeSteps extends BaseSteps {
                     .isEqualTo(0);
         }
     }
+
+    @Given("Usuário tinha de mais de uma notificação")
+    public void userHasMoreThanOneNotification() {
+        boolean zeroNotifications = pageField.from("Header - Notificações").getAsText().contains("0Notificações");
+        System.out.printf("Notifications: %b - %s%n", zeroNotifications, pageField.from("Header - Notificações").getAsText());
+        assumeThat(zeroNotifications).isFalse();
+    }
 }

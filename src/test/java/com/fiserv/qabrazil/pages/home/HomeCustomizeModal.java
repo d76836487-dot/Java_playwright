@@ -4,7 +4,6 @@ import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
-import com.microsoft.playwright.ElementHandle;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collections;
@@ -17,19 +16,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ScenarioComponent
 public class HomeCustomizeModal extends BasePage {
 
-    @Autowired
-    CommonsPage commonsPage;
+    public void hasOptions(String ...expectedOptions) {
+        // TODO: change for data-testid
+        List<String> foundOptions = page
+                .locator(".container-atalhos")
+                .locator(".fundo-branco")
+                .allTextContents();
 
-    public void hasOptions(String ...options) {
-        // TODO: trocar por data-testid
-        List<ElementHandle> availableOptions = page.querySelectorAll(".container-atalhos .fundo-branco");
-        assertThat(availableOptions)
-                .hasSameSizeAs(options);
-        for(int i = 0; i < options.length; ++i) {
-            assertThat(availableOptions)
-                    .element(i)
-                    .extracting(ElementHandle::textContent)
-                    .isEqualTo(options[i]);
+        assertThat(expectedOptions)
+                .withFailMessage("Opções esperadas %s são diferentes da encontrada %s".formatted(expectedOptions, foundOptions))
+                .hasSameSizeAs(foundOptions);
+        for(String option: expectedOptions) {
+            assertThat(foundOptions)
+                    .withFailMessage("Não encontrei a opção %s na modal Personalização da Home".formatted(option))
+                    .contains(option);
         }
     }
 
@@ -37,11 +37,12 @@ public class HomeCustomizeModal extends BasePage {
         PageField selector = pageField.from("Home - personalizar - " + identifier);
         List<PageField> selectorList = pageField.allWithPrefix("Home - personalizar - item");
         Map<PageField, Boolean> checkMap = selectorList.stream()
+                .filter(PageField::elementIsVisible)
                 .collect(Collectors.toMap(x -> x, PageField::isChecked));
 
         Collections.shuffle(selectorList);
         for (PageField itemSelector : selectorList) {
-            if (checkMap.get(itemSelector)) {
+            if (checkMap.containsKey(itemSelector) && checkMap.get(itemSelector)) {
                 itemSelector.uncheck();
                 break;
             }

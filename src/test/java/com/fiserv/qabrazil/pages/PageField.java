@@ -138,7 +138,11 @@ public class PageField {
 
     private void validateIsUsableAndHighlight() {
         if (foundNone()) fail("Não encontrei nenhum - %s".formatted(selector));
-        if (foundMany()) fail("Encontrei mais de um - %s".formatted(selector));
+        if (foundMany()) {
+            locator.first().scrollIntoViewIfNeeded();
+            locator.first().highlight();
+            fail("Encontrei mais de um - %s".formatted(selector));
+        }
 
         locator.scrollIntoViewIfNeeded();
         locator.highlight();

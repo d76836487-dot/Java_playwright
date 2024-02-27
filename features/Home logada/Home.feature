@@ -116,6 +116,7 @@ Feature: Home Logada
   @TestCaseKey=SMP-T155
   Scenario: abrir notificações
     Given Usuário acessou o Home
+    And Usuário tinha de mais de uma notificação
     When usuário clica no "Notificações" na "Header"
     Then o Portal deve abrir as "Minhas Notificações"
 
@@ -138,8 +139,10 @@ Feature: Home Logada
   #
   #*Dado* que estou na tela “início” do Portal
   #*Então* devo visualizar uma espécie de carrossel com quatro funcionalidades “default” sendo elas “Antecipação”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
+
+  @PermiteAdiantamento
   @TestCaseKey=SMP-T20
-  Scenario Outline: Abrir Modal Personalizar Acesso Rápido
+  Scenario Outline: Abrir Modal Personalizar Acesso Rápido (inclui Adiantamento)
     Given Usuário acessou o Home
     When clicar no botão "Personalizar"
     Then devo visualizar a um modal com demais <funcionalidades> para escolher
@@ -147,6 +150,16 @@ Feature: Home Logada
     Examples:
       | funcionalidades                                                                             |
       | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+
+ @NaoPermiteAdiantamento
+ Scenario Outline: Abrir Modal Personalizar Acesso Rápido (exclui Adiantamento)
+    Given Usuário acessou o Home
+    When clicar no botão "Personalizar"
+    Then devo visualizar a um modal com demais <funcionalidades> para escolher
+    @pt-br
+    Examples:
+      | funcionalidades                                                                             |
+      | Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
 
   #
   #*Dado* que estou na tela “início” do Portal
