@@ -32,12 +32,9 @@ Feature: Consultar Relatorios
       | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
 
   @TestCaseKey=SMP-T159
-  Scenario Outline: Visualização de mensagem informativa
+  Scenario: Visualização de mensagem informativa
     Given Usuário acessa página de Relatórios
-    Then Usuário verá em "Relatórios - Texto Descritivo" o valor "<descrição>"
-    @pt-br
-    Examples:
-      | descrição                                                                                                               |
+    Then Usuário verá em "Relatórios - Texto Descritivo" o valor
       | Caso já tenha gerado um relatório, aguarde o processamento de até 1 dia para o mesmo ser exibido para baixar na tabela. |
 
   @TestCaseKey=SMP-T143

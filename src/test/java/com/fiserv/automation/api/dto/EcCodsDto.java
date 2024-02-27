@@ -9,6 +9,10 @@ public class EcCodsDto {
     public String hierarchy;
     public String nomeFantasia;
 
+    public String concatEcAndName() {
+        return "%s - %s".formatted(ec, nomeFantasia);
+    }
+
     @Override
     public String toString() {
         return "EcCods{" +

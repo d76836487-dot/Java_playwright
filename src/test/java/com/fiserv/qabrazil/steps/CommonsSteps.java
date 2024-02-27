@@ -59,12 +59,18 @@ public class CommonsSteps {
         assumeThat(expectedText).isEqualTo(textFound);
     }
 
-    @Then("Usuário verá em {pageField} o valor {string}")
+    @Then("Usuário verá em {pageField} o valor/texto/rótulo {string}")
+    @Then("Usuário verá em {pageField} o valor/texto/rótulo")
     public void matchValuePerField(PageField pageField, String expectedText) {
         String textFound = pageField.getAsText();
         assertEquals(expectedText, textFound);
     }
 
+    @Then("Usuário verá em {pageField} as opções {csv}")
+    public void matchValuesPerFields(PageField pageField, String[] expectedTexts) {
+        List<String> valuesFound = pageField.getAllAsText();
+        assertThat(valuesFound).containsExactly(expectedTexts);
+    }
 
     @Then("usuário verá em {pageField} valor maior que {double}")
     public void valueGreaterThan(PageField pageField, double value) {

@@ -38,7 +38,7 @@ public class PageField {
             return from(displayName);
         }
 
-        @ParameterType("\"([^\"]+)\" (?:no|na) \"([^\"]+)\"")
+        @ParameterType("\"([^\"]+)\" (?:no|na|em) \"([^\"]+)\"")
         public PageField pageFieldWithSection(String displayName, String section) {
             return from(section + " - " + displayName);
         }

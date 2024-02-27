@@ -1,10 +1,14 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fiserv.automation.api.dto.EcCodsDto;
+import com.fiserv.automation.api.dto.UserDetailDto;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.dto.ReportDto;
+import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.ReportsPage;
+import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,10 +21,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assumptions.assumeThat;
-import static org.testng.AssertJUnit.assertTrue;
-import static org.testng.AssertJUnit.fail;
+import static org.testng.AssertJUnit.*;
 
-public class ReportsSteps {
+public class ReportsSteps extends BaseSteps {
 
     @Autowired
     private ContractConfig contractConfig;
@@ -90,7 +93,8 @@ public class ReportsSteps {
     private void documentIsCorrect(String documentText, List<String> ecs) {
         List<String> allowedDocuments = new ArrayList<>(ecs);
         allowedDocuments.add("Todos os estabelecimentos");
-        assertTrue(allowedDocuments.contains(documentText));
+        assertTrue("Não encontrou %s na lista %s".formatted(documentText, allowedDocuments),
+                allowedDocuments.contains(documentText));
     }
 
     private void requestedInIsCorrect(String requestedIn) {
@@ -157,5 +161,51 @@ public class ReportsSteps {
     public void theNameOfTheReportIsEqualToTheListedInTheFirstReport() {
         assertTrue("O nome do relatório baixado difere do nome do relatório listado",
                 reportsPage.theFirstNameOfTheReportIsEqualToTheFirstReportDownloaded());
+    }
+
+    @Then("usuário visualizará o modal de geração de relatórios contendo nome do cliente, junto de seu CPF ou CNPJ")
+    public void userWillSeeTheClientNameWithTheirCPForCNPJ() throws Exception {
+        UserDetailDto userDetail = apiUserDetailsService.getUserDetail();
+        List<String> userNames = userDetail.ecCods.stream().map(x -> x.nomeFantasia).toList();
+
+        //TODO: change for testid
+        String businessDepartment = pageField.from("Modal Gerar Relatórios - Estabelecimento Comercial").getAsText();
+        PageField businessDepartmentDocument = pageField.from("Modal Gerar Relatórios - CPF ou CNPJ");
+        String documentInPage = businessDepartmentDocument.getAsText().replaceAll("\\D+", "");
+
+        assertTrue("Estabelecimento Comercial não é igual ao da api",
+                userNames.stream().anyMatch(businessDepartment::equals));
+        assertEquals("Documento do Estabelecimento Comercial não é igual ao da api", userDetail.document, documentInPage);
+    }
+
+    @Then("usuário visualizará opção para selecionar um EC ou {string}")
+    public void userWillSeeAnOptionToSelectABusinessDepartmentOrAllHavingBusinessDepartmentAsDefault(String allECsText) throws Exception {
+        UserDetailDto userDetail = apiUserDetailsService.getUserDetail();
+        PageField selectECOptions = pageField.from("Modal Gerar Relatórios - Select EC Opções");
+
+        List<String> apiECsFormatted = userDetail.ecCods.stream()
+                .map(EcCodsDto::concatEcAndName)
+                .toList();
+
+        List<String> selectECOptionTexts = selectECOptions.getAllAsText();
+        assertTrue("As opções de Estabelecimento Comercial não conferem com a api",
+                selectECOptionTexts.containsAll(apiECsFormatted));
+
+        if(apiECsFormatted.size() > 1) {
+            assertTrue("Não oferece opção \"%s\" para mais 1 Estabelecimento Comercial".formatted(allECsText),
+                    selectECOptionTexts.contains(allECsText));
+        }
+    }
+
+    @Then("{string} estará selecionado por padrão, caso haja mais de um")
+    public void userWillSeeAllECsAsDefaultIfMoreThanOne(String optionAllECs) throws Exception {
+        List<String> ecs = apiUserDetailsService.getEcs();
+
+        if(ecs.size() > 1) {
+            PageField selectECLabelSelected = pageField.from("Modal Gerar Relatórios - Select EC Selecionado");
+            assertEquals("Deveria estar selecionado a opção \"%s\"".formatted(optionAllECs),
+                    optionAllECs,
+                    selectECLabelSelected.getAsText());
+        }
     }
 }
