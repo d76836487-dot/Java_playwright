@@ -11,7 +11,6 @@ import static java.util.Map.entry;
 
 public class TestIdsConfig {
     private static final Map<String, String> testIdMaps = Map.<String, String>ofEntries(
-            entry("na seção Vendas Hoje - Ver Tudo", "home-card-vendas-hoje-link-ver-tudo"),
             entry("Filter - Accordion - Status (0)", "generic-filter-accordion-title-status"),
             entry("Filter - Accordion - Bandeiras (0)", "generic-filter-accordion-title-bandeira"),
             entry("Filter - Accordion - Produtos (0)", "generic-filter-accordion-title-produtos"),
@@ -205,7 +204,9 @@ public class TestIdsConfig {
             entry("Home - Maquininha - Botão Confira", "//button[span[contains(text(),'Confira')]]"),
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
             entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana > div > div > div:nth-child(2)"),
-            entry("Header - Trocar Estabelecimento - Modal - Todos", "//input[@value='Todos']")
+            entry("Header - Trocar Estabelecimento - Modal - Todos", "//input[@value='Todos']"),
+
+            entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']")
     );
 
     public static String getTestId(String identifier) {
