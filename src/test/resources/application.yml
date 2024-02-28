@@ -9,8 +9,8 @@ user-profiles:
     clientTags: '@MDRFlex'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: 143
-    institution: 00000010
+    serviceContract: "143"
+    institution: "00000010"
     allianceName: AFINZ
   azulzinha:
     url: https://azulzinha.qa.portaldocliente.fiserv.com
@@ -22,8 +22,8 @@ user-profiles:
     clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: 149
-    institution: 00000007
+    serviceContract: "149"
+    institution: "00000007"
     allianceName: CAIXA
   ota-azulzinha:
     url: https://azulzinha.qa.portaldocliente.fiserv.com
@@ -35,8 +35,8 @@ user-profiles:
     clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: 149
-    institution: 00000007
+    serviceContract: "149"
+    institution: "00000007"
     allianceName: CAIXA
   bin:
     url: https://bin.qa.portaldocliente.fiserv.com
@@ -48,8 +48,8 @@ user-profiles:
     clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: 101
-    institution: 00000007
+    serviceContract: "101"
+    institution: "00000007"
     allianceName: BIN
   sicredi:
     url: https://sicredi.qa.portaldocliente.fiserv.com
@@ -61,8 +61,8 @@ user-profiles:
     clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: 110
-    institution: 00000004
+    serviceContract: "110"
+    institution: "00000004"
     allianceName: SICREDI
   oto-sicredi:
     url: https://sicredi.qa.portaldocliente.fiserv.com
@@ -74,8 +74,8 @@ user-profiles:
     clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: 110
-    institution: 00000004
+    serviceContract: "110"
+    institution: "00000004"
     allianceName: SICREDI
 urls:
   gitlab: https://gitlab.onefiserv.net/
