@@ -195,8 +195,8 @@ public class TestIdsConfig {
             entry("Modal Gerar Relatórios - Select Tipo Arquivo Label", "//div[@role='dialog']//div[@data-block='AppAntecipacao.SimpleDropdownSelect'][.//span[starts-with(text(), 'Formato do arquivo')]]//label/span"),
             entry("Modal Gerar Relatórios - Select Tipo Arquivo Selecionado", "//div[@role='dialog']//div[@data-block='AppAntecipacao.SimpleDropdownSelect'][.//span[starts-with(text(), 'Formato do arquivo')]]/span"),
             entry("Modal Gerar Relatórios - Select Tipo Arquivo Opções", "//div[@role='dialog']//div[@data-block='AppAntecipacao.SimpleDropdownSelect'][.//span[starts-with(text(), 'Formato do arquivo')]]//div[@class='om-dropdown-select-item']"),
-            entry("Modal Gerar Relatórios - Título Informativo ", "//div[@role='dialog']//span[contains(text(),'Tipo de entrega')]"),
-            entry("Modal Gerar Relatórios - Valor Informativo ", "//div[@role='dialog']//span[contains(text(),'Portal do cliente')]"),
+            entry("Modal Gerar Relatórios - Título Informativo", "//div[@role='dialog']//span[contains(text(),'Tipo de entrega')]"),
+            entry("Modal Gerar Relatórios - Valor Informativo", "//div[@role='dialog']//span[contains(text(),'Portal do cliente')]"),
             entry("Modal Gerar Relatórios - Mensagem sobre prazo", "//div[@role='dialog']//span[contains(text(),'O relatório leva')]"),
 
             entry("Login - Esqueceu senha - Título", "h4"),

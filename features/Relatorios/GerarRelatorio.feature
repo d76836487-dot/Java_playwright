@@ -33,6 +33,6 @@ Feature: Gerar Relatorio
     Then usuário visualizará o modal de geração de relatórios contendo nome do cliente, junto de seu CPF ou CNPJ
     And usuário visualizará opção para selecionar um EC ou "Todos os estabelecimentos"
     And "Todos os estabelecimentos" estará selecionado por padrão, caso haja mais de um
-    And Usuário verá em "Modal Gerar Relatórios - Select Tipo Opções" as opções "Pagamentos, Vendas"
-    And Usuário verá em "Modal Gerar Relatórios - Select Tipo Arquivo Opções" as opções ".XLSX (Excel), .CSV"
+    And Usuário verá em "Modal Gerar Relatórios - Select Tipo Opções" as opções Pagamentos, Vendas
+    And Usuário verá em "Modal Gerar Relatórios - Select Tipo Arquivo Opções" as opções .XLSX (Excel), .CSV
 
