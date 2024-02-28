@@ -77,6 +77,12 @@ user-profiles:
     serviceContract: "110"
     institution: "00000004"
     allianceName: SICREDI
+api:
+  apiKey: "kaGC9uLpusCBi3BgR8QBAz35gJxIkEST"
+  apiSecret: "sU7aBf8bHhQfoeQ8wILCkAjAa23tgJd7KAcUc79ueiN"
+  requestId: "857fe690-2ae9-41a9-81a6-a1ceb0777a6d"
+  clientChannelId: "09b609197bb3eb06cd4c42af586c2825451cd2fc"
+
 urls:
   gitlab: https://gitlab.onefiserv.net/
 framework:

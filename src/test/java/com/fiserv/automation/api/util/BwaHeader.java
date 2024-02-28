@@ -21,6 +21,8 @@ import java.util.Map;
 public class BwaHeader {
     @Autowired
     ContractConfig contractConfig;
+    @Autowired
+    Hmac hmac;
 
     public BwaRest getBwaRequest(String apiAccessToken) {
         return getBwaRequest(apiAccessToken, Map.of());
@@ -45,11 +47,11 @@ public class BwaHeader {
                     .addHeader("Content-Type", "application/json")
                     .addHeader("ServiceContract", contractConfig.getActiveUserProfile().serviceContract())
                     .addHeader("InstitutionCod", contractConfig.getActiveUserProfile().institution())
-                    .addHeader("Client-Request-Id", Hmac.REQUEST_ID)
-                    .addHeader("Api-Key", Hmac.API_KEY)
-                    .addHeader("Message-Signature", Hmac.generateHMAC(getMsgToSign(timestamp, payload)))
+                    .addHeader("Client-Request-Id", hmac.getRequestId())
+                    .addHeader("Api-Key", hmac.getApiKey())
+                    .addHeader("Message-Signature", hmac.generateHMAC(getMsgToSign(timestamp, payload)))
                     .addHeader("Timestamp", String.valueOf(timestamp))
-                    .addHeader("ChannelClientId", Hmac.CLIENT_CHANNEL_ID)
+                    .addHeader("ChannelClientId", hmac.getClientChannelId())
                     .addHeader("Authorization", apiAccessToken)
                     .addHeader("auth", apiAccessToken);
 
@@ -70,7 +72,7 @@ public class BwaHeader {
         return retrofit.create(BwaRest.class);
     }
 
-    private static String getMsgToSign(long timestamp, String payload) {
-        return Hmac.API_KEY + Hmac.REQUEST_ID + timestamp + payload;
+    private String getMsgToSign(long timestamp, String payload) {
+        return hmac.getApiKey() + hmac.getRequestId() + timestamp + payload;
     }
 }
