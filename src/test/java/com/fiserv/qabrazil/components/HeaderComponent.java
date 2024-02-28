@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
 import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
+import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
 public class HeaderComponent extends BasePage {
@@ -26,14 +27,25 @@ public class HeaderComponent extends BasePage {
         button.click();
     }
 
-    public void selectAllDocuments() {
+    public void selectAllDocumentsIfAvailable() {
         PageField changeButton = pageField.from("Header - Trocar Estabelecimento");
-        if (allDocuments(changeButton)) return;
+        if (allDocumentsIsSelected(changeButton)) return;
 
-        changeButton.click();
+        openModalIfRequired(changeButton);
+        if (userHasOnlyOneDocument()) {
+            page.getByTestId("alterar-matriz-fechar").click();
+            return;
+        }
         pageField.from("Header - Trocar Estabelecimento - Modal - Botão selecionar por Documento").click();
         pageField.from("Header - Trocar Estabelecimento - Modal - Todos").click();
+        unselectSetAsDefault();
 
+        startMonitoringRequests(page, contractConfig);
+        pageField.from("Header - Trocar Estabelecimento - Modal - Acessar").click();
+        ensureNoFlyingRequests();
+    }
+
+    private void unselectSetAsDefault() {
         Locator checkboxSetAsDefault = pageField
                 .from("Header - Trocar Estabelecimento - Modal - Padrão")
                 .getLocator()
@@ -41,13 +53,24 @@ public class HeaderComponent extends BasePage {
         if (checkboxSetAsDefault.isChecked()) {
             checkboxSetAsDefault.click();
         }
-
-        startMonitoringRequests(page, contractConfig);
-        pageField.from("Header - Trocar Estabelecimento - Modal - Acessar").click();
-        ensureNoFlyingRequests();
     }
 
-    private static boolean allDocuments(PageField button) {
-        return button.getAsText().contains("Todos documentos");
+    private boolean userHasOnlyOneDocument() {
+        Locator allDocsButton = pageField.from("Header - Trocar Estabelecimento - Modal - Todos").getLocator();
+        Locator userHasOnlyOneDoc = page.getByText("Você só possui um documento para seleção");
+
+        waitUntilTrue(() -> allDocsButton.isVisible() || userHasOnlyOneDoc.isVisible());
+        return userHasOnlyOneDoc.isVisible();
+    }
+
+    private static void openModalIfRequired(PageField changeButton) {
+        if (changeButton.getLocator().isVisible()) {
+            changeButton.click();
+        }
+    }
+
+    private static boolean allDocumentsIsSelected(PageField button) {
+        return button.fieldIsOneVisibleAndEnabled()
+                && button.getAsText().contains("Todos documentos");
     }
 }
