@@ -27,7 +27,7 @@ public interface BwaRest {
             @Path("toDate") String toDate,
             @Query("page") int page);
 
-    @GET("pagamentos/resources/v1/{institution}/{merchant}/{fromDate}/{toDate}?tipoSumarizacao=D&situacaoPagto=Pago")
+    @GET("pagamentos/resources/v1/{institution}/{merchant}/{fromDate}/{toDate}?tipoSumarizacao=D")
     Call<PagedPaymentDto> paymentSummarized(
             @Path("institution") String institution,
             @Path("merchant") String merchant,
