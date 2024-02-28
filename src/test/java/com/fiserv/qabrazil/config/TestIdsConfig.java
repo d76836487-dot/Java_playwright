@@ -153,6 +153,7 @@ public class TestIdsConfig {
             entry("Header - Trocar Estabelecimento", "head-trocar-estabelecimentos"),
             entry("Header - Trocar Estabelecimento - Modal - Padrao", "alterar-matriz-selecionar-padrao"),
             entry("Header - Trocar Estabelecimento - Modal - Acessar", "alterar-matriz-button-acessar"),
+            entry("Header - Trocar Estabelecimento - Modal - Visualizar Documentos", "alterar-matriz-type-documento"),
 
             entry("Login - mensagem de erro", "login-usuario-incorreto"),
 

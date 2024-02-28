@@ -28,9 +28,10 @@ public class HeaderComponent extends BasePage {
 
     public void selectAllDocuments() {
         PageField changeButton = pageField.from("Header - Trocar Estabelecimento");
-        if (noDocumentHasBeenSelected(changeButton)) return;
+        if (allDocuments(changeButton)) return;
 
         changeButton.click();
+        pageField.from("Header - Trocar Estabelecimento - Modal - Visualizar Documentos").click();
         pageField.from("Header - Trocar Estabelecimento - Modal - Todos").click();
         pageField.from("Header - Trocar Estabelecimento - Modal - Padrao").click();
 
@@ -39,7 +40,7 @@ public class HeaderComponent extends BasePage {
         ensureNoFlyingRequests();
     }
 
-    private static boolean noDocumentHasBeenSelected(PageField button) {
-        return button.getAsText().replaceAll("\\D", "").isEmpty();
+    private static boolean allDocuments(PageField button) {
+        return button.getAsText().contains("Todos documentos");
     }
 }
