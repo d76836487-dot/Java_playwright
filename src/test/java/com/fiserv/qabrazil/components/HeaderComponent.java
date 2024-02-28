@@ -63,14 +63,19 @@ public class HeaderComponent extends BasePage {
         return userHasOnlyOneDoc.isVisible();
     }
 
-    private static void openModalIfRequired(PageField changeButton) {
+    private void openModalIfRequired(PageField changeButton) {
         if (changeButton.getLocator().isVisible()) {
             changeButton.click();
         }
     }
 
-    private static boolean allDocumentsIsSelected(PageField button) {
-        return button.fieldIsOneVisibleAndEnabled()
-                && button.getAsText().contains("Todos documentos");
+    private boolean allDocumentsIsSelected(PageField button) {
+        Locator closeModalButton = page.getByTestId("alterar-matriz-fechar");
+        Locator buttonOpenModal = button.getLocator();
+
+        waitUntilTrue(() -> buttonOpenModal.isVisible() || closeModalButton.isVisible());
+
+        return buttonOpenModal.isVisible()
+                && buttonOpenModal.textContent().contains("Todos documentos");
     }
 }
