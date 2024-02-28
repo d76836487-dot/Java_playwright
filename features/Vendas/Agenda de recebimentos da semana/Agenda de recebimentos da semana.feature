@@ -48,6 +48,6 @@ Feature: Agenda de recebimentos da semana
   Scenario: Agenda de recebimentos da semana vazia
     Given que estou na tela “início” do Portal
     And não existir Agenda de recebimentos da semana para exibir
-    Then Usuário verá em "Home - Agenda de recebimentos da semana - mensagem" o valor "Você não possui nenhum recebimento previsto para essa semana"
+    Then Usuário verá em "Home - Agenda de recebimentos da semana - mensagem" o valor "Você não possui nenhum recebimento previsto para essa semana."
     And usuário visualizará um botão "Ver recebimentos detalhado"
 

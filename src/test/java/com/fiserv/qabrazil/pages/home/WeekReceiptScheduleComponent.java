@@ -27,7 +27,7 @@ public class WeekReceiptScheduleComponent extends BasePage {
 
     public void isVisible() {
         // TODO: trocar para testId
-        Locator locator = page.locator("#CtnAgendaRecebimentosSemana2");
+        Locator locator = page.locator("#CtnAgendaRecebimentosSemana");
         assertThat(locator).isVisible();
         locator.scrollIntoViewIfNeeded();
         locator.highlight();
@@ -35,8 +35,8 @@ public class WeekReceiptScheduleComponent extends BasePage {
 
     public boolean receivablesAvailable() {
         // TODO: trocar para testId
-        Locator locator = page.locator("#CtnAgendaRecebimentosSemana2");
-        return waitUntilTrue(3, () -> !locator.textContent().equals("Agenda de recebimentos da semanaVocê não possui nenhum recebimento previsto para essa semana.Ver recebimentos detalhado"));
+        Locator locator = page.locator("#CtnAgendaRecebimentosSemana");
+        return waitUntilTrue(3, () -> !locator.textContent().equals("Agenda de recebimentos da semanaVocê não possui nenhum recebimento previsto para essa semana.Ver tudo"));
     }
 
     public void containsDates() {
@@ -151,9 +151,9 @@ public class WeekReceiptScheduleComponent extends BasePage {
 
     public void assertThatViewDetailedReceiptsButtonIsVisible() {
         // TODO: trocar para testId
-        Locator locator = page.locator("#CtnAgendaRecebimentosSemana2").getByText("Ver recebimentos detalhado");
+        Locator locator = page.locator("#CtnAgendaRecebimentosSemana").getByText("Ver tudo");
         assertThat(locator).isVisible();
-        assertThat(locator).containsText("Ver recebimentos detalhado");
+        assertThat(locator).containsText("Ver tudo");
     }
 
     private static Pattern netValue() {

@@ -203,7 +203,7 @@ public class TestIdsConfig {
             entry("Home - Maquininha", ".title-maquinha"),
             entry("Home - Maquininha - Botão Confira", "//button[span[contains(text(),'Confira')]]"),
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
-            entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana2 > div > div > div:nth-child(2)"),
+            entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana > div > div > div:nth-child(2)"),
             entry("Header - Trocar Estabelecimento - Modal - Todos", "//input[@value='Todos']")
     );
 
