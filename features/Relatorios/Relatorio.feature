@@ -9,7 +9,7 @@ Feature: Consultar Relatorios
 
   # TODO: fix all scenarios when we have data-testid for side menu
   Background:
-    Given Usuário logou na aplicação
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
 
   @TestCaseKey=SMP-T140
   Scenario: O menu expande quando o usuário passa o mouse

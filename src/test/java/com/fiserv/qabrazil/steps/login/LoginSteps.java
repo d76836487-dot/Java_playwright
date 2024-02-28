@@ -44,7 +44,7 @@ public class LoginSteps {
         loginPage.login(contractConfig.getActiveUserProfile().url(), login, password);
     }
 
-    @Given("Usuário logou na aplicação")
+    @Given("Usuário logou na aplicação, selecionou todos os documentos e salvou sessão")
     public void userHasLoggedIn() {
         login();
         userHasAccessGranted();

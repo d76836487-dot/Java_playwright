@@ -8,7 +8,7 @@
 Feature: Gerar Relatorio
 
   Background:
-    Given Usuário logou na aplicação
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
 
   @TestCaseKey=SMP-T171

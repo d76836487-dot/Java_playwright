@@ -8,7 +8,7 @@
 Feature: Tela Vendas Hoje com CNPJ com API
 
   Background:
-    Given Usuário logou na aplicação
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa Vendas Hoje
     And Todas as requisições HTTP foram respondidas
 

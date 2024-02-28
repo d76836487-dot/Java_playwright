@@ -19,7 +19,7 @@ Feature: Login
 
   @TestCaseKey=SMP-T12
   Scenario: Usuário perdeu a sessão e deve logar-se novamente
-    Given Usuário logou na aplicação
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     When Usuário loga em outra sessão
 
   @TestCaseKey=SMP-T13
