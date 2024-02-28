@@ -31,9 +31,16 @@ public class HeaderComponent extends BasePage {
         if (allDocuments(changeButton)) return;
 
         changeButton.click();
-        pageField.from("Header - Trocar Estabelecimento - Modal - Visualizar Documentos").click();
+        pageField.from("Header - Trocar Estabelecimento - Modal - Botão selecionar por Documento").click();
         pageField.from("Header - Trocar Estabelecimento - Modal - Todos").click();
-        pageField.from("Header - Trocar Estabelecimento - Modal - Padrao").click();
+
+        Locator checkboxSetAsDefault = pageField
+                .from("Header - Trocar Estabelecimento - Modal - Padrão")
+                .getLocator()
+                .locator("//input");
+        if (checkboxSetAsDefault.isChecked()) {
+            checkboxSetAsDefault.click();
+        }
 
         startMonitoringRequests(page, contractConfig);
         pageField.from("Header - Trocar Estabelecimento - Modal - Acessar").click();

@@ -58,7 +58,7 @@ user-profiles:
     identity: sicredi
     primaryCssClass: cor-verde
     institutionTags: '@pt-br,@PermiteAdiantamento,@PermiteSolicitações'
-    clientTags: '@MDRPadrão'
+    clientTags: '@MDRPadrão,@UsuárioMaster'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
     serviceContract: "110"

@@ -48,6 +48,10 @@ public class LoginPage extends BasePage {
         headerComponent.selectShowValuesButton(true);
     }
 
+    public void forceNewLogin() {
+        login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
+    }
+
     public void loginAndStartMonitoringRequests(String url, String user, String pwd) {
         login(url, user, pwd);
         startMonitoringRequests(page, contractConfig);
@@ -60,10 +64,14 @@ public class LoginPage extends BasePage {
         page.getByTestId("entrar").click();
     }
 
-    public synchronized boolean userIsLogged() {
-        boolean isLogged = waitUntilTrue(() -> page.getByTestId("head-sair").isVisible());
+    public synchronized boolean userIsLoggedAndSaveState() {
+        boolean isLogged = userIsLogged();
         saveStorageState();
         return isLogged;
+    }
+
+    public boolean userIsLogged() {
+        return waitUntilTrue(() -> page.getByTestId("head-sair").isVisible());
     }
 
     private void saveStorageState() {
@@ -79,7 +87,7 @@ public class LoginPage extends BasePage {
              Page newPage = newBrowserContext.newPage()) {
             page = newPage;
             login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
-            if (!userIsLogged()) {
+            if (!userIsLoggedAndSaveState()) {
                 throw new Exception("Não foi possível logar em outra sessão.");
             }
         }

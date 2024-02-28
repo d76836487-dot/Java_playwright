@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.steps.login;
 
+import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.login.LoginPage;
 import io.cucumber.java.en.Given;
@@ -17,6 +18,9 @@ public class LoginSteps {
     @Autowired
     ContractConfig contractConfig;
 
+    @Autowired
+    HeaderComponent headerComponent;
+
     @When("Usuário tenta logar na aplicação")
     public void login() {
         loginPage.login();
@@ -30,7 +34,7 @@ public class LoginSteps {
     @Given("Usuário acessou com sucesso")
     @Then("Usuário estará com acesso")
     public void userHasAccessGranted() {
-        boolean accessGranted = loginPage.userIsLogged();
+        boolean accessGranted = loginPage.userIsLoggedAndSaveState();
         assertTrue(accessGranted);
     }
 
@@ -48,7 +52,7 @@ public class LoginSteps {
     @Then("Usuário será direcionado para tela de login")
     public void userIsAtLoginScreen() {
         loginPage.reload();
-        boolean accessGranted = loginPage.userIsLogged();
+        boolean accessGranted = loginPage.userIsLoggedAndSaveState();
         assertFalse(accessGranted);
     }
 
@@ -65,5 +69,15 @@ public class LoginSteps {
     @Given("Usuário clicou no botão esqueci minha senha")
     public void userClickedForgotMyPasswordButton() {
         loginPage.clickOnForgotMyPasswordButton();
+    }
+
+    @When("Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' desmarcada")
+    public void userLogsInWithoutPreSelectedEC() {
+        loginPage.forceNewLogin();
+
+        if (!loginPage.userIsLogged()) return;
+
+        headerComponent.selectAllDocuments();
+        loginPage.forceNewLogin();
     }
 }
