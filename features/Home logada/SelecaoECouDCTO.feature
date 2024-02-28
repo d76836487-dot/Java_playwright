@@ -7,6 +7,8 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Seleção de EC ou DCTO - Usuário Master
 
+  @TestCaseKey=SMP-T172
   Scenario: Redirecionamento Correto (Usuário Master) - o usuário verá modal Personalizar ao logar
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' desmarcada
     Then Usuário verá modal para selecionar EC ou DTCO
+
