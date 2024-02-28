@@ -32,11 +32,11 @@ public class ApiAuthorizationsService {
         List<String> ecs = apiUserDetailsService.getEcs();
 
         return ecs.stream()
-                .mapToLong(ec -> getSalesEcToday(apiAccessToken, ec))
+                .mapToDouble(ec -> getSalesEcToday(apiAccessToken, ec))
                 .sum();
     }
 
-    private long getSalesEcToday(String apiAccessToken, String ec) {
+    private double getSalesEcToday(String apiAccessToken, String ec) {
         String today = formattedDate(0);
         PagedSummaryDto answer;
         try {
@@ -47,7 +47,7 @@ public class ApiAuthorizationsService {
 
         return answer.sumarizacao.stream()
                 .filter(summary -> summary.tipoSumarizacao.equals(today))
-                .mapToLong(SummaryDto::getSumarizacao)
+                .mapToDouble(SummaryDto::getSumarizacao)
                 .sum();
     }
 
