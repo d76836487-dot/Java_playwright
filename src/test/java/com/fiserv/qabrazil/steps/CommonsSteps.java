@@ -17,8 +17,7 @@ import java.util.List;
 import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.*;
 
 public class CommonsSteps {
 
@@ -126,5 +125,10 @@ public class CommonsSteps {
     @Given("{shakespeareBoolean} o campo {pageField}")
     public void fieldIsOneVisibleAndEnabled(boolean value, PageField pageField) {
         assumeThat(pageField.fieldIsOneVisibleAndEnabled()).isEqualTo(value);
+    }
+
+    @Then("{pageField} não mais estará visível")
+    public void willNoLongerBeVisible(PageField pageField) {
+        assertFalse("Deveria não estar visível", pageField.elementIsVisibleRightNow());
     }
 }

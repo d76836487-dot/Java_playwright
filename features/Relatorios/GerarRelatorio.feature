@@ -26,6 +26,15 @@ Feature: Gerar Relatorio
     And Usuário verá em "Modal Gerar Relatórios - Mensagem sobre prazo" o texto
       | O relatório leva até 24 horas para ser exibido para download. |
 
+  Scenario Outline: Validar botões de fechar tela Gerar Relatórios
+    Given usuário clica no "Botão Gerar Relatório" em "Relatórios"
+    When usuário clica no <botão_cancelar>
+    Then "Modal Gerar Relatórios" não mais estará visível
+    Examples:
+    | botão_cancelar                                 |
+    | "Ícone Fechar (X)" em "Modal Gerar Relatórios" |
+    | "Botão Cancelar" em "Modal Gerar Relatórios"   |
+
   @api
   @TestCaseKey=SMP-T170
   Scenario: Validar campos na geração de relatórios

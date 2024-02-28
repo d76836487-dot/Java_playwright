@@ -119,6 +119,10 @@ public class PageField {
         return waitUntilTrue(locator::isVisible);
     }
 
+    public boolean elementIsVisibleRightNow() {
+        return locator.isVisible();
+    }
+
     public boolean isChecked() {
         return locator.isChecked();
     }
