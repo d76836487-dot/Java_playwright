@@ -27,7 +27,7 @@ Feature: Acesso Rápido
 
   Background:
     When Usuário tenta logar na aplicação
-    Then Usuário estará com acesso
+    Then Usuário estará com acesso e sessão foi salva
 
   @PermiteAdiantamento
   @TestCaseKey=SMP-T25

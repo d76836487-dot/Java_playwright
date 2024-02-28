@@ -10,7 +10,7 @@ Feature: Login
   @TestCaseKey=SMP-T10
   Scenario: Login com sucesso
     When Usuário tenta logar na aplicação
-    Then Usuário estará com acesso
+    Then Usuário estará com acesso e sessão foi salva
 
   @TestCaseKey=SMP-T11
   Scenario: Usuário não encontrado no GA1 nem no GA2 e sem cadastro na Fiserv

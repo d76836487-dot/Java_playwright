@@ -9,7 +9,7 @@ Feature: Home Logada
 
   Background:
     When Usuário tenta logar na aplicação
-    Then Usuário estará com acesso
+    Then Usuário estará com acesso e sessão foi salva
     And Todas as requisições HTTP foram respondidas
 
   @TestCaseKey=SMP-T16

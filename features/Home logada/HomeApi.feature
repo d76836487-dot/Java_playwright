@@ -9,7 +9,7 @@ Feature: Home Logada Conferindo Com Api
 
   Background:
     When Usuário tenta logar na aplicação
-    Then Usuário estará com acesso
+    Then Usuário estará com acesso e sessão foi salva
     And Todos os estabelecimentos foram selecionados no header
 
   @TestCaseKey=SMP-T118

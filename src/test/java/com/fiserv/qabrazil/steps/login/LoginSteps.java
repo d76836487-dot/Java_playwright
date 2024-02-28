@@ -32,9 +32,10 @@ public class LoginSteps {
     }
 
     @Given("Usuário acessou com sucesso")
-    @Then("Usuário estará com acesso")
+    @Then("Usuário estará com acesso e sessão foi salva")
     public void userHasAccessGranted() {
-        boolean accessGranted = loginPage.userIsLoggedAndSaveState();
+        boolean accessGranted = loginPage.userIsLogged();
+        loginPage.saveStorageState();
         assertTrue(accessGranted);
     }
 
@@ -52,7 +53,8 @@ public class LoginSteps {
     @Then("Usuário será direcionado para tela de login")
     public void userIsAtLoginScreen() {
         loginPage.reload();
-        boolean accessGranted = loginPage.userIsLoggedAndSaveState();
+        boolean accessGranted = loginPage.userIsLogged();
+        loginPage.saveStorageState();
         assertFalse(accessGranted);
     }
 

@@ -64,17 +64,11 @@ public class LoginPage extends BasePage {
         page.getByTestId("entrar").click();
     }
 
-    public synchronized boolean userIsLoggedAndSaveState() {
-        boolean isLogged = userIsLogged();
-        saveStorageState();
-        return isLogged;
-    }
-
     public boolean userIsLogged() {
         return waitUntilTrue(() -> page.getByTestId("head-sair").isVisible());
     }
 
-    private void saveStorageState() {
+    public void saveStorageState() {
         if (StorageState.stateIsReady()) return;
 
         StorageState.storageState = browserContext.storageState();
@@ -87,9 +81,10 @@ public class LoginPage extends BasePage {
              Page newPage = newBrowserContext.newPage()) {
             page = newPage;
             login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
-            if (!userIsLoggedAndSaveState()) {
+            if (!userIsLogged()) {
                 throw new Exception("Não foi possível logar em outra sessão.");
             }
+            saveStorageState();
         }
         page = swipePage;
     }
