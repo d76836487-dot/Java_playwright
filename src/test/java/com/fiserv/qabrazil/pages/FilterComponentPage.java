@@ -1,11 +1,11 @@
 package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.microsoft.playwright.Locator;
 
 import java.time.Duration;
 
+import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.retryIfGotException;
 import static com.fiserv.qabrazil.util.WaitUtil.sleep;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -17,8 +17,7 @@ public class FilterComponentPage extends BasePage {
         openAccordion(accordionName);
         checkAll(accordionName);
 
-        String testId = TestIdsConfig.getTestId("Filter - " + accordionName + " - " + filterValue);
-        Locator filterButton = page.getByTestId(testId);
+        PageField filterButton = pageField.from("Filter - " + accordionName + " - " + filterValue);
         assertThat(filterButton).isVisible();
         filterButton.click();
 
@@ -26,15 +25,13 @@ public class FilterComponentPage extends BasePage {
     }
 
     private void checkAll(String accordionName) {
-        String checkAllTestId = TestIdsConfig.getTestId("Filter - " + accordionName + " - Check all");
-        Locator checkAllButton = page.getByTestId(checkAllTestId);
+        PageField checkAllButton = pageField.from("Filter - " + accordionName + " - Check all");
         assertThat(checkAllButton).isVisible();
         checkAllButton.check();
     }
 
     public void openAccordion(String accordionName) {
-        String accordionTestId = TestIdsConfig.getTestId("Filter - Accordion - " + accordionName);
-        Locator accordion = page.getByTestId(accordionTestId);
+        Locator accordion = pageField.from("Filter - Accordion - " + accordionName).getLocator();
 
         retryIfGotException(() -> {
             openFilterOptions();
@@ -44,10 +41,11 @@ public class FilterComponentPage extends BasePage {
     }
 
     private void openFilterOptions() {
-        assertThat(page.getByTestId("vendas-hoje-link-filtrar")).isVisible();
-        assertThat(page.getByTestId("vendas-hoje-link-filtrar")).isEnabled();
+        Locator locator = page.getByTestId("vendas-hoje-link-filtrar");
+        assertThat(locator).isVisible();
+        assertThat(locator).isEnabled();
 
-        page.getByTestId("vendas-hoje-link-filtrar").click();
+        locator.click();
     }
 
     private void clickToFilter() {

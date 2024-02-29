@@ -5,6 +5,8 @@ import com.fiserv.qabrazil.util.Currency;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.assertions.LocatorAssertions;
+import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import io.cucumber.java.ParameterType;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,6 +18,11 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static org.testng.Assert.fail;
 
 public class PageField {
+
+    public static LocatorAssertions assertThat(PageField pageField) {
+        return PlaywrightAssertions.assertThat(pageField.locator);
+    }
+
     public static class Factory {
 
         @Autowired
@@ -133,6 +140,10 @@ public class PageField {
 
     public void uncheck() {
         locator.uncheck();
+    }
+
+    public void hoverOver() {
+        locator.hover();
     }
 
     public void click() {

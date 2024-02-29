@@ -48,11 +48,6 @@ public class CommonsPage extends BasePage {
         return locator.count() > 0 && locator.isVisible();
     }
 
-    public void hoverOver(String selector) {
-        Locator locator = page.locator(selector).last();
-        locator.hover();
-    }
-
     public boolean lateralMenuHasExpandedContaining(String identifier) {
         String buttonId = TestIdsConfig.getQuerySelector(String.format("Menu Lateral - %s", identifier));
         Locator button = page.locator(buttonId).last();

@@ -1,10 +1,8 @@
 package com.fiserv.qabrazil.steps;
 
-import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.PageObject;
-import com.fiserv.qabrazil.util.Identifier;
 import com.fiserv.qabrazil.util.UrlCheckers;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -14,10 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
-import static org.testng.AssertJUnit.*;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class CommonsSteps {
 
@@ -77,19 +78,16 @@ public class CommonsSteps {
                 .isGreaterThan(value);
     }
 
-    @Then("Usuário verá em {identifier} o valor {string} - se existir")
-    public void matchValuePerFieldOptional(Identifier identifier, String expectedText) {
-        String testId = identifier.testId();
-        if (commonsPage.elementIsVisibleNoWait(testId)) {
-            String textFound = commonsPage.getTextFromElement(identifier);
-            assertEquals(expectedText, textFound);
+    @Then("Usuário verá em {pageField} o valor {string} - se existir")
+    public void matchValuePerFieldOptional(PageField pageField, String expectedText) {
+        if (pageField.elementIsVisibleRightNow()) {
+            assertThat(pageField).containsText(expectedText);
         }
     }
 
-    @Then("Usuário verá em todos os campos {identifier} o valor {string} - se existir")
-    public void matchValueAllField(Identifier identifier, String expectedText) {
-        String testId = identifier.testId();
-        List<String> allTextsFound = commonsPage.getAllTextsFromElement(testId);
+    @Then("Usuário verá em todos os campos {pageField} o valor {string} - se existir")
+    public void matchValueAllField(PageField pageField, String expectedText) {
+        List<String> allTextsFound = pageField.getAllAsText();
         for (String textFound: allTextsFound) {
             assertEquals(expectedText, textFound);
         }
@@ -106,10 +104,9 @@ public class CommonsSteps {
         urlCheckers.forPage(pageName).ensureWeAreAtTheCorrectPage(newTab);
     }
 
-    @When("Usuário passa o mouse sobre {string}")
-    public void userHoversOver(String identifier) {
-        String elementSelector = TestIdsConfig.getQuerySelector(identifier);
-        commonsPage.hoverOver(elementSelector);
+    @When("Usuário passa o mouse sobre {pageField}")
+    public void userHoversOver(PageField pageField) {
+        pageField.hoverOver();
     }
 
     @Then("O menu lateral expandiu contendo {string}")
