@@ -163,6 +163,14 @@ public class PageField {
         return !waitUntilTrue(() -> locator.count() > 0);
     }
 
+    public String getPlaceholder() {
+        return locator.getAttribute("placeholder");
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
     public PageObject clickAndNewTabOpens() {
         waitUntilTrue(locator::isVisible);
         Page newTab = context.waitForPage(locator::click);

@@ -131,4 +131,10 @@ public class CommonsSteps {
     public void willNoLongerBeVisible(PageField pageField) {
         assertFalse("Deveria não estar visível", pageField.elementIsVisibleRightNow());
     }
+
+    @Then("Usuário verá em {pageField} o placeholder {string}")
+    public void comparePlaceholder(PageField pageField, String expectedPlaceholder) {
+        assertEquals("Placeholder do campo %s é diferente".formatted(pageField.getDisplayName()),
+                expectedPlaceholder, pageField.getPlaceholder());
+    }
 }

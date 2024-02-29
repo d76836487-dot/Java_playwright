@@ -12,3 +12,8 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' desmarcada
     Then Usuário verá modal para selecionar EC ou DTCO
 
+  Scenario: Validar Campos do Personalize sua Visualização aba default Estabelecimento. (Usuário Master)
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
+    When usuário clica "Header - Trocar Estabelecimento"
+    Then Usuário visualizará a aba Estabelecimento por padrão
+    And Usuário verá em "Header - Trocar Estabelecimento - Modal - Estabelecimento - Buscar documento" o placeholder "Buscar por documento ou número do estabelecimento"
