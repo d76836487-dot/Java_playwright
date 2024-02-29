@@ -57,8 +57,6 @@ public class TestIdsConfig {
             entry("Vendas - Histórico de Vendas - Resumo - Valor líquido", "historico-vendas-valor-liquido"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor cancelado", "historico-vendas-valor-cancelado"),
 
-            entry("Header - Notificações", "head-notificacoes"),
-
             entry("Home - Card Vendas Hoje - Valor Vendas Hoje", "home-card-vendas-hoje-text-vlr"),
             entry("Home - Card Vendas Hoje - Percentual Vendas Hoje", "home-card-vendas-hoje-text-percentual-down"),
 
@@ -165,6 +163,8 @@ public class TestIdsConfig {
             entry("Modal Gerar Relatórios - Botão Cancelar", "relatorios-btn-cancel"),
 
             entry("Header - Ocultar Valores", "head-ocultar-valores"),
+            entry("Header - Ajuda", "head-ajuda"),
+            entry("Header - Notificações", "head-notificacoes"),
             entry("Header - Trocar Estabelecimento", "head-trocar-estabelecimentos"),
             entry("Header - Trocar Estabelecimento - Modal - Padrão", "alterar-matriz-selecionar-padrao"),
             entry("Header - Trocar Estabelecimento - Modal - Acessar", "alterar-matriz-button-acessar"),
@@ -214,7 +214,9 @@ public class TestIdsConfig {
             entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana > div > div > div:nth-child(2)"),
             entry("Header - Trocar Estabelecimento - Modal - Todos", "//input[@value='Todos']"),
 
-            entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']")
+            entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']"),
+
+            entry("Ajuda - Chat", "//span[contains(text(),'WhatsApp')]/..")
     );
 
     public static String getTestId(String identifier) {
