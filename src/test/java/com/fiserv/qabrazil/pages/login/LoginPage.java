@@ -28,6 +28,9 @@ public class LoginPage extends BasePage {
     @Autowired
     HeaderComponent headerComponent;
 
+    @Autowired
+    private StorageState storageState;
+
     public boolean pageHasImageWith(String contract) {
         Pattern pattern = Pattern.compile(String.format(".*%s", contract));
         System.out.println(page.getByTestId("header-brand-img"));
@@ -39,8 +42,8 @@ public class LoginPage extends BasePage {
     }
 
     public synchronized void login() {
-        if (StorageState.stateIsReady()) {
-            goTo(StorageState.loggedUrl);
+        if (storageState.stateIsReady()) {
+            goTo(storageState.getLoggedUrl());
         } else {
             login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
         }
@@ -70,24 +73,23 @@ public class LoginPage extends BasePage {
     }
 
     public void saveStorageState() {
-        if (StorageState.stateIsReady()) return;
+        if (storageState.stateIsReady()) return;
 
-        StorageState.storageState = browserContext.storageState();
-        StorageState.loggedUrl = page.url();
+        storageState.init(browserContext.storageState(), page.url());
     }
 
     public void loginAnotherSession() throws Exception {
         Page swipePage = page;
         try (BrowserContext newBrowserContext = browser.newContext();
-             Page newPage = newBrowserContext.newPage()) {
+            Page newPage = newBrowserContext.newPage()) {
             page = newPage;
             login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
             if (!userIsLogged()) {
                 throw new Exception("Não foi possível logar em outra sessão.");
             }
-            saveStorageState();
         }
         page = swipePage;
+        storageState.clearState();
     }
 
     public void clickOnForgotMyPasswordButton() {

@@ -1,10 +1,31 @@
 package com.fiserv.automation.playwright.configuration;
 
-public class StorageState {
-    public static String storageState = null;
-    public static String loggedUrl = null;
+import org.springframework.stereotype.Component;
 
-    public static boolean stateIsReady() {
-        return StorageState.storageState != null;
+@Component
+public class StorageState {
+    private String storageState = null;
+    private String loggedUrl = null;
+
+    public String getStorageState() {
+        return storageState;
+    }
+
+    public String getLoggedUrl() {
+        return loggedUrl;
+    }
+
+    public void init(String storageState, String loggedUrl) {
+        this.storageState = storageState;
+        this.loggedUrl = loggedUrl;
+    }
+
+    public boolean stateIsReady() {
+        return storageState != null;
+    }
+
+    public void clearState() {
+        storageState = null;
+        loggedUrl = null;
     }
 }
