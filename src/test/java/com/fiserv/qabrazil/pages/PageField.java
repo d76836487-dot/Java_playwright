@@ -155,7 +155,7 @@ public class PageField {
     }
 
     public void hoverOver() {
-        locator.hover();
+        locator.last().hover();
     }
 
     public void click() {
