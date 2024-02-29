@@ -4,7 +4,6 @@ import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.PageObject;
 import com.fiserv.qabrazil.util.UrlCheckers;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -114,7 +113,7 @@ public class CommonsSteps {
         assertTrue("Menu lateral não está expandido", commonsPage.lateralMenuHasExpandedContaining(identifier));
     }
 
-    @And("Todas as requisições HTTP foram respondidas")
+    @Given("Todas as requisições HTTP foram respondidas")
     public void ensureAllHttpRequestsGotAnswer() {
         ensureNoFlyingRequests();
     }

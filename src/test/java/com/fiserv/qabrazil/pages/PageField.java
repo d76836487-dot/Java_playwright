@@ -60,9 +60,21 @@ public class PageField {
     private PageField(String displayName, BrowserContext context, Page page) {
         this.displayName = displayName;
         this.context = context;
-
         selector = TestIdsConfig.getQuerySelector(displayName);
         locator = page.locator(selector);
+    }
+
+    private PageField(String displayName, BrowserContext context, String selector, Locator locator) {
+        this.displayName = displayName;
+        this.context = context;
+        this.selector = selector;
+        this.locator = locator;
+    }
+
+    public List<PageField> getAllPageField() {
+        return locator.all().stream()
+                .map(sublocator -> new PageField(displayName, context, selector, sublocator))
+                .toList();
     }
 
     public Locator getLocator() {

@@ -171,6 +171,11 @@ public class TestIdsConfig {
             entry("Header - Trocar Estabelecimento - Modal - Botão selecionar por Documento", "alterar-matriz-type-documento"),
             entry("Header - Trocar Estabelecimento - Modal - Botão selecionar por Estabelecimento", "alterar-matriz-type-estabelecimento"),
             entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Buscar documento", "alterar-matriz-input-buscar"),
+            entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Nome Estabelecimento", "alterar-matriz-nome-estabelecimento-.*"),
+            entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Documento Estabelecimento", "alterar-matriz-documento-estabelecimento-.*"),
+            entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Nome Estabelecimento Detalhe", "alterar-matriz-nome-estabelecimento-detalhe-.*"),
+            entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Num Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-detalhe-.*"),
+            entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Status Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-status-.*"),
 
             entry("Login - mensagem de erro", "login-usuario-incorreto"),
 
@@ -213,6 +218,7 @@ public class TestIdsConfig {
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
             entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana > div > div > div:nth-child(2)"),
             entry("Header - Trocar Estabelecimento - Modal - Todos", "//input[@value='Todos']"),
+            entry("Header - Trocar Estabelecimento - Modal - Texto Explicativo", "//span[contains(text(),'Selecione 1 estabelecimento ')"),
 
             entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']"),
 

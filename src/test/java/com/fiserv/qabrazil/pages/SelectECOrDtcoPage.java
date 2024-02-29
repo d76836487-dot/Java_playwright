@@ -12,4 +12,12 @@ public class SelectECOrDtcoPage extends BasePage {
                 .getLocator();
         return button.getAttribute("aria-checked").equals("true");
     }
+
+    public void openFirstDropdown() {
+        Locator nameEstablishment = pageField
+                .from("Header - Trocar Estabelecimento - Modal - Estabelecimento - Nome Estabelecimento")
+                .getLocator();
+
+        nameEstablishment.first().click();
+    }
 }
