@@ -62,4 +62,8 @@ public class CommonsPage extends BasePage {
                 .map(locator -> locator.getAttribute("data-testid"))
                 .toList();
     }
+
+    public void scroll(int deltaY) {
+        page.mouse().wheel(0, deltaY);
+    }
 }

@@ -16,3 +16,8 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
     Given que estou na tela “início” do Portal
     When usuário clica "Header - Ajuda"
     Then usuário visualiza o componente WhatsApp na cor azul no canto inferior à direita da tela
+
+  Scenario: Validação da flutuação do componente Whatsapp
+    Given usuário está na página Ajuda
+    When usuário move a tela através do scroll
+    Then usuário visualizará o componente Whatsapp acompanhando a rolagem da tela
