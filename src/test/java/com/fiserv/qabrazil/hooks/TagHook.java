@@ -15,7 +15,8 @@ public class TagHook {
             Set.of("@pt-br","@es-ar"),
             Set.of("@PermiteAdiantamento","@NaoPermiteAdiantamento"),
             Set.of("@PermiteSolicitações","@NaoPermiteSolicitações"),
-            Set.of("@MDRPadrão","@MDRFlex"));
+            Set.of("@MDRPadrão","@MDRFlex"),
+            Set.of("@UsuárioMaster","@UsuárioNãoMaster"));
 
     @Autowired
     ContractConfig contractConfig;

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-@ConfigurationProperties("")
+@ConfigurationProperties
 public class ContractConfig {
 
     @Value("${spring.profiles.active:}")
@@ -47,5 +47,10 @@ public class ContractConfig {
             String apiHost,
             String serviceContract,
             String institution,
-            String allianceName) {}
+            String allianceName) {
+
+        public boolean isMaster() {
+            return clientTags.contains("@UsuárioMaster");
+        }
+    }
 }

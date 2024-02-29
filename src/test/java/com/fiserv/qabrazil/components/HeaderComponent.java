@@ -28,14 +28,18 @@ public class HeaderComponent extends BasePage {
     }
 
     public void selectAllDocumentsIfAvailable() {
+        if (!contractConfig.getActiveUserProfile().isMaster()) return;
+
         PageField changeButton = pageField.from("Header - Trocar Estabelecimento");
-        if (allDocumentsIsSelected(changeButton)) return;
+        if (allDocumentsIsAlreadySelected(changeButton)) return;
 
         openModalIfRequired(changeButton);
+
         if (userHasOnlyOneDocument()) {
             page.getByTestId("alterar-matriz-fechar").click();
             return;
         }
+
         pageField.from("Header - Trocar Estabelecimento - Modal - Botão selecionar por Documento").click();
         pageField.from("Header - Trocar Estabelecimento - Modal - Todos").click();
         unselectSetAsDefault();
@@ -69,7 +73,7 @@ public class HeaderComponent extends BasePage {
         }
     }
 
-    private boolean allDocumentsIsSelected(PageField button) {
+    private boolean allDocumentsIsAlreadySelected(PageField button) {
         Locator closeModalButton = page.getByTestId("alterar-matriz-fechar");
         Locator buttonOpenModal = button.getLocator();
 
