@@ -1,6 +1,5 @@
 package com.fiserv.qabrazil.steps;
 
-import com.fiserv.automation.api.dto.EcCodsDto;
 import com.fiserv.automation.api.dto.UserDetailDto;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.automation.api.util.DateUtil;
@@ -10,9 +9,11 @@ import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.ReportsPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.Identifier;
+import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.*;
 
@@ -180,24 +182,21 @@ public class ReportsSteps extends BaseSteps {
 
     @Then("usuário visualizará opção para selecionar um EC ou {string}")
     public void userWillSeeAnOptionToSelectABusinessDepartmentOrAllHavingBusinessDepartmentAsDefault(String allECsText) throws Exception {
-        UserDetailDto userDetail = apiUserDetailsService.getUserDetail();
+        List<String> apiECsFormatted = apiUserDetailsService.getFormattedEcsAndNames();
         PageField selectECOptions = pageField.from("Modal Gerar Relatórios - Select EC Opções");
-
-        List<String> apiECsFormatted = userDetail.ecCods.stream()
-                .map(EcCodsDto::concatEcAndName)
-                .toList();
 
         List<String> selectECOptionTexts = selectECOptions.getAllAsText();
         assertTrue("As opções de Estabelecimento Comercial não conferem com a api",
                 selectECOptionTexts.containsAll(apiECsFormatted));
 
         if(apiECsFormatted.size() > 1) {
-            assertTrue("Não oferece opção \"%s\" para mais 1 Estabelecimento Comercial".formatted(allECsText),
+            assertTrue("Não oferece opção \"%s\" para quando há mais que um Estabelecimento Comercial".formatted(allECsText),
                     selectECOptionTexts.contains(allECsText));
         }
     }
 
     @Then("{string} estará selecionado por padrão, caso haja mais de um")
+    @Then("{string} estará selecionado por padrão")
     public void userWillSeeAllECsAsDefaultIfMoreThanOne(String optionAllECs) throws Exception {
         List<String> ecs = apiUserDetailsService.getEcs();
 
@@ -207,5 +206,62 @@ public class ReportsSteps extends BaseSteps {
                     optionAllECs,
                     selectECLabelSelected.getAsText());
         }
+    }
+
+    @Given("usuário possui {expectedMoreThanOne} Estabelecimento Comercial vinculado")
+    public void userWillSeeOneOrMoreThanOneEC(boolean expectedMoreThanOne) throws Exception {
+        List<String> ecs = apiUserDetailsService.getEcs();
+
+        if(expectedMoreThanOne) {
+            assumeThat(ecs.size() > 1).isTrue();
+        } else {
+            assumeThat(ecs.size() == 1).isTrue();
+        }
+    }
+
+    @ParameterType("(apenas um|mais que um)")
+    public boolean expectedMoreThanOne(String value) {
+        return value.equals("mais que um");
+    }
+
+    @Then("usuário verá no campo Estabelecimento Comercial o número deste único estabelecimento já selecionado")
+    public void userWillSeeInECSelectTheValueOfTheOneECSSelected() throws Exception {
+        String formattedEC = apiUserDetailsService.getFormattedEcsAndNames().get(0);
+
+        String selected = pageField.from("Modal Gerar Relatórios - Select EC Selecionado").getAsText();
+        List<String> options = pageField.from("Modal Gerar Relatórios - Select EC Opções").getAllAsText();
+
+        assertEquals("Deveria estar selecionado o único EC vinculado a este user", formattedEC, selected);
+        assertThat(options)
+                .withFailMessage("Deveria exibir somente o único EC vinculado a este user")
+                .containsExactly(formattedEC);
+    }
+
+    @Then("usuário poderá selecionar alguma das outras opções disponíveis")
+    public void willBeAbleToSelectedAnyOfTheOtherAvailableOptions() throws Exception {
+        List<String> expectedECOptions = getExpectedEcOptions();
+        PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
+
+        assertThat(options.getAllAsText())
+                .withFailMessage("Campo Estabelecimento Comercial (EC) deveria mostrar todas as opções")
+                .containsExactlyElementsOf(expectedECOptions);
+
+        verifyCanSelectOtherECs(options);
+    }
+
+    @NotNull
+    private List<String> getExpectedEcOptions() throws Exception {
+        List<String> formattedEcs = apiUserDetailsService.getFormattedEcsAndNames();
+        List<String> expectedECOptions = new ArrayList<>();
+        expectedECOptions.add("Todos os estabelecimentos");
+        expectedECOptions.addAll(formattedEcs);
+        return expectedECOptions;
+    }
+
+    private void verifyCanSelectOtherECs(PageField options) {
+        List<PageField> listOptions = options.getAllPageField();
+        PageField selectedEC = pageField.from("Modal Gerar Relatórios - Select EC Selecionado");
+        listOptions.get(1).click();
+        assertEquals("%s deveria estar selecionado", listOptions.get(1).getAsText(), selectedEC.getAsText());
     }
 }

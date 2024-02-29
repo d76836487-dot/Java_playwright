@@ -151,6 +151,7 @@ public class TestIdsConfig {
             entry("Modal Gerar Relatórios - Descrição", "relatorios-header-subtitle-text"),
             entry("Modal Gerar Relatórios - Estabelecimento Comercial", "relatorios-ec-card-text-name"),
             entry("Modal Gerar Relatórios - CPF ou CNPJ", "relatorios-ec-card-text-cnpj"),
+            entry("Modal Gerar Relatórios - Campo Select EC", "simple-dropdown-select-ecs"),
             entry("Modal Gerar Relatórios - Select EC Selecionado", "simple-dropdown-select-ecs-text-selected"),
             entry("Modal Gerar Relatórios - Select EC Opções", "simple-dropdown-select-ecs-item.*"),
             entry("Modal Gerar Relatórios - Select Tipo Selecionado", "simple-dropdown-select-tipo-relatorio-text-selected"),

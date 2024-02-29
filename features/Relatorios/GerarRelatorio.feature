@@ -46,3 +46,16 @@ Feature: Gerar Relatorio
     And Usuário verá em "Modal Gerar Relatórios - Select Tipo Opções" as opções Pagamentos, Vendas
     And Usuário verá em "Modal Gerar Relatórios - Select Tipo Arquivo Opções" as opções .XLSX (Excel), .CSV
 
+  @api
+  Scenario: Validar Cliente com Apenas 1 Estabelecimento Comercial Vinculado (Sem Hierarquia)
+    Given usuário possui apenas um Estabelecimento Comercial vinculado
+    When usuário clica no "Botão Gerar Relatório" em "Relatórios"
+    Then usuário verá no campo Estabelecimento Comercial o número deste único estabelecimento já selecionado
+
+  @api
+  Scenario: Validar Cliente com 2 ou Mais Estabelecimentos Comerciais Vinculados (Sem Hierarquia)
+    Given usuário possui mais que um Estabelecimento Comercial vinculado
+    When usuário clica no "Botão Gerar Relatório" em "Relatórios"
+    And usuário clica no "Campo Select EC" no "Modal Gerar Relatórios"
+    Then "Todos os estabelecimentos" estará selecionado por padrão
+    And usuário poderá selecionar alguma das outras opções disponíveis
