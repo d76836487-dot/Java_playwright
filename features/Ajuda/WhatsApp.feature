@@ -1,7 +1,7 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Ajuda/WhatsApp
+@Zephyr:Folder=/Portal_do_Cliente/Ajuda/Validação_componente_Whatsapp_nas_instituições_BIN_003_ou_007
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
