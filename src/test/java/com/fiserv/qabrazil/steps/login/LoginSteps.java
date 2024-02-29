@@ -79,7 +79,7 @@ public class LoginSteps {
 
         if (!loginPage.userIsLogged()) return;
 
-        headerComponent.selectAllDocumentsIfAvailable();
+        headerComponent.selectAllDocumentsIfAvailable(false);
         loginPage.forceNewLogin();
     }
 }

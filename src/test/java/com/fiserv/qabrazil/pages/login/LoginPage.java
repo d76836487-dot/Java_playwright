@@ -44,7 +44,7 @@ public class LoginPage extends BasePage {
         } else {
             login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
         }
-        headerComponent.selectAllDocumentsIfAvailable();
+        headerComponent.selectAllDocumentsIfAvailable(true);
         startMonitoringRequests(page, contractConfig);
         headerComponent.selectShowValuesButton(true);
     }

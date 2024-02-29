@@ -27,7 +27,7 @@ public class HeaderComponent extends BasePage {
         button.click();
     }
 
-    public void selectAllDocumentsIfAvailable() {
+    public void selectAllDocumentsIfAvailable(boolean markDefaultOption) {
         if (!contractConfig.getActiveUserProfile().isMaster()) return;
 
         PageField changeButton = pageField.from("Header - Trocar Estabelecimento");
@@ -42,19 +42,19 @@ public class HeaderComponent extends BasePage {
 
         pageField.from("Header - Trocar Estabelecimento - Modal - Botão selecionar por Documento").click();
         pageField.from("Header - Trocar Estabelecimento - Modal - Todos").click();
-        unselectSetAsDefault();
+        selectSetAsDefault(markDefaultOption);
 
         startMonitoringRequests(page, contractConfig);
         pageField.from("Header - Trocar Estabelecimento - Modal - Acessar").click();
         ensureNoFlyingRequests();
     }
 
-    private void unselectSetAsDefault() {
+    private void selectSetAsDefault(boolean markDefaultOption) {
         Locator checkboxSetAsDefault = pageField
                 .from("Header - Trocar Estabelecimento - Modal - Padrão")
                 .getLocator()
                 .locator("//input");
-        if (checkboxSetAsDefault.isChecked()) {
+        if (checkboxSetAsDefault.isChecked() != markDefaultOption) {
             checkboxSetAsDefault.click();
         }
     }
