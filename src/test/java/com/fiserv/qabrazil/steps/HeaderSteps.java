@@ -8,9 +8,11 @@ import static org.testng.AssertJUnit.assertTrue;
 public class HeaderSteps extends BaseSteps {
     @Then("Usuário verá modal para selecionar EC ou DTCO")
     public void userWillSeeModalToPickEC() {
-        assertTrue(pageField.from("Header - Trocar Estabelecimento - Modal - Botão selecionar por Documento")
+        assertTrue("Parece que a modal para trocar estabelecimentos não está aberta",
+                pageField.from("Header - Trocar Estabelecimento - Modal - Botão selecionar por Documento")
                 .fieldIsOneVisibleAndEnabled());
-        assertTrue(pageField.from("Header - Trocar Estabelecimento - Modal - Botão selecionar por Estabelecimento")
+        assertTrue("Parece que a modal para trocar estabelecimentos não está aberta",
+                pageField.from("Header - Trocar Estabelecimento - Modal - Botão selecionar por Estabelecimento")
                 .fieldIsOneVisibleAndEnabled());
     }
 }
