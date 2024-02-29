@@ -22,6 +22,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     And Usuário verá em "Header - Trocar Estabelecimento - Modal - Padrão" o texto "Definir como padrão e não mostrar novamente"
     And Usuário verá em "Header - Trocar Estabelecimento - Modal - Texto Explicativo" o texto "Selecione 1 estabelecimento para acessar. Você pode mudar a seleção a qualquer momento no portal."
 
+  @TestCaseKey=SMP-T177
   Scenario: Validar expansão do dropdown na aba Estabelecimento. (Usuário Master)
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     When usuário clica "Header - Trocar Estabelecimento"
