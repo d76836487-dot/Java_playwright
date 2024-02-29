@@ -25,8 +25,14 @@ public class BrowserLocalStorage {
         Map<String, Object> j = new ObjectMapper().readValue(token, typeRef);
 
         List<?> localStorage = ((List<?>) ((Map<?, ?>) ((List<?>) j.get("origins")).get(0)).get("localStorage"));
-        return (String) localStorage.stream().filter(
+        String apiAccessToken = (String) localStorage.stream().filter(
                         k -> ((Map<?, ?>) k).get("name").equals(ACCESS_TOKEN)).
                 map(k -> ((Map<?, ?>) k).get("value")).findFirst().orElse(null);
+
+        if (apiAccessToken == null || apiAccessToken.length() < 200) {
+            throw new RuntimeException("Erro ao obter apiAccessToken do browserContext");
+        }
+
+        return apiAccessToken;
     }
 }
