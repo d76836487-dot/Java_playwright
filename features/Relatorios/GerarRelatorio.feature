@@ -47,15 +47,18 @@ Feature: Gerar Relatorio
     And Usuário verá em "Modal Gerar Relatórios - Select Tipo Arquivo Opções" as opções .XLSX (Excel), .CSV
 
   @api
+  @TestCaseKey=SMP-T178
   Scenario: Validar Cliente com Apenas 1 Estabelecimento Comercial Vinculado (Sem Hierarquia)
     Given usuário possui apenas um Estabelecimento Comercial vinculado
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     Then usuário verá no campo Estabelecimento Comercial o número deste único estabelecimento já selecionado
 
   @api
+  @TestCaseKey=SMP-T179
   Scenario: Validar Cliente com 2 ou Mais Estabelecimentos Comerciais Vinculados (Sem Hierarquia)
     Given usuário possui mais que um Estabelecimento Comercial vinculado
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     And usuário clica no "Campo Select EC" no "Modal Gerar Relatórios"
     Then "Todos os estabelecimentos" estará selecionado por padrão
     And usuário poderá selecionar alguma das outras opções disponíveis
+
