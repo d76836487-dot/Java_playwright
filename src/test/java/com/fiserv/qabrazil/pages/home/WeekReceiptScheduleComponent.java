@@ -36,7 +36,7 @@ public class WeekReceiptScheduleComponent extends BasePage {
     public boolean receivablesAvailable() {
         // TODO: trocar para testId
         Locator locator = page.locator("#CtnAgendaRecebimentosSemana");
-        return waitUntilTrue(3, () -> !locator.textContent().equals("Agenda de recebimentos da semanaVocê não possui nenhum recebimento previsto para essa semana.Ver tudo"));
+        return waitUntilTrue(3, () -> !locator.textContent().contains("Você não possui nenhum recebimento previsto para essa semana."));
     }
 
     public void containsDates() {
