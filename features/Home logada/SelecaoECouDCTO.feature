@@ -55,8 +55,10 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Then Dropdown irá filtrar e apresentar somente a informação correspondente
     And Botão Acessar estará habilitado após seleção de um EC
 
+  @TestCaseKey=SMP-T184
   Scenario: Busca de Documento (CNPJ ou CPF) valido aba Estabelecimento (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento válido em 'Buscar por documento ou número do estabelecimento'
     Then Dropdown irá filtrar e apresentar somente a informação correspondente
     And Botão Acessar estará habilitado após seleção de um EC
+
