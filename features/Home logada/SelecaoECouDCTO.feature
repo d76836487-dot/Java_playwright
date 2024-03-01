@@ -39,6 +39,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     And usuário clica no "Botão selecionar por Estabelecimento" em "Trocar Estabelecimento"
     Then Todos Nomes, CNPJ CPFs, número ECs e status são iguais a API
 
+  @TestCaseKey=SMP-T183
   Scenario: Validar Campos do Personalize sua Visualização aba Documento. (Usuário Master)
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When usuário clica no "Botão Todos Documentos" em "Trocar Estabelecimento"
@@ -47,8 +48,10 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
     And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Selecione 1 estabelecimento para acessar. Você pode mudar a seleção a qualquer momento no portal."
 
+  @TestCaseKey=SMP-T182
   Scenario: Busca de código EC valido aba Estabelecimento (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um EC válido em 'Buscar por documento ou número do estabelecimento'
     Then Dropdown irá filtrar e apresentar somente a informação correspondente
     And Botão Acessar estará habilitado após seleção de um EC
+
