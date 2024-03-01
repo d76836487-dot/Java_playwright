@@ -227,7 +227,8 @@ public class TestIdsConfig {
             entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']"),
 
             entry("Ajuda - Chat", "//span[contains(text(),'WhatsApp')]/.."),
-            entry("Ajuda - WhatsApp Card", "//*[contains(@class,'margin-left-m')][1]/*")
+            entry("Ajuda - WhatsApp Card", "//*[contains(@class,'margin-left-m')][1]/*"),
+            entry("Ajuda - Atendimento pelo Whatsapp - número do telefone sublinhado", "//*[contains(@class,'margin-left-m')][1]/a")
     );
 
     public static String getTestId(String identifier) {

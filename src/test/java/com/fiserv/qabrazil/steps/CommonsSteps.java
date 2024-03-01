@@ -103,6 +103,11 @@ public class CommonsSteps {
         urlCheckers.forPage(pageName).ensureWeAreAtTheCorrectPage(newTab);
     }
 
+    @Then("usuário será direcionado para url {string} na nova aba")
+    public void ensureWeAreAtTheRightUrlInANewTab(String url) {
+        urlCheckers.forUrl(url).ensureWeAreAtTheCorrectPage(newTab);
+    }
+
     @When("Usuário passa o mouse sobre {pageField}")
     public void userHoversOver(PageField pageField) {
         pageField.hoverOver();
