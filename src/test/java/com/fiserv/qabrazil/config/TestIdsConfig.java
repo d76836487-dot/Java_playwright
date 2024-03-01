@@ -221,7 +221,7 @@ public class TestIdsConfig {
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
             entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana > div > div > div:nth-child(2)"),
             entry("Trocar Estabelecimento - Botão Todos Documentos", "//input[@value='Todos']"),
-            entry("Trocar Estabelecimento - Botão Todos Documentos - Explicação", "//span[@value='Essa visão']"),
+            entry("Trocar Estabelecimento - Botão Todos Documentos - Explicação", "//span[contains(text(),'Essa visão')]"),
             entry("Trocar Estabelecimento - Texto Explicativo", "//span[contains(text(),'Selecione 1 estabelecimento ')"),
 
             entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']"),

@@ -2,11 +2,14 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.automation.api.dto.MerchantDetail;
 import com.fiserv.automation.api.dto.MerchantGroup;
+import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
+import com.fiserv.qabrazil.pages.login.LoginPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.qabrazil.util.CpfCnpjUtil;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +23,15 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
+    @Autowired
+    private LoginPage loginPage;
+    @Autowired
+    private HeaderComponent headerComponent;
 
     @Then("Usuário verá modal para selecionar EC ou DTCO")
     public void userWillSeeModalToPickEC() {
         assertTrue("Parece que a modal para trocar estabelecimentos não está aberta",
-                pageField.from("Trocar Estabelecimento - Botão selecionar por Documento")
-                .fieldIsOneVisibleAndEnabled());
-        assertTrue("Parece que a modal para trocar estabelecimentos não está aberta",
-                pageField.from("Trocar Estabelecimento - Botão selecionar por Estabelecimento")
-                .fieldIsOneVisibleAndEnabled());
+                selectECOrDtcoPage.modalIsVisible());
     }
 
     @Then("Usuário visualizará a aba Estabelecimento por padrão")
@@ -91,7 +94,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         }
     }
 
-    @When("Expande primeiro dropdown")
+    @When("Usuário expande primeiro dropdown")
     public void openFirstDropdown() {
         selectECOrDtcoPage.openFirstDropdown();
     }
@@ -166,11 +169,33 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
     @Then("Botão Acessar estará habilitado após seleção de um EC")
     public void buttonIsEnableAfter() {
-        assertFalse(pageField.from("Trocar Estabelecimento - Botão Acessar").elementIsEnabledRightNow());
+        assertFalse("Botão está habilitado, mesmo sem selecionar um EC",
+                pageField.from("Trocar Estabelecimento - Botão Acessar").elementIsEnabledRightNow());
 
         pageField.from("Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento").click();
         pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe").click();
 
         assertTrue(pageField.from("Trocar Estabelecimento - Botão Acessar").elementIsEnabledRightNow());
+    }
+
+    @Given("Usuário está na aba {string} da modal 'Trocar Estabelecimento'")
+    public void usuárioEstáNaAbaEstabelecimentoDeTrocarEstabelecimento(String tab) {
+        loginPage.login();
+        loginPage.userIsLogged();
+
+        pageField.from("Header - Trocar Estabelecimento").click();
+        pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab)).click();
+    }
+
+    @When("Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' desmarcada")
+    public void userLogsInWithoutPreSelectedEC() {
+        loginPage.forceNewLogin();
+
+        if (selectECOrDtcoPage.modalIsVisible()) return;
+
+        assertTrue(loginPage.userIsLogged());
+
+        headerComponent.selectAllDocumentsIfAvailable(false);
+        loginPage.forceNewLogin();
     }
 }

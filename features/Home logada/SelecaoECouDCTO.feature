@@ -24,10 +24,8 @@ Feature: Seleção de EC ou DCTO - Usuário Master
 
   @TestCaseKey=SMP-T177
   Scenario: Validar expansão do dropdown na aba Estabelecimento. (Usuário Master)
-    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
-    When usuário clica "Header - Trocar Estabelecimento"
-    And usuário clica "Trocar Estabelecimento - Botão selecionar por Estabelecimento"
-    And Expande primeiro dropdown
+    Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+    When Usuário expande primeiro dropdown
     Then O primeiro dropdown estará expandido
     And O dropdown conterá com as informações de Nome fantasia do EC
     And O dropdown conterá com as informações de número do EC
@@ -42,9 +40,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Then Todos Nomes, CNPJ CPFs, número ECs e status são iguais a API
 
   Scenario: Validar Campos do Personalize sua Visualização aba Documento. (Usuário Master)
-    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
-    And usuário clica "Header - Trocar Estabelecimento"
-    And usuário clica no "Botão selecionar por Documento" em "Trocar Estabelecimento"
+    Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When usuário clica no "Botão Todos Documentos" em "Trocar Estabelecimento"
     Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento"
     And Usuário verá em "Trocar Estabelecimento - Botão Todos Documentos - Explicação" o texto "Essa visão irá agrupar todos os estabelecimentos abaixo do documento"
@@ -52,9 +48,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Selecione 1 estabelecimento para acessar. Você pode mudar a seleção a qualquer momento no portal."
 
   Scenario: Busca de código EC valido aba Estabelecimento (Usuário Master)
-    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
-    And usuário clica "Header - Trocar Estabelecimento"
-    And usuário clica no "Botão selecionar por Estabelecimento" em "Trocar Estabelecimento"
+    Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um EC válido em 'Buscar por documento ou número do estabelecimento'
     Then Dropdown irá filtrar e apresentar somente a informação correspondente
     And Botão Acessar estará habilitado após seleção de um EC

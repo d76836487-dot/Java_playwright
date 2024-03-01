@@ -62,4 +62,9 @@ public class SelectECOrDtcoPage extends BasePage {
 
         throw new RuntimeException("Não encontrei dropdown/ec para %s".formatted(documentOrEc));
     }
+
+    public boolean modalIsVisible() {
+        return pageField.from("Trocar Estabelecimento - Botão selecionar por Documento").fieldIsOneVisibleAndEnabled()
+                && pageField.from("Trocar Estabelecimento - Botão selecionar por Estabelecimento").fieldIsOneVisibleAndEnabled();
+    }
 }

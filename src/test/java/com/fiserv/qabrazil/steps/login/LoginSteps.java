@@ -1,6 +1,5 @@
 package com.fiserv.qabrazil.steps.login;
 
-import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.login.LoginPage;
 import io.cucumber.java.en.Given;
@@ -17,9 +16,6 @@ public class LoginSteps {
 
     @Autowired
     ContractConfig contractConfig;
-
-    @Autowired
-    HeaderComponent headerComponent;
 
     @When("Usuário tenta logar na aplicação")
     public void login() {
@@ -71,15 +67,5 @@ public class LoginSteps {
     @Given("Usuário clicou no botão esqueci minha senha")
     public void userClickedForgotMyPasswordButton() {
         loginPage.clickOnForgotMyPasswordButton();
-    }
-
-    @When("Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' desmarcada")
-    public void userLogsInWithoutPreSelectedEC() {
-        loginPage.forceNewLogin();
-
-        if (!loginPage.userIsLogged()) return;
-
-        headerComponent.selectAllDocumentsIfAvailable(false);
-        loginPage.forceNewLogin();
     }
 }
