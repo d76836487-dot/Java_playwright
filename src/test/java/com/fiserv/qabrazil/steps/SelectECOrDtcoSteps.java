@@ -2,7 +2,6 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.automation.api.dto.MerchantDetail;
 import com.fiserv.automation.api.dto.MerchantGroup;
-import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.pages.login.LoginPage;
@@ -25,8 +24,6 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     private ApiUserDetailsService apiUserDetailsService;
     @Autowired
     private LoginPage loginPage;
-    @Autowired
-    private HeaderComponent headerComponent;
 
     @Then("Usuário verá modal para selecionar EC ou DTCO")
     public void userWillSeeModalToPickEC() {
@@ -195,7 +192,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
         assertTrue(loginPage.userIsLogged());
 
-        headerComponent.selectAllDocumentsIfAvailable(false);
+        selectECOrDtcoPage.openModalAndUnsetDefault();
         loginPage.forceNewLogin();
     }
 }

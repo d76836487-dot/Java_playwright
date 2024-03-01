@@ -5,6 +5,7 @@ import com.fiserv.automation.playwright.configuration.StorageState;
 import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.BasePage;
+import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.microsoft.playwright.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,6 +32,9 @@ public class LoginPage extends BasePage {
     @Autowired
     private StorageState storageState;
 
+    @Autowired
+    private SelectECOrDtcoPage selectECOrDtcoPage;
+
     public boolean pageHasImageWith(String contract) {
         Pattern pattern = Pattern.compile(String.format(".*%s", contract));
         System.out.println(page.getByTestId("header-brand-img"));
@@ -47,7 +51,7 @@ public class LoginPage extends BasePage {
         } else {
             login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
         }
-        headerComponent.selectAllDocumentsIfAvailable(true);
+        selectECOrDtcoPage.selectAllDocumentsIfAvailable();
         startMonitoringRequests(page, contractConfig);
         headerComponent.selectShowValuesButton(true);
     }
