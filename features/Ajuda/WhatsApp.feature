@@ -21,6 +21,7 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
     Examples:
       | cor               |
       | rgb(247, 148, 30) |
+
     @bin
     Examples:
       | cor               |
@@ -32,16 +33,18 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
     When usuário move a tela através do scroll
     Then usuário visualizará o componente Whatsapp acompanhando a rolagem da tela
 
+  @TestCaseKey=SMP-T181
   Scenario Outline: Visualização do campo Atendimento pelo Whatsapp
     Given usuário está na página Ajuda
     When usuário move a tela através do scroll até o final da página
     Then usuário visualizará o campo Atendimento pelo Whatsapp contendo a frase e o número do telefone sublinhado: <dados>
     @azulzinha
     Examples:
-      | dados |
+      | dados                                                                                                                           |
       | Atendimento pelo Whatsapp,Tire suas dúvidas com nosso atendimento pelo Whatsapp a qualquer momento,Telefone,+55 (11) 94147 3336 |
+
     @bin
     Examples:
-      | dados |
+      | dados                                                                                                                           |
       | Atendimento pelo Whatsapp,Tire suas dúvidas com nosso atendimento pelo Whatsapp a qualquer momento,Telefone,+55 (11) 94270 1270 |
 
