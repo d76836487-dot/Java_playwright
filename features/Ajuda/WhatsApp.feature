@@ -48,6 +48,7 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
       | dados                                                                                                                           |
       | Atendimento pelo Whatsapp,Tire suas dúvidas com nosso atendimento pelo Whatsapp a qualquer momento,Telefone,+55 (11) 94270 1270 |
 
+  @TestCaseKey=SMP-T185
   Scenario Outline: Validação da URL do Whatsapp
     Given usuário está na página Ajuda
     When usuário clica no "número do telefone sublinhado" na "Ajuda - Atendimento pelo Whatsapp" e uma nova aba se abre
@@ -56,7 +57,9 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
     Examples:
       | url                                  |
       | https://wa.me/message/LVFYRJUOSFODE1 |
+
     @bin
     Examples:
       | url                                  |
       | https://wa.me/message/FC2JELHHFGAKJ1 |
+
