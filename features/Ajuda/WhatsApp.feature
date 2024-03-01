@@ -24,3 +24,9 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
     When usuário move a tela através do scroll
     Then usuário visualizará o componente Whatsapp acompanhando a rolagem da tela
 
+  Scenario: Visualização do campo Atendimento pelo Whatsapp
+    Given usuário está na página Ajuda
+    When usuário move a tela através do scroll até o final da página
+    Then usuário visualizará o campo Atendimento pelo Whatsapp contendo a frase e o número do telefone sublinhado:
+      | Atendimento pelo Whatsapp,Tire suas dúvidas com nosso atendimento pelo Whatsapp a qualquer momento,Telefone,+55 (11) 94270 1270 |
+

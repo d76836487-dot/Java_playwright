@@ -66,4 +66,9 @@ public class CommonsPage extends BasePage {
     public void scroll(int deltaY) {
         page.mouse().wheel(0, deltaY);
     }
+
+    public void scrollToBottom() {
+        Integer result = (Integer) page.evaluate("document.body.scrollHeight");
+        page.mouse().wheel(0, result);
+    }
 }
