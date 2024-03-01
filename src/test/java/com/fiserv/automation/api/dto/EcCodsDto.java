@@ -13,6 +13,30 @@ public class EcCodsDto {
         return "%s - %s".formatted(ec, nomeFantasia);
     }
 
+    public String getEc() {
+        return ec;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getStatusCode() {
+        return statusCode;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public String getHierarchy() {
+        return hierarchy;
+    }
+
+    public String getNomeFantasia() {
+        return nomeFantasia;
+    }
+
     @Override
     public String toString() {
         return "EcCods{" +

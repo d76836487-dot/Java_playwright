@@ -40,18 +40,18 @@ public class HeaderComponent extends BasePage {
             return;
         }
 
-        pageField.from("Header - Trocar Estabelecimento - Modal - Botão selecionar por Documento").click();
-        pageField.from("Header - Trocar Estabelecimento - Modal - Todos").click();
+        pageField.from("Trocar Estabelecimento - Botão selecionar por Documento").click();
+        pageField.from("Trocar Estabelecimento - Botão Todos Documentos").click();
         selectSetAsDefault(markDefaultOption);
 
         startMonitoringRequests(page, contractConfig);
-        pageField.from("Header - Trocar Estabelecimento - Modal - Acessar").click();
+        pageField.from("Header - Trocar Estabelecimento - Acessar").click();
         ensureNoFlyingRequests();
     }
 
     private void selectSetAsDefault(boolean markDefaultOption) {
         Locator checkboxSetAsDefault = pageField
-                .from("Header - Trocar Estabelecimento - Modal - Padrão")
+                .from("Header - Trocar Estabelecimento - Padrão")
                 .getLocator()
                 .locator("//input");
         if (checkboxSetAsDefault.isChecked() != markDefaultOption) {
@@ -60,7 +60,7 @@ public class HeaderComponent extends BasePage {
     }
 
     private boolean userHasOnlyOneDocument() {
-        Locator allDocsButton = pageField.from("Header - Trocar Estabelecimento - Modal - Todos").getLocator();
+        Locator allDocsButton = pageField.from("Trocar Estabelecimento - Botão Todos Documentos").getLocator();
         Locator userHasOnlyOneDoc = page.getByText("Você só possui um documento para seleção");
 
         waitUntilTrue(() -> allDocsButton.isVisible() || userHasOnlyOneDoc.isVisible());

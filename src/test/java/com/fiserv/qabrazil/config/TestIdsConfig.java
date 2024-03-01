@@ -167,16 +167,17 @@ public class TestIdsConfig {
             entry("Header - Ajuda", "head-ajuda"),
             entry("Header - Notificações", "head-notificacoes"),
             entry("Header - Trocar Estabelecimento", "head-trocar-estabelecimentos"),
-            entry("Header - Trocar Estabelecimento - Modal - Padrão", "alterar-matriz-selecionar-padrao"),
-            entry("Header - Trocar Estabelecimento - Modal - Acessar", "alterar-matriz-button-acessar"),
-            entry("Header - Trocar Estabelecimento - Modal - Botão selecionar por Documento", "alterar-matriz-type-documento"),
-            entry("Header - Trocar Estabelecimento - Modal - Botão selecionar por Estabelecimento", "alterar-matriz-type-estabelecimento"),
-            entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Buscar documento", "alterar-matriz-input-buscar"),
-            entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Nome Estabelecimento", "alterar-matriz-nome-estabelecimento-.*"),
-            entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Documento Estabelecimento", "alterar-matriz-documento-estabelecimento-.*"),
-            entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Nome Estabelecimento Detalhe", "alterar-matriz-nome-estabelecimento-detalhe-.*"),
-            entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Num Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-detalhe-.*"),
-            entry("Header - Trocar Estabelecimento - Modal - Estabelecimento - Status Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-status-.*"),
+            entry("Header - Trocar Estabelecimento - Padrão", "alterar-matriz-selecionar-padrao"),
+            entry("Header - Trocar Estabelecimento - Acessar", "alterar-matriz-button-acessar"),
+            
+            entry("Trocar Estabelecimento - Botão selecionar por Documento", "alterar-matriz-type-documento"),
+            entry("Trocar Estabelecimento - Botão selecionar por Estabelecimento", "alterar-matriz-type-estabelecimento"),
+            entry("Trocar Estabelecimento - Estabelecimento - Buscar documento", "alterar-matriz-input-buscar"),
+            entry("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento", "alterar-matriz-nome-estabelecimento-.*"),
+            entry("Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento", "alterar-matriz-documento-estabelecimento-.*"),
+            entry("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe", "alterar-matriz-nome-estabelecimento-detalhe-.*"),
+            entry("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-detalhe-.*"),
+            entry("Trocar Estabelecimento - Estabelecimento - Status Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-status-.*"),
 
             entry("Login - mensagem de erro", "login-usuario-incorreto"),
 
@@ -218,8 +219,8 @@ public class TestIdsConfig {
             entry("Home - Maquininha - Botão Confira", "//button[span[contains(text(),'Confira')]]"),
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
             entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana > div > div > div:nth-child(2)"),
-            entry("Header - Trocar Estabelecimento - Modal - Todos", "//input[@value='Todos']"),
-            entry("Header - Trocar Estabelecimento - Modal - Texto Explicativo", "//span[contains(text(),'Selecione 1 estabelecimento ')"),
+            entry("Trocar Estabelecimento - Botão Todos Documentos", "//input[@value='Todos']"),
+            entry("Trocar Estabelecimento - Texto Explicativo", "//span[contains(text(),'Selecione 1 estabelecimento ')"),
 
             entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']"),
 
