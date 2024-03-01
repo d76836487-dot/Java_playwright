@@ -17,9 +17,9 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     When usuário clica "Header - Trocar Estabelecimento"
     Then Usuário visualizará a aba Estabelecimento por padrão
-    And Usuário verá em "Trocar Estabelecimento - Estabelecimento - Buscar documento" o placeholder "Buscar por documento ou número do estabelecimento"
+    And Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento ou número do estabelecimento"
     And Listagem por documento contendo dropdown com as informações de Nome fantasia do documento e o número do documento
-    And Usuário verá em "Header - Trocar Estabelecimento - Padrão" o texto "Definir como padrão e não mostrar novamente"
+    And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
     And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Selecione 1 estabelecimento para acessar. Você pode mudar a seleção a qualquer momento no portal."
 
   @TestCaseKey=SMP-T177
@@ -41,3 +41,12 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     And usuário clica no "Botão selecionar por Estabelecimento" em "Trocar Estabelecimento"
     Then Todos Nomes, CNPJ CPFs, número ECs e status são iguais a API
 
+  Scenario: Validar Campos do Personalize sua Visualização aba Documento. (Usuário Master)
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
+    When usuário clica "Header - Trocar Estabelecimento"
+    And usuário clica no "Botão selecionar por Documento" em "Trocar Estabelecimento"
+    And usuário clica no "Botão Todos Documentos" em "Trocar Estabelecimento"
+    Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento"
+    And Usuário verá em "Trocar Estabelecimento - Botão Todos Documentos - Explicação" o texto "Essa visão irá agrupar todos os estabelecimentos abaixo do documento"
+    And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
+    And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Selecione 1 estabelecimento para acessar. Você pode mudar a seleção a qualquer momento no portal."

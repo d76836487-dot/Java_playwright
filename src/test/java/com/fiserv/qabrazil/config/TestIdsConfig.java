@@ -167,12 +167,12 @@ public class TestIdsConfig {
             entry("Header - Ajuda", "head-ajuda"),
             entry("Header - Notificações", "head-notificacoes"),
             entry("Header - Trocar Estabelecimento", "head-trocar-estabelecimentos"),
-            entry("Header - Trocar Estabelecimento - Padrão", "alterar-matriz-selecionar-padrao"),
+            entry("Trocar Estabelecimento - Marcar como Padrão", "alterar-matriz-selecionar-padrao"),
             entry("Header - Trocar Estabelecimento - Acessar", "alterar-matriz-button-acessar"),
             
             entry("Trocar Estabelecimento - Botão selecionar por Documento", "alterar-matriz-type-documento"),
             entry("Trocar Estabelecimento - Botão selecionar por Estabelecimento", "alterar-matriz-type-estabelecimento"),
-            entry("Trocar Estabelecimento - Estabelecimento - Buscar documento", "alterar-matriz-input-buscar"),
+            entry("Trocar Estabelecimento - Buscar documento", "alterar-matriz-input-buscar"),
             entry("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento", "alterar-matriz-nome-estabelecimento-.*"),
             entry("Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento", "alterar-matriz-documento-estabelecimento-.*"),
             entry("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe", "alterar-matriz-nome-estabelecimento-detalhe-.*"),
@@ -220,6 +220,7 @@ public class TestIdsConfig {
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
             entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana > div > div > div:nth-child(2)"),
             entry("Trocar Estabelecimento - Botão Todos Documentos", "//input[@value='Todos']"),
+            entry("Trocar Estabelecimento - Botão Todos Documentos - Explicação", "//span[@value='Essa visão']"),
             entry("Trocar Estabelecimento - Texto Explicativo", "//span[contains(text(),'Selecione 1 estabelecimento ')"),
 
             entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']"),

@@ -51,7 +51,7 @@ public class HeaderComponent extends BasePage {
 
     private void selectSetAsDefault(boolean markDefaultOption) {
         Locator checkboxSetAsDefault = pageField
-                .from("Header - Trocar Estabelecimento - Padrão")
+                .from("Trocar Estabelecimento - Marcar como Padrão")
                 .getLocator()
                 .locator("//input");
         if (checkboxSetAsDefault.isChecked() != markDefaultOption) {
