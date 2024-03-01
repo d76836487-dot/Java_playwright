@@ -143,7 +143,12 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     public void typeValidEc() {
         String lastEc = getLastEc();
         pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially(lastEc);
-        System.out.println("ddd");
+    }
+
+    @When("Usuário digitar um documento válido em 'Buscar por documento ou número do estabelecimento'")
+    public void typeValidDoc() {
+        String lastDoc = getLastDoc();
+        pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially(lastDoc);
     }
 
     @Then("Dropdown irá filtrar e apresentar somente a informação correspondente")
@@ -160,6 +165,12 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
     private String getLastEc() {
         List<String> allEcs = pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe")
+                .getAllAsText();
+        return allEcs.get(allEcs.size() - 1);
+    }
+
+    private String getLastDoc() {
+        List<String> allEcs = pageField.from("Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento")
                 .getAllAsText();
         return allEcs.get(allEcs.size() - 1);
     }
