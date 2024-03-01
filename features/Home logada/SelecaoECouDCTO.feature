@@ -34,8 +34,10 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     And O dropdown conterá com as informações do status do EC no BW
 
   @api
+  @TestCaseKey=SMP-T180
   Scenario: Valida Nomes, CNPJ/CPFs, número EC e status com API
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     When usuário clica "Header - Trocar Estabelecimento"
     And usuário clica no "Botão selecionar por Estabelecimento" em "Trocar Estabelecimento"
     Then Todos Nomes, CNPJ CPFs, número ECs e status são iguais a API
+
