@@ -20,10 +20,10 @@ public class HelpPage extends CheckedBasePage {
         ensureWeAreAtTheCorrectPage();
     }
 
-    public void shouldSeeWhatsAppChatButton() {
+    public void shouldSeeWhatsAppChatButton(String expectedColor) {
         PageField button = pageField.from("Ajuda - Chat");
         button.fieldIsOneVisibleAndEnabled();
-        assertThat(button).hasClass(Pattern.compile("fundo-azul-claro"));
+        assertThat(button).hasCSS("background-color", expectedColor);
     }
 
     public void whatsAppChatButtonShouldHavePositionFixed() {
@@ -33,9 +33,9 @@ public class HelpPage extends CheckedBasePage {
         assertThat(button).hasCSS("right", "38px");
     }
 
-    public void assertBottomWhatsAppText(String... expectedText) {
+    public void assertBottomWhatsAppText(String... expectedTexts) {
         PageField whatsAppCard = pageField.from("Ajuda - WhatsApp Card");
         List<String> allTexts = whatsAppCard.getAllAsText();
-        assertThat(allTexts).containsExactly(expectedText);
+        assertThat(allTexts).containsExactly(expectedTexts);
     }
 }

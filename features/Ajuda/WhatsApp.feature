@@ -13,10 +13,18 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
     And Todas as requisições HTTP foram respondidas
 
   @TestCaseKey=SMP-T176
-  Scenario: Visualização do componente Whatsapp
+  Scenario Outline: Visualização do componente Whatsapp
     Given que estou na tela “início” do Portal
     When usuário clica "Header - Ajuda"
-    Then usuário visualiza o componente WhatsApp na cor azul no canto inferior à direita da tela
+    Then usuário visualiza o componente WhatsApp na cor "<cor>" no canto inferior à direita da tela
+    @azulzinha
+    Examples:
+      | cor               |
+      | rgb(247, 148, 30) |
+    @bin
+    Examples:
+      | cor               |
+      | rgb(46, 139, 201) |
 
   @TestCaseKey=SMP-T175
   Scenario: Validação da flutuação do componente Whatsapp
@@ -24,9 +32,16 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
     When usuário move a tela através do scroll
     Then usuário visualizará o componente Whatsapp acompanhando a rolagem da tela
 
-  Scenario: Visualização do campo Atendimento pelo Whatsapp
+  Scenario Outline: Visualização do campo Atendimento pelo Whatsapp
     Given usuário está na página Ajuda
     When usuário move a tela através do scroll até o final da página
-    Then usuário visualizará o campo Atendimento pelo Whatsapp contendo a frase e o número do telefone sublinhado:
+    Then usuário visualizará o campo Atendimento pelo Whatsapp contendo a frase e o número do telefone sublinhado: <dados>
+    @azulzinha
+    Examples:
+      | dados |
+      | Atendimento pelo Whatsapp,Tire suas dúvidas com nosso atendimento pelo Whatsapp a qualquer momento,Telefone,+55 (11) 94147 3336 |
+    @bin
+    Examples:
+      | dados |
       | Atendimento pelo Whatsapp,Tire suas dúvidas com nosso atendimento pelo Whatsapp a qualquer momento,Telefone,+55 (11) 94270 1270 |
 

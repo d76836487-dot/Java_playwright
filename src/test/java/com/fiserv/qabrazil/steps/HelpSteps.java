@@ -2,7 +2,6 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.HelpPage;
-import com.fiserv.qabrazil.steps.home.HomeCustomizeModalSteps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,9 +15,9 @@ public class HelpSteps {
     @Autowired
     HelpPage helpPage;
 
-    @Then("usuário visualiza o componente WhatsApp na cor azul no canto inferior à direita da tela")
-    public void shouldSeeWhatsAppChatButton() {
-        helpPage.shouldSeeWhatsAppChatButton();
+    @Then("usuário visualiza o componente WhatsApp na cor {string} no canto inferior à direita da tela")
+    public void shouldSeeWhatsAppChatButton(String expectedColor) {
+        helpPage.shouldSeeWhatsAppChatButton(expectedColor);
     }
 
     @Given("usuário está na página Ajuda")
@@ -45,8 +44,8 @@ public class HelpSteps {
         helpPage.whatsAppChatButtonShouldHavePositionFixed();
     }
 
-    @Then("usuário visualizará o campo Atendimento pelo Whatsapp contendo a frase e o número do telefone sublinhado:")
-    public void userSeesFieldWithSentenceAndPhoneNumberHighlighted(String expectedText) {
-        helpPage.assertBottomWhatsAppText(HomeCustomizeModalSteps.csv(expectedText));
+    @Then("usuário visualizará o campo Atendimento pelo Whatsapp contendo a frase e o número do telefone sublinhado: {csv}")
+    public void userSeesFieldWithSentenceAndPhoneNumberHighlighted(String[] expectedTexts) {
+        helpPage.assertBottomWhatsAppText(expectedTexts);
     }
 }

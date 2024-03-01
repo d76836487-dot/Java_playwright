@@ -5,7 +5,7 @@ user-profiles:
     password: ${AFINZ_CONTRACT_PASSWORD}
     identity: afinz
     primaryCssClass: cor-azul
-    institutionTags: '@pt-br,@NaoPermiteAdiantamento,@NaoPermiteSolicitações'
+    institutionTags: '@pt-br,@afinz,@NaoPermiteAdiantamento,@NaoPermiteSolicitações'
     clientTags: '@MDRFlex'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
@@ -18,7 +18,7 @@ user-profiles:
     password: ${AZULZINHA_CONTRACT_PASSWORD}
     identity: azulzinha
     primaryCssClass: cor-azulzinha
-    institutionTags: '@pt-br,@NaoPermiteAdiantamento,@PermiteSolicitações'
+    institutionTags: '@pt-br,@azulzinha,@NaoPermiteAdiantamento,@PermiteSolicitações'
     clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
@@ -31,7 +31,7 @@ user-profiles:
     password: ${OTA_AZULZINHA_CONTRACT_PASSWORD}
     identity: azulzinha
     primaryCssClass: cor-azulzinha
-    institutionTags: '@pt-br,@NaoPermiteAdiantamento,@PermiteSolicitações'
+    institutionTags: '@pt-br,@azulzinha,@NaoPermiteAdiantamento,@PermiteSolicitações'
     clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
@@ -44,7 +44,7 @@ user-profiles:
     password: ${BIN_CONTRACT_PASSWORD}
     identity: bin
     primaryCssClass: cor-laranja
-    institutionTags: '@pt-br,@PermiteAdiantamento,@PermiteSolicitações'
+    institutionTags: '@pt-br,@bin,@PermiteAdiantamento,@PermiteSolicitações'
     clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
@@ -57,7 +57,7 @@ user-profiles:
     password: ${SICREDI_CONTRACT_PASSWORD}
     identity: sicredi
     primaryCssClass: cor-verde
-    institutionTags: '@pt-br,@PermiteAdiantamento,@PermiteSolicitações'
+    institutionTags: '@pt-br,@sicredi,@PermiteAdiantamento,@PermiteSolicitações'
     clientTags: '@MDRPadrão,@UsuárioMaster'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
@@ -70,7 +70,7 @@ user-profiles:
     password: ${OTO_SICREDI_CONTRACT_PASSWORD}
     identity: sicredi
     primaryCssClass: cor-verde
-    institutionTags: '@pt-br,@PermiteAdiantamento,@PermiteSolicitações'
+    institutionTags: '@pt-br,@sicredi,@PermiteAdiantamento,@PermiteSolicitações'
     clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
