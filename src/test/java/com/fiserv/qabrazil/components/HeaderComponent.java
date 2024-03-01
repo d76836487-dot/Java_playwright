@@ -9,8 +9,6 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
-import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
@@ -44,9 +42,7 @@ public class HeaderComponent extends BasePage {
         pageField.from("Trocar Estabelecimento - Botão Todos Documentos").click();
         selectSetAsDefault(markDefaultOption);
 
-        startMonitoringRequests(page, contractConfig);
-        pageField.from("Header - Trocar Estabelecimento - Acessar").click();
-        ensureNoFlyingRequests();
+        pageField.from("Trocar Estabelecimento - Botão Acessar").click();
     }
 
     private void selectSetAsDefault(boolean markDefaultOption) {

@@ -168,16 +168,17 @@ public class TestIdsConfig {
             entry("Header - Notificações", "head-notificacoes"),
             entry("Header - Trocar Estabelecimento", "head-trocar-estabelecimentos"),
             entry("Trocar Estabelecimento - Marcar como Padrão", "alterar-matriz-selecionar-padrao"),
-            entry("Header - Trocar Estabelecimento - Acessar", "alterar-matriz-button-acessar"),
+            entry("Trocar Estabelecimento - Botão Acessar", "alterar-matriz-button-acessar"),
             
             entry("Trocar Estabelecimento - Botão selecionar por Documento", "alterar-matriz-type-documento"),
             entry("Trocar Estabelecimento - Botão selecionar por Estabelecimento", "alterar-matriz-type-estabelecimento"),
             entry("Trocar Estabelecimento - Buscar documento", "alterar-matriz-input-buscar"),
-            entry("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento", "alterar-matriz-nome-estabelecimento-.*"),
-            entry("Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento", "alterar-matriz-documento-estabelecimento-.*"),
-            entry("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe", "alterar-matriz-nome-estabelecimento-detalhe-.*"),
-            entry("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-detalhe-.*"),
-            entry("Trocar Estabelecimento - Estabelecimento - Status Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-status-.*"),
+            entry("Trocar Estabelecimento - Limpar buscar documento", "alterar-matriz-close-input-search"),
+            entry("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento", "alterar-matriz-nome-estabelecimento-\\d.*"),
+            entry("Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento", "alterar-matriz-documento-estabelecimento-\\d.*"),
+            entry("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe", "alterar-matriz-nome-estabelecimento-detalhe-\\d.*"),
+            entry("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-detalhe-\\d.*"),
+            entry("Trocar Estabelecimento - Estabelecimento - Status Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-status-\\d.*"),
 
             entry("Login - mensagem de erro", "login-usuario-incorreto"),
 

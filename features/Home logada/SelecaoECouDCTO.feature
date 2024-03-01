@@ -43,10 +43,18 @@ Feature: Seleção de EC ou DCTO - Usuário Master
 
   Scenario: Validar Campos do Personalize sua Visualização aba Documento. (Usuário Master)
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
-    When usuário clica "Header - Trocar Estabelecimento"
+    And usuário clica "Header - Trocar Estabelecimento"
     And usuário clica no "Botão selecionar por Documento" em "Trocar Estabelecimento"
-    And usuário clica no "Botão Todos Documentos" em "Trocar Estabelecimento"
+    When usuário clica no "Botão Todos Documentos" em "Trocar Estabelecimento"
     Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento"
     And Usuário verá em "Trocar Estabelecimento - Botão Todos Documentos - Explicação" o texto "Essa visão irá agrupar todos os estabelecimentos abaixo do documento"
     And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
     And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Selecione 1 estabelecimento para acessar. Você pode mudar a seleção a qualquer momento no portal."
+
+  Scenario: Busca de código EC valido aba Estabelecimento (Usuário Master)
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
+    And usuário clica "Header - Trocar Estabelecimento"
+    And usuário clica no "Botão selecionar por Estabelecimento" em "Trocar Estabelecimento"
+    When Usuário digitar um EC válido em 'Buscar por documento ou número do estabelecimento'
+    Then Dropdown irá filtrar e apresentar somente a informação correspondente
+    And Botão Acessar estará habilitado após seleção de um EC

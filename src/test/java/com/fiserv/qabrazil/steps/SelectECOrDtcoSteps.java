@@ -138,4 +138,39 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
         assertEquals(expectedValue, foundValue);
     }
+
+    @When("Usuário digitar um EC válido em 'Buscar por documento ou número do estabelecimento'")
+    public void typeValidEc() {
+        String lastEc = getLastEc();
+        pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially(lastEc);
+        System.out.println("ddd");
+    }
+
+    @Then("Dropdown irá filtrar e apresentar somente a informação correspondente")
+    public void checkIfFiltered() {
+        assertEquals(1,
+                pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento")
+                        .getAllPageField()
+                        .size());
+        assertEquals(1,
+                pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
+                        .getAllPageField()
+                        .size());
+    }
+
+    private String getLastEc() {
+        List<String> allEcs = pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe")
+                .getAllAsText();
+        return allEcs.get(allEcs.size() - 1);
+    }
+
+    @Then("Botão Acessar estará habilitado após seleção de um EC")
+    public void buttonIsEnableAfter() {
+        assertFalse(pageField.from("Trocar Estabelecimento - Botão Acessar").elementIsEnabledRightNow());
+
+        pageField.from("Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento").click();
+        pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe").click();
+
+        assertTrue(pageField.from("Trocar Estabelecimento - Botão Acessar").elementIsEnabledRightNow());
+    }
 }

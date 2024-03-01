@@ -142,6 +142,10 @@ public class PageField {
         return locator.isVisible();
     }
 
+    public boolean elementIsEnabledRightNow() {
+        return locator.isEnabled();
+    }
+
     public boolean isChecked() {
         return locator.isChecked();
     }
@@ -192,6 +196,10 @@ public class PageField {
 
     public String getDisplayName() {
         return displayName;
+    }
+
+    public void pressSequentially(String textToType) {
+        locator.pressSequentially(textToType);
     }
 
     public PageObject clickAndNewTabOpens() {
