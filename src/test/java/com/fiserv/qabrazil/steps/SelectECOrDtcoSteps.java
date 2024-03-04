@@ -145,6 +145,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially(lastEc);
     }
 
+    @When("Usuário digitar um documento válido em 'Buscar por documento'")
     @When("Usuário digitar um documento válido em 'Buscar por documento ou número do estabelecimento'")
     public void typeValidDoc() {
         String lastDoc = getLastDoc();
@@ -210,5 +211,12 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
         selectECOrDtcoPage.openModalAndUnsetDefault();
         loginPage.forceNewLogin();
+    }
+
+    @Then("Usuário poderá limpar a busca clicando no X")
+    public void usuárioPoderáLimparABuscaClicandoNoX() {
+        pageField.from("Trocar Estabelecimento - Limpar buscar documento").click();
+        assertTrue("Botão X não limpou o texto digitado",
+                pageField.from("Trocar Estabelecimento - Buscar documento").getAsText().isEmpty());
     }
 }

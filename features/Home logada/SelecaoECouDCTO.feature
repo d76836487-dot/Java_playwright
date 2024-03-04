@@ -74,3 +74,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
     Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
 
+  Scenario: Validar botão “X” no componente “Buscar por documento” na aba Documento na tela de personalize sua visualização (Usuário Master)
+    Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+    When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
+    Then Usuário poderá limpar a busca clicando no X
