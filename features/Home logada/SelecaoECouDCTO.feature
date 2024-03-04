@@ -108,6 +108,8 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "marcada"
     Then Usuário estará com acesso e sessão foi salva
 
+  @TestCaseKey=SMP-T196
   Scenario: Validar não seleção no checkbox de não mostrar novamente (Usuário Master)
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
     Then Usuário verá modal para selecionar EC ou DTCO
+
