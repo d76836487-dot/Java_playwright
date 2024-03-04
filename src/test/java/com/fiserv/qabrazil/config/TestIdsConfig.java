@@ -227,10 +227,11 @@ public class TestIdsConfig {
             entry("Trocar Estabelecimento - Documento - Documento Estabelecimento", "//*[@role='radiogroup']//input"),
             entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']"),
 
-            entry("Ajuda - Chat", "//span[contains(text(),'WhatsApp')]/.."),
+            entry("Ajuda - Whatsapp", "//span[contains(text(),'WhatsApp')]/.."),
             entry("Ajuda - WhatsApp Card", "//*[contains(@class,'margin-left-m')][1]/*"),
-            entry("Ajuda - Atendimento pelo Whatsapp - número do telefone sublinhado", "//*[contains(@class,'margin-left-m')][1]/a")
-    );
+            entry("Ajuda - Atendimento pelo Whatsapp - número do telefone sublinhado", "//*[contains(@class,'margin-left-m')][1]/a"),
+            entry("Ajuda - Chatbot", "//span[contains(text(),'Chatbot')]/..")
+            );
 
     public static String getTestId(String identifier) {
         return testIdMaps.getOrDefault(identifier, "Didn't find test id for " + identifier);

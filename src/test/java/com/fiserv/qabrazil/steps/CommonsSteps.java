@@ -47,6 +47,7 @@ public class CommonsSteps {
         identifier.click();
     }
 
+    @When("usuário clica em/no {pageField} e uma nova aba se abre")
     @When("usuário clica em/no {pageFieldWithSection} e uma nova aba se abre")
     public void userClicksAndNewTabOpens(PageField identifier) {
         newTab = identifier.clickAndNewTabOpens();

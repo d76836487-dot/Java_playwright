@@ -20,14 +20,12 @@ public class HelpPage extends CheckedBasePage {
         ensureWeAreAtTheCorrectPage();
     }
 
-    public void shouldSeeWhatsAppChatButton(String expectedColor) {
-        PageField button = pageField.from("Ajuda - Chat");
+    public void shouldSeeWhatsAppChatButton(PageField button, String expectedColor) {
         button.fieldIsOneVisibleAndEnabled();
         assertThat(button).hasCSS("background-color", expectedColor);
     }
 
-    public void whatsAppChatButtonShouldHavePositionFixed() {
-        PageField button = pageField.from("Ajuda - Chat");
+    public void whatsAppChatButtonShouldHavePositionFixed(PageField button) {
         assertThat(button).hasCSS("position", "fixed");
         assertThat(button).hasCSS("bottom", "50px");
         assertThat(button).hasCSS("right", "38px");

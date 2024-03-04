@@ -5,8 +5,12 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assumptions.assumeThat;
 
@@ -24,13 +28,19 @@ public class TagHook {
 
     @Before("@playwright and not @ignore")
     public void checkTags(Scenario scenario) {
-        List<String> tagsInTagGroup = scenario.getSourceTagNames().stream().filter(
-                tag -> tagGroups.stream().anyMatch(
-                        tagGroup -> tagGroup.contains(tag))).toList();
+        Collection<String> scenarioTags = scenario.getSourceTagNames();
+        List<Set<String>> filteredTagGroups = tagGroups.stream()
+                .map(group -> group.stream().filter(scenarioTags::contains).collect(Collectors.toSet()))
+                .filter(group -> !group.isEmpty())
+                .toList();
 
-        boolean allTagsInGroupMatchInstitution = tagsInTagGroup.stream().allMatch(
-                tag -> contractConfig.getActiveUserProfile().institutionTags().contains(tag) ||
-                       contractConfig.getActiveUserProfile().clientTags().contains(tag));
+        List<String> profileTags = Stream.concat(
+                Arrays.stream(contractConfig.getActiveUserProfile().institutionTags().split(",")),
+                Arrays.stream(contractConfig.getActiveUserProfile().clientTags().split(","))
+        ).toList();
+
+        boolean allTagsInGroupMatchInstitution = filteredTagGroups.stream()
+                .allMatch(group -> group.stream().anyMatch(profileTags::contains));
 
         assumeThat(allTagsInGroupMatchInstitution)
                 .withFailMessage("Scenario " + scenario.getName() + " didn't match all necessary tags")
