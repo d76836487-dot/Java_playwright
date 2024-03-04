@@ -15,9 +15,7 @@ import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.*;
 
 public class CommonsSteps {
 
@@ -142,6 +140,7 @@ public class CommonsSteps {
 
     @Then("Botão {pageField} estará visível e desabilitado")
     public void pageFieldIsDisabled(PageField pageField) {
-        assertTrue(pageField.fieldIsOneVisibleAndDisabled());
+        assertFalse("Botão %s não parece estar desabilitado".formatted(pageField.getDisplayName()),
+                pageField.fieldIsOneVisibleAndDisabled());
     }
 }

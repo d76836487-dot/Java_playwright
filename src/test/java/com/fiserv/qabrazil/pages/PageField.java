@@ -205,6 +205,10 @@ public class PageField {
         locator.pressSequentially(textToType);
     }
 
+    public int getCount() {
+        return locator.count();
+    }
+
     public PageObject clickAndNewTabOpens() {
         waitUntilTrue(locator::isVisible);
         Page newTab = context.waitForPage(locator::click);

@@ -9,7 +9,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
 
   @TestCaseKey=SMP-T172
   Scenario: Redirecionamento Correto (Usuário Master) - o usuário verá modal Personalizar ao logar
-    When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' desmarcada
+    When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
     Then Usuário verá modal para selecionar EC ou DTCO
 
   @TestCaseKey=SMP-T174
@@ -44,7 +44,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When usuário clica no "Botão Todos Documentos" em "Trocar Estabelecimento"
     Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento"
-    And Usuário verá em "Trocar Estabelecimento - Botão Todos Documentos - Explicação" o texto "Essa visão irá agrupar todos os estabelecimentos abaixo do documento"
+    And Usuário verá em "Trocar Estabelecimento - Botão Todos Documentos - Explicação" o texto "Essa visão irá agrupar todos os estabelecimentos abaixo do documento "
     And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
     And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Selecione 1 estabelecimento para acessar. Você pode mudar a seleção a qualquer momento no portal."
 
@@ -98,3 +98,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar um documento e clicar Acessar
     Then Documento estará previamente selecionado
+
+  Scenario: Validar seleção no checkbox de não mostrar novamente (Usuário Master)
+    When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "marcada"
+    Then Usuário estará com acesso e sessão foi salva

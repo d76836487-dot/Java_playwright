@@ -122,17 +122,17 @@ public class SelectECOrDtcoPage extends BasePage {
         return userHasOnlyOneDoc.isVisible();
     }
 
-    public void openModalAndUnsetDefault() {
+    public void openModalAndSetDefault(boolean setAsDefault) {
         pageField.from("Header - Trocar Estabelecimento").click();
         pageField.from("Trocar Estabelecimento - Botão selecionar por Documento").click();
         pageField.from("Trocar Estabelecimento - Botão Todos Documentos").click();
-        selectSetAsDefault(false);
+        selectSetAsDefault(setAsDefault);
         pageField.from("Trocar Estabelecimento - Botão Acessar").click();
     }
 
     public List<String> getDocumentsFromTabDocument() {
         PageField inputs = pageField.from("Trocar Estabelecimento - Documento - Documento Estabelecimento");
-        waitUntilTrue(() -> !filterDocsFromDialog(inputs).isEmpty());
+        waitUntilTrue(() -> inputs.getCount() > 0);
 
         return filterDocsFromDialog(inputs);
     }

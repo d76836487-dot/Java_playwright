@@ -222,15 +222,15 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         selectECOrDtcoPage.openModalAndTab(tab);
     }
 
-    @When("Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' desmarcada")
-    public void userLogsInWithoutPreSelectedEC() {
+    @When("Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' {string}")
+    public void userLogsInWithoutPreSelectedEC(String checkedOrUnchecked) {
         loginPage.forceNewLogin();
 
         if (selectECOrDtcoPage.modalIsVisible()) return;
 
         assertTrue(loginPage.userIsLogged());
 
-        selectECOrDtcoPage.openModalAndUnsetDefault();
+        selectECOrDtcoPage.openModalAndSetDefault(checkedOrUnchecked.equals("marcada"));
         loginPage.forceNewLogin();
     }
 
