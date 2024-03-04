@@ -65,19 +65,23 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
       | https://wa.me/message/FC2JELHHFGAKJ1 |
 
   @sicredi
+  @TestCaseKey=SMP-T192
   Scenario: Visualização do componente Chatbot
     Given que estou na tela “início” do Portal
     When usuário clica "Header - Ajuda"
     Then usuário visualiza o componente "Ajuda - Chatbot" na cor "rgb(20, 110, 55)" no canto inferior à direita da tela
 
   @sicredi
+  @TestCaseKey=SMP-T191
   Scenario: Validação da flutuação do componente Chatbot
     Given usuário está na página Ajuda
     When usuário move a tela através do scroll
     Then usuário visualizará o componente "Ajuda - Chatbot" acompanhando a rolagem da tela
 
   @sicredi
+  @TestCaseKey=SMP-T193
   Scenario: Validação da URL do Chatbot
     Given usuário está na página Ajuda
     When usuário clica em "Ajuda - Chatbot" e uma nova aba se abre
     Then usuário será direcionado para url "https://firstdata-silver.virtualinteractions.com.br/pt_BR/avi-sicredi.html?id=106&source=3&target=1&channel=1&launchType=popup" na nova aba
+
