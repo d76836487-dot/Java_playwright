@@ -62,3 +62,8 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Then Dropdown irá filtrar e apresentar somente a informação correspondente
     And Botão Acessar estará habilitado após seleção de um EC
 
+  Scenario: Busca de código EC invalido aba Estabelecimento (Usuário Master)
+    Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+    When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
+    Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
+

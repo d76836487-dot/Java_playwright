@@ -151,6 +151,11 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially(lastDoc);
     }
 
+    @When("Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'")
+    public void typeInvalidDoc() {
+        pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially("123123123");
+    }
+
     @Then("Dropdown irá filtrar e apresentar somente a informação correspondente")
     public void checkIfFiltered() {
         assertEquals(1,

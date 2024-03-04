@@ -222,8 +222,8 @@ public class TestIdsConfig {
             entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana > div > div > div:nth-child(2)"),
             entry("Trocar Estabelecimento - Botão Todos Documentos", "//input[@value='Todos']"),
             entry("Trocar Estabelecimento - Botão Todos Documentos - Explicação", "//span[contains(text(),'Essa visão')]"),
-            entry("Trocar Estabelecimento - Texto Explicativo", "//span[contains(text(),'Selecione 1 estabelecimento ')"),
-
+            entry("Trocar Estabelecimento - Texto Explicativo", "//span[contains(text(),'Selecione 1 estabelecimento ')]"),
+            entry("Trocar Estabelecimento - Nenhum resultado", "//*[@role='dialog']//*[contains(text(),'Nenhum resultado')]"),
             entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']"),
 
             entry("Ajuda - Chat", "//span[contains(text(),'WhatsApp')]/.."),
