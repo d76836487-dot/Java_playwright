@@ -2,9 +2,12 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.microsoft.playwright.Locator;
+import org.jetbrains.annotations.NotNull;
 
+import java.time.Duration;
 import java.util.List;
 
+import static com.fiserv.qabrazil.util.WaitUtil.sleep;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
@@ -134,5 +137,22 @@ public class SelectECOrDtcoPage extends BasePage {
         pageField.from("Trocar Estabelecimento - Botão Todos Documentos").click();
         selectSetAsDefault(false);
         pageField.from("Trocar Estabelecimento - Botão Acessar").click();
+    }
+
+    public List<String> getDocumentsFromTabDocument() {
+        sleep(Duration.ofMillis(200));
+
+        PageField inputs = pageField.from("Trocar Estabelecimento - Documento - Documento Estabelecimento");
+        waitUntilTrue(() -> !filterDocsFromDialog(inputs).isEmpty());
+
+        return filterDocsFromDialog(inputs);
+    }
+
+    @NotNull
+    private static List<String> filterDocsFromDialog(PageField inputs) {
+        return inputs.getAllPageField().stream()
+                .map(pf -> pf.getLocator().getAttribute("value"))
+                .filter(value -> value != null && value.length() > 1 && Character.isDigit(value.charAt(0)))
+                .toList();
     }
 }

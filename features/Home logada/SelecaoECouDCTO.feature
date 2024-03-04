@@ -80,3 +80,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
     Then Usuário poderá limpar a busca clicando no X
 
+  Scenario: Busca de documento valido aba Documento (Usuário Master)
+    Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+    When Usuário digitar um documento válido em 'Buscar por documento'
+    Then Filtro apresentará somente a informação correspondente

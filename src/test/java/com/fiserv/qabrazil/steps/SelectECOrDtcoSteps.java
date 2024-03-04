@@ -145,10 +145,15 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially(lastEc);
     }
 
-    @When("Usuário digitar um documento válido em 'Buscar por documento'")
     @When("Usuário digitar um documento válido em 'Buscar por documento ou número do estabelecimento'")
-    public void typeValidDoc() {
-        String lastDoc = getLastDoc();
+    public void typeValidDocTabEstablishment() {
+        String lastDoc = getLastDocTabEstablishment();
+        pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially(lastDoc);
+    }
+
+    @When("Usuário digitar um documento válido em 'Buscar por documento'")
+    public void typeValidDocTabDocument() {
+        String lastDoc = getLastDocTabDocument();
         pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially(lastDoc);
     }
 
@@ -169,16 +174,29 @@ public class SelectECOrDtcoSteps extends BaseSteps {
                         .size());
     }
 
+    @Then("Filtro apresentará somente a informação correspondente")
+    public void filterHasWorkedAsExpected() {
+        List<String> documentsFromTabDocument = selectECOrDtcoPage.getDocumentsFromTabDocument();
+        assertFalse("Opção Todos não deveria estar visível quando filtrando por documento",
+                pageField.from("Trocar Estabelecimento - Botão Todos Documentos").elementIsVisibleRightNow());
+        assertEquals("Filtro deveria trazer somente um CNPJ, mas encontrou %s.".formatted(documentsFromTabDocument),
+                1, documentsFromTabDocument.size());
+    }
     private String getLastEc() {
         List<String> allEcs = pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe")
                 .getAllAsText();
         return allEcs.get(allEcs.size() - 1);
     }
 
-    private String getLastDoc() {
+    private String getLastDocTabEstablishment() {
         List<String> allEcs = pageField.from("Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento")
                 .getAllAsText();
         return allEcs.get(allEcs.size() - 1);
+    }
+
+    private String getLastDocTabDocument() {
+        List<String> allDocs = selectECOrDtcoPage.getDocumentsFromTabDocument();
+        return allDocs.get(allDocs.size() - 1);
     }
 
     @Then("Botão Acessar estará habilitado após seleção de um EC")
