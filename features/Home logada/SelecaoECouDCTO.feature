@@ -62,6 +62,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Then Dropdown irá filtrar e apresentar somente a informação correspondente
     And Botão Acessar estará habilitado após seleção de um EC
 
+  @TestCaseKey=SMP-T186
   Scenario: Busca de código EC invalido aba Estabelecimento (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
