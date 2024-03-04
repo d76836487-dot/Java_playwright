@@ -94,11 +94,14 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     And Botão "Trocar Estabelecimento - Botão Acessar" estará visível e desabilitado
     And Botão "Trocar Estabelecimento - Marcar como Padrão" estará visível e desabilitado
 
+  @TestCaseKey=SMP-T194
   Scenario: Validação do Botão Acessar (Usuário Master)
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar um documento e clicar Acessar
     Then Documento estará previamente selecionado
 
+  @TestCaseKey=SMP-T195
   Scenario: Validar seleção no checkbox de não mostrar novamente (Usuário Master)
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "marcada"
     Then Usuário estará com acesso e sessão foi salva
+
