@@ -68,3 +68,8 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
     Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
 
+  Scenario: Busca de Documento (CNPJ ou CPF) invalido aba Estabelecimento (Usuário Master)
+    Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+    When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
+    Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
+
