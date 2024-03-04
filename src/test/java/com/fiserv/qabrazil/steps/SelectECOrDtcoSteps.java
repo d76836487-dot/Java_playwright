@@ -13,6 +13,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.ParseException;
 import java.util.List;
 import static org.testng.AssertJUnit.*;
 
@@ -24,6 +25,8 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     private ApiUserDetailsService apiUserDetailsService;
     @Autowired
     private LoginPage loginPage;
+
+    private String selectedDoc;
 
     @Then("Usuário verá modal para selecionar EC ou DTCO")
     public void userWillSeeModalToPickEC() {
@@ -232,9 +235,26 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     }
 
     @Then("Usuário poderá limpar a busca clicando no X")
-    public void usuárioPoderáLimparABuscaClicandoNoX() {
+    public void cleanSearchClickingOnX() {
         pageField.from("Trocar Estabelecimento - Limpar buscar documento").click();
         assertTrue("Botão X não limpou o texto digitado",
                 pageField.from("Trocar Estabelecimento - Buscar documento").getAsText().isEmpty());
+    }
+
+    @When("Usuário selecionar um documento e clicar Acessar")
+    public void userSelectsDocument() {
+        List<String> allDocs = selectECOrDtcoPage.getDocumentsFromTabDocument();
+        selectedDoc = allDocs.get(0);
+        selectECOrDtcoPage.selectDocumentInput(selectedDoc);
+
+        pageField.from("Trocar Estabelecimento - Botão Acessar").click();
+    }
+
+    @Then("Documento estará previamente selecionado")
+    public void docWillBePreviouslySelected() throws ParseException {
+        String prevSelected = pageField.from("Header - Trocar Estabelecimento").getAsText();
+
+        assertTrue("Esperava ter selecionado <%s>, mas encontrou <%s>".formatted(selectedDoc, prevSelected),
+                prevSelected.contains(CpfCnpjUtil.formatCpfCnpj(selectedDoc)));
     }
 }

@@ -94,3 +94,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     And Botão "Trocar Estabelecimento - Botão Acessar" estará visível e desabilitado
     And Botão "Trocar Estabelecimento - Marcar como Padrão" estará visível e desabilitado
 
+  Scenario: Validação do Botão Acessar (Usuário Master)
+    Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+    When Usuário selecionar um documento e clicar Acessar
+    Then Documento estará previamente selecionado

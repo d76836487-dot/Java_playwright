@@ -152,4 +152,17 @@ public class SelectECOrDtcoPage extends BasePage {
 
         ensureNoFlyingRequests();
     }
+
+    public void selectDocumentInput(String docToSelect) {
+        List<PageField> allPageFields = pageField.from("Trocar Estabelecimento - Documento - Documento Estabelecimento")
+                .getAllPageField();
+        for(PageField pf: allPageFields) {
+            if (pf.getLocator().inputValue().equals(docToSelect)) {
+                pf.click();
+                return;
+            }
+        }
+
+        throw new RuntimeException("Não foi possível selecionar %s".formatted(docToSelect));
+    }
 }
