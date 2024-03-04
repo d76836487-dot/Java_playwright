@@ -104,15 +104,7 @@ public class SelectECOrDtcoPage extends BasePage {
     private boolean allDocumentsIsAlreadySelected(PageField button) {
         if (modalIsVisible()) return false;
 
-        return button.getLocator().textContent().contains("Todos documentos");
-//        Locator closeModalButton = page.getByTestId("alterar-matriz-fechar");
-//        Locator buttonOpenModal = button.getLocator();
-//        return ()
-//
-//        waitUntilTrue(() -> buttonOpenModal.isVisible() || closeModalButton.isVisible());
-//
-//        return buttonOpenModal.isVisible()
-//                && buttonOpenModal.textContent().contains("Todos documentos");
+        return button.fieldIsOneVisibleAndEnabled() && button.getAsText().contains("Todos documentos");
     }
 
     private void selectSetAsDefault(boolean markDefaultOption) {
