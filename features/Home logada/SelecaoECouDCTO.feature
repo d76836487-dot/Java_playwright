@@ -54,22 +54,24 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     When Usuário digitar um EC válido em 'Buscar por documento ou número do estabelecimento'
     Then Dropdown irá filtrar e apresentar somente a informação correspondente
     And Botão Acessar estará habilitado após seleção de um EC
+    And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
 
   @TestCaseKey=SMP-T184
-  Scenario: Busca de Documento (CNPJ ou CPF) valido aba Estabelecimento (Usuário Master)
+  Scenario: Busca de Documento (CNPJ ou CPF) válido aba Estabelecimento (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento válido em 'Buscar por documento ou número do estabelecimento'
     Then Dropdown irá filtrar e apresentar somente a informação correspondente
     And Botão Acessar estará habilitado após seleção de um EC
+    And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
 
   @TestCaseKey=SMP-T186
-  Scenario: Busca de código EC invalido aba Estabelecimento (Usuário Master)
+  Scenario: Busca de código EC inválido aba Estabelecimento (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
     Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
 
   @TestCaseKey=SMP-T187
-  Scenario: Busca de Documento (CNPJ ou CPF) invalido aba Estabelecimento (Usuário Master)
+  Scenario: Busca de Documento (CNPJ ou CPF) inválido aba Estabelecimento (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
     Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
@@ -81,13 +83,14 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Then Usuário poderá limpar a busca clicando no X
 
   @TestCaseKey=SMP-T189
-  Scenario: Busca de documento valido aba Documento (Usuário Master)
+  Scenario: Busca de documento válido aba Documento (Usuário Master)
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento válido em 'Buscar por documento'
     Then Filtro apresentará somente a informação correspondente
+    And Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
 
   @TestCaseKey=SMP-T190
-  Scenario: Busca de documento invalido aba Documento (Usuário Master)
+  Scenario: Busca de documento inválido aba Documento (Usuário Master)
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento inválido em 'Buscar por documento'
     Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
@@ -105,3 +108,6 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "marcada"
     Then Usuário estará com acesso e sessão foi salva
 
+  Scenario: Validar não seleção no checkbox de não mostrar novamente (Usuário Master)
+    When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
+    Then Usuário verá modal para selecionar EC ou DTCO

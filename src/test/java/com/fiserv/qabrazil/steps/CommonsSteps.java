@@ -64,6 +64,12 @@ public class CommonsSteps {
         assertEquals(expectedText, textFound);
     }
 
+    @Then("Usuário não verá nenhum {pageField}")
+    public void notVisible(PageField pageField) {
+        assertFalse("%s não deveria ser visível".formatted(pageField.getDisplayName()),
+                pageField.elementIsVisibleRightNow());
+    }
+
     @Then("Usuário verá em {pageField} as opções {csv}")
     public void matchValuesPerFields(PageField pageField, String[] expectedTexts) {
         List<String> valuesFound = pageField.getAllAsText();
