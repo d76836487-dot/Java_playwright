@@ -97,8 +97,7 @@ public class PageField {
 
     public List<String> getAllAsText() {
         if (waitUntilTrue(3, () -> locator.count() > 0)) {
-            locator.all().get(0).scrollIntoViewIfNeeded();
-            locator.all().get(0).highlight();
+            highlightIfPossible();
         }
 
         return locator.allTextContents();
@@ -136,10 +135,7 @@ public class PageField {
 
     public boolean fieldIsOneVisibleAndDisabled() {
         waitUntilTrue(() -> locator.count() == 1);
-        if (locator.count() >= 1) {
-            locator.scrollIntoViewIfNeeded();
-            locator.highlight();
-        }
+        highlightIfPossible();
         return waitUntilTrue(() -> locator.count() == 1 && locator.isVisible() && !locator.isEnabled());
     }
 
@@ -179,13 +175,11 @@ public class PageField {
     private void validateIsUsableAndHighlight() {
         if (foundNone()) fail("Não encontrei nenhum - %s".formatted(selector));
         if (foundMany()) {
-            locator.first().scrollIntoViewIfNeeded();
-            locator.first().highlight();
+            highlightIfPossible();
             fail("Encontrei mais de um - %s".formatted(selector));
         }
 
-        locator.scrollIntoViewIfNeeded();
-        locator.highlight();
+        highlightIfPossible();
 
         if (!waitUntilTrue(locator::isVisible)) fail("Não é visível - %s".formatted(selector));
         if (!waitUntilTrue(locator::isEnabled)) fail("Não está habilitado - %s".formatted(selector));
@@ -215,6 +209,13 @@ public class PageField {
         waitUntilTrue(locator::isVisible);
         Page newTab = context.waitForPage(locator::click);
         return new PageObject(newTab);
+    }
+
+    private void highlightIfPossible() {
+        if (locator.count() >= 1) {
+            locator.first().scrollIntoViewIfNeeded();
+            locator.first().highlight();
+        }
     }
 
     @Override
