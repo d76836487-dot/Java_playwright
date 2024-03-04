@@ -134,6 +134,15 @@ public class PageField {
         return waitUntilTrue(() -> locator.count() == 1 && locator.isVisible() && locator.isEnabled());
     }
 
+    public boolean fieldIsOneVisibleAndDisabled() {
+        waitUntilTrue(() -> locator.count() == 1);
+        if (locator.count() >= 1) {
+            locator.scrollIntoViewIfNeeded();
+            locator.highlight();
+        }
+        return waitUntilTrue(() -> locator.count() == 1 && locator.isVisible() && !locator.isEnabled());
+    }
+
     public boolean elementIsVisible() {
         return waitUntilTrue(locator::isVisible);
     }

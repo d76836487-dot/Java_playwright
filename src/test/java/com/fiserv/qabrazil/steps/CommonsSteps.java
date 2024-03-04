@@ -4,6 +4,7 @@ import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.PageObject;
 import com.fiserv.qabrazil.util.UrlCheckers;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -137,5 +138,10 @@ public class CommonsSteps {
     public void comparePlaceholder(PageField pageField, String expectedPlaceholder) {
         assertEquals("Placeholder do campo %s é diferente".formatted(pageField.getDisplayName()),
                 expectedPlaceholder, pageField.getPlaceholder());
+    }
+
+    @And("Botão {pageField} estará visível e desabilitado")
+    public void botãoEstaráDesabilitado(PageField pageField) {
+        assertTrue(pageField.fieldIsOneVisibleAndDisabled());
     }
 }

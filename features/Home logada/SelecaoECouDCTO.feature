@@ -84,3 +84,10 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento válido em 'Buscar por documento'
     Then Filtro apresentará somente a informação correspondente
+
+  Scenario: Busca de documento invalido aba Documento (Usuário Master)
+    Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+    When Usuário digitar um documento inválido em 'Buscar por documento'
+    Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
+    And Botão "Trocar Estabelecimento - Botão Acessar" estará visível e desabilitado
+    And Botão "Trocar Estabelecimento - Marcar como Padrão" estará visível e desabilitado

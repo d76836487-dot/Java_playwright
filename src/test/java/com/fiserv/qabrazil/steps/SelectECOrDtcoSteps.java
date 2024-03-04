@@ -157,6 +157,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially(lastDoc);
     }
 
+    @When("Usuário digitar um documento inválido em 'Buscar por documento'")
     @When("Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'")
     public void typeInvalidDoc() {
         pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially("123123123");
@@ -215,8 +216,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         loginPage.login();
         loginPage.userIsLogged();
 
-        pageField.from("Header - Trocar Estabelecimento").click();
-        pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab)).click();
+        selectECOrDtcoPage.openModalAndTab(tab);
     }
 
     @When("Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' desmarcada")

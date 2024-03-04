@@ -7,6 +7,8 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 import java.util.List;
 
+import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
+import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
 import static com.fiserv.qabrazil.util.WaitUtil.sleep;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
@@ -154,5 +156,14 @@ public class SelectECOrDtcoPage extends BasePage {
                 .map(pf -> pf.getLocator().getAttribute("value"))
                 .filter(value -> value != null && value.length() > 1 && Character.isDigit(value.charAt(0)))
                 .toList();
+    }
+
+    public void openModalAndTab(String tab) {
+        startMonitoringRequests(page, contractConfig);
+
+        pageField.from("Header - Trocar Estabelecimento").click();
+        pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab)).click();
+
+        ensureNoFlyingRequests();
     }
 }
