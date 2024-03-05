@@ -4,7 +4,6 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -18,8 +17,13 @@ public class RecordingHook {
     @Autowired
     private BrowserContext context;
 
-    @After
-    public void tearDown(Scenario scenario) {
+    @After("@playwright and not @ignore")
+    public void tearDown(Scenario scenario) throws IOException {
+        saveScreenshot(scenario);
+        saveVideo(scenario);
+    }
+
+    private void saveScreenshot(Scenario scenario) {
         if (scenario.isFailed()) {
             scenario.attach(page.screenshot(new Page.ScreenshotOptions().setFullPage(true)),
                     "image/png", "Screen Shot");
@@ -27,9 +31,7 @@ public class RecordingHook {
         }
     }
 
-    @After("@playwright and not @ignore")
-    @SneakyThrows(IOException.class)
-    public void after(Scenario scenario) throws IOException {
+    public void saveVideo(Scenario scenario) throws IOException {
         context.close();
         if (!page.isClosed()) {
             byte[] video = Files.readAllBytes(page.video().path());
