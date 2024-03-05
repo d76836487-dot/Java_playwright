@@ -6,7 +6,7 @@ user-profiles:
     identity: afinz
     primaryCssClass: cor-azul
     institutionTags: '@pt-br,@afinz,@NaoPermiteAdiantamento,@NaoPermiteSolicitações'
-    clientTags: '@MDRFlex'
+    clientTags: '@MDRFlex,@UsuárioMaster'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
     serviceContract: "143"
