@@ -70,6 +70,8 @@ public class LoginPage extends BasePage {
         page.getByTestId("login").pressSequentially(user);
         page.getByTestId("password").fill(pwd);
         page.getByTestId("entrar").click();
+
+        storageState.clearState();
     }
 
     public boolean userIsLogged() {
@@ -77,8 +79,6 @@ public class LoginPage extends BasePage {
     }
 
     public void saveStorageState() {
-        if (storageState.stateIsReady()) return;
-
         storageState.init(browserContext.storageState(), page.url());
     }
 
