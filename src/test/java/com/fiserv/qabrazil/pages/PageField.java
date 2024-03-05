@@ -209,6 +209,10 @@ public class PageField {
         return locator.count();
     }
 
+    public List<String> getClasses() {
+        return List.of(getLocator().getAttribute("class").split(" "));
+    }
+
     public PageObject clickAndNewTabOpens() {
         waitUntilTrue(locator::isVisible);
         Page newTab = context.waitForPage(locator::click);

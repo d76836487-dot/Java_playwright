@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.automation.api.dto.MerchantDetail;
 import com.fiserv.automation.api.dto.MerchantGroup;
+import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.pages.login.LoginPage;
@@ -15,18 +16,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
 import java.util.List;
+
 import static org.testng.AssertJUnit.*;
 
 public class SelectECOrDtcoSteps extends BaseSteps {
     @Autowired
     SelectECOrDtcoPage selectECOrDtcoPage;
-
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
     @Autowired
     private LoginPage loginPage;
+    @Autowired
+    private ContractConfig contractConfig;
 
     private String selectedDoc;
+    private String selectedEc;
+    private String selectedEcName;
 
     @Then("Usuário verá modal para selecionar EC ou DTCO")
     public void userWillSeeModalToPickEC() {
@@ -75,7 +80,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     }
 
     @Then("O dropdown conterá com as informações de número do EC")
-    public void oDropdownConteráComAsInformaçõesDeNúmeroDoEC() {
+    public void dropdownHasECInfo() {
         PageField detailNumEstablishment = pageField
                 .from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe");
         for(String ec: detailNumEstablishment.getAllAsText()) {
@@ -85,7 +90,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     }
 
     @Then("O dropdown conterá com as informações do status do EC no BW")
-    public void oDropdownConteráComAsInformaçõesDoStatusDoECNoBW() {
+    public void drodownHasInfoAboutECFromBW() {
         PageField detailStatusEstablishment = pageField
                 .from("Trocar Estabelecimento - Estabelecimento - Status Estabelecimento Detalhe");
         for(String status: detailStatusEstablishment.getAllAsText()) {
@@ -215,7 +220,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     }
 
     @Given("Usuário está na aba {string} da modal 'Trocar Estabelecimento'")
-    public void usuárioEstáNaAbaEstabelecimentoDeTrocarEstabelecimento(String tab) {
+    public void userIsInEstablishmentTab(String tab) {
         loginPage.login();
         loginPage.userIsLogged();
 
@@ -256,5 +261,44 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
         assertTrue("Esperava ter selecionado <%s>, mas encontrou <%s>".formatted(selectedDoc, prevSelected),
                 prevSelected.contains(CpfCnpjUtil.formatCpfCnpj(selectedDoc)));
+    }
+
+    @When("Usuário selecionar um EC e clicar Acessar")
+    public void userSelectEcAndAccess() {
+        PageField firstEcFromDropdown = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
+                .getAllPageField().get(0);
+
+        if (!firstEcFromDropdown.elementIsVisibleRightNow()) {
+            selectECOrDtcoPage.openFirstDropdown();
+        }
+        firstEcFromDropdown.click();
+
+        selectedEcName = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
+                .getAllPageField().get(0)
+                .getAsText();
+        selectedEc = pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe")
+                .getAllPageField().get(0)
+                .getAsText();
+
+        pageField.from("Trocar Estabelecimento - Botão Acessar").click();
+    }
+
+    @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o Nome fantasia e número do EC")
+    public void headerWillHaveSelectedEc() {
+        PageField button = pageField.from("Header - Trocar Estabelecimento");
+        assertTrue("Botão trocar estabelecimento não tem o EC selecionado <%s>. Encontrado <%s>".formatted(selectedEc, button.getAsText()),
+                button.getAsText().contains(selectedEc));
+        assertTrue("Botão trocar estabelecimento não tem o nome do EC selecionado <%s>. Encontrado <%s>".formatted(selectedEcName, button.getAsText()),
+                button.getAsText().contains(selectedEcName));
+    }
+
+    @Then("Usuário visualizará um botão abaixo escrito “Trocar estabelecimento” com destaque na coloração da aliança")
+    public void changeEstablishmentHasTextAndColor() {
+        PageField button = pageField.from("Header - Trocar Estabelecimento - Span Texto");
+
+        assertEquals("Botão trocar estabelecimento não tem o texto 'Trocar estabelecimento'. Encontrado <%s>".formatted(button.getAsText()),
+                "Trocar estabelecimento", button.getAsText());
+        assertTrue("Botão trocar estabelecimento não tem class <%s>. Encontrado <%s>".formatted(contractConfig.getActiveUserProfile().primaryCssClass(), button.getClasses()),
+                button.getClasses().contains(contractConfig.getActiveUserProfile().primaryCssClass()));
     }
 }
