@@ -77,7 +77,10 @@ public class HomeSteps extends BaseSteps {
         PageField elementSelector = pageField.from("Home - acesso rápido - " + identifier);
         if (!elementSelector.elementIsVisible()) {
             commonsPage.clickButtonWithText("Personalizar");
-            homeCustomizeModal.select(identifier);
+
+            assumeThat(homeCustomizeModal.select(identifier))
+                    .withFailMessage("Could not select the element \"%s\", not available in the options".formatted(identifier))
+                    .isTrue();
         }
     }
 

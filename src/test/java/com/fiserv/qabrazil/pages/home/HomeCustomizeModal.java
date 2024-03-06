@@ -24,7 +24,7 @@ public class HomeCustomizeModal extends BasePage {
         assertThat(foundOptions).containsExactlyInAnyOrder(expectedOptions);
     }
 
-    public void select(String identifier) {
+    public boolean select(String identifier) {
         PageField selector = pageField.from("Home - personalizar - " + identifier);
         List<PageField> selectorList = pageField.allWithPrefix("Home - personalizar - item");
         Map<PageField, Boolean> checkMap = selectorList.stream()
@@ -38,7 +38,14 @@ public class HomeCustomizeModal extends BasePage {
                 break;
             }
         }
+
+        if(!selector.elementIsVisibleRightNow()) {
+            return false;
+        }
+
         selector.check();
         pageField.from("Home - personalizar - botão confirmar").click();
+
+        return true;
     }
 }
