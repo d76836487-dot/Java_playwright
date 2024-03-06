@@ -179,7 +179,7 @@ Feature: Home Logada
   Scenario: recebimentos futuros não existem
     Given que estou na tela “início” do Portal
     And não existem valores futuros para receber
-    Then Usuário verá em "Home - Card Recebimento - Recebimento Previsto" o valor "0,00"
+    Then Usuário verá em "Home - Card Recebimento - Recebimento Previsto" o valor "R$ 0,00"
 
 #*Dado* que estou na tela “início” do Portal
 #*Quando* não tiver agenda de recebimentos da semana para exibir
