@@ -63,6 +63,7 @@ Feature: Gerar Relatorio
     And usuário poderá selecionar alguma das outras opções disponíveis
 
   @api
+  @TestCaseKey=SMP-T198
   Scenario: Gerar Relatório em arquivo CSV Cliente com Apenas Um Estabelecimento Comercial Vinculado e Tipo de Relatório de Vendas (sem hierarquia)
     Given usuário possui apenas um Estabelecimento Comercial vinculado
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
@@ -73,3 +74,4 @@ Feature: Gerar Relatorio
     And usuário clica no "Botão Gerar" em "Modal Gerar Relatórios"
     Then Usuário verá em "Relatórios - Notificação Sucesso" o texto "Relatório Solicitado com Sucesso!!"
     And usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado
+
