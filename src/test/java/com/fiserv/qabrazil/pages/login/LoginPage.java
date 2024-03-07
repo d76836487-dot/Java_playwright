@@ -76,7 +76,7 @@ public class LoginPage extends BasePage {
     private boolean notLoggedAtAll() {
         PageField buttonSelectEstablishment = pageField.from("Trocar Estabelecimento - Botão selecionar por Documento");
 
-        return waitUntilTrue(() -> page.getByTestId("head-sair").isVisible() || buttonSelectEstablishment.elementIsVisibleRightNow());
+        return !waitUntilTrue(() -> page.getByTestId("head-sair").isVisible() || buttonSelectEstablishment.elementIsVisibleRightNow());
     }
 
     public void forceNewLogin() {
