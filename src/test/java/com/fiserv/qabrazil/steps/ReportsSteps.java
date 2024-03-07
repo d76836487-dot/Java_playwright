@@ -4,6 +4,7 @@ import com.fiserv.automation.api.dto.UserDetailDto;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.qabrazil.config.ContractConfig;
+import com.fiserv.qabrazil.dto.GenerateReportDto;
 import com.fiserv.qabrazil.dto.ReportDto;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.ReportsPage;
@@ -17,8 +18,11 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,6 +39,8 @@ public class ReportsSteps extends BaseSteps {
 
     @Autowired
     ReportsPage reportsPage;
+
+    private final GenerateReportDto generateReportDto = new GenerateReportDto();
 
     @Then("será direcionado para a jornada de Relatórios")
     public void shouldBeAtReportsPage() {
@@ -72,11 +78,11 @@ public class ReportsSteps extends BaseSteps {
         List<ReportDto> reports = reportsPage.getAllReports();
 
         reports.forEach(report -> {
-            fileTypeIsCorrect(report.getFileType());
+            reportTypeIsCorrect(report.getReportType());
             documentIsCorrect(report.getDocument(), ecs);
             requestedInIsCorrect(report.getRequestedIn());
             reportRangeIsCorrect(report.getRange());
-            fileNameIsCorrect(report.getName(), report.getFileType());
+            fileNameIsCorrect(report.getName(), report.getReportType());
         });
     }
 
@@ -86,7 +92,7 @@ public class ReportsSteps extends BaseSteps {
         assertTrue("Ícone de download não identificado", reportsPage.downloadIconIsDownArrow(button));
     }
 
-    private static void fileTypeIsCorrect(String fileType) {
+    private static void reportTypeIsCorrect(String fileType) {
         final String message = String.format("Tipo do arquivo \"%s\" é diferente de \"Vendas\" e \"Pagamentos\"", fileType);
         final List<String> allowedFileTypes = List.of("Vendas", "Pagamentos");
         assertTrue(message, allowedFileTypes.contains(fileType));
@@ -263,5 +269,74 @@ public class ReportsSteps extends BaseSteps {
         PageField selectedEC = pageField.from("Modal Gerar Relatórios - Select EC Selecionado");
         listOptions.get(1).click();
         assertEquals("%s deveria estar selecionado", listOptions.get(1).getAsText(), selectedEC.getAsText());
+    }
+
+    @When("usuário seleciona o tipo de relatório como {string}")
+    public void userSelectsReportTypeAs(String type) {
+        PageField option = openDropdownAndGetOption("Modal Gerar Relatórios - Select Tipo",
+                "Modal Gerar Relatórios - Select Tipo Opções", type);
+
+        option.click();
+        generateReportDto.setType(option.getAsText());
+        option.hoverAway();
+    }
+
+    @When("usuário seleciona o formato de arquivo como {string}")
+    public void userSelectsReportFiletypeAs(String type) {
+        PageField option = openDropdownAndGetOption("Modal Gerar Relatórios - Select Formato Arquivo",
+                "Modal Gerar Relatórios - Select Formato Arquivo Opções", type);
+
+        option.click();
+        generateReportDto.setFiletype(option.getAsText());
+        option.hoverAway();
+    }
+
+    private PageField openDropdownAndGetOption(String dropdown, String option, String type) {
+        PageField field = pageField.from(dropdown);
+        field.click();
+        field.hoverOver();
+
+        Optional<PageField> foundOption = pageField.from(option)
+                .firstWith(x -> x.attributeDataTestidContains(type));
+
+        if(foundOption.isEmpty()) {
+            fail("Didn't find the option to select: %s".formatted(type));
+        }
+
+        return foundOption.get();
+    }
+
+    @When("usuário seleciona o período do dia anterior")
+    public void userSelectsInRangeDateTheDayBefore() {
+        reportsPage.selectYesterday();
+
+        String selectedDate = pageField.from("Modal Gerar Relatórios - Select Período Selecionado")
+                .getAsText();
+        reportRangeIsCorrect(selectedDate);
+        generateReportDto.setRangeDate(selectedDate);
+    }
+
+    @Then("usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado")
+    public void userWillSeeANewRowInTheReportListWithTheBrandNewReport() {
+        ReportDto expectedDto = ReportDto.from(
+                generateReportDto,
+                contractConfig.getActiveUserProfile().allianceName(),
+                formatRequestedInNow()
+        );
+
+        ReportDto foundDto = reportsPage.getFirstReportInTable();
+
+        assertEquals("New generated report is not correct", expectedDto, foundDto);
+    }
+
+    @When("usuário verifica que este Estabelecimento Comercial está selecionado")
+    public void userVerifiesThisECIsSelected() {
+        String selectedEC = pageField.from("Modal Gerar Relatórios - Select EC Selecionado").getAsText();
+        generateReportDto.setEc(selectedEC);
+    }
+
+    private static String formatRequestedInNow() {
+        LocalDateTime date = LocalDateTime.now();
+        return date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy 'às' HH:mm"));
     }
 }

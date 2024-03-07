@@ -29,6 +29,12 @@ public class DateUtil {
         return DayOfWeek.SATURDAY.equals(dayOfWeek) || DayOfWeek.SUNDAY.equals(dayOfWeek);
     }
 
+    public static String yesterdayInFormatMonthNameAndDayAndYear() {
+        return today
+                .minusDays(1)
+                .format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
+    }
+
     @PostConstruct
     public void init() {
         locale = Locale.forLanguageTag(contractConfig.getActiveUserProfile().locale());

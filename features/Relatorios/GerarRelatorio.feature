@@ -20,7 +20,7 @@ Feature: Gerar Relatorio
     And Usuário verá em "Modal Gerar Relatórios - Select EC Label" o rótulo "Estabelecimento comercial (EC)"
     And Usuário verá em "Modal Gerar Relatórios - Select Tipo Label" o rótulo "Tipo de relatório"
     And Usuário verá em "Modal Gerar Relatórios - Select Período Label" o rótulo "Período"
-    And Usuário verá em "Modal Gerar Relatórios - Select Tipo Arquivo Label" o rótulo "Formato do arquivo"
+    And Usuário verá em "Modal Gerar Relatórios - Select Formato Arquivo Label" o rótulo "Formato do arquivo"
     And Usuário verá em "Modal Gerar Relatórios - Título Informativo" o texto "Tipo de entrega"
     And Usuário verá em "Modal Gerar Relatórios - Valor Informativo" o texto "Portal do cliente"
     And Usuário verá em "Modal Gerar Relatórios - Mensagem sobre prazo" o texto
@@ -44,7 +44,7 @@ Feature: Gerar Relatorio
     And usuário visualizará opção para selecionar um EC ou "Todos os estabelecimentos"
     And "Todos os estabelecimentos" estará selecionado por padrão, caso haja mais de um
     And Usuário verá em "Modal Gerar Relatórios - Select Tipo Opções" as opções Pagamentos, Vendas
-    And Usuário verá em "Modal Gerar Relatórios - Select Tipo Arquivo Opções" as opções .XLSX (Excel), .CSV
+    And Usuário verá em "Modal Gerar Relatórios - Select Formato Arquivo Opções" as opções .XLSX (Excel), .CSV
 
   @api
   @TestCaseKey=SMP-T178
@@ -62,3 +62,14 @@ Feature: Gerar Relatorio
     Then "Todos os estabelecimentos" estará selecionado por padrão
     And usuário poderá selecionar alguma das outras opções disponíveis
 
+  @api
+  Scenario: Gerar Relatório em arquivo CSV Cliente com Apenas Um Estabelecimento Comercial Vinculado e Tipo de Relatório de Vendas (sem hierarquia)
+    Given usuário possui apenas um Estabelecimento Comercial vinculado
+    When usuário clica no "Botão Gerar Relatório" em "Relatórios"
+    And usuário verifica que este Estabelecimento Comercial está selecionado
+    And usuário seleciona o tipo de relatório como "vendas"
+    And usuário seleciona o formato de arquivo como ".csv"
+    And usuário seleciona o período do dia anterior
+    And usuário clica no "Botão Gerar" em "Modal Gerar Relatórios"
+    Then Usuário verá em "Relatórios - Notificação Sucesso" o texto "Relatório Solicitado com Sucesso!!"
+    And usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado

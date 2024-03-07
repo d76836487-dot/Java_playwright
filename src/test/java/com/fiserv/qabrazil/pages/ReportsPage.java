@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.pages;
 
+import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.components.Paginator;
 import com.fiserv.qabrazil.dto.ReportDto;
@@ -78,13 +79,13 @@ public class ReportsPage extends CheckedBasePage {
         paginator.forEach(() -> {
             String cellFileNameId = getQuerySelector("Relatórios - Item - Nome Arquivo");
             String cellDocumentId = getQuerySelector("Relatórios - Item - Documento");
-            String cellFileTypeId = getQuerySelector("Relatórios - Item - Tipo Arquivo");
+            String cellFileTypeId = getQuerySelector("Relatórios - Item - Formato Arquivo");
             String cellRequestedInId = getQuerySelector("Relatórios - Item - Solicitado Em");
             String cellReportRangeId = getQuerySelector("Relatórios - Item - Período");
 
             List<Locator> cellsFileName = page.locator(cellFileNameId).all();
             List<Locator> cellsDocument = page.locator(cellDocumentId).all();
-            List<Locator> cellsFileType = page.locator(cellFileTypeId).all();
+            List<Locator> cellsReportType = page.locator(cellFileTypeId).all();
             List<Locator> cellsRequestedIn = page.locator(cellRequestedInId).all();
             List<Locator> cellsReportRange = page.locator(cellReportRangeId).all();
 
@@ -92,7 +93,7 @@ public class ReportsPage extends CheckedBasePage {
                 reports.add(new ReportDto()
                         .setName(cellsFileName.get(i).textContent())
                         .setDocument(cellsDocument.get(i).textContent())
-                        .setFileType(cellsFileType.get(i).textContent())
+                        .setReportType(cellsReportType.get(i).textContent())
                         .setRequestedIn(cellsRequestedIn.get(i).textContent())
                         .setRange(cellsReportRange.get(i).textContent())
                 );
@@ -158,4 +159,34 @@ public class ReportsPage extends CheckedBasePage {
         log.info("Actual downloaded file name: {}", downloadedFileName);
         return listedFileName.equals(downloadedFileName);
     }
+
+    public void selectYesterday() {
+        pageField.from("Modal Gerar Relatórios - Select Período").click();
+        List<Locator> calendarDays = page.locator(getQuerySelector("Modal Gerar Relatórios - Dia Calendário")).all();
+        String yesterday = DateUtil.yesterdayInFormatMonthNameAndDayAndYear();
+
+        Locator yesterdayElement = calendarDays.stream()
+                .filter(d -> d.getAttribute("aria-label").equalsIgnoreCase(yesterday) && d.isVisible())
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Could not find any element containing the date %s in the calendar".formatted(yesterday)));
+
+        log.info("Selecting yesterday in calendar: {}", yesterday);
+        yesterdayElement.dblclick();
+    }
+
+    public ReportDto getFirstReportInTable() {
+        PageField cellFileName = pageField.from("Relatórios - Item - Nome Arquivo").firstOf();
+        PageField cellDocument = pageField.from("Relatórios - Item - Documento").firstOf();
+        PageField cellReportType = pageField.from("Relatórios - Item - Formato Arquivo").firstOf();
+        PageField cellRequestedIn = pageField.from("Relatórios - Item - Solicitado Em").firstOf();
+        PageField cellReportRange = pageField.from("Relatórios - Item - Período").firstOf();
+
+        return new ReportDto()
+                .setName(cellFileName.getAsText())
+                .setDocument(cellDocument.getAsText())
+                .setReportType(cellReportType.getAsText())
+                .setRequestedIn(cellRequestedIn.getAsText())
+                .setRange(cellReportRange.getAsText());
+    }
+
 }

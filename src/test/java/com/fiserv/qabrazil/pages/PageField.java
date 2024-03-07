@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static org.testng.Assert.fail;
@@ -72,9 +75,22 @@ public class PageField {
     }
 
     public List<PageField> getAllPageField() {
+        return allPageField().toList();
+    }
+
+    public Optional<PageField> firstWith(Predicate<PageField> condition) {
+        return allPageField()
+                .filter(condition)
+                .findFirst();
+    }
+
+    public PageField firstOf() {
+        return allPageField().findFirst().orElseThrow(() -> new RuntimeException("Couldn't find any of %s".formatted(selector)));
+    }
+
+    private Stream<PageField> allPageField() {
         return locator.all().stream()
-                .map(sublocator -> new PageField(displayName, context, selector, sublocator))
-                .toList();
+                .map(sublocator -> new PageField(displayName, context, selector, sublocator));
     }
 
     public Locator getLocator() {
@@ -167,6 +183,10 @@ public class PageField {
         locator.last().hover();
     }
 
+    public void hoverAway() {
+        locator.last().page().mouse().move(0, 0);
+    }
+
     public void click() {
         validateIsUsableAndHighlight();
         locator.click();
@@ -224,6 +244,10 @@ public class PageField {
             locator.first().scrollIntoViewIfNeeded();
             locator.first().highlight();
         }
+    }
+
+    public boolean attributeDataTestidContains(String text) {
+        return locator.getAttribute("data-testid").contains(text);
     }
 
     @Override
