@@ -16,6 +16,8 @@ public class StorageState {
     }
 
     public void init(String storageState, String loggedUrl) {
+        if (stateIsReady()) return;
+
         this.storageState = storageState;
         this.loggedUrl = loggedUrl;
     }

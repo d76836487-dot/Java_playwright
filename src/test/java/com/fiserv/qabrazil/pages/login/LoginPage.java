@@ -5,8 +5,11 @@ import com.fiserv.automation.playwright.configuration.StorageState;
 import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.BasePage;
+import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.microsoft.playwright.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.regex.Pattern;
@@ -17,6 +20,8 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 @ScenarioComponent
 public class LoginPage extends BasePage {
+    private static final Logger log = LoggerFactory.getLogger(LoginPage.class);
+
     @Autowired
     ContractConfig contractConfig;
 
@@ -46,14 +51,32 @@ public class LoginPage extends BasePage {
     }
 
     public synchronized void login() {
+        login(true);
+    }
+
+    private synchronized void login(boolean thisIsFirstTry) {
         if (storageState.stateIsReady()) {
             goTo(storageState.getLoggedUrl());
         } else {
             login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
         }
+
+        if (notLoggedAtAll() && thisIsFirstTry) {
+            log.info("Logging não funcionou. Reiniciando e tentando novamente");
+            storageState.clearState();
+            login(false);
+            return;
+        }
+
         selectECOrDtcoPage.selectAllDocumentsIfAvailable();
         startMonitoringRequests(page, contractConfig);
         headerComponent.selectShowValuesButton(true);
+    }
+
+    private boolean notLoggedAtAll() {
+        PageField buttonSelectEstablishment = pageField.from("Trocar Estabelecimento - Botão selecionar por Documento");
+
+        return waitUntilTrue(() -> page.getByTestId("head-sair").isVisible() || buttonSelectEstablishment.elementIsVisibleRightNow());
     }
 
     public void forceNewLogin() {

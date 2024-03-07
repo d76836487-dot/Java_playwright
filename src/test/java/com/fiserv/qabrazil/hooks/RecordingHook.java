@@ -18,13 +18,15 @@ public class RecordingHook {
     private BrowserContext context;
 
     @After("@playwright and not @ignore")
-    public void tearDown(Scenario scenario) throws IOException {
-        saveScreenshot(scenario);
-        saveVideo(scenario);
+    public void tearDown(Scenario scenario) {
+        saveScreenshotAndUrl(scenario);
+//        saveVideo(scenario);
     }
 
-    private void saveScreenshot(Scenario scenario) {
+    private void saveScreenshotAndUrl(Scenario scenario) {
         if (scenario.isFailed()) {
+            scenario.attach(page.url(), "text/plain", "Url");
+
             scenario.attach(page.screenshot(new Page.ScreenshotOptions().setFullPage(true)),
                     "image/png", "Screen Shot");
             scenario.attach(page.content(), "text/html", "Content");
