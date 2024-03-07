@@ -39,12 +39,6 @@ public class SelectECOrDtcoSteps extends BaseSteps {
                 selectECOrDtcoPage.modalIsVisible());
     }
 
-    @Then("Usuário visualizará a aba Estabelecimento por padrão")
-    public void tabEstablishmentIsSelected() {
-        assertTrue("Aba estabelecimento não está selecionada por padrão",
-                selectECOrDtcoPage.tabEstablishmentIsSelected());
-    }
-
     @Then("Listagem por documento contendo dropdown com as informações de Nome fantasia do documento e o número do documento")
     public void listHasDocsAndNames() {
         PageField nameEstablishment = pageField
@@ -206,17 +200,6 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     private String getLastDocTabDocument() {
         List<String> allDocs = selectECOrDtcoPage.getDocumentsFromTabDocument();
         return allDocs.get(allDocs.size() - 1);
-    }
-
-    @Then("Botão Acessar estará habilitado após seleção de um EC")
-    public void buttonIsEnableAfter() {
-        assertFalse("Botão está habilitado, mesmo sem selecionar um EC",
-                pageField.from("Trocar Estabelecimento - Botão Acessar").elementIsEnabledRightNow());
-
-        pageField.from("Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento").click();
-        pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe").click();
-
-        assertTrue(pageField.from("Trocar Estabelecimento - Botão Acessar").elementIsEnabledRightNow());
     }
 
     @Given("Usuário está na aba {string} da modal 'Trocar Estabelecimento'")

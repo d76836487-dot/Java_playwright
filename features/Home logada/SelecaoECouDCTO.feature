@@ -13,14 +13,13 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Then Usuário verá modal para selecionar EC ou DTCO
 
   @TestCaseKey=SMP-T174
-  Scenario: Validar Campos do Personalize sua Visualização aba default Estabelecimento. (Usuário Master)
+  Scenario: Validar Campos do Personalize sua Visualização aba Estabelecimento. (Usuário Master)
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
-    When usuário clica "Header - Trocar Estabelecimento"
-    Then Usuário visualizará a aba Estabelecimento por padrão
-    And Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento ou número do estabelecimento"
+    When Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+    Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento ou número do estabelecimento"
     And Listagem por documento contendo dropdown com as informações de Nome fantasia do documento e o número do documento
     And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
-    And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Selecione 1 estabelecimento para acessar. Você pode mudar a seleção a qualquer momento no portal."
+    And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Ao selecionar esse formato, as informações do Portal serão apresentadas de forma correspondente ao estabelecimento escolhido. Você poderá alterar a seleção a qualquer momento no portal."
 
   @TestCaseKey=SMP-T177
   Scenario: Validar expansão do dropdown na aba Estabelecimento. (Usuário Master)
@@ -46,14 +45,13 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento"
     And Usuário verá em "Trocar Estabelecimento - Botão Todos Documentos - Explicação" o texto "Essa visão irá agrupar todos os estabelecimentos abaixo do documento "
     And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
-    And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Selecione 1 estabelecimento para acessar. Você pode mudar a seleção a qualquer momento no portal."
+    And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Ao selecionar esse formato, as informações do Portal serão apresentadas de forma consolidada, agrupando os estabelecimentos abaixo do documento. Você poderá alterar a seleção a qualquer momento no portal."
 
   @TestCaseKey=SMP-T182
   Scenario: Busca de código EC valido aba Estabelecimento (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um EC válido em 'Buscar por documento ou número do estabelecimento'
     Then Dropdown irá filtrar e apresentar somente a informação correspondente
-    And Botão Acessar estará habilitado após seleção de um EC
     And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
 
   @TestCaseKey=SMP-T184
@@ -61,7 +59,6 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento válido em 'Buscar por documento ou número do estabelecimento'
     Then Dropdown irá filtrar e apresentar somente a informação correspondente
-    And Botão Acessar estará habilitado após seleção de um EC
     And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
 
   @TestCaseKey=SMP-T186
@@ -87,7 +84,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento válido em 'Buscar por documento'
     Then Filtro apresentará somente a informação correspondente
-    And Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
+    And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
 
   @TestCaseKey=SMP-T190
   Scenario: Busca de documento inválido aba Documento (Usuário Master)

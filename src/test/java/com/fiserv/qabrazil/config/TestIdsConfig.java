@@ -223,7 +223,7 @@ public class TestIdsConfig {
             entry("Header - Trocar Estabelecimento - Span Texto", "//*[@data-testid='head-trocar-estabelecimentos']//span[contains(text(), 'Trocar estabelecimento')]"),
             entry("Trocar Estabelecimento - Botão Todos Documentos", "//input[@value='Todos']"),
             entry("Trocar Estabelecimento - Botão Todos Documentos - Explicação", "//span[contains(text(),'Essa visão')]"),
-            entry("Trocar Estabelecimento - Texto Explicativo", "//span[contains(text(),'Selecione 1 estabelecimento ')]"),
+            entry("Trocar Estabelecimento - Texto Explicativo", "//*[contains(text(),'Ao selecionar esse ')]"),
             entry("Trocar Estabelecimento - Nenhum resultado", "//*[@role='dialog']//*[contains(text(),'Nenhum resultado')]"),
             entry("Trocar Estabelecimento - Documento - Documento Estabelecimento", "//*[@role='radiogroup']//input"),
             entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']"),
