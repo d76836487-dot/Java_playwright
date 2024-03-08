@@ -50,37 +50,36 @@ public class LoginPage extends BasePage {
         return page.getByTestId("header-brand-img").isVisible();
     }
 
-    public synchronized void login() {
-        login(true);
+    public void forceNewLogin() {
+        storageState.clearState();
+        loginWithOneRetry();
     }
 
-    private synchronized void login(boolean thisIsFirstTry) {
-        if (storageState.stateIsReady()) {
-            goTo(storageState.getLoggedUrl());
-        } else {
-            login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
-        }
-
-        if (notLoggedAtAll() && thisIsFirstTry) {
-            log.info("Logging não funcionou. Reiniciando e tentando novamente");
-            storageState.clearState();
-            login(false);
-            return;
-        }
+    public synchronized void loginAndGetHomeReady() {
+        loginWithOneRetry();
 
         selectECOrDtcoPage.selectAllDocumentsIfAvailable();
         startMonitoringRequests(page, contractConfig);
         headerComponent.selectShowValuesButton(true);
     }
 
+    private synchronized void loginWithOneRetry() {
+        if (storageState.stateIsReady()) {
+            goTo(storageState.getLoggedUrl());
+        } else {
+            login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
+        }
+
+        if (notLoggedAtAll()) {
+            log.info("Logging não funcionou. Reiniciando e tentando novamente");
+            login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
+        }
+    }
+
     private boolean notLoggedAtAll() {
         PageField buttonSelectEstablishment = pageField.from("Trocar Estabelecimento - Botão selecionar por Documento");
 
         return !waitUntilTrue(() -> page.getByTestId("head-sair").isVisible() || buttonSelectEstablishment.elementIsVisibleRightNow());
-    }
-
-    public void forceNewLogin() {
-        login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
     }
 
     public void loginAndStartMonitoringRequests(String url, String user, String pwd) {

@@ -19,7 +19,7 @@ public class LoginSteps {
 
     @When("Usuário tenta logar na aplicação")
     public void login() {
-        loginPage.login();
+        loginPage.loginAndGetHomeReady();
     }
 
     @When("Usuário tenta logar na aplicação em {string} com {string} e {string}")

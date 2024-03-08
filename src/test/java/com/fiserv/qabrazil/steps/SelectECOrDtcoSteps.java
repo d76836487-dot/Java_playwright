@@ -204,7 +204,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
     @Given("Usuário está na aba {string} da modal 'Trocar Estabelecimento'")
     public void userIsInEstablishmentTab(String tab) {
-        loginPage.login();
+        loginPage.loginAndGetHomeReady();
         loginPage.userIsLogged();
 
         selectECOrDtcoPage.openModalAndTab(tab);

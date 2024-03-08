@@ -12,13 +12,6 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 @ScenarioComponent
 public class SelectECOrDtcoPage extends BasePage {
 
-    public boolean tabEstablishmentIsSelected() {
-        Locator button = pageField
-                .from("Trocar Estabelecimento - Botão selecionar por Estabelecimento")
-                .getLocator();
-        return button.getAttribute("aria-checked").equals("true");
-    }
-
     public void openFirstDropdown() {
         Locator nameEstablishment = pageField
                 .from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento")
@@ -145,11 +138,10 @@ public class SelectECOrDtcoPage extends BasePage {
     }
 
     public void openModalAndTab(String tab) {
-        startMonitoringRequests(page, contractConfig);
-
         pageField.from("Header - Trocar Estabelecimento").click();
-        pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab)).click();
 
+        startMonitoringRequests(page, contractConfig);
+        pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab)).click();
         ensureNoFlyingRequests();
     }
 
