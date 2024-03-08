@@ -11,8 +11,13 @@ public class BwaUserDetails extends BwaBase {
         BwaRest bwaRest = bwaHeader.getBwaRequest(apiAccessToken);
         Response<UserDetailDto> execute = bwaRest.userDetail().execute();
         if (execute.code() != 200) {
+            String errorBody = "";
+            if (execute.errorBody() != null) {
+                errorBody = execute.errorBody().string();
+            }
+
             throw new Exception(
-                    String.format("Erro ao obter detalhes do usuário %s: %s", execute.code(), execute.message()));
+                    String.format("Erro ao obter detalhes do usuário %s: %s. %s", execute.code(), execute.message(), errorBody));
         }
         return execute.body();
     }

@@ -52,7 +52,7 @@ public class BwaHeader {
                     .addHeader("Message-Signature", hmac.generateHMAC(getMsgToSign(timestamp, payload)))
                     .addHeader("Timestamp", String.valueOf(timestamp))
                     .addHeader("ChannelClientId", hmac.getClientChannelId())
-                    .addHeader("Authorization", apiAccessToken)
+                    .addHeader("Authorization", "Bearer " + apiAccessToken)
                     .addHeader("auth", apiAccessToken);
 
             extraHeaderInfo.forEach(requestBuilder::addHeader);
