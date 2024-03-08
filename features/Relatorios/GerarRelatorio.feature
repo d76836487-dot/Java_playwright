@@ -60,7 +60,7 @@ Feature: Gerar Relatorio
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     And usuário clica no "Campo Select EC" no "Modal Gerar Relatórios"
     Then "Todos os estabelecimentos" estará selecionado por padrão
-    And usuário poderá selecionar alguma das outras opções disponíveis
+    And usuário poderá selecionar alguma das outras opções de EC disponíveis
 
   @api
   @TestCaseKey=SMP-T198
@@ -75,3 +75,14 @@ Feature: Gerar Relatorio
     Then Usuário verá em "Relatórios - Notificação Sucesso" o texto "Relatório Solicitado com Sucesso!!"
     And usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado
 
+  @api
+  Scenario: Gerar Relatório em arquivo CSV Cliente com Mais que Um Estabelecimento Comercial Vinculado e Tipo de Relatório de Pagamentos (sem hierarquia)
+    Given usuário possui mais que um Estabelecimento Comercial vinculado
+    When usuário clica no "Botão Gerar Relatório" em "Relatórios"
+    And usuário seleciona algum de seus Estabelecimentos Comerciais
+    And usuário seleciona o tipo de relatório como "pagamentos"
+    And usuário seleciona o formato de arquivo como ".csv"
+    And usuário seleciona o período do dia anterior
+    And usuário clica no "Botão Gerar" em "Modal Gerar Relatórios"
+    Then Usuário verá em "Relatórios - Notificação Sucesso" o texto "Relatório Solicitado com Sucesso!!"
+    And usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado

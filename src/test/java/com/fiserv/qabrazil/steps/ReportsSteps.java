@@ -243,7 +243,7 @@ public class ReportsSteps extends BaseSteps {
                 .containsExactly(formattedEC);
     }
 
-    @Then("usuário poderá selecionar alguma das outras opções disponíveis")
+    @Then("usuário poderá selecionar alguma das outras opções de EC disponíveis")
     public void willBeAbleToSelectedAnyOfTheOtherAvailableOptions() throws Exception {
         List<String> expectedECOptions = getExpectedEcOptions();
         PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
@@ -253,6 +253,17 @@ public class ReportsSteps extends BaseSteps {
                 .containsExactlyElementsOf(expectedECOptions);
 
         verifyCanSelectOtherECs(options);
+    }
+
+    private void selectSecondEc() {
+        PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
+        PageField secondEc = options.getAllPageField().get(2);
+
+        pageField.from("Modal Gerar Relatórios - Campo Select EC").click();
+        secondEc.click();
+
+        String selected = pageField.from("Modal Gerar Relatórios - Select EC Selecionado").getAsText();
+        generateReportDto.setEc(selected);
     }
 
     @NotNull
@@ -333,6 +344,18 @@ public class ReportsSteps extends BaseSteps {
     public void userVerifiesThisECIsSelected() {
         String selectedEC = pageField.from("Modal Gerar Relatórios - Select EC Selecionado").getAsText();
         generateReportDto.setEc(selectedEC);
+    }
+
+    @When("usuário seleciona algum de seus Estabelecimentos Comerciais")
+    public void userSelectsAnyOfTheirEcs() throws Exception {
+        List<String> expectedECOptions = getExpectedEcOptions();
+        PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
+
+        assertThat(options.getAllAsText())
+                .withFailMessage("Campo Estabelecimento Comercial (EC) deveria mostrar todas as opções")
+                .containsExactlyElementsOf(expectedECOptions);
+
+        selectSecondEc();
     }
 
     private static String formatRequestedInNow() {
