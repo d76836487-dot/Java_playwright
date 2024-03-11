@@ -6,7 +6,7 @@
 @Zephyr:Priority=Low
 #noinspection CucumberUndefinedStep
 
-Feature: Menu Pré-Autorizações
+Feature: Menu Pre-autorizacoes
 
   Scenario: Consultar Total de vendas na Tela Pré-Autorização
 
@@ -48,7 +48,6 @@ Feature: Menu Pré-Autorizações
     Then Usuário visualizara Valor bruto a confirmar sem vendas
 
 
-
   Scenario: Personalizar colunas com Data e Hora no Menu Pré-Autorização
 
     Given Usuário está Logado No Portal do Cliente
@@ -87,7 +86,7 @@ Feature: Menu Pré-Autorizações
     Given Usuário está Logado No Portal do Cliente
     When Usuário acessa a página Vendas > Pré_Autorizações
     And seleciona uma venda sem o Cód. referência do cartão
-    Then Usuário visualiza no modal: no campo Cód. referência do cartão o símbolo  “- “
+    Then Usuário visualiza no modal no campo Cód. referência do cartão o símbolo  “- “
 
   Scenario: Consultar Tooltip / Detalhes da Pré-Autorização
 
@@ -103,7 +102,7 @@ Feature: Menu Pré-Autorizações
     When Usuário acessa a página Vendas > Pré_Autorizações
     And seleciona uma venda
     And clica no Botão Emitir 2 via no Modal
-    Then será emitido um comprovante em PDF contendo Data da venda no formato: dia/mês/ano ás horas.minutos.segundos
+    Then será emitido um comprovante em PDF contendo Data da venda no formato dia/mês/ano ás horas.minutos.segundos
 
   Scenario: Consultar Cód. referência do cartão no Menu Pré-Autorizações / Comprovante PDF
 
