@@ -6,7 +6,7 @@
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 
-Feature: Histórico de Vendas
+Feature: Historico de Vendas
 
   Scenario: Personalizar colunas Com Data das Vendas
     Given Usuário esta Logado No Portal do Cliente
