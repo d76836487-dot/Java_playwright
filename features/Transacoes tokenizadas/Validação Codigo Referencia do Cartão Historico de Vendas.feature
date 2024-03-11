@@ -8,7 +8,7 @@
 
 Feature: Histórico de Vendas
 
-  Scenario: Personalizar colunas Com Data da Venda
+  Scenario: Personalizar colunas Com Data das Vendas
     Given Usuário esta Logado No Portal do Cliente
     When Usuário acessa a página Vendas > Histórico de Vendas
     And Usuário personaliza tabela com até 10 colunas contendo entre elas a Data da Venda
