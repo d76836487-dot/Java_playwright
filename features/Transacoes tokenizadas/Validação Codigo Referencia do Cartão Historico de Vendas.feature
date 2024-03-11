@@ -64,7 +64,7 @@ Feature: Histórico de Vendas
     When Usuário acessa a página Vendas > Histórico de Vendas
     And seleciona uma venda com o Cód. referência do cartão
     And clica no Botão Emitir 2 Via no Modal
-    Then será exportado um comprovante em PDF contendo Data da venda no formato: dia/mês/ano ás horas:minutos:segundos
+    Then será exportado um comprovante em PDF contendo Data da venda no formato dia/mês/ano ás horas minutos segundos
 
   Scenario: Consultar Venda com Cód. referência do cartão / Comprovante PDF
     Given Usuário está Logado No Portal do Cliente
