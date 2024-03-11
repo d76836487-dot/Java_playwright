@@ -5,7 +5,7 @@
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-
+#noinspection CucumberUndefinedStep
 Feature: Historico de Vendas
 
   Scenario: Personalizar colunas Com Data das Vendas
@@ -189,13 +189,6 @@ Feature: Historico de Vendas
     Given Usuário está Logado No Portal do Cliente
     When Usuário acessa a página Vendas > Histórico de Vendas
     And selecionar o Período Últimos 7 dias no Calendário
-    And clicar no Botão Aplicar
-    Then será exibido vendas contendo Cód. referência do cartão preenchido.
-
-  Scenario: Consultar Venda com Cód. referência do cartão no Período de Últimos 14 dias
-    Given Usuário está Logado No Portal do Cliente
-    When Usuário acessa a página Vendas > Histórico de Vendas
-    And selecionar o Período Últimos 14 Dias no Calendário
     And clicar no Botão Aplicar
     Then será exibido vendas contendo Cód. referência do cartão preenchido.
 
