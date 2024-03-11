@@ -6,7 +6,7 @@
 @Zephyr:Priority=Low
 #noinspection CucumberUndefinedStep
 
-Feature: Menu Pre-autorizacoes
+Feature: Pre-autorizacoes
 
   Scenario: Consultar Total de vendas na Tela Pré-Autorização
 
