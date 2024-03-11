@@ -145,7 +145,7 @@ Feature: Historico de Vendas
     And clica Botão Gerar relatório
     Then será gerado um relatório contendo a coluna “Cód. Ref. Cartão” com um símbolo “-“
 
-  Scenario: Consultar Coluna Cód. referência do cartão / Relatório CSV
+  Scenario: Consultar Coluna Cód. referência do cartão / Relatório CSV Com 29 Digitos
     Given Usuário está Logado No Portal do Cliente
     When Usuário acessa menu Relatórios
     And clica em Gerar Relatório
@@ -154,7 +154,7 @@ Feature: Historico de Vendas
     Then será gerado um relatório contendo a coluna “Cód. Ref. Cartão” com um código de 29 dígitos
 
 
-  Scenario: Consultar Coluna sem Cód. referência do cartão / Relatório CSV
+  Scenario: Consultar Coluna sem Cód. referência do cartão / Relatório CSV Com Traço
     Given Usuário está Logado No Portal do Cliente
     When Usuário acessa menu Relatórios
     And clica em Gerar Relatório
@@ -162,19 +162,19 @@ Feature: Historico de Vendas
     And clica Botão Gerar relatório
     Then será gerado um relatório contendo a coluna “Cód. Ref. Cartão” com um símbolo “-“
 
-  Scenario: Consultar Coluna Cód. referência do cartão / Relatório CSV
+  Scenario: Consultar Coluna Cód. referência do cartão / Relatório Excel COM 29 Digitos
     Given Usuário está Logado No Portal do Cliente
     When Usuário acessa menu Relatórios
     And clica em Gerar Relatório
-    And seleciona Tipo de relatório Pagamentos, Formato do Arquivo “CSV” com um período
+    And seleciona Tipo de relatório Pagamentos, Formato do Arquivo “Excel” com um período
     And clica Botão Gerar relatório
     Then será gerado um relatório contendo a coluna “Cód. Ref. Cartão” com um código de 29 dígitos
 
-  Scenario: Consultar Coluna sem Cód. referência do cartão / Relatório CSV
+  Scenario: Consultar Coluna sem Cód. referência do cartão / Relatório Excel Com Traço
     Given Usuário está Logado No Portal do Cliente
     When Usuário acessa menu Relatórios
     And clica em Gerar Relatório
-    And seleciona Tipo de relatório Pagamentos, Formato do Arquivo “CSV” com um período
+    And seleciona Tipo de relatório Pagamentos, Formato do Arquivo “Excel” com um período
     And clica Botão Gerar relatório
     Then será gerado um relatório contendo a coluna “Cód. Ref. Cartão” com um símbolo “-“
 
