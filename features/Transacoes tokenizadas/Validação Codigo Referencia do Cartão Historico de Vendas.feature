@@ -13,7 +13,7 @@ Feature: Histórico de Vendas
     When Usuário acessa a página Vendas > Histórico de Vendas
     And Usuário personaliza tabela com até 10 colunas contendo entre elas a Data da Venda
     And Clica no Botão Aplicar
-    Then Usuário visualizará a tabela personalizada contendo 10 colunas entre elas a Data da Venda no formato: dia/mês/ano ás horas:minutos:segundos
+    Then Usuário visualizará a tabela personalizada 10 colunas entre elas a Data da Venda no formato dia/mês/ano ás horas minutos segundos
     And Botão de Personalizar deve ficar na cor da inst na tela de Histórico de Vendas
 
   Scenario:Personalizar colunas Com Cód de Referência do Cartão
@@ -38,26 +38,26 @@ Feature: Histórico de Vendas
     Given Usuário está Logado No Portal do Cliente
     When Usuário acessa a página Vendas > Histórico de Vendas
     And seleciona uma venda
-    Then Usuário visualiza no modal: Data da venda no formato: dia/mês/ano ás horas:minutos:segundos
+    Then Usuário visualiza no modal Data da venda no formato dia/mês/ano ás horas minutos segundos
 
   Scenario: Consultar Cód. referência do cartão no Detalhe da Venda
     Given Usuário está Logado No Portal do Cliente
     When Usuário acessa a página Vendas > Histórico de Vendas
     And seleciona uma venda
-    Then Usuário visualiza no modal: Cód. referência do cartão com 29 dígitos
+    Then Usuário visualiza no modal Cód. referência do cartão com 29 dígitos
 
   Scenario: Consultar Cód. referência do cartão no Detalhes da Venda Sem Informação
 
     Given Usuário está Logado No Portal do Cliente
     When Usuário acessa a página Vendas > Histórico de Vendas
     And seleciona uma venda sem o Cód. referência do cartão
-    Then Usuário visualiza no modal: no campo Cód. referência do cartão o símbolo “-“
+    Then Usuário visualiza no modal no campo Cód. referência do cartão o símbolo “-“
 
   Scenario: Consultar Tooltip no Detalhes da Venda Sem Informação
     Given Usuário está Logado No Portal do Cliente
     When Usuário acessa a página Vendas > Histórico de Vendas
     And seleciona uma venda
-    Then Usuário visualiza no modal o tooltip: Com a mensagem: Código relacionado ao número do cartão, também conhecido como PAR. Apenas algumas transações possuem este código.
+    Then Usuário visualiza no modal o tooltip Com a mensagem Código relacionado ao número do cartão, também conhecido como PAR. Apenas algumas transações possuem este código.
 
   Scenario: Consultar Data e Hora no Comprovante PDF
     Given Usuário está Logado No Portal do Cliente
