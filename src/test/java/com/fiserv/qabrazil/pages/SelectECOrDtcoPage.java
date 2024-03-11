@@ -25,7 +25,7 @@ public class SelectECOrDtcoPage extends BasePage {
                 .from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento")
                 .getAllPageField();
 
-        findPageWithWithDataTestId(formattedDoc, nameEstablishment).click();
+        findPageFieldWithWithDataTestId(formattedDoc, nameEstablishment).click();
     }
 
     public String getTextForDocument(String document, String displayName) {
@@ -33,25 +33,26 @@ public class SelectECOrDtcoPage extends BasePage {
                 .from(displayName)
                 .getAllPageField();
 
-        return findPageWithWithDataTestId(document, nameEstablishment).getAsText();
+        return findPageFieldWithWithDataTestId(document, nameEstablishment).getAsText();
     }
 
     public boolean ecIsVisible(String ec) {
         List<PageField> pageFields = pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe")
                 .getAllPageField();
 
-        return findPageWithWithDataTestId(ec, pageFields).fieldIsOneVisibleAndEnabled();
+        return findPageFieldWithWithDataTestId(ec, pageFields).fieldIsOneVisibleAndEnabled();
     }
 
     public String getTextForEC(String documentOrEc, String displayName) {
         List<PageField> pageFields = pageField.from(displayName)
                 .getAllPageField();
 
-        return findPageWithWithDataTestId(documentOrEc, pageFields).getAsText();
+        return findPageFieldWithWithDataTestId(documentOrEc, pageFields).getAsText();
     }
 
-    private PageField findPageWithWithDataTestId(String documentOrEc, List<PageField> nameEstablishment) {
+    private PageField findPageFieldWithWithDataTestId(String documentOrEc, List<PageField> nameEstablishment) {
         for(PageField pageField: nameEstablishment) {
+            pageField.fieldIsOneVisibleAndEnabled();
             if (pageField.getLocator().getAttribute("data-testid").contains(documentOrEc)) {
                 return pageField;
             }
@@ -143,6 +144,9 @@ public class SelectECOrDtcoPage extends BasePage {
         startMonitoringRequests(page, contractConfig);
         pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab)).click();
         ensureNoFlyingRequests();
+
+        waitUntilTrue(() ->
+                pageField.from("Trocar Estabelecimento - %s - Documento Estabelecimento".formatted(tab)).getCount() > 0);
     }
 
     public void selectDocumentInput(String docToSelect) {

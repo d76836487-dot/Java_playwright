@@ -63,7 +63,7 @@ public class Paginator extends BasePage {
 
         @Override
         public boolean hasNext() {
-            return firstIteration || nextPageBtn.isEnabled();
+            return firstIteration || nextPageBtn.count() > 0 || nextPageBtn.isEnabled();
         }
 
         @Override
