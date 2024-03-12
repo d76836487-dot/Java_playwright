@@ -75,12 +75,13 @@ Feature: Gerar Relatorio
     Then Usuário verá em "Relatórios - Notificação Sucesso" o texto "Relatório Solicitado com Sucesso!!"
     And usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado e o ícone relógio na coluna baixar
     Examples:
-    | formatoArquivo | tipo       |
-    | .csv           | vendas     |
-    | .csv           | pagamentos |
-    | .xlsx-(excel)  | vendas     |
+      | formatoArquivo | tipo       |
+      | .csv           | vendas     |
+      | .csv           | pagamentos |
+      | .xlsx-(excel)  | vendas     |
 
   @api
+  @TestCaseKey=SMP-T268
   Scenario Outline: Gerar Relatório em arquivo CSV Cliente com Mais que Um Estabelecimento Comercial Vinculado (sem hierarquia)
     Given usuário possui mais que um Estabelecimento Comercial vinculado
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
@@ -92,7 +93,8 @@ Feature: Gerar Relatorio
     Then Usuário verá em "Relatórios - Notificação Sucesso" o texto "Relatório Solicitado com Sucesso!!"
     And usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado e o ícone relógio na coluna baixar
     Examples:
-    | formatoArquivo | tipo       |
-    | .csv           | pagamentos |
-    | .csv           | vendas     |
-    | .xlsx-(excel)  | vendas     |
+      | formatoArquivo | tipo       |
+      | .csv           | pagamentos |
+      | .csv           | vendas     |
+      | .xlsx-(excel)  | vendas     |
+
