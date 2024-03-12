@@ -14,17 +14,20 @@ Feature: Header Portal
     Then Usuário visualizará no Header do Portal (todas as páginas) o Nome fantasia e número do EC
     And Usuário visualizará um botão abaixo escrito “Trocar estabelecimento” com destaque na coloração da aliança
 
+  @TestCaseKey=SMP-T270
   Scenario: Validação do Header quando for selecionado DOCUMENTO (Usuário Master)
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar um documento e clicar Acessar
     Then Usuário visualizará no Header do Portal (todas as páginas) o Nome fantasia e número do Documento
     And Usuário visualizará um botão abaixo escrito “Trocar estabelecimento” com destaque na coloração da aliança
 
+  @TestCaseKey=SMP-T269
   Scenario: Validação do Header quando for selecionado na aba DOCUMENTO a opção TODOS (Usuário Master)
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar Todos na aba Documento e clicar Acessar
     Then Usuário visualizará no Header do Portal (todas as páginas) o texto Todos documentos
 
+  @TestCaseKey=SMP-T271
   Scenario: Validação do comportamento do Header do Portal não se mover com scroll (Usuário Master)
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     When usuário move a tela através do scroll
