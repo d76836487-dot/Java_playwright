@@ -139,13 +139,12 @@ public class SelectECOrDtcoPage extends BasePage {
     }
 
     public void openModalAndTab(String tab) {
-        pageField.from("Header - Trocar Estabelecimento").click();
-
         startMonitoringRequests(page, contractConfig);
+        pageField.from("Header - Trocar Estabelecimento").click();
         pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab)).click();
         ensureNoFlyingRequests();
 
-        waitUntilTrue(() ->
+        waitUntilTrue(60, () ->
                 pageField.from("Trocar Estabelecimento - %s - Documento Estabelecimento".formatted(tab)).getCount() > 0);
     }
 
