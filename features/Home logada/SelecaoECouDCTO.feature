@@ -109,11 +109,3 @@ Feature: Seleção de EC ou DCTO - Usuário Master
   Scenario: Validar não seleção no checkbox de não mostrar novamente (Usuário Master)
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
     Then Usuário verá modal para selecionar EC ou DTCO
-
-  @TestCaseKey=SMP-T197
-  Scenario: Validação do Header quando for selecionado ESTABELECIMENTO (Usuário Master)
-    Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
-    When Usuário selecionar um EC e clicar Acessar
-    Then Usuário visualizará no Header do Portal (todas as páginas) o Nome fantasia e número do EC
-    And Usuário visualizará um botão abaixo escrito “Trocar estabelecimento” com destaque na coloração da aliança
-

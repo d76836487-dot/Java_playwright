@@ -186,6 +186,7 @@ public class TestIdsConfig {
             entry("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe", "alterar-matriz-nome-estabelecimento-detalhe-\\d.*"),
             entry("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-detalhe-\\d.*"),
             entry("Trocar Estabelecimento - Estabelecimento - Status Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-status-\\d.*"),
+            entry("Trocar Estabelecimento - Documento - Nome Estabelecimento", "alterar-matriz-text-documento-nome-fantasia-.*"),
 
             entry("Login - mensagem de erro", "login-usuario-incorreto"),
 

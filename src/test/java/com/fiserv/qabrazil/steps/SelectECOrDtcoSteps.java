@@ -8,7 +8,6 @@ import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.pages.login.LoginPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
-import com.fiserv.qabrazil.util.CpfCnpjUtil;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.text.ParseException;
 import java.util.List;
 
+import static com.fiserv.qabrazil.util.CpfCnpjUtil.formatCpfCnpj;
 import static org.testng.AssertJUnit.*;
 
 public class SelectECOrDtcoSteps extends BaseSteps {
@@ -30,6 +30,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     private ContractConfig contractConfig;
 
     private String selectedDoc;
+    private String selectedDocName;
     private String selectedEc;
     private String selectedEcName;
 
@@ -103,7 +104,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         List<MerchantGroup> allDocuments = apiUserDetailsService.getUserDetailGroupedByDocument();
 
         for(MerchantGroup merchantGroup: allDocuments) {
-            String formattedDoc = CpfCnpjUtil.formatCpfCnpj(merchantGroup.document());
+            String formattedDoc = formatCpfCnpj(merchantGroup.document());
             assertAny(formattedDoc, "Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento", merchantGroup.nomeFantasia());
             assertAny(formattedDoc, "Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento", formattedDoc);
 
@@ -204,8 +205,10 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
     @Given("Usuário está na aba {string} da modal 'Trocar Estabelecimento'")
     public void userIsInEstablishmentTab(String tab) {
-        loginPage.loginAndGetHomeReady();
-        loginPage.userIsLogged();
+        if (!loginPage.userIsLogged()) {
+            loginPage.forceNewLogin();
+            loginPage.userIsLogged();
+        }
 
         selectECOrDtcoPage.openModalAndTab(tab);
     }
@@ -235,7 +238,9 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         selectedDoc = allDocs.get(0);
         selectECOrDtcoPage.selectDocumentInput(selectedDoc);
 
-        pageField.from("Trocar Estabelecimento - Botão Acessar").click();
+        selectedDocName = selectECOrDtcoPage.getFirstNameFromDocuments();
+
+        selectECOrDtcoPage.clickAccessAndWaitClose();
     }
 
     @Then("Documento estará previamente selecionado")
@@ -243,7 +248,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         String prevSelected = pageField.from("Header - Trocar Estabelecimento").getAsText();
 
         assertTrue("Esperava ter selecionado <%s>, mas encontrou <%s>".formatted(selectedDoc, prevSelected),
-                prevSelected.contains(CpfCnpjUtil.formatCpfCnpj(selectedDoc)));
+                prevSelected.contains(formatCpfCnpj(selectedDoc)));
     }
 
     @When("Usuário selecionar um EC e clicar Acessar")
@@ -263,7 +268,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
                 .getAllPageField().get(0)
                 .getAsText();
 
-        pageField.from("Trocar Estabelecimento - Botão Acessar").click();
+        selectECOrDtcoPage.clickAccessAndWaitClose();
     }
 
     @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o Nome fantasia e número do EC")
@@ -273,6 +278,16 @@ public class SelectECOrDtcoSteps extends BaseSteps {
                 button.getAsText().contains(selectedEc));
         assertTrue("Botão trocar estabelecimento não tem o nome do EC selecionado <%s>. Encontrado <%s>".formatted(selectedEcName, button.getAsText()),
                 button.getAsText().contains(selectedEcName));
+    }
+
+    @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o Nome fantasia e número do Documento")
+    public void headerWillHaveSelectedDoc() throws ParseException {
+        PageField button = pageField.from("Header - Trocar Estabelecimento");
+        String formattedDoc = formatCpfCnpj(selectedDoc);
+        assertTrue("Botão trocar estabelecimento não tem o Documento selecionado <%s>. Encontrado <%s>".formatted(formattedDoc, button.getAsText()),
+                button.getAsText().contains(formattedDoc));
+        assertTrue("Botão trocar estabelecimento não tem o nome do Documento selecionado <%s>. Encontrado <%s>".formatted(selectedDocName, button.getAsText()),
+                button.getAsText().contains(selectedDocName));
     }
 
     @Then("Usuário visualizará um botão abaixo escrito “Trocar estabelecimento” com destaque na coloração da aliança")

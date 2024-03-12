@@ -160,4 +160,18 @@ public class SelectECOrDtcoPage extends BasePage {
 
         throw new RuntimeException("Não foi possível selecionar %s".formatted(docToSelect));
     }
+
+    public void clickAccessAndWaitClose() {
+        PageField accessButton = pageField.from("Trocar Estabelecimento - Botão Acessar");
+        accessButton.click();
+        waitUntilTrue(() -> !accessButton.elementIsVisibleRightNow());
+    }
+
+    public String getFirstNameFromDocuments() {
+        List<String> allNames = pageField.from("Trocar Estabelecimento - Documento - Nome Estabelecimento")
+                .getAllAsText().stream()
+                .filter(name -> !name.equals("Todos"))
+                .toList();
+        return allNames.get(0);
+    }
 }
