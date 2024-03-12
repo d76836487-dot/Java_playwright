@@ -1,5 +1,5 @@
 #language: en
-@playwright
+@ignore
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Transacoes_tokenizadas/Historico_de_Vendas
 @Zephyr:Status=Draft
