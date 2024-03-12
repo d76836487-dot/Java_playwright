@@ -2,6 +2,8 @@ package com.fiserv.automation.api.rest;
 
 import com.fiserv.automation.api.dto.PagedPaymentDto;
 import com.fiserv.qabrazil.config.ContractConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import retrofit2.Response;
@@ -10,6 +12,7 @@ import static com.fiserv.automation.api.util.DateUtil.formattedDate;
 
 @Component
 public class BwaPayment extends BwaBase {
+    private static final Logger log = LoggerFactory.getLogger(BwaPayment.class);
 
     @Autowired
     ContractConfig contractConfig;
@@ -31,6 +34,8 @@ public class BwaPayment extends BwaBase {
         }
 
         if (execute.code() != 200) {
+            log.info(execute.headers().toString());
+            log.info("Params: merchant <%s>, fromDate <%s>, toDate <%s>".formatted(merchant, fromDate, toDate));
             String errorBody = "";
             if (execute.errorBody() != null) {
                 errorBody = execute.errorBody().string();
