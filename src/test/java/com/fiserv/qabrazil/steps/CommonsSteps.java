@@ -39,6 +39,12 @@ public class CommonsSteps {
         assertEquals("Botão não encontrado na página", expectedButtonText, message);
     }
 
+    @Then("Usuário verá {pageField}")
+    public void userWillSee(PageField pageField) {
+        assertTrue("Campo %s não está visível como esperado".formatted(pageField.getDisplayName()),
+                pageField.elementIsVisibleRightNow());
+    }
+
     @When("usuário clica {pageField}")
     @When("usuário clica no {pageFieldWithSection}")
     public void userClicks(PageField identifier) {

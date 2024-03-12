@@ -25,3 +25,8 @@ Feature: Header Portal
     When Usuário selecionar Todos na aba Documento e clicar Acessar
     Then Usuário visualizará no Header do Portal (todas as páginas) o texto Todos documentos
 
+  Scenario: Validação do comportamento do Header do Portal não se mover com scroll (Usuário Master)
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
+    When usuário move a tela através do scroll
+    Then Usuário verá "Header - Trocar Estabelecimento"
+
