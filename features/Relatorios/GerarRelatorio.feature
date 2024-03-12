@@ -64,25 +64,35 @@ Feature: Gerar Relatorio
 
   @api
   @TestCaseKey=SMP-T198
-  Scenario: Gerar Relatório em arquivo CSV Cliente com Apenas Um Estabelecimento Comercial Vinculado e Tipo de Relatório de Vendas (sem hierarquia)
+  Scenario Outline: Gerar Relatório Cliente com Apenas Um Estabelecimento Comercial Vinculado e Tipo de Relatório de Vendas (sem hierarquia)
     Given usuário possui apenas um Estabelecimento Comercial vinculado
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     And usuário verifica que este Estabelecimento Comercial está selecionado
-    And usuário seleciona o tipo de relatório como "vendas"
-    And usuário seleciona o formato de arquivo como ".csv"
+    And usuário seleciona o tipo de relatório como "<tipo>"
+    And usuário seleciona o formato de arquivo como "<formatoArquivo>"
     And usuário seleciona o período do dia anterior
     And usuário clica no "Botão Gerar" em "Modal Gerar Relatórios"
     Then Usuário verá em "Relatórios - Notificação Sucesso" o texto "Relatório Solicitado com Sucesso!!"
-    And usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado
+    And usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado e o ícone relógio na coluna baixar
+    Examples:
+    | formatoArquivo | tipo       |
+    | .csv           | vendas     |
+    | .csv           | pagamentos |
+    | .xlsx-(excel)  | vendas     |
 
   @api
-  Scenario: Gerar Relatório em arquivo CSV Cliente com Mais que Um Estabelecimento Comercial Vinculado e Tipo de Relatório de Pagamentos (sem hierarquia)
+  Scenario Outline: Gerar Relatório em arquivo CSV Cliente com Mais que Um Estabelecimento Comercial Vinculado (sem hierarquia)
     Given usuário possui mais que um Estabelecimento Comercial vinculado
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     And usuário seleciona algum de seus Estabelecimentos Comerciais
-    And usuário seleciona o tipo de relatório como "pagamentos"
-    And usuário seleciona o formato de arquivo como ".csv"
+    And usuário seleciona o tipo de relatório como "<tipo>"
+    And usuário seleciona o formato de arquivo como "<formatoArquivo>"
     And usuário seleciona o período do dia anterior
     And usuário clica no "Botão Gerar" em "Modal Gerar Relatórios"
     Then Usuário verá em "Relatórios - Notificação Sucesso" o texto "Relatório Solicitado com Sucesso!!"
-    And usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado
+    And usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado e o ícone relógio na coluna baixar
+    Examples:
+    | formatoArquivo | tipo       |
+    | .csv           | pagamentos |
+    | .csv           | vendas     |
+    | .xlsx-(excel)  | vendas     |

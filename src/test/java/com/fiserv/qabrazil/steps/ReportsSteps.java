@@ -4,6 +4,7 @@ import com.fiserv.automation.api.dto.UserDetailDto;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.qabrazil.config.ContractConfig;
+import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.dto.GenerateReportDto;
 import com.fiserv.qabrazil.dto.ReportDto;
 import com.fiserv.qabrazil.pages.PageField;
@@ -327,7 +328,7 @@ public class ReportsSteps extends BaseSteps {
         generateReportDto.setRangeDate(selectedDate);
     }
 
-    @Then("usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado")
+    @Then("usuário verá uma nova linha na listagem de relatórios com o novo relatório solicitado e o ícone relógio na coluna baixar")
     public void userWillSeeANewRowInTheReportListWithTheBrandNewReport() {
         ReportDto expectedDto = ReportDto.from(
                 generateReportDto,
@@ -336,8 +337,13 @@ public class ReportsSteps extends BaseSteps {
         );
 
         ReportDto foundDto = reportsPage.getFirstReportInTable();
-
         assertEquals("New generated report is not correct", expectedDto, foundDto);
+
+        String firstIconTestId = reportsPage.downloadIconOfFirstReportTestId();
+
+        assertEquals("The first download icon is not a 'clock'. They don't have the same testid",
+                TestIdsConfig.getTestId("Relatórios - Botão Download Aguardando"),
+                firstIconTestId);
     }
 
     @When("usuário verifica que este Estabelecimento Comercial está selecionado")

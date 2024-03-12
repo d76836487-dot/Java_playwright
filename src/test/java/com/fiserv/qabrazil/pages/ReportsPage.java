@@ -114,16 +114,10 @@ public class ReportsPage extends CheckedBasePage {
     }
 
     public void clickOnTheFirstDownloadButton() {
-        String downloadTestId = Identifier.from("Relatórios - Botão Download Ok").testId();
-        String failTestId = Identifier.from("Relatórios - Botão Download Falha").selector();
-        String waitingTestId = Identifier.from("Relatórios - Botão Download Aguardando").selector();
         String fileNameTestId = Identifier.from("Relatórios - Item - Nome Arquivo").selector();
+        String downloadTestId = Identifier.from("Relatórios - Botão Download Ok").testId();
 
-        List<Locator> downloadCells = page.getByTestId(downloadTestId)
-                .or(page.locator(waitingTestId))
-                .or(page.locator(failTestId))
-                .all();
-
+        List<Locator> downloadCells = getAllDownloadCells();
         List<Locator> fileNames = page.locator(fileNameTestId).all();
 
         for (int i = 0; i < fileNames.size(); i++) {
@@ -189,4 +183,24 @@ public class ReportsPage extends CheckedBasePage {
                 .setRange(cellReportRange.getAsText());
     }
 
+    public String downloadIconOfFirstReportTestId() {
+        List<Locator> downloadCells = getAllDownloadCells();
+
+        if (downloadCells.isEmpty()) {
+            fail("Couldn't find any download cells in table");
+        }
+
+        return downloadCells.get(0).getAttribute("data-testid");
+    }
+
+    private List<Locator> getAllDownloadCells() {
+        String downloadTestId = Identifier.from("Relatórios - Botão Download Ok").testId();
+        String failTestId = Identifier.from("Relatórios - Botão Download Falha").selector();
+        String waitingTestId = Identifier.from("Relatórios - Botão Download Aguardando").selector();
+
+        return page.getByTestId(downloadTestId)
+                .or(page.locator(waitingTestId))
+                .or(page.locator(failTestId))
+                .all();
+    }
 }
