@@ -92,7 +92,7 @@ public class SelectECOrDtcoPage extends BasePage {
         }
     }
 
-    private boolean allDocumentsIsAlreadySelected(PageField button) {
+    public boolean allDocumentsIsAlreadySelected(PageField button) {
         if (modalIsVisible()) return false;
 
         return button.fieldIsOneVisibleAndEnabled() && button.getAsText().contains("Todos documentos");

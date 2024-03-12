@@ -20,3 +20,8 @@ Feature: Header Portal
     Then Usuário visualizará no Header do Portal (todas as páginas) o Nome fantasia e número do Documento
     And Usuário visualizará um botão abaixo escrito “Trocar estabelecimento” com destaque na coloração da aliança
 
+  Scenario: Validação do Header quando for selecionado na aba DOCUMENTO a opção TODOS (Usuário Master)
+    Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+    When Usuário selecionar Todos na aba Documento e clicar Acessar
+    Then Usuário visualizará no Header do Portal (todas as páginas) o texto Todos documentos
+

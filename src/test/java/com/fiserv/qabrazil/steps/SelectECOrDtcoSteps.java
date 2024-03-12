@@ -2,12 +2,12 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.automation.api.dto.MerchantDetail;
 import com.fiserv.automation.api.dto.MerchantGroup;
+import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.pages.login.LoginPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
-import com.fiserv.automation.api.service.ApiUserDetailsService;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -68,7 +68,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         PageField detailNameEstablishment = pageField
                 .from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe");
 
-        for(String name: detailNameEstablishment.getAllAsText()) {
+        for (String name : detailNameEstablishment.getAllAsText()) {
             assertTrue("Nome do estabelecimento %s é estranhamente pequeno".formatted(name),
                     name.length() > 2);
         }
@@ -78,7 +78,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     public void dropdownHasECInfo() {
         PageField detailNumEstablishment = pageField
                 .from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe");
-        for(String ec: detailNumEstablishment.getAllAsText()) {
+        for (String ec : detailNumEstablishment.getAllAsText()) {
             assertTrue("Número do estabelecimento %s não é apenas numérico".formatted(ec),
                     ec.replaceAll("\\d", "").isEmpty());
         }
@@ -88,7 +88,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     public void drodownHasInfoAboutECFromBW() {
         PageField detailStatusEstablishment = pageField
                 .from("Trocar Estabelecimento - Estabelecimento - Status Estabelecimento Detalhe");
-        for(String status: detailStatusEstablishment.getAllAsText()) {
+        for (String status : detailStatusEstablishment.getAllAsText()) {
             assertTrue("Status %s é diferente de Ativo/Inativo".formatted(status),
                     status.equals("Ativo") || status.equals("Inativo"));
         }
@@ -103,7 +103,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     public void todosNomesCPFsNúmeroECsEStatusAPISãoIguaisAAPI() throws Exception {
         List<MerchantGroup> allDocuments = apiUserDetailsService.getUserDetailGroupedByDocument();
 
-        for(MerchantGroup merchantGroup: allDocuments) {
+        for (MerchantGroup merchantGroup : allDocuments) {
             String formattedDoc = formatCpfCnpj(merchantGroup.document());
             assertAny(formattedDoc, "Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento", merchantGroup.nomeFantasia());
             assertAny(formattedDoc, "Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento", formattedDoc);
@@ -116,7 +116,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     private void assertInsideDropdownAreShowing(String formattedDoc, MerchantGroup merchantGroup) {
         selectECOrDtcoPage.openDropdownForDocument(formattedDoc);
 
-        for(MerchantDetail merchantDetail: merchantGroup.merchantDetails()) {
+        for (MerchantDetail merchantDetail : merchantGroup.merchantDetails()) {
             assertTrue("EC %s não está visível após dropdown ser aberto para %s".formatted(merchantDetail.ec(), formattedDoc),
                     selectECOrDtcoPage.ecIsVisible(merchantDetail.ec()));
 
@@ -186,6 +186,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         assertEquals("Filtro deveria trazer somente um CNPJ, mas encontrou %s.".formatted(documentsFromTabDocument),
                 1, documentsFromTabDocument.size());
     }
+
     private String getLastEc() {
         List<String> allEcs = pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe")
                 .getAllAsText();
@@ -243,6 +244,12 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         selectECOrDtcoPage.clickAccessAndWaitClose();
     }
 
+    @When("Usuário selecionar Todos na aba Documento e clicar Acessar")
+    public void userSelectsAllDocument() {
+        pageField.from("Trocar Estabelecimento - Botão Todos Documentos").click();
+        selectECOrDtcoPage.clickAccessAndWaitClose();
+    }
+
     @Then("Documento estará previamente selecionado")
     public void docWillBePreviouslySelected() throws ParseException {
         String prevSelected = pageField.from("Header - Trocar Estabelecimento").getAsText();
@@ -288,6 +295,13 @@ public class SelectECOrDtcoSteps extends BaseSteps {
                 button.getAsText().contains(formattedDoc));
         assertTrue("Botão trocar estabelecimento não tem o nome do Documento selecionado <%s>. Encontrado <%s>".formatted(selectedDocName, button.getAsText()),
                 button.getAsText().contains(selectedDocName));
+    }
+
+    @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o texto Todos documentos")
+    public void headerWillHaveTodos() {
+        PageField changeButton = pageField.from("Header - Trocar Estabelecimento");
+        assertTrue("Botão trocar estabelecimento não o texto Todos. Encontrado <%s>.".formatted(changeButton.getAsText()),
+                selectECOrDtcoPage.allDocumentsIsAlreadySelected(changeButton));
     }
 
     @Then("Usuário visualizará um botão abaixo escrito “Trocar estabelecimento” com destaque na coloração da aliança")
