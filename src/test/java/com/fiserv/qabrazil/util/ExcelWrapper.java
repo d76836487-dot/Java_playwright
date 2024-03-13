@@ -3,20 +3,20 @@ package com.fiserv.qabrazil.util;
 import org.dhatim.fastexcel.reader.ReadableWorkbook;
 import org.dhatim.fastexcel.reader.Sheet;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExcelWrapper implements AutoCloseable {
-    private final FileInputStream fis;
+    private final InputStream inputStream;
     private final ReadableWorkbook workbook;
     private final Sheet sheet;
     private final int rowTableStart;
 
-    public ExcelWrapper(String filename, int rowTableStart) throws IOException {
-        fis = new FileInputStream(filename);
-        workbook = new ReadableWorkbook(fis);
+    public ExcelWrapper(InputStream inputStream, int rowTableStart) throws IOException {
+        this.inputStream = inputStream;
+        workbook = new ReadableWorkbook(inputStream);
         sheet = workbook.getFirstSheet();
         this.rowTableStart = rowTableStart;
     }
@@ -24,7 +24,7 @@ public class ExcelWrapper implements AutoCloseable {
     @Override
     public void close() throws Exception {
         workbook.close();
-        fis.close();
+        inputStream.close();
     }
 
     public List<String> getColumnsAsText(String columnName) throws IOException {
