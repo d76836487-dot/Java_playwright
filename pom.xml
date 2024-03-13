@@ -57,6 +57,11 @@
             <version>3.5.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.dhatim</groupId>
+            <artifactId>fastexcel-reader</artifactId>
+            <version>0.17.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -91,7 +96,8 @@
                 </executions>
                 <configuration>
                     <sourceJsonReportDirectory>${project.build.directory}/cucumber</sourceJsonReportDirectory>
-                    <generatedHtmlReportDirectory>${project.build.directory}/generated-report</generatedHtmlReportDirectory>
+                    <generatedHtmlReportDirectory>${project.build.directory}/generated-report
+                    </generatedHtmlReportDirectory>
                 </configuration>
             </plugin>
         </plugins>
