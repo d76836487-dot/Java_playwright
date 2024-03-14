@@ -3,10 +3,13 @@ package com.fiserv.qabrazil.pages;
 import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.components.Paginator;
+import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.dto.ReportDto;
+import com.fiserv.qabrazil.util.CSVWrapper;
 import com.fiserv.qabrazil.util.Identifier;
 import com.microsoft.playwright.Download;
 import com.microsoft.playwright.Locator;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +23,7 @@ import java.util.regex.Pattern;
 import static com.fiserv.qabrazil.config.TestIdsConfig.getQuerySelector;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.testng.AssertJUnit.fail;
+import static org.testng.AssertJUnit.*;
 
 @ScenarioComponent
 @Component("Relatórios")
@@ -79,7 +82,7 @@ public class ReportsPage extends CheckedBasePage {
         paginator.forEach(() -> {
             String cellFileNameId = getQuerySelector("Relatórios - Item - Nome Arquivo");
             String cellDocumentId = getQuerySelector("Relatórios - Item - Documento");
-            String cellFileTypeId = getQuerySelector("Relatórios - Item - Formato Arquivo");
+            String cellFileTypeId = getQuerySelector("Relatórios - Item - Tipo Relatório");
             String cellRequestedInId = getQuerySelector("Relatórios - Item - Solicitado Em");
             String cellReportRangeId = getQuerySelector("Relatórios - Item - Período");
 
@@ -171,7 +174,7 @@ public class ReportsPage extends CheckedBasePage {
     public ReportDto getFirstReportInTable() {
         PageField cellFileName = pageField.from("Relatórios - Item - Nome Arquivo").firstOf();
         PageField cellDocument = pageField.from("Relatórios - Item - Documento").firstOf();
-        PageField cellReportType = pageField.from("Relatórios - Item - Formato Arquivo").firstOf();
+        PageField cellReportType = pageField.from("Relatórios - Item - Tipo Relatório").firstOf();
         PageField cellRequestedIn = pageField.from("Relatórios - Item - Solicitado Em").firstOf();
         PageField cellReportRange = pageField.from("Relatórios - Item - Período").firstOf();
 
@@ -202,5 +205,83 @@ public class ReportsPage extends CheckedBasePage {
                 .or(page.locator(waitingTestId))
                 .or(page.locator(failTestId))
                 .all();
+    }
+
+    public void downloadFirstReportOfType(String type, String extention) {
+        Locator report = getFirstReportAvailableForDownloadOfTypeAndFiletype(type, extention);
+
+        if(report == null) {
+            fail("Nenhum relatório do tipo \"%s\" e formato \"%s\" encontrado".formatted(type, extention));
+        }
+
+        Download file = page.waitForDownload(report::click);
+        download = Pair.of(file.suggestedFilename(), file);
+    }
+
+    public boolean thereAreReportsAvailableForDownloadOfTypeAndFiletype(String type, String extention) {
+        return getFirstReportAvailableForDownloadOfTypeAndFiletype(type, extention) != null;
+    }
+
+    private Locator getFirstReportAvailableForDownloadOfTypeAndFiletype(String type, String extention) {
+        List<Locator> downloadButtons = getAllDownloadCells();
+        List<PageField> reportsTypes = pageField.from("Relatórios - Item - Tipo Relatório").getAllPageField();
+        List<PageField> reportsFilenames = pageField.from("Relatórios - Item - Nome Arquivo").getAllPageField();
+
+        for (int i = 0; i < reportsTypes.size(); i++) {
+            if(isOfType(type, reportsTypes.get(i))
+                    && isOfFiletype(extention, reportsFilenames.get(i))
+                    && isDownloadIcon(downloadButtons.get(i))) {
+                return downloadButtons.get(i);
+            }
+        }
+
+        return null;
+    }
+
+    private boolean isOfFiletype(String filetype, PageField report) {
+        return report.getAsText().endsWith(filetype);
+    }
+
+    private static boolean isOfType(String type, PageField report) {
+        return report.getAsText().equals(type);
+    }
+
+    private static boolean isDownloadIcon(Locator button) {
+        String downloadTestId = TestIdsConfig.getTestId("Relatórios - Botão Download Ok");
+        return button.getAttribute("data-testid").equals(downloadTestId);
+    }
+
+    public void validateDownloadedCSVFileHasColumnContainingSalesInstallments() throws Exception {
+        if (download.getValue() == null) {
+            throw new RuntimeException("Não foi possível salvar o arquivo para validação");
+        }
+        String column = "Parcelas";
+
+        Download file = download.getValue();
+        CSVWrapper csvReader = new CSVWrapper(file.createReadStream());
+
+        List<String> salesInstallments = csvReader.getColumnsAsText(column);
+
+        log.info("Validating the following elements of column {}", column);
+
+        salesInstallments.forEach(this::installmentIsCorrect);
+    }
+
+    private void installmentIsCorrect(String s) {
+        if (StringUtils.isEmpty(s)) return;
+
+        String[] installments = s.split(" de ");
+
+        try {
+            int current = Integer.parseInt(installments[0]);
+            int amount = Integer.parseInt(installments[1]);
+
+            if(current > amount) {
+                fail("Parcela atual deveria ser menor ou igual ao total de parcelas. Valor do campo: <%s>".formatted(s));
+            }
+
+        } catch (NumberFormatException e) {
+            fail("Má formatação de Parcela: %s. O primeiro e último valor precisam ser números inteiros.");
+        }
     }
 }

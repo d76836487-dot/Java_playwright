@@ -1,0 +1,17 @@
+#language: en
+@playwright
+@Zephyr:ProjectKey=SMP
+@Zephyr:Folder=/Portal_do_Cliente/Relatorios/Exportar_Relatorio
+@Zephyr:Status=Draft
+@Zephyr:Priority=Normal
+@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+Feature: Exportar Relatorio
+
+  Background:
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
+    And Usuário acessa página de Relatórios
+
+  Scenario: Relatório Arquivo em CSV contém Transações Parceladas
+    Given Existem relatórios já extraídos do tipo "Vendas", no formato ".csv", disponíveis para download
+    When Usuário baixa um relatório do tipo "Vendas", formato ".csv"
+    Then Usuário visualizará no arquivo baixado a coluna "Parcelas", contendo as parcelas das vendas

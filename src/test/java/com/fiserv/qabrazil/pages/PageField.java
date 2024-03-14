@@ -52,7 +52,6 @@ public class PageField {
         public PageField pageFieldWithSection(String displayName, String section) {
             return from(section + " - " + displayName);
         }
-
     }
 
     private final String displayName;

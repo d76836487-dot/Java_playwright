@@ -93,68 +93,6 @@ public class ReportsSteps extends BaseSteps {
         assertTrue("Ícone de download não identificado", reportsPage.downloadIconIsDownArrow(button));
     }
 
-    private static void reportTypeIsCorrect(String fileType) {
-        final String message = String.format("Tipo do arquivo \"%s\" é diferente de \"Vendas\" e \"Pagamentos\"", fileType);
-        final List<String> allowedFileTypes = List.of("Vendas", "Pagamentos");
-        assertTrue(message, allowedFileTypes.contains(fileType));
-    }
-
-    private void documentIsCorrect(String documentText, List<String> ecs) {
-        List<String> allowedDocuments = new ArrayList<>(ecs);
-        allowedDocuments.add("Todos os estabelecimentos");
-        assertTrue("Não encontrou %s na lista %s".formatted(documentText, allowedDocuments),
-                allowedDocuments.contains(documentText));
-    }
-
-    private void requestedInIsCorrect(String requestedIn) {
-        String[] texts = requestedIn.split(" ");
-
-        if(requestedInHasCorrectFormat(texts)) return;
-
-        fail("A data \"" + requestedIn +  "\" na coluna \"Solicitado Em\" não está no formato dd/MM/yyyy às hh:mm");
-    }
-
-    private boolean requestedInHasCorrectFormat(String[] texts) {
-        return texts.length == 3
-                && DateUtil.isInFormat("dd/MM/yyyy", texts[0])
-                && Pattern.matches("\\d{2}:\\d{2}", texts[2]);
-    }
-
-    private void reportRangeIsCorrect(String range) {
-        String[] texts = range.split(" ");
-
-        if(rangeHasCorrectFormat(texts)) return;
-
-        fail("O período \"" + range +  "\" não está no formato correto");
-    }
-
-    private boolean rangeHasCorrectFormat(String[] texts) {
-        if (texts.length != 3
-                && !DateUtil.isInFormat("dd/MM/yyyy", texts[0])
-                && !DateUtil.isInFormat("dd/MM/yyyy", texts[2])) {
-            return false;
-        }
-
-        LocalDate dateFrom = DateUtil.toLocalDate(texts[0], "dd/MM/yyyy");
-        LocalDate dateTo = DateUtil.toLocalDate(texts[2], "dd/MM/yyyy");
-
-        return dateFrom.isBefore(dateTo) || dateFrom.isEqual(dateTo);
-    }
-
-    private void fileNameIsCorrect(String fileName, String fileType) {
-        assertTrue("O nome do arquivo não segue o padrão NOMEALIANÇA_TipoDoArquivo_dd-mm-yyyy_dd-mm-yyyy",
-                Pattern.matches(getNamePattern(fileType), fileName));
-    }
-
-
-    private String getNamePattern(String reportType) {
-        String startDate = "(\\d{2})-(\\d{2})-(\\d{4})";
-        String endDate = "(\\d{2})-(\\d{2})-(\\d{4})";
-        String fileExt = ".[a-z]+";
-
-        return contractConfig.getActiveUserProfile().allianceName() + "_" + reportType + "_" + startDate + "_" + endDate + fileExt;
-    }
-
     @Then("o download do relatório começará")
     public void theDownloadOfTheReportStarted() {
         assertTrue("O Download do relatório não iniciou como esperado",
@@ -256,33 +194,6 @@ public class ReportsSteps extends BaseSteps {
         verifyCanSelectOtherECs(options);
     }
 
-    private void selectSecondEc() {
-        PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
-        PageField secondEc = options.getAllPageField().get(2);
-
-        pageField.from("Modal Gerar Relatórios - Campo Select EC").click();
-        secondEc.click();
-
-        String selected = pageField.from("Modal Gerar Relatórios - Select EC Selecionado").getAsText();
-        generateReportDto.setEc(selected);
-    }
-
-    @NotNull
-    private List<String> getExpectedEcOptions() throws Exception {
-        List<String> formattedEcs = apiUserDetailsService.getFormattedEcsAndNames();
-        List<String> expectedECOptions = new ArrayList<>();
-        expectedECOptions.add("Todos os estabelecimentos");
-        expectedECOptions.addAll(formattedEcs);
-        return expectedECOptions;
-    }
-
-    private void verifyCanSelectOtherECs(PageField options) {
-        List<PageField> listOptions = options.getAllPageField();
-        PageField selectedEC = pageField.from("Modal Gerar Relatórios - Select EC Selecionado");
-        listOptions.get(1).click();
-        assertEquals("%s deveria estar selecionado", listOptions.get(1).getAsText(), selectedEC.getAsText());
-    }
-
     @When("usuário seleciona o tipo de relatório como {string}")
     public void userSelectsReportTypeAs(String type) {
         PageField option = openDropdownAndGetOption("Modal Gerar Relatórios - Select Tipo",
@@ -301,21 +212,6 @@ public class ReportsSteps extends BaseSteps {
         option.click();
         generateReportDto.setFiletype(option.getAsText());
         option.hoverAway();
-    }
-
-    private PageField openDropdownAndGetOption(String dropdown, String option, String type) {
-        PageField field = pageField.from(dropdown);
-        field.click();
-        field.hoverOver();
-
-        Optional<PageField> foundOption = pageField.from(option)
-                .firstWith(x -> x.attributeDataTestidContains(type));
-
-        if(foundOption.isEmpty()) {
-            fail("Didn't find the option to select: %s".formatted(type));
-        }
-
-        return foundOption.get();
     }
 
     @When("usuário seleciona o período do dia anterior")
@@ -364,8 +260,126 @@ public class ReportsSteps extends BaseSteps {
         selectSecondEc();
     }
 
+    @Given("Existem relatórios já extraídos do tipo {string}, no formato {string}, disponíveis para download")
+    public void thereAreReportsExtractedOfType(String type, String filetype) {
+        assumeThat(reportsPage.thereAreReportsAvailableForDownloadOfTypeAndFiletype(type, filetype)).isTrue();
+    }
+
+    @When("Usuário baixa um relatório do tipo {string}, formato {string}")
+    public void userDownloadsAReportOfType(String type, String extention) {
+        reportsPage.downloadFirstReportOfType(type, extention);
+    }
+
+    @Then("Usuário visualizará no arquivo baixado a coluna \"Parcelas\", contendo as parcelas das vendas")
+    public void userWillSeeInTheDownloadedFileTheColumnHavingSalesInstallments() throws Exception {
+        reportsPage.validateDownloadedCSVFileHasColumnContainingSalesInstallments();
+    }
+
+    private static void reportTypeIsCorrect(String fileType) {
+        final String message = String.format("Tipo do relatório \"%s\" é diferente de \"Vendas\" e \"Pagamentos\"", fileType);
+        final List<String> allowedFileTypes = List.of("Vendas", "Pagamentos");
+        assertTrue(message, allowedFileTypes.contains(fileType));
+    }
+
+    private void documentIsCorrect(String documentText, List<String> ecs) {
+        List<String> allowedDocuments = new ArrayList<>(ecs);
+        allowedDocuments.add("Todos os estabelecimentos");
+        assertTrue("Não encontrou %s na lista %s".formatted(documentText, allowedDocuments),
+                allowedDocuments.contains(documentText));
+    }
+
+    private void requestedInIsCorrect(String requestedIn) {
+        String[] texts = requestedIn.split(" ");
+
+        if(requestedInHasCorrectFormat(texts)) return;
+
+        fail("A data \"" + requestedIn +  "\" na coluna \"Solicitado Em\" não está no formato dd/MM/yyyy às hh:mm");
+    }
+
+    private boolean requestedInHasCorrectFormat(String[] texts) {
+        return texts.length == 3
+                && DateUtil.isInFormat("dd/MM/yyyy", texts[0])
+                && Pattern.matches("\\d{2}:\\d{2}", texts[2]);
+    }
+
+    private void reportRangeIsCorrect(String range) {
+        String[] texts = range.split(" ");
+
+        if(rangeHasCorrectFormat(texts)) return;
+
+        fail("O período \"" + range +  "\" não está no formato correto");
+    }
+
+    private boolean rangeHasCorrectFormat(String[] texts) {
+        if (texts.length != 3
+                && !DateUtil.isInFormat("dd/MM/yyyy", texts[0])
+                && !DateUtil.isInFormat("dd/MM/yyyy", texts[2])) {
+            return false;
+        }
+
+        LocalDate dateFrom = DateUtil.toLocalDate(texts[0], "dd/MM/yyyy");
+        LocalDate dateTo = DateUtil.toLocalDate(texts[2], "dd/MM/yyyy");
+
+        return dateFrom.isBefore(dateTo) || dateFrom.isEqual(dateTo);
+    }
+
+    private void fileNameIsCorrect(String fileName, String fileType) {
+        assertTrue("O nome do arquivo não segue o padrão NOMEALIANÇA_TipoDoArquivo_dd-mm-yyyy_dd-mm-yyyy",
+                Pattern.matches(getNamePattern(fileType), fileName));
+    }
+
+    private String getNamePattern(String reportType) {
+        String startDate = "(\\d{2})-(\\d{2})-(\\d{4})";
+        String endDate = "(\\d{2})-(\\d{2})-(\\d{4})";
+        String fileExt = ".[a-z]+";
+
+        return contractConfig.getActiveUserProfile().allianceName() + "_" + reportType + "_" + startDate + "_" + endDate + fileExt;
+    }
+
+    private void selectSecondEc() {
+        PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
+        PageField secondEc = options.getAllPageField().get(2);
+
+        pageField.from("Modal Gerar Relatórios - Campo Select EC").click();
+        secondEc.click();
+
+        String selected = pageField.from("Modal Gerar Relatórios - Select EC Selecionado").getAsText();
+        generateReportDto.setEc(selected);
+    }
+
+    @NotNull
+    private List<String> getExpectedEcOptions() throws Exception {
+        List<String> formattedEcs = apiUserDetailsService.getFormattedEcsAndNames();
+        List<String> expectedECOptions = new ArrayList<>();
+        expectedECOptions.add("Todos os estabelecimentos");
+        expectedECOptions.addAll(formattedEcs);
+        return expectedECOptions;
+    }
+
+    private void verifyCanSelectOtherECs(PageField options) {
+        List<PageField> listOptions = options.getAllPageField();
+        PageField selectedEC = pageField.from("Modal Gerar Relatórios - Select EC Selecionado");
+        listOptions.get(1).click();
+        assertEquals("%s deveria estar selecionado", listOptions.get(1).getAsText(), selectedEC.getAsText());
+    }
+
     private static String formatRequestedInNow() {
         LocalDateTime date = LocalDateTime.now();
         return date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy 'às' HH:mm"));
+    }
+
+    private PageField openDropdownAndGetOption(String dropdown, String option, String type) {
+        PageField field = pageField.from(dropdown);
+        field.click();
+        field.hoverOver();
+
+        Optional<PageField> foundOption = pageField.from(option)
+                .firstWith(x -> x.attributeDataTestidContains(type));
+
+        if(foundOption.isEmpty()) {
+            fail("Didn't find the option to select: %s".formatted(type));
+        }
+
+        return foundOption.get();
     }
 }

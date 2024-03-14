@@ -143,7 +143,7 @@ public class TestIdsConfig {
             entry("Relatórios - Tabela Header - Baixar", "relatorios-table-header-baixar"),
             entry("Relatórios - Item - Nome Arquivo", "relatorios-table-row-nome-arquivo"),
             entry("Relatórios - Item - Documento", "relatorios-table-row-documento"),
-            entry("Relatórios - Item - Formato Arquivo", "relatorios-table-row-tipo-arquivo"),
+            entry("Relatórios - Item - Tipo Relatório", "relatorios-table-row-tipo-arquivo"),
             entry("Relatórios - Item - Solicitado Em", "relatorios-table-row-solicitado-em"),
             entry("Relatórios - Item - Período", "relatorios-table-row-periodo"),
             entry("Relatórios - Botão Download Ok", "relatorios-table-row-download-ok"),
