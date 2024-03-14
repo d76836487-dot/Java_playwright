@@ -33,8 +33,10 @@ Feature: Header Portal
     When usuário move a tela através do scroll
     Then Usuário verá "Header - Trocar Estabelecimento"
 
+  @TestCaseKey=SMP-T272
   Scenario: Validação informações home logada com seleção de EC (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar um EC e clicar Acessar
     Then Valor 'Home - Vendas Hoje' é igual à exportação do relatório 'Vendas Hoje'
     And A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado
+
