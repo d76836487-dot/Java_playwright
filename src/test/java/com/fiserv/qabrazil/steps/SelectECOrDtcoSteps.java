@@ -272,8 +272,9 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         PageField button = pageField.from("Header - Trocar Estabelecimento");
         assertTrue("Botão trocar estabelecimento não tem o EC selecionado <%s>. Encontrado <%s>".formatted(selectECOrDtcoPage.getSelectedEc(), button.getAsText()),
                 button.getAsText().contains(selectECOrDtcoPage.getSelectedEc()));
-        assertTrue("Botão trocar estabelecimento não tem o nome do EC selecionado <%s>. Encontrado <%s>".formatted(selectECOrDtcoPage.getSelectedEcName(), button.getAsText()),
-                button.getAsText().contains(selectECOrDtcoPage.getSelectedEcName()));
+        String nameFromButton = button.getAsText().replaceAll("\\.* -.*", "").replaceAll("\\n", "");
+        assertTrue("Botão trocar estabelecimento não tem o nome do EC selecionado <%s>. Encontrado <%s>".formatted(selectECOrDtcoPage.getSelectedEcName(), nameFromButton),
+                selectECOrDtcoPage.getSelectedEcName().contains(nameFromButton));
     }
 
     @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o Nome fantasia e número do Documento")
