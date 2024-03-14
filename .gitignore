@@ -86,4 +86,4 @@ nb-configuration.xml
 .DS_Store
 
 Relatorio*.csv
-/src/test/resources/application-sicredi.yml
+/src/test/resources/application-*.yml
