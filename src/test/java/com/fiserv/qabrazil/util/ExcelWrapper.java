@@ -5,6 +5,7 @@ import org.dhatim.fastexcel.reader.Sheet;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,13 +37,31 @@ public class ExcelWrapper implements AutoCloseable {
         if (inputStream != null) inputStream.close();
     }
 
+    public List<Double> getColumnsAsCurrency(String columnName) throws IOException {
+        return getColumnsAsText(columnName).stream()
+                .map(this::convertToDouble)
+                .toList();
+    }
+
+    private double convertToDouble(String value) {
+        try {
+            return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            try {
+                return Currency.parseCurrency(value).doubleValue();
+            } catch (ParseException ignore) {
+                throw new RuntimeException("Falha ao converter moeda %s".formatted(value));
+            }
+        }
+    }
+
     public List<String> getColumnsAsText(String columnName) throws IOException {
         if (sheet == null) return List.of();
 
         List<String> values = new ArrayList<>();
         int col = getHeaderColumn(columnName);
 
-        for(int row = rowTableStart + 1; row < sheet.read().size(); row++) {
+        for (int row = rowTableStart + 1; row < sheet.read().size(); row++) {
             values.add(getCellAsText(row, col));
         }
 
@@ -50,7 +69,7 @@ public class ExcelWrapper implements AutoCloseable {
     }
 
     private int getHeaderColumn(String columnName) throws IOException {
-        for(int col = 0; col < sheet.read().get(0).getCellCount(); col++) {
+        for (int col = 0; col < sheet.read().get(0).getCellCount(); col++) {
             if (getCellAsText(rowTableStart, col).equals(columnName)) return col;
         }
 

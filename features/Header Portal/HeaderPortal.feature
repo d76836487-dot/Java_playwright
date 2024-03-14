@@ -38,5 +38,16 @@ Feature: Header Portal
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar um EC e clicar Acessar
     Then Valor 'Home - Vendas Hoje' é igual à exportação do relatório 'Vendas Hoje'
+    And Soma da coluna Valor Bruto é igual ao cabeçalho do Excel - Valor Bruto e Não Efetivadas
     And A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado
 
+  Scenario: Validação informações home logada com seleção de Documento (Usuário Master)
+    Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+    When Usuário selecionar um documento e clicar Acessar
+    Then Valor 'Home - Vendas Hoje' é igual à exportação do relatório 'Vendas Hoje'
+    And Soma da coluna Valor Bruto é igual ao cabeçalho do Excel - Valor Bruto e Não Efetivadas
+
+  Scenario: Validação informações home logada com seleção todos Documentos (Usuário Master)
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
+    Then Valor 'Home - Vendas Hoje' é igual à exportação do relatório 'Vendas Hoje'
+    And Soma da coluna Valor Bruto é igual ao cabeçalho do Excel - Valor Bruto e Não Efetivadas

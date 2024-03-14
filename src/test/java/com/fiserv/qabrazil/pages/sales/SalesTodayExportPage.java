@@ -25,8 +25,19 @@ public class SalesTodayExportPage extends BasePage {
             return grossSales.isEmpty()? "R$ 0,00": grossSales.replaceAll("Valor bruto: ", "");
         }
 
+        public String getUnpaidSales() throws IOException {
+            String grossSales = excelWrapper.getCellAsText(14, 0);
+            return grossSales.isEmpty()? "R$ 0,00": grossSales.replaceAll("Valor não efetivadas: ", "");
+        }
+
         public List<String> getECs() throws IOException {
             return excelWrapper.getColumnsAsText("Número do estabelecimento");
+        }
+
+        public Double getSumGrossValues() throws IOException {
+            return excelWrapper.getColumnsAsCurrency("Valor bruto").stream()
+                    .reduce(Double::sum)
+                    .orElse(0.0);
         }
     }
 

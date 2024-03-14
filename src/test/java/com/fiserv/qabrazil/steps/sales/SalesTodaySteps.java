@@ -4,13 +4,14 @@ import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.pages.sales.SalesTodayExportPage;
 import com.fiserv.qabrazil.pages.sales.SalesTodayPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
-import io.cucumber.java.en.And;
+import com.fiserv.qabrazil.util.Currency;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -86,7 +87,7 @@ public class SalesTodaySteps extends BaseSteps {
         assertEquals(salesTodayFromHome, salesTodayFromExport);
     }
 
-    @And("A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado")
+    @Then("A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado")
     public void exportWillHaveOnlySelectedEc() throws IOException {
         List<String> exportedEcs = salesTodayAsExcel.getECs();
         boolean allSameEcs = exportedEcs.stream()
@@ -94,5 +95,15 @@ public class SalesTodaySteps extends BaseSteps {
 
         assertTrue("Existem ECS gerados no excel que não são iguais ao selecionado <%s>: <%s>.".formatted(selectECOrDtcoPage.getSelectedEc(), exportedEcs),
                 allSameEcs);
+    }
+
+    @Then("Soma da coluna Valor Bruto é igual ao cabeçalho do Excel - Valor Bruto e Não Efetivadas")
+    public void sumColumnGrossValueFromExport() throws IOException, ParseException {
+        double salesTodayFromExport = Currency.parseCurrency(salesTodayAsExcel.getGrossSales()).doubleValue();
+        double unpaidSalesTodayFromExport = Currency.parseCurrency(salesTodayAsExcel.getUnpaidSales()).doubleValue();
+        double sumGrossValue = salesTodayAsExcel.getSumGrossValues();
+
+        assertEquals("Valor da soma do cabeçalho é diferente da soma da coluna.",
+                salesTodayFromExport + unpaidSalesTodayFromExport, sumGrossValue, 0.001);
     }
 }
