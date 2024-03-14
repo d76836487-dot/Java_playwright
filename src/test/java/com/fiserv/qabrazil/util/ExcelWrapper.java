@@ -9,10 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExcelWrapper implements AutoCloseable {
+    public static final ExcelWrapper NULL = new ExcelWrapper();
+
     private final InputStream inputStream;
     private final ReadableWorkbook workbook;
     private final Sheet sheet;
     private final int rowTableStart;
+
+    private ExcelWrapper() {
+        inputStream = null;
+        workbook = null;
+        sheet = null;
+        rowTableStart = 0;
+    }
 
     public ExcelWrapper(InputStream inputStream, int rowTableStart) throws IOException {
         this.inputStream = inputStream;
@@ -23,11 +32,13 @@ public class ExcelWrapper implements AutoCloseable {
 
     @Override
     public void close() throws Exception {
-        workbook.close();
-        inputStream.close();
+        if (workbook != null) workbook.close();
+        if (inputStream != null) inputStream.close();
     }
 
     public List<String> getColumnsAsText(String columnName) throws IOException {
+        if (sheet == null) return List.of();
+
         List<String> values = new ArrayList<>();
         int col = getHeaderColumn(columnName);
 
@@ -47,6 +58,8 @@ public class ExcelWrapper implements AutoCloseable {
     }
 
     public String getCellAsText(int row, int column) throws IOException {
+        if (sheet == null) return "";
+
         return sheet.read().get(row).getCell(column).getText();
     }
 }

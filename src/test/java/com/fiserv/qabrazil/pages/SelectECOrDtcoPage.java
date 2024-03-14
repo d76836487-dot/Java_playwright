@@ -11,6 +11,26 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
 public class SelectECOrDtcoPage extends BasePage {
+    private String selectedDoc;
+    private String selectedDocName;
+    private String selectedEc;
+    private String selectedEcName;
+
+    public String getSelectedDoc() {
+        return selectedDoc;
+    }
+
+    public String getSelectedDocName() {
+        return selectedDocName;
+    }
+
+    public String getSelectedEc() {
+        return selectedEc;
+    }
+
+    public String getSelectedEcName() {
+        return selectedEcName;
+    }
 
     public void openFirstDropdown() {
         Locator nameEstablishment = pageField
@@ -167,11 +187,23 @@ public class SelectECOrDtcoPage extends BasePage {
         waitUntilTrue(() -> !accessButton.elementIsVisibleRightNow());
     }
 
-    public String getFirstNameFromDocuments() {
+    public void storeDocAndFirstNameFromDocuments(String selectedDoc) {
+        this.selectedDoc = selectedDoc;
+
         List<String> allNames = pageField.from("Trocar Estabelecimento - Documento - Nome Estabelecimento")
                 .getAllAsText().stream()
                 .filter(name -> !name.equals("Todos"))
                 .toList();
-        return allNames.get(0);
+
+        selectedDocName = allNames.get(0);
+    }
+
+    public void storeNameAndEc() {
+        selectedEcName = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
+                .getAllPageField().get(0)
+                .getAsText();
+        selectedEc = pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe")
+                .getAllPageField().get(0)
+                .getAsText();
     }
 }

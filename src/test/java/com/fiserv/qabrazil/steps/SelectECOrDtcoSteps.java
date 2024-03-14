@@ -29,11 +29,6 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     @Autowired
     private ContractConfig contractConfig;
 
-    private String selectedDoc;
-    private String selectedDocName;
-    private String selectedEc;
-    private String selectedEcName;
-
     @Then("Usuário verá modal para selecionar EC ou DTCO")
     public void userWillSeeModalToPickEC() {
         assertTrue("Parece que a modal para trocar estabelecimentos não está aberta",
@@ -236,10 +231,9 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     @When("Usuário selecionar um documento e clicar Acessar")
     public void userSelectsDocument() {
         List<String> allDocs = selectECOrDtcoPage.getDocumentsFromTabDocument();
-        selectedDoc = allDocs.get(0);
-        selectECOrDtcoPage.selectDocumentInput(selectedDoc);
+        selectECOrDtcoPage.selectDocumentInput(allDocs.get(0));
 
-        selectedDocName = selectECOrDtcoPage.getFirstNameFromDocuments();
+        selectECOrDtcoPage.storeDocAndFirstNameFromDocuments(allDocs.get(0));
 
         selectECOrDtcoPage.clickAccessAndWaitClose();
     }
@@ -254,8 +248,8 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     public void docWillBePreviouslySelected() throws ParseException {
         String prevSelected = pageField.from("Header - Trocar Estabelecimento").getAsText();
 
-        assertTrue("Esperava ter selecionado <%s>, mas encontrou <%s>".formatted(selectedDoc, prevSelected),
-                prevSelected.contains(formatCpfCnpj(selectedDoc)));
+        assertTrue("Esperava ter selecionado <%s>, mas encontrou <%s>".formatted(selectECOrDtcoPage.getSelectedDoc(), prevSelected),
+                prevSelected.contains(formatCpfCnpj(selectECOrDtcoPage.getSelectedDoc())));
     }
 
     @When("Usuário selecionar um EC e clicar Acessar")
@@ -268,12 +262,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         }
         firstEcFromDropdown.click();
 
-        selectedEcName = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
-                .getAllPageField().get(0)
-                .getAsText();
-        selectedEc = pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe")
-                .getAllPageField().get(0)
-                .getAsText();
+        selectECOrDtcoPage.storeNameAndEc();
 
         selectECOrDtcoPage.clickAccessAndWaitClose();
     }
@@ -281,20 +270,20 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o Nome fantasia e número do EC")
     public void headerWillHaveSelectedEc() {
         PageField button = pageField.from("Header - Trocar Estabelecimento");
-        assertTrue("Botão trocar estabelecimento não tem o EC selecionado <%s>. Encontrado <%s>".formatted(selectedEc, button.getAsText()),
-                button.getAsText().contains(selectedEc));
-        assertTrue("Botão trocar estabelecimento não tem o nome do EC selecionado <%s>. Encontrado <%s>".formatted(selectedEcName, button.getAsText()),
-                button.getAsText().contains(selectedEcName));
+        assertTrue("Botão trocar estabelecimento não tem o EC selecionado <%s>. Encontrado <%s>".formatted(selectECOrDtcoPage.getSelectedEc(), button.getAsText()),
+                button.getAsText().contains(selectECOrDtcoPage.getSelectedEc()));
+        assertTrue("Botão trocar estabelecimento não tem o nome do EC selecionado <%s>. Encontrado <%s>".formatted(selectECOrDtcoPage.getSelectedEcName(), button.getAsText()),
+                button.getAsText().contains(selectECOrDtcoPage.getSelectedEcName()));
     }
 
     @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o Nome fantasia e número do Documento")
     public void headerWillHaveSelectedDoc() throws ParseException {
         PageField button = pageField.from("Header - Trocar Estabelecimento");
-        String formattedDoc = formatCpfCnpj(selectedDoc);
+        String formattedDoc = formatCpfCnpj(selectECOrDtcoPage.getSelectedDoc());
         assertTrue("Botão trocar estabelecimento não tem o Documento selecionado <%s>. Encontrado <%s>".formatted(formattedDoc, button.getAsText()),
                 button.getAsText().contains(formattedDoc));
-        assertTrue("Botão trocar estabelecimento não tem o nome do Documento selecionado <%s>. Encontrado <%s>".formatted(selectedDocName, button.getAsText()),
-                button.getAsText().contains(selectedDocName));
+        assertTrue("Botão trocar estabelecimento não tem o nome do Documento selecionado <%s>. Encontrado <%s>".formatted(selectECOrDtcoPage.getSelectedDocName(), button.getAsText()),
+                button.getAsText().contains(selectECOrDtcoPage.getSelectedEcName()));
     }
 
     @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o texto Todos documentos")

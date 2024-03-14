@@ -1,24 +1,33 @@
 package com.fiserv.qabrazil.steps.sales;
 
-import com.fiserv.qabrazil.pages.CommonsPage;
+import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
+import com.fiserv.qabrazil.pages.sales.SalesTodayExportPage;
 import com.fiserv.qabrazil.pages.sales.SalesTodayPage;
+import com.fiserv.qabrazil.steps.home.BaseSteps;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.assertj.core.api.Assumptions.assumeThat;
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.*;
 
-public class SalesTodaySteps {
+public class SalesTodaySteps extends BaseSteps {
     @Autowired
     SalesTodayPage salesTodayPage;
 
     @Autowired
-    CommonsPage commonsPage;
+    SelectECOrDtcoPage selectECOrDtcoPage;
+
+    @Autowired
+    SalesTodayExportPage salesTodayExportPage;
+
+    private SalesTodayExportPage.SalesTodayExportExcel salesTodayAsExcel;
 
     @Given("Usuário acessou Vendas Hoje")
     @When("Usuário acessa Vendas Hoje")
@@ -66,5 +75,24 @@ public class SalesTodaySteps {
     public void thereIsNoSalesOfProduct(String productType) {
         boolean foundSalesWithProduct = salesTodayPage.thereAreSalesWithProduct(productType);
         assertFalse(foundSalesWithProduct);
+    }
+
+    @Then("Valor 'Home - Vendas Hoje' é igual à exportação do relatório 'Vendas Hoje'")
+    public void checkSalesTodayMatches() throws IOException {
+        String salesTodayFromHome = pageField.from("Home - Card Vendas Hoje - Valor Vendas Hoje").getAsText();
+        salesTodayAsExcel = salesTodayExportPage.getDownloadAsExcel();
+        String salesTodayFromExport = salesTodayAsExcel.getGrossSales();
+
+        assertEquals(salesTodayFromHome, salesTodayFromExport);
+    }
+
+    @And("A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado")
+    public void exportWillHaveOnlySelectedEc() throws IOException {
+        List<String> exportedEcs = salesTodayAsExcel.getECs();
+        boolean allSameEcs = exportedEcs.stream()
+                .allMatch(ec -> ec.equals(selectECOrDtcoPage.getSelectedEc()));
+
+        assertTrue("Existem ECS gerados no excel que não são iguais ao selecionado <%s>: <%s>.".formatted(selectECOrDtcoPage.getSelectedEc(), exportedEcs),
+                allSameEcs);
     }
 }

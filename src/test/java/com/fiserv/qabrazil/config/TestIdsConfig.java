@@ -51,6 +51,9 @@ public class TestIdsConfig {
             entry("Vendas Hoje - Histórico - Coluna Terminal", "vendas-hoje-coluna-terminal"),
             entry("Vendas Hoje - Histórico - Coluna Status", "vendas-hoje-coluna-status\\d"),
             entry("Vendas Hoje - Histórico - Coluna Estabelecimento", "vendas-hoje-coluna-estabelecimento\\d"),
+            entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo", "simple-dropdown-select-"),
+            entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
+            entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
 
             entry("Vendas - Histórico de Vendas - Resumo - Quantidade de vendas", "historico-vendas-total"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor bruto", "historico-vendas-valor-bruto"),
@@ -59,6 +62,7 @@ public class TestIdsConfig {
 
             entry("Home - Card Vendas Hoje - Valor Vendas Hoje", "home-card-vendas-hoje-text-vlr"),
             entry("Home - Card Vendas Hoje - Percentual Vendas Hoje", "home-card-vendas-hoje-text-percentual-down"),
+            entry("Home - Card Vendas Hoje - Ver Tudo", "home-card-vendas-hoje-link-ver-tudo"),
 
             entry("Home - Card Recebimento - Total Recebimento", "home-card-recebimentos-text-vlrliquido"),
             entry("Home - Card Recebimento - Recebimento Hoje", "home-card-recebimentos-text-vlrliquido-hoje"),
@@ -235,6 +239,8 @@ public class TestIdsConfig {
             entry("Trocar Estabelecimento - Nenhum resultado", "//*[@role='dialog']//*[contains(text(),'Nenhum resultado')]"),
             entry("Trocar Estabelecimento - Documento - Documento Estabelecimento", "//*[@role='radiogroup']//input"),
             entry("na seção Vendas Hoje - Ver Tudo", "[data-block='AppHome.GraficoHomeLogada'] [data-testid='home-card-vendas-hoje-link-ver-tudo']"),
+            entry("Vendas Hoje - Botão Exportar", "//button//span[text()='Exportar']"),
+            entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - Gerar arquivo", "//button[text()='Gerar arquivo']"),
 
             entry("Ajuda - Whatsapp", "//span[contains(text(),'WhatsApp')]/.."),
             entry("Ajuda - WhatsApp Card", "//*[contains(@class,'margin-left-m')][1]/*"),
