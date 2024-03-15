@@ -100,7 +100,9 @@ public class SelectECOrDtcoPage extends BasePage {
         }
 
         pageField.from("Trocar Estabelecimento - Botão selecionar por Documento").click();
-        pageField.from("Trocar Estabelecimento - Botão Todos Documentos").click();
+        PageField buttonAllDocs = pageField.from("Trocar Estabelecimento - Botão Todos Documentos");
+        waitUntilTrue(60, buttonAllDocs::elementIsVisibleRightNow);
+        buttonAllDocs.click();
         selectSetAsDefault(true);
 
         pageField.from("Trocar Estabelecimento - Botão Acessar").click();

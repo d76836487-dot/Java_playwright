@@ -283,8 +283,13 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         String formattedDoc = formatCpfCnpj(selectECOrDtcoPage.getSelectedDoc());
         assertTrue("Botão trocar estabelecimento não tem o Documento selecionado <%s>. Encontrado <%s>".formatted(formattedDoc, button.getAsText()),
                 button.getAsText().contains(formattedDoc));
-        assertTrue("Botão trocar estabelecimento não tem o nome do Documento selecionado <%s>. Encontrado <%s>".formatted(selectECOrDtcoPage.getSelectedDocName(), button.getAsText()),
-                button.getAsText().contains(selectECOrDtcoPage.getSelectedEcName()));
+        String selectedDocName = selectECOrDtcoPage.getSelectedDocName();
+        String buttonText = button.getAsText()
+                .replaceAll(" - .*", "")
+                .replaceAll("\\n", "")
+                .replaceAll("\\.\\.\\.$", "");
+        assertTrue("Botão trocar estabelecimento não tem o nome do Documento selecionado <%s>. Encontrado <%s>".formatted(selectedDocName, button.getAsText()),
+                selectedDocName.contains(buttonText));
     }
 
     @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o texto Todos documentos")
