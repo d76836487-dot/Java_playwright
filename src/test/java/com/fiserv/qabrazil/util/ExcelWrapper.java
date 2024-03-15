@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.util;
 
+import org.dhatim.fastexcel.reader.Cell;
 import org.dhatim.fastexcel.reader.ReadableWorkbook;
 import org.dhatim.fastexcel.reader.Sheet;
 
@@ -74,6 +75,14 @@ public class ExcelWrapper implements AutoCloseable {
         }
 
         throw new RuntimeException("Coluna %s do excel não foi encontrada".formatted(columnName));
+    }
+
+    public String[] getTableHeaderCells() throws Exception {
+        return getRow(rowTableStart);
+    }
+
+    public String[] getRow(int row) throws Exception {
+        return sheet.read().get(row).stream().map(Cell::getText).toArray(String[]::new);
     }
 
     public String getCellAsText(int row, int column) throws IOException {

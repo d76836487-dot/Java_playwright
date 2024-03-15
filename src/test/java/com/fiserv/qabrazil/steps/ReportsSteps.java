@@ -280,10 +280,10 @@ public class ReportsSteps extends BaseSteps {
         reportsPage.validateDownloadedCSVFileHasColumnContainingSalesInstallments();
     }
 
-    @Then("Usuário visualizará no arquivo csv baixado as colunas")
-    public void userWillSeeInTheDownloadedFileTheColumns(String columns) throws Exception {
+    @Then("Usuário visualizará no {string} baixado, as colunas")
+    public void userWillSeeInTheDownloadedFileTheColumns(String fileExtension, String columns) throws Exception {
         String[] expected = csv(columns);
-        String[] actual = reportsPage.getCSVHeaderOfDownload();
+        String[] actual = reportsPage.getHeaderForDownloadAs(fileExtension);
 
         log.info("Validando o cabeçalho do arquivo csv");
         assertThat(actual)

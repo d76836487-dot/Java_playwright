@@ -6,6 +6,7 @@ import com.fiserv.qabrazil.components.Paginator;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.dto.ReportDto;
 import com.fiserv.qabrazil.util.CSVWrapper;
+import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.fiserv.qabrazil.util.Identifier;
 import com.microsoft.playwright.Download;
 import com.microsoft.playwright.Locator;
@@ -16,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -251,18 +253,18 @@ public class ReportsPage extends CheckedBasePage {
         return button.getAttribute("data-testid").equals(downloadTestId);
     }
 
-    private CSVWrapper getDownloadAsCSV() throws Exception {
+    private InputStream getDownloadStream() {
         if (download.getValue() == null) {
             throw new RuntimeException("Não foi possível salvar o arquivo para validação");
         }
 
         Download file = download.getValue();
-        return new CSVWrapper(file.createReadStream());
+        return file.createReadStream();
     }
 
     public void validateDownloadedCSVFileHasColumnContainingSalesInstallments() throws Exception {
         String column = "Parcelas";
-        CSVWrapper csvReader = getDownloadAsCSV();
+        CSVWrapper csvReader = new CSVWrapper(getDownloadStream());
         List<String> salesInstallments = csvReader.getColumnsAsText(column);
 
         log.info("Validating the following elements of column {}", column);
@@ -288,8 +290,24 @@ public class ReportsPage extends CheckedBasePage {
         }
     }
 
-    public String[] getCSVHeaderOfDownload() throws Exception {
-        CSVWrapper csvReader = getDownloadAsCSV();
-        return csvReader.getRow(0);
+    public String[] getHeaderForDownloadAs(String fileExtension) throws Exception {
+        if(fileExtension.equals(".csv")) {
+            return getCSVHeaderOfDownload();
+        }
+
+        if(fileExtension.equals(".xlsx")) {
+            return getExcelHeaderOfDownload();
+        }
+
+        throw new IllegalArgumentException("Não existe um interpretador configurado para o arquivo do tipo \"%s\""
+                .formatted(fileExtension));
+    }
+
+    private String[] getExcelHeaderOfDownload() throws Exception {
+        return new ExcelWrapper(getDownloadStream(), 4).getTableHeaderCells();
+    }
+
+    private String[] getCSVHeaderOfDownload() throws Exception {
+        return new CSVWrapper(getDownloadStream()).getRow(0);
     }
 }
