@@ -11,7 +11,9 @@ Feature: Exportar Relatorio
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
 
+  @TestCaseKey=SMP-T275
   Scenario: Relatório Arquivo em CSV contém Transações Parceladas
     Given Existem relatórios já extraídos do tipo "Vendas", no formato ".csv", disponíveis para download
     When Usuário baixa um relatório do tipo "Vendas", formato ".csv"
     Then Usuário visualizará no arquivo baixado a coluna "Parcelas", contendo as parcelas das vendas
+
