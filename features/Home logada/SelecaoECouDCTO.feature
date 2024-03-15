@@ -16,7 +16,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
   Scenario: Validar Campos do Personalize sua Visualização aba Estabelecimento. (Usuário Master)
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     When Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
-    Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento ou número do estabelecimento"
+    Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento, ou número do estabelecimento ou nome"
     And Listagem por documento contendo dropdown com as informações de Nome fantasia do documento e o número do documento
     And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
     And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Ao selecionar esse formato, as informações do Portal serão apresentadas de forma correspondente ao estabelecimento escolhido. Você poderá alterar a seleção a qualquer momento no portal."
@@ -42,7 +42,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
   Scenario: Validar Campos do Personalize sua Visualização aba Documento. (Usuário Master)
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When usuário clica no "Botão Todos Documentos" em "Trocar Estabelecimento"
-    Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento"
+    Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento ou nome"
     And Usuário verá em "Trocar Estabelecimento - Botão Todos Documentos - Explicação" o texto "Essa visão irá agrupar todos os estabelecimentos abaixo do documento "
     And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
     And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Ao selecionar esse formato, as informações do Portal serão apresentadas de forma consolidada, agrupando os estabelecimentos abaixo do documento. Você poderá alterar a seleção a qualquer momento no portal."
