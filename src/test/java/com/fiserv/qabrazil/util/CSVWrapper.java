@@ -53,4 +53,8 @@ public class CSVWrapper {
     public String getCellAsText(int row, int column) {
         return lines.get(row)[column];
     }
+
+    public String[] getRow(int row) {
+        return lines.get(row);
+    }
 }

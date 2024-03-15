@@ -251,15 +251,18 @@ public class ReportsPage extends CheckedBasePage {
         return button.getAttribute("data-testid").equals(downloadTestId);
     }
 
-    public void validateDownloadedCSVFileHasColumnContainingSalesInstallments() throws Exception {
+    private CSVWrapper getDownloadAsCSV() throws Exception {
         if (download.getValue() == null) {
             throw new RuntimeException("Não foi possível salvar o arquivo para validação");
         }
-        String column = "Parcelas";
 
         Download file = download.getValue();
-        CSVWrapper csvReader = new CSVWrapper(file.createReadStream());
+        return new CSVWrapper(file.createReadStream());
+    }
 
+    public void validateDownloadedCSVFileHasColumnContainingSalesInstallments() throws Exception {
+        String column = "Parcelas";
+        CSVWrapper csvReader = getDownloadAsCSV();
         List<String> salesInstallments = csvReader.getColumnsAsText(column);
 
         log.info("Validating the following elements of column {}", column);
@@ -283,5 +286,10 @@ public class ReportsPage extends CheckedBasePage {
         } catch (NumberFormatException e) {
             fail("Má formatação de Parcela: %s. O primeiro e último valor precisam ser números inteiros.");
         }
+    }
+
+    public String[] getCSVHeaderOfDownload() throws Exception {
+        CSVWrapper csvReader = getDownloadAsCSV();
+        return csvReader.getRow(0);
     }
 }

@@ -16,6 +16,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
@@ -26,11 +28,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
+import static com.fiserv.qabrazil.steps.home.HomeCustomizeModalSteps.csv;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.*;
 
 public class ReportsSteps extends BaseSteps {
+
+    private static final Logger log = LoggerFactory.getLogger(ReportsSteps.class);
 
     @Autowired
     private ContractConfig contractConfig;
@@ -273,6 +278,16 @@ public class ReportsSteps extends BaseSteps {
     @Then("Usuário visualizará no arquivo baixado a coluna \"Parcelas\", contendo as parcelas das vendas")
     public void userWillSeeInTheDownloadedFileTheColumnHavingSalesInstallments() throws Exception {
         reportsPage.validateDownloadedCSVFileHasColumnContainingSalesInstallments();
+    }
+
+    @Then("Usuário visualizará no arquivo csv baixado as colunas")
+    public void userWillSeeInTheDownloadedFileTheColumns(String columns) throws Exception {
+        String[] expected = csv(columns);
+        String[] actual = reportsPage.getCSVHeaderOfDownload();
+
+        log.info("Validando o cabeçalho do arquivo csv");
+        assertThat(actual)
+                .containsExactlyInAnyOrder(expected);
     }
 
     private static void reportTypeIsCorrect(String fileType) {
