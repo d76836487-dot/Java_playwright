@@ -12,6 +12,19 @@ user-profiles:
     serviceContract: "143"
     institution: "00000010"
     allianceName: AFINZ
+  ota-afinz:
+    url: https://afinz.qa.portaldocliente.fiserv.com
+    user: ${OTA_AFINZ_CONTRACT_USER}
+    password: ${OTA_AFINZ_CONTRACT_PASSWORD}
+    identity: afinz
+    primaryCssClass: cor-azul
+    institutionTags: '@pt-br,@afinz,@NaoPermiteAdiantamento,@NaoPermiteSolicitações'
+    clientTags: '@MDRFlex,@UsuárioMaster'
+    locale: pt-br
+    apiHost: https://cat.api.firstdata.com/bwa/
+    serviceContract: "143"
+    institution: "00000010"
+    allianceName: AFINZ
   azulzinha:
     url: https://azulzinha.qa.portaldocliente.fiserv.com
     user: ${AZULZINHA_CONTRACT_USER}

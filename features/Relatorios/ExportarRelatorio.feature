@@ -20,8 +20,8 @@ Feature: Exportar Relatorio
   @api
   Scenario Outline: Validar Arquivo de Relatório de Vendas com 1 Estabelecimento Comercial
     Given usuário possui apenas um Estabelecimento Comercial vinculado
-    And Existem relatórios já extraídos do tipo "Vendas", no formato "<arquivo>", disponíveis para download
-    When Usuário baixa um relatório do tipo "Vendas", formato "<arquivo>"
+    And Existem relatórios já extraídos do tipo "<tipo>", no formato "<arquivo>", disponíveis para download
+    When Usuário baixa um relatório do tipo "<tipo>", formato "<arquivo>"
     Then Usuário visualizará no "<arquivo>" baixado, as colunas
     """
     Data da venda, Hora da venda, Data do ajuste, Número do Estabelecimento, Código de Autorização,
@@ -33,3 +33,21 @@ Feature: Exportar Relatorio
     | arquivo |
     | .csv    |
     | .xlsx   |
+
+  @api
+  Scenario Outline: Validar Arquivo de Relatório de Pagamentos com 1 Estabelecimento Comercial
+    Given usuário possui apenas um Estabelecimento Comercial vinculado
+    And Existem relatórios já extraídos do tipo "Pagamentos", no formato "<arquivo>", disponíveis para download
+    When Usuário baixa um relatório do tipo "Pagamentos", formato "<arquivo>"
+    Then Usuário visualizará no "<arquivo>" baixado, as colunas
+    """
+    Data de pagamento, Código de pagamento, Tipo de pagamento, Data da venda, Hora da venda, Número do Estabelecimento,
+    Código de Autorização, Comprovante da venda, Código do pedido, Canal, Número do terminal, Produto, Parcelas,
+    Tipo de Cartão, Bandeira, Status da venda, Valor bruto da transação, Valor bruto da parcela paga,
+    Valor da taxa (MDR), Valor líquido da parcela/transação paga, Número do Cartão, NSU, Status do pagamento da venda,
+    Banco, Agência, Conta
+    """
+    Examples:
+      | arquivo |
+      | .csv    |
+      | .xlsx   |

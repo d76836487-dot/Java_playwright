@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.util;
 
+import org.apache.commons.lang3.StringUtils;
 import org.dhatim.fastexcel.reader.Cell;
 import org.dhatim.fastexcel.reader.ReadableWorkbook;
 import org.dhatim.fastexcel.reader.Sheet;
@@ -82,7 +83,10 @@ public class ExcelWrapper implements AutoCloseable {
     }
 
     public String[] getRow(int row) throws Exception {
-        return sheet.read().get(row).stream().map(Cell::getText).toArray(String[]::new);
+        return sheet.read().get(row).stream()
+                .map(Cell::getText)
+                .filter(StringUtils::isNotEmpty)
+                .toArray(String[]::new);
     }
 
     public String getCellAsText(int row, int column) throws IOException {
