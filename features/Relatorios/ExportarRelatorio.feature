@@ -18,6 +18,7 @@ Feature: Exportar Relatorio
     Then Usuário visualizará no arquivo baixado a coluna "Parcelas", contendo as parcelas das vendas
 
   @api
+  @TestCaseKey=SMP-T276
   Scenario Outline: Validar Arquivo de Relatório de Vendas com 1 Estabelecimento Comercial
     Given usuário possui apenas um Estabelecimento Comercial vinculado
     And Existem relatórios já extraídos do tipo "<tipo>", no formato "<arquivo>", disponíveis para download
@@ -30,11 +31,12 @@ Feature: Exportar Relatorio
     Número do Cartão, NSU, Data prevista de pagamento da venda, Status do pagamento da venda, Data efetiva do pagamento da venda
     """
     Examples:
-    | arquivo |
-    | .csv    |
-    | .xlsx   |
+      | arquivo |
+      | .csv    |
+      | .xlsx   |
 
   @api
+  @TestCaseKey=SMP-T277
   Scenario Outline: Validar Arquivo de Relatório de Pagamentos com 1 Estabelecimento Comercial
     Given usuário possui apenas um Estabelecimento Comercial vinculado
     And Existem relatórios já extraídos do tipo "Pagamentos", no formato "<arquivo>", disponíveis para download
@@ -51,3 +53,4 @@ Feature: Exportar Relatorio
       | arquivo |
       | .csv    |
       | .xlsx   |
+
