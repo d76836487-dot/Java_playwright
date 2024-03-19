@@ -75,7 +75,7 @@ Feature: Base de respostas NPS
     Then usuario devera visualizar 10 itens por default em "Exibindo Itens"
 
   @TestCaseKey=SMP-T35
-  Scenario: Validando Cancelamento ao Gerar Relatório
+  Scenario: Cancelando antes de Gerar Relatório
     Given o usuário esteja logado no portal do cliente Visão Operador
     When acessa o perfil admin
     And na area "Acessar area do cliente" ,clicar em NPS
@@ -84,7 +84,7 @@ Feature: Base de respostas NPS
     Then Usuário deve ser redirecionado para a tela de NPS
 
   @TestCaseKey=SMP-T47
-  Scenario: Validando fechar ao Gerar Relatorio
+  Scenario: Fechando antes de Gerar Relatorio
     Given o usuário esteja logado no portal do cliente Visão Operador
     When acessa o perfil admin
     And na area "Acessar area do cliente" ,clicar em NPS
