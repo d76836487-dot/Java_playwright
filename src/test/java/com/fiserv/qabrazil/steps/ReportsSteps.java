@@ -353,7 +353,7 @@ public class ReportsSteps extends BaseSteps {
 
     private void selectSecondEc() {
         PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
-        PageField secondEc = options.getAllPageField().get(2);
+        PageField secondEc = options.getAllVisiblePageField().get(2);
 
         pageField.from("Modal Gerar Relatórios - Campo Select EC").click();
         secondEc.click();
@@ -372,7 +372,7 @@ public class ReportsSteps extends BaseSteps {
     }
 
     private void verifyCanSelectOtherECs(PageField options) {
-        List<PageField> listOptions = options.getAllPageField();
+        List<PageField> listOptions = options.getAllVisiblePageField();
         PageField selectedEC = pageField.from("Modal Gerar Relatórios - Select EC Selecionado");
         listOptions.get(1).click();
         assertEquals("%s deveria estar selecionado", listOptions.get(1).getAsText(), selectedEC.getAsText());

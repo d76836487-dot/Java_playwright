@@ -73,8 +73,8 @@ public class PageField {
         this.locator = locator;
     }
 
-    public List<PageField> getAllPageField() {
-        return allPageField().toList();
+    public List<PageField> getAllVisiblePageField() {
+        return allVisiblePageField().toList();
     }
 
     public Optional<PageField> firstWith(Predicate<PageField> condition) {
@@ -84,7 +84,13 @@ public class PageField {
     }
 
     public PageField firstOf() {
-        return allPageField().findFirst().orElseThrow(() -> new RuntimeException("Couldn't find any of %s".formatted(selector)));
+        return allVisiblePageField().findFirst().orElseThrow(() -> new RuntimeException("Couldn't find any of %s".formatted(selector)));
+    }
+
+    private Stream<PageField> allVisiblePageField() {
+        return locator.all().stream()
+                .filter(Locator::isVisible)
+                .map(sublocator -> new PageField(displayName, context, selector, sublocator));
     }
 
     private Stream<PageField> allPageField() {
@@ -160,10 +166,6 @@ public class PageField {
 
     public boolean elementIsVisibleRightNow() {
         return locator.isVisible();
-    }
-
-    public boolean elementIsEnabledRightNow() {
-        return locator.isEnabled();
     }
 
     public boolean isChecked() {

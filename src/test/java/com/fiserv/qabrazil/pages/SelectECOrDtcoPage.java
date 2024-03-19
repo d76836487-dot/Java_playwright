@@ -43,7 +43,7 @@ public class SelectECOrDtcoPage extends BasePage {
     public void openDropdownForDocument(String formattedDoc) {
         List<PageField> nameEstablishment = pageField
                 .from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento")
-                .getAllPageField();
+                .getAllVisiblePageField();
 
         findPageFieldWithWithDataTestId(formattedDoc, nameEstablishment).click();
     }
@@ -51,21 +51,21 @@ public class SelectECOrDtcoPage extends BasePage {
     public String getTextForDocument(String document, String displayName) {
         List<PageField> nameEstablishment = pageField
                 .from(displayName)
-                .getAllPageField();
+                .getAllVisiblePageField();
 
         return findPageFieldWithWithDataTestId(document, nameEstablishment).getAsText();
     }
 
     public boolean ecIsVisible(String ec) {
         List<PageField> pageFields = pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe")
-                .getAllPageField();
+                .getAllVisiblePageField();
 
         return findPageFieldWithWithDataTestId(ec, pageFields).fieldIsOneVisibleAndEnabled();
     }
 
     public String getTextForEC(String documentOrEc, String displayName) {
         List<PageField> pageFields = pageField.from(displayName)
-                .getAllPageField();
+                .getAllVisiblePageField();
 
         return findPageFieldWithWithDataTestId(documentOrEc, pageFields).getAsText();
     }
@@ -154,7 +154,7 @@ public class SelectECOrDtcoPage extends BasePage {
     }
 
     private static List<String> filterDocsFromDialog(PageField inputs) {
-        return inputs.getAllPageField().stream()
+        return inputs.getAllVisiblePageField().stream()
                 .map(pf -> pf.getLocator().getAttribute("value"))
                 .filter(value -> value != null && value.length() > 1 && Character.isDigit(value.charAt(0)))
                 .toList();
@@ -172,7 +172,7 @@ public class SelectECOrDtcoPage extends BasePage {
 
     public void selectDocumentInput(String docToSelect) {
         List<PageField> allPageFields = pageField.from("Trocar Estabelecimento - Documento - Documento Estabelecimento")
-                .getAllPageField();
+                .getAllVisiblePageField();
         for(PageField pf: allPageFields) {
             if (pf.getLocator().inputValue().equals(docToSelect)) {
                 pf.click();
@@ -202,10 +202,10 @@ public class SelectECOrDtcoPage extends BasePage {
 
     public void storeNameAndEc() {
         selectedEcName = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
-                .getAllPageField().get(0)
+                .getAllVisiblePageField().get(0)
                 .getAsText();
         selectedEc = pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe")
-                .getAllPageField().get(0)
+                .getAllVisiblePageField().get(0)
                 .getAsText();
     }
 }

@@ -226,8 +226,8 @@ public class ReportsPage extends CheckedBasePage {
 
     private Locator getFirstReportAvailableForDownloadOfTypeAndFiletype(String type, String extention) {
         List<Locator> downloadButtons = getAllDownloadCells();
-        List<PageField> reportsTypes = pageField.from("Relatórios - Item - Tipo Relatório").getAllPageField();
-        List<PageField> reportsFilenames = pageField.from("Relatórios - Item - Nome Arquivo").getAllPageField();
+        List<PageField> reportsTypes = pageField.from("Relatórios - Item - Tipo Relatório").getAllVisiblePageField();
+        List<PageField> reportsFilenames = pageField.from("Relatórios - Item - Nome Arquivo").getAllVisiblePageField();
 
         for (int i = 0; i < reportsTypes.size(); i++) {
             if(isOfType(type, reportsTypes.get(i))

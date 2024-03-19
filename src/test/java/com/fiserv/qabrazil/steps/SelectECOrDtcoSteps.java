@@ -53,7 +53,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     public void checkFirstDropdown() {
         List<PageField> detailNameEstablishment = pageField
                 .from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
-                .getAllPageField();
+                .getAllVisiblePageField();
         assertFalse("Retornou zero detalhes para primeiro dropdown", detailNameEstablishment.isEmpty());
         assertTrue("Dropdown do primeiro documento não abriu ao clicar", detailNameEstablishment.get(0).elementIsVisibleRightNow());
     }
@@ -165,11 +165,11 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     public void checkIfFiltered() {
         assertEquals(1,
                 pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento")
-                        .getAllPageField()
+                        .getAllVisiblePageField()
                         .size());
         assertEquals(1,
                 pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
-                        .getAllPageField()
+                        .getAllVisiblePageField()
                         .size());
     }
 
@@ -255,7 +255,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     @When("Usuário selecionar um EC e clicar Acessar")
     public void userSelectEcAndAccess() {
         PageField firstEcFromDropdown = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
-                .getAllPageField().get(0);
+                .getAllVisiblePageField().get(0);
 
         if (!firstEcFromDropdown.elementIsVisibleRightNow()) {
             selectECOrDtcoPage.openFirstDropdown();
