@@ -4,7 +4,9 @@
 @Zephyr:Folder=/Portal_do_Cliente/NPS/Acessar_Pesquisa_NPS_Com_Usuário_Secundário
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
+@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 #noinspection CucumberUndefinedStep
+
 Feature: Acessar Pesquisa NPS Com Usuário Secundário
 
   @TestCaseKey=SMP-T130
