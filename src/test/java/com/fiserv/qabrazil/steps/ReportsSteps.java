@@ -290,6 +290,17 @@ public class ReportsSteps extends BaseSteps {
                 .containsExactlyInAnyOrder(expected);
     }
 
+    @Then("usuário seleciona um período maior que um ano e tenta gerar o relatório")
+    public void userSelectsAPeriodBiggerThanAYear() {
+        reportsPage.selectOneYear();
+
+        assertNotNull("Não foi possível selecionar o período", pageField
+                .from("Modal Gerar Relatórios - Select Período Selecionado")
+                .getAsText());
+
+        pageField.from("Modal Gerar Relatórios - Botão Gerar").click();
+    }
+
     private static void reportTypeIsCorrect(String fileType) {
         final String message = String.format("Tipo do relatório \"%s\" é diferente de \"Vendas\" e \"Pagamentos\"", fileType);
         final List<String> allowedFileTypes = List.of("Vendas", "Pagamentos");

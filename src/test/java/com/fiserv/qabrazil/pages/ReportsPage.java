@@ -18,10 +18,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static com.fiserv.automation.api.util.DateUtil.*;
 import static com.fiserv.qabrazil.config.TestIdsConfig.getQuerySelector;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -309,5 +312,41 @@ public class ReportsPage extends CheckedBasePage {
 
     private String[] getCSVHeaderOfDownload() throws Exception {
         return new CSVWrapper(getDownloadStream()).getRow(0);
+    }
+
+    public void selectOneYear() {
+        String today = LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
+        clickDateInCalendar(today);
+
+        clickOnYesterdayOfOneYearAgo();
+    }
+
+    private void clickOnYesterdayOfOneYearAgo() {
+        LocalDate yesterdayOneYearAgo = LocalDate.now().minusYears(1);
+
+        Locator inputYear = page.locator(getQuerySelector("Modal Gerar Relatórios - Ano Calendário"));
+        inputYear.clear();
+        inputYear.pressSequentially(year(yesterdayOneYearAgo));
+
+        String monthName = monthName(yesterdayOneYearAgo);
+        monthName = monthName.substring(0, 1).toUpperCase() + monthName.substring(1);
+
+
+        page.locator(getQuerySelector("Modal Gerar Relatórios - Mês Calendário"))
+                .selectOption(monthName);
+
+        clickDateInCalendar(yesterdayOneYearAgo.format(DateTimeFormatter.ofPattern("MMMM d, yyyy")));
+    }
+
+    private void clickDateInCalendar(String date) {
+        List<Locator> calendarDays = page.locator(getQuerySelector("Modal Gerar Relatórios - Dia Calendário")).all();
+
+        Locator yesterdayElement = calendarDays.stream()
+                .filter(d -> d.getAttribute("aria-label").equalsIgnoreCase(date) && d.isVisible())
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Could not find any element containing the date %s in the calendar".formatted(date)));
+
+        log.info("selecionando data {} no calendário", date);
+        yesterdayElement.click();
     }
 }

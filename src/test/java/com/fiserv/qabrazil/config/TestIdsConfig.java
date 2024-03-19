@@ -211,6 +211,8 @@ public class TestIdsConfig {
             entry("Date ranger - Dia inicial Digitado", "//*[@data-testid='generic-calendar-input-init-date']//input"),
             entry("Date ranger - Dia final Digitado", "//*[@data-testid='generic-calendar-input-end-date']//input"),
             entry("Modal Gerar Relatórios - Dia Calendário", "//*[@class='flatpickr-days']//span[contains(@class, 'flatpickr-day')]"),
+            entry("Modal Gerar Relatórios - Ano Calendário", "//*[contains(@class, 'DateInputPicker-periodo-calendar')]//input[contains(@class, 'numInput')][contains(@class, 'cur-year')]"),
+            entry("Modal Gerar Relatórios - Mês Calendário", "//*[contains(@class, 'DateInputPicker-periodo-calendar')]//select[@aria-label='Month']"),
 
             // TODO: maps below should be changed for data-testid
             entry("Vendas - Histórico Vendas - Período - Descrição", "//span[contains(text(),'Período')]/../span[2]"),
@@ -219,6 +221,7 @@ public class TestIdsConfig {
             entry("Vendas - Histórico Vendas - Total de vendas", "//span[contains(text(),'Total de vendas') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
             entry("Relatórios - Texto Descritivo", "//span[contains(text(),'Caso já tenha gerado')]"),
             entry("Relatórios - Tabela - Item", "//tr[.//*[@data-testid='relatorios-table-row-nome-arquivo']]"),
+            entry("Relatórios - Notificação de Falha", "//span[starts-with(text(), 'O intervalo da seleção deve ser')]"),
             entry("Modal Gerar Relatórios - Select EC Label", "//div[@role='dialog']//div[@data-block='AppAntecipacao.SimpleDropdownSelect'][.//span[starts-with(text(), 'Estabelecimento')]]//label/span"),
             entry("Modal Gerar Relatórios - Select Tipo Label", "//div[@role='dialog']//div[@data-block='AppAntecipacao.SimpleDropdownSelect'][.//span[starts-with(text(), 'Tipo de relat')]]//label/span"),
             entry("Modal Gerar Relatórios - Select Formato Arquivo Label", "//div[@role='dialog']//div[@data-block='AppAntecipacao.SimpleDropdownSelect'][.//span[starts-with(text(), 'Formato do arquivo')]]//label/span"),

@@ -81,6 +81,10 @@ public class DateUtil {
         return date.format(DateTimeFormatter.ofPattern("dd", locale));
     }
 
+    public static String year(LocalDate date) {
+        return date.format(DateTimeFormatter.ofPattern("yyyy", locale));
+    }
+
     public static String weekday(DayOfWeek dayOfWeek) {
         return today.getDayOfWeek().equals(dayOfWeek) ? "Hoje" : StringUtils.capitalize(dayOfWeek.getDisplayName(TextStyle.FULL, locale));
     }
@@ -92,6 +96,10 @@ public class DateUtil {
     public static String month(LocalDate date) {
         String monthName = date.getMonth().getDisplayName(TextStyle.FULL, locale);
         return StringUtils.capitalize(monthName).substring(0, 3);
+    }
+
+    public static String monthName(LocalDate date) {
+        return date.getMonth().getDisplayName(TextStyle.FULL, locale);
     }
 
     public static String[] dateAndMonth(LocalDate date) {
