@@ -98,9 +98,8 @@ Feature: Gerar Relatorio
       | .csv           | vendas     |
       | .xlsx-(excel)  | vendas     |
 
-
-  # TODO: não possível no momento @rebatedor
-#  43.	Cenário: Validar mensagem de erro Sistema Indisponível
+# TODO: não possível no momento @rebatedor
+#  43.    Cenário: Validar mensagem de erro Sistema Indisponível
 #  Dado que o usuário está logado no Merchant Portal
 #  E o usuário está no modal Relatórios
 #  E o usuário preencheu todos os campos obrigatórios

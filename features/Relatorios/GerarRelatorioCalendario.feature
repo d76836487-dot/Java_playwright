@@ -19,8 +19,10 @@ Feature: Gerar Relatorio Calendario
     Then Usuário verá em "Relatórios - Notificação de Falha" o texto
       | O intervalo da seleção deve ser menor ou igual a 12 meses |
 
+  @TestCaseKey=SMP-T286
   Scenario: Componente Período permite data anterior a data de hoje
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     And usuário seleciona o período do dia anterior
     And usuário clica no "Botão Gerar" em "Modal Gerar Relatórios"
     Then Usuário verá em "Relatórios - Notificação Sucesso" o texto "Relatório Solicitado com Sucesso!!"
+
