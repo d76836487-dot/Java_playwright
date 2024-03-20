@@ -6,7 +6,6 @@
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 #noinspection CucumberUndefinedStep
-
 Feature: Esqueci Minha Senha
 
   @TestCaseKey=SMP-T204
