@@ -98,3 +98,12 @@ Feature: Gerar Relatorio
       | .csv           | vendas     |
       | .xlsx-(excel)  | vendas     |
 
+
+  # TODO: não possível no momento @rebatedor
+#  43.	Cenário: Validar mensagem de erro Sistema Indisponível
+#  Dado que o usuário está logado no Merchant Portal
+#  E o usuário está no modal Relatórios
+#  E o usuário preencheu todos os campos obrigatórios
+#  Quando o usuário clica no botão Gerar Relatórios
+#  E o sistema está indisponível
+#  Então usuário visualizará o popup de erro com a mensagem “Sua solicitação não foi concluída! Refaça a solicitação do seu relatório”, e os botões “Fechar” e “X”
