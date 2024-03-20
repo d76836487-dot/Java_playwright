@@ -73,6 +73,10 @@ public class PageField {
         this.locator = locator;
     }
 
+    public List<PageField> getAllPageField() {
+        return allPageField().toList();
+    }
+
     public List<PageField> getAllVisiblePageField() {
         return allVisiblePageField().toList();
     }

@@ -255,7 +255,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     @When("Usuário selecionar um EC e clicar Acessar")
     public void userSelectEcAndAccess() {
         PageField firstEcFromDropdown = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
-                .getAllVisiblePageField().get(0);
+                .getAllPageField().get(0);
 
         if (!firstEcFromDropdown.elementIsVisibleRightNow()) {
             selectECOrDtcoPage.openFirstDropdown();
