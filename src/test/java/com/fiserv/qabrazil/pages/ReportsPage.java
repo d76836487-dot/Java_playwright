@@ -349,4 +349,10 @@ public class ReportsPage extends CheckedBasePage {
         log.info("selecionando data {} no calendário", date);
         yesterdayElement.click();
     }
+
+    public PageField selectSecondEcAsOptions() {
+        PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
+        waitUntilTrue(() -> options.getAllVisiblePageField().size() >= 2);
+        return options.getAllVisiblePageField().get(2);
+    }
 }

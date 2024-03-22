@@ -363,8 +363,7 @@ public class ReportsSteps extends BaseSteps {
     }
 
     private void selectSecondEc() {
-        PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
-        PageField secondEc = options.getAllVisiblePageField().get(2);
+        PageField secondEc = reportsPage.selectSecondEcAsOptions();
 
         pageField.from("Modal Gerar Relatórios - Campo Select EC").click();
         secondEc.click();
