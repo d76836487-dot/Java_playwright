@@ -16,9 +16,9 @@ public class HomeCustomizeModal extends BasePage {
 
     public void hasOptions(String ...expectedOptions) {
         // TODO: change for data-testid
-        List<String> foundOptions = page
-                .locator(".container-atalhos")
-                .locator(".fundo-branco")
+        List<String> foundOptions = pageField.from("Home - personalizar - todos os itens")
+                .getLocator()
+                .locator("//../../../..")
                 .allTextContents();
 
         assertThat(foundOptions).containsExactlyInAnyOrder(expectedOptions);
