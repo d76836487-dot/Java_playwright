@@ -18,6 +18,7 @@ Feature: Tela Vendas Hoje com CNPJ com API e Seleção EC
 
   @ignore # TODO: confirmar a api desta tela...
   @UsuárioMaster
+  @TestCaseKey=SMP-T291
   Scenario: Vendas HOJE com seleção de Documento (Usuário Master)
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento e clicar Acessar
