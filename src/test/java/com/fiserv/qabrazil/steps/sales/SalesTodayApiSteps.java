@@ -103,7 +103,7 @@ public class SalesTodayApiSteps extends BaseSteps {
 
     @Then("Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API do EC selecionado")
     public void qtySalesSameApiSelectedEc() throws Exception {
-        WeeklyScheduleDto dto = apiSalesService.getTotalSalesTodayEc(selectECOrDtcoPage.getSelectedEc()).get(0);
+        WeeklyScheduleDto dto = apiSalesService.getTotalSalesTodayEc(getSelectedEcs()).get(0);
         log.info(dto.toString());
 
         PageField qtySalesId = pageField.from("Vendas Hoje - Resumo - Quantidade Vendas");
@@ -113,5 +113,11 @@ public class SalesTodayApiSteps extends BaseSteps {
 
         assertEquals("Valor de vendas não é igual a API", dto.getGrossValues(), valueSales.doubleValue(), 0.001);
         assertEquals("Quantidade de vendas não é igual a API", String.valueOf(dto.getOccurrences()), qtySales);
+    }
+
+    private List<String> getSelectedEcs() throws Exception {
+        if (selectECOrDtcoPage.getSelectedEc() != null) return List.of(selectECOrDtcoPage.getSelectedEc());
+
+        return apiUserDetailsService.getEcsFromDoc(selectECOrDtcoPage.getSelectedDoc());
     }
 }

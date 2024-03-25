@@ -44,20 +44,3 @@ Feature: Home Logada Conferindo Com Api
   Scenario: Está trazendo todos os ECs no card Adiantamento igual a API
     Given Usuário acessou o Home
     Then 'Home - Card Antecipação - ECs' são os mesmos que a API
-
-  @ignore # TODO: confirmar a api
-  @UsuárioMaster
-  @TestCaseKey=SMP-T287
-  Scenario: Vendas HOJE com seleção de EC (Usuário Master)
-    Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
-    When Usuário selecionar um EC e clicar Acessar
-    Then Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API do EC selecionado
-    And 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API do EC selecionado
-
-  @ignore # TODO: confirmar a api
-  @UsuárioMaster
-  Scenario: Vendas HOJE com seleção de Documento (Usuário Master)
-    Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
-    When Usuário selecionar um documento e clicar Acessar
-    Then Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API do EC selecionado
-    And 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API do EC selecionado

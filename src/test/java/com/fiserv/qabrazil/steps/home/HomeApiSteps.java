@@ -194,7 +194,7 @@ public class HomeApiSteps extends BaseSteps {
         assertTrue(message, allSalesInPageMatchApi);
     }
 
-    private List<String> getSelectedEcs() {
+    private List<String> getSelectedEcs() throws Exception {
         if (selectECOrDtcoPage.getSelectedEc() != null) return List.of(selectECOrDtcoPage.getSelectedEc());
 
         return apiUserDetailsService.getEcsFromDoc(selectECOrDtcoPage.getSelectedDoc());

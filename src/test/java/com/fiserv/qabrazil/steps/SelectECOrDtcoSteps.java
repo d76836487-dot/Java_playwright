@@ -228,6 +228,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
                 pageField.from("Trocar Estabelecimento - Buscar documento").getAsText().isEmpty());
     }
 
+    @Given("Usuário selecionou um documento e clicar Acessar")
     @When("Usuário selecionar um documento e clicar Acessar")
     public void userSelectsDocument() {
         List<String> allDocs = selectECOrDtcoPage.getDocumentsFromTabDocument();

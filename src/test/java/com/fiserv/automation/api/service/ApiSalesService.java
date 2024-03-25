@@ -41,12 +41,12 @@ public class ApiSalesService {
         return getTotalSales(today);
     }
 
-    public List<WeeklyScheduleDto> getTotalSalesTodayEc(String Ec) throws Exception {
+    public List<WeeklyScheduleDto> getTotalSalesTodayEc(List<String> allSelectedEcs) throws Exception {
         String today = DateUtil.formattedDate(0);
 
         String apiAccessToken = browserLocalStorage.getApiAccessToken();
 
-        List<WeeklyScheduleDto> dto = getTotalRealizedSales(today, today, apiAccessToken, List.of(Ec));
+        List<WeeklyScheduleDto> dto = getTotalRealizedSales(today, today, apiAccessToken, allSelectedEcs);
 
         if (dto.isEmpty()) return List.of(WeeklyScheduleDto.NULL);
 
