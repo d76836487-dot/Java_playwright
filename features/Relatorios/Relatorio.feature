@@ -45,7 +45,7 @@ Feature: Consultar Relatorios
     @pt-br
     Examples:
       | colunas                                                                    |
-      | Nome Do Arquivo, Documento/EC, Tipo do Arq, Solicitado em, Periodo, Baixar |
+      | Nome Do Arquivo, Documento/EC, Tipo do Arq, Solicitado em, Período, Baixar |
 
   #  Por motivos de performance do teste, o passo "Usuário visualizará a listagem do relatório com valores corretos"
   #  aplica as seguintes validações:
