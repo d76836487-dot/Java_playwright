@@ -41,6 +41,20 @@ public class ApiSalesService {
         return getTotalSales(today);
     }
 
+    public List<WeeklyScheduleDto> getTotalSalesTodayEc(String Ec) throws Exception {
+        String today = DateUtil.formattedDate(0);
+
+        String apiAccessToken = browserLocalStorage.getApiAccessToken();
+        List<String> ecs = apiUserDetailsService.getEcs();
+
+        List<WeeklyScheduleDto> dto = getTotalRealizedSales(today, today, apiAccessToken, List.of(Ec));
+
+        if (dto.isEmpty()) return List.of(WeeklyScheduleDto.NULL);
+
+        return dto;
+    }
+
+
     public List<WeeklyScheduleDto> getTotalSalesYesterday() throws Exception {
         String today = DateUtil.formattedDate(-1);
         return getTotalSales(today);
@@ -94,17 +108,22 @@ public class ApiSalesService {
 
     @NotNull
     private List<WeeklyScheduleDto> getTotalSales(String today) throws Exception {
-        List<WeeklyScheduleDto> dto = getTotalRealizedSales(today, today);
+        List<WeeklyScheduleDto> dto = getTotalRealizedSalesAllEc(today, today);
 
         if (dto.isEmpty()) return List.of(WeeklyScheduleDto.NULL);
 
         return dto;
     }
 
-    private List<WeeklyScheduleDto> getTotalRealizedSales(String initialDate, String endDate) throws Exception {
+    private List<WeeklyScheduleDto> getTotalRealizedSalesAllEc(String initialDate, String endDate) throws Exception {
         String apiAccessToken = browserLocalStorage.getApiAccessToken();
         List<String> ecs = apiUserDetailsService.getEcs();
 
+        return getTotalRealizedSales(initialDate, endDate, apiAccessToken, ecs);
+    }
+
+    @NotNull
+    private List<WeeklyScheduleDto> getTotalRealizedSales(String initialDate, String endDate, String apiAccessToken, List<String> ecs) {
         List<RealizedSaleSummaryDto> salesDto = getRealizedSalesSummarized(initialDate, endDate, apiAccessToken, ecs);
 
         Map<String, List<RealizedSaleSummaryDto>> groupByDay = salesDto.stream()

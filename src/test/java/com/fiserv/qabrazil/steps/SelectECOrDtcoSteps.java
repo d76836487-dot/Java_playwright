@@ -252,6 +252,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
                 prevSelected.contains(formatCpfCnpj(selectECOrDtcoPage.getSelectedDoc())));
     }
 
+    @Given("Usuário selecionou um EC e clicar Acessar")
     @When("Usuário selecionar um EC e clicar Acessar")
     public void userSelectEcAndAccess() {
         PageField firstEcFromDropdown = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")

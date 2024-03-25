@@ -8,6 +8,7 @@ import com.fiserv.qabrazil.dto.SalesDtoPage;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.FilterComponentPage;
 import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.pages.sales.SalesTodayPage;
 import com.fiserv.qabrazil.util.Currency;
@@ -37,8 +38,12 @@ public class SalesTodayApiSteps extends BaseSteps {
 
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
+
     @Autowired
     private SalesTodayPage salesTodayPage;
+
+    @Autowired
+    private SelectECOrDtcoPage selectECOrDtcoPage;
 
     @Then("Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API")
     public void qtySalesSameApi() throws Exception {
@@ -96,4 +101,17 @@ public class SalesTodayApiSteps extends BaseSteps {
         }
     }
 
+    @Then("Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API do EC selecionado")
+    public void qtySalesSameApiSelectedEc() throws Exception {
+        WeeklyScheduleDto dto = apiSalesService.getTotalSalesTodayEc(selectECOrDtcoPage.getSelectedEc()).get(0);
+        log.info(dto.toString());
+
+        PageField qtySalesId = pageField.from("Vendas Hoje - Resumo - Quantidade Vendas");
+        PageField valueSalesId = pageField.from("Vendas Hoje - Resumo - Valor Vendas");
+        String qtySales = qtySalesId.getAsText();
+        Currency valueSales = valueSalesId.getAsCurrency();
+
+        assertEquals("Valor de vendas não é igual a API", dto.getGrossValues(), valueSales.doubleValue(), 0.001);
+        assertEquals("Quantidade de vendas não é igual a API", String.valueOf(dto.getOccurrences()), qtySales);
+    }
 }
