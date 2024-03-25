@@ -45,7 +45,6 @@ public class ApiSalesService {
         String today = DateUtil.formattedDate(0);
 
         String apiAccessToken = browserLocalStorage.getApiAccessToken();
-        List<String> ecs = apiUserDetailsService.getEcs();
 
         List<WeeklyScheduleDto> dto = getTotalRealizedSales(today, today, apiAccessToken, List.of(Ec));
 

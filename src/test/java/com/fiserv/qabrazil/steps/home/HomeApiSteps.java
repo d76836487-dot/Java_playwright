@@ -2,11 +2,7 @@ package com.fiserv.qabrazil.steps.home;
 
 import com.fiserv.automation.api.dto.AuthorizationsDto;
 import com.fiserv.automation.api.dto.WeeklyScheduleDto;
-import com.fiserv.automation.api.service.ApiAuthorizationsService;
-import com.fiserv.automation.api.service.ApiPaymentsService;
-import com.fiserv.automation.api.service.ApiPrepaymentService;
-import com.fiserv.automation.api.service.ApiReceivablesService;
-import com.fiserv.automation.api.service.ApiUserDetailsService;
+import com.fiserv.automation.api.service.*;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
@@ -67,7 +63,7 @@ public class HomeApiSteps extends BaseSteps {
         List<String> saleTime = commonsPage.getAllTextsFromElement(saleTimeId);
 
         List<AuthorizationsDto> lastSalesPage = new ArrayList<>();
-        for(int i = 0; i < salesTypes.size(); i++) {
+        for (int i = 0; i < salesTypes.size(); i++) {
             AuthorizationsDto dto = new AuthorizationsDto()
                     .setTipoAutorizacao(salesTypes.get(i))
                     .setValorTransacao(String.valueOf(salesValues.get(i)))
@@ -134,7 +130,7 @@ public class HomeApiSteps extends BaseSteps {
         String qtyDepositsPageId = identifier.testId();
         if (!commonsPage.elementIsVisibleNoWait(qtyDepositsPageId)) return 0;
         return Integer.parseInt(
-                    commonsPage.getTextFromElement(identifier).replaceAll("\\D", ""));
+                commonsPage.getTextFromElement(identifier).replaceAll("\\D", ""));
     }
 
     private Number getValueForDay(List<WeeklyScheduleDto> weeklySchedule, String dayPage) {
@@ -161,7 +157,7 @@ public class HomeApiSteps extends BaseSteps {
             System.out.println(sale);
         }
 
-        return Stream.concat(payments.stream(),sales.stream()).toList();
+        return Stream.concat(payments.stream(), sales.stream()).toList();
     }
 
     @Then("'Home - Card Antecipação - ECs' são os mesmos que a API")
@@ -178,7 +174,7 @@ public class HomeApiSteps extends BaseSteps {
 
     @Then("Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API do EC selecionado")
     public void totalSalesHomeMatchApiSelectedEc() throws Exception {
-        Number salesTodayApi = apiAuthorizationsService.getSalesToday(selectECOrDtcoPage.getSelectedEc()).doubleValue();
+        Number salesTodayApi = apiAuthorizationsService.getSalesToday(getSelectedEcs()).doubleValue();
         Number salesTodayPage = pageField.from("Home - Card Vendas Hoje - Valor Vendas Hoje").getAsCurrency().doubleValue();
 
         assertEquals("Total de vendas da página é diferente da api", salesTodayApi, salesTodayPage);
@@ -186,7 +182,7 @@ public class HomeApiSteps extends BaseSteps {
 
     @Then("'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API do EC selecionado")
     public void lastSalesMatchApiSelectedEc() throws Exception {
-        List<AuthorizationsDto> lastSalesApi = apiAuthorizationsService.getValueLastSalesForEc(selectECOrDtcoPage.getSelectedEc());
+        List<AuthorizationsDto> lastSalesApi = apiAuthorizationsService.getValueLastSalesForEc(getSelectedEcs());
         List<AuthorizationsDto> lastSalesPage = getLastSalesAsDto();
 
         boolean allSalesInPageMatchApi = lastSalesPage.stream()
@@ -196,5 +192,11 @@ public class HomeApiSteps extends BaseSteps {
         String message = String.format("Valor das últimas vendas da página é diferente da api.\n Esperado: %s\n retornado %s",
                 lastSalesApi, lastSalesPage);
         assertTrue(message, allSalesInPageMatchApi);
+    }
+
+    private List<String> getSelectedEcs() {
+        if (selectECOrDtcoPage.getSelectedEc() != null) return List.of(selectECOrDtcoPage.getSelectedEc());
+
+        return apiUserDetailsService.getEcsFromDoc(selectECOrDtcoPage.getSelectedDoc());
     }
 }

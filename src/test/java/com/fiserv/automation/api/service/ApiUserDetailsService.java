@@ -31,6 +31,13 @@ public class ApiUserDetailsService {
         return ecs;
     }
 
+    public synchronized List<String> getEcsFromDoc(String document) {
+        return userDetailDto.ecCods.stream()
+                .filter(dto -> dto.document.equals(document))
+                .map(dto -> dto.ec)
+                .toList();
+    }
+
     public synchronized UserDetailDto getUserDetail() throws Exception {
         if (userDetailDto == null) {
             getUserDetails();

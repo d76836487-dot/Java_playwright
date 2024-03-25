@@ -37,11 +37,10 @@ public class ApiAuthorizationsService {
                 .sum();
     }
 
-    public Number getSalesToday(String selectedEc) throws JsonProcessingException {
+    public Number getSalesToday(List<String> allSelectedEc) throws JsonProcessingException {
         String apiAccessToken = browserLocalStorage.getApiAccessToken();
-        List<String> ecs = List.of(selectedEc);
 
-        return ecs.stream()
+        return allSelectedEc.stream()
                 .mapToDouble(ec -> getSalesEcToday(apiAccessToken, ec))
                 .sum();
     }
@@ -63,7 +62,7 @@ public class ApiAuthorizationsService {
 
     public List<AuthorizationsDto> getValueLastSales() throws Exception {
         String apiAccessToken = browserLocalStorage.getApiAccessToken();
-        List<AuthorizationsDto> authorizationsDtos = getAuthorizationsAllEcs(apiAccessToken);
+        List<AuthorizationsDto> authorizationsDtos = getAuthorizationsAllEcs(apiAccessToken, apiUserDetailsService.getEcs());
 
         List<AuthorizationsDto> orderedSales = authorizationsDtos.stream()
                 .sorted(authorizationsDtoComparator)
@@ -78,10 +77,9 @@ public class ApiAuthorizationsService {
                 .toList();
     }
 
-    public List<AuthorizationsDto> getValueLastSalesForEc(String Ec) throws Exception {
+    public List<AuthorizationsDto> getValueLastSalesForEc(List<String> allSelectedEc) throws Exception {
         String apiAccessToken = browserLocalStorage.getApiAccessToken();
-        List<AuthorizationsDto> authorizationsDtos = bwaAuthorization.getAuthorizationsHistory(apiAccessToken, Ec).autorizacoes;
-
+        List<AuthorizationsDto> authorizationsDtos = getAuthorizationsAllEcs(apiAccessToken, allSelectedEc);
 
         List<String> firstThreeDateTime = authorizationsDtos.subList(0, Math.min(3, authorizationsDtos.size())).stream()
                 .map(dto -> String.format("%s%s", dto.data, dto.hora))
@@ -92,9 +90,7 @@ public class ApiAuthorizationsService {
                 .toList();
     }
 
-    private List<AuthorizationsDto> getAuthorizationsAllEcs(String apiAccessToken) throws Exception {
-        List<String> ecs = apiUserDetailsService.getEcs();
-
+    private List<AuthorizationsDto> getAuthorizationsAllEcs(String apiAccessToken, List<String> ecs)  {
         List<AuthorizationsDto> authorizationsDtos = ecs.parallelStream()
                 .flatMap(merchant -> {
                     try {
