@@ -46,6 +46,7 @@ Feature: Home Logada Conferindo Com Api
     Then 'Home - Card Antecipação - ECs' são os mesmos que a API
 
   @UsuárioMaster
+  @TestCaseKey=SMP-T287
   Scenario: Vendas HOJE com seleção de EC (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar um EC e clicar Acessar
