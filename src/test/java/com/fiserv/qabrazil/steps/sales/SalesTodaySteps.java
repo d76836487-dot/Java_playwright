@@ -45,7 +45,7 @@ public class SalesTodaySteps extends BaseSteps {
 
     @Given("Existem vendas com status {string}")
     public void thereIsSalesWithStatus(String salesStatus) {
-        thereAreSalesWith("status", salesStatus);
+        thereAreSalesWith("Vendas Hoje - Histórico - Coluna Status", salesStatus);
     }
 
     @Then("Serão filtradas as vendas com status {string}")
