@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.pages.FilterComponentPage;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,5 +12,15 @@ public class FilterSteps {
     @When("Usuário filtra por tudo, exceto {string}, em {string}")
     public void userFiltersBy(String filterValue, String accordionName) {
         filterComponentPage.filterAllExcept(filterValue, accordionName);
+    }
+
+    @When("Usuário filtra por {string} nos {string} de {string}")
+    public void userFiltersBy(String itemName, String section, String filter) {
+        filterComponentPage.filterElementInSection(itemName, section, filter);
+    }
+
+    @Then("usuário verá no filtro {string} as opções {csv}")
+    public void userWillSeeInFiltersTheOptions(String filter, String[] options) {
+        filterComponentPage.allOptionsArePresent(filter, options);
     }
 }

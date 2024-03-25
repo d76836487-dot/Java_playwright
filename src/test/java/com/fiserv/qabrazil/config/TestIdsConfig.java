@@ -152,6 +152,13 @@ public class TestIdsConfig {
             entry("Relatórios - Botão Download Aguardando", "relatorios-table-row-download-wait"),
             entry("Relatórios - Notificação Sucesso", "alerta-sucesso-exportar-relatorio"),
 
+            entry("Filtros de relatório - Accordion Tipos de Arquivo", "generic-filter-accordion-title-tipos-arquivos"),
+            entry("Filtros de relatório - Accordion Documentos", "generic-filter-accordion-title-documento"),
+            entry("Filtros de relatório - Accordion Período", "generic-filter-accordion-title-periodo"),
+            entry("Filtros de relatório - Item Tipos de Arquivo", "generic-filter-check-tipo-arquivo-.*"),
+            entry("Filtros de relatório - Item Período", "DateInputPicker-generic-filter-periodo"),
+            entry("Filtros de relatório - Item Documentos", "generic-filter-check-documento-.*"),
+
             entry("Modal Gerar Relatórios", "relatorios-header-title-text"),
             entry("Modal Gerar Relatórios - Título", "relatorios-header-title-text"),
             entry("Modal Gerar Relatórios - Descrição", "relatorios-header-subtitle-text"),

@@ -52,6 +52,11 @@ public class PageField {
         public PageField pageFieldWithSection(String displayName, String section) {
             return from(section + " - " + displayName);
         }
+
+        @ParameterType("\"([^\"]+)\" o \"([^\"]+)\"")
+        public PageField sectionWithPageField(String section, String displayName) {
+            return from(section + " - " + displayName);
+        }
     }
 
     private final String displayName;
@@ -91,7 +96,7 @@ public class PageField {
         return allVisiblePageField().findFirst().orElseThrow(() -> new RuntimeException("Couldn't find any of %s".formatted(selector)));
     }
 
-    private Stream<PageField> allVisiblePageField() {
+    public Stream<PageField> allVisiblePageField() {
         return locator.all().stream()
                 .filter(Locator::isVisible)
                 .map(sublocator -> new PageField(displayName, context, selector, sublocator));
@@ -249,6 +254,10 @@ public class PageField {
             locator.first().scrollIntoViewIfNeeded();
             locator.first().highlight();
         }
+    }
+
+    public boolean attributeDataTestidContainsAnyOf(List<String> texts) {
+        return texts.stream().allMatch(this::attributeDataTestidContains);
     }
 
     public boolean attributeDataTestidContains(String text) {

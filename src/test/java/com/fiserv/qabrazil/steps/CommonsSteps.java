@@ -155,4 +155,9 @@ public class CommonsSteps {
         assertFalse("Botão %s não parece estar desabilitado".formatted(pageField.getDisplayName()),
                 pageField.fieldIsOneVisibleAndDisabled());
     }
+
+    @Then("usuário visualizará em {sectionWithPageField}")
+    public void userWillSeeElement(PageField pageField) {
+        assertTrue("Deveria estar visível", pageField.elementIsVisibleRightNow());
+    }
 }

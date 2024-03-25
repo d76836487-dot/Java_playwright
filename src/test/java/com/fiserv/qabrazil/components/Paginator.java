@@ -49,6 +49,13 @@ public class Paginator extends BasePage {
         return new PageIterator(page).anyMatch(condition);
     }
 
+    public boolean allMatch(Supplier<Boolean> condition) {
+        if (this.thereIsNothingToPaginate()) return true;
+        this.rewindPagination();
+
+        return new PageIterator(page).allMatch(condition);
+    }
+
     private static class PageIterator implements Iterator<Void> {
 
         final Locator nextPageBtn;
@@ -77,6 +84,10 @@ public class Paginator extends BasePage {
 
         public boolean anyMatch(Supplier<Boolean> supplier) {
             return stream().anyMatch(x -> supplier.get());
+        }
+
+        public boolean allMatch(Supplier<Boolean> supplier) {
+            return stream().allMatch(x -> supplier.get());
         }
 
         private Stream<Object> stream() {

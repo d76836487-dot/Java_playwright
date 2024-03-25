@@ -4,7 +4,6 @@ import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.components.Paginator;
 import com.fiserv.qabrazil.dto.SalesDtoPage;
 import com.fiserv.qabrazil.pages.CheckedBasePage;
-import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.Currency;
 import com.microsoft.playwright.Locator;
 import org.jetbrains.annotations.NotNull;

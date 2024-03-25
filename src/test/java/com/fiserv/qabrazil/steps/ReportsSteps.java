@@ -3,6 +3,7 @@ package com.fiserv.qabrazil.steps;
 import com.fiserv.automation.api.dto.UserDetailDto;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.automation.api.util.DateUtil;
+import com.fiserv.qabrazil.components.Paginator;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.dto.GenerateReportDto;
@@ -45,6 +46,9 @@ public class ReportsSteps extends BaseSteps {
 
     @Autowired
     ReportsPage reportsPage;
+
+    @Autowired
+    private Paginator paginator;
 
     private final GenerateReportDto generateReportDto = new GenerateReportDto();
 
@@ -406,5 +410,35 @@ public class ReportsSteps extends BaseSteps {
         }
 
         return foundOption.get();
+    }
+
+    @Then("usuário verá no filtro um ou mais documentos")
+    public void userWillSeeInTheFilterOneOrMoreDocuments() {
+        assertFalse("Deveria ter pelo menos um documento listado",
+                pageField.from("Filtros de relatório - Item Documentos")
+                        .getAllVisiblePageField()
+                        .isEmpty());
+    }
+
+    @Then("usuário verá no filtro todos os seus documentos")
+    public void userWillSeeInTheFilterAllTheirDocuments() throws Exception {
+        List<String> ecs = apiUserDetailsService.getEcs();
+
+        assertTrue("Deveria exibir todos os ECs no filtro",
+                pageField.from("Filtros de relatório - Item Documentos")
+                        .allVisiblePageField()
+                        .allMatch(el -> el.attributeDataTestidContainsAnyOf(ecs)));
+    }
+
+    @Then("serão filtrados apenas os relatórios do tipo {string}")
+    public void thereWillBeFilteredOnlyReportsOfType(String reportType) {
+        assertTrue("Deveriam ter aparecido apenas filtros de %s".formatted(reportType),
+                paginator.allMatch(() -> allReportsInPageAreOfType(reportType)));
+    }
+
+    private boolean allReportsInPageAreOfType(String type) {
+        return pageField.from("Relatórios - Item - Tipo Relatório")
+                .allVisiblePageField()
+                .allMatch(el -> el.getAsText().equals(type));
     }
 }
