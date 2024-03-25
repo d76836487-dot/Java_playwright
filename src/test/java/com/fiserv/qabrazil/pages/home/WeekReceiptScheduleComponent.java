@@ -158,7 +158,7 @@ public class WeekReceiptScheduleComponent extends BasePage {
     }
 
     private static Pattern netValue() {
-        return Pattern.compile("R\\$[\\d.]+,\\d\\d");
+        return Pattern.compile("R\\$ [\\d.]+,\\d\\d");
     }
 
     private static Pattern numberOfDeposits() {
