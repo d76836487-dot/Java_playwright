@@ -11,6 +11,7 @@ Feature: Filtros Relatório
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
 
+  @TestCaseKey=SMP-T292
   Scenario: Opções de Filtros Disponíveis
     When usuário clica no "Botão Filtros" em "Relatórios"
     And usuário clica no "Accordion Tipos de Arquivo" em "Filtros de relatório"
@@ -21,17 +22,20 @@ Feature: Filtros Relatório
     And usuário verá no filtro um ou mais documentos
 
   @api
+  @TestCaseKey=SMP-T289
   Scenario: Opções de Filtros Exibem Todos os documentos
     When usuário clica no "Botão Filtros" em "Relatórios"
     And usuário clica no "Accordion Documentos" em "Filtros de relatório"
     And usuário verá no filtro todos os seus documentos
 
+  @TestCaseKey=SMP-T293
   Scenario Outline: Filtro por tipo de relatório
     Given Existem relatórios já extraídos do tipo "<tipo>", no formato "<formatoDeArquivo>", disponíveis para download
     When usuário clica no "Botão Filtros" em "Relatórios"
     And Usuário filtra por "<tipo>" nos "Filtros de relatório" de "Tipos de Arquivo"
     Then serão filtrados apenas os relatórios do tipo "<tipo>"
     Examples:
-    | tipo       | formatoDeArquivo |
-    | Vendas     | .csv             |
-    | Pagamentos | .csv             |
+      | tipo       | formatoDeArquivo |
+      | Vendas     | .csv             |
+      | Pagamentos | .csv             |
+

@@ -44,3 +44,4 @@ Feature: Home Logada Conferindo Com Api
   Scenario: Está trazendo todos os ECs no card Adiantamento igual a API
     Given Usuário acessou o Home
     Then 'Home - Card Antecipação - ECs' são os mesmos que a API
+

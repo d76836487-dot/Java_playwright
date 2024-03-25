@@ -18,8 +18,10 @@ Feature: Home Logada Conferindo Com Api e Seleção EC
 
   @ignore # TODO: confirmar a api
   @UsuárioMaster
+  @TestCaseKey=SMP-T290
   Scenario: Vendas HOJE com seleção de Documento (Usuário Master)
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar um documento e clicar Acessar
     Then Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API do EC selecionado
     And 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API do EC selecionado
+
