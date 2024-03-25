@@ -32,7 +32,8 @@ Feature: Tela Vendas Hoje com CNPJ com API
     Given Usuário acessou Vendas Hoje
     Then Primeira página do histórico de venda hoje serão equivalentes com a API
 
-    @ignore # TODO: confirmar a api desta tela...
+  @ignore # TODO: confirmar a api desta tela...
+  @TestCaseKey=SMP-T288
   Scenario: Vendas HOJE com seleção de EC (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um EC e clicar Acessar
