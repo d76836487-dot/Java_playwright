@@ -1,7 +1,7 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Relatorios/Filtros_Relatorio
+@Zephyr:Folder=/Portal_do_Cliente/Relatorios/Filtros_Relatório
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
