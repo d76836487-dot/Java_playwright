@@ -43,7 +43,7 @@ public class SalesTodayApiSteps extends BaseSteps {
     @Then("Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API")
     public void qtySalesSameApi() throws Exception {
         WeeklyScheduleDto dto = apiSalesService.getTotalSalesToday().get(0);
-        System.out.println(dto);
+        log.info(dto.toString());
 
         PageField qtySalesId = pageField.from("Vendas Hoje - Resumo - Quantidade Vendas");
         PageField valueSalesId = pageField.from("Vendas Hoje - Resumo - Valor Vendas");

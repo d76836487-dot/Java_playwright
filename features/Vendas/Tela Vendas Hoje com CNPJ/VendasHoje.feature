@@ -22,7 +22,7 @@ Feature: Tela Vendas Hoje com CNPJ
 
   # TODO: fix me when we have 'rebatedores'
   @ignore
-  @TestCaseKey=SMP-T6
+    @TestCaseKey=SMP-T6
   Scenario Outline: Visualização da Quantidade e Valor de Vendas Hoje
     When Usuário acessa Vendas Hoje
     Then Usuário verá em "Vendas Hoje - Resumo - Quantidade Vendas" o valor "0"

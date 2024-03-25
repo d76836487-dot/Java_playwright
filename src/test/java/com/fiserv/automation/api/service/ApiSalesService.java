@@ -5,7 +5,6 @@ import com.fiserv.automation.api.rest.BwaAuthorization;
 import com.fiserv.automation.api.rest.BwaSales;
 import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.qabrazil.browser.BrowserLocalStorage;
-import com.fiserv.qabrazil.steps.sales.SalesTodayApiSteps;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,7 +66,7 @@ public class ApiSalesService {
         for(SaleAuthorizationDto s: salesAuthorizations) {
             log.info(s.toString());
         }
-        return new HashSet<SaleAuthorizationDto>(salesAuthorizations);
+        return new HashSet<>(salesAuthorizations);
     }
 
     private List<AuthorizationsDto> getAuthorizationsToday(String apiAccessToken, String ec) {

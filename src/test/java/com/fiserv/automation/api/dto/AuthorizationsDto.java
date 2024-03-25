@@ -58,8 +58,14 @@ public class AuthorizationsDto {
         if (!(o instanceof AuthorizationsDto that)) return false;
         return Objects.equals(tipoAutorizacao, that.tipoAutorizacao)
                 && Objects.equals(data, that.data)
-                && Objects.equals(hora, that.hora)
+                && isEqualsTime(that)
                 && Objects.equals(valorTransacao, that.valorTransacao);
+    }
+
+    private boolean isEqualsTime(AuthorizationsDto that) {
+        if (hora.length() == that.hora.length()) return Objects.equals(hora, that.hora);
+
+        return Objects.equals(hora.substring(0, 4), that.hora.substring(0, 4));
     }
 
     @Override

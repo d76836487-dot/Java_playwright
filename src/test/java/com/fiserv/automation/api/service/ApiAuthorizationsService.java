@@ -1,5 +1,6 @@
 package com.fiserv.automation.api.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fiserv.automation.api.dto.AuthorizationsDto;
 import com.fiserv.automation.api.dto.PagedSummaryDto;
 import com.fiserv.automation.api.dto.SummaryDto;
@@ -36,6 +37,15 @@ public class ApiAuthorizationsService {
                 .sum();
     }
 
+    public Number getSalesToday(String selectedEc) throws JsonProcessingException {
+        String apiAccessToken = browserLocalStorage.getApiAccessToken();
+        List<String> ecs = List.of(selectedEc);
+
+        return ecs.stream()
+                .mapToDouble(ec -> getSalesEcToday(apiAccessToken, ec))
+                .sum();
+    }
+
     private double getSalesEcToday(String apiAccessToken, String ec) {
         String today = formattedDate(0);
         PagedSummaryDto answer;
@@ -64,6 +74,20 @@ public class ApiAuthorizationsService {
                 .toList();
 
         return  orderedSales.stream()
+                .filter(dto -> firstThreeDateTime.contains(String.format("%s%s", dto.data, dto.hora)))
+                .toList();
+    }
+
+    public List<AuthorizationsDto> getValueLastSalesForEc(String Ec) throws Exception {
+        String apiAccessToken = browserLocalStorage.getApiAccessToken();
+        List<AuthorizationsDto> authorizationsDtos = bwaAuthorization.getAuthorizationsHistory(apiAccessToken, Ec).autorizacoes;
+
+
+        List<String> firstThreeDateTime = authorizationsDtos.subList(0, Math.min(3, authorizationsDtos.size())).stream()
+                .map(dto -> String.format("%s%s", dto.data, dto.hora))
+                .toList();
+
+        return  authorizationsDtos.stream()
                 .filter(dto -> firstThreeDateTime.contains(String.format("%s%s", dto.data, dto.hora)))
                 .toList();
     }

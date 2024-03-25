@@ -9,6 +9,7 @@ import com.fiserv.automation.api.service.ApiReceivablesService;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.qabrazil.config.TestIdsConfig;
 import com.fiserv.qabrazil.pages.CommonsPage;
+import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.en.Then;
@@ -37,6 +38,8 @@ public class HomeApiSteps extends BaseSteps {
     private ApiPrepaymentService apiPrepaymentService;
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
+    @Autowired
+    private SelectECOrDtcoPage selectECOrDtcoPage;
 
     @Then("'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API")
     public void lastSalesMatchApi() throws Exception {
@@ -171,5 +174,27 @@ public class HomeApiSteps extends BaseSteps {
                 .toList();
 
         assertEquals("Os ecs da API não correspondem ao Card Antecipação", ecs, allEcsPage);
+    }
+
+    @Then("Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API do EC selecionado")
+    public void totalSalesHomeMatchApiSelectedEc() throws Exception {
+        Number salesTodayApi = apiAuthorizationsService.getSalesToday(selectECOrDtcoPage.getSelectedEc()).doubleValue();
+        Number salesTodayPage = pageField.from("Home - Card Vendas Hoje - Valor Vendas Hoje").getAsCurrency().doubleValue();
+
+        assertEquals("Total de vendas da página é diferente da api", salesTodayApi, salesTodayPage);
+    }
+
+    @Then("'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API do EC selecionado")
+    public void lastSalesMatchApiSelectedEc() throws Exception {
+        List<AuthorizationsDto> lastSalesApi = apiAuthorizationsService.getValueLastSalesForEc(selectECOrDtcoPage.getSelectedEc());
+        List<AuthorizationsDto> lastSalesPage = getLastSalesAsDto();
+
+        boolean allSalesInPageMatchApi = lastSalesPage.stream()
+                .allMatch(dto -> lastSalesApi.stream()
+                        .anyMatch(dto::equals));
+
+        String message = String.format("Valor das últimas vendas da página é diferente da api.\n Esperado: %s\n retornado %s",
+                lastSalesApi, lastSalesPage);
+        assertTrue(message, allSalesInPageMatchApi);
     }
 }
