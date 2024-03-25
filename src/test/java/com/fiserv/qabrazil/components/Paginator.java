@@ -4,7 +4,6 @@ import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Duration;
 import java.util.Iterator;
@@ -63,7 +62,7 @@ public class Paginator extends BasePage {
 
         @Override
         public boolean hasNext() {
-            return firstIteration || nextPageBtn.count() > 0 || nextPageBtn.isEnabled();
+            return firstIteration || (nextPageBtn.count() > 0 && nextPageBtn.isEnabled());
         }
 
         @Override

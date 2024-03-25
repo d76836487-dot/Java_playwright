@@ -89,24 +89,24 @@ public class SalesTodayPage extends CheckedBasePage {
     }
 
     public boolean thereAreSalesWithStatus(String salesStatus) {
-        return thereAreSalesWith(salesStatus, "vendas-hoje-coluna-status\\d");
+        return thereAreSalesWith(salesStatus, "Vendas Hoje - Histórico - Coluna Status");
     }
 
     public boolean thereAreSalesWithBrandName(String brandName) {
-        return thereAreSalesWith(brandName, "vendas-hoje-coluna-bandeira");
+        return thereAreSalesWith(brandName, "Vendas Hoje - Histórico - Coluna Bandeira");
     }
 
     public boolean thereAreSalesWithProduct(String brandName) {
-        return thereAreSalesWith(brandName, "vendas-hoje-coluna-produto");
+        return thereAreSalesWith(brandName, "Vendas Hoje - Histórico - Coluna Produto");
     }
 
-    public boolean thereAreSalesWith(String textLookingFor, String testId) {
-        return paginator.anyMatch(() -> findSalesWithinPage(textLookingFor, testId));
+    public boolean thereAreSalesWith(String textLookingFor, String pageFieldId) {
+        return paginator.anyMatch(() -> findSalesWithinPage(textLookingFor, pageFieldId));
     }
 
-    private boolean findSalesWithinPage(String textLookingFor, String testId) {
-        Locator salesStatusLabel = page.getByTestId(Pattern.compile(testId));
+    private boolean findSalesWithinPage(String textLookingFor, String pageFieldId) {
+        PageField salesStatusLabel = pageField.from(pageFieldId);
         return waitUntilTrue(2, () ->
-                salesStatusLabel.allTextContents().stream().anyMatch(text -> text.equals(textLookingFor)));
+                salesStatusLabel.getAllAsText().stream().anyMatch(text -> text.equals(textLookingFor)));
     }
 }

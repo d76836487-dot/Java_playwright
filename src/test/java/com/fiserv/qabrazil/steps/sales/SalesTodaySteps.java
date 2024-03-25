@@ -66,8 +66,8 @@ public class SalesTodaySteps extends BaseSteps {
     }
 
     @Given("Existem vendas com {string} tipo {string}")
-    public void thereAreSalesWith(String testIdColumn, String value) {
-        assumeThat(salesTodayPage.thereAreSalesWith(value, testIdColumn))
+    public void thereAreSalesWith(String columnPageFieldId, String value) {
+        assumeThat(salesTodayPage.thereAreSalesWith(value, columnPageFieldId))
                 .withFailMessage("No sales of type %s found", value)
                 .isTrue();
     }

@@ -14,7 +14,7 @@ Feature: Filtros Histórico de Vendas
 
   @TestCaseKey=SMP-T23
   Scenario Outline: Filtrar histórico de vendas por Produtos
-    Given Existem vendas com "produto" tipo "<tipoDeProduto>"
+    Given Existem vendas com "Vendas Hoje - Histórico - Coluna Produto" tipo "<tipoDeProduto>"
     When Usuário filtra por tudo, exceto "<tipoDeProduto>", em "Produtos (0)"
     Then Serão filtradas as vendas com produto "<tipoDeProduto>"
     @pt-br

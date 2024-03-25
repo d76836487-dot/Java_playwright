@@ -45,6 +45,7 @@ public class TestIdsConfig {
             entry("Vendas Hoje - Resumo - Valor Vendas", "vendas-hoje-card-vlr-bruto"),
             entry("Vendas Hoje - Histórico - Coluna Valor Bruto", "vendas-hoje-coluna-vlr-bruto\\d"),
             entry("Vendas Hoje - Histórico - Coluna Data Hora", "vendas-hoje-coluna-data-venda"),
+            entry("Vendas Hoje - Histórico - Coluna Bandeira", "vendas-hoje-coluna-bandeira"),
             entry("Vendas Hoje - Histórico - Coluna Produto", "vendas-hoje-coluna-produto"),
             entry("Vendas Hoje - Histórico - Coluna Parcela", "vendas-hoje-coluna-parcela"),
             entry("Vendas Hoje - Histórico - Coluna Canal", "vendas-hoje-coluna-canal"),
