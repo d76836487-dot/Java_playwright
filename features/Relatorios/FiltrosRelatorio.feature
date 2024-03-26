@@ -39,6 +39,7 @@ Feature: Filtros Relatório
       | Vendas     | .csv             |
       | Pagamentos | .csv             |
 
+  @TestCaseKey=SMP-T297
   Scenario: Filtro de relatório por data
     Given Existem relatórios extraídos em datas diferentes
     When usuário clica no "Botão Filtros" em "Relatórios"
