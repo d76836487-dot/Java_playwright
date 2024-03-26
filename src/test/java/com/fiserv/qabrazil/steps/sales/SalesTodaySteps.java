@@ -89,6 +89,10 @@ public class SalesTodaySteps extends BaseSteps {
 
     @Then("A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado")
     public void exportWillHaveOnlySelectedEc() throws IOException {
+        if (salesTodayAsExcel == null) {
+            salesTodayAsExcel = salesTodayExportPage.getDownloadAsExcel();
+        }
+
         List<String> exportedEcs = salesTodayAsExcel.getECs();
         boolean allSameEcs = exportedEcs.stream()
                 .allMatch(ec -> ec.equals(selectECOrDtcoPage.getSelectedEc()));

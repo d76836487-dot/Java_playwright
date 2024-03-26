@@ -42,7 +42,9 @@ public class SalesTodayExportPage extends BasePage {
     }
 
     public SalesTodayExportExcel getDownloadAsExcel() throws IOException {
-        pageField.from("Home - Card Vendas Hoje - Ver Tudo").click();
+        if (pageField.from("Home - Card Vendas Hoje - Ver Tudo").elementIsVisibleRightNow()) {
+            pageField.from("Home - Card Vendas Hoje - Ver Tudo").click();
+        }
         PageField exportButton = pageField.from("Vendas Hoje - Botão Exportar");
 
         if (!exportButton.fieldIsOneVisibleAndEnabled()) return SalesTodayExportExcel.NULL;

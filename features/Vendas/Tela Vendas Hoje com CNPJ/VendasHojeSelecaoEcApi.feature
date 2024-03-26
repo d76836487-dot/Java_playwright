@@ -33,6 +33,7 @@ Feature: Tela Vendas Hoje com CNPJ com API e Seleção EC
     And usuário clicou no "Vendas Hoje - Botão Filtrar"
     When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
     Then Opções do filtro tem somente os ECs selecionados
+    And A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado
 
   @UsuárioMaster
   Scenario: Vendas HOJE com seleção de EC (Usuário Master) terá mesmos estabelecimentos no filtro
