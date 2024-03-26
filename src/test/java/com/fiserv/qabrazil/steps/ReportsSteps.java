@@ -441,4 +441,26 @@ public class ReportsSteps extends BaseSteps {
                 .allVisiblePageField()
                 .allMatch(el -> el.getAsText().equals(type));
     }
+
+    @Given("Existem relatórios de vendas e pagamentos extraídos")
+    public void thereAreReportsOfSalesAndPayments() {
+        assumeThat(reportsPage.thereIsAtLeastOneReportOfEachType()).isTrue();
+    }
+
+    @When("usuário limpa os filtros de relatório")
+    public void userClearsFilters() {
+        pageField.from("Relatórios - Botão Filtros").click();
+
+        PageField clearAllButton = pageField.from("Filtros - Botão Limpar Filtros");
+        assertTrue("Botão Filtros deveria estar visível", clearAllButton.elementIsVisible());
+        clearAllButton.click();
+
+        pageField.from("Filtros - Botão Mostrar Resultados").click();
+    }
+
+    @Then("Usuário voltará a visualizar ambos relatórios de vendas e pagamentos")
+    public void userWillSeeAgainReportsOfSalesAndPayments() {
+        assertTrue("Deveria estar listado relatórios de vendas e pagamentos",
+                reportsPage.thereIsAtLeastOneReportOfEachType());
+    }
 }

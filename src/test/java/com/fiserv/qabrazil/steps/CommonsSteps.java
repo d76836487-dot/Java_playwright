@@ -46,6 +46,7 @@ public class CommonsSteps {
     }
 
     @Given("usuário clicou no {pageField}")
+    @Given("usuário clicou no {pageFieldWithSection}")
     @When("usuário clica {pageField}")
     @When("usuário clica no {pageFieldWithSection}")
     public void userClicks(PageField identifier) {

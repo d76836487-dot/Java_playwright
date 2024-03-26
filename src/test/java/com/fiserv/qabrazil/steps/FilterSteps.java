@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.pages.FilterComponentPage;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ public class FilterSteps {
         filterComponentPage.filterAllExcept(filterValue, accordionName);
     }
 
+    @Given("Usuário filtrou por {string} nos {string} de {string}")
     @When("Usuário filtra por {string} nos {string} de {string}")
     public void userFiltersBy(String itemName, String section, String filter) {
         filterComponentPage.filterElementInSection(itemName, section, filter);

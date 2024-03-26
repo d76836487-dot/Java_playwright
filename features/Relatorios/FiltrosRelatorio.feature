@@ -39,3 +39,9 @@ Feature: Filtros Relatório
       | Vendas     | .csv             |
       | Pagamentos | .csv             |
 
+  Scenario: Limpar filtros
+    Given Existem relatórios de vendas e pagamentos extraídos
+    And usuário clicou no "Botão Filtros" em "Relatórios"
+    And Usuário filtrou por "Vendas" nos "Filtros de relatório" de "Tipos de Arquivo"
+    When usuário limpa os filtros de relatório
+    Then Usuário voltará a visualizar ambos relatórios de vendas e pagamentos

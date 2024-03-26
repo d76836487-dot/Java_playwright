@@ -41,6 +41,9 @@ public class TestIdsConfig {
 
             entry("Filter - Estabelecimentos (0)", "generic-filter-check-estabelecimento-.*"),
 
+            entry("Filtros - Botão Limpar Filtros", "generic-filter-link-clean-all"),
+            entry("Filtros - Botão Mostrar Resultados", "generic-filter-btn-resultados"),
+
             entry("Vendas Hoje - Resumo - Quantidade Vendas", "vendas-hoje-card-total-vendas"),
             entry("Vendas Hoje - Resumo - Valor Vendas", "vendas-hoje-card-vlr-bruto"),
             entry("Vendas Hoje - Histórico - Coluna Valor Bruto", "vendas-hoje-coluna-vlr-bruto\\d"),

@@ -22,13 +22,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
-import static com.fiserv.automation.api.util.DateUtil.*;
+import static com.fiserv.automation.api.util.DateUtil.monthName;
+import static com.fiserv.automation.api.util.DateUtil.year;
 import static com.fiserv.qabrazil.config.TestIdsConfig.getQuerySelector;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.testng.AssertJUnit.*;
+import static org.testng.AssertJUnit.fail;
 
 @ScenarioComponent
 @Component("Relatórios")
@@ -221,6 +223,16 @@ public class ReportsPage extends CheckedBasePage {
 
         Download file = page.waitForDownload(report::click);
         download = Pair.of(file.suggestedFilename(), file);
+    }
+
+    public boolean thereIsAtLeastOneReportOfEachType() {
+        Optional<PageField> salesReport = pageField.from("Relatórios - Item - Tipo Relatório")
+                .firstWith(p -> p.getAsText().equals("Vendas"));
+
+        Optional<PageField> paymentsReport = pageField.from("Relatórios - Item - Tipo Relatório")
+                .firstWith(p -> p.getAsText().equals("Pagamentos"));
+
+        return salesReport.isPresent() && paymentsReport.isPresent();
     }
 
     public boolean thereAreReportsAvailableForDownloadOfTypeAndFiletype(String type, String extention) {
