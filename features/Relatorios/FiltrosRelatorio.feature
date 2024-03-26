@@ -39,6 +39,12 @@ Feature: Filtros Relatório
       | Vendas     | .csv             |
       | Pagamentos | .csv             |
 
+  Scenario: Filtro de relatório por data
+    Given Existem relatórios extraídos em datas diferentes
+    When usuário clica no "Botão Filtros" em "Relatórios"
+    And usuário filtra por uma data
+    Then serão exibidos apenas relatórios extraídos da mesma data
+
   @TestCaseKey=SMP-T296
   Scenario: Limpar filtros
     Given Existem relatórios de vendas e pagamentos extraídos
