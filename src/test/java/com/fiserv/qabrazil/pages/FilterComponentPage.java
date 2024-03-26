@@ -91,9 +91,9 @@ public class FilterComponentPage extends BasePage {
     }
 
     public List<String> getEcsAvailableForFilter(String displayName) {
-        return pageField.from(displayName).getAllPageField().stream()
+        return pageField.from(displayName).allVisiblePageField()
                 .map(field -> field.getLocator().getAttribute("data-testid"))
-                .map(testid -> testid.replaceAll("[^\\d]", ""))
+                .map(testId -> testId.replaceAll("\\D", ""))
                 .toList();
     }
 }
