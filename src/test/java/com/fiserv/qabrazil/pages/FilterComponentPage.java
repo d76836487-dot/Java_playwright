@@ -5,6 +5,7 @@ import com.microsoft.playwright.Locator;
 
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.List;
 
 import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.retryIfGotException;
@@ -87,5 +88,12 @@ public class FilterComponentPage extends BasePage {
                 },
                 () -> fail("Nenhum filtro de %s encontrado".formatted(itemName))
         );
+    }
+
+    public List<String> getEcsAvailableForFilter(String displayName) {
+        return pageField.from(displayName).getAllPageField().stream()
+                .map(field -> field.getLocator().getAttribute("data-testid"))
+                .map(testid -> testid.replaceAll("[^\\d]", ""))
+                .toList();
     }
 }

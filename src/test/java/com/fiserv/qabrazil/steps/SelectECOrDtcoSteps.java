@@ -241,6 +241,16 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         selectECOrDtcoPage.clickAccessAndWaitClose();
     }
 
+    @Given("Usuário selecionou um documento com maior número de ECs e clicar Acessar")
+    public void userSelectsDocumentMostEcs() throws Exception {
+        String docMostEcs = apiUserDetailsService.getDocWithMostEcs();
+        selectECOrDtcoPage.selectDocumentInput(docMostEcs);
+
+        selectECOrDtcoPage.storeDocAndFirstNameFromDocuments(docMostEcs);
+
+        selectECOrDtcoPage.clickAccessAndWaitClose();
+    }
+
     @When("Usuário selecionar Todos na aba Documento e clicar Acessar")
     public void userSelectsAllDocument() {
         pageField.from("Trocar Estabelecimento - Botão Todos Documentos").click();

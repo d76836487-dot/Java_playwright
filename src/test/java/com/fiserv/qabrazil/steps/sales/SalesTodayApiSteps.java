@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.HashSet;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.AssertJUnit.*;
 
 public class SalesTodayApiSteps extends BaseSteps {
@@ -103,7 +104,7 @@ public class SalesTodayApiSteps extends BaseSteps {
 
     @Then("Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API do EC selecionado")
     public void qtySalesSameApiSelectedEc() throws Exception {
-        WeeklyScheduleDto dto = apiSalesService.getTotalSalesTodayEc(getSelectedEcs()).get(0);
+        WeeklyScheduleDto dto = apiSalesService.getTotalSalesTodayEc(selectECOrDtcoPage.getSelectedEcs()).get(0);
         log.info(dto.toString());
 
         PageField qtySalesId = pageField.from("Vendas Hoje - Resumo - Quantidade Vendas");
@@ -115,9 +116,14 @@ public class SalesTodayApiSteps extends BaseSteps {
         assertEquals("Quantidade de vendas não é igual a API", String.valueOf(dto.getOccurrences()), qtySales);
     }
 
-    private List<String> getSelectedEcs() throws Exception {
-        if (selectECOrDtcoPage.getSelectedEc() != null) return List.of(selectECOrDtcoPage.getSelectedEc());
+    @Then("Opções do filtro tem somente os ECs selecionados")
+    public void filterOptions() throws Exception {
+        String[] expectedEcs = selectECOrDtcoPage.getSelectedEcs()
+                .toArray(new String[0]);
+        String[] actualEcs = filterComponentPage
+                .getEcsAvailableForFilter("Filtros de relatório - Item Estabelecimentos")
+                .toArray(new String[0]);
 
-        return apiUserDetailsService.getEcsFromDoc(selectECOrDtcoPage.getSelectedDoc());
+        assertThat(actualEcs).containsExactlyInAnyOrder(expectedEcs);
     }
 }

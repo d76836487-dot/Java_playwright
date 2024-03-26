@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.util.Map.entry;
+
 @Component
 public class ApiUserDetailsService {
     private List<String> ecs = null;
@@ -36,6 +38,19 @@ public class ApiUserDetailsService {
                 .filter(dto -> dto.document.equals(document))
                 .map(dto -> dto.ec)
                 .toList();
+    }
+
+    public String getDocWithMostEcs() throws Exception {
+        Map<String, List<EcCodsDto>> groupByDoc = getUserDetail().ecCods.stream()
+                .collect(Collectors.groupingBy(EcCodsDto::getDocument));
+
+
+        List<Map.Entry<String, Integer>> sorted = groupByDoc.keySet().stream()
+                .map(key -> entry(key, groupByDoc.get(key).size()))
+                .sorted(Map.Entry.comparingByValue())
+                .toList();
+
+        return sorted.get(sorted.size() - 1).getKey();
     }
 
     public synchronized UserDetailDto getUserDetail() throws Exception {

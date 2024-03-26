@@ -1,7 +1,9 @@
 package com.fiserv.qabrazil.pages;
 
+import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.microsoft.playwright.Locator;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -11,6 +13,9 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
 public class SelectECOrDtcoPage extends BasePage {
+    @Autowired
+    private ApiUserDetailsService apiUserDetailsService;
+
     private String selectedDoc;
     private String selectedDocName;
     private String selectedEc;
@@ -207,5 +212,11 @@ public class SelectECOrDtcoPage extends BasePage {
         selectedEc = pageField.from("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe")
                 .getAllVisiblePageField().get(0)
                 .getAsText();
+    }
+
+    public List<String> getSelectedEcs() throws Exception {
+        if (getSelectedEc() != null) return List.of(getSelectedEc());
+
+        return apiUserDetailsService.getEcsFromDoc(getSelectedDoc());
     }
 }

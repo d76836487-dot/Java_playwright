@@ -45,6 +45,7 @@ public class CommonsSteps {
                 pageField.elementIsVisibleRightNow());
     }
 
+    @Given("usuário clicou no {pageField}")
     @When("usuário clica {pageField}")
     @When("usuário clica no {pageFieldWithSection}")
     public void userClicks(PageField identifier) {

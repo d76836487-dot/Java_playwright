@@ -19,9 +19,18 @@ Feature: Tela Vendas Hoje com CNPJ com API e Seleção EC
   @ignore # TODO: confirmar a api desta tela...
   @UsuárioMaster
   @TestCaseKey=SMP-T291
-  Scenario: Vendas HOJE com seleção de Documento (Usuário Master)
+  Scenario: Vendas HOJE com seleção de Documento (Usuário Master) terá mesma quantidade vendas
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento e clicar Acessar
     When Usuário acessa Vendas Hoje
     Then Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API do EC selecionado
+
+  @UsuárioMaster
+  Scenario: Vendas HOJE com seleção de Documento (Usuário Master) terá mesmos estabelecimentos no filtro
+    Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+    And Usuário selecionou um documento com maior número de ECs e clicar Acessar
+    And Usuário acessou Vendas Hoje
+    And usuário clicou no "Vendas Hoje - Botão Filtrar"
+    When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
+    Then Opções do filtro tem somente os ECs selecionados
 

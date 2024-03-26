@@ -55,6 +55,7 @@ public class TestIdsConfig {
             entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo", "simple-dropdown-select-"),
             entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
             entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
+            entry("Vendas Hoje - Botão Filtrar", "vendas-hoje-link-filtrar"),
 
             entry("Vendas - Histórico de Vendas - Resumo - Quantidade de vendas", "historico-vendas-total"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor bruto", "historico-vendas-valor-bruto"),
@@ -155,9 +156,11 @@ public class TestIdsConfig {
             entry("Filtros de relatório - Accordion Tipos de Arquivo", "generic-filter-accordion-title-tipos-arquivos"),
             entry("Filtros de relatório - Accordion Documentos", "generic-filter-accordion-title-documento"),
             entry("Filtros de relatório - Accordion Período", "generic-filter-accordion-title-periodo"),
+            entry("Filtros de relatório - Accordion Estabelecimentos", "generic-filter-accordion-title-estabelecimentos"),
             entry("Filtros de relatório - Item Tipos de Arquivo", "generic-filter-check-tipo-arquivo-.*"),
             entry("Filtros de relatório - Item Período", "DateInputPicker-generic-filter-periodo"),
             entry("Filtros de relatório - Item Documentos", "generic-filter-check-documento-.*"),
+            entry("Filtros de relatório - Item Estabelecimentos", "generic-filter-check-estabelecimento-.*"),
 
             entry("Modal Gerar Relatórios", "relatorios-header-title-text"),
             entry("Modal Gerar Relatórios - Título", "relatorios-header-title-text"),
