@@ -46,4 +46,6 @@ Feature: Tela Vendas Hoje com CNPJ com API e Seleção EC
     And usuário clicou no "Vendas Hoje - Botão Filtrar"
     When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
     Then Opções do filtro tem somente os ECs selecionados
+    And A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado
+    And A soma de todos valores Brutos é igual a "Vendas Hoje - Resumo - Valor Vendas"
 

@@ -59,6 +59,7 @@ public class TestIdsConfig {
             entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
             entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
             entry("Vendas Hoje - Botão Filtrar", "vendas-hoje-link-filtrar"),
+            entry("Vendas Hoje - Botão Cancelar Filtro", "generic-filter-link-sair"),
 
             entry("Vendas - Histórico de Vendas - Resumo - Quantidade de vendas", "historico-vendas-total"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor bruto", "historico-vendas-valor-bruto"),

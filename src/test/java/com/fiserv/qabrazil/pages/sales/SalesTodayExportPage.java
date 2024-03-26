@@ -45,6 +45,9 @@ public class SalesTodayExportPage extends BasePage {
         if (pageField.from("Home - Card Vendas Hoje - Ver Tudo").elementIsVisibleRightNow()) {
             pageField.from("Home - Card Vendas Hoje - Ver Tudo").click();
         }
+        if (pageField.from("Vendas Hoje - Botão Cancelar Filtro").elementIsVisibleRightNow()) {
+            pageField.from("Vendas Hoje - Botão Cancelar Filtro").click();
+        }
         PageField exportButton = pageField.from("Vendas Hoje - Botão Exportar");
 
         if (!exportButton.fieldIsOneVisibleAndEnabled()) return SalesTodayExportExcel.NULL;
