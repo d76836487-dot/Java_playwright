@@ -5,6 +5,7 @@ import com.fiserv.qabrazil.pages.sales.SalesTodayExportPage;
 import com.fiserv.qabrazil.pages.sales.SalesTodayPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.Currency;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -109,5 +110,14 @@ public class SalesTodaySteps extends BaseSteps {
 
         assertEquals("Valor da soma do cabeçalho é diferente da soma da coluna.",
                 salesTodayFromExport + unpaidSalesTodayFromExport, sumGrossValue, 0.001);
+    }
+
+
+    @And("A soma de todos valores Brutos é igual a \"Vendas Hoje - Resumo - Valor Vendas\"")
+    public void sumGrossValueMatchesScreen() throws IOException {
+        double sumGrossValue = salesTodayAsExcel.getSumGrossValues();
+        double salesToday = pageField.from("Vendas Hoje - Resumo - Valor Vendas").getAsCurrency().doubleValue();
+
+        assertEquals(salesToday, sumGrossValue, 0.001);
     }
 }
