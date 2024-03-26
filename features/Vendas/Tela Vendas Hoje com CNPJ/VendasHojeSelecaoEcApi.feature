@@ -26,6 +26,7 @@ Feature: Tela Vendas Hoje com CNPJ com API e Seleção EC
     Then Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API do EC selecionado
 
   @UsuárioMaster
+  @TestCaseKey=SMP-T294
   Scenario: Vendas HOJE com seleção de Documento (Usuário Master) terá mesmos estabelecimentos no filtro
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
@@ -36,6 +37,7 @@ Feature: Tela Vendas Hoje com CNPJ com API e Seleção EC
     And A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado
 
   @UsuárioMaster
+  @TestCaseKey=SMP-T295
   Scenario: Vendas HOJE com seleção de EC (Usuário Master) terá mesmos estabelecimentos no filtro
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um EC e clicar Acessar
