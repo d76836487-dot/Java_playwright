@@ -21,14 +21,15 @@ Feature: Exportar Relatorio
   @TestCaseKey=SMP-T276
   Scenario Outline: Validar Arquivo de Relatório de Vendas com 1 Estabelecimento Comercial
     Given usuário possui apenas um Estabelecimento Comercial vinculado
-    And Existem relatórios já extraídos do tipo "<tipo>", no formato "<arquivo>", disponíveis para download
-    When Usuário baixa um relatório do tipo "<tipo>", formato "<arquivo>"
+    And Existem relatórios já extraídos do tipo "Vendas", no formato "<arquivo>", disponíveis para download
+    When Usuário baixa um relatório do tipo "Vendas", formato "<arquivo>"
     Then Usuário visualizará no "<arquivo>" baixado, as colunas
     """
-    Data da venda, Hora da venda, Data do ajuste, Número do Estabelecimento, Código de Autorização,
-    Comprovante da venda, Código do pedido, Canal, Número do Terminal, Produto, Parcelas, Tipo de cartão, Bandeira,
-    Status, Valor bruto da transação, Valor bruto da parcela, Valor da taxa (MDR), Valor líquido da parcela/transação,
-    Número do Cartão, NSU, Data prevista de pagamento da venda, Status do pagamento da venda, Data efetiva do pagamento da venda
+    Data da venda, Hora da venda, Código de autorização, Código de estabelecimento, Comprovante de venda,
+    Código do pedido, Canal, Número do Terminal, Produto, Parcelas, Tipo de cartão, Bandeira, Status,
+    Valor bruto da transação, Valor bruto da parcela, Valor da taxa (MDR), Valor líquido da parcela/transação,
+    Número do cartão, Cartão pré pago, Data prevista de pagamento da venda, Status do pagamento da venda,
+    Data efetiva do pagamento da venda, Código de pagamento, Cód. Ref. Cartão
     """
     Examples:
       | arquivo |
@@ -43,11 +44,10 @@ Feature: Exportar Relatorio
     When Usuário baixa um relatório do tipo "Pagamentos", formato "<arquivo>"
     Then Usuário visualizará no "<arquivo>" baixado, as colunas
     """
-    Data de pagamento, Código de pagamento, Tipo de pagamento, Data da venda, Hora da venda, Número do Estabelecimento,
-    Código de Autorização, Comprovante da venda, Código do pedido, Canal, Número do terminal, Produto, Parcelas,
+    Data de pagamento, Código de pagamento, Tipo de pagamento, Data da venda, Hora da venda, Número do estabelecimento,
+    Código de autorização, Comprovante da venda, Código do pedido, Canal, Número do terminal, Produto, Parcelas,
     Tipo de Cartão, Bandeira, Status da venda, Valor bruto da transação, Valor bruto da parcela paga,
-    Valor da taxa (MDR), Valor líquido da parcela/transação paga, Número do Cartão, NSU, Status do pagamento da venda,
-    Banco, Agência, Conta
+    Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Banco, Agência, Conta
     """
     Examples:
       | arquivo |

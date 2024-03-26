@@ -257,7 +257,7 @@ public class PageField {
     }
 
     public boolean attributeDataTestidContainsAnyOf(List<String> texts) {
-        return texts.stream().allMatch(this::attributeDataTestidContains);
+        return texts.stream().anyMatch(this::attributeDataTestidContains);
     }
 
     public boolean attributeDataTestidContains(String text) {
