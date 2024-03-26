@@ -163,10 +163,12 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
     @Then("Dropdown irá filtrar e apresentar somente a informação correspondente")
     public void checkIfFiltered() {
+        PageField merchantName = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento");
         assertEquals(1,
-                pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento")
+                merchantName
                         .getAllVisiblePageField()
                         .size());
+        merchantName.click();
         assertEquals(1,
                 pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
                         .getAllVisiblePageField()
