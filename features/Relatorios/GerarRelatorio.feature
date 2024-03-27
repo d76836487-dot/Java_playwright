@@ -48,14 +48,14 @@ Feature: Gerar Relatorio
 
   @api
   @TestCaseKey=SMP-T178
-  Scenario: Validar Cliente com Apenas 1 Estabelecimento Comercial Vinculado (Sem Hierarquia)
+  Scenario: Validar Cliente com Apenas 1 Estabelecimento Comercial Vinculado
     Given usuário possui apenas um Estabelecimento Comercial vinculado
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     Then usuário verá no campo Estabelecimento Comercial o número deste único estabelecimento já selecionado
 
   @api
   @TestCaseKey=SMP-T179
-  Scenario: Validar Cliente com 2 ou Mais Estabelecimentos Comerciais Vinculados (Sem Hierarquia)
+  Scenario: Validar Cliente com 2 ou Mais Estabelecimentos Comerciais Vinculados
     Given usuário possui mais que um Estabelecimento Comercial vinculado
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     And usuário clica no "Campo Select EC" no "Modal Gerar Relatórios"
@@ -64,7 +64,7 @@ Feature: Gerar Relatorio
 
   @api
   @TestCaseKey=SMP-T198
-  Scenario Outline: Gerar Relatório Cliente com Apenas Um Estabelecimento Comercial Vinculado e Tipo de Relatório de Vendas (sem hierarquia)
+  Scenario Outline: Gerar Relatório Cliente com Apenas Um Estabelecimento Comercial Vinculado e Tipo de Relatório de Vendas
     Given usuário possui apenas um Estabelecimento Comercial vinculado
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     And usuário verifica que este Estabelecimento Comercial está selecionado
@@ -82,7 +82,7 @@ Feature: Gerar Relatorio
 
   @api
   @TestCaseKey=SMP-T268
-  Scenario Outline: Gerar Relatório em arquivo CSV Cliente com Mais que Um Estabelecimento Comercial Vinculado (sem hierarquia)
+  Scenario Outline: Gerar Relatório em arquivo CSV Cliente com Mais que Um Estabelecimento Comercial Vinculado
     Given usuário possui mais que um Estabelecimento Comercial vinculado
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     And usuário seleciona algum de seus Estabelecimentos Comerciais
