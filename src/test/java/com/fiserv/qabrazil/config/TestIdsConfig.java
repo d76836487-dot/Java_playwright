@@ -65,6 +65,8 @@ public class TestIdsConfig {
             entry("Vendas - Histórico de Vendas - Resumo - Valor bruto", "historico-vendas-valor-bruto"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor líquido", "historico-vendas-valor-liquido"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor cancelado", "historico-vendas-valor-cancelado"),
+            entry("Vendas - Histórico de Vendas - Botão Exportar", "exportar-historicovendas"),
+            entry("Vendas - Histórico de Vendas - Botão Cancelar Filtro", "generic-filter-link-sair"),
 
             entry("Home - Card Vendas Hoje - Valor Vendas Hoje", "home-card-vendas-hoje-text-vlr"),
             entry("Home - Card Vendas Hoje - Percentual Vendas Hoje", "home-card-vendas-hoje-text-percentual-down"),
@@ -240,6 +242,9 @@ public class TestIdsConfig {
             entry("Vendas - Histórico Vendas - Valor Bruto Total", "//span[contains(text(),'Valor bruto') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
             entry("Vendas - Histórico Vendas - Valor Líquido Total", "//span[contains(text(),'Valor líquido') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
             entry("Vendas - Histórico Vendas - Total de vendas", "//span[contains(text(),'Total de vendas') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
+            entry("Vendas - Histórico de Vendas - Botão Filtrar", "//div[contains(text(),'Filtros')]"),
+            entry("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo", "//button[contains(text(),'Gerar arquivo')]"),
+
             entry("Relatórios - Texto Descritivo", "//span[contains(text(),'Caso já tenha gerado')]"),
             entry("Relatórios - Tabela - Item", "//tr[.//*[@data-testid='relatorios-table-row-nome-arquivo']]"),
             entry("Relatórios - Notificação de Falha", "//span[starts-with(text(), 'O intervalo da seleção deve ser')]"),

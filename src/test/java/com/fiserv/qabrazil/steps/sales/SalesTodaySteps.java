@@ -5,7 +5,6 @@ import com.fiserv.qabrazil.pages.sales.SalesTodayExportPage;
 import com.fiserv.qabrazil.pages.sales.SalesTodayPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.Currency;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
