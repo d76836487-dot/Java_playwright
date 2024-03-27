@@ -54,6 +54,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
     Then Dropdown irá filtrar e apresentar somente a informação correspondente
     And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
 
+    @api
   @TestCaseKey=SMP-T184
   Scenario: Busca de Documento (CNPJ ou CPF) válido aba Estabelecimento (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'

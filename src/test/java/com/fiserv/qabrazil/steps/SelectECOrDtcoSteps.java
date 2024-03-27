@@ -162,14 +162,16 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     }
 
     @Then("Dropdown irá filtrar e apresentar somente a informação correspondente")
-    public void checkIfFiltered() {
+    public void checkIfFiltered() throws Exception {
+        int expectedNumEcs = apiUserDetailsService.getEcsFromDoc(selectECOrDtcoPage.getSelectedDoc()).size();
+
         PageField merchantName = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento");
         assertEquals(1,
                 merchantName
                         .getAllVisiblePageField()
                         .size());
         merchantName.click();
-        assertEquals(1,
+        assertEquals(expectedNumEcs,
                 pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
                         .getAllVisiblePageField()
                         .size());

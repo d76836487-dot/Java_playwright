@@ -146,6 +146,9 @@ public class SelectECOrDtcoPage extends BasePage {
     public void openModalAndSetDefault(boolean setAsDefault) {
         pageField.from("Header - Trocar Estabelecimento").click();
         pageField.from("Trocar Estabelecimento - Botão selecionar por Documento").click();
+
+        waitUntilTrue(90, () -> pageField.from("Trocar Estabelecimento - Botão Todos Documentos").elementIsVisibleRightNow());
+
         pageField.from("Trocar Estabelecimento - Botão Todos Documentos").click();
         selectSetAsDefault(setAsDefault);
         pageField.from("Trocar Estabelecimento - Botão Acessar").click();
@@ -167,8 +170,14 @@ public class SelectECOrDtcoPage extends BasePage {
 
     public void openModalAndTab(String tab) {
         startMonitoringRequests(page, contractConfig);
-        pageField.from("Header - Trocar Estabelecimento").click();
-        pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab)).click();
+        PageField openModalButton = pageField.from("Header - Trocar Estabelecimento");
+        if (openModalButton.elementIsVisibleRightNow()) {
+            openModalButton.click();
+        }
+
+        PageField establishmentTab = pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab));
+        if (!establishmentTab.elementIsVisible()) throw new RuntimeException("A aba para seleciona estabelecimento não está visível");
+        establishmentTab.click();
         ensureNoFlyingRequests();
 
         waitUntilTrue(60, () ->

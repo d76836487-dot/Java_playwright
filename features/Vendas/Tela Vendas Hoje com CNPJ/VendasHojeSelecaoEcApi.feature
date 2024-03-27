@@ -1,5 +1,5 @@
 #language: en
-@playwright @api
+@playwright @api @UsuárioMaster
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Hoje_com_CNPJ_com_API_e_Seleção_EC
 @Zephyr:Status=Draft
@@ -8,7 +8,6 @@
 Feature: Tela Vendas Hoje com CNPJ com API e Seleção EC
 
   @ignore # TODO: confirmar a api desta tela...
-  @UsuárioMaster
   @TestCaseKey=SMP-T288
   Scenario: Vendas HOJE com seleção de EC (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -17,7 +16,6 @@ Feature: Tela Vendas Hoje com CNPJ com API e Seleção EC
     Then Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API do EC selecionado
 
   @ignore # TODO: confirmar a api desta tela...
-  @UsuárioMaster
   @TestCaseKey=SMP-T291
   Scenario: Vendas HOJE com seleção de Documento (Usuário Master) terá mesma quantidade vendas
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -37,7 +35,6 @@ Feature: Tela Vendas Hoje com CNPJ com API e Seleção EC
     And A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado
     And A soma de todos valores Brutos é igual a "Vendas Hoje - Resumo - Valor Vendas"
 
-  @UsuárioMaster
   @TestCaseKey=SMP-T295
   Scenario: Vendas HOJE com seleção de EC (Usuário Master) terá mesmos estabelecimentos no filtro
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'

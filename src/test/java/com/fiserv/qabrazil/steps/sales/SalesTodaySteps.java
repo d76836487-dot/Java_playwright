@@ -113,7 +113,7 @@ public class SalesTodaySteps extends BaseSteps {
     }
 
 
-    @And("A soma de todos valores Brutos é igual a \"Vendas Hoje - Resumo - Valor Vendas\"")
+    @Then("A soma de todos valores Brutos é igual a \"Vendas Hoje - Resumo - Valor Vendas\"")
     public void sumGrossValueMatchesScreen() throws IOException {
         double sumGrossValue = salesTodayAsExcel.getSumGrossValues();
         double salesToday = pageField.from("Vendas Hoje - Resumo - Valor Vendas").getAsCurrency().doubleValue();
