@@ -6,7 +6,6 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.assertions.LocatorAssertions;
-import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import io.cucumber.java.ParameterType;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,7 +22,7 @@ import static org.testng.Assert.fail;
 public class PageField {
 
     public static LocatorAssertions assertThat(PageField pageField) {
-        return PlaywrightAssertions.assertThat(pageField.locator);
+        return new PageFieldAssertions(pageField);
     }
 
     public static class Factory {
@@ -249,7 +248,7 @@ public class PageField {
         return new PageObject(newTab);
     }
 
-    private void highlightIfPossible() {
+    void highlightIfPossible() {
         if (locator.count() >= 1) {
             locator.first().scrollIntoViewIfNeeded();
             locator.first().highlight();

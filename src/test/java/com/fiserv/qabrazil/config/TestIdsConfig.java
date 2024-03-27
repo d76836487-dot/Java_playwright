@@ -125,19 +125,6 @@ public class TestIdsConfig {
             entry("Home - Agenda Recebimento - Valor Sexta", "home-card-recebimentos-semana-text-sexta-valor"),
             entry("Home - Agenda Recebimento - Qtd Depósitos Sexta", "home-card-recebimentos-semana-text-sexta-qtd-depositos"),
 
-            entry("Menu Lateral - Vendas", "menu-vendas"),
-            entry("Menu Lateral - Home", "menu-home"),
-            entry("Menu Lateral - Recebimentos", "menu-recebimentos"),
-            entry("Menu Lateral - Recebimentos Resumo", "menu-recebimentos-resumo"),
-            entry("Menu Lateral - Recebimentos Agenda", "menu-recebimentos-agenda"),
-            entry("Menu Lateral - Antecipação", "menu-antecipacao"),
-            entry("Menu Lateral - Solicitação", "menu-solicitacao"),
-            entry("Menu Lateral - Relatórios", "menu-relatorios"),
-            entry("Menu Lateral - Negócio", "menu-negocio"),
-            entry("Menu Lateral - Ajuda", "menu-ajuda"),
-            entry("Menu Lateral - Gestor Acessos", "menu-gestor-acessos"),
-            entry("Menu Lateral - Sair", "menu-sair"),
-
             entry("Relatórios - Busca Palavra Chave", "relatorios-input-chave"),
             entry("Relatórios - Botão Filtros", "relatorios-link-filtrar"),
             entry("Relatórios - Botão Gerar Relatório", "relatorios-btn-gerar-relatorio"),
@@ -189,10 +176,12 @@ public class TestIdsConfig {
 
             entry("Modal Gerar Relatórios - Botão Cancelar", "relatorios-btn-cancel"),
 
+            entry("Header - Logotipo", "header-brand-img"),
             entry("Header - Ocultar Valores", "head-ocultar-valores"),
             entry("Header - Ajuda", "head-ajuda"),
             entry("Header - Notificações", "head-notificacoes"),
             entry("Header - Trocar Estabelecimento", "head-trocar-estabelecimentos"),
+            entry("Header - Sair", "head-sair"),
             entry("Trocar Estabelecimento - Marcar como Padrão", "alterar-matriz-selecionar-padrao"),
             entry("Trocar Estabelecimento - Botão Acessar", "alterar-matriz-button-acessar"),
             
@@ -213,11 +202,28 @@ public class TestIdsConfig {
             entry("Date ranger - Últimos 7 dias", "generic-calendar-pill-últimos-7-dias"),
             entry("Date ranger - Últimos 14 dias", "generic-calendar-pill-últimos-14-dias"),
             entry("Date ranger - Mês Atual", "generic-calendar-pill-mês-atual"),
-            entry("Date ranger - Aplicar", "generic-calendar-button-aplicar")
+            entry("Date ranger - Aplicar", "generic-calendar-button-aplicar"),
+
+            entry("Gestão de Acessos - Abas - Usuários", "gestao-tab-usuarios"),
+            entry("Gestão de Acessos - Abas - Convites pendentes", "gestao-tab-pendente"),
+            entry("Gestão de Acessos - Convidar novo usuário", "gestao-new-user")
     );
 
 
-    private static final Map<String, String> otherSelectors = Map.ofEntries(
+    private static final Map<String, String> otherSelectors = Map.<String, String>ofEntries(
+            entry("Menu Lateral - Vendas", ".om-root-menu [data-testid=menu-vendas]"),
+            entry("Menu Lateral - Home", ".om-root-menu [data-testid=menu-home]"),
+            entry("Menu Lateral - Recebimentos", ".om-root-menu [data-testid=menu-recebimentos]"),
+            entry("Menu Lateral - Recebimentos Resumo", ".om-root-menu [data-testid=menu-recebimentos-resumo]"),
+            entry("Menu Lateral - Recebimentos Agenda", ".om-root-menu [data-testid=menu-recebimentos-agenda]"),
+            entry("Menu Lateral - Antecipação", ".om-root-menu [data-testid=menu-antecipacao]"),
+            entry("Menu Lateral - Solicitação", ".om-root-menu [data-testid=menu-solicitacao]"),
+            entry("Menu Lateral - Relatórios", ".om-root-menu [data-testid=menu-relatorios]"),
+            entry("Menu Lateral - Negócio", ".om-root-menu [data-testid=menu-negocio]"),
+            entry("Menu Lateral - Ajuda", ".om-root-menu [data-testid=menu-ajuda]"),
+            entry("Menu Lateral - Gestão de Acessos", ".om-root-menu [data-testid=menu-gestor-acessos]"),
+            entry("Menu Lateral - Sair", ".om-root-menu [data-testid=menu-sair]"),
+
             entry("Date ranger - Image", "//*[@data-testid='generic-calendar-icon-calendar']//img"),
             entry("Date ranger - Ano", "//input[@aria-label='Year']"),
             entry("Date ranger - Mês", "//input[@aria-label='Month']"),
@@ -262,8 +268,10 @@ public class TestIdsConfig {
             entry("Ajuda - Whatsapp", "//span[contains(text(),'WhatsApp')]/.."),
             entry("Ajuda - WhatsApp Card", "//*[contains(@class,'margin-left-m')][1]/*"),
             entry("Ajuda - Atendimento pelo Whatsapp - número do telefone sublinhado", "//*[contains(@class,'margin-left-m')][1]/a"),
-            entry("Ajuda - Chatbot", "//span[contains(text(),'Chatbot')]/..")
-            );
+            entry("Ajuda - Chatbot", "//span[contains(text(),'Chatbot')]/.."),
+
+            entry("Gestão de Acessos - Campo pesquisar", ".input-with-icon-input")
+    );
 
     public static String getTestId(String identifier) {
         return testIdMaps.getOrDefault(identifier, "Didn't find test id for " + identifier);

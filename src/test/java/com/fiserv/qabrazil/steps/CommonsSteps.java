@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.PageObject;
@@ -15,12 +16,17 @@ import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.RequestMonitoring.ensureNoFlyingRequests;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
-import static org.testng.AssertJUnit.*;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class CommonsSteps {
 
     @Autowired
     CommonsPage commonsPage;
+
+    @Autowired
+    HeaderComponent headerComponent;
 
     @Autowired
     UrlCheckers urlCheckers;
@@ -48,7 +54,7 @@ public class CommonsSteps {
     @Given("usuário clicou no {pageField}")
     @Given("usuário clicou no {pageFieldWithSection}")
     @When("usuário clica {pageField}")
-    @When("usuário clica no {pageFieldWithSection}")
+    @When("usuário clica em/no {pageFieldWithSection}")
     public void userClicks(PageField identifier) {
         identifier.click();
     }
@@ -105,7 +111,7 @@ public class CommonsSteps {
         }
     }
 
-    @Then("será direcionado para a jornada de {string}")
+    @Then("será direcionado para a jornada/página de {string}")
     @Then("o Portal deve abrir as {string}")
     public void ensureWeAreAtTheRightPage(String pageName) {
         urlCheckers.forPage(pageName).ensureWeAreAtTheCorrectPage();
@@ -161,5 +167,11 @@ public class CommonsSteps {
     @Then("usuário visualizará em {sectionWithPageField}")
     public void userWillSeeElement(PageField pageField) {
         assertTrue("Deveria estar visível", pageField.elementIsVisibleRightNow());
+    }
+
+    @Then("visualizará na tela de {string}, logotipo da instituição, os ícones ocultar valores, ajuda, notificações e sair")
+    public void userWillSeeOnPageAllHeaderElements(String pageName) {
+        ensureWeAreAtTheRightPage(pageName);
+        headerComponent.ensureAllHeaderElementsArePresent();
     }
 }

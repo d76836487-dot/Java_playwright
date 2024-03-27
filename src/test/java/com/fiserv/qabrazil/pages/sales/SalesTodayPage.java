@@ -85,7 +85,7 @@ public class SalesTodayPage extends CheckedBasePage {
     }
 
     private Locator getLateralMenuLocator() {
-        return page.getByTestId("menu-vendas").last();
+        return pageField.from("Menu Lateral - Vendas").getLocator().last();
     }
 
     public boolean thereAreSalesWithStatus(String salesStatus) {
