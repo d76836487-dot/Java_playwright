@@ -241,6 +241,7 @@ public class TestIdsConfig {
             entry("Vendas - Histórico Vendas - Período - Descrição", "//span[contains(text(),'Período')]/../span[2]"),
             entry("Vendas - Histórico Vendas - Valor Bruto Total", "//span[contains(text(),'Valor bruto') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
             entry("Vendas - Histórico Vendas - Valor Líquido Total", "//span[contains(text(),'Valor líquido') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
+            entry("Vendas - Histórico Vendas - Valor Cancelado Total", "//span[contains(text(),'Valor cancelado') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
             entry("Vendas - Histórico Vendas - Total de vendas", "//span[contains(text(),'Total de vendas') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
             entry("Vendas - Histórico de Vendas - Botão Filtrar", "//div[contains(text(),'Filtros')]"),
             entry("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo", "//button[contains(text(),'Gerar arquivo')]"),

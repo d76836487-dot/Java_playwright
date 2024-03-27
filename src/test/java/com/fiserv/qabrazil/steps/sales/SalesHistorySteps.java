@@ -49,4 +49,28 @@ public class SalesHistorySteps extends BasePage {
         assertEquals("Soma do valor bruto da planilha não é igual à tela.",
                 salesToday, sumGrossValue, 0.001);
     }
+
+    @Then("A soma de todos valores Líquidos é igual a \"Vendas Histórico - Valor Líquido\"")
+    public void sumNetValueMatchesScreen() throws IOException, ParseException {
+        double sumNetValues = salesHistoryExportExcel.getSumNetValues();
+        double netValue = salesHistoryExportExcel.getNetSales().doubleValue();
+        double salesToday = pageField.from("Vendas - Histórico Vendas - Valor Líquido Total").getAsCurrency().doubleValue();
+
+        assertEquals("Valor líquido da tela não é igual à planilha.",
+                salesToday, netValue, 0.001);
+        assertEquals("Soma do valor líquido da planilha não é igual à tela.",
+                salesToday, sumNetValues, 0.001);
+    }
+
+    @Then("A soma de todos valores Cancelados é igual a \"Vendas Histórico - Valor Cancelados\"")
+    public void sumCancelledValueMatchesScreen() throws IOException, ParseException {
+        double sumCancelledValues = salesHistoryExportExcel.getSumCancelledValues();
+        double cancelledValue = salesHistoryExportExcel.getCancelledSales().doubleValue();
+        double valueFromPage = pageField.from("Vendas - Histórico Vendas - Valor Cancelado Total").getAsCurrency().doubleValue();
+
+        assertEquals("Valor líquido da tela não é igual à planilha.",
+                valueFromPage, cancelledValue, 0.001);
+        assertEquals("Soma do valor líquido da planilha não é igual à tela.",
+                valueFromPage, sumCancelledValues, 0.001);
+    }
 }

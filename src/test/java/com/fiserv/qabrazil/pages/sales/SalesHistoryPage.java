@@ -6,7 +6,6 @@ import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.microsoft.playwright.Download;
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
-import static com.fiserv.qabrazil.util.WaitUtil.retryUntilTrue;
 
 @ScenarioComponent
 public class SalesHistoryPage extends BasePage {
@@ -31,19 +29,27 @@ public class SalesHistoryPage extends BasePage {
         }
 
         public Currency getGrossSales() throws IOException, ParseException {
-            String grossSales = excelWrapper.getCellAsText(11, 0);
-            grossSales = grossSales.isEmpty() ? "R$ 0,00" : grossSales.replaceAll("Valor bruto: ", "");
-            return Currency.parse(grossSales);
+            int row = 11;
+            String preText = "Valor bruto: ";
+            return getCurrency(row, preText);
         }
 
-        public String getNetSales() throws IOException {
-            String grossSales = excelWrapper.getCellAsText(12, 0);
-            return grossSales.isEmpty()? "R$ 0,00": grossSales.replaceAll("Valor líquido: ", "");
+        public Currency getNetSales() throws IOException, ParseException {
+            int row = 12;
+            String preText = "Valor líquido: ";
+            return getCurrency(row, preText);
         }
 
-        public String getCancelledSales() throws IOException {
-            String grossSales = excelWrapper.getCellAsText(13, 0);
-            return grossSales.isEmpty()? "R$ 0,00": grossSales.replaceAll("Valor cancelado: ", "");
+        public Currency getCancelledSales() throws IOException, ParseException {
+            int row = 13;
+            String preText = "Valor cancelado: ";
+            return getCurrency(row, preText);
+        }
+
+        private Currency getCurrency(int row, String preText) throws IOException, ParseException {
+            String cell = excelWrapper.getCellAsText(row, 0);
+            cell = cell.isEmpty() ? "R$ 0,00" : cell.replaceAll(preText, "");
+            return Currency.parse(cell);
         }
 
         public List<String> getECs() throws IOException {
@@ -51,7 +57,19 @@ public class SalesHistoryPage extends BasePage {
         }
 
         public Double getSumGrossValues() throws IOException {
-            return excelWrapper.getColumnsAsCurrency("Valor bruto").stream()
+            return getSum("Valor bruto");
+        }
+
+        public Double getSumNetValues() throws IOException {
+            return getSum("Valor líquido");
+        }
+
+        public Double getSumCancelledValues() throws IOException {
+            return getSum("Valor cancelado");
+        }
+
+        private Double getSum(String columnTitle) throws IOException {
+            return excelWrapper.getColumnsAsCurrency(columnTitle).stream()
                     .reduce(Double::sum)
                     .orElse(0.0);
         }
@@ -66,13 +84,6 @@ public class SalesHistoryPage extends BasePage {
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Histórico de vendas")).first().click();
         startMonitoringRequests(page, contractConfig);
         page.waitForURL(Pattern.compile("^.*/HistoricodeVendas.*$"));
-    }
-
-    public void selectLastMonth() {
-        retryUntilTrue(() -> page.getByLabel("toggle tooltip").getByRole(AriaRole.IMG).click(),
-                () -> page.getByLabel("toggle tooltip").getByRole(AriaRole.IMG).isVisible());
-        retryUntilTrue(() -> page.locator("div").filter(new Locator.FilterOptions().setHasText(Pattern.compile("^Mês Atual$"))).click(),
-                () -> page.locator("div").filter(new Locator.FilterOptions().setHasText(Pattern.compile("^Mês Atual$"))).isVisible());
     }
 
     public SalesHistoryExportExcel getDownloadAsExcel() throws IOException {
