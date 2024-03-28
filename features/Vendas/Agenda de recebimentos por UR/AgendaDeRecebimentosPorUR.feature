@@ -5,7 +5,7 @@
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Acesso a Agenda de recebimentos por UR
+Feature: Agenda de recebimentos por UR
 
   Background:
     When Usuário tenta logar na aplicação
