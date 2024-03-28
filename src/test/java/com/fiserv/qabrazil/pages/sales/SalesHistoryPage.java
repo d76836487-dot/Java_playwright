@@ -30,30 +30,28 @@ public class SalesHistoryPage extends BasePage {
         }
 
         public Currency getGrossSales() throws IOException, ParseException {
-            int row = excelWrapper.getRowTableStart() - 4;
             String preText = "Valor bruto: ";
-            return getCurrency(row, preText);
+            return getCurrency(preText);
         }
 
         public Currency getNetSales() throws IOException, ParseException {
-            int row = excelWrapper.getRowTableStart() - 3;
             String preText = "Valor líquido: ";
-            return getCurrency(row, preText);
+            return getCurrency(preText);
         }
 
         public Currency getCancelledSales() throws IOException, ParseException {
-            int row = excelWrapper.getRowTableStart() - 2;
             String preText = "Valor cancelado: ";
-            return getCurrency(row, preText);
+            return getCurrency(preText);
         }
 
         public List<String> getEcsFromCell() throws IOException {
-            int row = excelWrapper.getRowTableStart() - 6;
+            int row = excelWrapper.lookForRowStartingWithValue("Estabelecimento comercial:");
             String cell = excelWrapper.getCellAsText(row, 0);
             return List.of(cell.replaceAll("Estabelecimento comercial: *", "").split(","));
         }
 
-        private Currency getCurrency(int row, String preText) throws IOException, ParseException {
+        private Currency getCurrency(String preText) throws IOException, ParseException {
+            int row = excelWrapper.lookForRowStartingWithValue(preText);
             String cell = excelWrapper.getCellAsText(row, 0);
             cell = cell.isEmpty() ? "R$ 0,00" : cell.replaceAll(preText, "");
             cell = cell.replaceAll("(R\\$)\\D*", "$1 ");

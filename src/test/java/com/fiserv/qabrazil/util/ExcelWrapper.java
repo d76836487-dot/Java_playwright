@@ -35,19 +35,16 @@ public class ExcelWrapper implements AutoCloseable {
         this.inputStream = inputStream;
         workbook = new ReadableWorkbook(inputStream);
         sheet = workbook.getFirstSheet();
-        this.rowTableStart = lookForRowWithValue(0, rowTableStartName);
+        this.rowTableStart = lookForRowStartingWithValue(rowTableStartName);
     }
 
-    private int lookForRowWithValue(int col, String rowTableStartName) throws IOException {
+    public int lookForRowStartingWithValue(String rowTableStartName) throws IOException {
+        int col = 0;
         for (int row = 0; row < sheet.read().size(); row++) {
-            if (getCellAsText(row, col).equals(rowTableStartName)) return row;
+            if (getCellAsText(row, col).contains(rowTableStartName)) return row;
         }
 
         throw new RuntimeException("Não encontrei onde inicia a tabela de valores com texto '%s'".formatted(rowTableStartName));
-    }
-
-    public int getRowTableStart() {
-        return rowTableStart;
     }
 
     @Override
