@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class ExcelWrapper implements AutoCloseable {
     public static final ExcelWrapper NULL = new ExcelWrapper();
@@ -39,6 +40,8 @@ public class ExcelWrapper implements AutoCloseable {
     }
 
     public int lookForRowStartingWithValue(String rowTableStartName) throws IOException {
+        if (sheet == null) return 0;
+
         int col = 0;
         for (int row = 0; row < sheet.read().size(); row++) {
             if (getCellAsText(row, col).contains(rowTableStartName)) return row;
@@ -69,6 +72,12 @@ public class ExcelWrapper implements AutoCloseable {
                 throw new RuntimeException("Falha ao converter moeda %s".formatted(value));
             }
         }
+    }
+
+    public int getColumnsSizeWhere(String columnName, Predicate<String> predicate) throws IOException {
+        return (int) getColumnsAsText(columnName).stream()
+                .filter(predicate)
+                .count();
     }
 
     public List<String> getColumnsAsText(String columnName) throws IOException {

@@ -68,6 +68,10 @@ public class TestIdsConfig {
             entry("Vendas - Histórico de Vendas - Botão Exportar", "exportar-historicovendas"),
             entry("Vendas - Histórico de Vendas - Botão Cancelar Filtro", "generic-filter-link-sair"),
 
+            entry("Vendas - Não Efetivadas - Botão Exportar", "exportar-naoefetivadas"),
+            entry("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
+            entry("Vendas - Não Efetivadas - Botão Cancelar Filtro", "generic-filter-link-sair"),
+
             entry("Home - Card Vendas Hoje - Valor Vendas Hoje", "home-card-vendas-hoje-text-vlr"),
             entry("Home - Card Vendas Hoje - Percentual Vendas Hoje", "home-card-vendas-hoje-text-percentual-down"),
             entry("Home - Card Vendas Hoje - Ver Tudo", "home-card-vendas-hoje-link-ver-tudo"),
@@ -245,6 +249,10 @@ public class TestIdsConfig {
             entry("Vendas - Histórico Vendas - Total de vendas", "//span[contains(text(),'Total de vendas') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
             entry("Vendas - Histórico de Vendas - Botão Filtrar", "//div[contains(text(),'Filtros')]"),
             entry("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo", "//button[contains(text(),'Gerar arquivo')]"),
+
+            entry("Vendas - Não Efetivadas - Total Recusadas", "//div[@id='ctnTotalRecusadas2']/div[2]"),
+            entry("Vendas - Não Efetivadas - Total Estornadas", "//div[@id='ctnTotalEstornadas2']/div[2]"),
+            entry("Vendas - Não Efetivadas - Botão Filtrar", "//div[contains(@class,'btn')]/span[contains(text(),'Filtros')]"),
 
             entry("Relatórios - Texto Descritivo", "//span[contains(text(),'Caso já tenha gerado')]"),
             entry("Relatórios - Tabela - Item", "//tr[.//*[@data-testid='relatorios-table-row-nome-arquivo']]"),
