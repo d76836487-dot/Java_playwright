@@ -7,6 +7,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Tela Vendas Histórico com CNPJ com API e Seleção EC
 
+  @TestCaseKey=SMP-T299
   Scenario: Valores tela Vendas - HISTÓRICO DE VENDAS deve bater com exportação - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
@@ -19,6 +20,7 @@ Feature: Tela Vendas Histórico com CNPJ com API e Seleção EC
     And A soma de todos valores Líquidos é igual a "Vendas Histórico - Valor Líquido"
     And A soma de todos valores Cancelados é igual a "Vendas Histórico - Valor Cancelados"
 
+  @TestCaseKey=SMP-T298
   Scenario: Valores tela Vendas - HISTÓRICO DE VENDAS deve bater com exportação - com seleção de EC
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um EC e clicar Acessar
@@ -30,3 +32,4 @@ Feature: Tela Vendas Histórico com CNPJ com API e Seleção EC
     And A soma de todos valores Brutos é igual a "Vendas Histórico - Valor Bruto"
     And A soma de todos valores Líquidos é igual a "Vendas Histórico - Valor Líquido"
     And A soma de todos valores Cancelados é igual a "Vendas Histórico - Valor Cancelados"
+
