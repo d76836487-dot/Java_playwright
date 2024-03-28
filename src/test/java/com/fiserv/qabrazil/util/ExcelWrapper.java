@@ -13,7 +13,6 @@ import java.util.List;
 
 public class ExcelWrapper implements AutoCloseable {
     public static final ExcelWrapper NULL = new ExcelWrapper();
-
     private final InputStream inputStream;
     private final ReadableWorkbook workbook;
     private final Sheet sheet;
@@ -31,6 +30,24 @@ public class ExcelWrapper implements AutoCloseable {
         workbook = new ReadableWorkbook(inputStream);
         sheet = workbook.getFirstSheet();
         this.rowTableStart = rowTableStart;
+    }
+    public ExcelWrapper(InputStream inputStream, String rowTableStartName) throws IOException {
+        this.inputStream = inputStream;
+        workbook = new ReadableWorkbook(inputStream);
+        sheet = workbook.getFirstSheet();
+        this.rowTableStart = lookForRowWithValue(0, rowTableStartName);
+    }
+
+    private int lookForRowWithValue(int col, String rowTableStartName) throws IOException {
+        for (int row = 0; row < sheet.read().size(); row++) {
+            if (getCellAsText(row, col).equals(rowTableStartName)) return row;
+        }
+
+        throw new RuntimeException("Não encontrei onde inicia a tabela de valores com texto '%s'".formatted(rowTableStartName));
+    }
+
+    public int getRowTableStart() {
+        return rowTableStart;
     }
 
     @Override

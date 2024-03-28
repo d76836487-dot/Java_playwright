@@ -171,7 +171,7 @@ public class SelectECOrDtcoPage extends BasePage {
     public void openModalAndTab(String tab) {
         startMonitoringRequests(page, contractConfig);
         PageField openModalButton = pageField.from("Header - Trocar Estabelecimento");
-        if (openModalButton.elementIsVisibleRightNow()) {
+        if (openModalButton.elementIsVisible()) {
             openModalButton.click();
         }
 
@@ -227,5 +227,19 @@ public class SelectECOrDtcoPage extends BasePage {
         if (getSelectedEc() != null) return List.of(getSelectedEc());
 
         return apiUserDetailsService.getEcsFromDoc(getSelectedDoc());
+    }
+
+    public void userSelectFirstEcAndAccess() {
+        PageField allEcDetails = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe");
+        PageField firstEcFromDropdown = allEcDetails.getAllPageField().get(0);
+
+        if (!firstEcFromDropdown.elementIsVisibleRightNow()) {
+            openFirstDropdown();
+        }
+        firstEcFromDropdown.click();
+
+        storeNameAndEc();
+
+        clickAccessAndWaitClose();
     }
 }

@@ -269,18 +269,8 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
     @Given("Usuário selecionou um EC e clicar Acessar")
     @When("Usuário selecionar um EC e clicar Acessar")
-    public void userSelectEcAndAccess() {
-        PageField firstEcFromDropdown = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
-                .getAllPageField().get(0);
-
-        if (!firstEcFromDropdown.elementIsVisibleRightNow()) {
-            selectECOrDtcoPage.openFirstDropdown();
-        }
-        firstEcFromDropdown.click();
-
-        selectECOrDtcoPage.storeNameAndEc();
-
-        selectECOrDtcoPage.clickAccessAndWaitClose();
+    public void userSelectFirstEcAndAccess() {
+        selectECOrDtcoPage.userSelectFirstEcAndAccess();
     }
 
     @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o Nome fantasia e número do EC")

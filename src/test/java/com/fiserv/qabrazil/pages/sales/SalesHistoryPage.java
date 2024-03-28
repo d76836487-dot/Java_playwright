@@ -11,6 +11,7 @@ import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -29,30 +30,37 @@ public class SalesHistoryPage extends BasePage {
         }
 
         public Currency getGrossSales() throws IOException, ParseException {
-            int row = 11;
+            int row = excelWrapper.getRowTableStart() - 4;
             String preText = "Valor bruto: ";
             return getCurrency(row, preText);
         }
 
         public Currency getNetSales() throws IOException, ParseException {
-            int row = 12;
+            int row = excelWrapper.getRowTableStart() - 3;
             String preText = "Valor líquido: ";
             return getCurrency(row, preText);
         }
 
         public Currency getCancelledSales() throws IOException, ParseException {
-            int row = 13;
+            int row = excelWrapper.getRowTableStart() - 2;
             String preText = "Valor cancelado: ";
             return getCurrency(row, preText);
+        }
+
+        public List<String> getEcsFromCell() throws IOException {
+            int row = excelWrapper.getRowTableStart() - 6;
+            String cell = excelWrapper.getCellAsText(row, 0);
+            return List.of(cell.replaceAll("Estabelecimento comercial: *", "").split(","));
         }
 
         private Currency getCurrency(int row, String preText) throws IOException, ParseException {
             String cell = excelWrapper.getCellAsText(row, 0);
             cell = cell.isEmpty() ? "R$ 0,00" : cell.replaceAll(preText, "");
+            cell = cell.replaceAll("(R\\$)\\D*", "$1 ");
             return Currency.parse(cell);
         }
 
-        public List<String> getECs() throws IOException {
+        public List<String> getEcFromColumn() throws IOException {
             return excelWrapper.getColumnsAsText("Número do estabelecimento");
         }
 
@@ -99,6 +107,8 @@ public class SalesHistoryPage extends BasePage {
         Download download = page.waitForDownload(() ->
                 pageField.from("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo").click());
 
-        return new SalesHistoryExportExcel(new ExcelWrapper(download.createReadStream(), 15));
+        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
+        System.out.printf("Saved excel as %s%n", "target/" + download.suggestedFilename());
+        return new SalesHistoryExportExcel(new ExcelWrapper(download.createReadStream(), "Data da venda"));
     }
 }
