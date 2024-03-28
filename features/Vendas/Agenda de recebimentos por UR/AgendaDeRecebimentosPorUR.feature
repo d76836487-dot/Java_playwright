@@ -12,9 +12,11 @@ Feature: Agenda de recebimentos por UR
     Then Usuário estará com acesso e sessão foi salva
     And Todas as requisições HTTP foram respondidas
 
+  @TestCaseKey=SMP-T300
   Scenario: Acesso a Agenda de recebimentos por UR Com apenas um Documento
     Given instituição tem apenas um documento
     And Usuário acessou o Home
     When Usuário passa o mouse sobre "Menu Lateral - Recebimentos"
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
     Then usuário visualizará em "Agenda de recebimentos por UR" do respectivo Documento sem a Opção no Header de Alterar Documento
+
