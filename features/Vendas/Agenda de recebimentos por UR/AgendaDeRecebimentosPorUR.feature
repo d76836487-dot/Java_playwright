@@ -1,3 +1,4 @@
+#language: en
 @playwright
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Vendas/Agenda_de_recebimentos_por_UR
