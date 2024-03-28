@@ -217,7 +217,7 @@ public class TestIdsConfig {
             entry("Menu Lateral - Home", ".om-root-menu [data-testid=menu-home]"),
             entry("Menu Lateral - Recebimentos", ".om-root-menu [data-testid=menu-recebimentos]"),
             entry("Menu Lateral - Recebimentos Resumo", ".om-root-menu [data-testid=menu-recebimentos-resumo]"),
-            entry("Menu Lateral - Recebimentos Agenda", ".om-root-menu [data-testid=menu-recebimentos-agenda]"),
+            entry("Menu Lateral - Agenda de Recebimentos UR", ".om-root-menu [data-testid=menu-recebimentos-agenda]"),
             entry("Menu Lateral - Antecipação", ".om-root-menu [data-testid=menu-antecipacao]"),
             entry("Menu Lateral - Solicitação", ".om-root-menu [data-testid=menu-solicitacao]"),
             entry("Menu Lateral - Relatórios", ".om-root-menu [data-testid=menu-relatorios]"),
