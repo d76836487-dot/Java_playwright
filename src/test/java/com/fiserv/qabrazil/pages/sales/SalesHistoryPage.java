@@ -11,7 +11,6 @@ import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -105,8 +104,6 @@ public class SalesHistoryPage extends BasePage {
         Download download = page.waitForDownload(() ->
                 pageField.from("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo").click());
 
-        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
-        System.out.printf("Saved excel as %s%n", "target/" + download.suggestedFilename());
         return new SalesHistoryExportExcel(new ExcelWrapper(download.createReadStream(), "Data da venda"));
     }
 }
