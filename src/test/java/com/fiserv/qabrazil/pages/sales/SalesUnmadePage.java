@@ -74,19 +74,19 @@ public class SalesUnmadePage extends BasePage {
     }
 
     public SalesUnmadeExportExcel getDownloadAsExcel() throws IOException {
-        PageField buttonCancelFilter = pageField.from("Vendas - Não Efetivadas - Botão Cancelar Filtro");
+        PageField buttonCancelFilter = pageField.from("Vendas - Pré Autorizadas - Botão Cancelar Filtro"); // TODO: aqui...
         if (buttonCancelFilter.elementIsVisibleRightNow()) {
             buttonCancelFilter.click();
         }
-        PageField exportButton = pageField.from("Vendas - Não Efetivadas - Botão Exportar");
+        PageField exportButton = pageField.from("Vendas - Pré Autorizadas - Botão Exportar"); // TODO: aqui...
 
         if (!exportButton.fieldIsOneVisibleAndEnabled()) return SalesUnmadeExportExcel.NULL;
 
         exportButton.click();
 
         Download download = page.waitForDownload(() ->
-                pageField.from("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo").click());
+                pageField.from("Vendas - Pré Autorizadas - Exportar - Botão Gerar Arquivo").click()); // TODO: aqui...
 
-        return new SalesUnmadeExportExcel(new ExcelWrapper(download.createReadStream(), "Data da venda"));
+        return new SalesUnmadeExportExcel(new ExcelWrapper(download.createReadStream(), "Data da venda")); // TODO: aqui...
     }
 }

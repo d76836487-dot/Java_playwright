@@ -72,6 +72,10 @@ public class TestIdsConfig {
             entry("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
             entry("Vendas - Não Efetivadas - Botão Cancelar Filtro", "generic-filter-link-sair"),
 
+            entry("Vendas - Pré Autorizadas - Botão Exportar", "exportar-preautorizacoes"),
+            entry("Vendas - Pré Autorizadas - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
+            entry("Vendas - Pré Autorizadas - Botão Cancelar Filtro", "generic-filter-link-sair"),
+
             entry("Home - Card Vendas Hoje - Valor Vendas Hoje", "home-card-vendas-hoje-text-vlr"),
             entry("Home - Card Vendas Hoje - Percentual Vendas Hoje", "home-card-vendas-hoje-text-percentual-down"),
             entry("Home - Card Vendas Hoje - Ver Tudo", "home-card-vendas-hoje-link-ver-tudo"),
@@ -253,6 +257,11 @@ public class TestIdsConfig {
             entry("Vendas - Não Efetivadas - Total Recusadas", "//div[@id='ctnTotalRecusadas2']/div[2]"),
             entry("Vendas - Não Efetivadas - Total Estornadas", "//div[@id='ctnTotalEstornadas2']/div[2]"),
             entry("Vendas - Não Efetivadas - Botão Filtrar", "//div[contains(@class,'btn')]/span[contains(text(),'Filtros')]"),
+
+            entry("Vendas - Pré Autorizadas - Total Vendas", "//span[text()='Total de vendas']/../../div[2]/div/span"),
+            entry("Vendas - Pré Autorizadas - Valor Bruto Autorizado", "//span[text()='Valor bruto autorizado']/../../div[2]/div/span"),
+            entry("Vendas - Pré Autorizadas - Valor Bruto A Confirmar", "//span[text()='Valor bruto a confirmar']/../../div[2]/div/span"),
+            entry("Vendas - Pré Autorizadas - Botão Filtrar", "//div[contains(text(),'Filtros')]"),
 
             entry("Relatórios - Texto Descritivo", "//span[contains(text(),'Caso já tenha gerado')]"),
             entry("Relatórios - Tabela - Item", "//tr[.//*[@data-testid='relatorios-table-row-nome-arquivo']]"),
