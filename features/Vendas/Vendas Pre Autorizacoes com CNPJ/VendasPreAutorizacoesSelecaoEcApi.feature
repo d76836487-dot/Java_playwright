@@ -7,6 +7,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Tela Vendas Pré Autorizações com CNPJ com API e Seleção EC
 
+  @TestCaseKey=SMP-T303
   Scenario: Valores tela Vendas - PRÉ-AUTORIZADAS deve bater com exportação - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
