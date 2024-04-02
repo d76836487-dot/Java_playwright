@@ -10,6 +10,7 @@ import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -74,19 +75,22 @@ public class SalesUnmadePage extends BasePage {
     }
 
     public SalesUnmadeExportExcel getDownloadAsExcel() throws IOException {
-        PageField buttonCancelFilter = pageField.from("Vendas - Pré Autorizadas - Botão Cancelar Filtro"); // TODO: aqui...
+        PageField buttonCancelFilter = pageField.from("Vendas - Não Efetivadas - Botão Cancelar Filtro");
         if (buttonCancelFilter.elementIsVisibleRightNow()) {
             buttonCancelFilter.click();
         }
-        PageField exportButton = pageField.from("Vendas - Pré Autorizadas - Botão Exportar"); // TODO: aqui...
+        PageField exportButton = pageField.from("Vendas - Não Efetivadas - Botão Exportar");
 
         if (!exportButton.fieldIsOneVisibleAndEnabled()) return SalesUnmadeExportExcel.NULL;
 
         exportButton.click();
 
         Download download = page.waitForDownload(() ->
-                pageField.from("Vendas - Pré Autorizadas - Exportar - Botão Gerar Arquivo").click()); // TODO: aqui...
+                pageField.from("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo").click());
 
-        return new SalesUnmadeExportExcel(new ExcelWrapper(download.createReadStream(), "Data da venda")); // TODO: aqui...
+        download.saveAs(Paths.get(download.suggestedFilename()));
+
+        return new SalesUnmadeExportExcel(
+                new ExcelWrapper(download.createReadStream(), "Data da venda"));
     }
 }

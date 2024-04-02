@@ -57,7 +57,7 @@ public class SalesPreAuthorizationsSteps extends BasePage {
     public void grossValueAuthorizedMatchesScreen() throws IOException, ParseException {
         double sumGross = salesPreAuthorizationExportExcel.getSumGrossAuthorized();
         double gross = salesPreAuthorizationExportExcel.getGrossAuthorized();
-        double grossValuePage = pageField.from("Vendas - Pré Autorizadas - Valor Bruto Autorizado").getAsCurrency().doubleValue();
+        double grossValuePage = pageField.from("Vendas - Pré Autorizações - Valor Bruto Autorizado").getAsCurrency().doubleValue();
 
         assertEquals("Valor vendas autorizadas da tela não é igual à planilha.",
                 grossValuePage, sumGross);
@@ -69,7 +69,7 @@ public class SalesPreAuthorizationsSteps extends BasePage {
     public void countMatchesScreen() throws IOException, ParseException {
         long countQuantityPre = salesPreAuthorizationExportExcel.getCountPre();
         long quantityPre = salesPreAuthorizationExportExcel.getCount();
-        int quantitySalesFromPage = pageField.from("Vendas - Pré Autorizadas - Total Vendas").getAsNumber();
+        int quantitySalesFromPage = pageField.from("Vendas - Pré Autorizações - Total Vendas").getAsNumber();
 
         assertEquals("Quantidade vendas pré-autorizadas da tela não é igual à planilha.",
                 quantitySalesFromPage, quantityPre);

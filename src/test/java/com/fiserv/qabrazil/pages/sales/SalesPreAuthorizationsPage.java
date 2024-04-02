@@ -11,6 +11,7 @@ import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -37,9 +38,9 @@ public class SalesPreAuthorizationsPage extends BasePage {
         public double getGrossAuthorized() throws IOException, ParseException {
             String preText = "Valor bruto: ";
             int row = excelWrapper.lookForRowStartingWithValue(preText);
-            String text = excelWrapper.getCellAsText(row, 0).replaceAll(preText, "");
-            text = text.replace("R$", "R$ ");
-            return Currency.parseCurrency(text).doubleValue();
+            String cell = excelWrapper.getCellAsText(row, 0).replaceAll(preText, "");
+            cell = cell.isEmpty()? "R$ 0,00": cell.replace("R$", "R$ ");
+            return Currency.parseCurrency(cell).doubleValue();
         }
 
         public long getCountPre() throws IOException {
@@ -50,6 +51,7 @@ public class SalesPreAuthorizationsPage extends BasePage {
             String preText = "Quantidade de vendas: ";
             int row = excelWrapper.lookForRowStartingWithValue(preText);
             String text = excelWrapper.getCellAsText(row, 0).replaceAll(preText, "");
+            text = text.isEmpty()? "0": text;
             return Long.parseLong(text);
 
         }
@@ -73,23 +75,26 @@ public class SalesPreAuthorizationsPage extends BasePage {
         // TODO: change for data-testid
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Pré-autorizações")).first().click();
         startMonitoringRequests(page, contractConfig);
-        page.waitForURL(Pattern.compile("^.*/NaoEfetivadas.*$")); // TODO: aqui...
+        page.waitForURL(Pattern.compile("^.*/PreAutorizacoes.*$"));
     }
 
     public SalesPreAuthorizationExportExcel getDownloadAsExcel() throws IOException {
-        PageField buttonCancelFilter = pageField.from("Vendas - Pré Autorizadas - Botão Cancelar Filtro");
+        PageField buttonCancelFilter = pageField.from("Vendas - Pré Autorizações - Botão Cancelar Filtro");
         if (buttonCancelFilter.elementIsVisibleRightNow()) {
             buttonCancelFilter.click();
         }
-        PageField exportButton = pageField.from("Vendas - Pré Autorizadas - Botão Exportar");
+        PageField exportButton = pageField.from("Vendas - Pré Autorizações - Botão Exportar");
 
         if (!exportButton.fieldIsOneVisibleAndEnabled()) return SalesPreAuthorizationExportExcel.NULL;
 
         exportButton.click();
 
         Download download = page.waitForDownload(() ->
-                pageField.from("Vendas - Pré Autorizadas - Exportar - Botão Gerar Arquivo").click());
+                pageField.from("Vendas - Pré Autorizações - Exportar - Botão Gerar Arquivo").click());
 
-        return new SalesPreAuthorizationExportExcel(new ExcelWrapper(download.createReadStream(), "Data da venda"));
+        download.saveAs(Paths.get(download.suggestedFilename()));
+
+        return new SalesPreAuthorizationExportExcel(
+                new ExcelWrapper(download.createReadStream(), "Data da venda"));
     }
 }

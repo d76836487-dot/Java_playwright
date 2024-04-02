@@ -147,7 +147,7 @@ public class PageField {
 
     private Currency getParsed(String textFromElement) {
         try {
-            return Currency.parse(textFromElement);
+            return Currency.parse(textFromElement.replace("R$", "R$ "));
         } catch (ParseException ex) {
             throw new RuntimeException(
                     String.format("Failed parsing currency %s with selector %s", textFromElement, selector), ex);
