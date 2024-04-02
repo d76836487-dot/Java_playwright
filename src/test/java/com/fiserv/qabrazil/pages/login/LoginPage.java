@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.pages.login;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.automation.mfa.MfaGenerator;
 import com.fiserv.automation.playwright.configuration.StorageState;
 import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
@@ -12,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
@@ -39,6 +41,9 @@ public class LoginPage extends BasePage {
 
     @Autowired
     private SelectECOrDtcoPage selectECOrDtcoPage;
+
+    @Autowired
+    MfaGenerator mfaGenerator;
 
     public boolean pageHasImageWith(String contract) {
         Pattern pattern = Pattern.compile(String.format(".*%s", contract));
@@ -93,7 +98,20 @@ public class LoginPage extends BasePage {
         page.getByTestId("password").fill(pwd);
         page.getByTestId("entrar").click();
 
+        if (hasMfa()) {
+            List<Locator> inputs = pageField.from("Login - Campo Token MFA").getLocator().locator("input").all();
+            String token = mfaGenerator.getToken();
+            for (int i = 0; i < token.length(); i++) {
+                inputs.get(i).pressSequentially("" + token.charAt(i));
+            }
+            pageField.from("Login - Botão Confirmar Token MFA").click();
+        }
+
         storageState.clearState();
+    }
+
+    private boolean hasMfa() {
+        return pageField.from("Login - Campo Token MFA").elementIsVisible();
     }
 
     public boolean userIsLogged() {

@@ -39,6 +39,7 @@ public class ContractConfig {
             String url,
             String user,
             String password,
+            String mfaSecretKey,
             String identity,
             String primaryCssClass,
             String institutionTags,

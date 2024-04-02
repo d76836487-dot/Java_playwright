@@ -207,6 +207,8 @@ public class TestIdsConfig {
             entry("Trocar Estabelecimento - Documento - Nome Estabelecimento", "alterar-matriz-text-documento-nome-fantasia-.*"),
 
             entry("Login - mensagem de erro", "login-usuario-incorreto"),
+            entry("Login - Campo Token MFA", "login-codigos-token"),
+            entry("Login - Botão Confirmar Token MFA", "login-confirmar-token"),
 
             entry("Date ranger - Ontem", "generic-calendar-pill-ontem"),
             entry("Date ranger - Últimos 7 dias", "generic-calendar-pill-últimos-7-dias"),
