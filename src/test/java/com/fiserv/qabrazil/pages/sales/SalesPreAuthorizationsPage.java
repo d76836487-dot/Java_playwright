@@ -11,7 +11,6 @@ import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -30,7 +29,7 @@ public class SalesPreAuthorizationsPage extends BasePage {
         }
 
         public double getSumGrossAuthorized() throws IOException {
-            return excelWrapper.getColumnsAsCurrency("Valor confirmado").stream()
+            return excelWrapper.getColumnsAsCurrency("Valor autorizado").stream()
                     .mapToDouble(Double::doubleValue)
                     .sum();
         }
@@ -58,12 +57,12 @@ public class SalesPreAuthorizationsPage extends BasePage {
 
         public List<String> getEcsFromCell() throws IOException {
             int row = excelWrapper.lookForRowStartingWithValue("Estabelecimento comercial:");
-            String cell = excelWrapper.getCellAsText(row, 0);
+            String cell = excelWrapper.getCellAsText(row, 0).trim();
             return List.of(cell.replaceAll("Estabelecimento comercial: *", "").split(","));
         }
 
         public List<String> getEcFromColumn() throws IOException {
-            return excelWrapper.getColumnsAsText("Número do estabelecimento");
+            return excelWrapper.getColumnsAsText("Estabelecimento comercial");
         }
     }
 
@@ -91,8 +90,6 @@ public class SalesPreAuthorizationsPage extends BasePage {
 
         Download download = page.waitForDownload(() ->
                 pageField.from("Vendas - Pré Autorizações - Exportar - Botão Gerar Arquivo").click());
-
-        download.saveAs(Paths.get(download.suggestedFilename()));
 
         return new SalesPreAuthorizationExportExcel(
                 new ExcelWrapper(download.createReadStream(), "Data da venda"));
