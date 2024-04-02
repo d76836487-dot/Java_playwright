@@ -6,12 +6,14 @@ import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.qabrazil.components.Paginator;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.config.TestIdsConfig;
+import com.fiserv.qabrazil.dto.FilterDateRangeDto;
 import com.fiserv.qabrazil.dto.GenerateReportDto;
 import com.fiserv.qabrazil.dto.ReportDto;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.ReportsPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.Identifier;
+import com.fiserv.qabrazil.util.WaitUtil;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -21,14 +23,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
+import static com.fiserv.automation.api.util.DateUtil.toLocalDate;
 import static com.fiserv.qabrazil.steps.home.HomeCustomizeModalSteps.csv;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
@@ -51,6 +56,7 @@ public class ReportsSteps extends BaseSteps {
     private Paginator paginator;
 
     private final GenerateReportDto generateReportDto = new GenerateReportDto();
+    private final FilterDateRangeDto filterDateRangeDto = new FilterDateRangeDto();
 
     @Then("será direcionado para a jornada de Relatórios")
     public void shouldBeAtReportsPage() {
@@ -347,8 +353,8 @@ public class ReportsSteps extends BaseSteps {
             return false;
         }
 
-        LocalDate dateFrom = DateUtil.toLocalDate(texts[0], "dd/MM/yyyy");
-        LocalDate dateTo = DateUtil.toLocalDate(texts[2], "dd/MM/yyyy");
+        LocalDate dateFrom = toLocalDate(texts[0], "dd/MM/yyyy");
+        LocalDate dateTo = toLocalDate(texts[2], "dd/MM/yyyy");
 
         return dateFrom.isBefore(dateTo) || dateFrom.isEqual(dateTo);
     }
@@ -462,5 +468,54 @@ public class ReportsSteps extends BaseSteps {
     public void userWillSeeAgainReportsOfSalesAndPayments() {
         assertTrue("Deveria estar listado relatórios de vendas e pagamentos",
                 reportsPage.thereIsAtLeastOneReportOfEachType());
+    }
+
+    @Given("Existem relatórios extraídos em datas diferentes")
+    public void thereAreReporstsWithDifferentDates() {
+        assumeThat(reportsPage.thereAreReportsExtractedOfDifferentDates()).isTrue();
+    }
+
+    @When("usuário filtra por uma data")
+    public void userFiltersByADateRange() {
+        String dateToFilter = pageField.from("Relatórios - Item - Período").firstOf().getAsText();
+
+        pageField.from("Filtros de relatório - Accordion Período").click();
+        pageField.from("Filtros de relatório - Item Período").click();
+
+        String[] dates = dateToFilter.split(" até ");
+        filterDateRangeDto.startDate = toLocalDate(dates[0], "dd/MM/yyyy");
+        filterDateRangeDto.endDate = toLocalDate(dates[1], "dd/MM/yyyy");
+
+        reportsPage.selectRange(filterDateRangeDto);
+
+        PageField showResultsButton = pageField.from("Filtros - Botão Mostrar Resultados");
+        showResultsButton.click();
+    }
+
+    @Then("serão exibidos apenas relatórios extraídos da mesma data")
+    public void thereWillBeShownOnlyReportsForTheSameDateRange() {
+        WaitUtil.sleep(Duration.ofSeconds(2));
+        String[] rangesListed = pageField.from("Relatórios - Item - Período")
+                .allVisiblePageField()
+                .map(PageField::getAsText)
+                .distinct()
+                .toArray(String[]::new);
+
+        log.info("Datas encontradas: {}", (Object) rangesListed);
+        log.info("Data filtrada: {} até {}", filterDateRangeDto.startDate, filterDateRangeDto.endDate);
+        assertTrue("Deveria ter exibido apenas relatórios do mesmo range",
+                this.isInTheFilteredDate(rangesListed));
+    }
+
+    private boolean isInTheFilteredDate(String[] dates) {
+        return Arrays.stream(dates).allMatch(this::isInTheFilteredDate);
+    }
+
+    private boolean isInTheFilteredDate(String date) {
+        String[] dates = date.split(" até ");
+        LocalDate startDate = toLocalDate(dates[0], "dd/MM/yyyy");
+        LocalDate endDate = toLocalDate(dates[1], "dd/MM/yyyy");
+
+        return !startDate.isBefore(filterDateRangeDto.startDate) && !endDate.isAfter(filterDateRangeDto.endDate);
     }
 }

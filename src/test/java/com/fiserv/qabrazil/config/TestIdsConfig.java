@@ -246,6 +246,9 @@ public class TestIdsConfig {
             entry("Modal Gerar Relatórios - Dia Calendário", "//*[@class='flatpickr-days']//span[contains(@class, 'flatpickr-day')]"),
             entry("Modal Gerar Relatórios - Ano Calendário", "//*[contains(@class, 'DateInputPicker-periodo-calendar')]//input[contains(@class, 'numInput')][contains(@class, 'cur-year')]"),
             entry("Modal Gerar Relatórios - Mês Calendário", "//*[contains(@class, 'DateInputPicker-periodo-calendar')]//select[@aria-label='Month']"),
+            entry("Filtros de Relatório - Dia Calendário", "//*[@class='flatpickr-days']//span[contains(@class, 'flatpickr-day')]"),
+            entry("Filtros de Relatório - Ano Calendário", "//*[contains(@class, 'DateInputPicker-generic-filter-periodo-calendar')]//input[contains(@class, 'numInput')][contains(@class, 'cur-year')]"),
+            entry("Filtros de Relatório - Mês Calendário", "//*[contains(@class, 'DateInputPicker-generic-filter-periodo-calendar')]//select[@aria-label='Month']"),
 
             // TODO: maps below should be changed for data-testid
             entry("Vendas - Histórico Vendas - Período - Descrição", "//span[contains(text(),'Período')]/../span[2]"),

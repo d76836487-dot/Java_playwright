@@ -4,6 +4,7 @@ import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.components.Paginator;
 import com.fiserv.qabrazil.config.TestIdsConfig;
+import com.fiserv.qabrazil.dto.FilterDateRangeDto;
 import com.fiserv.qabrazil.dto.ReportDto;
 import com.fiserv.qabrazil.util.CSVWrapper;
 import com.fiserv.qabrazil.util.ExcelWrapper;
@@ -25,8 +26,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
-import static com.fiserv.automation.api.util.DateUtil.monthName;
-import static com.fiserv.automation.api.util.DateUtil.year;
+import static com.fiserv.automation.api.util.DateUtil.*;
 import static com.fiserv.qabrazil.config.TestIdsConfig.getQuerySelector;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -176,6 +176,30 @@ public class ReportsPage extends CheckedBasePage {
 
         log.info("Selecting yesterday in calendar: {}", yesterday);
         yesterdayElement.dblclick();
+    }
+
+    public void selectRange(FilterDateRangeDto dto) {
+        this.selectRange(dto.startDate, dto.endDate);
+    }
+
+    public void selectRange(LocalDate startDate, LocalDate endDate) {
+        selectDate(startDate);
+        selectDate(endDate);
+    }
+
+    private void selectDate(LocalDate date) {
+        Locator inputYear = page.locator(getQuerySelector("Filtros de Relatório - Ano Calendário"));
+        inputYear.highlight();
+        inputYear.clear();
+        inputYear.pressSequentially(year(date));
+
+        String monthName = monthName(date);
+        monthName = monthName.substring(0, 1).toUpperCase() + monthName.substring(1);
+
+        page.locator(getQuerySelector("Filtros de Relatório - Mês Calendário"))
+                .selectOption(monthName);
+
+        clickDateInCalendar(date.format(DateTimeFormatter.ofPattern("MMMM d, yyyy")));
     }
 
     public ReportDto getFirstReportInTable() {
@@ -366,5 +390,11 @@ public class ReportsPage extends CheckedBasePage {
         PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
         waitUntilTrue(() -> options.getAllVisiblePageField().size() >= 2);
         return options.getAllVisiblePageField().get(2);
+    }
+
+    public boolean thereAreReportsExtractedOfDifferentDates() {
+        List<PageField> reports = pageField.from("Relatórios - Item - Período").getAllVisiblePageField();
+
+        return reports.stream().map(PageField::getAsText).distinct().count() > 1;
     }
 }
