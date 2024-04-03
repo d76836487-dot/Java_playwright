@@ -68,7 +68,7 @@ public class LoginPage extends BasePage {
         headerComponent.selectShowValuesButton(true);
     }
 
-    private synchronized void loginWithOneRetry() {
+    public synchronized void loginWithOneRetry() {
         if (storageState.stateIsReady()) {
             goTo(storageState.getLoggedUrl());
         } else {

@@ -206,7 +206,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     @Given("Usuário está na aba {string} da modal 'Trocar Estabelecimento'")
     public void userIsInEstablishmentTab(String tab) {
         if (!loginPage.userIsLogged()) {
-            loginPage.forceNewLogin();
+            loginPage.loginWithOneRetry();
             loginPage.userIsLogged();
         }
 
@@ -215,7 +215,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
     @When("Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' {string}")
     public void userLogsInWithoutPreSelectedEC(String checkedOrUnchecked) {
-        loginPage.forceNewLogin();
+        loginPage.loginWithOneRetry();
 
         if (selectECOrDtcoPage.modalIsVisible()) return;
 
