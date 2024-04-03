@@ -298,7 +298,12 @@ public class TestIdsConfig {
             entry("Ajuda - Atendimento pelo Whatsapp - número do telefone sublinhado", "//*[contains(@class,'margin-left-m')][1]/a"),
             entry("Ajuda - Chatbot", "//span[contains(text(),'Chatbot')]/.."),
 
-            entry("Gestão de Acessos - Campo pesquisar", ".input-with-icon-input")
+            entry("Gestão de Acessos - Campo pesquisar", ".input-with-icon-input"),
+
+            entry("Agenda de recebimentos por UR - Botão Alterar Documento", "button.ec-info-btn"),
+            entry("Agenda de recebimentos por UR - RadioButton Selecionar Documento", ".popup-content input[type=radio]"),
+            entry("Agenda de recebimentos por UR - Confirmar Seleção", ".popup-dialog .cor-branca"),
+            entry("Agenda de recebimentos por UR - CNPJ Selecionado", ".ec-info-subtitle")
     );
 
     public static String getTestId(String identifier) {

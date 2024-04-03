@@ -47,7 +47,7 @@ public class WeekReceiptScheduleSteps {
         weekReceiptScheduleComponent.assertThatViewDetailedReceiptsButtonIsVisible();
     }
 
-    @ParameterType("(não )?(existir|existem|encontrou)")
+    @ParameterType("(não )?(existir|existem|encontrou|verá)")
     public boolean shakespeareBoolean(String not, String ignoredValue) {
         return StringUtils.isEmpty(not);
     }
