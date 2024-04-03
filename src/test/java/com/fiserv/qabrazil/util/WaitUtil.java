@@ -6,6 +6,9 @@ import java.time.Duration;
 import java.util.function.Supplier;
 
 public class WaitUtil {
+
+    private static final ThreadLocal<Boolean> alreadyWaiting = ThreadLocal.withInitial(() -> false);
+
     public static void sleep(Duration duration) {
         Awaitility.await()
                 .pollInSameThread()
@@ -41,14 +44,23 @@ public class WaitUtil {
     }
 
     public static boolean waitUntilTrue(int totalRetries, Supplier<Boolean> untilTrue)  {
-        for(int numTries = 0; numTries < totalRetries; numTries++) {
-            try {
-                if (untilTrue.get()) {
-                    return true;
-                }
-            } catch (RuntimeException ignored) {}
-            sleep(Duration.ofMillis(500));
+        if (alreadyWaiting.get()) {
+            throw new IllegalStateException("waitUntilTrue called inside waitUntilTrue");
         }
-        return false;
+        try {
+            alreadyWaiting.set(true);
+            for (int numTries = 0; numTries < totalRetries; numTries++) {
+                try {
+                    if (untilTrue.get()) {
+                        return true;
+                    }
+                } catch (RuntimeException ignored) {
+                }
+                sleep(Duration.ofMillis(500));
+            }
+            return false;
+        } finally {
+            alreadyWaiting.set(false);
+        }
     }
 }
