@@ -12,9 +12,9 @@ import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
-import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
 
 public class SalesVoucherSteps extends BasePage {
     @Autowired
@@ -34,25 +34,21 @@ public class SalesVoucherSteps extends BasePage {
         salesVoucherExportExcel = salesVoucherPage.getDownloadAsExcel();
         List<String> exportedEcColumn = salesVoucherExportExcel.getEcFromColumn();
         List<String> exportedEcCell = salesVoucherExportExcel.getEcsFromCell();
-        List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs().stream()
-                .sorted()
-                .toList();
-        boolean exportedOnlySelectedEc = selectedEcs.containsAll(exportedEcColumn);
-        String[] uniqueEcsFromColum = exportedEcColumn.stream()
+        List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs();
+        List<String> uniqueEcsFromColum = exportedEcColumn.stream()
                 .distinct()
                 .sorted()
-                .toList()
-                .toArray(new String[0]);
+                .toList();
         String[] ecsFromCell = exportedEcCell.stream()
                 .filter(m -> !m.isEmpty())
                 .sorted()
                 .toList()
                 .toArray(new String[0]);
 
-        assertTrue("Existem ECS na coluna gerados no excel que não são iguais ao selecionado '%s': '%s'.".formatted(selectedEcs, uniqueEcsFromColum),
-                exportedOnlySelectedEc);
-        assertArrayEquals("Valores da célula com EC é diferente dos ECs selecionados. Column: '%s', cell: '%s'".formatted(selectedEcs.toArray(new String[0]), Arrays.toString(ecsFromCell)),
-                selectedEcs.toArray(new String[0]), ecsFromCell);
+        String messageIfFail1 = "Existem ECS na coluna gerados no excel que não são iguais ao selecionado '%s': '%s'.".formatted(selectedEcs, uniqueEcsFromColum);
+        String messageIfFail2 = "Valores da célula com EC é diferente dos ECs selecionados. Column: '%s', cell: '%s'".formatted(selectedEcs.toArray(new String[0]), Arrays.toString(ecsFromCell));
+        assertThat(selectedEcs).withFailMessage(messageIfFail1).containsAnyElementsOf(uniqueEcsFromColum);
+        assertThat(selectedEcs).withFailMessage(messageIfFail2).containsExactlyInAnyOrder(ecsFromCell);
     }
 
     @Then("A soma de vendas voucher é igual ao valor bruto autorizado")
