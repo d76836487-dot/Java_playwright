@@ -30,12 +30,14 @@ public class SalesVoucherSteps extends BasePage {
     }
 
     @Then("A exportação do relatório 'Voucher' terá somente o EC selecionado")
-    public void exportWillHaveOnlySelectedEc() throws IOException {
+    public void exportWillHaveOnlySelectedEc() throws Exception {
         salesVoucherExportExcel = salesVoucherPage.getDownloadAsExcel();
         List<String> exportedEcColumn = salesVoucherExportExcel.getEcFromColumn();
         List<String> exportedEcCell = salesVoucherExportExcel.getEcsFromCell();
-        boolean allSameEcs = exportedEcColumn.stream()
-                .allMatch(ec -> ec.equals(selectECOrDtcoPage.getSelectedEc()));
+        List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs().stream()
+                .sorted()
+                .toList();
+        boolean exportedOnlySelectedEc = selectedEcs.containsAll(exportedEcColumn);
         String[] uniqueEcsFromColum = exportedEcColumn.stream()
                 .distinct()
                 .sorted()
@@ -47,10 +49,10 @@ public class SalesVoucherSteps extends BasePage {
                 .toList()
                 .toArray(new String[0]);
 
-        assertTrue("Existem ECS na coluna gerados no excel que não são iguais ao selecionado '%s': '%s'.".formatted(selectECOrDtcoPage.getSelectedEc(), exportedEcColumn),
-                allSameEcs);
-        assertArrayEquals("Valores da célula com EC é diferente da coluna. Column: '%s', cell: '%s'".formatted(Arrays.toString(uniqueEcsFromColum), Arrays.toString(ecsFromCell)),
-                uniqueEcsFromColum, ecsFromCell);
+        assertTrue("Existem ECS na coluna gerados no excel que não são iguais ao selecionado '%s': '%s'.".formatted(selectedEcs, uniqueEcsFromColum),
+                exportedOnlySelectedEc);
+        assertArrayEquals("Valores da célula com EC é diferente dos ECs selecionados. Column: '%s', cell: '%s'".formatted(selectedEcs.toArray(new String[0]), Arrays.toString(ecsFromCell)),
+                selectedEcs.toArray(new String[0]), ecsFromCell);
     }
 
     @Then("A soma de vendas voucher é igual ao valor bruto autorizado")

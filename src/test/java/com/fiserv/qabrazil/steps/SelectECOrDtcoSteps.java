@@ -11,6 +11,9 @@ import com.fiserv.qabrazil.steps.home.BaseSteps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.logging.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
@@ -20,6 +23,8 @@ import static com.fiserv.qabrazil.util.CpfCnpjUtil.formatCpfCnpj;
 import static org.testng.AssertJUnit.*;
 
 public class SelectECOrDtcoSteps extends BaseSteps {
+    private static final Logger logger = LoggerFactory.getLogger(SelectECOrDtcoSteps.class);
+
     @Autowired
     SelectECOrDtcoPage selectECOrDtcoPage;
     @Autowired
@@ -248,6 +253,9 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     @Given("Usuário selecionou um documento com maior número de ECs e clicar Acessar")
     public void userSelectsDocumentMostEcs() throws Exception {
         String docMostEcs = apiUserDetailsService.getDocWithMostEcs();
+
+        logger.info("Selecionado documento %s.".formatted(docMostEcs));
+
         selectECOrDtcoPage.selectDocumentInput(docMostEcs);
 
         selectECOrDtcoPage.storeDocAndFirstNameFromDocuments(docMostEcs);
