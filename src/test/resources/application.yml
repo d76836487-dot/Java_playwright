@@ -69,6 +69,20 @@ user-profiles:
     serviceContract: "101"
     institution: "00000007"
     allianceName: BIN
+  bin125:
+    url: https://bin.qa.portaldocliente.fiserv.com
+    user: ${BIN125_CONTRACT_USER}
+    password: ${BIN125_CONTRACT_PASSWORD}
+    mfaSecretKey: ${BIN125_MFA_SECRETKEY}
+    identity: bin
+    primaryCssClass: cor-laranja
+    institutionTags: '@pt-br,@bin,@PermiteAdiantamento,@PermiteSolicitações'
+    clientTags: '@MDRPadrão,@UsuárioMaster'
+    locale: pt-br
+    apiHost: https://cat.api.firstdata.com/bwa/
+    serviceContract: "125"
+    institution: "00000007"
+    allianceName: BIN
   sicredi:
     url: https://sicredi.qa.portaldocliente.fiserv.com
     user: ${SICREDI_CONTRACT_USER}

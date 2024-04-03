@@ -76,6 +76,10 @@ public class TestIdsConfig {
             entry("Vendas - Pré Autorizações - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
             entry("Vendas - Pré Autorizações - Botão Cancelar Filtro", "generic-filter-link-sair"),
 
+            entry("Vendas - Voucher - Botão Exportar", "exportar-voucher"),
+            entry("Vendas - Voucher - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
+            entry("Vendas - Voucher - Botão Cancelar Filtro", "generic-filter-link-sair"),
+
             entry("Home - Card Vendas Hoje - Valor Vendas Hoje", "home-card-vendas-hoje-text-vlr"),
             entry("Home - Card Vendas Hoje - Percentual Vendas Hoje", "home-card-vendas-hoje-text-percentual-down"),
             entry("Home - Card Vendas Hoje - Ver Tudo", "home-card-vendas-hoje-link-ver-tudo"),
@@ -267,6 +271,10 @@ public class TestIdsConfig {
             entry("Vendas - Pré Autorizações - Valor Bruto Autorizado", "//span[text()='Valor bruto autorizado']/../../div[2]/div/span"),
             entry("Vendas - Pré Autorizações - Valor Bruto A Confirmar", "//span[text()='Valor bruto a confirmar']/../../div[2]/div/span"),
             entry("Vendas - Pré Autorizações - Botão Filtrar", "//div[contains(text(),'Filtros')]"),
+
+            entry("Vendas - Voucher - Total Vendas", "//span[text()='Total de vendas']/../../div[2]/span"),
+            entry("Vendas - Voucher - Valor Bruto", "(//span[text()='Valor bruto']/../../div[2]/span)[1]"),
+            entry("Vendas - Voucher - Botão Filtrar", "//div[contains(text(),'Filtros')]"),
 
             entry("Relatórios - Texto Descritivo", "//span[contains(text(),'Caso já tenha gerado')]"),
             entry("Relatórios - Tabela - Item", "//tr[.//*[@data-testid='relatorios-table-row-nome-arquivo']]"),
