@@ -7,11 +7,10 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Agenda de recebimentos por UR
 
-#  Background:
-#    When Usuário tenta logar na aplicação
-#    Then Usuário estará com acesso e sessão foi salva
-#    And Todas as requisições HTTP foram respondidas
-
+  #  Background:
+  #    When Usuário tenta logar na aplicação
+  #    Then Usuário estará com acesso e sessão foi salva
+  #    And Todas as requisições HTTP foram respondidas
   @TestCaseKey=SMP-T300
   Scenario: Acesso a Agenda de recebimentos por UR Com apenas um Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -21,6 +20,7 @@ Feature: Agenda de recebimentos por UR
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
     Then usuário não verá em "Agenda de recebimentos por UR" opção de Alterar Documento
 
+  @TestCaseKey=SMP-T305
   Scenario: Acesso a Agenda de recebimentos por UR Com vários Documentos
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessou o Home
