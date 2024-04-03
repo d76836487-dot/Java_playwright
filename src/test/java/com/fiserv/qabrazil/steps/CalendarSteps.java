@@ -28,8 +28,13 @@ public class CalendarSteps extends BaseSteps {
     }
 
     @When("Usuário seleciona Últimos 7 Dias")
-    public void usuárioSelecionaÚltimosDias() {
+    public void userSelectsLast7Days() {
         calendarPage.userSelectsLastSevenDays();
+    }
+
+    @When("Usuário seleciona Últimos 14 Dias")
+    public void userSelectsLast14Days() {
+        calendarPage.userSelectsLastFourteenDays();
     }
 
     @Then("{selectedDayOnCalendar} representará {expectedDay}")

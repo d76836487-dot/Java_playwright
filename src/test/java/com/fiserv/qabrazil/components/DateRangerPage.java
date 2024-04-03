@@ -32,6 +32,12 @@ public class DateRangerPage extends BasePage {
         pageField.from("Date ranger - Últimos 7 dias").click();
     }
 
+    public void userSelectsLastFourteenDays() {
+        bandaidSMP57();
+        pageField.from("Date ranger - Image").click();
+        pageField.from("Date ranger - Últimos 14 dias").click();
+    }
+
     private void bandaidSMP57() {
         // TODO: remove after SMP-57 has been closed
         sleep(Duration.ofSeconds(2));

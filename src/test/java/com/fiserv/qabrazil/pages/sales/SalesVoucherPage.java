@@ -58,11 +58,11 @@ public class SalesVoucherPage extends BasePage {
         public List<String> getEcsFromCell() throws IOException {
             int row = excelWrapper.lookForRowStartingWithValue("Estabelecimento comercial:");
             String cell = excelWrapper.getCellAsText(row, 0).trim();
-            return List.of(cell.replaceAll("Estabelecimento comercial: *", "").split(","));
+            return List.of(cell.replaceAll("Estabelecimento comercial: *", "").split(" "));
         }
 
         public List<String> getEcFromColumn() throws IOException {
-            return excelWrapper.getColumnsAsText("Estabelecimento comercial");
+            return excelWrapper.getColumnsAsText("Número do estabelecimento");
         }
     }
 

@@ -207,7 +207,9 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     public void userIsInEstablishmentTab(String tab) {
         if (!loginPage.userIsLogged()) {
             loginPage.loginWithOneRetry();
-            loginPage.userIsLogged();
+            if (loginPage.userIsLogged()) {
+                loginPage.saveStorageState();
+            }
         }
 
         selectECOrDtcoPage.openModalAndTab(tab);
