@@ -15,7 +15,8 @@ Feature: Tela Vendas Voucher com CNPJ com API e Seleção EC
     And usuário clicou no "Vendas - Voucher - Botão Filtrar"
     When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
     Then Opções do filtro tem somente os ECs selecionados
-    And A exportação do relatório 'Voucher' terá somente o EC selecionado
+    And A exportação do relatório 'Voucher' terá somente o EC selecionado no detalhamento
+    And A exportação do relatório 'Voucher' terá exatamente os ECs selecionado no cabeçalho
     And A contagem de vendas voucher é igual a Total de Vendas
     And A soma de vendas voucher é igual ao valor bruto autorizado
 
@@ -27,6 +28,7 @@ Feature: Tela Vendas Voucher com CNPJ com API e Seleção EC
     And usuário clicou no "Vendas - Voucher - Botão Filtrar"
     When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
     Then Opções do filtro tem somente os ECs selecionados
-    And A exportação do relatório 'Voucher' terá somente o EC selecionado
+    And A exportação do relatório 'Voucher' terá somente o EC selecionado no detalhamento
+    And A exportação do relatório 'Voucher' terá exatamente os ECs selecionado no cabeçalho
     And A contagem de vendas voucher é igual a Total de Vendas
     And A soma de vendas voucher é igual ao valor bruto autorizado

@@ -30,12 +30,12 @@ public class SalesPreAuthorizationsSteps extends BasePage {
     }
 
     @Then("A exportação do relatório 'Pré Autorizadas' terá somente o EC selecionado")
-    public void exportWillHaveOnlySelectedEc() throws IOException {
+    public void exportWillHaveOnlySelectedEc() throws Exception {
         salesPreAuthorizationExportExcel = salesPreAuthorizationsPage.getDownloadAsExcel();
         List<String> exportedEcColumn = salesPreAuthorizationExportExcel.getEcFromColumn();
         List<String> exportedEcCell = salesPreAuthorizationExportExcel.getEcsFromCell();
-        boolean allSameEcs = exportedEcColumn.stream()
-                .allMatch(ec -> ec.equals(selectECOrDtcoPage.getSelectedEc()));
+        List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs();
+        boolean exportedOnlySelectedEc = selectedEcs.containsAll(exportedEcColumn);
         String[] uniqueEcsFromColum = exportedEcColumn.stream()
                 .distinct()
                 .sorted()
@@ -47,8 +47,8 @@ public class SalesPreAuthorizationsSteps extends BasePage {
                 .toList()
                 .toArray(new String[0]);
 
-        assertTrue("Existem ECS na coluna gerados no excel que não são iguais ao selecionado '%s': '%s'.".formatted(selectECOrDtcoPage.getSelectedEc(), exportedEcColumn),
-                allSameEcs);
+        assertTrue("Existem ECS na coluna gerados no excel que não são iguais ao selecionado '%s': '%s'.".formatted(selectedEcs, exportedEcColumn),
+                exportedOnlySelectedEc);
         assertArrayEquals("Valores da célula com EC é diferente da coluna. Column: '%s', cell: '%s'".formatted(Arrays.toString(uniqueEcsFromColum), Arrays.toString(ecsFromCell)),
                 uniqueEcsFromColum, ecsFromCell);
     }

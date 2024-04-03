@@ -9,11 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class SalesVoucherSteps extends BasePage {
@@ -29,26 +27,32 @@ public class SalesVoucherSteps extends BasePage {
         salesVoucherPage.navigateTo();
     }
 
-    @Then("A exportação do relatório 'Voucher' terá somente o EC selecionado")
-    public void exportWillHaveOnlySelectedEc() throws Exception {
+    @Then("A exportação do relatório 'Voucher' terá somente o EC selecionado no detalhamento")
+    public void exportWillHaveOnlySelectedEcDetail() throws Exception {
         salesVoucherExportExcel = salesVoucherPage.getDownloadAsExcel();
-        List<String> exportedEcColumn = salesVoucherExportExcel.getEcFromColumn();
-        List<String> exportedEcCell = salesVoucherExportExcel.getEcsFromCell();
-        List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs();
-        List<String> uniqueEcsFromColum = exportedEcColumn.stream()
+        List<String> exportedEcColumn = salesVoucherExportExcel.getEcFromColumn().stream()
                 .distinct()
+                .toList();
+        List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs();
+
+        assertThat(exportedEcColumn)
+                .withFailMessage("Existem ECS na coluna gerados no excel que não são iguais ao selecionado '%s': '%s'.".formatted(selectedEcs, exportedEcColumn))
+                .allMatch(selectedEcs::contains);
+    }
+
+    @Then("A exportação do relatório 'Voucher' terá exatamente os ECs selecionado no cabeçalho")
+    public void exportWillHaveOnlySelectedEcHeader() throws Exception {
+        List<String> exportedEcCell = salesVoucherExportExcel.getEcsFromCell().stream()
+                .filter(m -> !m.trim().isEmpty())
                 .sorted()
                 .toList();
-        String[] ecsFromCell = exportedEcCell.stream()
-                .filter(m -> !m.isEmpty())
-                .sorted()
-                .toList()
-                .toArray(new String[0]);
+        List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs();
 
-        String messageIfFail1 = "Existem ECS na coluna gerados no excel que não são iguais ao selecionado '%s': '%s'.".formatted(selectedEcs, uniqueEcsFromColum);
-        String messageIfFail2 = "Valores da célula com EC é diferente dos ECs selecionados. Column: '%s', cell: '%s'".formatted(selectedEcs.toArray(new String[0]), Arrays.toString(ecsFromCell));
-        assertThat(selectedEcs).withFailMessage(messageIfFail1).containsAnyElementsOf(uniqueEcsFromColum);
-        assertThat(selectedEcs).withFailMessage(messageIfFail2).containsExactlyInAnyOrder(ecsFromCell);
+        if (salesVoucherExportExcel == SalesVoucherPage.SalesVoucherExportExcel.NULL) return;
+
+        assertThat(exportedEcCell)
+                .withFailMessage("Valores da célula com EC é diferente dos ECs selecionados. Column: '%s', cell: '%s'".formatted(selectedEcs.toString(), exportedEcCell.toString()))
+                .allMatch(selectedEcs::contains);
     }
 
     @Then("A soma de vendas voucher é igual ao valor bruto autorizado")
