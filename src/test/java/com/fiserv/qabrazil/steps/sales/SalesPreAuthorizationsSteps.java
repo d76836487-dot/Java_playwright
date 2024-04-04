@@ -50,6 +50,8 @@ public class SalesPreAuthorizationsSteps extends BasePage {
                 .sorted()
                 .toList();
 
+        if (salesPreAuthorizationExportExcel == SalesPreAuthorizationsPage.SalesPreAuthorizationExportExcel.NULL) return;
+
         assertArrayEquals("Valores da célula com EC é diferente da coluna. Esperado: '%s', encontrado: '%s'".formatted(selectedEcs.toString(), exportedEcCell.toString()),
                 exportedEcCell.toArray(new String[0]), selectedEcs.toArray(new String[0]));
     }

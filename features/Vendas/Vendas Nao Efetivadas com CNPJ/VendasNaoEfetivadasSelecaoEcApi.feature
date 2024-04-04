@@ -16,7 +16,8 @@ Feature: Tela Vendas Não Efetivadas com CNPJ com API e Seleção EC
     And usuário clicou no "Vendas - Não Efetivadas - Botão Filtrar"
     When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
     Then Opções do filtro tem somente os ECs selecionados
-    And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado
+    And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no detalhamento
+    And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no cabeçalho
     And A soma de vendas recusadas é igual a "Não Efetivadas - Recusadas"
     And A soma de vendas estornadas é igual a "Não Efetivadas - Estornadas"
 
@@ -29,7 +30,8 @@ Feature: Tela Vendas Não Efetivadas com CNPJ com API e Seleção EC
     And usuário clicou no "Vendas - Não Efetivadas - Botão Filtrar"
     When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
     Then Opções do filtro tem somente os ECs selecionados
-    And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado
+    And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no detalhamento
+    And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no cabeçalho
     And A soma de vendas recusadas é igual a "Não Efetivadas - Recusadas"
     And A soma de vendas estornadas é igual a "Não Efetivadas - Estornadas"
 

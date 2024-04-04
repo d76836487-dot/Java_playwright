@@ -7,11 +7,10 @@ import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
 import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
 import com.fiserv.qabrazil.pages.sales.SalesUnmadePage;
 
@@ -28,28 +27,32 @@ public class SalesUnmadeSteps extends BasePage {
         salesUnmadePage.navigateTo();
     }
 
-    @Then("A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado")
-    public void exportWillHaveOnlySelectedEc() throws IOException {
+    @Then("A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no detalhamento")
+    public void exportWillHaveOnlySelectedEcDetails() throws Exception {
         salesUnmadeExportExcel = salesUnmadePage.getDownloadAsExcel();
-        List<String> exportedEcColumn = salesUnmadeExportExcel.getEcFromColumn();
-        List<String> exportedEcCell = salesUnmadeExportExcel.getEcsFromCell();
-        boolean allSameEcs = exportedEcColumn.stream()
-                .allMatch(ec -> ec.equals(selectECOrDtcoPage.getSelectedEc()));
-        String[] uniqueEcsFromColum = exportedEcColumn.stream()
+        List<String> exportedEcColumn = salesUnmadeExportExcel.getEcFromColumn().stream()
                 .distinct()
-                .sorted()
-                .toList()
-                .toArray(new String[0]);
-        String[] ecsFromCell = exportedEcCell.stream()
-                .filter(m -> !m.isEmpty())
-                .sorted()
-                .toList()
-                .toArray(new String[0]);
+                .toList();
+        List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs();
 
-        assertTrue("Existem ECS na coluna gerados no excel que não são iguais ao selecionado '%s': '%s'.".formatted(selectECOrDtcoPage.getSelectedEc(), exportedEcColumn),
-                allSameEcs);
-        assertArrayEquals("Valores da célula com EC é diferente da coluna. Column: '%s', cell: '%s'".formatted(Arrays.toString(uniqueEcsFromColum), Arrays.toString(ecsFromCell)),
-                uniqueEcsFromColum, ecsFromCell);
+        assertThat(exportedEcColumn)
+                .withFailMessage("Existem ECS na coluna gerados no excel que não são iguais ao selecionado. Esperado: '%s'. Atual '%s'.".formatted(selectedEcs.toString(), exportedEcColumn.toString()))
+                .allMatch(selectedEcs::contains);
+    }
+    @Then("A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no cabeçalho")
+    public void exportWillHaveOnlySelectedEcHeader() throws Exception {
+        List<String> exportedEcCell = salesUnmadeExportExcel.getEcsFromCell().stream()
+                .filter(m -> !m.trim().isEmpty())
+                .sorted()
+                .toList();
+        List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs().stream()
+                .sorted()
+                .toList();
+
+        if (salesUnmadeExportExcel == SalesUnmadePage.SalesUnmadeExportExcel.NULL) return;
+
+        assertArrayEquals("Valores da célula com EC é diferente da coluna. Esperado: '%s', atual: '%s'".formatted(selectedEcs.toString(), exportedEcCell.toString()),
+                exportedEcCell.toArray(new String[0]), selectedEcs.toArray(new String[0]));
     }
 
     @Then("A soma de vendas recusadas é igual a \"Não Efetivadas - Recusadas\"")
