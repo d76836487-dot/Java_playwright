@@ -11,7 +11,7 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 public class HeaderComponent extends BasePage {
     public void selectShowValuesButton(boolean show) {
         PageField button = pageField.from("Header - Ocultar Valores");
-        waitUntilTrue(button::fieldIsOneVisibleAndEnabled);
+        waitUntilTrue(button::elementIsVisibleRightNow);
 
         if (button.getLocator().getAttribute("status").equals("on") == show) return;
 
