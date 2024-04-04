@@ -9,8 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
 
 public class ExcelWrapper implements AutoCloseable {
     public static final ExcelWrapper NULL = new ExcelWrapper();
@@ -36,13 +38,16 @@ public class ExcelWrapper implements AutoCloseable {
         this.inputStream = inputStream;
         workbook = new ReadableWorkbook(inputStream);
         sheet = workbook.getFirstSheet();
-        this.rowTableStart = lookForRowStartingWithValue(rowTableStartName);
+        this.rowTableStart = lookForRowStartingWithValue(rowTableStartName, 0);
     }
 
     public int lookForRowStartingWithValue(String rowTableStartName) throws IOException {
+        return lookForRowStartingWithValue(rowTableStartName, 0);
+    }
+
+    public int lookForRowStartingWithValue(String rowTableStartName, int col) throws IOException {
         if (sheet == null) return 0;
 
-        int col = 0;
         for (int row = 0; row < sheet.read().size(); row++) {
             if (getCellAsText(row, col).contains(rowTableStartName)) return row;
         }
@@ -54,6 +59,14 @@ public class ExcelWrapper implements AutoCloseable {
     public void close() throws Exception {
         if (workbook != null) workbook.close();
         if (inputStream != null) inputStream.close();
+    }
+
+    public List<Double> getColumnsAsCurrencyByIndex(String columnName, int[] indexes) throws IOException {
+        List<String> texts = getColumnsAsText(columnName);
+        return Arrays.stream(indexes)
+                .mapToObj(texts::get)
+                .map(this::convertToDouble)
+                .toList();
     }
 
     public List<Double> getColumnsAsCurrency(String columnName) throws IOException {
@@ -72,6 +85,13 @@ public class ExcelWrapper implements AutoCloseable {
                 throw new RuntimeException("Falha ao converter moeda %s".formatted(value));
             }
         }
+    }
+
+    public int[] getIndexWhereColumn(String columnName, Predicate<String> predicate) throws IOException {
+        List<String> texts = getColumnsAsText(columnName);
+        return IntStream.range(0, texts.size())
+                .filter(i -> predicate.test(texts.get(i)))
+                .toArray();
     }
 
     public int getColumnsSizeWhere(String columnName, Predicate<String> predicate) throws IOException {
