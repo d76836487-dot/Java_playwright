@@ -7,6 +7,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Tela Vendas Voucher com CNPJ com API e Seleção EC
 
+  @TestCaseKey=SMP-T306
   Scenario: Valores tela Vendas - Voucher - deve bater com exportação - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
@@ -20,6 +21,7 @@ Feature: Tela Vendas Voucher com CNPJ com API e Seleção EC
     And A contagem de vendas voucher é igual a Total de Vendas
     And A soma de vendas voucher é igual ao valor bruto autorizado
 
+  @TestCaseKey=SMP-T307
   Scenario: Valores tela Vendas - Voucher - deve bater com exportação - com seleção de EC
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um EC e clicar Acessar
@@ -32,3 +34,4 @@ Feature: Tela Vendas Voucher com CNPJ com API e Seleção EC
     And A exportação do relatório 'Voucher' terá exatamente os ECs selecionado no cabeçalho
     And A contagem de vendas voucher é igual a Total de Vendas
     And A soma de vendas voucher é igual ao valor bruto autorizado
+
