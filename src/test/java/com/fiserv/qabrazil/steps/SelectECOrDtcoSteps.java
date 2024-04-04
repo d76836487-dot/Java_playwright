@@ -210,7 +210,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     @Given("Usuário está na aba {string} da modal 'Trocar Estabelecimento'")
     public void userIsInEstablishmentTab(String tab) {
         if (!loginPage.userIsLogged()) {
-            loginPage.loginWithOneRetry();
+            loginPage.loginAndGetHomeReady();
             if (loginPage.userIsLogged()) {
                 loginPage.saveStorageState();
             }

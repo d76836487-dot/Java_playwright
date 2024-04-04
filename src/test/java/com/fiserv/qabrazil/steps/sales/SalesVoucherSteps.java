@@ -13,6 +13,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
 
 public class SalesVoucherSteps extends BasePage {
     @Autowired
@@ -50,9 +51,8 @@ public class SalesVoucherSteps extends BasePage {
 
         if (salesVoucherExportExcel == SalesVoucherPage.SalesVoucherExportExcel.NULL) return;
 
-        assertThat(exportedEcCell)
-                .withFailMessage("Valores da célula com EC é diferente dos ECs selecionados. Column: '%s', cell: '%s'".formatted(selectedEcs.toString(), exportedEcCell.toString()))
-                .allMatch(selectedEcs::contains);
+        assertArrayEquals("Valores da célula com EC é diferente dos ECs selecionados. Esperado: '%s', encontrado: '%s'".formatted(selectedEcs.toString(), exportedEcCell.toString()),
+                exportedEcCell.toArray(new String[0]), selectedEcs.toArray(new String[0]));
     }
 
     @Then("A soma de vendas voucher é igual ao valor bruto autorizado")
