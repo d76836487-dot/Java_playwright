@@ -7,6 +7,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Tela Recebimentos Pagos com API e Seleção EC
 
+  @TestCaseKey=SMP-T308
   Scenario: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
