@@ -20,20 +20,15 @@ Feature: Tela Recebimentos Futuros com API e Seleção EC
     And Quantidade vendas em 'Recibos Futuros' é igual ao exportado
     And Total líquido em 'Recibos Futuro' é igual ao exportado
 
-#  Scenario: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de EC
-#    Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
-#    And Usuário selecionou um EC e clicar Acessar
-#    And Usuário acessou Recebimentos - Pagos
-#    And Usuário seleciona Últimos 30 Dias
-#    And usuário clicou no "Recebimentos - Pagos - Botão Filtrar"
-#    When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
-#    Then Opções do filtro tem somente os ECs selecionados
-#    And A exportação do relatório 'Recibos Pagos' terá somente o EC selecionado no detalhamento
-#    And A exportação do relatório 'Recibos Pagos' terá exatamente os ECs selecionado no cabeçalho
-#    And Quantidade recebido em 'Recibos Pagos' é igual ao exportado
-#    And Quantidade agendado em 'Recibos Pagos' é igual ao exportado
-#    And Quantidade cedido em 'Recibos Pagos' é igual ao exportado
-#    And Total recebido em 'Recibos Pagos' é igual ao exportado
-#    And Total agendado em 'Recibos Pagos' é igual ao exportado
-#    And Total cedido em 'Recibos Pagos' é igual ao exportado
-#
+  Scenario: Valores tela Recebimentos - Futuros - deve bater com exportação - com seleção de EC
+    Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+    And Usuário selecionou um EC e clicar Acessar
+    And Usuário acessou Recebimentos - Futuros
+    And Usuário seleciona Próximos 30 Dias
+    And usuário clicou no "Recebimentos - Pagos - Botão Filtrar"
+    When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
+    Then Opções do filtro tem somente os ECs selecionados
+    And A exportação do relatório 'Recibos Futuros' terá somente o EC selecionado no detalhamento
+    And A exportação do relatório 'Recibos Futuros' terá exatamente os ECs selecionado no cabeçalho
+    And Quantidade vendas em 'Recibos Futuros' é igual ao exportado
+    And Total líquido em 'Recibos Futuro' é igual ao exportado
