@@ -42,6 +42,11 @@ public class CalendarSteps extends BaseSteps {
         calendarPage.userSelectsLastThirdDays();
     }
 
+    @When("Usuário seleciona Próximos 30 Dias")
+    public void userSelectsNext30Days() {
+        calendarPage.userSelectsNextThirdDays();
+    }
+
     @Then("{selectedDayOnCalendar} representará {expectedDay}")
     public void selectedDay(int dayOnCalendar, int expectedDay) {
         assertEquals(expectedDay, dayOnCalendar);

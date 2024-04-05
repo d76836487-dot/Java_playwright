@@ -1,7 +1,7 @@
 package com.fiserv.qabrazil.steps.receivable;
 
 import com.fiserv.qabrazil.pages.BasePage;
-import com.fiserv.qabrazil.pages.ReceivablePaidPage;
+import com.fiserv.qabrazil.pages.receivables.ReceivablePaidPage;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

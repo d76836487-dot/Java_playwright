@@ -42,13 +42,21 @@ public class DateRangerPage extends BasePage {
     }
 
     public void userSelectsLastThirdDays() {
+        setDateInCalendar(-30, "Date ranger - Dia inicial Digitado");
+    }
+
+    public void userSelectsNextThirdDays() {
+        setDateInCalendar(30, "Date ranger - Dia final Digitado");
+    }
+
+    private void setDateInCalendar(int daysToAdd, String typedDateField) {
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DAY_OF_MONTH, -30);
+        cal.add(Calendar.DAY_OF_MONTH, daysToAdd);
         SimpleDateFormat simpleFormat = new SimpleDateFormat("dMyyyy");
         String thirdDaysAgo = simpleFormat.format(cal.getTime());
 
         pageField.from("Date ranger - Image").click();
-        PageField inputInitialDate = pageField.from("Date ranger - Dia inicial Digitado");
+        PageField inputInitialDate = pageField.from(typedDateField);
         inputInitialDate.click();
         inputInitialDate.getLocator().clear();
         page.keyboard().press("ArrowLeft");

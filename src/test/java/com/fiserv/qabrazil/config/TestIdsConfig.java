@@ -83,6 +83,9 @@ public class TestIdsConfig {
             entry("Recebimentos - Pagos - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
             entry("Recebimentos - Pagos - Botão Cancelar Filtro", "generic-filter-link-sair"),
 
+            entry("Recebimentos - Futuros - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"), // TODO: ajustar aqui
+            entry("Recebimentos - Futuros - Botão Cancelar Filtro", "generic-filter-link-sair"),
+
             entry("Home - Card Vendas Hoje - Valor Vendas Hoje", "home-card-vendas-hoje-text-vlr"),
             entry("Home - Card Vendas Hoje - Percentual Vendas Hoje", "home-card-vendas-hoje-text-percentual-down"),
             entry("Home - Card Vendas Hoje - Ver Tudo", "home-card-vendas-hoje-link-ver-tudo"),
@@ -287,6 +290,11 @@ public class TestIdsConfig {
             entry("Recebimentos - Pagos - Depósitos agendado", "(//span[text()='Total agendado']/../../div[2]/div)[1]"),
             entry("Recebimentos - Pagos - Depósitos cedido", "(//span[text()='Total cedido']/../../div[2]/div)[1]"),
             entry("Recebimentos - Pagos - Botão Filtrar", "(//a/span[contains(text(),'Filtros')])[1]"),
+
+            entry("Recebimentos - Futuros - Botão Exportar", "(//span[text()='Exportar'])[1]"),
+            entry("Recebimentos - Futuros - Total líquido", "(//span[text()='Total líquido previsto']/../../div[2]/span)[1]"),
+            entry("Recebimentos - Futuros - Quantidade vendas", "(//span[text()='Total de vendas ']/../../div[2]/span)"),
+            entry("Recebimentos - Futuros - Botão Filtrar", "(//a/span[contains(text(),'Filtros')])[1]"),
 
             entry("Relatórios - Texto Descritivo", "//span[contains(text(),'Caso já tenha gerado')]"),
             entry("Relatórios - Tabela - Item", "//tr[.//*[@data-testid='relatorios-table-row-nome-arquivo']]"),
