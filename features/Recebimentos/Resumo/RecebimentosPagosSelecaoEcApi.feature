@@ -25,6 +25,7 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
     And Total agendado em 'Recibos Pagos' é igual ao exportado
     And Total cedido em 'Recibos Pagos' é igual ao exportado
 
+  @TestCaseKey=SMP-T309
   Scenario: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de EC
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um EC e clicar Acessar
@@ -41,3 +42,4 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
     And Total recebido em 'Recibos Pagos' é igual ao exportado
     And Total agendado em 'Recibos Pagos' é igual ao exportado
     And Total cedido em 'Recibos Pagos' é igual ao exportado
+
