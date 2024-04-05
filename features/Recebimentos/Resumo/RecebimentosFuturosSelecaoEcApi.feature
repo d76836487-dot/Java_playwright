@@ -7,6 +7,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Tela Recebimentos Futuros com API e Seleção EC
 
+  @TestCaseKey=SMP-T311
   Scenario: Valores tela Recebimentos - Futuros - deve bater com exportação - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
@@ -20,6 +21,7 @@ Feature: Tela Recebimentos Futuros com API e Seleção EC
     And Quantidade vendas em 'Recibos Futuros' é igual ao exportado
     And Total líquido em 'Recibos Futuro' é igual ao exportado
 
+  @TestCaseKey=SMP-T310
   Scenario: Valores tela Recebimentos - Futuros - deve bater com exportação - com seleção de EC
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um EC e clicar Acessar
@@ -32,3 +34,4 @@ Feature: Tela Recebimentos Futuros com API e Seleção EC
     And A exportação do relatório 'Recibos Futuros' terá exatamente os ECs selecionado no cabeçalho
     And Quantidade vendas em 'Recibos Futuros' é igual ao exportado
     And Total líquido em 'Recibos Futuro' é igual ao exportado
+
