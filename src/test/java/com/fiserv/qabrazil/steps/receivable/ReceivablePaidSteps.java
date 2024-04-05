@@ -77,7 +77,7 @@ public class ReceivablePaidSteps extends BasePage {
         assertEquals(sumColumn, sumHeader, 0.001);
     }
     @Then("Total cedido em 'Recibos Pagos' é igual ao exportado")
-    public void totalTransfered() throws IOException, ParseException {
+    public void totalTransferred() throws IOException, ParseException {
         double sumColumn = receivablePaidExportExcel.getSumTransferred();
         double sumHeader = receivablePaidExportExcel.getTransferred();
         double sumFromPage = pageField.from("Recebimentos - Pagos - Total cedido").getAsCurrency().doubleValue();
@@ -87,7 +87,7 @@ public class ReceivablePaidSteps extends BasePage {
     }
 
     @Then("Quantidade recebido em 'Recibos Pagos' é igual ao exportado")
-    public void quantityReceived() throws IOException, ParseException {
+    public void quantityReceived() throws IOException {
         int countColumn = receivablePaidExportExcel.getCountQuantityPaid();
         int quantityHeader = receivablePaidExportExcel.getQuantityPaid();
         String fromPage = pageField.from("Recebimentos - Pagos - Depósitos recebido").getAsText();
@@ -98,7 +98,7 @@ public class ReceivablePaidSteps extends BasePage {
     }
 
     @Then("Quantidade agendado em 'Recibos Pagos' é igual ao exportado")
-    public void quantityScheduled() throws IOException, ParseException {
+    public void quantityScheduled() throws IOException {
         int countColumn = receivablePaidExportExcel.getCountQuantitySchedule();
         int quantityHeader = receivablePaidExportExcel.getQuantityScheduled();
         String fromPage = pageField.from("Recebimentos - Pagos - Depósitos agendado").getAsText();
@@ -108,7 +108,7 @@ public class ReceivablePaidSteps extends BasePage {
         assertEquals(countColumn, quantityHeader);
     }
     @Then("Quantidade cedido em 'Recibos Pagos' é igual ao exportado")
-    public void quantityTransfered() throws IOException, ParseException {
+    public void quantityTransferred() throws IOException {
         int countColumn = receivablePaidExportExcel.getCountQuantityTransferred();
         int quantityHeader = receivablePaidExportExcel.getQuantityTransferred();
         String fromPage = pageField.from("Recebimentos - Pagos - Depósitos cedido").getAsText();

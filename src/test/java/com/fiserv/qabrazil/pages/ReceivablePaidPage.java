@@ -75,19 +75,19 @@ public class ReceivablePaidPage extends BasePage {
             return Currency.parseCurrency(cell).doubleValue();
         }
 
-        public int getQuantityPaid() throws IOException, ParseException {
+        public int getQuantityPaid() throws IOException {
             return getQuantityHeader("Total recebido", 0);
         }
 
-        public int getQuantityScheduled() throws IOException, ParseException {
+        public int getQuantityScheduled() throws IOException {
             return getQuantityHeader("Total agendado", 1);
         }
 
-        public int getQuantityTransferred() throws IOException, ParseException {
+        public int getQuantityTransferred() throws IOException {
             return getQuantityHeader("Total cedido", 2);
         }
 
-        private int getQuantityHeader(String preText, int col) throws IOException, ParseException {
+        private int getQuantityHeader(String preText, int col) throws IOException {
             int row = excelWrapper.lookForRowStartingWithValue(preText, col);
             String cell = excelWrapper.getCellAsText(row + 2, col).trim().replace(" depósitos", "");
             cell = cell.isEmpty()? "0": cell;
