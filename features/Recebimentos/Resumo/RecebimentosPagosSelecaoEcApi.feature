@@ -18,6 +18,9 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
     Then Opções do filtro tem somente os ECs selecionados
     And A exportação do relatório 'Recibos Pagos' terá somente o EC selecionado no detalhamento
     And A exportação do relatório 'Recibos Pagos' terá exatamente os ECs selecionado no cabeçalho
+    And Quantidade recebido em 'Recibos Pagos' é igual ao exportado
+    And Quantidade agendado em 'Recibos Pagos' é igual ao exportado
+    And Quantidade cedido em 'Recibos Pagos' é igual ao exportado
     And Total recebido em 'Recibos Pagos' é igual ao exportado
     And Total agendado em 'Recibos Pagos' é igual ao exportado
     And Total cedido em 'Recibos Pagos' é igual ao exportado

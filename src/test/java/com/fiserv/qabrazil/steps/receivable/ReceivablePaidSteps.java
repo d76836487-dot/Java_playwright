@@ -85,4 +85,36 @@ public class ReceivablePaidSteps extends BasePage {
         assertEquals(sumColumn, sumFromPage, 0.001);
         assertEquals(sumColumn, sumHeader, 0.001);
     }
+
+    @Then("Quantidade recebido em 'Recibos Pagos' é igual ao exportado")
+    public void quantityReceived() throws IOException, ParseException {
+        int countColumn = receivablePaidExportExcel.getCountQuantityPaid();
+        int quantityHeader = receivablePaidExportExcel.getQuantityPaid();
+        String fromPage = pageField.from("Recebimentos - Pagos - Depósitos recebido").getAsText();
+        int quantityFromPage = Integer.parseInt(fromPage.replaceAll(" depósito.*", ""));
+
+        assertEquals(countColumn, quantityFromPage);
+        assertEquals(countColumn, quantityHeader);
+    }
+
+    @Then("Quantidade agendado em 'Recibos Pagos' é igual ao exportado")
+    public void quantityScheduled() throws IOException, ParseException {
+        int countColumn = receivablePaidExportExcel.getCountQuantitySchedule();
+        int quantityHeader = receivablePaidExportExcel.getQuantityScheduled();
+        String fromPage = pageField.from("Recebimentos - Pagos - Depósitos agendado").getAsText();
+        int quantityFromPage = Integer.parseInt(fromPage.replaceAll(" depósito.*", ""));
+
+        assertEquals(countColumn, quantityFromPage);
+        assertEquals(countColumn, quantityHeader);
+    }
+    @Then("Quantidade cedido em 'Recibos Pagos' é igual ao exportado")
+    public void quantityTransfered() throws IOException, ParseException {
+        int countColumn = receivablePaidExportExcel.getCountQuantityTransferred();
+        int quantityHeader = receivablePaidExportExcel.getQuantityTransferred();
+        String fromPage = pageField.from("Recebimentos - Pagos - Depósitos cedido").getAsText();
+        int quantityFromPage = Integer.parseInt(fromPage.replaceAll(" depósito.*", ""));
+
+        assertEquals(countColumn, quantityFromPage);
+        assertEquals(countColumn, quantityHeader);
+    }
 }

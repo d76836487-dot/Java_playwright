@@ -44,23 +44,54 @@ public class ReceivablePaidPage extends BasePage {
                     .sum();
         }
 
+        public int getCountQuantityPaid() throws IOException {
+            return excelWrapper.getColumnsSizeWhere("Status", txt -> txt.equals("Pago"));
+        }
+
+        public int getCountQuantitySchedule() throws IOException {
+            return excelWrapper.getColumnsSizeWhere("Status", txt -> txt.equals("Enviado"));
+        }
+
+        public int getCountQuantityTransferred() throws IOException {
+            return excelWrapper.getColumnsSizeWhere("Status", txt -> !txt.equals("Enviado") && !txt.equals("Pago"));
+        }
+
         public double getPaid() throws IOException, ParseException {
-            return getValueHeader("Total recebido", 0);
+            return getAmountHeader("Total recebido", 0);
         }
 
         public double getScheduled() throws IOException, ParseException {
-            return getValueHeader("Total agendado", 1);
+            return getAmountHeader("Total agendado", 1);
         }
 
         public double getTransferred() throws IOException, ParseException {
-            return getValueHeader("Total cedido", 2);
+            return getAmountHeader("Total cedido", 2);
         }
 
-        private double getValueHeader(String preText, int col) throws IOException, ParseException {
+        private double getAmountHeader(String preText, int col) throws IOException, ParseException {
             int row = excelWrapper.lookForRowStartingWithValue(preText, col);
             String cell = excelWrapper.getCellAsText(row + 1, col).trim().replace("R$", "R$ ");
             cell = cell.isEmpty()? "R$ 0,00": cell;
             return Currency.parseCurrency(cell).doubleValue();
+        }
+
+        public int getQuantityPaid() throws IOException, ParseException {
+            return getQuantityHeader("Total recebido", 0);
+        }
+
+        public int getQuantityScheduled() throws IOException, ParseException {
+            return getQuantityHeader("Total agendado", 1);
+        }
+
+        public int getQuantityTransferred() throws IOException, ParseException {
+            return getQuantityHeader("Total cedido", 2);
+        }
+
+        private int getQuantityHeader(String preText, int col) throws IOException, ParseException {
+            int row = excelWrapper.lookForRowStartingWithValue(preText, col);
+            String cell = excelWrapper.getCellAsText(row + 2, col).trim().replace(" depósitos", "");
+            cell = cell.isEmpty()? "0": cell;
+            return Integer.parseInt(cell);
         }
 
         public List<String> getEcsFromCell() throws IOException {
