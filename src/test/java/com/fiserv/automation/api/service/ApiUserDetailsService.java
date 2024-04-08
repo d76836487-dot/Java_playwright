@@ -1,9 +1,13 @@
 package com.fiserv.automation.api.service;
 
-import com.fiserv.automation.api.dto.*;
+import com.fiserv.automation.api.dto.EcCodsDto;
+import com.fiserv.automation.api.dto.MerchantDetail;
+import com.fiserv.automation.api.dto.MerchantGroup;
+import com.fiserv.automation.api.dto.UserDetailDto;
 import com.fiserv.automation.api.rest.BwaUserDetails;
 import com.fiserv.qabrazil.browser.BrowserLocalStorage;
-import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,14 +20,30 @@ import static java.util.Map.entry;
 
 @Component
 public class ApiUserDetailsService {
+    private static final Logger log = LoggerFactory.getLogger(ApiUserDetailsService.class);
+    @Autowired
+    BrowserLocalStorage browserLocalStorage;
+    @Autowired
+    BwaUserDetails bwaUserDetails;
     private List<String> ecs = null;
     private UserDetailDto userDetailDto = null;
 
-    @Autowired
-    BrowserLocalStorage browserLocalStorage;
+    private static ArrayList<MerchantGroup> getMerchantGroups(Map<String, List<EcCodsDto>> groupedDocument) {
+        ArrayList<MerchantGroup> allMerchantGroups = new ArrayList<>();
+        for (String document : groupedDocument.keySet()) {
+            List<EcCodsDto> ecCodsDtos = groupedDocument.get(document);
+            List<MerchantDetail> merchantDetails = new ArrayList<>();
 
-    @Autowired
-    BwaUserDetails bwaUserDetails;
+            for (EcCodsDto ecCodsDto : ecCodsDtos) {
+                merchantDetails.add(new MerchantDetail(ecCodsDto.ec, ecCodsDto.nomeFantasia, ecCodsDto.status));
+            }
+
+            EcCodsDto firstEcCod = ecCodsDtos.get(0);
+            allMerchantGroups.add(new MerchantGroup(document, firstEcCod.nomeFantasia, firstEcCod.hierarchy, merchantDetails));
+        }
+
+        return allMerchantGroups;
+    }
 
     public synchronized List<String> getEcs() throws Exception {
         if (userDetailDto == null) {
@@ -70,24 +90,6 @@ public class ApiUserDetailsService {
         return getMerchantGroups(groupedDocument);
     }
 
-    @NotNull
-    private static ArrayList<MerchantGroup> getMerchantGroups(Map<String, List<EcCodsDto>> groupedDocument) {
-        ArrayList<MerchantGroup> allMerchantGroups = new ArrayList<>();
-        for(String document: groupedDocument.keySet()) {
-            List<EcCodsDto> ecCodsDtos = groupedDocument.get(document);
-            List<MerchantDetail> merchantDetails = new ArrayList<>();
-
-            for(EcCodsDto ecCodsDto: ecCodsDtos) {
-                merchantDetails.add(new MerchantDetail(ecCodsDto.ec, ecCodsDto.nomeFantasia, ecCodsDto.status));
-            }
-
-            EcCodsDto firstEcCod = ecCodsDtos.get(0);
-            allMerchantGroups.add(new MerchantGroup(document, firstEcCod.nomeFantasia, firstEcCod.hierarchy, merchantDetails));
-        }
-
-        return allMerchantGroups;
-    }
-
     public synchronized List<String> getFormattedEcsAndNames() throws Exception {
         if (userDetailDto == null) {
             getUserDetails();
@@ -106,5 +108,16 @@ public class ApiUserDetailsService {
 
         userDetailDto = dto;
         ecs = dto.ecCods.stream().map(ecCods -> ecCods.ec).toList();
+    }
+
+    public boolean tokenIsStillValid() {
+        try {
+            userDetailDto = null;
+            getUserDetail();
+            return true;
+        } catch (Exception e) {
+            log.info("Token aparentemente inválido.");
+            return false;
+        }
     }
 }
