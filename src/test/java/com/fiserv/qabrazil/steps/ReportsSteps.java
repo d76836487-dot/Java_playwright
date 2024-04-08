@@ -11,6 +11,7 @@ import com.fiserv.qabrazil.dto.GenerateReportDto;
 import com.fiserv.qabrazil.dto.ReportDto;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.ReportsPage;
+import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.Identifier;
 import com.fiserv.qabrazil.util.WaitUtil;
@@ -18,7 +19,6 @@ import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,21 +42,29 @@ import static org.testng.AssertJUnit.*;
 public class ReportsSteps extends BaseSteps {
 
     private static final Logger log = LoggerFactory.getLogger(ReportsSteps.class);
-
-    @Autowired
-    private ContractConfig contractConfig;
-
-    @Autowired
-    ApiUserDetailsService apiUserDetailsService;
-
-    @Autowired
-    ReportsPage reportsPage;
-
-    @Autowired
-    private Paginator paginator;
-
     private final GenerateReportDto generateReportDto = new GenerateReportDto();
     private final FilterDateRangeDto filterDateRangeDto = new FilterDateRangeDto();
+    @Autowired
+    ApiUserDetailsService apiUserDetailsService;
+    @Autowired
+    ReportsPage reportsPage;
+    @Autowired
+    private ContractConfig contractConfig;
+    @Autowired
+    private Paginator paginator;
+    @Autowired
+    private SelectECOrDtcoPage selectECOrDtcoPage;
+
+    private static void reportTypeIsCorrect(String fileType) {
+        final String message = String.format("Tipo do relatório \"%s\" é diferente de \"Vendas\" e \"Pagamentos\"", fileType);
+        final List<String> allowedFileTypes = List.of("Vendas", "Pagamentos");
+        assertTrue(message, allowedFileTypes.contains(fileType));
+    }
+
+    private static String formatRequestedInNow() {
+        LocalDateTime date = LocalDateTime.now();
+        return date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy 'às' HH:mm"));
+    }
 
     @Then("será direcionado para a jornada de Relatórios")
     public void shouldBeAtReportsPage() {
@@ -149,7 +157,7 @@ public class ReportsSteps extends BaseSteps {
         assertTrue("As opções de Estabelecimento Comercial não conferem com a api",
                 selectECOptionTexts.containsAll(apiECsFormatted));
 
-        if(apiECsFormatted.size() > 1) {
+        if (apiECsFormatted.size() > 1) {
             assertTrue("Não oferece opção \"%s\" para quando há mais que um Estabelecimento Comercial".formatted(allECsText),
                     selectECOptionTexts.contains(allECsText));
         }
@@ -158,9 +166,9 @@ public class ReportsSteps extends BaseSteps {
     @Then("{string} estará selecionado por padrão, caso haja mais de um")
     @Then("{string} estará selecionado por padrão")
     public void userWillSeeAllECsAsDefaultIfMoreThanOne(String optionAllECs) throws Exception {
-        List<String> ecs = apiUserDetailsService.getEcs();
+        List<String> ecs = filterIfNotSelectedInHeader(apiUserDetailsService.getEcs());
 
-        if(ecs.size() > 1) {
+        if (ecs.size() > 1) {
             PageField selectECLabelSelected = pageField.from("Modal Gerar Relatórios - Select EC Selecionado");
             assertEquals("Deveria estar selecionado a opção \"%s\"".formatted(optionAllECs),
                     optionAllECs,
@@ -172,7 +180,7 @@ public class ReportsSteps extends BaseSteps {
     public void userWillSeeOneOrMoreThanOneEC(boolean expectedMoreThanOne) throws Exception {
         List<String> ecs = apiUserDetailsService.getEcs();
 
-        if(expectedMoreThanOne) {
+        if (expectedMoreThanOne) {
             assumeThat(ecs.size() > 1).isTrue();
         } else {
             assumeThat(ecs.size() == 1).isTrue();
@@ -199,6 +207,7 @@ public class ReportsSteps extends BaseSteps {
 
     @Then("usuário poderá selecionar alguma das outras opções de EC disponíveis")
     public void willBeAbleToSelectedAnyOfTheOtherAvailableOptions() throws Exception {
+        pageField.from("Modal Gerar Relatórios - Campo Select EC").hoverOver();
         List<String> expectedECOptions = getExpectedEcOptions();
         PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
 
@@ -207,6 +216,21 @@ public class ReportsSteps extends BaseSteps {
                 .containsExactlyElementsOf(expectedECOptions);
 
         verifyCanSelectOtherECs(options);
+    }
+
+    @Then("usuário terá apenas um EC disponível para seleção")
+    public void thereIsOnlyOneECAvailable() throws Exception {
+        pageField.from("Modal Gerar Relatórios - Campo Select EC").hoverOver();
+        PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
+        List<String> ecsAvailableForSelection = options.getAllAsText();
+        String selectedEcHeader = selectECOrDtcoPage.getSelectedEcs().get(0);
+
+        assertThat(ecsAvailableForSelection)
+                .withFailMessage("Esperado apenas um EC disponível para seleção. Encontrado '%s'".formatted(ecsAvailableForSelection))
+                .hasSize(1);
+        assertThat(ecsAvailableForSelection.get(0))
+                .withFailMessage("Campo Estabelecimento Comercial (EC) deveria mostrar todas as opções")
+                .contains(selectedEcHeader);
     }
 
     @When("usuário seleciona o tipo de relatório como {string}")
@@ -281,8 +305,8 @@ public class ReportsSteps extends BaseSteps {
     }
 
     @When("Usuário baixa um relatório do tipo {string}, formato {string}")
-    public void userDownloadsAReportOfType(String type, String extention) {
-        reportsPage.downloadFirstReportOfType(type, extention);
+    public void userDownloadsAReportOfType(String type, String extension) {
+        reportsPage.downloadFirstReportOfType(type, extension);
     }
 
     @Then("Usuário visualizará no arquivo baixado a coluna \"Parcelas\", contendo as parcelas das vendas")
@@ -311,12 +335,6 @@ public class ReportsSteps extends BaseSteps {
         pageField.from("Modal Gerar Relatórios - Botão Gerar").click();
     }
 
-    private static void reportTypeIsCorrect(String fileType) {
-        final String message = String.format("Tipo do relatório \"%s\" é diferente de \"Vendas\" e \"Pagamentos\"", fileType);
-        final List<String> allowedFileTypes = List.of("Vendas", "Pagamentos");
-        assertTrue(message, allowedFileTypes.contains(fileType));
-    }
-
     private void documentIsCorrect(String documentText, List<String> ecs) {
         List<String> allowedDocuments = new ArrayList<>(ecs);
         allowedDocuments.add("Todos os estabelecimentos");
@@ -327,9 +345,9 @@ public class ReportsSteps extends BaseSteps {
     private void requestedInIsCorrect(String requestedIn) {
         String[] texts = requestedIn.split(" ");
 
-        if(requestedInHasCorrectFormat(texts)) return;
+        if (requestedInHasCorrectFormat(texts)) return;
 
-        fail("A data \"" + requestedIn +  "\" na coluna \"Solicitado Em\" não está no formato dd/MM/yyyy às hh:mm");
+        fail("A data \"" + requestedIn + "\" na coluna \"Solicitado Em\" não está no formato dd/MM/yyyy às hh:mm");
     }
 
     private boolean requestedInHasCorrectFormat(String[] texts) {
@@ -341,9 +359,9 @@ public class ReportsSteps extends BaseSteps {
     private void reportRangeIsCorrect(String range) {
         String[] texts = range.split(" ");
 
-        if(rangeHasCorrectFormat(texts)) return;
+        if (rangeHasCorrectFormat(texts)) return;
 
-        fail("O período \"" + range +  "\" não está no formato correto");
+        fail("O período \"" + range + "\" não está no formato correto");
     }
 
     private boolean rangeHasCorrectFormat(String[] texts) {
@@ -382,25 +400,30 @@ public class ReportsSteps extends BaseSteps {
         generateReportDto.setEc(selected);
     }
 
-    @NotNull
     private List<String> getExpectedEcOptions() throws Exception {
         List<String> formattedEcs = apiUserDetailsService.getFormattedEcsAndNames();
         List<String> expectedECOptions = new ArrayList<>();
-        expectedECOptions.add("Todos os estabelecimentos");
-        expectedECOptions.addAll(formattedEcs);
+        List<String> filteredEcFromHeader = filterIfNotSelectedInHeader(formattedEcs);
+        if (filteredEcFromHeader.size() > 1) {
+            expectedECOptions.add("Todos os estabelecimentos");
+        }
+        expectedECOptions.addAll(filteredEcFromHeader);
         return expectedECOptions;
     }
 
+    private List<String> filterIfNotSelectedInHeader(List<String> expectedECOptions) throws Exception {
+        List<String> selectedEcsHeader = selectECOrDtcoPage.getSelectedEcs();
+        return expectedECOptions.stream()
+                .filter(ec -> selectedEcsHeader.stream().anyMatch(ec::contains))
+                .toList();
+    }
+
     private void verifyCanSelectOtherECs(PageField options) {
+        pageField.from("Modal Gerar Relatórios - Campo Select EC").hoverOver();
         List<PageField> listOptions = options.getAllVisiblePageField();
         PageField selectedEC = pageField.from("Modal Gerar Relatórios - Select EC Selecionado");
         listOptions.get(1).click();
         assertEquals("%s deveria estar selecionado", listOptions.get(1).getAsText(), selectedEC.getAsText());
-    }
-
-    private static String formatRequestedInNow() {
-        LocalDateTime date = LocalDateTime.now();
-        return date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy 'às' HH:mm"));
     }
 
     private PageField openDropdownAndGetOption(String dropdown, String option, String type) {
@@ -411,7 +434,7 @@ public class ReportsSteps extends BaseSteps {
         Optional<PageField> foundOption = pageField.from(option)
                 .firstWith(x -> x.attributeDataTestidContains(type));
 
-        if(foundOption.isEmpty()) {
+        if (foundOption.isEmpty()) {
             fail("Didn't find the option to select: %s".formatted(type));
         }
 
@@ -471,7 +494,7 @@ public class ReportsSteps extends BaseSteps {
     }
 
     @Given("Existem relatórios extraídos em datas diferentes")
-    public void thereAreReporstsWithDifferentDates() {
+    public void thereAreReportsWithDifferentDates() {
         assumeThat(reportsPage.thereAreReportsExtractedOfDifferentDates()).isTrue();
     }
 

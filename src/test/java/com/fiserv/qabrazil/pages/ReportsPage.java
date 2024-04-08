@@ -387,6 +387,7 @@ public class ReportsPage extends CheckedBasePage {
     }
 
     public PageField selectSecondEcAsOptions() {
+        pageField.from("Modal Gerar Relatórios - Campo Select EC").hoverOver();
         PageField options = pageField.from("Modal Gerar Relatórios - Select EC Opções");
         waitUntilTrue(() -> options.getAllVisiblePageField().size() >= 2);
         return options.getAllVisiblePageField().get(2);
