@@ -70,7 +70,7 @@ public class LoginPage extends BasePage {
 
     public synchronized void loginWithOneRetry() {
         if (storageState.stateIsReady()) {
-            goTo(storageState.getLoggedUrl());
+            navigateTo(storageState.getLoggedUrl());
         } else {
             login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
         }
@@ -93,7 +93,7 @@ public class LoginPage extends BasePage {
     }
 
     public void login(String url, String user, String pwd) {
-        goTo(url);
+        navigateTo(url);
         page.getByTestId("login").pressSequentially(user);
         page.getByTestId("password").fill(pwd);
         page.getByTestId("entrar").click();

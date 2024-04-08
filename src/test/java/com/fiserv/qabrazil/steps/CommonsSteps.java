@@ -115,16 +115,19 @@ public class CommonsSteps {
     @Then("o Portal deve abrir as {string}")
     public void ensureWeAreAtTheRightPage(String pageName) {
         urlCheckers.forPage(pageName).ensureWeAreAtTheCorrectPage();
+        commonsPage.closeAllPopups();
     }
 
     @Then("será direcionado para a jornada de {string} na nova aba")
     public void ensureWeAreAtTheRightPageInANewTab(String pageName) {
         urlCheckers.forPage(pageName).ensureWeAreAtTheCorrectPage(newTab);
+        commonsPage.closeAllPopups();
     }
 
     @Then("usuário será direcionado para url {string} na nova aba")
     public void ensureWeAreAtTheRightUrlInANewTab(String url) {
         urlCheckers.forUrl(url).ensureWeAreAtTheCorrectPage(newTab);
+        commonsPage.closeAllPopups();
     }
 
     @When("Usuário passa o mouse sobre {pageField}")

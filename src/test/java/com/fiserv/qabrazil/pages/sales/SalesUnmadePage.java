@@ -71,6 +71,7 @@ public class SalesUnmadePage extends BasePage {
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Não Efetivadas")).first().click();
         startMonitoringRequests(page, contractConfig);
         page.waitForURL(Pattern.compile("^.*/NaoEfetivadas.*$"));
+        closeAllPopups();
     }
 
     public SalesUnmadeExportExcel getDownloadAsExcel() throws IOException {

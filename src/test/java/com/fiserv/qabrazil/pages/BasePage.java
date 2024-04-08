@@ -4,6 +4,7 @@ import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.Identifier;
 import com.fiserv.qabrazil.util.RegexUtil;
+import com.fiserv.qabrazil.util.WaitUtil;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,13 +84,22 @@ public abstract class BasePage {
         }
     }
 
-    public void goTo(String path) {
+    public void navigateTo(String path) {
         page.navigate(path);
         assertThat(page).hasTitle(Pattern.compile(".+"));
+        closeAllPopups();
     }
 
     public String toUrl(String uri) {
         return "^" + RegexUtil.escape(contractConfig.getActiveUserProfile().url() + uri) + "$";
+    }
+
+    public void closeAllPopups() {
+        Locator closeButton = page.locator(".popup-dialog a");
+        while (closeButton.count() != 0) {
+            closeButton.click();
+            WaitUtil.sleep(Duration.ofMillis(500));
+        }
     }
 }
 

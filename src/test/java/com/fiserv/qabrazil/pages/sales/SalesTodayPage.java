@@ -7,7 +7,6 @@ import com.fiserv.qabrazil.pages.CheckedBasePage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.Currency;
 import com.microsoft.playwright.Locator;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -34,13 +33,9 @@ public class SalesTodayPage extends CheckedBasePage {
         getLateralMenuLocator().click();
         startMonitoringRequests(page, contractConfig);
         page.waitForURL(Pattern.compile("^.*/Hoje$"));
+        closeAllPopups();
     }
 
-    public void hoverMenuOnSalesMenu() {
-        getLateralMenuLocator().hover();
-    }
-
-    @NotNull
     public List<SalesDtoPage> getSalesAsDto() {
         // TODO: adicionar data-testid
         List<SalesDtoPage> allSales = new ArrayList<>();

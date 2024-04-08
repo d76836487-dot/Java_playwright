@@ -89,6 +89,7 @@ public class SalesHistoryPage extends BasePage {
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Histórico de vendas")).first().click();
         startMonitoringRequests(page, contractConfig);
         page.waitForURL(Pattern.compile("^.*/HistoricodeVendas.*$"));
+        closeAllPopups();
     }
 
     public SalesHistoryExportExcel getDownloadAsExcel() throws IOException {

@@ -59,7 +59,7 @@ public class ReportsPage extends CheckedBasePage {
 
     public void ensureIsNotInReportsPage() {
         if(page.url().contains("/Relatorios"))
-            goTo(toUrl("/Home"));
+            navigateTo(toUrl("/Home"));
     }
 
     public boolean thereAreReportsExtracted() {

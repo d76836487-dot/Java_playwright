@@ -18,6 +18,7 @@ public class HelpPage extends CheckedBasePage {
     public void navigateTo() {
         pageField.from("Header - Ajuda").click();
         ensureWeAreAtTheCorrectPage();
+        closeAllPopups();
     }
 
     public void shouldSeeWhatsAppChatButton(PageField button, String expectedColor) {

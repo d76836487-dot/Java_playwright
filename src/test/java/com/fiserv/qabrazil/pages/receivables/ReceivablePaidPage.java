@@ -112,6 +112,7 @@ public class ReceivablePaidPage extends BasePage {
         pageField.from("Menu Lateral - Recebimentos Resumo").click();
         startMonitoringRequests(page, contractConfig);
         page.waitForURL(Pattern.compile("^.*/RecebimentosPagosV2$"));
+        closeAllPopups();
     }
 
     public ReceivablePaidExportExcel getDownloadAsExcel() throws IOException {

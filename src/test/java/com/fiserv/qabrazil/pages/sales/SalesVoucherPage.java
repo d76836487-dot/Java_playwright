@@ -76,6 +76,7 @@ public class SalesVoucherPage extends BasePage {
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Voucher")).first().click();
         startMonitoringRequests(page, contractConfig);
         page.waitForURL(Pattern.compile("^.*/Voucher.*$"));
+        closeAllPopups();
     }
 
     public SalesVoucherExportExcel getDownloadAsExcel() throws IOException {

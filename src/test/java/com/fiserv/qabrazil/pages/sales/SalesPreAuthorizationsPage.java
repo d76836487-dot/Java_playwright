@@ -75,6 +75,7 @@ public class SalesPreAuthorizationsPage extends BasePage {
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Pré-autorizações")).first().click();
         startMonitoringRequests(page, contractConfig);
         page.waitForURL(Pattern.compile("^.*/PreAutorizacoes.*$"));
+        closeAllPopups();
     }
 
     public SalesPreAuthorizationExportExcel getDownloadAsExcel() throws IOException {

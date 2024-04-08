@@ -73,6 +73,7 @@ public class ReceivableFuturePage extends BasePage {
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Futuros")).first().click();
         startMonitoringRequests(page, contractConfig);
         page.waitForURL(Pattern.compile("^.*/RecebimentosFuturos.*$"));
+        closeAllPopups();
     }
 
     public ReceivableFutureExportExcel getDownloadAsExcel() throws IOException {
