@@ -7,6 +7,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Tela Relatórios com API e Seleção EC
 
+  @TestCaseKey=SMP-T312
   Scenario: Valores tela Relatórios - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
@@ -15,6 +16,7 @@ Feature: Tela Relatórios com API e Seleção EC
     Then "Todos os estabelecimentos" estará selecionado por padrão
     And usuário poderá selecionar alguma das outras opções de EC disponíveis
 
+  @TestCaseKey=SMP-T313
   Scenario: Valores tela Relatórios - com seleção de EC
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um EC e clicar Acessar
