@@ -227,7 +227,9 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
     @Given("Usuário está na aba {string} da modal 'Trocar Estabelecimento'")
     public void userIsInEstablishmentTab(String tab) {
-        if (!loginPage.userIsLogged() || !apiUserDetailsService.tokenIsStillValid()) {
+        loginPage.loginWithOneRetry();
+
+        if (!apiUserDetailsService.tokenIsStillValid()) {
             logger.info("forçando novo login...");
             loginPage.forceNewLogin();
             if (loginPage.userIsLogged()) {
