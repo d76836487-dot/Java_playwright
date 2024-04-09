@@ -10,6 +10,7 @@ import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -54,11 +55,11 @@ public class SalesUnmadePage extends BasePage {
         }
 
         public int getRefusedDetailsCount() throws IOException {
-            return excelWrapper.getColumnsSizeWhere("Status", txt->txt.equals("Recusadas"));
+            return excelWrapper.getColumnsSizeWhere("Status", txt->txt.equals("Recusada"));
         }
 
         public int getUnmadeDetailsCount() throws IOException {
-            return excelWrapper.getColumnsSizeWhere("Status", txt->txt.equals("Estornadas"));
+            return excelWrapper.getColumnsSizeWhere("Status", txt->txt.equals("Estornada"));
         }
     }
 
@@ -87,6 +88,8 @@ public class SalesUnmadePage extends BasePage {
 
         Download download = page.waitForDownload(() ->
                 pageField.from("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo").click());
+
+        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
         return new SalesUnmadeExportExcel(
                 new ExcelWrapper(download.createReadStream(), "Data da venda"));
