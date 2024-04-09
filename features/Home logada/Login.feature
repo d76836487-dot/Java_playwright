@@ -17,11 +17,6 @@ Feature: Login
     When Usuário tenta logar na aplicação com "81633816000210" e "Fiserv@123"
     Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
 
-  @TestCaseKey=SMP-T12
-  Scenario: Usuário perdeu a sessão e deve logar-se novamente
-    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
-    When Usuário loga em outra sessão
-
   @TestCaseKey=SMP-T13
   Scenario Outline: Usuário tenta logar com senha errada
     When Usuário loga com senha errada
