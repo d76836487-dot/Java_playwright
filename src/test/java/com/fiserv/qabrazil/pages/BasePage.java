@@ -101,5 +101,9 @@ public abstract class BasePage {
             WaitUtil.sleep(Duration.ofMillis(500));
         }
     }
+
+    public boolean hasLoadingOverlay() {
+        return pageField.from("Loading Indicator").getCount() > 0;
+    }
 }
 

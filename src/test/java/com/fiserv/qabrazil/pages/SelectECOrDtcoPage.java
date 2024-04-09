@@ -180,8 +180,10 @@ public class SelectECOrDtcoPage extends BasePage {
         establishmentTab.click();
         ensureNoFlyingRequests();
 
-        waitUntilTrue(60, () ->
-                pageField.from("Trocar Estabelecimento - %s - Documento Estabelecimento".formatted(tab)).getCount() > 0);
+        boolean ready = waitUntilTrue(120, () ->
+                pageField.from("Trocar Estabelecimento - %s - Documento Estabelecimento".formatted(tab)).getCount() > 0 &&
+                        !hasLoadingOverlay());
+        if (!ready) throw new RuntimeException("Não carregou documentos/estabelecimentos em Trocar Estabelecimento");
     }
 
     public void selectDocumentInput(String docToSelect) {

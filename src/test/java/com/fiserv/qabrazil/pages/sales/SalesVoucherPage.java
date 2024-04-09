@@ -30,7 +30,7 @@ public class SalesVoucherPage extends BasePage {
         }
 
         public double getSumGross() throws IOException {
-            return excelWrapper.getColumnsAsCurrency("Valor autorizado").stream()
+            return excelWrapper.getColumnsAsCurrency("Valor bruto").stream()
                     .mapToDouble(Double::doubleValue)
                     .sum();
         }
@@ -48,7 +48,7 @@ public class SalesVoucherPage extends BasePage {
         }
 
         public long getCount() throws IOException {
-            String preText = "Quantidade de vendas: ";
+            String preText = "Total de vendas: ";
             int row = excelWrapper.lookForRowStartingWithValue(preText);
             String text = excelWrapper.getCellAsText(row, 0).replaceAll(preText, "");
             text = text.isEmpty()? "0": text;
