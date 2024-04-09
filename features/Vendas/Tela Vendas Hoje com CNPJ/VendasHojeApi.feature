@@ -1,5 +1,5 @@
 #language: en
-@playwright @api
+@playwright @api @ignore
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Hoje_com_CNPJ_com_API
 @Zephyr:Status=Draft
