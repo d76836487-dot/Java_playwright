@@ -145,6 +145,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     public void typeValidEc() {
         String lastEc = getLastEc();
         pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially(lastEc);
+        selectECOrDtcoPage.storeEc(lastEc);
     }
 
     @When("Usuário digitar um documento válido em 'Buscar por documento ou número do estabelecimento'")
@@ -165,11 +166,27 @@ public class SelectECOrDtcoSteps extends BaseSteps {
         pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially("123123123");
     }
 
-    @Then("Dropdown irá filtrar e apresentar somente a informação correspondente")
-    public void checkIfFiltered() throws Exception {
+    @Then("Dropdown irá filtrar e apresentar somente EC do documento correspondente")
+    public void checkIfFilteredDoc() throws Exception {
         int expectedNumEcs = apiUserDetailsService.getEcsFromDoc(selectECOrDtcoPage.getSelectedDoc()).size();
 
         PageField merchantName = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento");
+        assertEquals(1,
+                merchantName
+                        .getAllVisiblePageField()
+                        .size());
+        merchantName.click();
+        assertEquals(expectedNumEcs,
+                pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
+                        .getAllVisiblePageField()
+                        .size());
+    }
+
+    @Then("Dropdown irá filtrar e apresentar somente o EC correspondente")
+    public void checkIfFilteredEc() {
+        int expectedNumEcs = 1;
+        PageField merchantName = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento");
+
         assertEquals(1,
                 merchantName
                         .getAllVisiblePageField()

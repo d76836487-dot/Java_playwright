@@ -223,6 +223,10 @@ public class SelectECOrDtcoPage extends BasePage {
                 .getAsText();
     }
 
+    public void storeEc(String ec) {
+        selectedEc = ec;
+    }
+
     public List<String> getSelectedEcs() throws Exception {
         if (getSelectedEc() != null) return List.of(getSelectedEc());
 

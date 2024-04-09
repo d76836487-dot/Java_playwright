@@ -51,7 +51,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
   Scenario: Busca de código EC valido aba Estabelecimento (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um EC válido em 'Buscar por documento ou número do estabelecimento'
-    Then Dropdown irá filtrar e apresentar somente a informação correspondente
+    Then Dropdown irá filtrar e apresentar somente o EC correspondente
     And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
 
   @api
@@ -59,7 +59,7 @@ Feature: Seleção de EC ou DCTO - Usuário Master
   Scenario: Busca de Documento (CNPJ ou CPF) válido aba Estabelecimento (Usuário Master)
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento válido em 'Buscar por documento ou número do estabelecimento'
-    Then Dropdown irá filtrar e apresentar somente a informação correspondente
+    Then Dropdown irá filtrar e apresentar somente EC do documento correspondente
     And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
 
   @TestCaseKey=SMP-T186
