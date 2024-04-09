@@ -95,6 +95,10 @@ public abstract class BasePage {
     }
 
     public void closeAllPopups() {
+        closeAllPopups(page);
+    }
+
+    public static void closeAllPopups(Page page) {
         Locator closeButton = page.locator(".popup-dialog a");
         while (closeButton.count() != 0) {
             closeButton.click();

@@ -245,6 +245,7 @@ public class PageField {
     public PageObject clickAndNewTabOpens() {
         waitUntilTrue(locator::isVisible);
         Page newTab = context.waitForPage(locator::click);
+        BasePage.closeAllPopups(newTab);
         return new PageObject(newTab);
     }
 
