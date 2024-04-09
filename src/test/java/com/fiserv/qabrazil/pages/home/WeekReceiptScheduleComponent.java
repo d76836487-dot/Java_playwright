@@ -6,6 +6,7 @@ import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.RegexUtil;
 import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.assertions.LocatorAssertions;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -34,9 +35,17 @@ public class WeekReceiptScheduleComponent extends BasePage {
         locator.highlight();
     }
 
+    public void ensureIsLoaded() {
+        Locator locator = page.locator("#CtnAgendaRecebimentosSemana");
+        Locator loading = locator.locator(".ph-picture-small");
+        assertThat(loading)
+                .hasCount(0, new LocatorAssertions.HasCountOptions().setTimeout(120000));
+    }
+
     public boolean receivablesAvailable() {
         // TODO: trocar para testId
         Locator locator = page.locator("#CtnAgendaRecebimentosSemana");
+        ensureIsLoaded();
         return waitUntilTrue(3, () -> !locator.textContent().contains("Você não possui nenhum recebimento previsto para essa semana."));
     }
 
