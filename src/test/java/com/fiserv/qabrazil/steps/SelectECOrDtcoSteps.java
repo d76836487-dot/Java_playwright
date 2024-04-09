@@ -152,6 +152,7 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     public void typeValidDocTabEstablishment() {
         String lastDoc = getLastDocTabEstablishment();
         pageField.from("Trocar Estabelecimento - Buscar documento").pressSequentially(lastDoc);
+        selectECOrDtcoPage.storeDocAndFirstNameFromDocuments(lastDoc);
     }
 
     @When("Usuário digitar um documento válido em 'Buscar por documento'")

@@ -211,7 +211,9 @@ public class SelectECOrDtcoPage extends BasePage {
                 .filter(name -> !name.equals("Todos"))
                 .toList();
 
-        selectedDocName = allNames.get(0);
+        if (!allNames.isEmpty()) {
+            selectedDocName = allNames.get(0);
+        }
     }
 
     public void storeNameAndEc() {

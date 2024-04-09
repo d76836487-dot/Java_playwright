@@ -54,8 +54,9 @@ public class ApiUserDetailsService {
     }
 
     public synchronized List<String> getEcsFromDoc(String document) throws Exception {
+        String clearedDocument = document == null? null: document.replaceAll("[\\./-]", "");
         return getUserDetail().ecCods.stream()
-                .filter(dto -> document == null || dto.document.equals(document))
+                .filter(dto -> document == null || dto.document.equals(clearedDocument))
                 .map(dto -> dto.ec)
                 .toList();
     }
