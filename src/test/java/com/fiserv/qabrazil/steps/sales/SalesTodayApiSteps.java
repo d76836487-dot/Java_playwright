@@ -6,7 +6,7 @@ import com.fiserv.automation.api.service.ApiSalesService;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.qabrazil.dto.SalesDtoPage;
 import com.fiserv.qabrazil.pages.CommonsPage;
-import com.fiserv.qabrazil.pages.FilterComponentPage;
+import com.fiserv.qabrazil.pages.components.FilterComponentPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;

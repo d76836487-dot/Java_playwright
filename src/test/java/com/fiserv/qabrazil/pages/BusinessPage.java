@@ -22,23 +22,4 @@ public class BusinessPage extends CheckedBasePage {
         closeAllPopups();
         waitUntilTrue(() -> !hasLoadingOverlay());
     }
-
-    public boolean waitPopupOpen() {
-        return waitUntilTrue(6, () -> page.locator(".popup-content").isVisible());
-    }
-
-    public boolean waitPopupClose() {
-        return waitUntilTrue(6, () -> !page.locator(".popup-content").isVisible());
-    }
-
-    public int numberOfElementsWithText(String textLookingFor) {
-        return page.locator(".popup-content")
-                .locator("//span[text()='%s']".formatted(textLookingFor))
-                .count();
-    }
-
-    public void openPopupChangeEstablishment() {
-        pageField.from("Negócios - Botão Trocar Estabelecimento").click();
-        waitUntilTrue(() -> !hasLoadingOverlay());
-    }
 }

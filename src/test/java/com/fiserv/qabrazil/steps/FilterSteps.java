@@ -1,6 +1,6 @@
 package com.fiserv.qabrazil.steps;
 
-import com.fiserv.qabrazil.pages.FilterComponentPage;
+import com.fiserv.qabrazil.pages.components.FilterComponentPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

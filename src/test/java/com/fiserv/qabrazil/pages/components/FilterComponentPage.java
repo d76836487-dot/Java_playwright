@@ -1,6 +1,8 @@
-package com.fiserv.qabrazil.pages;
+package com.fiserv.qabrazil.pages.components;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.pages.BasePage;
+import com.fiserv.qabrazil.pages.PageField;
 import com.microsoft.playwright.Locator;
 
 import java.time.Duration;
