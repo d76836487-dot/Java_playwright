@@ -26,8 +26,7 @@ Feature: Agenda de recebimentos da semana
   - Visualizar em preto os dias que ainda estão por vir
 
   Background:
-    When Usuário tenta logar na aplicação
-    Then Usuário estará com acesso e sessão foi salva
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Todas as requisições HTTP foram respondidas
 
   @TestCaseKey=SMP-T144
