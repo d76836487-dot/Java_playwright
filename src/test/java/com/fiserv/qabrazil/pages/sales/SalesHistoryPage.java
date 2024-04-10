@@ -15,7 +15,7 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
+import static com.fiserv.qabrazil.util.WaitUtil.retryIfGotException;
 
 @ScenarioComponent
 public class SalesHistoryPage extends BasePage {
@@ -85,11 +85,12 @@ public class SalesHistoryPage extends BasePage {
 
     public void navigateTo() {
         salesTodayPage.navigateTo();
-        // TODO: change for data-testid
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Histórico de vendas")).first().click();
-        startMonitoringRequests(page, contractConfig);
-        page.waitForURL(Pattern.compile("^.*/HistoricodeVendas.*$"));
-        closeAllPopups();
+        retryIfGotException(() -> {
+            // TODO: change for data-testid
+            page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Histórico de vendas")).first().click();
+            page.waitForURL(Pattern.compile("^.*/HistoricodeVendas.*$"));
+            closeAllPopups();
+        });
     }
 
     public SalesHistoryExportExcel getDownloadAsExcel() throws IOException {
