@@ -313,14 +313,22 @@ public class TestIdsConfig {
             entry("Home - Maquininha - Botão Confira", "//button[span[contains(text(),'Confira')]]"),
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
             entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana > div > div > div:nth-child(2)"),
+
             entry("Header - Trocar Estabelecimento - Span Texto", "//*[@data-testid='head-trocar-estabelecimentos']//span[contains(text(), 'Trocar estabelecimento')]"),
+
             entry("Trocar Estabelecimento - Botão Todos Documentos", "//input[@value='Todos']"),
             entry("Trocar Estabelecimento - Botão Todos Documentos - Explicação", "//span[contains(text(),'Essa visão')]"),
             entry("Trocar Estabelecimento - Texto Explicativo", "//*[contains(text(),'Ao selecionar esse ')]"),
             entry("Trocar Estabelecimento - Nenhum resultado", "//*[@role='dialog']//*[contains(text(),'Nenhum resultado')]"),
             entry("Trocar Estabelecimento - Documento - Documento Estabelecimento", "//*[@role='radiogroup']//input"),
+
             entry("Vendas Hoje - Botão Exportar", "//button//span[text()='Exportar']"),
             entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - Gerar arquivo", "//button[text()='Gerar arquivo']"),
+
+            entry("Negócios - Botão Trocar Estabelecimento", "//button/span[text()='Trocar estabelecimento']"),
+            entry("Negócios - Nome Estabelecimento", "//*[@class='ec-info-heading']"),
+            entry("Negócios - CNPJ e EC Estabelecimento", "//*[@class='ec-info-subtitle']"),
+            entry("Negócios - Popup Trocar - Botão selecionar", "//span[text()='Selecionar']"),
 
             entry("Ajuda - Whatsapp", "//span[contains(text(),'WhatsApp')]/.."),
             entry("Ajuda - WhatsApp Card", "//*[contains(@class,'margin-left-m')][1]/*"),
