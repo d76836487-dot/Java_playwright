@@ -41,19 +41,4 @@ public class BusinessPage extends CheckedBasePage {
         pageField.from("Negócios - Botão Trocar Estabelecimento").click();
         waitUntilTrue(() -> !hasLoadingOverlay());
     }
-
-    public enum PopupState {
-        OPEN(true),
-        CLOSE(false);
-        private final boolean isOpened;
-
-        PopupState(boolean isOpened) {
-            this.isOpened = isOpened;
-        }
-
-        public boolean opened() {
-            return this.isOpened;
-        }
-
-    }
 }
