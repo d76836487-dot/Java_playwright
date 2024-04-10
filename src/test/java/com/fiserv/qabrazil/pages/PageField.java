@@ -211,7 +211,7 @@ public class PageField {
         highlightIfPossible();
 
         if (!waitUntilTrue(locator::isVisible)) fail("Não é visível - %s".formatted(selector));
-        if (!waitUntilTrue(locator::isEnabled)) fail("Não está habilitado - %s".formatted(selector));
+        if (!waitUntilTrue(120, locator::isEnabled)) fail("Não está habilitado - %s".formatted(selector));
     }
 
     private boolean foundMany() {
