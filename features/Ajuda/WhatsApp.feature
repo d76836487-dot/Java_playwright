@@ -22,13 +22,13 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
       | cor               |
       | rgb(252, 196, 15) |
 
-    @bin
+    @bin003 @bin007
     Examples:
       | cor               |
       | rgb(46, 139, 201) |
 
   @TestCaseKey=SMP-T175
-  @bin @azulzinha
+  @bin003 @bin007 @azulzinha
   Scenario: Validação da flutuação do componente Whatsapp
     Given usuário está na página Ajuda
     When usuário move a tela através do scroll
@@ -44,7 +44,7 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
       | dados                                                                                                                           |
       | Atendimento pelo Whatsapp,Tire suas dúvidas com nosso atendimento pelo Whatsapp a qualquer momento,Telefone,+55 (11) 94147 3336 |
 
-    @bin
+    @bin003 @bin007
     Examples:
       | dados                                                                                                                           |
       | Atendimento pelo Whatsapp,Tire suas dúvidas com nosso atendimento pelo Whatsapp a qualquer momento,Telefone,+55 (11) 94270 1270 |
@@ -59,7 +59,7 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
       | url                                  |
       | https://wa.me/message/LVFYRJUOSFODE1 |
 
-    @bin
+    @bin003 @bin007
     Examples:
       | url                                  |
       | https://wa.me/message/FC2JELHHFGAKJ1 |

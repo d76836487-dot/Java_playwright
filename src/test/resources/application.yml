@@ -55,28 +55,28 @@ user-profiles:
     serviceContract: "149"
     institution: "00000007"
     allianceName: CAIXA
-  bin:
+  bin003:
     url: https://bin.qa.portaldocliente.fiserv.com
-    user: ${BIN_CONTRACT_USER}
-    password: ${BIN_CONTRACT_PASSWORD}
-    mfaSecretKey: ${BIN_MFA_SECRETKEY}
+    user: ${BIN003_CONTRACT_USER}
+    password: ${BIN003_CONTRACT_PASSWORD}
+    mfaSecretKey: ${BIN003_MFA_SECRETKEY}
     identity: bin
     primaryCssClass: cor-laranja
-    institutionTags: '@pt-br,@bin,@PermiteAdiantamento,@PermiteSolicitações'
+    institutionTags: '@pt-br,@bin003,@PermiteAdiantamento,@PermiteSolicitações'
     clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
     serviceContract: "101"
-    institution: "00000007"
+    institution: "00000003"
     allianceName: BIN
-  bin125:
+  bin007:
     url: https://bin.qa.portaldocliente.fiserv.com
-    user: ${BIN125_CONTRACT_USER}
-    password: ${BIN125_CONTRACT_PASSWORD}
-    mfaSecretKey: ${BIN125_MFA_SECRETKEY}
+    user: ${BIN007_CONTRACT_USER}
+    password: ${BIN007_CONTRACT_PASSWORD}
+    mfaSecretKey: ${BIN007_MFA_SECRETKEY}
     identity: bin
     primaryCssClass: cor-laranja
-    institutionTags: '@pt-br,@bin,@PermiteAdiantamento,@PermiteSolicitações'
+    institutionTags: '@pt-br,@bin007,@PermiteAdiantamento,@PermiteSolicitações'
     clientTags: '@MDRPadrão,@UsuárioMaster'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/

@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assumptions.assumeThat;
 public class TagHook {
     static private final List<Set<String>> tagGroups = List.of(
             Set.of("@pt-br","@es-ar"),
-            Set.of("@afinz","@azulzinha","@bin","@sicredi"),
+            Set.of("@afinz","@azulzinha","@bin003","@bin007","@sicredi"),
             Set.of("@PermiteAdiantamento","@NaoPermiteAdiantamento"),
             Set.of("@PermiteSolicitações","@NaoPermiteSolicitações"),
             Set.of("@MDRPadrão","@MDRFlex"),

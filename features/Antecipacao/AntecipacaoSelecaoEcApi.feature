@@ -7,6 +7,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Tela Antecipação com API e Seleção EC
 
+  @azulzinha @bin003 @bin007 @sicredi @PermiteAdiantamento
   @TestCaseKey=SMP-T317
   Scenario: Tela Antecipação - botão trocar estabelecimento - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -18,6 +19,7 @@ Feature: Tela Antecipação com API e Seleção EC
     And Popup terá nomes do documento selecionado
     And Popup será fechado ao clicar em Selecionar
 
+  @azulzinha @bin003 @bin007 @sicredi @PermiteAdiantamento
   @TestCaseKey=SMP-T316
   Scenario: Tela Antecipação - botão trocar estabelecimento - com seleção de EC
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
