@@ -3,6 +3,7 @@ package com.fiserv.qabrazil.util;
 import org.apache.commons.lang3.StringUtils;
 import org.dhatim.fastexcel.reader.Cell;
 import org.dhatim.fastexcel.reader.ReadableWorkbook;
+import org.dhatim.fastexcel.reader.ReadingOptions;
 import org.dhatim.fastexcel.reader.Sheet;
 
 import java.io.IOException;
@@ -36,7 +37,7 @@ public class ExcelWrapper implements AutoCloseable {
     }
     public ExcelWrapper(InputStream inputStream, String rowTableStartName) throws IOException {
         this.inputStream = inputStream;
-        workbook = new ReadableWorkbook(inputStream);
+        workbook = new ReadableWorkbook(inputStream, new ReadingOptions(true, false));
         sheet = workbook.getFirstSheet();
         this.rowTableStart = lookForRowStartingWithValue(rowTableStartName, 0);
     }
