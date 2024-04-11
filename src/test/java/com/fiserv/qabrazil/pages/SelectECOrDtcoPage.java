@@ -187,7 +187,7 @@ public class SelectECOrDtcoPage extends BasePage {
 
         boolean ready = waitUntilTrue(120, () ->
                 pageField.from("Trocar Estabelecimento - %s - Documento Estabelecimento".formatted(tab)).getCount() > 0 &&
-                        !hasLoadingOverlay());
+                        hasNotLoadingOverlay());
         if (!ready) throw new RuntimeException("Não carregou documentos/estabelecimentos em Trocar Estabelecimento");
     }
 

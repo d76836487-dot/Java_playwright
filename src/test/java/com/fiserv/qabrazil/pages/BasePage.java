@@ -107,8 +107,8 @@ public abstract class BasePage {
         }
     }
 
-    public boolean hasLoadingOverlay() {
-        return pageField.from("Loading Indicator").getCount() > 0;
+    public boolean hasNotLoadingOverlay() {
+        return pageField.from("Loading Indicator").getCount() == 0;
     }
 }
 
