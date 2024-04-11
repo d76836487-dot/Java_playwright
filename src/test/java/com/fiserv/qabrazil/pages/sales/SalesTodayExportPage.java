@@ -35,7 +35,7 @@ public class SalesTodayExportPage extends BasePage {
         }
 
         public Double getSumGrossValues() throws IOException {
-            return excelWrapper.getColumnsAsCurrency("Valor bruto").stream()
+            return excelWrapper.getColumnsAsDouble("Valor bruto").stream()
                     .reduce(Double::sum)
                     .orElse(0.0);
         }

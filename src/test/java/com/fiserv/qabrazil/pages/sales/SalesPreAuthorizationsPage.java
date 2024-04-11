@@ -29,7 +29,7 @@ public class SalesPreAuthorizationsPage extends BasePage {
         }
 
         public double getSumGrossAuthorized() throws IOException {
-            return excelWrapper.getColumnsAsCurrency("Valor autorizado").stream()
+            return excelWrapper.getColumnsAsDouble("Valor autorizado").stream()
                     .mapToDouble(Double::doubleValue)
                     .sum();
         }

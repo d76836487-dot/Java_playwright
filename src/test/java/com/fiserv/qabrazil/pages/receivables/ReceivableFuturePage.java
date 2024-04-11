@@ -30,7 +30,7 @@ public class ReceivableFuturePage extends BasePage {
         }
 
         public double getSumForeseen() throws IOException {
-            return excelWrapper.getColumnsAsCurrency("Valor líquido").stream()
+            return excelWrapper.getColumnsAsDouble("Valor líquido").stream()
                     .mapToDouble(Double::doubleValue)
                     .sum();
         }

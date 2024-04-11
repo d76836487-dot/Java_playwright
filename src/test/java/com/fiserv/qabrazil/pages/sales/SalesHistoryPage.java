@@ -74,7 +74,7 @@ public class SalesHistoryPage extends BasePage {
         }
 
         private Double getSum(String columnTitle) throws IOException {
-            return excelWrapper.getColumnsAsCurrency(columnTitle).stream()
+            return excelWrapper.getColumnsAsDouble(columnTitle).stream()
                     .reduce(Double::sum)
                     .orElse(0.0);
         }

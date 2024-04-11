@@ -69,7 +69,7 @@ public class ExcelWrapper implements AutoCloseable {
                 .toList();
     }
 
-    public List<Double> getColumnsAsCurrency(String columnName) throws IOException {
+    public List<Double> getColumnsAsDouble(String columnName) throws IOException {
         return getColumnsAsText(columnName).stream()
                 .map(this::convertToDouble)
                 .toList();

@@ -30,7 +30,7 @@ public class SalesVoucherPage extends BasePage {
         }
 
         public double getSumGross() throws IOException {
-            return excelWrapper.getColumnsAsCurrency("Valor bruto").stream()
+            return excelWrapper.getColumnsAsDouble("Valor bruto").stream()
                     .mapToDouble(Double::doubleValue)
                     .sum();
         }
