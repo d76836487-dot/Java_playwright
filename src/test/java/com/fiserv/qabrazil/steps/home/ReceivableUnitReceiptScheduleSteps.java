@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.steps.home;
 
 import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.util.UrlCheckers;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -12,6 +13,9 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
     @Autowired
     UrlCheckers urlCheckers;
+
+    @Autowired
+    SelectECOrDtcoPage selectECOrDtcoPage;
 
     @Then("usuário {shakespeareBoolean} em {string} opção de Alterar Documento")
     public void ensureWeAreAtTheCorrectPageAndHeaderDoNotHaveChangeDocument(boolean value, String pageName) {
@@ -38,6 +42,12 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         String cnpj = radioButton.getLocator().locator("../../../../..").locator(".cor-cinza-escuro").nth(1).textContent();
         pageField.from("Agenda de recebimentos por UR - Confirmar Seleção").click();
 
+        assertThat(pageField.from("Agenda de recebimentos por UR - CNPJ Selecionado")).containsText("CNPJ: " + cnpj);
+    }
+
+    @Then("Usuário visualizará em Agenda de recebimentos por UR o Documento selecionado")
+    public void ensureSelectedECShowsUp() {
+        String cnpj = selectECOrDtcoPage.getSelectedCnpj();
         assertThat(pageField.from("Agenda de recebimentos por UR - CNPJ Selecionado")).containsText("CNPJ: " + cnpj);
     }
 }

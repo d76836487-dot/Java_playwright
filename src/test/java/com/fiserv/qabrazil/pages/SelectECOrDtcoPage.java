@@ -20,6 +20,7 @@ public class SelectECOrDtcoPage extends BasePage {
     private String selectedDocName;
     private String selectedEc;
     private String selectedEcName;
+    private String selectedCpnj;
 
     public String getSelectedDoc() {
         return selectedDoc;
@@ -35,6 +36,10 @@ public class SelectECOrDtcoPage extends BasePage {
 
     public String getSelectedEcName() {
         return selectedEcName;
+    }
+
+    public String getSelectedCnpj() {
+        return selectedCpnj;
     }
 
     public void openFirstDropdown() {
@@ -219,6 +224,9 @@ public class SelectECOrDtcoPage extends BasePage {
     }
 
     public void storeNameAndEc() {
+        selectedCpnj = pageField.from("Trocar Estabelecimento - Estabelecimento - Documento Estabelecimento")
+                .getAllVisiblePageField().get(0)
+                .getAsText();
         selectedEcName = pageField.from("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento Detalhe")
                 .getAllVisiblePageField().get(0)
                 .getAsText();

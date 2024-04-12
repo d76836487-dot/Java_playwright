@@ -30,3 +30,10 @@ Feature: Agenda de recebimentos por UR
     Then usuário verá em "Agenda de recebimentos por UR" opção de Alterar Documento
     And selecionando o Documento no Header o Usuário visualizara o Respectivo Documento selecionado
 
+  Scenario: Acesso a Agenda de recebimentos por UR selecionando um Estabelecimento no Modal
+    Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+    And Usuário selecionou um EC e clicar Acessar
+    And Usuário acessou o Home
+    When Usuário passa o mouse sobre "Menu Lateral - Recebimentos"
+    And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
+    Then Usuário visualizará em Agenda de recebimentos por UR o Documento selecionado
