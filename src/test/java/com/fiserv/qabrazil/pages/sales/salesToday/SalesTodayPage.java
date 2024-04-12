@@ -1,4 +1,4 @@
-package com.fiserv.qabrazil.pages.sales;
+package com.fiserv.qabrazil.pages.sales.salesToday;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.components.Paginator;

@@ -3,6 +3,7 @@ package com.fiserv.qabrazil.pages.sales;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.pages.sales.salesToday.SalesTodayPage;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.microsoft.playwright.Download;

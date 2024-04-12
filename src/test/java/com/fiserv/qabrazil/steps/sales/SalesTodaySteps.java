@@ -1,8 +1,9 @@
 package com.fiserv.qabrazil.steps.sales;
 
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
-import com.fiserv.qabrazil.pages.sales.SalesTodayExportPage;
-import com.fiserv.qabrazil.pages.sales.SalesTodayPage;
+import com.fiserv.qabrazil.pages.sales.salesToday.SalesTodayExport;
+import com.fiserv.qabrazil.pages.sales.salesToday.SalesTodayExportPage;
+import com.fiserv.qabrazil.pages.sales.salesToday.SalesTodayPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.Currency;
 import io.cucumber.java.en.Given;
@@ -15,6 +16,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.*;
 
@@ -28,7 +30,7 @@ public class SalesTodaySteps extends BaseSteps {
     @Autowired
     SalesTodayExportPage salesTodayExportPage;
 
-    private SalesTodayExportPage.SalesTodayExportExcel salesTodayAsExcel;
+    private SalesTodayExport salesTodayExport;
 
     @Given("Usuário acessou Vendas Hoje")
     @When("Usuário acessa Vendas Hoje")
@@ -79,21 +81,21 @@ public class SalesTodaySteps extends BaseSteps {
     }
 
     @Then("Valor 'Home - Vendas Hoje' é igual à exportação do relatório 'Vendas Hoje'")
-    public void checkSalesTodayMatches() throws IOException {
+    public void checkSalesTodayMatches() throws Exception {
         String salesTodayFromHome = pageField.from("Home - Card Vendas Hoje - Valor Vendas Hoje").getAsText();
-        salesTodayAsExcel = salesTodayExportPage.getDownloadAsExcel();
-        String salesTodayFromExport = salesTodayAsExcel.getGrossSales();
+        salesTodayExport = salesTodayExportPage.getDownloadAsExcel();
+        String salesTodayFromExport = salesTodayExport.getGrossSales();
 
         assertEquals(salesTodayFromHome, salesTodayFromExport);
     }
 
     @Then("A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado")
-    public void exportWillHaveOnlySelectedEc() throws IOException {
-        if (salesTodayAsExcel == null) {
-            salesTodayAsExcel = salesTodayExportPage.getDownloadAsExcel();
+    public void exportWillHaveOnlySelectedEc() throws Exception {
+        if (salesTodayExport == null) {
+            salesTodayExport = salesTodayExportPage.getDownloadAsExcel();
         }
 
-        List<String> exportedEcs = salesTodayAsExcel.getECs();
+        List<String> exportedEcs = salesTodayExport.getECs();
         boolean allSameEcs = exportedEcs.stream()
                 .allMatch(ec -> ec.equals(selectECOrDtcoPage.getSelectedEc()));
 
@@ -101,11 +103,23 @@ public class SalesTodaySteps extends BaseSteps {
                 allSameEcs);
     }
 
+    @Then("A exportação do relatório em {string} 'Vendas Hoje' terá somente o ECs do documento selecionado")
+    public void exportWillHaveOnlySelectedEcFormat(String format) throws Exception {
+        downloadAndProcessExport(format);
+
+        List<String> exportedEcs = salesTodayExport.getECs();
+        List<String> expectedEcs = selectECOrDtcoPage.getSelectedEcs();
+
+        assertThat(expectedEcs)
+                .withFailMessage("Existem ECS gerados no excel que não são iguais ao selecionado.")
+                .containsOnlyOnceElementsOf(exportedEcs);
+    }
+
     @Then("Soma da coluna Valor Bruto é igual ao cabeçalho do Excel - Valor Bruto e Não Efetivadas")
     public void sumColumnGrossValueFromExport() throws IOException, ParseException {
-        double salesTodayFromExport = Currency.parseCurrency(salesTodayAsExcel.getGrossSales()).doubleValue();
-        double unpaidSalesTodayFromExport = Currency.parseCurrency(salesTodayAsExcel.getUnpaidSales()).doubleValue();
-        double sumGrossValue = salesTodayAsExcel.getSumGrossValues();
+        double salesTodayFromExport = Currency.parseCurrency(salesTodayExport.getGrossSales()).doubleValue();
+        double unpaidSalesTodayFromExport = Currency.parseCurrency(salesTodayExport.getUnpaidSales()).doubleValue();
+        double sumGrossValue = salesTodayExport.getSumGrossValues();
 
         assertEquals("Valor da soma do cabeçalho é diferente da soma da coluna.",
                 salesTodayFromExport + unpaidSalesTodayFromExport, sumGrossValue, 0.001);
@@ -114,9 +128,19 @@ public class SalesTodaySteps extends BaseSteps {
 
     @Then("A soma de todos valores Brutos é igual a \"Vendas Hoje - Resumo - Valor Vendas\"")
     public void sumGrossValueMatchesScreen() throws IOException {
-        double sumGrossValue = salesTodayAsExcel.getSumGrossValues();
+        double sumGrossValue = salesTodayExport.getSumGrossValues();
         double salesToday = pageField.from("Vendas Hoje - Resumo - Valor Vendas").getAsCurrency().doubleValue();
 
         assertEquals(salesToday, sumGrossValue, 0.001);
+    }
+
+    private void downloadAndProcessExport(String format) throws Exception {
+        if (format.equals("Excel")) {
+            salesTodayExport = salesTodayExportPage.getDownloadAsExcel();
+        } else if (format.equals("CSV")) {
+            salesTodayExport = salesTodayExportPage.getDownloadAsCsv();
+        } else {
+            throw new RuntimeException("Formato desconhecido.");
+        }
     }
 }

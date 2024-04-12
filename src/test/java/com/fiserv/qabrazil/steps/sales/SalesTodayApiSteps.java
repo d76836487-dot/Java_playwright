@@ -10,7 +10,7 @@ import com.fiserv.qabrazil.pages.components.FilterComponentPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
-import com.fiserv.qabrazil.pages.sales.SalesTodayPage;
+import com.fiserv.qabrazil.pages.sales.salesToday.SalesTodayPage;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.Identifier;
 import io.cucumber.java.en.Given;

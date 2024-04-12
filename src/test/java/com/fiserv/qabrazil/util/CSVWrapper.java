@@ -10,12 +10,20 @@ import org.slf4j.LoggerFactory;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
 import java.util.List;
 
 public class CSVWrapper {
+    public static final CSVWrapper NULL = new CSVWrapper();
     private static final Logger log = LoggerFactory.getLogger(CSVWrapper.class);
 
     private final List<String[]> lines;
+    private final boolean isNull;
+
+    private CSVWrapper() {
+        lines = List.of();
+        isNull = true;
+    }
 
     public CSVWrapper(InputStream inputStream) throws Exception {
         CSVParser csvParser = new CSVParserBuilder().withSeparator(';').build();
@@ -26,9 +34,26 @@ public class CSVWrapper {
                 .build();
 
         this.lines = reader.readAll();
+        isNull = false;
+    }
+
+    public List<Double> getColumnsAsDouble(String columnName) {
+        return getColumnsAsText(columnName).stream()
+                .map(CSVWrapper::textToDouble)
+                .toList();
+    }
+
+    private static double textToDouble(String value) {
+        try {
+            return Currency.parseCurrency(value).doubleValue();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<String> getColumnsAsText(String columnName) {
+        if (isNull) return List.of();
+
         final int columnIndex = getColumnIndex(columnName);
 
         return lines.stream()
@@ -48,10 +73,6 @@ public class CSVWrapper {
         }
 
         throw new RuntimeException("Não foi encontrado a coluna %s no arquivo csv".formatted(columnName));
-    }
-
-    public String getCellAsText(int row, int column) {
-        return lines.get(row)[column];
     }
 
     public String[] getRow(int row) {
