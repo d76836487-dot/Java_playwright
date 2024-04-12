@@ -61,7 +61,7 @@ public class SalesHistorySteps extends BasePage {
     public void sumGrossValueMatchesScreen() throws IOException, ParseException {
         double sumGrossValue = salesHistoryExportExcel.getSumGrossValues();
         double grossValue = salesHistoryExportExcel.getGrossSales().doubleValue();
-        double salesToday = pageField.from("Vendas - Histórico Vendas - Valor Bruto Total").getAsCurrency().doubleValue();
+        double salesToday = pageField.from("Vendas - Histórico de Vendas - Resumo - Valor bruto").getAsCurrency().doubleValue();
 
         assertEquals("Valor bruto da tela não é igual à planilha.",
                 salesToday, grossValue, 0.001);
@@ -73,7 +73,7 @@ public class SalesHistorySteps extends BasePage {
     public void sumNetValueMatchesScreen() throws IOException, ParseException {
         double sumNetValues = salesHistoryExportExcel.getSumNetValues();
         double netValue = salesHistoryExportExcel.getNetSales().doubleValue();
-        double salesToday = pageField.from("Vendas - Histórico Vendas - Valor Líquido Total").getAsCurrency().doubleValue();
+        double salesToday = pageField.from("Vendas - Histórico de Vendas - Resumo - Valor líquido").getAsCurrency().doubleValue();
 
         assertEquals("Valor líquido da tela não é igual à planilha.",
                 salesToday, netValue, 0.001);
@@ -85,7 +85,7 @@ public class SalesHistorySteps extends BasePage {
     public void sumCancelledValueMatchesScreen() throws IOException, ParseException {
         double sumCancelledValues = salesHistoryExportExcel.getSumCancelledValues();
         double cancelledValue = salesHistoryExportExcel.getCancelledSales().doubleValue();
-        double valueFromPage = pageField.from("Vendas - Histórico Vendas - Valor Cancelado Total").getAsCurrency().doubleValue();
+        double valueFromPage = pageField.from("Vendas - Histórico de Vendas - Resumo - Valor cancelado").getAsCurrency().doubleValue();
 
         assertEquals("Valor líquido da tela não é igual à planilha.",
                 valueFromPage, cancelledValue, 0.001);

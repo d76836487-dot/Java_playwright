@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.WaitUtil.retryIfGotException;
+import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
 public class SalesHistoryPage extends BasePage {
@@ -92,6 +93,7 @@ public class SalesHistoryPage extends BasePage {
             page.waitForURL(Pattern.compile("^.*/HistoricodeVendas.*$"));
             closeAllPopups();
         });
+        waitUntilTrue(360, () -> !hasLoadingOverlay());
     }
 
     public SalesHistoryExportExcel getDownloadAsExcel() throws IOException {

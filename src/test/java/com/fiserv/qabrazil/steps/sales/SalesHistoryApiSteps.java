@@ -19,7 +19,7 @@ public class SalesHistoryApiSteps extends BaseSteps {
     @Then("Valor bruto será igual a API")
     public void grossSalesSameYesterday() throws Exception {
         List<WeeklyScheduleDto> weeklyScheduleDtos = getTotalSalesYesterday();
-        double grossSales = pageField.from("Vendas - Histórico Vendas - Valor Bruto Total").getAsCurrency().doubleValue();
+        double grossSales = pageField.from("Vendas - Histórico de Vendas - Resumo - Valor bruto").getAsCurrency().doubleValue();
         assertEquals("Valor bruto de vendas não é igual a API",
                 weeklyScheduleDtos.get(0).grossValues, grossSales, 0.001);
     }
@@ -27,7 +27,7 @@ public class SalesHistoryApiSteps extends BaseSteps {
     @Then("Valor líquido será igual a API")
     public void netSalesSameYesterday() throws Exception {
         List<WeeklyScheduleDto> weeklyScheduleDtos = getTotalSalesYesterday();
-        double netSales = pageField.from("Vendas - Histórico Vendas - Valor Líquido Total").getAsCurrency().doubleValue();
+        double netSales = pageField.from("Vendas - Histórico de Vendas - Resumo - Valor líquido").getAsCurrency().doubleValue();
         assertEquals("Valor líquido de vendas não é igual a API",
                 weeklyScheduleDtos.get(0).netValues, netSales, 0.001);
     }
@@ -35,7 +35,7 @@ public class SalesHistoryApiSteps extends BaseSteps {
     @Then("Total de vendas será igual a API")
     public void qtySalesSameYesterday() throws Exception {
         List<WeeklyScheduleDto> weeklyScheduleDtos = getTotalSalesYesterday();
-        String qtySales = pageField.from("Vendas - Histórico Vendas - Total de vendas").getAsText();
+        String qtySales = pageField.from("Vendas - Histórico de Vendas - Resumo - Quantidade de vendas").getAsText();
         assertEquals("Total de vendas de vendas não é igual a API",
                 String.valueOf(weeklyScheduleDtos.get(0).occurrences), qtySales);
     }

@@ -61,12 +61,13 @@ public class TestIdsConfig {
             entry("Vendas Hoje - Botão Filtrar", "vendas-hoje-link-filtrar"),
             entry("Vendas Hoje - Botão Cancelar Filtro", "generic-filter-link-sair"),
 
-            entry("Vendas - Histórico de Vendas - Resumo - Quantidade de vendas", "historico-vendas-total"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor bruto", "historico-vendas-valor-bruto"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor líquido", "historico-vendas-valor-liquido"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor cancelado", "historico-vendas-valor-cancelado"),
             entry("Vendas - Histórico de Vendas - Botão Exportar", "exportar-historicovendas"),
             entry("Vendas - Histórico de Vendas - Botão Cancelar Filtro", "generic-filter-link-sair"),
+            entry("Vendas - Histórico de Vendas - Botão Filtrar", "historico-vendas-container-filtros"),
+            entry("Vendas - Histórico Vendas - Período - Descrição", "generic-calendar-periodo-calendar"),
 
             entry("Vendas - Não Efetivadas - Botão Exportar", "exportar-naoefetivadas"),
             entry("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
@@ -262,13 +263,8 @@ public class TestIdsConfig {
             entry("Filtros de Relatório - Mês Calendário", "//*[contains(@class, 'DateInputPicker-generic-filter-periodo-calendar')]//select[@aria-label='Month']"),
 
             // TODO: maps below should be changed for data-testid
-            entry("Vendas - Histórico Vendas - Período - Descrição", "//span[contains(text(),'Período')]/../span[2]"),
-            entry("Vendas - Histórico Vendas - Valor Bruto Total", "//span[contains(text(),'Valor bruto') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
-            entry("Vendas - Histórico Vendas - Valor Líquido Total", "//span[contains(text(),'Valor líquido') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
-            entry("Vendas - Histórico Vendas - Valor Cancelado Total", "//span[contains(text(),'Valor cancelado') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
-            entry("Vendas - Histórico Vendas - Total de vendas", "//span[contains(text(),'Total de vendas') and @class='cor-cinza-escuro']/../following-sibling::div/span"),
-            entry("Vendas - Histórico de Vendas - Botão Filtrar", "//div[contains(text(),'Filtros')]"),
             entry("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo", "//button[contains(text(),'Gerar arquivo')]"),
+            entry("Vendas - Histórico de Vendas - Resumo - Quantidade de vendas", "//*[@data-textid='historico-vendas-v2-total']"),
 
             entry("Vendas - Não Efetivadas - Total Recusadas", "//div[@id='ctnTotalRecusadas2']/div[2]"),
             entry("Vendas - Não Efetivadas - Total Estornadas", "//div[@id='ctnTotalEstornadas2']/div[2]"),
