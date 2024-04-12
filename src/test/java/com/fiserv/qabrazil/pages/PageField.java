@@ -133,7 +133,7 @@ public class PageField {
     }
 
     public Currency getAsCurrency() {
-        waitUntilTrue(() -> !quickGetTextContent().equals("R$ 0,00")); // it returns R$ 0,00 before setting the real value...
+        waitUntilTrue(() -> !quickGetTextContent().equals("R$ 0,00") || !quickGetTextContent().equals("- R$ 0,00")); // it returns R$ 0,00 before setting the real value...
         String textFromElement = quickGetTextContent();
         return getParsed(textFromElement);
     }
@@ -147,6 +147,7 @@ public class PageField {
 
     private Currency getParsed(String textFromElement) {
         try {
+            textFromElement = textFromElement.replaceAll("- R\\$", "-R\\$");
             return Currency.parse(textFromElement);
         } catch (ParseException ex) {
             throw new RuntimeException(
