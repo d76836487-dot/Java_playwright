@@ -72,6 +72,9 @@ public class TestIdsConfig {
             entry("Vendas - Não Efetivadas - Botão Exportar", "exportar-naoefetivadas"),
             entry("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
             entry("Vendas - Não Efetivadas - Botão Cancelar Filtro", "generic-filter-link-sair"),
+            entry("Vendas - Não Efetivadas - Total Recusadas", "nao-efetivadas-total-de-recusadas"),
+            entry("Vendas - Não Efetivadas - Total Estornadas", "nao-efetivadas-total-estornadas"),
+            entry("Vendas - Não Efetivadas - Botão Filtrar", "nao-efetivadas-botao-filtros"),
 
             entry("Vendas - Pré Autorizações - Botão Exportar", "exportar-preautorizacoes"),
             entry("Vendas - Pré Autorizações - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
@@ -273,10 +276,6 @@ public class TestIdsConfig {
             // TODO: maps below should be changed for data-testid
             entry("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo", "//button[contains(text(),'Gerar arquivo')]"),
             entry("Vendas - Histórico de Vendas - Resumo - Quantidade de vendas", "//*[@data-textid='historico-vendas-v2-total']"),
-
-            entry("Vendas - Não Efetivadas - Total Recusadas", "//div[@id='ctnTotalRecusadas2']/div[2]"),
-            entry("Vendas - Não Efetivadas - Total Estornadas", "//div[@id='ctnTotalEstornadas2']/div[2]"),
-            entry("Vendas - Não Efetivadas - Botão Filtrar", "//div[contains(@class,'btn')]/span[contains(text(),'Filtros')]"),
 
             entry("Vendas - Pré Autorizações - Total Vendas", "//span[text()='Total de vendas']/../../div[2]/div/span"),
             entry("Vendas - Pré Autorizações - Valor Bruto Autorizado", "//span[text()='Valor bruto autorizado']/../../div[2]/div/span"),

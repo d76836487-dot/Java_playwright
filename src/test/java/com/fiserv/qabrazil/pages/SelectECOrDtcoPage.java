@@ -187,8 +187,14 @@ public class SelectECOrDtcoPage extends BasePage {
 
         boolean ready = waitUntilTrue(120, () ->
                 pageField.from("Trocar Estabelecimento - %s - Documento Estabelecimento".formatted(tab)).getCount() > 0 &&
-                        hasNotLoadingOverlay());
+                        allDocsHaveBeenLoaded());
         if (!ready) throw new RuntimeException("Não carregou documentos/estabelecimentos em Trocar Estabelecimento");
+    }
+
+    private boolean allDocsHaveBeenLoaded() {
+        return page.locator(".popup-dialog")
+                .locator(".ph-picture-small")
+                .count() == 0;
     }
 
     public void selectDocumentInput(String docToSelect) {

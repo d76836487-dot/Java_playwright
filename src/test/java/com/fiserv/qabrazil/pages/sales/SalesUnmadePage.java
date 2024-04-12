@@ -15,9 +15,46 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
+import static com.fiserv.qabrazil.util.WaitUtil.retryIfGotException;
+import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
 public class SalesUnmadePage extends BasePage {
+    @Autowired
+    private SalesTodayPage salesTodayPage;
+
+    public void navigateTo() {
+        salesTodayPage.navigateTo();
+        retryIfGotException(() -> {
+            // TODO: change for data-testid
+            page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Não Efetivadas")).first().click();
+            startMonitoringRequests(page, contractConfig);
+            page.waitForURL(Pattern.compile("^.*/NaoEfetivadas.*$"));
+            closeAllPopups();
+        });
+        waitUntilTrue(360, () -> !hasLoadingOverlay());
+    }
+
+    public SalesUnmadeExportExcel getDownloadAsExcel() throws IOException {
+        PageField buttonCancelFilter = pageField.from("Vendas - Não Efetivadas - Botão Cancelar Filtro");
+        if (buttonCancelFilter.elementIsVisibleRightNow()) {
+            buttonCancelFilter.click();
+        }
+        PageField exportButton = pageField.from("Vendas - Não Efetivadas - Botão Exportar");
+
+        if (!exportButton.fieldIsOneVisibleAndEnabled()) return SalesUnmadeExportExcel.NULL;
+
+        exportButton.click();
+
+        Download download = page.waitForDownload(() ->
+                pageField.from("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo").click());
+
+        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
+
+        return new SalesUnmadeExportExcel(
+                new ExcelWrapper(download.createReadStream(), "Data da venda"));
+    }
+
     public static class SalesUnmadeExportExcel {
         public static final SalesUnmadeExportExcel NULL = new SalesUnmadeExportExcel(ExcelWrapper.NULL);
 
@@ -55,43 +92,11 @@ public class SalesUnmadePage extends BasePage {
         }
 
         public int getRefusedDetailsCount() throws IOException {
-            return excelWrapper.getColumnsSizeWhere("Status", txt->txt.equals("Recusada"));
+            return excelWrapper.getColumnsSizeWhere("Status", txt -> txt.equals("Recusada"));
         }
 
         public int getUnmadeDetailsCount() throws IOException {
-            return excelWrapper.getColumnsSizeWhere("Status", txt->txt.equals("Estornada"));
+            return excelWrapper.getColumnsSizeWhere("Status", txt -> txt.equals("Estornada"));
         }
-    }
-
-    @Autowired
-    private SalesTodayPage salesTodayPage;
-
-    public void navigateTo() {
-        salesTodayPage.navigateTo();
-        // TODO: change for data-testid
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Não Efetivadas")).first().click();
-        startMonitoringRequests(page, contractConfig);
-        page.waitForURL(Pattern.compile("^.*/NaoEfetivadas.*$"));
-        closeAllPopups();
-    }
-
-    public SalesUnmadeExportExcel getDownloadAsExcel() throws IOException {
-        PageField buttonCancelFilter = pageField.from("Vendas - Não Efetivadas - Botão Cancelar Filtro");
-        if (buttonCancelFilter.elementIsVisibleRightNow()) {
-            buttonCancelFilter.click();
-        }
-        PageField exportButton = pageField.from("Vendas - Não Efetivadas - Botão Exportar");
-
-        if (!exportButton.fieldIsOneVisibleAndEnabled()) return SalesUnmadeExportExcel.NULL;
-
-        exportButton.click();
-
-        Download download = page.waitForDownload(() ->
-                pageField.from("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo").click());
-
-        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
-
-        return new SalesUnmadeExportExcel(
-                new ExcelWrapper(download.createReadStream(), "Data da venda"));
     }
 }
