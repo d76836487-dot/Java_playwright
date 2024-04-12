@@ -12,10 +12,12 @@ Feature: Detalhe da UR
     And Usuário acessou a página de Agenda de Recebimentos por UR
     And Existem recebimentos listados
 
+  @TestCaseKey=SMP-T319
   Scenario: Direcionamento
     When usuário clica sobre um lote (bandeira e produto) da listagem apresentada
     Then usuário será direcionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
 
+  @TestCaseKey=SMP-T320
   Scenario: Consultar Layout da seção Resumo
     When usuário clica sobre um lote (bandeira e produto) da listagem apresentada
     Then usuário será direcionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
@@ -24,6 +26,7 @@ Feature: Detalhe da UR
     And Usuário verá no card da seção Resumo a imagem da bandeira, seguido do nome da bandeira
     And Usuário verá no card da seção Resumo o Valor total, Total atualizado da UR, Valor pago, Total de deduções
 
+  @TestCaseKey=SMP-T321
   Scenario: Seção Resumo Botão Mostrar todos os detalhes
     Given usuário clicou sobre um lote (bandeira e produto) da listagem apresentada
     And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
@@ -34,13 +37,10 @@ Feature: Detalhe da UR
     Total ajuste crédito, Total contratos
     """
 
-    #produto,
-    #botão Mostrar todos os detalhes
-
+#produto,
+#botão Mostrar todos os detalhes
 #  Scenario: Consultar Abas na Tela / Detalhe da UR
 #    Given Usuário está logado Agenda de recebimentos por UR
 #    When Clicar sobre um lote (bandeira e produto) da listagem apresentada
 #    And estiver na tela “Agenda de recebimentos por UR > Detalhe da UR”
 #    Then usuário visualizara as abas (Vendas vinculadas, Pagamentos, Créditos e deduções, Contratos)
-
-
