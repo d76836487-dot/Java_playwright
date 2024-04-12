@@ -47,7 +47,9 @@ public class SalesVoucherSteps extends BasePage {
                 .filter(m -> !m.trim().isEmpty())
                 .sorted()
                 .toList();
-        List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs();
+        List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs().stream()
+                .sorted()
+                .toList();
 
         if (salesVoucherExportExcel == SalesVoucherPage.SalesVoucherExportExcel.NULL) return;
 

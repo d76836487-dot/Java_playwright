@@ -5,6 +5,7 @@ import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.ExcelWrapper;
+import com.fiserv.qabrazil.util.WaitUtil;
 import com.microsoft.playwright.Download;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
+import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
 public class SalesVoucherPage extends BasePage {
@@ -72,11 +74,14 @@ public class SalesVoucherPage extends BasePage {
 
     public void navigateTo() {
         salesTodayPage.navigateTo();
-        // TODO: change for data-testid
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Voucher")).first().click();
-        startMonitoringRequests(page, contractConfig);
-        page.waitForURL(Pattern.compile("^.*/Voucher.*$"));
-        closeAllPopups();
+        WaitUtil.retryIfGotException(() -> {
+            // TODO: change for data-testid
+            page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Voucher")).first().click();
+            startMonitoringRequests(page, contractConfig);
+            page.waitForURL(Pattern.compile("^.*/Voucher.*$"));
+            closeAllPopups();
+        });
+        waitUntilTrue(360, () -> !hasLoadingOverlay());
     }
 
     public SalesVoucherExportExcel getDownloadAsExcel() throws IOException {

@@ -83,6 +83,9 @@ public class TestIdsConfig {
             entry("Vendas - Voucher - Botão Exportar", "exportar-voucher"),
             entry("Vendas - Voucher - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
             entry("Vendas - Voucher - Botão Cancelar Filtro", "generic-filter-link-sair"),
+            entry("Vendas - Voucher - Total Vendas", "total-de-vendas"),
+            entry("Vendas - Voucher - Valor Bruto", "valor-bruto"),
+            entry("Vendas - Voucher - Botão Filtrar", "filtros"),
 
             entry("Recebimentos - Pagos - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
             entry("Recebimentos - Pagos - Botão Cancelar Filtro", "generic-filter-link-sair"),
@@ -281,10 +284,6 @@ public class TestIdsConfig {
             entry("Vendas - Pré Autorizações - Valor Bruto Autorizado", "//span[text()='Valor bruto autorizado']/../../div[2]/div/span"),
             entry("Vendas - Pré Autorizações - Valor Bruto A Confirmar", "//span[text()='Valor bruto a confirmar']/../../div[2]/div/span"),
             entry("Vendas - Pré Autorizações - Botão Filtrar", "//div[contains(text(),'Filtros')]"),
-
-            entry("Vendas - Voucher - Total Vendas", "//span[text()='Total de vendas']/../../div[2]/span"),
-            entry("Vendas - Voucher - Valor Bruto", "(//span[text()='Valor bruto']/../../div[2]/span)[1]"),
-            entry("Vendas - Voucher - Botão Filtrar", "//div[contains(text(),'Filtros')]"),
 
             entry("Recebimentos - Pagos - Botão Exportar", "(//span[text()='Exportar'])[1]"),
             entry("Recebimentos - Pagos - Total recebido", "(//span[text()='Total recebido']/../../div[2]/span)[1]"),
