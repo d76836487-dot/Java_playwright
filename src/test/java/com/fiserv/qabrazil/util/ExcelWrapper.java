@@ -62,7 +62,7 @@ public class ExcelWrapper implements AutoCloseable {
         if (inputStream != null) inputStream.close();
     }
 
-    public List<Double> getColumnsAsCurrencyByIndex(String columnName, int[] indexes) throws IOException {
+    public List<Double> getColumnsAsDoubleByIndex(String columnName, int[] indexes) throws IOException {
         List<String> texts = getColumnsAsText(columnName);
         return Arrays.stream(indexes)
                 .mapToObj(texts::get)

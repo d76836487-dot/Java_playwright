@@ -41,7 +41,7 @@ public class ReceivablePaidPage extends BasePage {
         private double sumBasedOnStatus(Predicate<String> statusLookingFor) throws IOException {
             int[] indexesToSum = excelWrapper.getIndexWhereColumn("Status", statusLookingFor);
 
-            return excelWrapper.getColumnsAsCurrencyByIndex("Valor pagamento", indexesToSum).stream()
+            return excelWrapper.getColumnsAsDoubleByIndex("Valor pagamento", indexesToSum).stream()
                     .mapToDouble(Double::doubleValue)
                     .sum();
         }

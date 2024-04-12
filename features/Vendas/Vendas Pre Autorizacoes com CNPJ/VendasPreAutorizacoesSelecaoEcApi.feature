@@ -19,6 +19,7 @@ Feature: Tela Vendas Pré Autorizações com CNPJ com API e Seleção EC
     And A exportação do relatório 'Pré Autorizadas' terá somente o EC selecionado no detalhamento
     And A exportação do relatório 'Pré Autorizadas' terá exatamente os ECs selecionado no cabeçalho
     And A soma de vendas pré-autorizadas é igual ao valor bruto autorizado
+    And A soma de vendas pré-autorizadas é igual ao valor bruto a confirmar
     And A contagem de vendas pré-autorizadas é igual a Total de Vendas
 
   @TestCaseKey=SMP-T304
@@ -33,5 +34,6 @@ Feature: Tela Vendas Pré Autorizações com CNPJ com API e Seleção EC
     And A exportação do relatório 'Pré Autorizadas' terá somente o EC selecionado no detalhamento
     And A exportação do relatório 'Pré Autorizadas' terá exatamente os ECs selecionado no cabeçalho
     And A soma de vendas pré-autorizadas é igual ao valor bruto autorizado
+    And A soma de vendas pré-autorizadas é igual ao valor bruto a confirmar
     And A contagem de vendas pré-autorizadas é igual a Total de Vendas
 

@@ -68,6 +68,18 @@ public class SalesPreAuthorizationsSteps extends BasePage {
                 grossValuePage, gross);
     }
 
+    @Then("A soma de vendas pré-autorizadas é igual ao valor bruto a confirmar")
+    public void grossValueToConfirmMatchesScreen() throws IOException, ParseException {
+        double sumGross = salesPreAuthorizationExportExcel.getSumGrossToConfirm();
+        double gross = salesPreAuthorizationExportExcel.getGrossToConfirm();
+        double grossValuePage = pageField.from("Vendas - Pré Autorizações - Valor Bruto A Confirmar").getAsCurrency().doubleValue();
+
+        assertEquals("Valor vendas a confirmar da tela não é igual à planilha.",
+                grossValuePage, sumGross);
+        assertEquals("Valor vendas a confirmar da tela não é igual à contagem da planilha.",
+                grossValuePage, gross);
+    }
+
     @Then("A contagem de vendas pré-autorizadas é igual a Total de Vendas")
     public void countMatchesScreen() throws IOException {
         long countQuantityPre = salesPreAuthorizationExportExcel.getCountPre();
