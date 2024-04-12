@@ -24,6 +24,7 @@ public class HelpSteps {
     @Given("usuário está na página Ajuda")
     public void userNavigatesToHelpPage() {
         helpPage.navigateTo();
+        helpPage.closeAllPopups();
     }
 
     @When("usuário move a tela através do scroll")
