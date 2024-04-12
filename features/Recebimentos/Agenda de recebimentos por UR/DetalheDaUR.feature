@@ -1,0 +1,46 @@
+#language: en
+@playwright
+@Zephyr:ProjectKey=SMP
+@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Agenda_de_recebimentos_por_UR/Detalhe_da_UR
+@Zephyr:Status=Draft
+@Zephyr:Priority=Normal
+@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+Feature: Detalhe da UR
+
+  Background:
+    Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
+    And Usuário acessou a página de Agenda de Recebimentos por UR
+    And Existem recebimentos listados
+
+  Scenario: Direcionamento
+    When usuário clica sobre um lote (bandeira e produto) da listagem apresentada
+    Then usuário será direcionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
+
+  Scenario: Consultar Layout da seção Resumo
+    When usuário clica sobre um lote (bandeira e produto) da listagem apresentada
+    Then usuário será direcionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
+    And usuário visualizará no título do Resumo da UR a data no formato "dd/MM/yyyy"
+    And Usuário verá em "Detalhe da UR - Botão Exportar" o texto "Exportar"
+    And Usuário verá no card da seção Resumo a imagem da bandeira, seguido do nome da bandeira
+    And Usuário verá no card da seção Resumo o Valor total, Total atualizado da UR, Valor pago, Total de deduções
+
+  Scenario: Seção Resumo Botão Mostrar todos os detalhes
+    Given usuário clicou sobre um lote (bandeira e produto) da listagem apresentada
+    And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
+    When usuário clica no "Botão Mostrar todos os detalhes" em "Detalhe da UR - Resumo"
+    Then usuário verá na seção resumo os elementos
+    """
+    Total bruto, Total taxa MDR, Total antecipação eventual, Total antecipação automática, Total deduções,
+    Total ajuste crédito, Total contratos
+    """
+
+    #produto,
+    #botão Mostrar todos os detalhes
+
+#  Scenario: Consultar Abas na Tela / Detalhe da UR
+#    Given Usuário está logado Agenda de recebimentos por UR
+#    When Clicar sobre um lote (bandeira e produto) da listagem apresentada
+#    And estiver na tela “Agenda de recebimentos por UR > Detalhe da UR”
+#    Then usuário visualizara as abas (Vendas vinculadas, Pagamentos, Créditos e deduções, Contratos)
+
+

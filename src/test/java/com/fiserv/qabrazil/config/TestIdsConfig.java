@@ -229,7 +229,15 @@ public class TestIdsConfig {
 
             entry("Gestão de Acessos - Abas - Usuários", "gestao-tab-usuarios"),
             entry("Gestão de Acessos - Abas - Convites pendentes", "gestao-tab-pendente"),
-            entry("Gestão de Acessos - Convidar novo usuário", "gestao-new-user")
+            entry("Gestão de Acessos - Convidar novo usuário", "gestao-new-user"),
+
+            entry("Detalhe da UR - Resumo - Total bruto valor", "total-bruto-ur"),
+            entry("Detalhe da UR - Resumo - Total taxa MDR valor", "total-taxa-mdr-ur"),
+            entry("Detalhe da UR - Resumo - Total antecipação eventual valor", "total-antecipacao-eventual-ur"),
+            entry("Detalhe da UR - Resumo - Total antecipação automática valor", "total-antecipacao-automatica-ur"),
+            entry("Detalhe da UR - Resumo - Total deduções valor", "total-deducoes-ur"),
+            entry("Detalhe da UR - Resumo - Total ajuste crédito valor", "total-ajuste-credito-ur"),
+            entry("Detalhe da UR - Resumo - Total contratos valor", "total-contratos-ur")
     );
 
 
@@ -336,7 +344,29 @@ public class TestIdsConfig {
             entry("Agenda de recebimentos por UR - Botão Alterar Documento", "button.ec-info-btn"),
             entry("Agenda de recebimentos por UR - RadioButton Selecionar Documento", ".popup-content input[type=radio]"),
             entry("Agenda de recebimentos por UR - Confirmar Seleção", ".popup-dialog .cor-branca"),
-            entry("Agenda de recebimentos por UR - CNPJ Selecionado", ".ec-info-subtitle")
+            entry("Agenda de recebimentos por UR - CNPJ Selecionado", ".ec-info-subtitle"),
+
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']"),
+            entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='UnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),
+
+            entry("Detalhe da UR - Resumo - Título", "//span[starts-with(text(), 'Resumo')]"),
+            entry("Detalhe da UR - Botão Exportar", "//button[contains(@class, 'btn-primary')][//span[text()='Exportar']]"),
+            entry("Detalhe da UR - Resumo - Imagem Bandeira", "//div[@data-block='Content.AccordionItem']//div[@data-block='Utils.Bandeira']/img"),
+            entry("Detalhe da UR - Resumo - Nome da Bandeira", "//div[@data-block='Content.AccordionItem']//div[@data-block='Utils.Bandeira']/following-sibling::span"),
+
+            entry("Detalhe da UR - Resumo - Valor total", "//div[@data-block='Content.AccordionItem']//span[text()='Valor total']/following-sibling::div/span"),
+            entry("Detalhe da UR - Resumo - Total atualizado da UR", "//div[@data-block='Content.AccordionItem']//span[text()='Total atualizado da UR']/following-sibling::div/span"),
+            entry("Detalhe da UR - Resumo - Valor pago", "//div[@data-block='Content.AccordionItem']//span[text()='Valor pago']/following-sibling::div/span"),
+            entry("Detalhe da UR - Resumo - Total de deduções", "//div[@data-block='Content.AccordionItem']//span[text()='Total de deduções']/following-sibling::div/span"),
+            entry("Detalhe da UR - Resumo - Botão Mostrar todos os detalhes", "//div[@data-block='Content.AccordionItem']//span[starts-with(text(), 'Mostrar todos')]"),
+
+            entry("Detalhe da UR - Resumo - Total bruto", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total bruto')]"),
+            entry("Detalhe da UR - Resumo - Total taxa MDR", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total taxa MDR')]"),
+            entry("Detalhe da UR - Resumo - Total antecipação eventual", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total antecipação eventual')]"),
+            entry("Detalhe da UR - Resumo - Total antecipação automática", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total antecipação automática')]"),
+            entry("Detalhe da UR - Resumo - Total deduções", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total deduções')]"),
+            entry("Detalhe da UR - Resumo - Total ajuste crédito", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total ajuste crédito')]"),
+            entry("Detalhe da UR - Resumo - Total contratos", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total contratos')]")
     );
 
     public static String getTestId(String identifier) {
