@@ -8,7 +8,7 @@
 Feature: Tela Negócio com API e Seleção EC
 
   @TestCaseKey=SMP-T314
-    Scenario: Tela Negócio - botão trocar estabelecimento - com seleção de Documento
+  Scenario: Tela Negócio - botão trocar estabelecimento - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
     And Usuário acessou página de Negócio
