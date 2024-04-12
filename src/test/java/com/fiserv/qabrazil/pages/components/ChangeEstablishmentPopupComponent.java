@@ -23,6 +23,6 @@ public class ChangeEstablishmentPopupComponent extends BasePage {
 
     public void openPopupChangeEstablishment() {
         pageField.from("Negócios - Botão Trocar Estabelecimento").click();
-        waitUntilTrue(this::hasNotLoadingOverlay);
+        waitUntilTrue(this::hasNoLoadingBars);
     }
 }

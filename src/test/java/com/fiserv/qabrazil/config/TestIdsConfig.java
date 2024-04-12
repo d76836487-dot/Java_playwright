@@ -248,7 +248,7 @@ public class TestIdsConfig {
 
 
     private static final Map<String, String> otherSelectors = Map.<String, String>ofEntries(
-            entry("Loading Indicator", ".ph-picture-small"),
+            entry("Loading Bars", ".ph-picture-small"),
             entry("Menu Lateral - Vendas", ".om-root-menu [data-testid=menu-vendas]"),
             entry("Menu Lateral - Home", ".om-root-menu [data-testid=menu-home]"),
             entry("Menu Lateral - Recebimentos", ".om-root-menu [data-testid=menu-recebimentos]"),

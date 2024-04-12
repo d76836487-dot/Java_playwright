@@ -25,7 +25,7 @@ public class ReceiptScheduleByURSteps extends BaseSteps {
 
     @Given("Existem recebimentos listados")
     public void thereAreReceiptsListed() {
-        waitUntilTrue(() -> receiptScheduleByURPage.hasNotLoadingOverlay());
+        waitUntilTrue(() -> receiptScheduleByURPage.hasNoLoadingBars());
 
         PageField receiptBatches = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total");
 

@@ -94,7 +94,7 @@ public class SalesHistoryPage extends BasePage {
             page.waitForURL(Pattern.compile("^.*/HistoricodeVendas.*$"));
             closeAllPopups();
         });
-        waitUntilTrue(360, this::hasNotLoadingOverlay);
+        waitUntilTrue(360, this::hasNoLoadingBars);
     }
 
     public SalesHistoryExportExcel getDownloadAsExcel() throws IOException {

@@ -20,7 +20,7 @@ public class BusinessPage extends CheckedBasePage {
         page.locator(linkTo).last().click();
         page.waitForURL(Pattern.compile("^.*/Negocio$"));
         closeAllPopups();
-        waitUntilTrue(this::hasNotLoadingOverlay);
+        waitUntilTrue(this::hasNoLoadingBars);
     }
 
 }
