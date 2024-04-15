@@ -1,7 +1,7 @@
 package com.fiserv.qabrazil.steps.receipts;
 
 import com.fiserv.automation.api.util.DateUtil;
-import com.fiserv.qabrazil.pages.ReceiptScheduleByURDetailPage;
+import com.fiserv.qabrazil.pages.receipts.ReceivableUnitReceiptScheduleDetailPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,15 +14,15 @@ import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
-public class ReceiptScheduleByURDetailSteps extends BaseSteps {
+public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
 
     @Autowired
-    private ReceiptScheduleByURDetailPage receiptScheduleByURDetailPage;
+    private ReceivableUnitReceiptScheduleDetailPage receivableUnitReceiptScheduleDetailPage;
 
     @Given("usuário foi redirecionado à tela \"Agenda de recebimentos por UR > Detalhe da UR\"")
     @Then("usuário será direcionado à tela \"Agenda de recebimentos por UR > Detalhe da UR\"")
     public void userWillBeRedirectedTo() {
-        receiptScheduleByURDetailPage.ensureWeAreAtURDetailPage();
+        receivableUnitReceiptScheduleDetailPage.ensureWeAreAtURDetailPage();
     }
 
     @Then("usuário visualizará no título do Resumo da UR a data no formato {string}")
