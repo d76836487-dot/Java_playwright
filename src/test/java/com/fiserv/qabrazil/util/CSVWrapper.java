@@ -37,6 +37,20 @@ public class CSVWrapper {
         isNull = false;
     }
 
+    public List<Currency> getColumnsAsCurrency(String columnName) {
+        return getColumnsAsText(columnName).stream()
+                .map(CSVWrapper::getParseCurrency)
+                .toList();
+    }
+
+    private static Currency getParseCurrency(String v) {
+        try {
+            return Currency.parse(v);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public List<Double> getColumnsAsDouble(String columnName) {
         return getColumnsAsText(columnName).stream()
                 .map(CSVWrapper::textToDouble)

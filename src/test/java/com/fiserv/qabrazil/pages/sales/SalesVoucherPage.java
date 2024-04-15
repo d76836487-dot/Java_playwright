@@ -82,7 +82,7 @@ public class SalesVoucherPage extends BasePage {
             page.waitForURL(Pattern.compile("^.*/Voucher.*$"));
             closeAllPopups();
         });
-        waitUntilTrue(360, () -> !hasLoadingOverlay());
+        waitUntilTrue(360, () -> !hasNoLoadingBars());
     }
 
     public SalesVoucherExportExcel getDownloadAsExcel() throws IOException {

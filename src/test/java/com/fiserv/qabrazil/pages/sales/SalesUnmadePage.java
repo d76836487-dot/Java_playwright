@@ -33,7 +33,7 @@ public class SalesUnmadePage extends BasePage {
             page.waitForURL(Pattern.compile("^.*/NaoEfetivadas.*$"));
             closeAllPopups();
         });
-        waitUntilTrue(360, () -> !hasLoadingOverlay());
+        waitUntilTrue(360, () -> !hasNoLoadingBars());
     }
 
     public SalesUnmadeExportExcel getDownloadAsExcel() throws IOException {

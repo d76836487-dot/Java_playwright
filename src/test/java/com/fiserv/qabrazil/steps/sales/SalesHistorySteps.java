@@ -2,7 +2,8 @@ package com.fiserv.qabrazil.steps.sales;
 
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
-import com.fiserv.qabrazil.pages.sales.SalesHistoryPage;
+import com.fiserv.qabrazil.pages.sales.salesHistory.SalesHistoryExport;
+import com.fiserv.qabrazil.pages.sales.salesHistory.SalesHistoryPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +22,18 @@ public class SalesHistorySteps extends BasePage {
     @Autowired
     private SelectECOrDtcoPage selectECOrDtcoPage;
 
-    private SalesHistoryPage.SalesHistoryExportExcel salesHistoryExportExcel;
+    private SalesHistoryExport salesHistoryExport;
 
     @Given("Usuário acessou Vendas - Histórico de Vendas")
     public void goTo() {
         salesHistoryPage.navigateTo();
     }
 
-    @Then("A exportação do relatório 'Histórico de Vendas' terá somente o EC selecionado no detalhamento")
-    public void exportWillHaveOnlySelectedEcDetails() throws Exception {
-        salesHistoryExportExcel = salesHistoryPage.getDownloadAsExcel();
-        List<String> exportedEcColumn = salesHistoryExportExcel.getEcFromColumn().stream()
+    @Then("A exportação do relatório em {string} 'Histórico de Vendas' terá somente o EC selecionado no detalhamento")
+    public void exportWillHaveOnlySelectedEcDetails(String format) throws Exception {
+        downloadAndProcessExport(format);
+
+        List<String> exportedEcColumn = salesHistoryExport.getEcFromColumn().stream()
                 .distinct()
                 .toList();
         List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs();
@@ -43,7 +45,9 @@ public class SalesHistorySteps extends BasePage {
 
     @Then("A exportação do relatório 'Histórico de Vendas' terá exatamente os ECs selecionado no cabeçalho")
     public void exportWillHaveOnlySelectedEcHeader() throws Exception {
-        List<String> exportedEcCell = salesHistoryExportExcel.getEcsFromCell().stream()
+        if (!salesHistoryExport.hasHeader() || salesHistoryExport.isNull()) return;
+
+        List<String> exportedEcCell = salesHistoryExport.getEcsFromCell().stream()
                 .filter(m -> !m.trim().isEmpty())
                 .sorted()
                 .toList();
@@ -51,16 +55,14 @@ public class SalesHistorySteps extends BasePage {
                 .sorted()
                 .toList();
 
-        if (salesHistoryExportExcel == SalesHistoryPage.SalesHistoryExportExcel.NULL) return;
-
         assertArrayEquals("Valores da célula com EC é diferente dos ECs selecionados. Esperado: '%s', encontrado: '%s'".formatted(selectedEcs.toString(), exportedEcCell.toString()),
                 exportedEcCell.toArray(new String[0]), selectedEcs.toArray(new String[0]));
     }
 
     @Then("A soma de todos valores Brutos é igual a \"Vendas Histórico - Valor Bruto\"")
     public void sumGrossValueMatchesScreen() throws IOException, ParseException {
-        double sumGrossValue = salesHistoryExportExcel.getSumGrossValues();
-        double grossValue = salesHistoryExportExcel.getGrossSales().doubleValue();
+        double sumGrossValue = salesHistoryExport.getSumGrossValues();
+        double grossValue = salesHistoryExport.getGrossSales();
         double salesToday = pageField.from("Vendas - Histórico de Vendas - Resumo - Valor bruto").getAsCurrency().doubleValue();
 
         assertEquals("Valor bruto da tela não é igual à planilha.",
@@ -71,8 +73,8 @@ public class SalesHistorySteps extends BasePage {
 
     @Then("A soma de todos valores Líquidos é igual a \"Vendas Histórico - Valor Líquido\"")
     public void sumNetValueMatchesScreen() throws IOException, ParseException {
-        double sumNetValues = salesHistoryExportExcel.getSumNetValues();
-        double netValue = salesHistoryExportExcel.getNetSales().doubleValue();
+        double sumNetValues = salesHistoryExport.getSumNetValues();
+        double netValue = salesHistoryExport.getNetSales();
         double salesToday = pageField.from("Vendas - Histórico de Vendas - Resumo - Valor líquido").getAsCurrency().doubleValue();
 
         assertEquals("Valor líquido da tela não é igual à planilha.",
@@ -83,13 +85,26 @@ public class SalesHistorySteps extends BasePage {
 
     @Then("A soma de todos valores Cancelados é igual a \"Vendas Histórico - Valor Cancelados\"")
     public void sumCancelledValueMatchesScreen() throws IOException, ParseException {
-        double sumCancelledValues = salesHistoryExportExcel.getSumCancelledValues();
-        double cancelledValue = salesHistoryExportExcel.getCancelledSales().doubleValue();
+        double sumCancelledValues = salesHistoryExport.getSumCancelledValues();
+        double cancelledValue = salesHistoryExport.getCancelledSales();
         double valueFromPage = pageField.from("Vendas - Histórico de Vendas - Resumo - Valor cancelado").getAsCurrency().doubleValue();
 
         assertEquals("Valor líquido da tela não é igual à planilha.",
                 valueFromPage, cancelledValue, 0.001);
         assertEquals("Soma do valor líquido da planilha não é igual à tela.",
                 valueFromPage, sumCancelledValues, 0.001);
+    }
+
+    private void downloadAndProcessExport(String format) throws Exception {
+        if (format.equals("Excel")) {
+            salesHistoryExport = salesHistoryPage.getDownloadAsExcel();
+            return;
+        }
+        if (format.equals("CSV")) {
+            salesHistoryExport = salesHistoryPage.getDownloadAsCsv();
+            return;
+        }
+
+        throw new RuntimeException("Formato desconhecido.");
     }
 }

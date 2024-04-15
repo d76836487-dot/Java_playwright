@@ -68,6 +68,8 @@ public class TestIdsConfig {
             entry("Vendas - Histórico de Vendas - Botão Cancelar Filtro", "generic-filter-link-sair"),
             entry("Vendas - Histórico de Vendas - Botão Filtrar", "historico-vendas-container-filtros"),
             entry("Vendas - Histórico Vendas - Período - Descrição", "generic-calendar-periodo-calendar"),
+            entry("Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
+            entry("Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
 
             entry("Vendas - Não Efetivadas - Botão Exportar", "exportar-naoefetivadas"),
             entry("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
