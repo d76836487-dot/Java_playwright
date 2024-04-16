@@ -3,7 +3,7 @@ package com.fiserv.qabrazil.pages.sales.salesUnmade;
 import java.io.IOException;
 import java.util.List;
 
-public interface SalesUnmadeExport {
+public sealed interface SalesUnmadeExport permits SalesUnmadeExportCsv, SalesUnmadeExportExcel {
     boolean hasHeader();
 
     boolean isNull();

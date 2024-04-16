@@ -5,7 +5,7 @@ import com.fiserv.qabrazil.util.ExcelWrapper;
 import java.io.IOException;
 import java.util.List;
 
-public class SalesUnmadeExportExcel implements SalesUnmadeExport {
+public non-sealed class SalesUnmadeExportExcel implements SalesUnmadeExport {
     public static final SalesUnmadeExportExcel NULL = new SalesUnmadeExportExcel(ExcelWrapper.NULL);
 
     private final ExcelWrapper excelWrapper;

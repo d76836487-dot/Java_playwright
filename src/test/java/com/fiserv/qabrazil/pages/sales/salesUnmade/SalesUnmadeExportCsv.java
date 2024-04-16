@@ -5,7 +5,7 @@ import com.fiserv.qabrazil.util.CSVWrapper;
 import java.io.IOException;
 import java.util.List;
 
-public class SalesUnmadeExportCsv implements SalesUnmadeExport {
+public non-sealed class SalesUnmadeExportCsv implements SalesUnmadeExport {
     public static final SalesUnmadeExportCsv NULL = new SalesUnmadeExportCsv(CSVWrapper.NULL);
 
     private final CSVWrapper csvWrapper;

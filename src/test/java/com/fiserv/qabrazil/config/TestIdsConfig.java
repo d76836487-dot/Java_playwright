@@ -84,6 +84,9 @@ public class TestIdsConfig {
             entry("Vendas - Pré Autorizações - Botão Exportar", "exportar-preautorizacoes"),
             entry("Vendas - Pré Autorizações - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
             entry("Vendas - Pré Autorizações - Botão Cancelar Filtro", "generic-filter-link-sair"),
+            entry("Vendas - Pré Autorizações - Exportar - Dropdown Tipo Arquivo", "simple-dropdown-select-"),
+            entry("Vendas - Pré Autorizações - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
+            entry("Vendas - Pré Autorizações - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
 
             entry("Vendas - Voucher - Botão Exportar", "exportar-voucher"),
             entry("Vendas - Voucher - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
