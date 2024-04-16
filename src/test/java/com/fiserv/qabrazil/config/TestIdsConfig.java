@@ -77,6 +77,9 @@ public class TestIdsConfig {
             entry("Vendas - Não Efetivadas - Total Recusadas", "nao-efetivadas-total-de-recusadas"),
             entry("Vendas - Não Efetivadas - Total Estornadas", "nao-efetivadas-total-estornadas"),
             entry("Vendas - Não Efetivadas - Botão Filtrar", "nao-efetivadas-botao-filtros"),
+            entry("Vendas - Não Efetivadas - Exportar - Dropdown Tipo Arquivo", "simple-dropdown-select-"),
+            entry("Vendas - Não Efetivadas - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
+            entry("Vendas - Não Efetivadas - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
 
             entry("Vendas - Pré Autorizações - Botão Exportar", "exportar-preautorizacoes"),
             entry("Vendas - Pré Autorizações - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),

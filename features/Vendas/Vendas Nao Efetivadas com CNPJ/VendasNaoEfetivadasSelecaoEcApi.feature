@@ -8,7 +8,7 @@
 Feature: Tela Vendas Não Efetivadas com CNPJ com API e Seleção EC
 
   @TestCaseKey=SMP-T301
-  Scenario: Valores tela Vendas - NÃO EFETIVADAS deve bater com exportação - com seleção de Documento
+  Scenario Outline: Valores tela Vendas - NÃO EFETIVADAS deve bater com exportação - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
     And Usuário acessou Vendas - Não Realizadas
@@ -16,13 +16,17 @@ Feature: Tela Vendas Não Efetivadas com CNPJ com API e Seleção EC
     And usuário clicou no "Vendas - Não Efetivadas - Botão Filtrar"
     When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
     Then Opções do filtro tem somente os ECs selecionados
-    And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no detalhamento
+    And A exportação do relatório em "<format>" 'Não Efetivadas' terá somente o EC selecionado no detalhamento
     And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no cabeçalho
     And A soma de vendas recusadas é igual a "Não Efetivadas - Recusadas"
     And A soma de vendas estornadas é igual a "Não Efetivadas - Estornadas"
+    Examples:
+      | format |
+      | Excel  |
+      | CSV    |
 
   @TestCaseKey=SMP-T302
-  Scenario: Valores tela Vendas - NÃO EFETIVADAS deve bater com exportação - com seleção de EC
+  Scenario Outline: Valores tela Vendas - NÃO EFETIVADAS deve bater com exportação - com seleção de EC
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um EC e clicar Acessar
     And Usuário acessou Vendas - Não Realizadas
@@ -30,8 +34,12 @@ Feature: Tela Vendas Não Efetivadas com CNPJ com API e Seleção EC
     And usuário clicou no "Vendas - Não Efetivadas - Botão Filtrar"
     When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
     Then Opções do filtro tem somente os ECs selecionados
-    And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no detalhamento
+    And A exportação do relatório em "<format>" 'Não Efetivadas' terá somente o EC selecionado no detalhamento
     And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no cabeçalho
     And A soma de vendas recusadas é igual a "Não Efetivadas - Recusadas"
     And A soma de vendas estornadas é igual a "Não Efetivadas - Estornadas"
+    Examples:
+      | format |
+      | Excel  |
+      | CSV    |
 

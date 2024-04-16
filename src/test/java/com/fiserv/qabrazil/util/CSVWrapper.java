@@ -55,6 +55,12 @@ public class CSVWrapper {
 
     }
 
+    public int getColumnsSizeWhere(String columnName, Predicate<String> predicate) {
+        return (int) getColumnsAsText(columnName).stream()
+                .filter(predicate)
+                .count();
+    }
+
     public List<Currency> getColumnsAsCurrency(String columnName) {
         return getColumnsAsText(columnName).stream()
                 .map(CSVWrapper::getParseCurrency)
