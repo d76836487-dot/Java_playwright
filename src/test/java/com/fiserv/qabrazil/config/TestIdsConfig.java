@@ -284,6 +284,8 @@ public class TestIdsConfig {
             // TODO: maps below should be changed for data-testid
             entry("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo", "//button[contains(text(),'Gerar arquivo')]"),
             entry("Vendas - Histórico de Vendas - Resumo - Quantidade de vendas", "//*[@data-textid='historico-vendas-v2-total']"),
+            entry("Vendas - Histórico de Vendas - Exportar - Relatório Simplificado", "//div[contains(text(),'Relatório simplificado')]"),
+            entry("Vendas - Histórico de Vendas - Exportar - Relatório Detalhado", "//div[contains(text(),'Relatório detalhado')]"),
 
             entry("Vendas - Pré Autorizações - Total Vendas", "//span[text()='Total de vendas']/../../div[2]/div/span"),
             entry("Vendas - Pré Autorizações - Valor Bruto Autorizado", "//span[text()='Valor bruto autorizado']/../../div[2]/div/span"),

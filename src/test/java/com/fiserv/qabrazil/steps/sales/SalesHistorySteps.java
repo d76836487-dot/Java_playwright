@@ -31,7 +31,7 @@ public class SalesHistorySteps extends BasePage {
 
     @Then("A exportação do relatório em {string} 'Histórico de Vendas' terá somente o EC selecionado no detalhamento")
     public void exportWillHaveOnlySelectedEcDetails(String format) throws Exception {
-        downloadAndProcessExport(format);
+        salesHistoryExport = downloadAndProcessExport(format);
 
         List<String> exportedEcColumn = salesHistoryExport.getEcFromColumn().stream()
                 .distinct()
@@ -95,16 +95,13 @@ public class SalesHistorySteps extends BasePage {
                 valueFromPage, sumCancelledValues, 0.001);
     }
 
-    private void downloadAndProcessExport(String format) throws Exception {
-        if (format.equals("Excel")) {
-            salesHistoryExport = salesHistoryPage.getDownloadAsExcel();
-            return;
-        }
-        if (format.equals("CSV")) {
-            salesHistoryExport = salesHistoryPage.getDownloadAsCsv();
-            return;
-        }
-
-        throw new RuntimeException("Formato desconhecido.");
+    private SalesHistoryExport downloadAndProcessExport(String format) throws Exception {
+        return switch (format) {
+            case "Excel Simplificado" -> salesHistoryExport = salesHistoryPage.getDownloadAsExcelSimplified();
+            case "Excel Detalhado" -> salesHistoryExport = salesHistoryPage.getDownloadAsExcelDetailed();
+            case "CSV Simplificado" -> salesHistoryExport = salesHistoryPage.getDownloadAsCsvSimplified();
+            case "CSV Detalhado" -> salesHistoryExport = salesHistoryPage.getDownloadAsCsvDetailed();
+            default -> throw new RuntimeException("Formato desconhecido.");
+        };
     }
 }

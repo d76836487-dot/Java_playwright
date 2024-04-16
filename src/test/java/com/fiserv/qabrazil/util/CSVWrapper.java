@@ -11,7 +11,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
 
 public class CSVWrapper {
     public static final CSVWrapper NULL = new CSVWrapper();
@@ -35,6 +38,21 @@ public class CSVWrapper {
 
         this.lines = reader.readAll();
         isNull = false;
+    }
+
+    public int[] getIndexWhereColumn(String columnName, Predicate<String> predicate) {
+        List<String> texts = getColumnsAsText(columnName);
+        return IntStream.range(0, texts.size())
+                .filter(i -> predicate.test(texts.get(i)))
+                .toArray();
+    }
+
+    public List<Currency> getColumnsAsCurrencyByIndex(String columnName, int[] indexes) {
+        List<Currency> currencies = getColumnsAsCurrency(columnName);
+        return Arrays.stream(indexes)
+                .mapToObj(currencies::get)
+                .toList();
+
     }
 
     public List<Currency> getColumnsAsCurrency(String columnName) {

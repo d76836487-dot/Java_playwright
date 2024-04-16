@@ -22,9 +22,11 @@ Feature: Tela Vendas Histórico com CNPJ com API e Seleção EC
     And A soma de todos valores Líquidos é igual a "Vendas Histórico - Valor Líquido"
     And A soma de todos valores Cancelados é igual a "Vendas Histórico - Valor Cancelados"
     Examples:
-      | formato |
-      | Excel   |
-      | CSV     |
+      | formato            |
+      | Excel Simplificado |
+      | Excel Detalhado    |
+      | CSV Simplificado   |
+      | CSV Detalhado      |
 
   @TestCaseKey=SMP-T298
   Scenario Outline: Valores tela Vendas - HISTÓRICO DE VENDAS deve bater com exportação - com seleção de EC
@@ -41,6 +43,8 @@ Feature: Tela Vendas Histórico com CNPJ com API e Seleção EC
     And A soma de todos valores Líquidos é igual a "Vendas Histórico - Valor Líquido"
     And A soma de todos valores Cancelados é igual a "Vendas Histórico - Valor Cancelados"
     Examples:
-      | formato |
-      | Excel   |
-      | CSV     |
+      | formato        |
+      | Excel Simplificado |
+      | Excel Detalhado    |
+      | CSV Simplificado   |
+      | CSV Detalhado      |

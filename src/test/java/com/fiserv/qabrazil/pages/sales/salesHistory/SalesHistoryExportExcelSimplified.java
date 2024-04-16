@@ -7,12 +7,12 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
-public class SalesHistoryExportExcel implements SalesHistoryExport {
-    public static final SalesHistoryExportExcel NULL = new SalesHistoryExportExcel(ExcelWrapper.NULL);
+public class SalesHistoryExportExcelSimplified implements SalesHistoryExport {
+    public static final SalesHistoryExportExcelSimplified NULL = new SalesHistoryExportExcelSimplified(ExcelWrapper.NULL);
 
     private final ExcelWrapper excelWrapper;
 
-    public SalesHistoryExportExcel(ExcelWrapper excelWrapper) {
+    public SalesHistoryExportExcelSimplified(ExcelWrapper excelWrapper) {
         this.excelWrapper = excelWrapper;
     }
 

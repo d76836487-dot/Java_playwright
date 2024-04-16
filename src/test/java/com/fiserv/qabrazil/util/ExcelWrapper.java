@@ -6,10 +6,8 @@ import org.dhatim.fastexcel.reader.ReadableWorkbook;
 import org.dhatim.fastexcel.reader.ReadingOptions;
 import org.dhatim.fastexcel.reader.Sheet;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
@@ -35,6 +33,7 @@ public class ExcelWrapper implements AutoCloseable {
         sheet = workbook.getFirstSheet();
         this.rowTableStart = rowTableStart;
     }
+
     public ExcelWrapper(InputStream inputStream, String rowTableStartName) throws IOException {
         this.inputStream = inputStream;
         workbook = new ReadableWorkbook(inputStream, new ReadingOptions(true, false));
@@ -104,14 +103,13 @@ public class ExcelWrapper implements AutoCloseable {
     public List<String> getColumnsAsText(String columnName) throws IOException {
         if (sheet == null) return List.of();
 
-        List<String> values = new ArrayList<>();
         int col = getHeaderColumn(columnName);
 
-        for (int row = rowTableStart + 1; row < sheet.read().size(); row++) {
-            values.add(getCellAsText(row, col));
-        }
-
-        return values;
+        return IntStream.range(rowTableStart + 1, sheet.read().size())
+                .parallel()
+                .mapToObj(row -> getCellAsText(row, col))
+                .filter(cell -> !cell.isEmpty())
+                .toList();
     }
 
     private int getHeaderColumn(String columnName) throws IOException {
@@ -133,9 +131,15 @@ public class ExcelWrapper implements AutoCloseable {
                 .toArray(String[]::new);
     }
 
-    public String getCellAsText(int row, int column) throws IOException {
-        if (sheet == null) return "";
+    public String getCellAsText(int row, int column)  {
+        try {
+            if (sheet == null) return "";
+            if (sheet.read().get(row) == null) return "";
+            if (sheet.read().get(row).getCell(column) == null) return "";
 
-        return sheet.read().get(row).getCell(column).getText();
+            return sheet.read().get(row).getCell(column).getText();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -6,12 +6,12 @@ import com.fiserv.qabrazil.util.Currency;
 import java.io.IOException;
 import java.util.List;
 
-public class SalesHistoryExportCsv implements SalesHistoryExport {
-    public static final SalesHistoryExportCsv NULL = new SalesHistoryExportCsv(CSVWrapper.NULL);
+public class SalesHistoryExportCsvDetailed implements SalesHistoryExport {
+    public static final SalesHistoryExportCsvDetailed NULL = new SalesHistoryExportCsvDetailed(CSVWrapper.NULL);
 
     private final CSVWrapper csvWrapper;
 
-    public SalesHistoryExportCsv(CSVWrapper csvWrapper) {
+    public SalesHistoryExportCsvDetailed(CSVWrapper csvWrapper) {
         this.csvWrapper = csvWrapper;
     }
 
@@ -36,19 +36,21 @@ public class SalesHistoryExportCsv implements SalesHistoryExport {
     }
 
     public double getGrossSales() {
-        return csvWrapper.getColumnsAsCurrency("Valor bruto").stream()
+        return csvWrapper.getColumnsAsCurrency("Valor bruto da parcela").stream()
                 .mapToDouble(Currency::doubleValue)
                 .sum();
     }
 
     public double getNetSales() {
-        return csvWrapper.getColumnsAsCurrency("Valor líquido").stream()
+        return csvWrapper.getColumnsAsCurrency("Valor líquido da parcela/transação").stream()
                 .mapToDouble(Currency::doubleValue)
                 .sum();
     }
 
     public double getCancelledSales() {
-        return csvWrapper.getColumnsAsCurrency("Valor cancelado").stream()
+        int[] indexes = csvWrapper.getIndexWhereColumn("Status", txt -> txt.equals("Cancelada"));
+
+        return csvWrapper.getColumnsAsCurrencyByIndex("Valor bruto da parcela", indexes).stream()
                 .mapToDouble(Currency::doubleValue)
                 .sum();
     }
@@ -58,6 +60,6 @@ public class SalesHistoryExportCsv implements SalesHistoryExport {
     }
 
     public List<String> getEcFromColumn() throws IOException {
-        return csvWrapper.getColumnsAsText("Número do estabelecimento");
+        return csvWrapper.getColumnsAsText("Código de estabelecimento");
     }
 }

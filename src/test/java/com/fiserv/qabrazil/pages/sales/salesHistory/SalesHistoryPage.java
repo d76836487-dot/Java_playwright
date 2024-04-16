@@ -12,6 +12,7 @@ import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
@@ -35,33 +36,53 @@ public class SalesHistoryPage extends BasePage {
         waitUntilTrue(360, this::hasNoLoadingBars);
     }
 
-    public SalesHistoryExportExcel getDownloadAsExcel() throws IOException {
-        if (pageField.from("Vendas - Histórico de Vendas - Botão Cancelar Filtro").elementIsVisibleRightNow()) {
-            pageField.from("Vendas Hoje - Botão Cancelar Filtro").click();
-        }
-        PageField exportButton = pageField.from("Vendas - Histórico de Vendas - Botão Exportar");
+    public SalesHistoryExportExcelSimplified getDownloadAsExcelSimplified() throws IOException {
+        String formatType = "Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - Excel";
+        String simpleAdvancedButton = "Vendas - Histórico de Vendas - Exportar - Relatório Simplificado";
+        InputStream readStream = downloadReport(formatType, simpleAdvancedButton);
 
-        if (!exportButton.fieldIsOneVisibleAndEnabled()) return SalesHistoryExportExcel.NULL;
+        if (readStream == null) return SalesHistoryExportExcelSimplified.NULL;
 
-        exportButton.click();
-
-        Download download = page.waitForDownload(() ->
-                pageField.from("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo").click());
-
-        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
-
-        return new SalesHistoryExportExcel(
-                new ExcelWrapper(download.createReadStream(), "Data da venda"));
+        return new SalesHistoryExportExcelSimplified(new ExcelWrapper(readStream, "Data da venda"));
     }
-    public SalesHistoryExportCsv getDownloadAsCsv() throws Exception {
-        String formatType = "Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - CSV";
 
+    public SalesHistoryExportExcelDetailed getDownloadAsExcelDetailed() throws IOException {
+        String formatType = "Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - Excel";
+        String simpleAdvancedButton = "Vendas - Histórico de Vendas - Exportar - Relatório Detalhado";
+        InputStream readStream = downloadReport(formatType, simpleAdvancedButton);
+
+        if (readStream == null) return SalesHistoryExportExcelDetailed.NULL;
+
+        return new SalesHistoryExportExcelDetailed(new ExcelWrapper(readStream, "Data da venda"));
+    }
+
+    public SalesHistoryExportCsvSimplified getDownloadAsCsvSimplified() throws Exception {
+        String formatType = "Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - CSV";
+        String simpleAdvancedButton = "Vendas - Histórico de Vendas - Exportar - Relatório Simplificado";
+        InputStream readStream = downloadReport(formatType, simpleAdvancedButton);
+
+        if (readStream == null) return SalesHistoryExportCsvSimplified.NULL;
+
+        return new SalesHistoryExportCsvSimplified(new CSVWrapper(readStream));
+    }
+
+    public SalesHistoryExportCsvDetailed getDownloadAsCsvDetailed() throws Exception {
+        String formatType = "Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - CSV";
+        String simpleAdvancedButton = "Vendas - Histórico de Vendas - Exportar - Relatório Detalhado";
+        InputStream readStream = downloadReport(formatType, simpleAdvancedButton);
+
+        if (readStream == null) return SalesHistoryExportCsvDetailed.NULL;
+
+        return new SalesHistoryExportCsvDetailed(new CSVWrapper(readStream));
+    }
+
+    private InputStream downloadReport(String formatType, String simpleAdvancedButton) {
         if (pageField.from("Vendas - Histórico de Vendas - Botão Cancelar Filtro").elementIsVisibleRightNow()) {
             pageField.from("Vendas Hoje - Botão Cancelar Filtro").click();
         }
         PageField exportButton = pageField.from("Vendas - Histórico de Vendas - Botão Exportar");
 
-        if (!exportButton.fieldIsOneVisibleAndEnabled()) return SalesHistoryExportCsv.NULL;
+        if (!exportButton.fieldIsOneVisibleAndEnabled()) return null;
 
         exportButton.click();
         pageField.from("Vendas Hoje - Exportar - Dropdown Tipo Arquivo").hoverOver();
@@ -70,11 +91,13 @@ public class SalesHistoryPage extends BasePage {
         pageField.from(formatType).click();
         pageField.from(formatType).hoverAway();
 
+        pageField.from(simpleAdvancedButton).click();
+
         Download download = page.waitForDownload(() ->
                 pageField.from("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo").click());
 
         download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
-        return new SalesHistoryExportCsv(new CSVWrapper(download.createReadStream()));
+        return download.createReadStream();
     }
 }
