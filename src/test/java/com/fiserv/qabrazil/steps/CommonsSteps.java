@@ -175,4 +175,9 @@ public class CommonsSteps {
         ensureWeAreAtTheRightPage(pageName);
         headerComponent.ensureAllHeaderElementsArePresent();
     }
+
+    @Then("Usuário visualizará o campo {pageFieldWithSection}")
+    public void pageFieldIsVisible(PageField pageField) {
+        assertThat(pageField).isVisible();
+    }
 }
