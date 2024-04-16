@@ -17,7 +17,6 @@ Feature: Tela Negócio com API e Seleção EC
     And Popup terá ECs do documento selecionado
     And Popup terá nomes do documento selecionado
     And Popup será fechado ao clicar em Selecionar
-    And selecionando o Documento no Header o Usuário visualizara o Respectivo Documento selecionado
 
   @TestCaseKey=SMP-T315
   Scenario: Tela Negócio - botão trocar estabelecimento - com seleção de EC
