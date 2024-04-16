@@ -11,6 +11,7 @@ Feature: Consultar Campos em Resumo
   Background:
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
 
+  @TestCaseKey=SMP-T322
   Scenario: Consultar Campos Valor Total, Valor Total líquido de URs, Valor pago, na Seção Resumo
     Given Usuário acessou a página de Agenda de Recebimentos por UR
     When Usuário passa o mouse sobre "Agenda de Recebimentos por UR - Resumo - Tooltip do Valor Total"
@@ -20,3 +21,4 @@ Feature: Consultar Campos em Resumo
     And Usuário visualizará o campo "Tooltip do Valor Total" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "Valor Total líquido de URs" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "Valor pago" na seção "Agenda de Recebimentos por UR - Resumo"
+
