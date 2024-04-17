@@ -43,8 +43,9 @@ Feature: Tela Vendas Histórico com CNPJ com API e Seleção EC
     And A soma de todos valores Líquidos é igual a "Vendas Histórico - Valor Líquido"
     And A soma de todos valores Cancelados é igual a "Vendas Histórico - Valor Cancelados"
     Examples:
-      | formato        |
+      | formato            |
       | Excel Simplificado |
       | Excel Detalhado    |
       | CSV Simplificado   |
       | CSV Detalhado      |
+
