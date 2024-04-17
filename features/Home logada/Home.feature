@@ -10,7 +10,7 @@ Feature: Home Logada
   Background:
     When Usuário tenta logar na aplicação
     Then Usuário estará com acesso e sessão foi salva
-    And Todas as requisições HTTP foram respondidas
+    And Todas as barras de carregamento sumiram
 
   @TestCaseKey=SMP-T16
   Scenario Outline: Banner de comunicação comercial

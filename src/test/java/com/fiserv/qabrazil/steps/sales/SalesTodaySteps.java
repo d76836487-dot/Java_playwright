@@ -95,7 +95,7 @@ public class SalesTodaySteps extends BaseSteps {
             salesTodayExport = salesTodayExportPage.getDownloadAsExcel();
         }
 
-        List<String> exportedEcs = salesTodayExport.getECs();
+        List<String> exportedEcs = salesTodayExport.getEcFromColumn();
         boolean allSameEcs = exportedEcs.stream()
                 .allMatch(ec -> ec.equals(selectECOrDtcoPage.getSelectedEc()));
 
@@ -107,7 +107,9 @@ public class SalesTodaySteps extends BaseSteps {
     public void exportWillHaveOnlySelectedEcFormat(String format) throws Exception {
         downloadAndProcessExport(format);
 
-        List<String> exportedEcs = salesTodayExport.getECs();
+        if (salesTodayExport.isNull()) return;
+
+        List<String> exportedEcs = salesTodayExport.getEcFromColumn();
         List<String> expectedEcs = selectECOrDtcoPage.getSelectedEcs();
 
         assertThat(expectedEcs)

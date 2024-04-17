@@ -107,6 +107,10 @@ public abstract class BasePage {
         }
     }
 
+    public void allLoadingBarsAreGone() {
+        waitUntilTrue(360, this::hasNoLoadingBars);
+    }
+
     public boolean hasNoLoadingBars() {
         return pageField.from("Loading Bars").getCount() == 0;
     }

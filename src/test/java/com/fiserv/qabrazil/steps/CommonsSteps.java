@@ -143,6 +143,11 @@ public class CommonsSteps {
         ensureNoFlyingRequests();
     }
 
+    @Given("Todas as barras de carregamento sumiram")
+    public void noLoadedBars() {
+        commonsPage.allLoadingBarsAreGone();
+    }
+
     @Given("{shakespeareBoolean} o campo {pageField}")
     public void fieldIsOneVisibleAndEnabled(boolean value, PageField pageField) {
         assumeThat(pageField.fieldIsOneVisibleAndEnabled()).isEqualTo(value);

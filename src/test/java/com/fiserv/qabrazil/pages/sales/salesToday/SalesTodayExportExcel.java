@@ -14,6 +14,14 @@ public final class SalesTodayExportExcel implements SalesTodayExport {
         this.excelWrapper = excelWrapper;
     }
 
+    public boolean hasHeader() {
+        return true;
+    }
+
+    public boolean isNull() {
+        return this == NULL;
+    }
+
     public String getGrossSales() throws IOException {
         String grossSales = excelWrapper.getCellAsText(13, 0);
         return grossSales.isEmpty() ? "R$ 0,00" : grossSales.replaceAll("Valor bruto: ", "");
@@ -24,7 +32,7 @@ public final class SalesTodayExportExcel implements SalesTodayExport {
         return grossSales.isEmpty() ? "R$ 0,00" : grossSales.replaceAll("Valor não efetivadas: ", "");
     }
 
-    public List<String> getECs() throws IOException {
+    public List<String> getEcFromColumn() throws IOException {
         return excelWrapper.getColumnsAsText("Número do estabelecimento").stream()
                 .distinct()
                 .sorted()

@@ -13,6 +13,14 @@ public final class SalesTodayExportCsv implements SalesTodayExport {
         this.csvWrapper = csvWrapper;
     }
 
+    public boolean hasHeader() {
+        return false;
+    }
+
+    public boolean isNull() {
+        return this == NULL;
+    }
+
     public String getGrossSales() {
         return "R$ " + getSumGrossValues();
     }
@@ -21,7 +29,7 @@ public final class SalesTodayExportCsv implements SalesTodayExport {
         throw new UnsupportedOperationException("Método não implementado.");
     }
 
-    public List<String> getECs() {
+    public List<String> getEcFromColumn() {
         return csvWrapper.getColumnsAsText("Número do Estabelecimento").stream()
                 .distinct()
                 .sorted()
