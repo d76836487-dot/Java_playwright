@@ -97,6 +97,8 @@ public class TestIdsConfig {
 
             entry("Recebimentos - Pagos - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
             entry("Recebimentos - Pagos - Botão Cancelar Filtro", "generic-filter-link-sair"),
+            entry("Recebimentos - Pagos - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
+            entry("Recebimentos - Pagos - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
 
             entry("Recebimentos - Futuros - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"), // TODO: ajustar aqui
             entry("Recebimentos - Futuros - Botão Cancelar Filtro", "generic-filter-link-sair"),
@@ -306,6 +308,8 @@ public class TestIdsConfig {
             entry("Recebimentos - Pagos - Depósitos agendado", "(//span[text()='Total agendado']/../../div[2]/div)[1]"),
             entry("Recebimentos - Pagos - Depósitos cedido", "(//span[text()='Total cedido']/../../div[2]/div)[1]"),
             entry("Recebimentos - Pagos - Botão Filtrar", "(//a/span[contains(text(),'Filtros')])[1]"),
+            entry("Recebimentos - Pagos - Exportar - Relatório Simplificado", "//div[contains(text(),'Relatório simplificado')]"),
+            entry("Recebimentos - Pagos - Exportar - Relatório Detalhado", "//div[contains(text(),'Relatório detalhado')]"),
 
             entry("Recebimentos - Futuros - Botão Exportar", "(//span[text()='Exportar'])[1]"),
             entry("Recebimentos - Futuros - Total líquido", "(//span[text()='Total líquido previsto']/../../div[2]/span)[1]"),

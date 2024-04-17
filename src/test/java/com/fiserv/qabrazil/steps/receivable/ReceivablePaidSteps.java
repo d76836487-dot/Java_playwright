@@ -1,7 +1,9 @@
 package com.fiserv.qabrazil.steps.receivable;
 
 import com.fiserv.qabrazil.pages.BasePage;
-import com.fiserv.qabrazil.pages.receivables.ReceivablePaidPage;
+import com.fiserv.qabrazil.pages.receivables.paid.ReceivablePaidExport;
+import com.fiserv.qabrazil.pages.receivables.paid.ReceivablePaidExportExcel;
+import com.fiserv.qabrazil.pages.receivables.paid.ReceivablePaidPage;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -21,17 +23,17 @@ public class ReceivablePaidSteps extends BasePage {
     @Autowired
     private SelectECOrDtcoPage selectECOrDtcoPage;
 
-    ReceivablePaidPage.ReceivablePaidExportExcel receivablePaidExportExcel;
+    ReceivablePaidExport receivablePaidExport;
 
     @Given("Usuário acessou Recebimentos - Pagos")
     public void goTo() {
         receivablePaidPage.navigateTo();
     }
 
-    @Then("A exportação do relatório 'Recibos Pagos' terá somente o EC selecionado no detalhamento")
-    public void exportWillHaveOnlySelectedEcDetail() throws Exception {
-        receivablePaidExportExcel = receivablePaidPage.getDownloadAsExcel();
-        List<String> exportedEcColumn = receivablePaidExportExcel.getEcFromColumn().stream()
+    @Then("A exportação do relatório em {string} 'Recibos Pagos' terá somente o EC selecionado no detalhamento")
+    public void exportWillHaveOnlySelectedEcDetail(String format) throws Exception {
+        receivablePaidExport = downloadAndProcessExport(format);
+        List<String> exportedEcColumn = receivablePaidExport.getEcFromColumn().stream()
                 .distinct()
                 .toList();
         List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs();
@@ -43,7 +45,7 @@ public class ReceivablePaidSteps extends BasePage {
 
     @Then("A exportação do relatório 'Recibos Pagos' terá exatamente os ECs selecionado no cabeçalho")
     public void exportWillHaveOnlySelectedEcHead() throws Exception {
-        List<String> exportedEcCell = receivablePaidExportExcel.getEcsFromCell().stream()
+        List<String> exportedEcCell = receivablePaidExport.getEcsFromCell().stream()
                 .filter(m -> !m.trim().isEmpty())
                 .sorted()
                 .toList();
@@ -51,7 +53,7 @@ public class ReceivablePaidSteps extends BasePage {
                 .sorted()
                 .toList();
 
-        if (receivablePaidExportExcel == ReceivablePaidPage.ReceivablePaidExportExcel.NULL) return;
+        if (receivablePaidExport == ReceivablePaidExportExcel.NULL) return;
 
         assertArrayEquals("Valores da célula com EC é diferente dos ECs selecionados. Esperado: '%s', encontrado: '%s'".formatted(selectedEcs.toString(), exportedEcCell.toString()),
                 exportedEcCell.toArray(new String[0]), selectedEcs.toArray(new String[0]));
@@ -59,8 +61,8 @@ public class ReceivablePaidSteps extends BasePage {
 
     @Then("Total recebido em 'Recibos Pagos' é igual ao exportado")
     public void totalReceived() throws IOException, ParseException {
-        double sumColumn = receivablePaidExportExcel.getSumPaid();
-        double sumHeader = receivablePaidExportExcel.getPaid();
+        double sumColumn = receivablePaidExport.getSumPaid();
+        double sumHeader = receivablePaidExport.getPaid();
         double sumFromPage = pageField.from("Recebimentos - Pagos - Total recebido").getAsCurrency().doubleValue();
 
         assertEquals(sumColumn, sumFromPage, 0.001);
@@ -69,8 +71,8 @@ public class ReceivablePaidSteps extends BasePage {
 
     @Then("Total agendado em 'Recibos Pagos' é igual ao exportado")
     public void totalScheduled() throws IOException, ParseException {
-        double sumColumn = receivablePaidExportExcel.getSumScheduled();
-        double sumHeader = receivablePaidExportExcel.getScheduled();
+        double sumColumn = receivablePaidExport.getSumScheduled();
+        double sumHeader = receivablePaidExport.getScheduled();
         double sumFromPage = pageField.from("Recebimentos - Pagos - Total agendado").getAsCurrency().doubleValue();
 
         assertEquals(sumColumn, sumFromPage, 0.001);
@@ -78,8 +80,8 @@ public class ReceivablePaidSteps extends BasePage {
     }
     @Then("Total cedido em 'Recibos Pagos' é igual ao exportado")
     public void totalTransferred() throws IOException, ParseException {
-        double sumColumn = receivablePaidExportExcel.getSumTransferred();
-        double sumHeader = receivablePaidExportExcel.getTransferred();
+        double sumColumn = receivablePaidExport.getSumTransferred();
+        double sumHeader = receivablePaidExport.getTransferred();
         double sumFromPage = pageField.from("Recebimentos - Pagos - Total cedido").getAsCurrency().doubleValue();
 
         assertEquals(sumColumn, sumFromPage, 0.001);
@@ -88,8 +90,8 @@ public class ReceivablePaidSteps extends BasePage {
 
     @Then("Quantidade recebido em 'Recibos Pagos' é igual ao exportado")
     public void quantityReceived() throws IOException {
-        int countColumn = receivablePaidExportExcel.getCountQuantityPaid();
-        int quantityHeader = receivablePaidExportExcel.getQuantityPaid();
+        int countColumn = receivablePaidExport.getCountQuantityPaid();
+        int quantityHeader = receivablePaidExport.getQuantityPaid();
         String fromPage = pageField.from("Recebimentos - Pagos - Depósitos recebido").getAsText();
         int quantityFromPage = Integer.parseInt(fromPage.replaceAll(" depósito.*", ""));
 
@@ -99,8 +101,8 @@ public class ReceivablePaidSteps extends BasePage {
 
     @Then("Quantidade agendado em 'Recibos Pagos' é igual ao exportado")
     public void quantityScheduled() throws IOException {
-        int countColumn = receivablePaidExportExcel.getCountQuantitySchedule();
-        int quantityHeader = receivablePaidExportExcel.getQuantityScheduled();
+        int countColumn = receivablePaidExport.getCountQuantitySchedule();
+        int quantityHeader = receivablePaidExport.getQuantityScheduled();
         String fromPage = pageField.from("Recebimentos - Pagos - Depósitos agendado").getAsText();
         int quantityFromPage = Integer.parseInt(fromPage.replaceAll(" depósito.*", ""));
 
@@ -109,12 +111,22 @@ public class ReceivablePaidSteps extends BasePage {
     }
     @Then("Quantidade cedido em 'Recibos Pagos' é igual ao exportado")
     public void quantityTransferred() throws IOException {
-        int countColumn = receivablePaidExportExcel.getCountQuantityTransferred();
-        int quantityHeader = receivablePaidExportExcel.getQuantityTransferred();
+        int countColumn = receivablePaidExport.getCountQuantityTransferred();
+        int quantityHeader = receivablePaidExport.getQuantityTransferred();
         String fromPage = pageField.from("Recebimentos - Pagos - Depósitos cedido").getAsText();
         int quantityFromPage = Integer.parseInt(fromPage.replaceAll(" depósito.*", ""));
 
         assertEquals(countColumn, quantityFromPage);
         assertEquals(countColumn, quantityHeader);
+    }
+
+    private ReceivablePaidExport downloadAndProcessExport(String format) throws Exception {
+        return switch (format) {
+            case "Excel Simplificado" -> receivablePaidPage.getDownloadAsExcelSimplified();
+            case "Excel Detalhado" -> receivablePaidPage.getDownloadAsExcelSimplified();
+            case "CSV Simplificado" -> receivablePaidPage.getDownloadAsExcelSimplified();
+            case "CSV Detalhado" -> receivablePaidPage.getDownloadAsExcelSimplified();
+            default -> throw new RuntimeException("Formato desconhecido.");
+        };
     }
 }

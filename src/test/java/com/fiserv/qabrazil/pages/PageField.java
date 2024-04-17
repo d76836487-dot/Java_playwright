@@ -148,6 +148,7 @@ public class PageField {
     private Currency getParsed(String textFromElement) {
         try {
             textFromElement = textFromElement.replaceAll("- R\\$", "-R\\$");
+            textFromElement = textFromElement.replaceAll("(R\\$)\\D*", "$1 ");
             return Currency.parse(textFromElement);
         } catch (ParseException ex) {
             throw new RuntimeException(

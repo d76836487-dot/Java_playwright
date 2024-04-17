@@ -8,7 +8,7 @@
 Feature: Tela Recebimentos Pagos com API e Seleção EC
 
   @TestCaseKey=SMP-T308
-  Scenario: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de Documento
+  Scenario Outline: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
     And Usuário acessou Recebimentos - Pagos
@@ -16,7 +16,7 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
     And usuário clicou no "Recebimentos - Pagos - Botão Filtrar"
     When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
     Then Opções do filtro tem somente os ECs selecionados
-    And A exportação do relatório 'Recibos Pagos' terá somente o EC selecionado no detalhamento
+    And A exportação do relatório em "<format>" 'Recibos Pagos' terá somente o EC selecionado no detalhamento
     And A exportação do relatório 'Recibos Pagos' terá exatamente os ECs selecionado no cabeçalho
     And Quantidade recebido em 'Recibos Pagos' é igual ao exportado
     And Quantidade agendado em 'Recibos Pagos' é igual ao exportado
@@ -24,9 +24,15 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
     And Total recebido em 'Recibos Pagos' é igual ao exportado
     And Total agendado em 'Recibos Pagos' é igual ao exportado
     And Total cedido em 'Recibos Pagos' é igual ao exportado
+    Examples:
+      | format             |
+      | Excel Simplificado |
+#      | Excel Detalhado    |
+#      | CSV Simplificado   |
+#      | CSV Detalhado      |
 
   @TestCaseKey=SMP-T309
-  Scenario: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de EC
+  Scenario Outline: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de EC
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um EC e clicar Acessar
     And Usuário acessou Recebimentos - Pagos
@@ -34,7 +40,7 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
     And usuário clicou no "Recebimentos - Pagos - Botão Filtrar"
     When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
     Then Opções do filtro tem somente os ECs selecionados
-    And A exportação do relatório 'Recibos Pagos' terá somente o EC selecionado no detalhamento
+    And A exportação do relatório em "<format>" 'Recibos Pagos' terá somente o EC selecionado no detalhamento
     And A exportação do relatório 'Recibos Pagos' terá exatamente os ECs selecionado no cabeçalho
     And Quantidade recebido em 'Recibos Pagos' é igual ao exportado
     And Quantidade agendado em 'Recibos Pagos' é igual ao exportado
@@ -42,4 +48,10 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
     And Total recebido em 'Recibos Pagos' é igual ao exportado
     And Total agendado em 'Recibos Pagos' é igual ao exportado
     And Total cedido em 'Recibos Pagos' é igual ao exportado
+    Examples:
+      | format             |
+      | Excel Simplificado |
+#      | Excel Detalhado |
+#      | CSV Simplificado    |
+#      | CSV Detalhado    |
 
