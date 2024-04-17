@@ -82,11 +82,11 @@ public class CSVWrapper {
     }
 
     private static double textToDouble(String value) {
-        try {
-            return Currency.parseCurrency(value).doubleValue();
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+        String fromBrazilianValue = value
+                .replace("R$", "")
+                .replace(".", "")
+                .replace(",", ".");
+        return Double.parseDouble(fromBrazilianValue);
     }
 
     public List<String> getColumnsAsText(String columnName) {
