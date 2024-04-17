@@ -27,10 +27,9 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
     Examples:
       | format             |
       | Excel Simplificado |
-#      | Excel Detalhado    |
       | CSV Simplificado   |
-#      | CSV Detalhado      |
 
+  #      | CSV Detalhado      |
   @TestCaseKey=SMP-T309
   Scenario Outline: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de EC
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -51,7 +50,6 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
     Examples:
       | format             |
       | Excel Simplificado |
-#      | Excel Detalhado |
       | CSV Simplificado   |
-#      | CSV Detalhado    |
 
+#      | CSV Detalhado    |
