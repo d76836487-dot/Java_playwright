@@ -57,7 +57,7 @@ public class ReportsSteps extends BaseSteps {
 
     private static void reportTypeIsCorrect(String fileType) {
         final String message = String.format("Tipo do relatório \"%s\" é diferente de \"Vendas\" e \"Pagamentos\"", fileType);
-        final List<String> allowedFileTypes = List.of("Vendas", "Recebimentos");
+        final List<String> allowedFileTypes = List.of("Vendas", "Pagamentos");
         assertTrue(message, allowedFileTypes.contains(fileType));
     }
 
