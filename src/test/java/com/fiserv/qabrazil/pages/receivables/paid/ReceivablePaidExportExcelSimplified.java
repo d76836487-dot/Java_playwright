@@ -8,12 +8,12 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class ReceivablePaidExportExcel implements ReceivablePaidExport {
-    public static final ReceivablePaidExportExcel NULL = new ReceivablePaidExportExcel(ExcelWrapper.NULL);
+public non-sealed class ReceivablePaidExportExcelSimplified implements ReceivablePaidExport {
+    public static final ReceivablePaidExportExcelSimplified NULL = new ReceivablePaidExportExcelSimplified(ExcelWrapper.NULL);
 
     private final ExcelWrapper excelWrapper;
 
-    public ReceivablePaidExportExcel(ExcelWrapper excelWrapper) {
+    public ReceivablePaidExportExcelSimplified(ExcelWrapper excelWrapper) {
         this.excelWrapper = excelWrapper;
     }
 

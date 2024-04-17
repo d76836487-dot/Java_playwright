@@ -55,6 +55,13 @@ public class CSVWrapper {
 
     }
 
+    public List<Double> getColumnsAsDoubleByIndex(String columnName, int[] indexes) {
+        List<Double> values = getColumnsAsDouble(columnName);
+        return Arrays.stream(indexes)
+                .mapToObj(values::get)
+                .toList();
+    }
+
     public int getColumnsSizeWhere(String columnName, Predicate<String> predicate) {
         return (int) getColumnsAsText(columnName).stream()
                 .filter(predicate)

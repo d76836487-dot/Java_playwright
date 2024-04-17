@@ -28,7 +28,7 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
       | format             |
       | Excel Simplificado |
 #      | Excel Detalhado    |
-#      | CSV Simplificado   |
+      | CSV Simplificado   |
 #      | CSV Detalhado      |
 
   @TestCaseKey=SMP-T309
@@ -52,6 +52,6 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
       | format             |
       | Excel Simplificado |
 #      | Excel Detalhado |
-#      | CSV Simplificado    |
+      | CSV Simplificado   |
 #      | CSV Detalhado    |
 

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
-public interface ReceivablePaidExport {
+public sealed interface ReceivablePaidExport permits ReceivablePaidExportCsvSimplified, ReceivablePaidExportExcelDetailed, ReceivablePaidExportExcelSimplified {
     boolean hasHeader();
 
     boolean isNull();

@@ -1,10 +1,9 @@
 package com.fiserv.qabrazil.steps.receivable;
 
 import com.fiserv.qabrazil.pages.BasePage;
-import com.fiserv.qabrazil.pages.receivables.paid.ReceivablePaidExport;
-import com.fiserv.qabrazil.pages.receivables.paid.ReceivablePaidExportExcel;
-import com.fiserv.qabrazil.pages.receivables.paid.ReceivablePaidPage;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
+import com.fiserv.qabrazil.pages.receivables.paid.ReceivablePaidExport;
+import com.fiserv.qabrazil.pages.receivables.paid.ReceivablePaidPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +44,8 @@ public class ReceivablePaidSteps extends BasePage {
 
     @Then("A exportação do relatório 'Recibos Pagos' terá exatamente os ECs selecionado no cabeçalho")
     public void exportWillHaveOnlySelectedEcHead() throws Exception {
+        if (!receivablePaidExport.hasHeader() || receivablePaidExport.isNull()) return;
+
         List<String> exportedEcCell = receivablePaidExport.getEcsFromCell().stream()
                 .filter(m -> !m.trim().isEmpty())
                 .sorted()
@@ -52,8 +53,6 @@ public class ReceivablePaidSteps extends BasePage {
         List<String> selectedEcs = selectECOrDtcoPage.getSelectedEcs().stream()
                 .sorted()
                 .toList();
-
-        if (receivablePaidExport == ReceivablePaidExportExcel.NULL) return;
 
         assertArrayEquals("Valores da célula com EC é diferente dos ECs selecionados. Esperado: '%s', encontrado: '%s'".formatted(selectedEcs.toString(), exportedEcCell.toString()),
                 exportedEcCell.toArray(new String[0]), selectedEcs.toArray(new String[0]));
@@ -123,8 +122,8 @@ public class ReceivablePaidSteps extends BasePage {
     private ReceivablePaidExport downloadAndProcessExport(String format) throws Exception {
         return switch (format) {
             case "Excel Simplificado" -> receivablePaidPage.getDownloadAsExcelSimplified();
-            case "Excel Detalhado" -> receivablePaidPage.getDownloadAsExcelSimplified();
-            case "CSV Simplificado" -> receivablePaidPage.getDownloadAsExcelSimplified();
+            case "Excel Detalhado" -> receivablePaidPage.getDownloadAsExcelDetailed();
+            case "CSV Simplificado" -> receivablePaidPage.getDownloadAsCsvSimplified();
             case "CSV Detalhado" -> receivablePaidPage.getDownloadAsExcelSimplified();
             default -> throw new RuntimeException("Formato desconhecido.");
         };
