@@ -84,12 +84,12 @@ public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
 
     @Then("{string} do Detalhe da UR será igual ao {string} do Excel")
     public void doDetalheDaURSeráIgualAoDoExcel(String displayName, String excelField) throws IOException, ParseException {
-        String textFromElement = pageField.from("Detalhe da UR - Resumo - " + displayName)
-                .getAsText()
-                .replaceAll(".*R\\$", "R\\$");
+        String asText = pageField.from("Detalhe da UR - Resumo - " + displayName).getAsText();
+        String textFromElement = asText.replaceAll(".*R\\$", "R\\$");
         double valueScreen = Currency.parse(textFromElement).doubleValue();
+        valueScreen *= asText.contains("- R$")? -1: 1;
         double valueExcel = excel.getField(excelField);
 
-        assertEquals(valueExcel, valueScreen);
+        assertEquals(valueExcel, valueScreen, 0.001);
     }
 }

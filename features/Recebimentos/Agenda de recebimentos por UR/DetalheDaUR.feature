@@ -55,11 +55,6 @@ Feature: Detalhe da UR
     And "Total ajuste crédito valor" do Detalhe da UR será igual ao "Total ajustes crédito" do Excel
     And "Total contratos valor" do Detalhe da UR será igual ao "Total contratos" do Excel
 
-#    Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR”
-#    When Usuário vai em Meus Recebimentos
-#    And seleciona um recebimento e Clica no Botão Exportar
-#    Then arquivo será exportado com sucesso
-#    And O Campo Valor Total deve ser exibido
 #produto,
 #botão Mostrar todos os detalhes
 #  Scenario: Consultar Abas na Tela / Detalhe da UR
