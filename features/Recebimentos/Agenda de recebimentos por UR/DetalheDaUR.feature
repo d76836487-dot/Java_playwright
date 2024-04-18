@@ -37,6 +37,7 @@ Feature: Detalhe da UR
     Total ajuste crédito, Total contratos
     """
 
+  @TestCaseKey=SMP-T323
   Scenario: Confere Valor Total de Agenda de recebimentos por UR com exportação
     Given usuário clicou sobre um lote (bandeira e produto) da listagem apresentada
     And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
@@ -59,7 +60,6 @@ Feature: Detalhe da UR
 #    And seleciona um recebimento e Clica no Botão Exportar
 #    Then arquivo será exportado com sucesso
 #    And O Campo Valor Total deve ser exibido
-
 #produto,
 #botão Mostrar todos os detalhes
 #  Scenario: Consultar Abas na Tela / Detalhe da UR
