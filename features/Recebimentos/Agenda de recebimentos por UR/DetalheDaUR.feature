@@ -37,6 +37,29 @@ Feature: Detalhe da UR
     Total ajuste crédito, Total contratos
     """
 
+  Scenario: Confere Valor Total de Agenda de recebimentos por UR com exportação
+    Given usuário clicou sobre um lote (bandeira e produto) da listagem apresentada
+    And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
+    When Usuário clica em Exportar como Excel
+    And usuário clica em "Mostrar todos os detalhes" no "Detalhe da UR - Resumo"
+    Then "Valor total" do Detalhe da UR será igual ao "Valor total" do Excel
+    And "Valor Atualizado da UR" do Detalhe da UR será igual ao "Total atualizado de UR" do Excel
+    And "Valor Pago" do Detalhe da UR será igual ao "Valor pago" do Excel
+    And "Total de Deduções" do Detalhe da UR será igual ao "Total de deduções" do Excel
+    And "Total bruto valor" do Detalhe da UR será igual ao "Total bruto" do Excel
+    And "Total taxa MDR valor" do Detalhe da UR será igual ao "Total taxa MDR" do Excel
+    And "Total antecipação eventual valor" do Detalhe da UR será igual ao "Total antecipação eventual" do Excel
+    And "Total antecipação automática valor" do Detalhe da UR será igual ao "Total antecipação automática" do Excel
+    And "Total deduções valor" do Detalhe da UR será igual ao "Total deduções" do Excel
+    And "Total ajuste crédito valor" do Detalhe da UR será igual ao "Total ajustes crédito" do Excel
+    And "Total contratos valor" do Detalhe da UR será igual ao "Total contratos" do Excel
+
+#    Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR”
+#    When Usuário vai em Meus Recebimentos
+#    And seleciona um recebimento e Clica no Botão Exportar
+#    Then arquivo será exportado com sucesso
+#    And O Campo Valor Total deve ser exibido
+
 #produto,
 #botão Mostrar todos os detalhes
 #  Scenario: Consultar Abas na Tela / Detalhe da UR

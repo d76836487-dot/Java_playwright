@@ -673,12 +673,3 @@ Feature: Consultar Campos em Resumo
 #
 #  And O Campo documento CNPJ ou CPF deve ser exibido no arquivo Exportado.
 #
-#
-#
-#QScenario: Consulta Campos exportado no Excel  Valor total
-#
-#  Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR”
-#  When Usuário vai em Meus Recebimentos
-#  And seleciona um recebimento e Clica no Botão Exportar
-#  Then arquivo será exportado com sucesso
-#  And O Campo Valor Total deve ser exibido

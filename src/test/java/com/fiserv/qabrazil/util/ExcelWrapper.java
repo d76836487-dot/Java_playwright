@@ -6,7 +6,8 @@ import org.dhatim.fastexcel.reader.ReadableWorkbook;
 import org.dhatim.fastexcel.reader.ReadingOptions;
 import org.dhatim.fastexcel.reader.Sheet;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
@@ -131,6 +132,9 @@ public class ExcelWrapper implements AutoCloseable {
                 .toArray(String[]::new);
     }
 
+    public double getCellAsDouble(int row, int column) {
+        return Double.parseDouble(getCellAsText(row, column));
+    }
     public String getCellAsText(int row, int column)  {
         try {
             if (sheet == null) return "";

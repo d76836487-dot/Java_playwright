@@ -258,7 +258,13 @@ public class TestIdsConfig {
             entry("Detalhe da UR - Resumo - Total antecipação automática valor", "total-antecipacao-automatica-ur"),
             entry("Detalhe da UR - Resumo - Total deduções valor", "total-deducoes-ur"),
             entry("Detalhe da UR - Resumo - Total ajuste crédito valor", "total-ajuste-credito-ur"),
-            entry("Detalhe da UR - Resumo - Total contratos valor", "total-contratos-ur")
+            entry("Detalhe da UR - Resumo - Total contratos valor", "total-contratos-ur"),
+            entry("Detalhe da UR - Resumo - Botão Exportar", "detalhe-ur-botao-exportar"),
+            entry("Detalhe da UR - Resumo - Valor Total", "detalhe-ur-valor-total"),
+            entry("Detalhe da UR - Resumo - Valor Atualizado da UR", "detalhe-ur-total-atualizado-ur"),
+            entry("Detalhe da UR - Resumo - Valor Pago", "detalhe-ur-valor-pago"),
+            entry("Detalhe da UR - Resumo - Total de Deduções", "detalhe-ur-total-deducao"),
+            entry("Detalhe da UR - Resumo - Mostrar todos os detalhes", "detalhe-ur-mostrar-detalhes")
     );
 
 
