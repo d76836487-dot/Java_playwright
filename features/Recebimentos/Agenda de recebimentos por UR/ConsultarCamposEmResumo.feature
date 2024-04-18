@@ -22,7 +22,6 @@ Feature: Consultar Campos em Resumo
     And Usuário visualizará o campo "Valor Total líquido de URs" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "Valor pago" na seção "Agenda de Recebimentos por UR - Resumo"
 
-
 #QScenario: Botão “O que são esses totais?”
 #
 #    Given Usuário está logado em Agenda de recebimentos por UR
@@ -258,13 +257,13 @@ Feature: Consultar Campos em Resumo
 #  When Usuário seleciona uma Lote na seção meus recebimentos
 #  And clica no Accordion
 #  Then Usuário visualizara no detalhe os lançamentos da UR
-#  •	Total bruto
-#  •	Total taxa MDR (com sinal negativo a frente do valor)
-#  •	Total antecipação eventual
-#  •	Total antecipação automática
-#  •	Total deduções (com sinal negativo a frente do valor)
-#  •	Total ajustes crédito
-#  •	Total contratos
+#  •    Total bruto
+#  •    Total taxa MDR (com sinal negativo a frente do valor)
+#  •    Total antecipação eventual
+#  •    Total antecipação automática
+#  •    Total deduções (com sinal negativo a frente do valor)
+#  •    Total ajustes crédito
+#  •    Total contratos
 #  OBS: Apresentar todas as 7 linhas ainda que o retorno seja zerado
 #  And visualizará a imagem da bandeira, o nome da bandeira, o Produto (Crédito ou débito) e o Valor do pagamento
 #
