@@ -249,6 +249,8 @@ public class TestIdsConfig {
             entry("Gestão de Acessos - Convidar novo usuário", "gestao-new-user"),
 
             entry("Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs", "total-liquido-ur"),
+            entry("Agenda de Recebimentos por UR - Resumo - Valor Total", "valor-total-ur"),
+            entry("Agenda de Recebimentos por UR - Resumo - Valor pago", "valor-pago-ur"),
 
             entry("Detalhe da UR - Resumo - Total bruto valor", "total-bruto-ur"),
             entry("Detalhe da UR - Resumo - Total taxa MDR valor", "total-taxa-mdr-ur"),
@@ -360,10 +362,8 @@ public class TestIdsConfig {
             entry("Agenda de recebimentos por UR - Confirmar Seleção", ".popup-dialog .cor-branca"),
             entry("Agenda de recebimentos por UR - CNPJ Selecionado", ".ec-info-subtitle"),
 
-            entry("Agenda de Recebimentos por UR - Resumo - Valor Total", "(//*[@data-testid='valor-pago-ur'])[1]"),
             entry("Agenda de Recebimentos por UR - Resumo - Tooltip do Valor Total", "(//*[@class='flex-totais']//*[@aria-label='toggle tooltip'])[1]"),
             entry("Agenda de Recebimentos por UR - Resumo - Texto do tooltip do Valor Total", "//div[starts-with(text(),'Esse campo é a soma dos campos')]"),
-            entry("Agenda de Recebimentos por UR - Resumo - Valor pago", "(//*[@data-testid='valor-pago-ur'])[2]"),
 
             entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']"),
             entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='UnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),
