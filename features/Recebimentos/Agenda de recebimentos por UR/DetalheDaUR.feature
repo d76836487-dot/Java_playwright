@@ -38,8 +38,8 @@ Feature: Detalhe da UR
     """
 
   @TestCaseKey=SMP-T323
-  Scenario: Confere Valor Total de Agenda de recebimentos por UR com exportação
-    Given usuário clicou sobre um lote (bandeira e produto) da listagem apresentada
+ Scenario Outline: Confere Valor Total de Agenda de recebimentos por UR com exportação
+    Given usuário clicou sobre o lote <numero lote> (bandeira e produto) da listagem apresentada
     And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
     When Usuário clica em Exportar como Excel
     And usuário clica em "Mostrar todos os detalhes" no "Detalhe da UR - Resumo"
@@ -54,6 +54,11 @@ Feature: Detalhe da UR
     And "Total deduções valor" do Detalhe da UR será igual ao "Total deduções" do Excel
     And "Total ajuste crédito valor" do Detalhe da UR será igual ao "Total ajustes crédito" do Excel
     And "Total contratos valor" do Detalhe da UR será igual ao "Total contratos" do Excel
+  Examples:
+  | numero lote |
+  | 0           |
+  | 1           |
+  | 2           |
 
 #produto,
 #botão Mostrar todos os detalhes

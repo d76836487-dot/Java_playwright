@@ -82,4 +82,17 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         waitUntilTrue(() -> buttonReceiptBatch.allVisiblePageField().findAny().isPresent());
         buttonReceiptBatch.firstOf().click();
     }
+
+    @Given("usuário clicou sobre o lote {int} \\(bandeira e produto) da listagem apresentada")
+    public void userClicksReceiptBatchInThePresentedListNumbered(int lotNumber) {
+        PageField lotElement = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total");
+        assumeThat(lotElement.getCount() > lotNumber)
+                .withFailMessage("Pulando o teste, pois não existem tantos loges de recebimento.")
+                .isTrue();
+
+        lotElement.getAllVisiblePageField().get(lotNumber).click();
+        PageField buttonReceiptBatch = pageField.from("Agenda de Recebimentos por UR - Unidade de Recebível Registrada");
+        waitUntilTrue(() -> buttonReceiptBatch.allVisiblePageField().findAny().isPresent());
+        buttonReceiptBatch.firstOf().click();
+    }
 }
