@@ -41,6 +41,7 @@ Feature: Detalhe da UR
  Scenario Outline: Confere Valor Total de Agenda de recebimentos por UR com exportação
     Given usuário clicou sobre o lote <numero lote> (bandeira e produto) da listagem apresentada
     And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
+    And Todas as barras de carregamento sumiram
     When Usuário clica em Exportar como Excel
     And usuário clica em "Mostrar todos os detalhes" no "Detalhe da UR - Resumo"
     Then "Valor total" do Detalhe da UR será igual ao "Valor total" do Excel
