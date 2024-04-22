@@ -9,6 +9,7 @@ import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.microsoft.playwright.Download;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -39,44 +40,48 @@ public class SalesHistoryPage extends BasePage {
     public SalesHistoryExportExcelSimplified getDownloadAsExcelSimplified() throws IOException {
         String formatType = "Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - Excel";
         String simpleAdvancedButton = "Vendas - Histórico de Vendas - Exportar - Relatório Simplificado";
-        InputStream readStream = downloadReport(formatType, simpleAdvancedButton);
+        ImmutablePair<InputStream, String> readStreamFilename = downloadReport(formatType, simpleAdvancedButton);
 
-        if (readStream == null) return SalesHistoryExportExcelSimplified.NULL;
+        if (readStreamFilename == null) return SalesHistoryExportExcelSimplified.NULL;
 
-        return new SalesHistoryExportExcelSimplified(new ExcelWrapper(readStream, "Data da venda"));
+        return new SalesHistoryExportExcelSimplified(
+                new ExcelWrapper(readStreamFilename.getLeft(), "Data da venda", readStreamFilename.getRight()));
     }
 
     public SalesHistoryExportExcelDetailed getDownloadAsExcelDetailed() throws IOException {
         String formatType = "Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - Excel";
         String simpleAdvancedButton = "Vendas - Histórico de Vendas - Exportar - Relatório Detalhado";
-        InputStream readStream = downloadReport(formatType, simpleAdvancedButton);
+        ImmutablePair<InputStream, String> readStreamFilename = downloadReport(formatType, simpleAdvancedButton);
 
-        if (readStream == null) return SalesHistoryExportExcelDetailed.NULL;
+        if (readStreamFilename == null) return SalesHistoryExportExcelDetailed.NULL;
 
-        return new SalesHistoryExportExcelDetailed(new ExcelWrapper(readStream, "Data da venda"));
+        return new SalesHistoryExportExcelDetailed(
+                new ExcelWrapper(readStreamFilename.getLeft(), "Data da venda", readStreamFilename.getRight()));
     }
 
     public SalesHistoryExportCsvSimplified getDownloadAsCsvSimplified() throws Exception {
         String formatType = "Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - CSV";
         String simpleAdvancedButton = "Vendas - Histórico de Vendas - Exportar - Relatório Simplificado";
-        InputStream readStream = downloadReport(formatType, simpleAdvancedButton);
+        ImmutablePair<InputStream, String> readStreamFilename = downloadReport(formatType, simpleAdvancedButton);
 
-        if (readStream == null) return SalesHistoryExportCsvSimplified.NULL;
+        if (readStreamFilename == null) return SalesHistoryExportCsvSimplified.NULL;
 
-        return new SalesHistoryExportCsvSimplified(new CSVWrapper(readStream));
+        return new SalesHistoryExportCsvSimplified(
+                new CSVWrapper(readStreamFilename.getLeft(), readStreamFilename.getRight()));
     }
 
     public SalesHistoryExportCsvDetailed getDownloadAsCsvDetailed() throws Exception {
         String formatType = "Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - CSV";
         String simpleAdvancedButton = "Vendas - Histórico de Vendas - Exportar - Relatório Detalhado";
-        InputStream readStream = downloadReport(formatType, simpleAdvancedButton);
+        ImmutablePair<InputStream, String> readStreamFilename = downloadReport(formatType, simpleAdvancedButton);
 
-        if (readStream == null) return SalesHistoryExportCsvDetailed.NULL;
+        if (readStreamFilename == null) return SalesHistoryExportCsvDetailed.NULL;
 
-        return new SalesHistoryExportCsvDetailed(new CSVWrapper(readStream));
+        return new SalesHistoryExportCsvDetailed(
+                new CSVWrapper(readStreamFilename.getLeft(), readStreamFilename.getRight()));
     }
 
-    private InputStream downloadReport(String formatType, String simpleAdvancedButton) {
+    private ImmutablePair<InputStream, String> downloadReport(String formatType, String simpleAdvancedButton) {
         if (pageField.from("Vendas - Histórico de Vendas - Botão Cancelar Filtro").elementIsVisibleRightNow()) {
             pageField.from("Vendas Hoje - Botão Cancelar Filtro").click();
         }
@@ -98,6 +103,6 @@ public class SalesHistoryPage extends BasePage {
 
         download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
-        return download.createReadStream();
+        return new ImmutablePair<>(download.createReadStream(), download.suggestedFilename());
     }
 }

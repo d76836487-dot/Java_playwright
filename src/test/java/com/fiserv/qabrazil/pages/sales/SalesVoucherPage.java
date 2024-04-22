@@ -102,6 +102,6 @@ public class SalesVoucherPage extends BasePage {
         download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
         return new SalesVoucherExportExcel(
-                new ExcelWrapper(download.createReadStream(), "Data da venda"));
+                new ExcelWrapper(download.createReadStream(), "Data da venda", download.suggestedFilename()));
     }
 }

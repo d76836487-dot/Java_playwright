@@ -5,6 +5,8 @@ import org.dhatim.fastexcel.reader.Cell;
 import org.dhatim.fastexcel.reader.ReadableWorkbook;
 import org.dhatim.fastexcel.reader.ReadingOptions;
 import org.dhatim.fastexcel.reader.Sheet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,16 +18,20 @@ import java.util.stream.IntStream;
 
 public class ExcelWrapper implements AutoCloseable {
     public static final ExcelWrapper NULL = new ExcelWrapper();
+    private static final Logger log = LoggerFactory.getLogger(ExcelWrapper.class);
+
     private final InputStream inputStream;
     private final ReadableWorkbook workbook;
     private final Sheet sheet;
     private final int rowTableStart;
+    private final String filename;
 
     private ExcelWrapper() {
         inputStream = null;
         workbook = null;
         sheet = null;
         rowTableStart = 0;
+        filename = "NULL";
     }
 
     public ExcelWrapper(InputStream inputStream, int rowTableStart) throws IOException {
@@ -33,13 +39,15 @@ public class ExcelWrapper implements AutoCloseable {
         workbook = new ReadableWorkbook(inputStream);
         sheet = workbook.getFirstSheet();
         this.rowTableStart = rowTableStart;
+        filename = "";
     }
 
-    public ExcelWrapper(InputStream inputStream, String rowTableStartName) throws IOException {
+    public ExcelWrapper(InputStream inputStream, String rowTableStartName, String filename) throws IOException {
         this.inputStream = inputStream;
         workbook = new ReadableWorkbook(inputStream, new ReadingOptions(true, false));
         sheet = workbook.getFirstSheet();
         this.rowTableStart = lookForRowStartingWithValue(rowTableStartName, 0);
+        this.filename = filename;
     }
 
     public int lookForRowStartingWithValue(String rowTableStartName) throws IOException {
@@ -53,7 +61,7 @@ public class ExcelWrapper implements AutoCloseable {
             if (getCellAsText(row, col).contains(rowTableStartName)) return row;
         }
 
-        throw new RuntimeException("Não encontrei onde inicia a tabela de valores com texto '%s'".formatted(rowTableStartName));
+        throw new RuntimeException("Não encontrei onde inicia a tabela de valores com texto '%s' no Excel %s".formatted(rowTableStartName, filename));
     }
 
     @Override
@@ -118,7 +126,7 @@ public class ExcelWrapper implements AutoCloseable {
             if (getCellAsText(rowTableStart, col).equals(columnName)) return col;
         }
 
-        throw new RuntimeException("Coluna %s do excel não foi encontrada".formatted(columnName));
+        throw new RuntimeException("Coluna %s do excel não foi encontrada no Excel %s".formatted(columnName, filename));
     }
 
     public String[] getTableHeaderCells() throws Exception {
@@ -143,6 +151,7 @@ public class ExcelWrapper implements AutoCloseable {
 
             return sheet.read().get(row).getCell(column).getText();
         } catch (IOException e) {
+            log.info("Erro lendo row %d column %d do Excel %s".formatted(row, column, filename));
             throw new RuntimeException(e);
         }
     }

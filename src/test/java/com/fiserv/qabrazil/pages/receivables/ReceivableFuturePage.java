@@ -94,6 +94,6 @@ public class ReceivableFuturePage extends BasePage {
         download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
         return new ReceivableFutureExportExcel(
-                new ExcelWrapper(download.createReadStream(), "Data prevista de pagamento"));
+                new ExcelWrapper(download.createReadStream(), "Data prevista de pagamento", download.suggestedFilename()));
     }
 }

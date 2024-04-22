@@ -6,6 +6,7 @@ import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.CSVWrapper;
 import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.microsoft.playwright.Download;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,37 +29,26 @@ public class ReceivablePaidPage extends BasePage {
     public ReceivablePaidExportExcelSimplified getDownloadAsExcelSimplified() throws IOException {
         String formatType = "Recebimentos - Pagos - Exportar - Dropdown Tipo Arquivo - Excel";
         String simpleAdvancedButton = "Recebimentos - Pagos - Exportar - Relatório Simplificado";
-        InputStream readStream = downloadReport(formatType, simpleAdvancedButton);
+        ImmutablePair<InputStream, String> readStreamFileName = downloadReport(formatType, simpleAdvancedButton);
 
-        if (readStream == null) return ReceivablePaidExportExcelSimplified.NULL;
+        if (readStreamFileName == null) return ReceivablePaidExportExcelSimplified.NULL;
 
         return new ReceivablePaidExportExcelSimplified(
-                new ExcelWrapper(readStream, "Data do pagamento"));
-    }
-
-    public ReceivablePaidExport getDownloadAsExcelDetailed() {
-        throw new UnsupportedOperationException("Aguardando definições para codificar este teste.");
-//        String formatType = "Recebimentos - Pagos - Exportar - Dropdown Tipo Arquivo - Excel";
-//        String simpleAdvancedButton = "Recebimentos - Pagos - Exportar - Relatório Detalhado";
-//        InputStream readStream = downloadReport(formatType, simpleAdvancedButton);
-//
-//        if (readStream == null) return ReceivablePaidExportExcelDetailed.NULL;
-//
-//        return new ReceivablePaidExportExcelDetailed(
-//                new ExcelWrapper(readStream, "Data de pagamento"));
+                new ExcelWrapper(readStreamFileName.getLeft(), "Data do pagamento", readStreamFileName.getRight()));
     }
 
     public ReceivablePaidExport getDownloadAsCsvSimplified() throws Exception {
         String formatType = "Recebimentos - Pagos - Exportar - Dropdown Tipo Arquivo - CSV";
         String simpleAdvancedButton = "Recebimentos - Pagos - Exportar - Relatório Simplificado";
-        InputStream readStream = downloadReport(formatType, simpleAdvancedButton);
+        ImmutablePair<InputStream, String> readStreamFileName = downloadReport(formatType, simpleAdvancedButton);
 
-        if (readStream == null) return ReceivablePaidExportCsvSimplified.NULL;
+        if (readStreamFileName == null) return ReceivablePaidExportCsvSimplified.NULL;
 
-        return new ReceivablePaidExportCsvSimplified(new CSVWrapper(readStream));
+        return new ReceivablePaidExportCsvSimplified(
+                new CSVWrapper(readStreamFileName.getLeft(), readStreamFileName.getRight()));
     }
 
-    private InputStream downloadReport(String formatType, String simpleAdvancedButton) {
+    private ImmutablePair<InputStream, String> downloadReport(String formatType, String simpleAdvancedButton) {
         PageField buttonCancelFilter = pageField.from("Recebimentos - Pagos - Botão Cancelar Filtro");
         if (buttonCancelFilter.elementIsVisibleRightNow()) {
             buttonCancelFilter.click();
@@ -81,6 +71,6 @@ public class ReceivablePaidPage extends BasePage {
 
         download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
-        return download.createReadStream();
+        return new ImmutablePair<>(download.createReadStream(), download.suggestedFilename());
     }
 }

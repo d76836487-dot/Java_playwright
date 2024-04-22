@@ -122,9 +122,7 @@ public class ReceivablePaidSteps extends BasePage {
     private ReceivablePaidExport downloadAndProcessExport(String format) throws Exception {
         return switch (format) {
             case "Excel Simplificado" -> receivablePaidPage.getDownloadAsExcelSimplified();
-            case "Excel Detalhado" -> receivablePaidPage.getDownloadAsExcelDetailed();
             case "CSV Simplificado" -> receivablePaidPage.getDownloadAsCsvSimplified();
-            case "CSV Detalhado" -> receivablePaidPage.getDownloadAsExcelSimplified();
             default -> throw new RuntimeException("Formato desconhecido.");
         };
     }

@@ -6,6 +6,7 @@ import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.CSVWrapper;
 import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.microsoft.playwright.Download;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 
 import java.io.InputStream;
 import java.nio.file.Paths;
@@ -15,22 +16,23 @@ public class SalesTodayExportPage extends BasePage {
 
     public SalesTodayExportExcel getDownloadAsExcel() throws Exception {
         String formatType = "Vendas Hoje - Exportar - Dropdown Tipo Arquivo - Excel";
-        InputStream is = download(formatType);
+        ImmutablePair<InputStream, String> readStreamFilename = download(formatType);
 
-        if (is == null) return SalesTodayExportExcel.NULL;
+        if (readStreamFilename == null) return SalesTodayExportExcel.NULL;
 
-        return new SalesTodayExportExcel(new ExcelWrapper(is, 16));
+        return new SalesTodayExportExcel(
+                new ExcelWrapper(readStreamFilename.getLeft(), "Comprovante da venda", readStreamFilename.getRight()));
     }
 
     public SalesTodayExportCsv getDownloadAsCsv() throws Exception {
-        InputStream is = download("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - CSV");
+        ImmutablePair<InputStream, String> readStreamFilename = download("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - CSV");
 
-        if (is == null) return SalesTodayExportCsv.NULL;
+        if (readStreamFilename == null) return SalesTodayExportCsv.NULL;
 
-        return new SalesTodayExportCsv(new CSVWrapper(is));
+        return new SalesTodayExportCsv(new CSVWrapper(readStreamFilename.getLeft(), readStreamFilename.getRight()));
     }
 
-    private InputStream download(String formatType) {
+    private ImmutablePair<InputStream, String> download(String formatType) {
         if (pageField.from("Home - Card Vendas Hoje - Ver Tudo").elementIsVisibleRightNow()) {
             pageField.from("Home - Card Vendas Hoje - Ver Tudo").click();
         }
@@ -53,6 +55,6 @@ public class SalesTodayExportPage extends BasePage {
 
         download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
-        return download.createReadStream();
+        return new ImmutablePair<>(download.createReadStream(), download.suggestedFilename());
     }
 }

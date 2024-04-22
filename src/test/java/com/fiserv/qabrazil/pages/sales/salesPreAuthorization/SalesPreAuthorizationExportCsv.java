@@ -59,6 +59,6 @@ public class SalesPreAuthorizationExportCsv implements SalesPreAuthorizationExpo
     }
 
     public List<String> getEcFromColumn() throws IOException {
-        return csvWrapper.getColumnsAsText("Estabelicimento comercial");
+        return csvWrapper.getColumnsAsText("Estabelecimento comercial");
     }
 }

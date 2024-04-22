@@ -9,6 +9,7 @@ import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.microsoft.playwright.Download;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -39,23 +40,24 @@ public class SalesUnmadePage extends BasePage {
 
     public SalesUnmadeExportExcel getDownloadAsExcel() throws IOException {
         String formatType = "Vendas - Não Efetivadas - Exportar - Dropdown Tipo Arquivo - Excel";
-        InputStream readStream = downloadReport(formatType);
+        ImmutablePair<InputStream, String> readStreamFilename = downloadReport(formatType);
 
-        if (readStream == null) return SalesUnmadeExportExcel.NULL;
+        if (readStreamFilename == null) return SalesUnmadeExportExcel.NULL;
 
-        return new SalesUnmadeExportExcel(new ExcelWrapper(readStream, "Data da venda"));
+        return new SalesUnmadeExportExcel(
+                new ExcelWrapper(readStreamFilename.getLeft(), "Data da venda",readStreamFilename.getRight()));
     }
 
     public SalesUnmadeExportCsv getDownloadAsCsv() throws Exception {
         String formatType = "Vendas - Não Efetivadas - Exportar - Dropdown Tipo Arquivo - CSV";
-        InputStream readStream = downloadReport(formatType);
+        ImmutablePair<InputStream, String> readStreamFilename = downloadReport(formatType);
 
-        if (readStream == null) return SalesUnmadeExportCsv.NULL;
+        if (readStreamFilename == null) return SalesUnmadeExportCsv.NULL;
 
-        return new SalesUnmadeExportCsv(new CSVWrapper(readStream));
+        return new SalesUnmadeExportCsv(new CSVWrapper(readStreamFilename.getLeft(), readStreamFilename.getRight()));
     }
 
-    private InputStream downloadReport(String formatType) {
+    private ImmutablePair<InputStream, String> downloadReport(String formatType) {
         PageField buttonCancelFilter = pageField.from("Vendas - Não Efetivadas - Botão Cancelar Filtro");
         if (buttonCancelFilter.elementIsVisibleRightNow()) {
             buttonCancelFilter.click();
@@ -77,7 +79,7 @@ public class SalesUnmadePage extends BasePage {
 
         download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
-        return download.createReadStream();
+        return new ImmutablePair<>(download.createReadStream(), download.suggestedFilename());
     }
 
 }

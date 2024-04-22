@@ -22,13 +22,19 @@ public class CSVWrapper {
 
     private final List<String[]> lines;
     private final boolean isNull;
+    private final String filename;
 
     private CSVWrapper() {
         lines = List.of();
         isNull = true;
+        filename = "NULL";
     }
 
     public CSVWrapper(InputStream inputStream) throws Exception {
+        this(inputStream, "");
+    }
+
+    public CSVWrapper(InputStream inputStream, String filename) throws Exception {
         CSVParser csvParser = new CSVParserBuilder().withSeparator(';').build();
         InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.ISO_8859_1);
 
@@ -38,6 +44,7 @@ public class CSVWrapper {
 
         this.lines = reader.readAll();
         isNull = false;
+        this.filename = filename;
     }
 
     public int[] getIndexWhereColumn(String columnName, Predicate<String> predicate) {
@@ -117,7 +124,7 @@ public class CSVWrapper {
             }
         }
 
-        throw new RuntimeException("Não foi encontrado a coluna %s no arquivo csv".formatted(columnName));
+        throw new RuntimeException("Não foi encontrado a coluna %s no arquivo csv %s".formatted(columnName, filename));
     }
 
     public String[] getRow(int row) {

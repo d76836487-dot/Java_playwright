@@ -9,10 +9,12 @@ import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.microsoft.playwright.Download;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
@@ -33,24 +35,24 @@ public class SalesPreAuthorizationsPage extends BasePage {
 
     public SalesPreAuthorizationExportExcel getDownloadAsExcel() throws IOException {
         String formatType = "Vendas - Pré Autorizações - Exportar - Dropdown Tipo Arquivo - Excel";
-        InputStream readStream = downloadReport(formatType);
+        ImmutablePair<InputStream, String> readStreamFilename = downloadReport(formatType);
 
-        if (readStream == null) return SalesPreAuthorizationExportExcel.NULL;
+        if (readStreamFilename == null) return SalesPreAuthorizationExportExcel.NULL;
 
         return new SalesPreAuthorizationExportExcel(
-                new ExcelWrapper(readStream, "Data da venda"));
+                new ExcelWrapper(readStreamFilename.getLeft(), "Data da venda", readStreamFilename.getRight()));
     }
 
     public SalesPreAuthorizationExportCsv getDownloadAsCsv() throws Exception {
         String formatType = "Vendas - Pré Autorizações - Exportar - Dropdown Tipo Arquivo - CSV";
-        InputStream readStream = downloadReport(formatType);
+        ImmutablePair<InputStream, String> readStreamFilename = downloadReport(formatType);
 
-        if (readStream == null) return SalesPreAuthorizationExportCsv.NULL;
+        if (readStreamFilename == null) return SalesPreAuthorizationExportCsv.NULL;
 
-        return new SalesPreAuthorizationExportCsv(new CSVWrapper(readStream));
+        return new SalesPreAuthorizationExportCsv(new CSVWrapper(readStreamFilename.getLeft(), readStreamFilename.getRight()));
     }
 
-    private InputStream downloadReport(String formatType) {
+    private ImmutablePair<InputStream, String> downloadReport(String formatType) {
         PageField buttonCancelFilter = pageField.from("Vendas - Pré Autorizações - Botão Cancelar Filtro");
         if (buttonCancelFilter.elementIsVisibleRightNow()) {
             buttonCancelFilter.click();
@@ -70,7 +72,9 @@ public class SalesPreAuthorizationsPage extends BasePage {
         Download download = page.waitForDownload(() ->
                 pageField.from("Vendas - Pré Autorizações - Exportar - Botão Gerar Arquivo").click());
 
-        return download.createReadStream();
+        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
+
+        return new ImmutablePair<>(download.createReadStream(), download.suggestedFilename());
     }
 
 }
