@@ -22,6 +22,7 @@ Feature: Consultar Campos em Resumo
     And Usuário visualizará o campo "Valor Total líquido de URs" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "Valor pago" na seção "Agenda de Recebimentos por UR - Resumo"
 
+  @TestCaseKey=SMP-T324
   Scenario: Consultar Campos Total de Entradas e saídas , na Seção Resumo
     Given Usuário acessou a página de Agenda de Recebimentos por UR
     Then Usuário visualizará o campo "Total de entradas e saídas" na seção "Agenda de Recebimentos por UR - Resumo"
