@@ -50,3 +50,4 @@ Feature: Tela Recebimentos Pagos com API e Seleção EC
       | format             |
       | Excel Simplificado |
       | CSV Simplificado   |
+
