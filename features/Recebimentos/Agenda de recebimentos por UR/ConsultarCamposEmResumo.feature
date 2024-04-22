@@ -22,6 +22,20 @@ Feature: Consultar Campos em Resumo
     And Usuário visualizará o campo "Valor Total líquido de URs" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "Valor pago" na seção "Agenda de Recebimentos por UR - Resumo"
 
+  Scenario: Consultar Campos Total de Entradas e saídas , na Seção Resumo
+    Given Usuário acessou a página de Agenda de Recebimentos por UR
+    Then Usuário visualizará o campo "Total de entradas e saídas" na seção "Agenda de Recebimentos por UR - Resumo"
+    And Usuário visualizará o campo "Total bruto" na seção "Agenda de Recebimentos por UR - Resumo"
+    And Usuário visualizará o campo "Total taxa MDR" na seção "Agenda de Recebimentos por UR - Resumo"
+    And Usuário visualizará o campo "Total antecipação Eventual" na seção "Agenda de Recebimentos por UR - Resumo"
+    And Usuário visualizará o campo "Total antecipação automática" na seção "Agenda de Recebimentos por UR - Resumo"
+    And Usuário visualizará o campo "Total de deduções" na seção "Agenda de Recebimentos por UR - Resumo"
+    And Usuário visualizará o campo "Total ajustes crédito" na seção "Agenda de Recebimentos por UR - Resumo"
+    And Usuário visualizará o campo "Total contratos" na seção "Agenda de Recebimentos por UR - Resumo"
+    And Usuário visualizará o campo "O que são esses totais?" na seção "Agenda de Recebimentos por UR - Resumo"
+    And usuário clica em "O que são esses totais?" na seção "Agenda de Recebimentos por UR - Resumo"
+    And Usuário visualizará um popup com informações sobre os campos
+
 #QScenario: Botão “O que são esses totais?”
 #
 #    Given Usuário está logado em Agenda de recebimentos por UR

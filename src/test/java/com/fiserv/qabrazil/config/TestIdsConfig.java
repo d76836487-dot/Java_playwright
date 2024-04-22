@@ -251,6 +251,13 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs", "total-liquido-ur"),
             entry("Agenda de Recebimentos por UR - Resumo - Valor Total", "valor-total-ur"),
             entry("Agenda de Recebimentos por UR - Resumo - Valor pago", "valor-pago-ur"),
+            entry("Agenda de Recebimentos por UR - Resumo - Total bruto", "total-bruto-ur"),
+            entry("Agenda de Recebimentos por UR - Resumo - Total taxa MDR", "total-taxa-mdr-ur"),
+            entry("Agenda de Recebimentos por UR - Resumo - Total antecipação Eventual", "total-antecipacao-eventual-ur"),
+            entry("Agenda de Recebimentos por UR - Resumo - Total antecipação automática", "total-antecipacao-automatica-ur"),
+            entry("Agenda de Recebimentos por UR - Resumo - Total de deduções", "total-deducoes-ur"),
+            entry("Agenda de Recebimentos por UR - Resumo - Total ajustes crédito", "total-ajuste-credito-ur"),
+            entry("Agenda de Recebimentos por UR - Resumo - Total contratos", "total-contratos-ur"),
 
             entry("Detalhe da UR - Resumo - Total bruto valor", "total-bruto-ur"),
             entry("Detalhe da UR - Resumo - Total taxa MDR valor", "total-taxa-mdr-ur"),
@@ -270,6 +277,7 @@ public class TestIdsConfig {
 
     private static final Map<String, String> otherSelectors = Map.<String, String>ofEntries(
             entry("Loading Bars", ".ph-picture-small"),
+            entry("Popup", ".popup-content"),
             entry("Menu Lateral - Vendas", ".om-root-menu [data-testid=menu-vendas]"),
             entry("Menu Lateral - Home", ".om-root-menu [data-testid=menu-home]"),
             entry("Menu Lateral - Recebimentos", ".om-root-menu [data-testid=menu-recebimentos]"),
@@ -370,6 +378,9 @@ public class TestIdsConfig {
 
             entry("Agenda de Recebimentos por UR - Resumo - Tooltip do Valor Total", "(//*[@class='flex-totais']//*[@aria-label='toggle tooltip'])[1]"),
             entry("Agenda de Recebimentos por UR - Resumo - Texto do tooltip do Valor Total", "//div[starts-with(text(),'Esse campo é a soma dos campos')]"),
+            entry("Agenda de Recebimentos por UR - Resumo - Valor pago", "(//*[@data-testid='valor-pago-ur'])[2]"),
+            entry("Agenda de Recebimentos por UR - Resumo - Total de entradas e saídas", "[data-block='UnidadeRecebivel.TotalLiquidoDeURs'] .vertical-align.flex-direction-row .title-item-content"),
+            entry("Agenda de Recebimentos por UR - Resumo - O que são esses totais?", ".vertical-align.flex-direction-row .link-duvida-modal"),
 
             entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']"),
             entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='UnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),

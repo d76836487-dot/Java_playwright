@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
 
 public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
@@ -67,7 +68,7 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
     @Given("Existem recebimentos listados")
     public void thereAreReceiptsListed() {
-        waitUntilTrue(() -> receivableUnitReceiptSchedulePage.hasNoLoadingBars());
+        waitUntilTrue(receivableUnitReceiptSchedulePage::hasNoLoadingBars);
 
         PageField receiptBatches = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total");
 
@@ -94,5 +95,30 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         PageField buttonReceiptBatch = pageField.from("Agenda de Recebimentos por UR - Unidade de Recebível Registrada");
         waitUntilTrue(() -> buttonReceiptBatch.allVisiblePageField().findAny().isPresent());
         buttonReceiptBatch.firstOf().click();
+    }
+
+    @And("Usuário visualizará um popup com informações sobre os campos")
+    public void summaryPopupWillShow() {
+        PageField popupContent = pageField.from("Popup");
+        assertThat(popupContent.getAsText()).isEqualTo("Entenda os termos usados" +
+                "Valor total líquido/atualizado de URs" +
+                "Valor total previsto a ser pago ao estabelecimento ou financiador (conforme condições negociadas pelo estabelecimento) no período selecionado. Não inclui valores já pagos no período." +
+                "Valor pago" +
+                "Valor total já pago ao estabelecimento ou financiador (conforme condições negociadas pelo estabelecimento) no período selecionado." +
+                "Total bruto" +
+                "Valor total das vendas realizadas no periodo selecionado." +
+                "Total taxa MDR" +
+                "Valor total referente à taxa MDR sobre as vendas realizadas no período selecionado." +
+                "Total antecipação eventual" +
+                "Valor total pago ao estabelecimento antes das datas originais de vencimento dos recebíveis, por meio da antecipação eventual" +
+                "Total antecipação automática" +
+                "Valor total pago ao estabelecimento antes das datas originais de vencimento dos recebíveis, por meio de antecipação automática contratada." +
+                "Total deduções" +
+                "Valor total das deduções no período selecionado, como por exemplo: aluguel, cancelamento de venda, chargeback e entre outros débitos. Não considera desconto de taxa MDR." +
+                "Total ajuste a crédito" +
+                "Valor total dos ajustes a crédito no período selecionado, como por exemplo: comissão por venda de recarga, entre outros." +
+                "Total contratos" +
+                "Valor total a pagar ou já pago ao estabelecimento ou financiador referente a operações como gravame, cessão e outros ônus, realizadas pelo estabelecimento junto ao financiador no período selecionado." +
+                "Entendi");
     }
 }
