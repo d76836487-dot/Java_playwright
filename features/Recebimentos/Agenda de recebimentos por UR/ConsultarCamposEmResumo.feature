@@ -35,6 +35,7 @@ Feature: Consultar Campos em Resumo
     And Usuário visualizará o campo "Total contratos" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "O que são esses totais?" na seção "Agenda de Recebimentos por UR - Resumo"
 
+  @TestCaseKey=SMP-T325
   Scenario: Botão “O que são esses totais?”
     Given Usuário acessou a página de Agenda de Recebimentos por UR
     When usuário clica em "O que são esses totais?" na seção "Agenda de Recebimentos por UR - Resumo"
