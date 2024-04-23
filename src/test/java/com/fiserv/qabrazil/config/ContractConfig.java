@@ -23,6 +23,10 @@ public class ContractConfig {
         this.userProfiles = userProfiles;
     }
 
+    public String getActiveProfiles() {
+        return activeProfiles;
+    }
+
     public ProfileData getActiveUserProfile() {
         return userProfiles.computeIfAbsent(activeProfiles, profile -> {
             if (profile.isEmpty()) {

@@ -49,6 +49,14 @@ public class DateRangerPage extends BasePage {
         setDateInCalendar(30, "Date ranger - Dia final Digitado");
     }
 
+    public void userSelectsSpecificDay(String dateToType) {
+        bandaidSMP57();
+        pageField.from("Date ranger - Image").click();
+        typeDayInCalendar("Date ranger - Dia inicial Digitado", dateToType);
+        typeDayInCalendar("Date ranger - Dia final Digitado", dateToType);
+        pageField.from("Date ranger - Aplicar").click();
+    }
+
     private void setDateInCalendar(int daysToAdd, String typedDateField) {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, daysToAdd);
@@ -56,13 +64,17 @@ public class DateRangerPage extends BasePage {
         String thirdDaysAgo = simpleFormat.format(cal.getTime());
 
         pageField.from("Date ranger - Image").click();
+        typeDayInCalendar(typedDateField, thirdDaysAgo);
+        pageField.from("Date ranger - Aplicar").click();
+    }
+
+    private void typeDayInCalendar(String typedDateField, String date) {
         PageField inputInitialDate = pageField.from(typedDateField);
         inputInitialDate.click();
         inputInitialDate.getLocator().clear();
         page.keyboard().press("ArrowLeft");
         page.keyboard().press("ArrowLeft");
-        inputInitialDate.pressSequentially(thirdDaysAgo);
-        pageField.from("Date ranger - Aplicar").click();
+        inputInitialDate.pressSequentially(date);
     }
 
     private void bandaidSMP57() {

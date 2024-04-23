@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.components.DateRangerPage;
+import com.fiserv.qabrazil.consistency.ConsistencyFile;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Then;
@@ -15,6 +16,9 @@ import static org.testng.AssertJUnit.assertEquals;
 public class CalendarSteps extends BaseSteps {
     @Autowired
     DateRangerPage calendarPage;
+
+    @Autowired
+    ConsistencyFile consistencyFile;
 
     @When("Usuário seleciona Ontem")
     public void userSelectsYesterday() {
@@ -98,5 +102,12 @@ public class CalendarSteps extends BaseSteps {
                 throw new IllegalStateException("Unexpected value: " + expectedDate);
         }
         return day;
+    }
+
+    @When("Usuário seleciona data com base no arquivo de consistência")
+    public void selectsDate() {
+        String dateToType = consistencyFile.getAnyDayGeneralInfo().date;
+
+        calendarPage.userSelectsSpecificDay(dateToType);
     }
 }

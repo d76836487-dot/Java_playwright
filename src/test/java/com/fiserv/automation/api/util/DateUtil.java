@@ -40,6 +40,22 @@ public class DateUtil {
         locale = Locale.forLanguageTag(contractConfig.getActiveUserProfile().locale());
     }
 
+    public static String addSubtractForWeekdays(int daysToAdd, String format) {
+        Calendar cal = Calendar.getInstance();
+        int subtractOrAddOneDay = daysToAdd < 0 ? -1 : 1;
+
+        while (daysToAdd != 0) {
+            cal.add(Calendar.DAY_OF_MONTH, subtractOrAddOneDay);
+
+            if (cal.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY && cal.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY) {
+                daysToAdd += (subtractOrAddOneDay * -1);
+            }
+        }
+
+        SimpleDateFormat simpleFormat = new SimpleDateFormat(format);
+        return simpleFormat.format(cal.getTime());
+    }
+
     public static String formattedDate(int daysToAdd) {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, daysToAdd);

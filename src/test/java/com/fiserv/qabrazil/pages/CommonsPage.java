@@ -16,7 +16,6 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 @ScenarioComponent
 public class CommonsPage extends BasePage {
-
     @Autowired
     ContractConfig contractConfig;
 
