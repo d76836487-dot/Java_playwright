@@ -59,7 +59,7 @@ public class SalesPreAuthorizationsSteps extends BasePage {
                 exportedEcCell.toArray(new String[0]), selectedEcs.toArray(new String[0]));
     }
 
-    @Then("A soma de vendas pré-autorizadas é igual ao valor bruto autorizado")
+    @Then("A soma de vendas autorizadas \\(confirmadas) é igual ao valor bruto autorizado")
     public void grossValueAuthorizedMatchesScreen() throws IOException, ParseException {
         double sumGross = salesPreAuthorizationExport.getSumGrossAuthorized();
         double gross = salesPreAuthorizationExport.getGrossAuthorized();
