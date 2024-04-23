@@ -20,7 +20,7 @@ Feature: Validação componente Whatsapp nas instituições BIN 003 ou 007
     @azulzinha
     Examples:
       | cor               |
-      | rgb(252, 196, 15) |
+      | rgb(247, 148, 30) |
 
     @bin003 @bin007
     Examples:
