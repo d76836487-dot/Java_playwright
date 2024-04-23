@@ -695,7 +695,7 @@ Feature: Consultar Campos em Resumo
 #  And e o valor deve ser informado diferente de “xx,xx”
 #
 #
-  # BDD parece desatualizado.
+# BDD parece desatualizado.
 #QScenario: Consulta Campos exportado no Excel/ Documento CNPJ ou CPF
 #  Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR”
 #  When seleciona um recebimento e Clica no Botão Exportar
