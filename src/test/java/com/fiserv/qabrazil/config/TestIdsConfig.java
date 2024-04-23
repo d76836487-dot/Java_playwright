@@ -70,6 +70,7 @@ public class TestIdsConfig {
             entry("Vendas - Histórico Vendas - Período - Descrição", "generic-calendar-periodo-calendar"),
             entry("Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
             entry("Vendas - Histórico de Vendas - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
+            entry("Vendas - Histórico de Vendas - Resumo - Quantidade de vendas", "historico-vendas-v2-total"),
 
             entry("Vendas - Não Efetivadas - Botão Exportar", "exportar-naoefetivadas"),
             entry("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
@@ -307,7 +308,6 @@ public class TestIdsConfig {
 
             // TODO: maps below should be changed for data-testid
             entry("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo", "//button[contains(text(),'Gerar arquivo')]"),
-            entry("Vendas - Histórico de Vendas - Resumo - Quantidade de vendas", "//*[@data-textid='historico-vendas-v2-total']"),
             entry("Vendas - Histórico de Vendas - Exportar - Relatório Simplificado", "//div[contains(text(),'Relatório simplificado')]"),
             entry("Vendas - Histórico de Vendas - Exportar - Relatório Detalhado", "//div[contains(text(),'Relatório detalhado')]"),
 
