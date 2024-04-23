@@ -19,7 +19,7 @@ Feature: Agenda de recebimentos por UR
     And Usuário acessou o Home
     When Usuário passa o mouse sobre "Menu Lateral - Recebimentos"
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
-    Then usuário não verá em "Agenda de recebimentos por UR" opção de Alterar Documento
+    Then usuário não verá em "Agenda de Recebimentos por UR" opção de Alterar Documento
 
   @TestCaseKey=SMP-T305
   Scenario: Acesso a Agenda de recebimentos por UR Com vários Documentos
@@ -27,7 +27,7 @@ Feature: Agenda de recebimentos por UR
     And Usuário acessou o Home
     When Usuário passa o mouse sobre "Menu Lateral - Recebimentos"
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
-    Then usuário verá em "Agenda de recebimentos por UR" opção de Alterar Documento
+    Then usuário verá em "Agenda de Recebimentos por UR" opção de Alterar Documento
     And selecionando o Documento no Header o Usuário visualizara o Respectivo Documento selecionado
 
   @TestCaseKey=SMP-T318
