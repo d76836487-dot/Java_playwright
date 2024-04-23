@@ -5,6 +5,7 @@ import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.pages.receipts.ReceivableUnitReceiptSchedulePage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.UrlCheckers;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,6 +13,7 @@ import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
@@ -121,5 +123,16 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
         assertEquals("Valor da agenda futura de UR não é igual à soma por bandeiras",
                 futureValue, sumFutureValueAllBrands);
+    }
+
+    @Then("abaixo do gráfico deve ser apresentado uma bolinha na cor da sua respectiva bandeira nas colorações:")
+    public void belowGraphShowsBrandsRespectiveColorCircle(DataTable table) {
+        for (Map<String, String> map : table.asMaps()) {
+            String brand = map.get("bandeira");
+            String color = map.get("rgb");
+
+            PageField circle = pageField.from("Agenda de Recebimentos por UR - Totais - " + brand + " cor legenda do gráfico");
+            assertThat(circle).hasCSS("fill", color);
+        }
     }
 }

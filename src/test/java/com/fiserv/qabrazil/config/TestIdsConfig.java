@@ -391,6 +391,14 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='UnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),
             entry("Agenda de Recebimentos por UR - Modal Detalhe totais por bandeira - Valores", "//*[contains(@class,'popup-dialog')]//span[contains(text(),'R$')]"),
 
+            entry("Agenda de Recebimentos por UR - card Totais líquidos por bandeira", "[data-block='UnidadeRecebivel.ValorPagoTotalLiquidoPorProduto']"),
+            entry("Agenda de Recebimentos por UR - Totais - ELO cor legenda no gráfico", "//*[local-name()='text'][starts-with(text(),'ELO')]/../*[local-name()='rect']"),
+            entry("Agenda de Recebimentos por UR - Totais - Visa cor legenda no gráfico", "//*[local-name()='text'][starts-with(text(),'Visa')]/../*[local-name()='rect']"),
+            entry("Agenda de Recebimentos por UR - Totais - Hipercard cor legenda no gráfico", "//*[local-name()='text'][starts-with(text(),'Hipercard')]/../*[local-name()='rect']"),
+            entry("Agenda de Recebimentos por UR - Totais - Mastercard cor legenda no gráfico", "//*[local-name()='text'][starts-with(text(),'Mastercard')]/../*[local-name()='rect']"),
+            entry("Agenda de Recebimentos por UR - Totais - Amex cor legenda no gráfico", "//*[local-name()='text'][starts-with(text(),'Amex')]/../*[local-name()='rect']"),
+            entry("Agenda de Recebimentos por UR - Totais - Cabal cor legenda no gráfico", "//*[local-name()='text'][starts-with(text(),'Cabal')]/../*[local-name()='rect']"),
+
             entry("Detalhe da UR - Resumo - Título", "//span[starts-with(text(), 'Resumo')]"),
             entry("Detalhe da UR - Botão Exportar", "//button[contains(@class, 'btn-primary')][//span[text()='Exportar']]"),
             entry("Detalhe da UR - Resumo - Imagem Bandeira", "//div[@data-block='Content.AccordionItem']//div[@data-block='Utils.Bandeira']/img"),
