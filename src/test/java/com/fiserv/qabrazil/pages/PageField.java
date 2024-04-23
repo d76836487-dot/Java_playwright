@@ -178,6 +178,10 @@ public class PageField {
         return locator.isVisible();
     }
 
+    public boolean elementIsVisibleAndEnabledRightNow() {
+        return locator.isVisible() && locator.isEnabled();
+    }
+
     public boolean isChecked() {
         return locator.isChecked();
     }

@@ -33,10 +33,10 @@ public class SalesTodayExportPage extends BasePage {
     }
 
     private ImmutablePair<InputStream, String> download(String formatType) {
-        if (pageField.from("Home - Card Vendas Hoje - Ver Tudo").elementIsVisibleRightNow()) {
+        if (pageField.from("Home - Card Vendas Hoje - Ver Tudo").elementIsVisibleAndEnabledRightNow()) {
             pageField.from("Home - Card Vendas Hoje - Ver Tudo").click();
         }
-        if (pageField.from("Vendas Hoje - Botão Cancelar Filtro").elementIsVisibleRightNow()) {
+        if (pageField.from("Vendas Hoje - Botão Cancelar Filtro").elementIsVisibleAndEnabledRightNow()) {
             pageField.from("Vendas Hoje - Botão Cancelar Filtro").click();
         }
         PageField exportButton = pageField.from("Vendas Hoje - Botão Exportar");
