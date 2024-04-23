@@ -35,3 +35,14 @@ Feature: Agenda de recebimentos por UR com Consistência
       | -4         |
       | -5         |
 
+  Scenario Outline: Valida valores futuro da UR se é igual a outras datas já consultadas
+    Given Carregou arquivo com histórico do "UR" de <dias úteis> dias úteis
+    When Usuário seleciona data com base no arquivo de consistência
+    Then Campo "Agenda de Recebimentos por UR - Agenda Futura - Saldo" terá mesmo valor que consultado antes, salvando em arquivo
+    Examples:
+      | dias úteis |
+      | 2          |
+      | 3          |
+      | 4          |
+      | 5          |
+      | 6          |
