@@ -381,6 +381,9 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Resumo - Valor pago", "(//*[@data-testid='valor-pago-ur'])[2]"),
             entry("Agenda de Recebimentos por UR - Resumo - Total de entradas e saídas", "[data-block='UnidadeRecebivel.TotalLiquidoDeURs'] .vertical-align.flex-direction-row .title-item-content"),
             entry("Agenda de Recebimentos por UR - Resumo - O que são esses totais?", ".vertical-align.flex-direction-row .link-duvida-modal"),
+            entry("Agenda de Recebimentos por UR - Resumo - Popup - Entenda os termos usados", "span.header-title-term, span.title-term, span.text-term"),
+            entry("Agenda de Recebimentos por UR - Resumo - Popup - Fechar", ".popup-content a i.fa-2x"),
+            entry("Agenda de Recebimentos por UR - Resumo - Popup - Entendi", ".popup-content button"),
 
             entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']"),
             entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='UnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),

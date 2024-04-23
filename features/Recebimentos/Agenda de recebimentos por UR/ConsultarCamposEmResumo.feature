@@ -34,18 +34,31 @@ Feature: Consultar Campos em Resumo
     And Usuário visualizará o campo "Total ajustes crédito" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "Total contratos" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "O que são esses totais?" na seção "Agenda de Recebimentos por UR - Resumo"
-    And usuário clica em "O que são esses totais?" na seção "Agenda de Recebimentos por UR - Resumo"
-    And Usuário visualizará um popup com informações sobre os campos
 
-#QScenario: Botão “O que são esses totais?”
-#
-#    Given Usuário está logado em Agenda de recebimentos por UR
-#    When Clica no Botão “O que são esses totais?” em Total de entradas e saídas
-#    Then Deve abrir um modal com Todos os termos usados e um Scroll para rolagem, Botões X e Entendi!
-#
-#  OBS.: Validar texto conforme word.
-#
-#
+  Scenario: Botão “O que são esses totais?”
+    Given Usuário acessou a página de Agenda de Recebimentos por UR
+    When usuário clica em "O que são esses totais?" na seção "Agenda de Recebimentos por UR - Resumo"
+    Then Deve abrir um modal com Todos os termos usados e um Scroll para rolagem, Botões X e Entendi!
+      | Entenda os termos usados                                                                                                                                                                                |
+      | Valor total líquido/atualizado de URs                                                                                                                                                                   |
+      | Valor total previsto a ser pago ao estabelecimento ou financiador (conforme condições negociadas pelo estabelecimento) no período selecionado. Não inclui valores já pagos no período.                  |
+      | Valor pago                                                                                                                                                                                              |
+      | Valor total já pago ao estabelecimento ou financiador (conforme condições negociadas pelo estabelecimento) no período selecionado.                                                                      |
+      | Total bruto                                                                                                                                                                                             |
+      | Valor total das vendas realizadas no periodo selecionado.                                                                                                                                               |
+      | Total taxa MDR                                                                                                                                                                                          |
+      | Valor total referente à taxa MDR sobre as vendas realizadas no período selecionado.                                                                                                                     |
+      | Total antecipação eventual                                                                                                                                                                              |
+      | Valor total pago ao estabelecimento antes das datas originais de vencimento dos recebíveis, por meio da antecipação eventual                                                                            |
+      | Total antecipação automática                                                                                                                                                                            |
+      | Valor total pago ao estabelecimento antes das datas originais de vencimento dos recebíveis, por meio de antecipação automática contratada.                                                              |
+      | Total deduções                                                                                                                                                                                          |
+      | Valor total das deduções no período selecionado, como por exemplo: aluguel, cancelamento de venda, chargeback e entre outros débitos. Não considera desconto de taxa MDR.                               |
+      | Total ajuste a crédito                                                                                                                                                                                  |
+      | Valor total dos ajustes a crédito no período selecionado, como por exemplo: comissão por venda de recarga, entre outros.                                                                                |
+      | Total contratos                                                                                                                                                                                         |
+      | Valor total a pagar ou já pago ao estabelecimento ou financiador referente a operações como gravame, cessão e outros ônus, realizadas pelo estabelecimento junto ao financiador no período selecionado. |
+
 #QScenario: Consultar Componente Totais líquidos por bandeira
 #
 #    Given Usuário está logado em Agenda de recebimentos por UR

@@ -11,6 +11,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -97,28 +99,17 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         buttonReceiptBatch.firstOf().click();
     }
 
-    @And("Usuário visualizará um popup com informações sobre os campos")
-    public void summaryPopupWillShow() {
-        PageField popupContent = pageField.from("Popup");
-        assertThat(popupContent.getAsText()).isEqualTo("Entenda os termos usados" +
-                "Valor total líquido/atualizado de URs" +
-                "Valor total previsto a ser pago ao estabelecimento ou financiador (conforme condições negociadas pelo estabelecimento) no período selecionado. Não inclui valores já pagos no período." +
-                "Valor pago" +
-                "Valor total já pago ao estabelecimento ou financiador (conforme condições negociadas pelo estabelecimento) no período selecionado." +
-                "Total bruto" +
-                "Valor total das vendas realizadas no periodo selecionado." +
-                "Total taxa MDR" +
-                "Valor total referente à taxa MDR sobre as vendas realizadas no período selecionado." +
-                "Total antecipação eventual" +
-                "Valor total pago ao estabelecimento antes das datas originais de vencimento dos recebíveis, por meio da antecipação eventual" +
-                "Total antecipação automática" +
-                "Valor total pago ao estabelecimento antes das datas originais de vencimento dos recebíveis, por meio de antecipação automática contratada." +
-                "Total deduções" +
-                "Valor total das deduções no período selecionado, como por exemplo: aluguel, cancelamento de venda, chargeback e entre outros débitos. Não considera desconto de taxa MDR." +
-                "Total ajuste a crédito" +
-                "Valor total dos ajustes a crédito no período selecionado, como por exemplo: comissão por venda de recarga, entre outros." +
-                "Total contratos" +
-                "Valor total a pagar ou já pago ao estabelecimento ou financiador referente a operações como gravame, cessão e outros ônus, realizadas pelo estabelecimento junto ao financiador no período selecionado." +
-                "Entendi");
+    @Then("Deve abrir um modal com Todos os termos usados e um Scroll para rolagem, Botões X e Entendi!")
+    public void summaryPopupWillShow(List<String> text) {
+        PageField popupContent = pageField.from("Agenda de Recebimentos por UR - Resumo - Popup - Entenda os termos usados");
+        assertThat(popupContent.getAllAsText()).isEqualTo(text);
+
+        PageField popupCloseButton = pageField.from("Agenda de Recebimentos por UR - Resumo - Popup - Fechar");
+        assertThat(popupCloseButton).isVisible();
+        assertThat(popupCloseButton).hasCount(1);
+
+        PageField popupConfirmButton = pageField.from("Agenda de Recebimentos por UR - Resumo - Popup - Entendi");
+        assertThat(popupConfirmButton).isVisible();
+        assertThat(popupConfirmButton).hasCount(1);
     }
 }
