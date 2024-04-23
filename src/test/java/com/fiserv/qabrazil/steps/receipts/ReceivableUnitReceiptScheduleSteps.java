@@ -17,6 +17,7 @@ import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
@@ -70,7 +71,7 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
     @Given("Existem recebimentos listados")
     public void thereAreReceiptsListed() {
-        waitUntilTrue(receivableUnitReceiptSchedulePage::hasNoLoadingBars);
+        waitUntilTrue(60, receivableUnitReceiptSchedulePage::hasNoLoadingBars);
 
         PageField receiptBatches = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total");
 
@@ -111,5 +112,14 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         PageField popupConfirmButton = pageField.from("Agenda de Recebimentos por UR - Resumo - Popup - Entendi");
         assertThat(popupConfirmButton).isVisible();
         assertThat(popupConfirmButton).hasCount(1);
+    }
+
+    @Then("Valor total Líquido Agenda Futura será igual à soma dos valores das Bandeiras")
+    public void sumAllBrandsEqualFutureValue() {
+        double futureValue = pageField.from("Agenda de Recebimentos por UR - Agenda Futura - Saldo").getAsCurrency().doubleValue();
+        double sumFutureValueAllBrands = receivableUnitReceiptSchedulePage.sumFutureValueAllBrands();
+
+        assertEquals("Valor da agenda futura de UR não é igual à soma por bandeiras",
+                futureValue, sumFutureValueAllBrands);
     }
 }

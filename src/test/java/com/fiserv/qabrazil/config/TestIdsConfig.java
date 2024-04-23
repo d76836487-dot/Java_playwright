@@ -259,6 +259,8 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Resumo - Total de deduções", "total-deducoes-ur"),
             entry("Agenda de Recebimentos por UR - Resumo - Total ajustes crédito", "total-ajuste-credito-ur"),
             entry("Agenda de Recebimentos por UR - Resumo - Total contratos", "total-contratos-ur"),
+            entry("Agenda de Recebimentos por UR - Agenda Futura - Saldo", "agenda-futura-ur"),
+            entry("Agenda de Recebimentos por UR - Botão Detalhe totais por bandeira", "detalhe-totais-por-bandeira-produto-ur"),
 
             entry("Detalhe da UR - Resumo - Total bruto valor", "total-bruto-ur"),
             entry("Detalhe da UR - Resumo - Total taxa MDR valor", "total-taxa-mdr-ur"),
@@ -387,6 +389,7 @@ public class TestIdsConfig {
 
             entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']"),
             entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='UnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),
+            entry("Agenda de Recebimentos por UR - Modal Detalhe totais por bandeira - Valores", "//*[contains(@class,'popup-dialog')]//span[contains(text(),'R$')]"),
 
             entry("Detalhe da UR - Resumo - Título", "//span[starts-with(text(), 'Resumo')]"),
             entry("Detalhe da UR - Botão Exportar", "//button[contains(@class, 'btn-primary')][//span[text()='Exportar']]"),
