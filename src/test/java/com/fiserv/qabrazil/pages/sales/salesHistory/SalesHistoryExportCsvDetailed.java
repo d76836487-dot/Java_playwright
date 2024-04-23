@@ -60,6 +60,6 @@ public class SalesHistoryExportCsvDetailed implements SalesHistoryExport {
     }
 
     public List<String> getEcFromColumn() throws IOException {
-        return csvWrapper.getColumnsAsText("Código de estabelecimento");
+        return csvWrapper.getColumnsAsText("Código do estabelecimento");
     }
 }
