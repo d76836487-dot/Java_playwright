@@ -122,7 +122,7 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         double sumFutureValueAllBrands = receivableUnitReceiptSchedulePage.sumFutureValueAllBrands();
 
         assertEquals("Valor da agenda futura de UR não é igual à soma por bandeiras",
-                futureValue, sumFutureValueAllBrands);
+                futureValue, sumFutureValueAllBrands, 0.001);
     }
 
     @Then("abaixo do gráfico deve ser apresentado uma bolinha na cor da sua respectiva bandeira nas colorações:")
