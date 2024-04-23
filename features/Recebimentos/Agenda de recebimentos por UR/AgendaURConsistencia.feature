@@ -35,6 +35,7 @@ Feature: Agenda de recebimentos por UR com Consistência
       | -4         |
       | -5         |
 
+  @TestCaseKey=SMP-T327
   Scenario Outline: Valida valores futuro da UR se é igual a outras datas já consultadas
     Given Carregou arquivo com histórico do "UR" de <dias úteis> dias úteis
     When Usuário seleciona data com base no arquivo de consistência
@@ -46,3 +47,4 @@ Feature: Agenda de recebimentos por UR com Consistência
       | 4          |
       | 5          |
       | 6          |
+
