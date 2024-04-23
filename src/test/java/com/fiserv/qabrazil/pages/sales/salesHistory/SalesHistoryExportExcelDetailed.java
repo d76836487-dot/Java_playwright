@@ -44,7 +44,7 @@ public class SalesHistoryExportExcelDetailed implements SalesHistoryExport {
 
     public List<String> getEcFromColumn() throws IOException {
         long start = Instant.now().getMillis();
-        List<String> códigoDoEstabelecimento = excelWrapper.getColumnsAsText("Código do Estabelecimento");
+        List<String> códigoDoEstabelecimento = excelWrapper.getColumnsAsText("Código do estabelecimento");
         long end = Instant.now().getMillis();
         System.out.printf("elapsed time for getEcFromColumn: %d%n", end - start);
         return códigoDoEstabelecimento;

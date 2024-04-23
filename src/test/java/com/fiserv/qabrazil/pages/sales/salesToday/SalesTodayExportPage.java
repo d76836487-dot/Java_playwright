@@ -21,7 +21,7 @@ public class SalesTodayExportPage extends BasePage {
         if (readStreamFilename == null) return SalesTodayExportExcel.NULL;
 
         return new SalesTodayExportExcel(
-                new ExcelWrapper(readStreamFilename.getLeft(), "Comprovante da venda", readStreamFilename.getRight()));
+                new ExcelWrapper(readStreamFilename.getLeft(), "Data da venda", readStreamFilename.getRight()));
     }
 
     public SalesTodayExportCsv getDownloadAsCsv() throws Exception {

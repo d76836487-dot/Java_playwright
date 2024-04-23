@@ -43,11 +43,11 @@ public class ExcelWrapper implements AutoCloseable {
     }
 
     public ExcelWrapper(InputStream inputStream, String rowTableStartName, String filename) throws IOException {
+        this.filename = filename;
         this.inputStream = inputStream;
         workbook = new ReadableWorkbook(inputStream, new ReadingOptions(true, false));
         sheet = workbook.getFirstSheet();
         this.rowTableStart = lookForRowStartingWithValue(rowTableStartName, 0);
-        this.filename = filename;
     }
 
     public int lookForRowStartingWithValue(String rowTableStartName) throws IOException {
