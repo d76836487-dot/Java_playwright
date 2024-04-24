@@ -16,5 +16,7 @@ Feature: Agenda de recebimentos por UR
   Scenario: Valor total Líquido de UR igual a soma do Valor de Bandeiras
     Then Valor total Líquido de UR será igual à soma dos valores das Bandeiras
 
+  @TestCaseKey=SMP-T330
   Scenario: Valor total é igual a soma do Valor Líquido com o Valor Pago
     Then Valor total é igual a soma do Valor Líquido com o Valor Pago
+
