@@ -644,12 +644,6 @@ Feature: Consultar Campos em Resumo
 #  Then Usuário visualizara o item “Total contratos”
 #
 #
-#QScenario: Consulta de campo Valor total, soma do Valor Líquido com o Valor Pago
-#
-#  Given Usuário está logado em Agenda de recebimentos por UR
-#  When Usuário visualiza Resumo, “Total de Entradas e Saídas”
-#  And São exibidos Valores Líquidos e Pagos
-#  Then Usuário deve visualizar se somando valor Líquido e do Valor Pago confere com o valor total.
 #
 #
 #

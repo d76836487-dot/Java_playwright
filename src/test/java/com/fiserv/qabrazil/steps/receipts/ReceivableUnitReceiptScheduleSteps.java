@@ -118,11 +118,11 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
     @Then("Valor total Líquido de UR será igual à soma dos valores das Bandeiras")
     public void sumAllBrandsEqualFutureValue() {
-        double futureValue = pageField.from("Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs").getAsCurrency().doubleValue();
-        double sumFutureValueAllBrands = receivableUnitReceiptSchedulePage.sumFutureValueAllBrands();
+        double totalNet = pageField.from("Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs").getAsCurrency().doubleValue();
+        double sumNetAllBrands = receivableUnitReceiptSchedulePage.sumFutureValueAllBrands();
 
-        assertEquals("Valor da agenda futura de UR não é igual à soma por bandeiras",
-                futureValue, sumFutureValueAllBrands, 0.001);
+        assertEquals("Valor total líquido de UR não é igual à soma por bandeiras",
+                totalNet, sumNetAllBrands, 0.001);
     }
 
     @Then("abaixo do gráfico deve ser apresentado uma bolinha na cor da sua respectiva bandeira nas colorações:")
@@ -134,5 +134,15 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
             PageField circle = pageField.from("Agenda de Recebimentos por UR - Totais - " + brand + " cor legenda no gráfico");
             assertThat(circle).hasCSS("fill", color);
         }
+    }
+
+    @Then("Valor total é igual a soma do Valor Líquido com o Valor Pago")
+    public void sumLiquidAndPaidEqualToTotal() {
+        double total = pageField.from("Agenda de Recebimentos por UR - Resumo - Valor Total").getAsCurrency().doubleValue();
+        double netValue = pageField.from("Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs").getAsCurrency().doubleValue();
+        double paidValue = pageField.from("Agenda de Recebimentos por UR - Resumo - Valor pago").getAsCurrency().doubleValue();
+
+        assertEquals("Total não é igual a soma do Valor Líquido com o Valor Pago",
+                total, netValue + paidValue, 0.001);
     }
 }
