@@ -23,7 +23,7 @@ public class SalesPreAuthorizationExportCsv implements SalesPreAuthorizationExpo
     }
 
     public double getSumGrossAuthorized() {
-        int[] indexes = csvWrapper.getIndexWhereColumn("Status", txt -> txt.equals("Autorizar"));
+        int[] indexes = csvWrapper.getIndexWhereColumn("Status", txt -> txt.equals("Autorizada"));
         return csvWrapper.getColumnsAsDoubleByIndex("Valor autorizado", indexes).stream()
                 .mapToDouble(Double::doubleValue)
                 .sum();
