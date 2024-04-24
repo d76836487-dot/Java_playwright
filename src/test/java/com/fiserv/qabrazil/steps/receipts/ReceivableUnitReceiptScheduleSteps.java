@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
@@ -131,7 +132,7 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
             String brand = map.get("bandeira");
             String color = map.get("rgb");
 
-            PageField circle = pageField.from("Agenda de Recebimentos por UR - Totais - " + brand + " cor legenda no gráfico");
+            PageField circle = pageField.from("Agenda de Recebimentos por UR - legenda gráfico Totais - cor " + brand);
             assertThat(circle).hasCSS("fill", color);
         }
     }
@@ -144,5 +145,27 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
         assertEquals("Total não é igual a soma do Valor Líquido com o Valor Pago",
                 total, netValue + paidValue, 0.001);
+    }
+
+    @When("não houver dados no Campo Totais líquidos por bandeira")
+    public void thereIsNoDataForTotalsPerBrand() {
+        PageField noValuesMessage = pageField.from("Agenda de Recebimentos por UR - Totais - sem valores");
+        assumeThat(noValuesMessage.elementIsVisible())
+                .isTrue();
+    }
+
+    @Then("deve ser apresentado a frase {string}")
+    public void shouldShowNoDetailsInformation(String message) {
+        PageField noValuesMessage = pageField.from("Agenda de Recebimentos por UR - Totais - sem valores");
+        assertThat(noValuesMessage).isVisible();
+        assertThat(noValuesMessage).containsText(message);
+    }
+
+    @And("todas as bandeiras deve vir com valores zerados")
+    public void allBrandsShouldBeZero() {
+        List<PageField> allFields = pageField.allWithPrefix("Agenda de Recebimentos por UR - legenda gráfico Totais - texto");
+        for (PageField field : allFields) {
+            assertThat(field).containsText(Pattern.compile("R\\$ 0,00$"));
+        }
     }
 }

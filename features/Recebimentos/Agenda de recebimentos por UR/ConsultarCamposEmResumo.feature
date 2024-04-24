@@ -84,13 +84,11 @@ Feature: Consultar Campos em Resumo
 #
 #
 #
-#QScenario: Consultar Componente “gráfico” sem valores
-#
-#    Given Usuário está logado em Agenda de recebimentos por UR
-#    When não houver dados no Campo Totais líquidos por bandeira
-#    Then deve ser apresentado a frase “Sem informações para detalhamento”
-#    And todas as bandeiras deve vir com valores zerados
-#
+  Scenario: Consultar Componente “gráfico” sem valores
+    Given Usuário acessou a página de Agenda de Recebimentos por UR
+    When não houver dados no Campo Totais líquidos por bandeira
+    Then deve ser apresentado a frase "Sem informações para detalhamento"
+    And todas as bandeiras deve vir com valores zerados
 #
 #
 #
