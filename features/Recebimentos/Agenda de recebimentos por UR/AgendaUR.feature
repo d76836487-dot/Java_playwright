@@ -13,6 +13,6 @@ Feature: Agenda de recebimentos por UR
     And Existem recebimentos listados
 
   @TestCaseKey=SMP-T328
-  Scenario: Valor total Líquido Agenda Futura igual a soma do Valor de Bandeiras
-    Then Valor total Líquido Agenda Futura será igual à soma dos valores das Bandeiras
+  Scenario: Valor total Líquido de UR igual a soma do Valor de Bandeiras
+    Then Valor total Líquido de UR será igual à soma dos valores das Bandeiras
 

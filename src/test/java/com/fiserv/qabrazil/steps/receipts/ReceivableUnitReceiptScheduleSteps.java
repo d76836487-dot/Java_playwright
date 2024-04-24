@@ -116,9 +116,9 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         assertThat(popupConfirmButton).hasCount(1);
     }
 
-    @Then("Valor total Líquido Agenda Futura será igual à soma dos valores das Bandeiras")
+    @Then("Valor total Líquido de UR será igual à soma dos valores das Bandeiras")
     public void sumAllBrandsEqualFutureValue() {
-        double futureValue = pageField.from("Agenda de Recebimentos por UR - Agenda Futura - Saldo").getAsCurrency().doubleValue();
+        double futureValue = pageField.from("Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs").getAsCurrency().doubleValue();
         double sumFutureValueAllBrands = receivableUnitReceiptSchedulePage.sumFutureValueAllBrands();
 
         assertEquals("Valor da agenda futura de UR não é igual à soma por bandeiras",
