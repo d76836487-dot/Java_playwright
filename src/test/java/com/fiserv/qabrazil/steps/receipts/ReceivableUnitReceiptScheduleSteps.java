@@ -131,7 +131,7 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
             String brand = map.get("bandeira");
             String color = map.get("rgb");
 
-            PageField circle = pageField.from("Agenda de Recebimentos por UR - Totais - " + brand + " cor legenda do gráfico");
+            PageField circle = pageField.from("Agenda de Recebimentos por UR - Totais - " + brand + " cor legenda no gráfico");
             assertThat(circle).hasCSS("fill", color);
         }
     }
