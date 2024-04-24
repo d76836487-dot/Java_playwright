@@ -60,8 +60,10 @@ Feature: Consultar Campos em Resumo
       | Total contratos                                                                                                                                                                                         |
       | Valor total a pagar ou já pago ao estabelecimento ou financiador referente a operações como gravame, cessão e outros ônus, realizadas pelo estabelecimento junto ao financiador no período selecionado. |
 
+  @TestCaseKey=SMP-T329
   Scenario: Consultar Componente Totais líquidos por bandeira
-    OBS: Apresentar a relação das bandeiras de forma fixa no front e popular CASO retorne valor da API. Se não retornar valor, apresentar com R$ 0,00
+
+  OBS: Apresentar a relação das bandeiras de forma fixa no front e popular CASO retorne valor da API. Se não retornar valor, apresentar com R$ 0,00
 
     Given Usuário acessou a página de Agenda de Recebimentos por UR
     When Usuário visualizará o campo "card Totais líquidos por bandeira" na seção "Agenda de Recebimentos por UR"
