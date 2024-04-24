@@ -4,6 +4,7 @@ import com.fiserv.qabrazil.components.DateRangerPage;
 import com.fiserv.qabrazil.consistency.ConsistencyFile;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import io.cucumber.java.ParameterType;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,7 +104,7 @@ public class CalendarSteps extends BaseSteps {
         }
         return day;
     }
-
+    @Given("Usuário selecionou data com base no arquivo de consistência")
     @When("Usuário seleciona data com base no arquivo de consistência")
     public void selectsDate() {
         String dateToType = consistencyFile.getAnyDayGeneralInfo().date;

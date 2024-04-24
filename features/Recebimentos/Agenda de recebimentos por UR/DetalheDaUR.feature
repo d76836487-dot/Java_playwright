@@ -10,7 +10,7 @@ Feature: Detalhe da UR
   Background:
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessou a página de Agenda de Recebimentos por UR
-    And Existem recebimentos listados
+    And existem recebimentos listados
 
   @TestCaseKey=SMP-T319
   Scenario: Direcionamento

@@ -387,7 +387,11 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Resumo - Popup - Fechar", ".popup-content a i.fa-2x"),
             entry("Agenda de Recebimentos por UR - Resumo - Popup - Entendi", ".popup-content button"),
 
-            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']/../..//span[contains(text(),'R$')]"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor atualizado das URs", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor atualizado das URs']/../..//span[contains(text(),'R$')]"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor pago", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor pago']/../..//span[contains(text(),'R$')]"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Saldo disponível negociável", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Saldo disponível negociável']/../../../..//span[contains(text(),'R$')]"),
             entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='UnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),
             entry("Agenda de Recebimentos por UR - Modal Detalhe totais por bandeira - Valores", "//*[contains(@class,'popup-dialog')]//span[contains(text(),'R$')]"),
 

@@ -10,7 +10,7 @@ Feature: Agenda de recebimentos por UR
   Background:
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessou a página de Agenda de Recebimentos por UR
-    And Existem recebimentos listados
+    And existem recebimentos listados
 
   @TestCaseKey=SMP-T328
   Scenario: Valor total Líquido de UR igual a soma do Valor de Bandeiras

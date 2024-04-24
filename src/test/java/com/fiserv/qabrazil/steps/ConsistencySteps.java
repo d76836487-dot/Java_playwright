@@ -22,9 +22,18 @@ public class ConsistencySteps extends BaseSteps {
 
     @Then("Campo {string} terá mesmo valor que consultado antes, salvando em arquivo")
     public void assertSameValueAndSave(String displayName) {
+        String actualValue = pageField.from(displayName).getAsText();
+        compareValueWithFile(displayName, actualValue);
+    }
+
+    @Then("Campo {string} terá valor {string}, salvando em arquivo")
+    public void assertSameValueAndSave(String displayName, String actualValue) {
+        compareValueWithFile(displayName, actualValue);
+    }
+
+    private void compareValueWithFile(String displayName, String actualValue) {
         Map<String, String> values = consistencyFile.getAnyDayGeneralInfo().values;
         String expectedValue = values.get(displayName);
-        String actualValue = pageField.from(displayName).getAsText();
 
         if (hasOlderReferenceToCompare(expectedValue)) {
             assertEquals(expectedValue, actualValue);

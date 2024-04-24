@@ -71,19 +71,19 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         receivableUnitReceiptSchedulePage.navigateTo();
     }
 
-    @Given("Existem recebimentos listados")
-    public void thereAreReceiptsListed() {
+    @Given("{shakespeareBoolean} recebimentos listados")
+    public void thereAreReceiptsListed(boolean foundLotsOfReceivable) {
         waitUntilTrue(60, receivableUnitReceiptSchedulePage::hasNoLoadingBars);
 
-        PageField receiptBatches = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total");
+        PageField receiptBatches = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total");
 
-        assumeThat(waitUntilTrue(() -> receiptBatches.getCount() >= 1)).isTrue();
+        assumeThat(waitUntilTrue(() -> receiptBatches.getCount() >= 1)).isEqualTo(foundLotsOfReceivable);
     }
 
     @Given("usuário clicou sobre um lote \\(bandeira e produto) da listagem apresentada")
     @When("usuário clica sobre um lote \\(bandeira e produto) da listagem apresentada")
     public void userClicksReceiptBatchInThePresentedList() {
-        pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total").firstOf().click();
+        pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total").firstOf().click();
         PageField buttonReceiptBatch = pageField.from("Agenda de Recebimentos por UR - Unidade de Recebível Registrada");
         waitUntilTrue(() -> buttonReceiptBatch.allVisiblePageField().findAny().isPresent());
         buttonReceiptBatch.firstOf().click();
@@ -91,7 +91,7 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
     @Given("usuário clicou sobre o lote {int} \\(bandeira e produto) da listagem apresentada")
     public void userClicksReceiptBatchInThePresentedListNumbered(int lotNumber) {
-        PageField lotElement = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total");
+        PageField lotElement = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total");
         assumeThat(lotElement.getCount() > lotNumber)
                 .withFailMessage("Pulando o teste, pois não existem tantos loges de recebimento.")
                 .isTrue();

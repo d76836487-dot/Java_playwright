@@ -459,25 +459,6 @@ Feature: Consultar Campos em Resumo
 #
 #  Feature: Créditos e deduções
 #
-#
-#QScenario: Consultar Detalhe de Créditos e deduções da UR (Cancelamento de venda)
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar na aba Créditos e deduções
-#  Then Usuário visualizara: (Tipo de Evento Cancelamento de venda), Data do evento, NSU, Order ID, Valor da venda, Valor líquido do cancelamento, Valor deduzido da UR, Código de autorização , UR de origem da venda , Data da UR de origem
-#
-#
-#QScenario: Consultar Detalhe de Créditos e deduções da UR (Bloqueio judicial)
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar na aba Créditos e deduções
-#  Then Usuário visualizara: Tipo de evento, Data do evento, Valor, Valor deduzido de UR
-#
-#
-#QScenario: Consultar Detalhe de Créditos e deduções da UR (Aluguel)
-#  Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR”
-#  When Usuário clicar na aba Créditos e deduções
-#  Then Usuário visualizara: Tipo de evento, Data do evento, Valor, Valor deduzido da UR
-#
-#
 #QScenario: Consultar Sem Informações Detalhe de Créditos e deduções da UR
 #  Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR”
 #  When Usuário clicar na aba Créditos e deduções
@@ -493,64 +474,6 @@ Feature: Consultar Campos em Resumo
 #  Then Usuário visualizara a seguinte mensagem: Número da transação online.
 #
 #  Feature: Contratos
-#
-#
-#QScenario: Consultar Contratos da UR (Ônus Status: Programado) com Valor Fixo
-#  Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR”
-#  When Usuário clicar na aba Contratos
-#  Then Usuário visualizara: Situação Programado, CPF/CNPJ do beneficiário,Razão Social do beneficiário, Identificador do contrato, Tipo de contrato Ônus, Prioridade de contrato,Valor Comprometido, Valor comprometido em R$xxx,xx, Valor atingido, CPF/CNPJ do titular da conta, Domicílio bancário com logo e nome do banco, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta
-#
-#
-#QScenario: Consultar Contratos da UR (Ônus Status: Programado) com Valor percentual
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar na aba Contratos
-#  Then Usuário visualizara: Situação Programado, CPF/CNPJ do beneficiário,Razão Social do beneficiário, Identificador do contrato, Tipo de contrato Ônus, Prioridade de contrato,Valor Comprometido, Valor comprometido em 0%, Valor atingido, CPF/CNPJ do titular da conta, Domicílio bancário com logo e nome do banco, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta
-#
-#
-#QScenario: Consultar Contratos da UR (Ônus Status: Pago)
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar na aba Contratos
-#  Then Usuário visualizara: Situação Pago, CPF/CNPJ do beneficiário, Identificador do contrato, Tipo de contrato Gravame, Prioridade de contrato, Regra de divisão, Valor comprometido, Valor atingido, CPF/CNPJ do titular da conta, Domicílio bancário com logo e nome do banco, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta
-#
-#
-#QScenario: Consultar Contratos da UR (Gravame Status: Programado) com Valor Fixo
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar na aba Contratos
-#  Then Usuário visualizara: Situação Programado CPF/CNPJ do beneficiário,Razão Social do beneficiário, Identificador do contrato, Tipo de contrato Ônus, Prioridade de contrato,Valor Comprometido, Valor comprometido em R$xxx,xx, Valor atingido, CPF/CNPJ do titular da conta, Domicílio bancário com logo e nome do banco, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta
-#
-#
-#QScenario: Consultar Contratos da UR (Gravame Status: Programado) com Valor percentual
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar na aba Contratos
-#  Then Usuário visualizara: Situação Programado, CPF/CNPJ do beneficiário,Razão Social do beneficiário, Identificador do contrato, Tipo de contrato Ônus, Prioridade de contrato,Valor Comprometido, Valor comprometido em 0%, Valor atingido, CPF/CNPJ do titular da conta, Domicílio bancário com logo e nome do banco, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta
-#
-#
-#
-#QScenario: Consultar Contratos da UR (Gravame Status: Pago)
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar na aba Contratos
-#  Then Usuário visualizara: Situação Pago, CPF/CNPJ do beneficiário, Identificador do contrato, Tipo de contrato Gravame, Prioridade de contrato, Regra de divisão, Valor comprometido, Valor atingido, CPF/CNPJ do titular da conta, Domicílio bancário com logo e nome do banco, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta
-#
-#
-#QScenario: Consultar Contratos da UR (Cessão Status: Programado) com Valor Fixo
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar na aba Contratos
-#  Then Usuário visualizara: Situação Programado, CPF/CNPJ do beneficiário,Razão Social do beneficiário, Identificador do contrato, Tipo de contrato Ônus, Prioridade de contrato,Valor Comprometido, Valor comprometido em R$xxx,xx, Valor atingido, CPF/CNPJ do titular da conta, Domicílio bancário com logo e nome do banco, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta
-#
-#
-#
-#QScenario: Consultar Contratos da UR (Cessão Status: Programado) com Valor percentual
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar na aba Contratos
-#  Then Usuário visualizara: Situação Programado, CPF/CNPJ do beneficiário,Razão Social do beneficiário, Identificador do contrato, Tipo de contrato Ônus, Prioridade de contrato,Valor Comprometido, Valor comprometido em 0%, Valor atingido, CPF/CNPJ do titular da conta, Domicílio bancário com logo e nome do banco, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta
-#
-#
-#
-#QScenario: Consultar Contratos da UR (Cessão Status: Pago)
-#
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar na aba Contratos
-#  Então Usuário visualizara: Situação Pago, CPF/CNPJ do beneficiário, Identificador do contrato, Tipo de contrato Cessão, Prioridade de contrato, Regra de divisão, Valor comprometido, Valor atingido, CPF/CNPJ do titular da conta, Domicílio bancário com logo e nome do banco, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta
 #
 #
 #
@@ -599,53 +522,6 @@ Feature: Consultar Campos em Resumo
 #  And seleciona algum Tipo (Ônus Gravame Cessão / Programado, Pago)
 #  And Usuário passa Mouse sobre o Tooltip em (Valor atingido)
 #  Then Usuário visualizara a seguinte mensagem: indica o valor obtido pelo financiador de acordo com o valor da UR.
-#
-#
-#QScenario: Consultar detalhe da UR por dia / “Total Bruto”
-#  Given Usuário está logado em Agenda de recebimentos por UR
-#  When Usuário está em Resumo, “Total de Entradas e Saídas”
-#  Then Usuário visualizara o item “Total Bruto”
-#
-#
-#QScenario: Consultar detalhe da UR por dia / “Total taxa MDR”
-#  Given Usuário está logado em Agenda de recebimentos por UR
-#  When Usuário está em Resumo, “Total de Entradas e Saídas”
-#  Then Usuário visualizara e o item “Total taxa MDR” (com sinal negativoa frente do Valor).
-#
-#
-#QScenario: Consultar detalhe da UR por dia / “Total antecipação”
-#  Given Usuário está logado em Agenda de recebimentos por UR
-#  When Usuário está em Resumo, “Total de Entradas e Saídas”
-#  Then Usuário visualizara o item “Total antecipação eventual”
-#
-#
-#QScenario: Consultar detalhe da UR por dia / “Total antecipação Eventual”
-#  Given Usuário está logado em Agenda de recebimentos por UR
-#  When Usuário está em Resumo, “Total de Entradas e Saídas”
-#  Then Usuário visualizara o item “Total antecipação automática”
-#
-#
-#QScenario: Consultar detalhe da UR por dia / “Total deduções”
-#  Given Usuário está logado em Agenda de recebimentos por UR
-#  When Usuário está em Resumo, “Total de Entradas e Saídas”
-#  Then Usuário visualizara o item “Total deduções” (com sinal negativo a frente do valor).
-#
-#
-#QScenario: Consultar detalhe da UR por dia / “Total ajustes Crédito”
-#  Given Usuário está logado em Agenda de recebimentos por UR
-#  When Usuário está em Resumo, “Total de Entradas e Saídas”
-#  Then Usuário visualizara o item “Total ajustes Crédito”.
-#
-#
-#
-#QScenario: Consultar detalhe da UR por dia / “Total Contratos”
-#  Given Usuário está logado em Agenda de recebimentos por UR
-#  When Usuário visualiza Resumo, “Total de Entradas e Saídas”
-#  Then Usuário visualizara o item “Total contratos”
-#
-#
-#
-#
 #
 #
 #QScenario: Consulta de Tooltip em Valor total
