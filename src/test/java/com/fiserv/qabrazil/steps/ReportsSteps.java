@@ -13,6 +13,7 @@ import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.ReportsPage;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
+import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.fiserv.qabrazil.util.Identifier;
 import com.fiserv.qabrazil.util.WaitUtil;
 import io.cucumber.java.ParameterType;
@@ -528,6 +529,40 @@ public class ReportsSteps extends BaseSteps {
         log.info("Data filtrada: {} até {}", filterDateRangeDto.startDate, filterDateRangeDto.endDate);
         assertTrue("Deveria ter exibido apenas relatórios do mesmo range",
                 this.isInTheFilteredDate(rangesListed));
+    }
+
+    @Then("Os valores das colunas do excel baixado terão mesma formatação")
+    public void valuesOfColumnsInFileWillHaveSameFormat() throws Exception {
+        ExcelWrapper excel = reportsPage.getDownloadAsExcel();
+
+        String[] headers = excel.getTableHeaderCells();
+
+        for(String header: headers) {
+            if(header.toLowerCase().contains("data")) {
+                validateForDateColumn(header, excel);
+            }
+
+            if(header.toLowerCase().contains("valor")){
+                validateForCurrencyColumn(header, excel);
+            }
+
+            List<String> formatsDistinct = excel.getColumnsFormatForNotEmptyCells(header).stream().distinct().toList();
+
+            assertTrue("Mais de um formato para a coluna %s. \nEncontrado: %s".formatted(header, formatsDistinct),
+                    formatsDistinct.size() <= 1);
+        }
+    }
+
+    private static void validateForCurrencyColumn(String header, ExcelWrapper excel) {
+        String expectedFormat = "\"R$\"\\ #,##0.00";
+        assertTrue("As células da coluna %s deveriam ter a formatação %s".formatted(header, expectedFormat),
+                excel.allFormatsMatchForColumn(header, value -> value.equals(expectedFormat)));
+    }
+
+    private static void validateForDateColumn(String header, ExcelWrapper excel) {
+        assertTrue("Coluna %s possui datas fora do padrão esperado".formatted(header),
+                excel.allValuesMatchForColumn(header, t -> DateUtil.isInFormat(t, "dd/MM/yyyy")
+                        || DateUtil.isInFormat(t, "dd/MM/yyyy 'às' HH:mm:ss")));
     }
 
     private boolean isInTheFilteredDate(String[] dates) {

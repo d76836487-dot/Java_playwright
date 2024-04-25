@@ -26,7 +26,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
-import static com.fiserv.automation.api.util.DateUtil.*;
+import static com.fiserv.automation.api.util.DateUtil.monthName;
+import static com.fiserv.automation.api.util.DateUtil.year;
 import static com.fiserv.qabrazil.config.TestIdsConfig.getQuerySelector;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -397,5 +398,9 @@ public class ReportsPage extends CheckedBasePage {
         List<PageField> reports = pageField.from("Relatórios - Item - Período").getAllVisiblePageField();
 
         return reports.stream().map(PageField::getAsText).distinct().count() > 1;
+    }
+
+    public ExcelWrapper getDownloadAsExcel() throws Exception {
+        return new ExcelWrapper(getDownloadStream(), 4);
     }
 }

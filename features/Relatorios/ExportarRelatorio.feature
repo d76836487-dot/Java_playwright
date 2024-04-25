@@ -19,13 +19,12 @@ Feature: Exportar Relatorio
 
   @api
   @TestCaseKey=SMP-T276
-  Scenario Outline: Validar Arquivo de Relatório de Vendas com 1 Estabelecimento Comercial
-    Given usuário possui apenas um Estabelecimento Comercial vinculado
-    And Existem relatórios já extraídos do tipo "Vendas", no formato "<arquivo>", disponíveis para download
+  Scenario Outline: Validar Arquivo de Relatório de Vendas
+    Given Existem relatórios já extraídos do tipo "Vendas", no formato "<arquivo>", disponíveis para download
     When Usuário baixa um relatório do tipo "Vendas", formato "<arquivo>"
     Then Usuário visualizará no "<arquivo>" baixado, as colunas
     """
-    Data da venda, Hora da venda, Código de autorização, Código de estabelecimento, Comprovante de venda,
+    Data da venda, Hora da venda, Código de autorização, Código do estabelecimento, Comprovante de venda,
     Código do pedido, Canal, Número do Terminal, Produto, Parcelas, Tipo de cartão, Bandeira, Status,
     Valor bruto da transação, Valor bruto da parcela, Valor da taxa (MDR), Valor líquido da parcela/transação,
     Número do cartão, Cartão pré pago, Data prevista de pagamento da venda, Status do pagamento da venda,
@@ -38,9 +37,8 @@ Feature: Exportar Relatorio
 
   @api
   @TestCaseKey=SMP-T277
-  Scenario Outline: Validar Arquivo de Relatório de Pagamentos com 1 Estabelecimento Comercial
-    Given usuário possui apenas um Estabelecimento Comercial vinculado
-    And Existem relatórios já extraídos do tipo "Pagamentos", no formato "<arquivo>", disponíveis para download
+  Scenario Outline: Validar Arquivo de Relatório de Pagamentos
+    Given Existem relatórios já extraídos do tipo "Pagamentos", no formato "<arquivo>", disponíveis para download
     When Usuário baixa um relatório do tipo "Pagamentos", formato "<arquivo>"
     Then Usuário visualizará no "<arquivo>" baixado, as colunas
     """
@@ -54,3 +52,11 @@ Feature: Exportar Relatorio
       | .csv    |
       | .xlsx   |
 
+  Scenario Outline: Colunas do excel possuem formatações corretas
+    Given Existem relatórios já extraídos do tipo "<tipo>", no formato ".xlsx", disponíveis para download
+    When Usuário baixa um relatório do tipo "<tipo>", formato ".xlsx"
+    Then Os valores das colunas do excel baixado terão mesma formatação
+    Examples:
+      | tipo       |
+      | Pagamentos |
+      | Vendas     |

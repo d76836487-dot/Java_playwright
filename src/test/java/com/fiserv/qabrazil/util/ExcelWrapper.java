@@ -1,10 +1,7 @@
 package com.fiserv.qabrazil.util;
 
 import org.apache.commons.lang3.StringUtils;
-import org.dhatim.fastexcel.reader.Cell;
-import org.dhatim.fastexcel.reader.ReadableWorkbook;
-import org.dhatim.fastexcel.reader.ReadingOptions;
-import org.dhatim.fastexcel.reader.Sheet;
+import org.dhatim.fastexcel.reader.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
@@ -26,18 +24,22 @@ public class ExcelWrapper implements AutoCloseable {
     private final int rowTableStart;
     private final String filename;
 
+    private final List<Row> rows;
+
     private ExcelWrapper() {
         inputStream = null;
         workbook = null;
         sheet = null;
         rowTableStart = 0;
         filename = "NULL";
+        rows = Collections.emptyList();
     }
 
     public ExcelWrapper(InputStream inputStream, int rowTableStart) throws IOException {
         this.inputStream = inputStream;
-        workbook = new ReadableWorkbook(inputStream);
+        workbook = new ReadableWorkbook(inputStream, new ReadingOptions(true, false));
         sheet = workbook.getFirstSheet();
+        rows = sheet.read();
         this.rowTableStart = rowTableStart;
         filename = "";
     }
@@ -47,6 +49,7 @@ public class ExcelWrapper implements AutoCloseable {
         this.inputStream = inputStream;
         workbook = new ReadableWorkbook(inputStream, new ReadingOptions(true, false));
         sheet = workbook.getFirstSheet();
+        rows = sheet.read();
         this.rowTableStart = lookForRowStartingWithValue(rowTableStartName, 0);
     }
 
@@ -57,7 +60,7 @@ public class ExcelWrapper implements AutoCloseable {
     public int lookForRowStartingWithValue(String rowTableStartName, int col) throws IOException {
         if (sheet == null) return 0;
 
-        for (int row = 0; row < sheet.read().size(); row++) {
+        for (int row = 0; row < rows.size(); row++) {
             if (getCellAsText(row, col).contains(rowTableStartName)) return row;
         }
 
@@ -81,6 +84,19 @@ public class ExcelWrapper implements AutoCloseable {
     public List<Double> getColumnsAsDouble(String columnName) throws IOException {
         return getColumnsAsText(columnName).stream()
                 .map(this::convertToDouble)
+                .toList();
+    }
+
+    public List<String> getColumnsFormatForNotEmptyCells(String columnName) {
+        if (sheet == null) return List.of();
+
+        int col = getHeaderColumn(columnName);
+
+        return IntStream.range(rowTableStart + 1, rows.size())
+                .parallel()
+                .mapToObj(row -> getCell(row, col))
+                .filter(cell -> cellIsNotEmpty(cell) && StringUtils.isNotEmpty(cell.getDataFormatString()))
+                .map(Cell::getDataFormatString)
                 .toList();
     }
 
@@ -114,27 +130,27 @@ public class ExcelWrapper implements AutoCloseable {
 
         int col = getHeaderColumn(columnName);
 
-        return IntStream.range(rowTableStart + 1, sheet.read().size())
+        return IntStream.range(rowTableStart + 1, rows.size())
                 .parallel()
                 .mapToObj(row -> getCellAsText(row, col))
                 .filter(cell -> !cell.isEmpty())
                 .toList();
     }
 
-    private int getHeaderColumn(String columnName) throws IOException {
-        for (int col = 0; col < sheet.read().get(0).getCellCount(); col++) {
+    private int getHeaderColumn(String columnName) {
+        for (int col = 0; col < rows.get(0).getCellCount(); col++) {
             if (getCellAsText(rowTableStart, col).equals(columnName)) return col;
         }
 
         throw new RuntimeException("Coluna %s do excel não foi encontrada no Excel %s".formatted(columnName, filename));
     }
 
-    public String[] getTableHeaderCells() throws Exception {
+    public String[] getTableHeaderCells() {
         return getRow(rowTableStart);
     }
 
-    public String[] getRow(int row) throws Exception {
-        return sheet.read().get(row).stream()
+    public String[] getRow(int row) {
+        return rows.get(row).stream()
                 .map(Cell::getText)
                 .filter(StringUtils::isNotEmpty)
                 .toArray(String[]::new);
@@ -144,15 +160,51 @@ public class ExcelWrapper implements AutoCloseable {
         return Double.parseDouble(getCellAsText(row, column));
     }
     public String getCellAsText(int row, int column)  {
-        try {
-            if (sheet == null) return "";
-            if (sheet.read().get(row) == null) return "";
-            if (sheet.read().get(row).getCell(column) == null) return "";
+        Cell cell = getCell(row, column);
+        if (cell == null) return "";
+        return cell.getText();
+    }
 
-            return sheet.read().get(row).getCell(column).getText();
-        } catch (IOException e) {
-            log.info("Erro lendo row %d column %d do Excel %s".formatted(row, column, filename));
-            throw new RuntimeException(e);
-        }
+    private Cell getCell(Row row, int column) {
+        return getCell(row.getRowNum() - 1, column);
+    }
+
+    private Cell getCell(int row, int column) {
+        if (cellDoesNotExist(row, column)) return null;
+
+        return rows.get(row).getCell(column);
+    }
+
+    private boolean cellDoesNotExist(int row, int column) {
+        return sheet == null
+                || rows.size() <= row
+                || rows.get(row) == null
+                || !rows.get(row).hasCell(column);
+    }
+
+    private static boolean cellIsNotEmpty(Cell cell) {
+        return cell != null
+                && cell.getType() != CellType.EMPTY
+                && StringUtils.isNotEmpty(cell.getRawValue());
+    }
+
+    private List<Cell> getColumnsCell(String columnName) {
+        if (sheet == null) return Collections.emptyList();
+
+        int col = getHeaderColumn(columnName);
+
+        return rows.stream()
+                .skip(rowTableStart + 1)
+                .map(row -> getCell(row, col))
+                .filter(ExcelWrapper::cellIsNotEmpty)
+                .toList();
+    }
+
+    public boolean allValuesMatchForColumn(String header, Predicate<String> predicate) {
+        return getColumnsCell(header).stream().map(Cell::getRawValue).allMatch(predicate);
+    }
+
+    public boolean allFormatsMatchForColumn(String header, Predicate<String> predicate) {
+        return getColumnsCell(header).stream().map(Cell::getDataFormatString).allMatch(predicate);
     }
 }
