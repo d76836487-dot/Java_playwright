@@ -352,7 +352,7 @@ public class ReportsSteps extends BaseSteps {
 
     private boolean requestedInHasCorrectFormat(String[] texts) {
         return texts.length == 3
-                && DateUtil.isInFormat("dd/MM/yyyy", texts[0])
+                && DateUtil.isInFormat(texts[0], "dd/MM/yyyy")
                 && Pattern.matches("\\d{2}:\\d{2}", texts[2]);
     }
 
@@ -366,8 +366,8 @@ public class ReportsSteps extends BaseSteps {
 
     private boolean rangeHasCorrectFormat(String[] texts) {
         if (texts.length != 3
-                && !DateUtil.isInFormat("dd/MM/yyyy", texts[0])
-                && !DateUtil.isInFormat("dd/MM/yyyy", texts[2])) {
+                && !DateUtil.isInFormat(texts[0], "dd/MM/yyyy")
+                && !DateUtil.isInFormat(texts[2], "dd/MM/yyyy")) {
             return false;
         }
 

@@ -40,7 +40,7 @@ public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
         assertEquals("Título da seção Resumo deve conter o texto \"Resumo\"", "Resumo", texts[0]);
 
         assertTrue("Título da seção Resumo deve conter a data no formato %s. Encontrado: %s".formatted(format, texts[1]),
-                DateUtil.isInFormat(format, texts[1]));
+                DateUtil.isInFormat(texts[1], format));
 
     }
 

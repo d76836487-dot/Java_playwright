@@ -122,10 +122,14 @@ public class DateUtil {
         return new String[] {day(date), month(date)};
     }
 
-    public static boolean isInFormat(String format, String stringDate) {
-        LocalDate date = LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(format));
-        String formatted = date.format(DateTimeFormatter.ofPattern(format));
-        return formatted.equals(stringDate);
+    public static boolean isInFormat(String stringDate, String format) {
+        try {
+            LocalDate date = LocalDate.parse(stringDate, DateTimeFormatter.ofPattern(format));
+            String formatted = date.format(DateTimeFormatter.ofPattern(format));
+            return formatted.equals(stringDate);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public static LocalDate toLocalDate(String date, String format) {
