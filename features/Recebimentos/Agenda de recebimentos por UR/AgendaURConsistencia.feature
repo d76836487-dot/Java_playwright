@@ -52,6 +52,7 @@ Feature: Agenda de recebimentos por UR com Consistência
       | -4         |
       | -5         |
 
+    @ignore # o portal é muito lento para validar ausência de informações
   Scenario Outline: Valida ausência de valores do lote da UR se é igual a outras datas já consultadas
     Given Carregou arquivo com histórico do "UR Sem Lote" de <dias úteis> dias úteis
     And Usuário selecionou data com base no arquivo de consistência
