@@ -52,6 +52,7 @@ Feature: Exportar Relatorio
       | .csv    |
       | .xlsx   |
 
+  @TestCaseKey=SMP-T333
   Scenario Outline: Colunas do excel possuem formatações corretas
     Given Existem relatórios já extraídos do tipo "<tipo>", no formato ".xlsx", disponíveis para download
     When Usuário baixa um relatório do tipo "<tipo>", formato ".xlsx"
@@ -60,3 +61,4 @@ Feature: Exportar Relatorio
       | tipo       |
       | Pagamentos |
       | Vendas     |
+
