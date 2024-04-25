@@ -11,6 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.assertEquals;
 
@@ -30,6 +31,7 @@ public class HomeSteps extends BaseSteps {
     public void ensureWeAreAtHome() {
         homePage.ensureWeAreAtHome();
         homePage.closeAllPopups();
+        waitUntilTrue(360, homePage::hasNoLoadingBars);
     }
 
     @Then("Usuário {booleanValue} card Antecipação")
