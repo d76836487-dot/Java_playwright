@@ -35,6 +35,7 @@ Feature: Agenda de recebimentos por UR com Consistência
       | -4         |
       | -5         |
 
+  @TestCaseKey=SMP-T331
   Scenario Outline: Valida valores do lote da UR se é igual a outras datas já consultadas
     Given Carregou arquivo com histórico do "UR Com Lote" de <dias úteis> dias úteis
     And Usuário selecionou data com base no arquivo de consistência
@@ -52,7 +53,8 @@ Feature: Agenda de recebimentos por UR com Consistência
       | -4         |
       | -5         |
 
-    @ignore # o portal é muito lento para validar ausência de informações
+  @ignore # o portal é muito lento para validar ausência de informações
+  @TestCaseKey=SMP-T332
   Scenario Outline: Valida ausência de valores do lote da UR se é igual a outras datas já consultadas
     Given Carregou arquivo com histórico do "UR Sem Lote" de <dias úteis> dias úteis
     And Usuário selecionou data com base no arquivo de consistência
