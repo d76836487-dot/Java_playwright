@@ -14,8 +14,8 @@ Feature: Agenda de recebimentos por UR com Consistência
   @TestCaseKey=SMP-T326
   Scenario Outline: Valida valores da UR se é igual a outras datas já consultadas
     Given Carregou arquivo com histórico do "UR" de <dias úteis> dias úteis
-    And existem recebimentos listados
-    When Usuário seleciona data com base no arquivo de consistência
+    And Usuário selecionou data com base no arquivo de consistência
+    And Carregou recebimentos listados
     Then Campo "Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Resumo - Valor Total" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Resumo - Valor pago" terá mesmo valor que consultado antes, salvando em arquivo
@@ -28,30 +28,30 @@ Feature: Agenda de recebimentos por UR com Consistência
     And Campo "Agenda de Recebimentos por UR - Resumo - Total contratos" terá mesmo valor que consultado antes, salvando em arquivo
     Examples:
       | dias úteis |
-      | 0          |
       | -1         |
       | -2         |
       | -3         |
       | -4         |
       | -5         |
+      | -6         |
 
   @TestCaseKey=SMP-T331
   Scenario Outline: Valida valores do lote da UR se é igual a outras datas já consultadas
     Given Carregou arquivo com histórico do "UR Com Lote" de <dias úteis> dias úteis
     And Usuário selecionou data com base no arquivo de consistência
-    And existem recebimentos listados
+    And Carregou recebimentos listados
     Then Campo "Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Lote de Recebimento - Valor atualizado das URs" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Lote de Recebimento - Valor pago" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Lote de Recebimento - Saldo disponível negociável" terá mesmo valor que consultado antes, salvando em arquivo
     Examples:
       | dias úteis |
-      | 0          |
       | -1         |
       | -2         |
       | -3         |
       | -4         |
       | -5         |
+      | -6         |
 
   @ignore # o portal é muito lento para validar ausência de informações
   @TestCaseKey=SMP-T332
@@ -62,21 +62,22 @@ Feature: Agenda de recebimentos por UR com Consistência
     Then Campo "Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total" terá valor "sem lote de recebimento", salvando em arquivo
     Examples:
       | dias úteis |
-      | 0          |
       | -1         |
       | -2         |
       | -3         |
       | -4         |
       | -5         |
+      | -6         |
 
   @TestCaseKey=SMP-T327
   Scenario Outline: Valida valores futuro da UR se é igual a outras datas já consultadas
     Given Carregou arquivo com histórico do "UR Futuro" de <dias úteis> dias úteis
-    And existem recebimentos listados
+    And Carregou recebimentos listados
     When Usuário seleciona data com base no arquivo de consistência
     Then Campo "Agenda de Recebimentos por UR - Agenda Futura - Saldo" terá mesmo valor que consultado antes, salvando em arquivo
     Examples:
       | dias úteis |
+      | 1          |
       | 2          |
       | 3          |
       | 4          |

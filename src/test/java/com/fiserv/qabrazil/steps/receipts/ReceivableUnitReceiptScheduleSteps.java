@@ -81,6 +81,17 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         assumeThat(waitUntilTrue(() -> receiptBatches.getCount() >= 1)).isEqualTo(foundLotsOfReceivable);
     }
 
+    @Given("Carregou recebimentos listados")
+    public void thereAreReceiptsListed() {
+        waitUntilTrue(60, receivableUnitReceiptSchedulePage::hasNoLoadingBars);
+
+        PageField receiptBatches = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total");
+        PageField asUr = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Sem Recebíveis");
+
+        waitUntilTrue(() -> receiptBatches.getCount() >= 1 || asUr.getCount() >= 1);
+        assumeThat(receiptBatches.getCount() >= 1).isTrue();
+    }
+
     @Given("usuário clicou sobre um lote \\(bandeira e produto) da listagem apresentada")
     @When("usuário clica sobre um lote \\(bandeira e produto) da listagem apresentada")
     public void userClicksReceiptBatchInThePresentedList() {

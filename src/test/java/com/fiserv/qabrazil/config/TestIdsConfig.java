@@ -395,6 +395,7 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor atualizado das URs", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor atualizado das URs']/../..//span[contains(text(),'R$')]"),
             entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor pago", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor pago']/../..//span[contains(text(),'R$')]"),
             entry("Agenda de Recebimentos por UR - Lote de Recebimento - Saldo disponível negociável", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Saldo disponível negociável']/../../../..//span[contains(text(),'R$')]"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Sem Recebíveis", "//span[contains(text(),'Sem unidades de recebíveis')]"),
             entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='UnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),
             entry("Agenda de Recebimentos por UR - Modal Detalhe totais por bandeira - Valores", "//*[contains(@class,'popup-dialog')]//span[contains(text(),'R$')]"),
 

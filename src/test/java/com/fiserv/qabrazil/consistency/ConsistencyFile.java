@@ -32,11 +32,11 @@ public class ConsistencyFile {
     public void loadForOneDay(String screen, int weekdays) throws IOException {
         File directory = new File(PATH);
         File[] listFiles = directory.listFiles();
-        String day = DateUtil.addSubtractForWeekdays(weekdays, "ddMMyyyy");
 
         if (listFiles == null) return;
 
-        filename = "%s_%s_%s.json".formatted(contractConfig.getActiveProfiles(), screen, day);
+        String dayFilename = DateUtil.addSubtractForWeekdays(weekdays, "yyyyMMdd");
+        filename = "%s_%s_%s.json".formatted(contractConfig.getActiveProfiles(), screen, dayFilename);
         List<File> files = Arrays.stream(listFiles)
                 .filter(file -> file.getName().equals(filename))
                 .toList();
@@ -44,6 +44,7 @@ public class ConsistencyFile {
         log.info("Carregando %s. Encontrou '%s'".formatted(filename, files.isEmpty()? "Não": "Sim"));
 
         if (files.isEmpty()) {
+            String day = DateUtil.addSubtractForWeekdays(weekdays, "dMyyyy");
             anyDayGeneralInfo = SavedInfoForConsistency.buildNull(day);
         } else {
             anyDayGeneralInfo = loadFile(files.get(0));
