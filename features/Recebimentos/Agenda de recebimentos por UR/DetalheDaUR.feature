@@ -61,6 +61,7 @@ Feature: Detalhe da UR
       | 1           |
       | 2           |
 
+  @TestCaseKey=SMP-T335
   Scenario: Consultar Pagamentos da UR (Status Pago)
     Given usuário clicou sobre um lote (bandeira e produto) da listagem apresentada que tenha valor pago maior que zero
     And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
@@ -71,7 +72,6 @@ Feature: Detalhe da UR
 #  When Usuário clicar Pagamentos
 #  Then Usuário visualizara pagamento com Status Pago (na Cor Verde), CPF/CNPJ do beneficiário, Data, Valor, Situação, Domicílio bancário, CPF/CNPJ do titular da conta,
 #  Tipo de conta, Agência, Conta.
-
 #produto,
 #botão Mostrar todos os detalhes
 #  Scenario: Consultar Abas na Tela / Detalhe da UR
@@ -79,4 +79,3 @@ Feature: Detalhe da UR
 #    When Clicar sobre um lote (bandeira e produto) da listagem apresentada
 #    And estiver na tela “Agenda de recebimentos por UR > Detalhe da UR”
 #    Then usuário visualizara as abas (Vendas vinculadas, Pagamentos, Créditos e deduções, Contratos)
-
