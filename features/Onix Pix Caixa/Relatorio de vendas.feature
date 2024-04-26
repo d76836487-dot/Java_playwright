@@ -5,11 +5,10 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-
 Feature: Relatorio de vendas
 
+  @TestCaseKey=SMP-T339
   Scenario Outline: Visualização de relatorio de vendas no menu Conta Pix
-
     Given que tenho EC <Hierarquia> com o Perfil <Perfil>
     And a Contratacao do Pix ja foi realizada no Portal do Cliente
     And foram efetuados transacoes de venda via Pix no POS
@@ -23,8 +22,8 @@ Feature: Relatorio de vendas
       | EC4 | Operador com F     | Matriz     |
       | EC5 | Operador sem F     | Filho      |
 
+  @TestCaseKey=SMP-T346
   Scenario Outline: Visualização de relatório de vendas sem lancamentos no menu Conta Pix
-
     Given que tenho EC <Hierarquia> com o Perfil <Perfil>
     And a Contratacao do Pix ja foi realizada no Portal do Cliente
     And não foram efetuados transacoes de venda via Pix no POS
@@ -35,10 +34,11 @@ Feature: Relatorio de vendas
       | EC1 | Master             | Matriz     |
       | EC2 | Assitente Operador | Filho      |
 
+  @TestCaseKey=SMP-T338
   Scenario: Visualizar relatório de vendas Por Paginacao
-
     Given que tenho Documento "Assitente Operador" com o Perfil "Filho"
     When a habilitacao do Pix ja foi realizada no Portal do Cliente
     And  foram efetuadas mais de 50 transacoes de venda via Pix no POS
     Then serão exibidas as transações de vendas no relatório de vendas
     And e será possível visualizar a pagina seguinte do relatório
+
