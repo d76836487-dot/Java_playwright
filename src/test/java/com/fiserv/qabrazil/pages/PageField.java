@@ -255,7 +255,7 @@ public class PageField {
         return new PageObject(newTab);
     }
 
-    void highlightIfPossible() {
+    public void highlightIfPossible() {
         if (locator.count() >= 1) {
             locator.first().scrollIntoViewIfNeeded();
             locator.first().highlight();

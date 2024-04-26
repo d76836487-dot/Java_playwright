@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.steps.receipts;
 
 import com.fiserv.automation.api.util.DateUtil;
+import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.receipts.detail.ReceivableUnitReceiptScheduleDetailExportExcel;
 import com.fiserv.qabrazil.pages.receipts.detail.ReceivableUnitReceiptScheduleDetailPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.List;
 
 import static com.fiserv.qabrazil.steps.home.HomeCustomizeModalSteps.csv;
 import static org.assertj.core.api.Assertions.assertThatNoException;
@@ -90,5 +92,26 @@ public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
         double valueExcel = excel.getField(excelField);
 
         assertEquals(valueExcel, valueScreen, 0.001);
+    }
+
+    @Then("Usuário visualizar status pago com bolinha na cor verde")
+    public void statusPaidWithGreenColor() {
+        List<PageField> statusesDescription = pageField.from("Detalhe da UR - Pagamentos - Situação").getAllPageField();
+        List<PageField> statusesColor = pageField.from("Detalhe da UR - Pagamentos - Bolinha Situação").getAllPageField();
+
+        assertEquals("Número de descrição de status e bolinhas é diferente.",
+                statusesDescription.size(), statusesColor.size());
+
+        for(int i = 0; i < statusesDescription.size(); i++) {
+            boolean descriptionIsPaid = statusesDescription.get(i).getAsText().equals("Pago");
+            boolean colorIsGreen = receivableUnitReceiptScheduleDetailPage.statusColorIsGreen(statusesColor.get(i));
+            boolean colorAsExpected = !descriptionIsPaid || colorIsGreen;
+
+            if (!colorAsExpected) {
+                statusesDescription.get(i).highlightIfPossible();
+            }
+
+            assertTrue("Situação é pago mas cor não é verde", colorAsExpected);
+        }
     }
 }

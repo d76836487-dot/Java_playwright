@@ -274,7 +274,10 @@ public class TestIdsConfig {
             entry("Detalhe da UR - Resumo - Valor Atualizado da UR", "detalhe-ur-total-atualizado-ur"),
             entry("Detalhe da UR - Resumo - Valor Pago", "detalhe-ur-valor-pago"),
             entry("Detalhe da UR - Resumo - Total de Deduções", "detalhe-ur-total-deducao"),
-            entry("Detalhe da UR - Resumo - Mostrar todos os detalhes", "detalhe-ur-mostrar-detalhes")
+            entry("Detalhe da UR - Resumo - Mostrar todos os detalhes", "detalhe-ur-mostrar-detalhes"),
+            entry("Detalhe da UR - Visualizar Pagamentos", "detalhe-ur-tab-pagamentos"),
+            entry("Detalhe da UR - Pagamentos - Situação", "detalhe-ur-tab-pagamentos-situacao-.*")
+
     );
 
 
@@ -427,7 +430,8 @@ public class TestIdsConfig {
             entry("Detalhe da UR - Resumo - Total antecipação automática", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total antecipação automática')]"),
             entry("Detalhe da UR - Resumo - Total deduções", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total deduções')]"),
             entry("Detalhe da UR - Resumo - Total ajuste crédito", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total ajuste crédito')]"),
-            entry("Detalhe da UR - Resumo - Total contratos", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total contratos')]")
+            entry("Detalhe da UR - Resumo - Total contratos", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total contratos')]"),
+            entry("Detalhe da UR - Pagamentos - Bolinha Situação", "//*[@data-testid='detalhe-ur-tab-pagamentos-situacao-0']/preceding-sibling::i")
     );
 
     public static String getTestId(String identifier) {

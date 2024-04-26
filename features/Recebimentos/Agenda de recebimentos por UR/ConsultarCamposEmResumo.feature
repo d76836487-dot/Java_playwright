@@ -440,16 +440,6 @@ Feature: Consultar Campos em Resumo
 #  When Usuário clicar na aba Pagamentos
 #  Then Usuário visualizara pagamento com Status Programado (na Cor amarelo), CPF/CNPJ do beneficiário, Data, Valor, Situação, Domicílio bancário, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta.
 #
-#
-#QScenario: Consultar Pagamentos da UR (Status Pago)
-#
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar Pagamentos
-#  Then Usuário visualizara pagamento com Status Pago (na Cor Verde), CPF/CNPJ do beneficiário, Data, Valor, Situação, Domicílio bancário, CPF/CNPJ do titular da conta,
-#  Tipo de conta, Agência, Conta.
-#
-#
-#
 #QScenario: Consultar Sem Pagamento / Pagamentos da UR
 #  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
 #  When Usuário clicar Pagamentos

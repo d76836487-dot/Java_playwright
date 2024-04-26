@@ -85,6 +85,22 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
     @When("usuário clica sobre um lote \\(bandeira e produto) da listagem apresentada")
     public void userClicksReceiptBatchInThePresentedList() {
         pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total").firstOf().click();
+        selectBrandAndNavigateToDetail();
+    }
+
+    @Given("usuário clicou sobre um lote \\(bandeira e produto) da listagem apresentada que tenha valor pago maior que zero")
+    public void userClicksReceiptBatchWithPaidValue() {
+        List<PageField> paidValueGreaterZero = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Valor pago")
+                .getAllPageField().stream()
+                .filter(pf -> pf.getAsCurrency().doubleValue() > 0)
+                .toList();
+        assumeThat(paidValueGreaterZero).hasSizeGreaterThan(0);
+        paidValueGreaterZero.get(0).click();
+
+        selectBrandAndNavigateToDetail();
+    }
+
+    private void selectBrandAndNavigateToDetail() {
         PageField buttonReceiptBatch = pageField.from("Agenda de Recebimentos por UR - Unidade de Recebível Registrada");
         waitUntilTrue(() -> buttonReceiptBatch.allVisiblePageField().findAny().isPresent());
         buttonReceiptBatch.firstOf().click();
@@ -98,9 +114,7 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
                 .isTrue();
 
         lotElement.getAllVisiblePageField().get(lotNumber).click();
-        PageField buttonReceiptBatch = pageField.from("Agenda de Recebimentos por UR - Unidade de Recebível Registrada");
-        waitUntilTrue(() -> buttonReceiptBatch.allVisiblePageField().findAny().isPresent());
-        buttonReceiptBatch.firstOf().click();
+        selectBrandAndNavigateToDetail();
     }
 
     @Then("Deve abrir um modal com Todos os termos usados e um Scroll para rolagem, Botões X e Entendi!")
