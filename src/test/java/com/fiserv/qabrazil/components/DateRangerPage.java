@@ -55,6 +55,8 @@ public class DateRangerPage extends BasePage {
         typeDayInCalendar("Date ranger - Dia inicial Digitado", dateToType);
         typeDayInCalendar("Date ranger - Dia final Digitado", dateToType);
         pageField.from("Date ranger - Aplicar").click();
+
+        sleep(Duration.ofSeconds(2));
     }
 
     private void setDateInCalendar(int daysToAdd, String typedDateField) {
