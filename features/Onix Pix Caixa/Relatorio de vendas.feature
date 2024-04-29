@@ -9,8 +9,7 @@ Feature: Relatorio de vendas
 
   @TestCaseKey=SMP-T339
   Scenario Outline: Visualização de relatorio de vendas no menu Conta Pix
-    Given que tenho EC <Hierarquia> com o Perfil <Perfil>
-    And esteja cadastrado na Serpro <Serpro>
+    Given que tenho EC <Hierarquia> com o Perfil <Perfil> cadastrado na Serpro <Serpro>
     And Possua CP (POS) ativo <POS>
     And foram efetuados transacoes de venda via Pix no POS
     When acessar o menu conta Pix no Portal
@@ -44,4 +43,5 @@ Feature: Relatorio de vendas
     And  foram efetuadas mais de 50 transacoes de venda via Pix no POS
     Then serão exibidas as transações de vendas no relatório de vendas
     And e será possível visualizar a pagina seguinte do relatório
+
 

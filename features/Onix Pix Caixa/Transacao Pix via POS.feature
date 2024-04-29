@@ -14,7 +14,7 @@ Feature: Transacao Pix via POS
     And Possua CP (POS) ativo <POS>
     And Pix Contratado com sucesso no Portal do Cliente
     When realizo uma transacao de Pix via POS
-    Then a transacao é exibida com sucesso no Relatorio de Vendas
+    Then a transacao é exibida com sucesso no Relatorio de Vendas no menu Conta Pix
     Examples:
       | EC  | Perfil             | Hierarquia | Serpro | POS |
       | EC1 | Master             | Matriz     | OK     | OK  |
@@ -27,20 +27,20 @@ Feature: Transacao Pix via POS
     And não foi feita a habilitacao do Pix no Portal do Cliente
     And esteja cadastrado na Serpro <Serpro>
     When tentar transacionar no POS
-    Then então não sera permitido
+    Then então não sera permitido a transação
    #esse é um fluxo que sera feito pela Api e pelo POS fisico
 
   Scenario: Habilitar Pix com Hierarquia Filho 1 e realizar transação Pix com Hierarquia Matriz
     Given acesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso
     When Realizo uma transação de Pix via POS com EC Master
-    Then a transação é exibida no Relatório de Vendas
-#esse é um fluxo que sera feito pela Api e pelo POS fisico
+    Then a transação é exibida no Relatório de Vendas no menu Conta Pix
+#Transação PIX sera feito pela Api e pelo POS fisico
 
   Scenario: Habilitar Pix com Hierarquia Filho 1 e realizar transação Pix com Hierarquia Filho 2
     Given cesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso
     When realizo uma transação de Pix via POS com "Filho 2"
-    Then a transacao é exibida com sucesso no Relatorio de Vendas
- #esse é um fluxo que sera feito pela Api e pelo POS fisico
+    Then a transacao é exibida com sucesso no Relatorio de Vendas no menu Conta Pix
+ #Transação PIX sera feito pela Api e pelo POS fisico
 

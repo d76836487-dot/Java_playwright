@@ -33,7 +33,8 @@ Feature: Contratacao
     And Possua CP (POS) ativo <POS>
     When acesso o Portal do Cliente
     And realizo a solicitacao abertura de conta Pix
-    Then nao sera possivel habilitacao
+    And Insiro a chave Pix para validar
+    Then nao sera possivel seguir na próxima etapa do fluxo
     Examples:
       | EC  | Perfil                | Hierarquia | Serpro | POS |
       | EC1 | Assitente de Consulta | Matriz     | OK     | OK  |
@@ -48,8 +49,8 @@ Feature: Contratacao
     And usuário não possui cadastro na Serpro
     And Possua CP (POS) ativo
     When acessar o Portal do Cliente
-    And realizar a solicitação de conta Pix
-    Then recebo mensagem de erro
+    And realizar acessar o menu Conta Pix
+    Then será direcionado na webview
 
   @TestCaseKey=SMP-T343
   Scenario Outline: Contratacao de Pix no Portal do Cliente Com Perfil elegivel e chave Pix invalida
@@ -60,10 +61,36 @@ Feature: Contratacao
     When acesso o Portal do Cliente
     And realizo a solicitacao da conta Pix dentro do Portal do Cliente
     And insiro uma chave Pix inválida <Chave Pix>
-    Then recebo mensagem de erro na validação da chave
+    Then recebo mensagem "A Chave Pix informada não corresponde a um domicílio bancário válido. Tente novamente com outra Chave Pix."
+    #verificar mensagem de erro
     Examples:
       | EC  |  | Perfil             | Hierarquia | Chave Pix          | Serpro | POS |
       | EC1 |  | Master             | Matriz     | Outra titularidade | OK     | OK  |
       | EC2 |  | Assitente Operador | Filho      | Chave Invalida     | OK     | OK  |
 
+  Scenario: Habilitar Pix com Hierarquia Filho 1 e validar que o perfil Matriz não entrem no fluxo de contratação
+    Given acesse o Portal com EC com o Perfil "Filho 1"
+    And realiza a habilitação Conta Pix com sucesso
+    When realizo login no portal com perfil Matriz
+    And acessar o menu Conta Pix
+    Then não deve entrar no fluxo de contratação de Conta Pix
 
+  Scenario: Habilitar Pix com Hierarquia Filho 1 e validar que o perfil Filho 2 não entrem no fluxo de contratação
+    Given acesse o Portal com EC com o Perfil "Filho 1"
+    And realiza a habilitação Conta Pix com sucesso
+    When realizo login no portal com perfil Filho 2
+    And acessar o menu Conta Pix
+    Then não deve entrar no fluxo de contratação de Conta Pix
+
+  Scenario: Contratacao de Pix no Portal do Cliente com chave Pix valida Serpro Ok e POS OK - Possui conta na Software Express
+    # Testes do bloco 3 (Contratação)
+    Given que tenho EC "Master"
+    And esteja cadastrado na Serpro
+    And possua CP (POS) ativo
+    And possui conta na Software Express
+    When acesso o Portal do Cliente
+    And realizo a solicitacao da conta Pix
+    And insiro uma chave Pix valida <Chave Pix>
+    And aceito os termos e condicoes
+    Then a habilitacao Pix sera concluida com sucesso
+    And os dados da Conta Pix serão as mesmos da conta da Software Express
