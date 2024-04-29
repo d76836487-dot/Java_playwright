@@ -16,12 +16,12 @@ Feature: Relatorio de vendas
     When acessar o menu conta Pix no Portal
     Then as transacoes de Pix serão exibidas no relatório de vendas
     Examples:
-      | EC  | Perfil             | Hierarquia | Serpro | POS |
-      | EC1 | Master             | Matriz     | OK     | OK  |
-      | EC2 | Assitente Operador | Filho      | OK     | OK  |
-      | EC3 | Assitente Consulta | Neto       | OK     | OK  |
-      | EC4 | Operador com F     | Matriz     | OK     | OK  |
-      | EC5 | Operador sem F     | Filho      | OK     | OK  |
+      | EC  | Perfil              | Hierarquia | Serpro | POS |
+      | EC1 | Master              | Matriz     | OK     | OK  |
+      | EC2 | Assistente Operador | Filho      | OK     | OK  |
+      | EC3 | Assistente Consulta | Neto       | OK     | OK  |
+      | EC1 | Operador com F      | Matriz     | OK     | OK  |
+      | EC2 | Operador sem F      | Filho      | OK     | OK  |
 
   @TestCaseKey=SMP-T346
   Scenario Outline: Visualização de relatório de vendas sem lancamentos no menu Conta Pix
@@ -32,9 +32,9 @@ Feature: Relatorio de vendas
     When acessar o menu Conta Pix no Portal
     Then o relatório de vendas estará vazio dentro do menu conta Pix
     Examples:
-      | EC  | Perfil             | Hierarquia | Serpro | POS |
-      | EC1 | Master             | Matriz     | OK     | OK  |
-      | EC2 | Assitente Operador | Filho      | OK     | OK  |
+      | EC  | Perfil              | Hierarquia | Serpro | POS |
+      | EC1 | Master              | Matriz     | OK     | OK  |
+      | EC2 | Assistente Operador | Filho      | OK     | OK  |
 
   @TestCaseKey=SMP-T338
   Scenario: Visualizar relatório de vendas Por Paginacao
