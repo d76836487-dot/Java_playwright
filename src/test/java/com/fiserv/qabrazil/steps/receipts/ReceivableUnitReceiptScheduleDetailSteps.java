@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiFunction;
 
 import static com.fiserv.qabrazil.steps.home.HomeCustomizeModalSteps.csv;
 import static org.assertj.core.api.Assertions.assertThatNoException;
@@ -96,6 +97,16 @@ public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
 
     @Then("Usuário visualizar status pago com bolinha na cor verde")
     public void statusPaidWithGreenColor() {
+        assertDescriptionAndColor("Pago", ReceivableUnitReceiptScheduleDetailPage::statusColorIsGreen);
+    }
+
+    @Then("Usuário visualizar status programado com bolinha na cor amarelo")
+    public void statusScheduledWithYellowColor() {
+        assertDescriptionAndColor("Programado", ReceivableUnitReceiptScheduleDetailPage::statusColorIsYellow);
+    }
+
+
+    private void assertDescriptionAndColor(String expectedDescription, BiFunction<ReceivableUnitReceiptScheduleDetailPage, PageField, Boolean> method) {
         List<PageField> statusesDescription = pageField.from("Detalhe da UR - Pagamentos - Situação").getAllPageField();
         List<PageField> statusesColor = pageField.from("Detalhe da UR - Pagamentos - Bolinha Situação").getAllPageField();
 
@@ -103,15 +114,16 @@ public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
                 statusesDescription.size(), statusesColor.size());
 
         for(int i = 0; i < statusesDescription.size(); i++) {
-            boolean descriptionIsPaid = statusesDescription.get(i).getAsText().equals("Pago");
-            boolean colorIsGreen = receivableUnitReceiptScheduleDetailPage.statusColorIsGreen(statusesColor.get(i));
-            boolean colorAsExpected = !descriptionIsPaid || colorIsGreen;
+            boolean descriptionIsPaid = statusesDescription.get(i).getAsText().equals(expectedDescription);
+            boolean expectedColor = method.apply(receivableUnitReceiptScheduleDetailPage, statusesColor.get(i));
+            boolean colorAsExpected = !descriptionIsPaid || expectedColor;
 
             if (!colorAsExpected) {
                 statusesDescription.get(i).highlightIfPossible();
             }
 
-            assertTrue("Situação é pago mas cor não é verde", colorAsExpected);
+            assertTrue("Situação é '%s' mas cor não é esperada".formatted(statusesDescription.get(i).getAsText()),
+                    colorAsExpected);
         }
     }
 }

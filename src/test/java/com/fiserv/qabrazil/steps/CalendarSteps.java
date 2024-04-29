@@ -47,6 +47,11 @@ public class CalendarSteps extends BaseSteps {
         calendarPage.userSelectsLastThirdDays();
     }
 
+    @When("Usuário seleciona Próximos 14 Dias")
+    public void userSelectsNext14Days() {
+        calendarPage.userSelectsNextFourteenDays();
+    }
+
     @When("Usuário seleciona Próximos 30 Dias")
     public void userSelectsNext30Days() {
         calendarPage.userSelectsNextThirdDays();

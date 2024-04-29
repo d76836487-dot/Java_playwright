@@ -111,6 +111,21 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         selectBrandAndNavigateToDetail();
     }
 
+    @Given("usuário clicou sobre um lote \\(bandeira e produto) da listagem apresentada que tenha saldo negociável maior que zero")
+    public void userClicksReceiptBatchWithNegotiableValue() {
+        List<PageField> paidValueGreaterZero = pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Saldo disponível negociável")
+                .getAllPageField().stream()
+                .filter(pf -> {
+                    pf.highlightIfPossible();
+                    return pf.getAsCurrency().doubleValue() > 0;
+                })
+                .toList();
+        assumeThat(paidValueGreaterZero).hasSizeGreaterThan(0);
+        paidValueGreaterZero.get(0).click();
+
+        selectBrandAndNavigateToDetail();
+    }
+
     private void selectBrandAndNavigateToDetail() {
         PageField buttonReceiptBatch = pageField.from("Agenda de Recebimentos por UR - Unidade de Recebível Registrada");
         waitUntilTrue(() -> buttonReceiptBatch.allVisiblePageField().findAny().isPresent());
