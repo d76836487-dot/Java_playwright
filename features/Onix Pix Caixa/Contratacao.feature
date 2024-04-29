@@ -36,7 +36,6 @@ Feature: Contratacao
       | EC2 | Operador com F        | Filho      |
       | EC3 | Operador sem F        | Neto       |
 
-
   @TestCaseKey=SMP-T340
   Scenario: Contratacao de Pix no Portal do Cliente elegível Com Perfil Serpro NOK
     # Testes do bloco 1 (Sem habilitação)
