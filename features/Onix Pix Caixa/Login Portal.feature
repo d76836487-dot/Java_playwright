@@ -10,32 +10,37 @@ Feature: Login Portal
   @TestCaseKey=SMP-T341
   Scenario Outline: Exibição do modal de Habilitação Conta Pix - Primeiro acesso e usuário elegível
     Given que tenho EC <Hierarquia> com o <Perfil>
+    And esteja cadastrado na Serpro <Serpro>
+    And Possua CP (POS) ativo <POS>
     And não acessei ao Portal do Cliente após implementação da funcionalidade de PIX
     When realizo o login no Portal do Cliente
     Then é apresentado o modal para habilitação do PIX
     Examples:
-      | EC  | Hierarquia | Perfil              |
-      | EC1 | Matriz     | Master              |
-      | EC2 | Filho      | Assistente Operador |
-      | EC3 | Neto       | Assistente Consulta |
+      | EC  | Hierarquia | Perfil              | Serpro | POS |
+      | EC1 | Matriz     | Master              | OK     | OK  |
+      | EC2 | Filho      | Assistente Operador | OK     | OK  |
+      | EC3 | Neto       | Assistente Consulta | OK     | OK  |
 
   #ver com a stefanie / apresenta o modal ou não ?
   @TestCaseKey=SMP-T344
   Scenario Outline: Exibição de modal de Habilitação Conta Pix - Primeiro acesso e usuário não elegível
     Given que tenho EC <Hierarquia> com o Perfil <Perfil>
+    And esteja cadastrado na Serpro <Serpro>
+    And Possua CP (POS) ativo <POS>
     And não acessei ao Portal do Cliente após implementação da funcionalidade de PIX
     When realizo o login no Portal do Cliente
     Then não é apresentado o modal para habilitação do PIX
     Examples:
-      | EC  | Hierarquia | Perfil              |
-      | EC1 | Matriz     | Assistente Consulta |
-      | EC2 | Filho      | Operador com F      |
-      | EC3 | Neto       | Operador sem F      |
+      | EC  | Hierarquia | Perfil              | Serpro | POS |
+      | EC1 | Matriz     | Assistente Consulta | OK     | OK  |
+      | EC2 | Filho      | Operador com F      | OK     | OK  |
+      | EC3 | Neto       | Operador sem F      | OK     | OK  |
 
   @TestCaseKey=SMP-T345
   Scenario: Exibição de modal de Habilitação Conta Pix - Segundo acesso e usuário elegível
     Given que tenho EC "Matriz" com o Perfil "Master" EC1
-    And a funcionalidade de Pix ja esta habilitada
+    And esteja cadastrado na Serpro <Serpro>
+    And Possua CP (POS) ativo <POS>
     And visualizei o modal de habilitacao do Pix no primeiro acesso
     When realizo um novo login no Portal do Cliente
     Then não é apresentado o modal para habilitação do PIX

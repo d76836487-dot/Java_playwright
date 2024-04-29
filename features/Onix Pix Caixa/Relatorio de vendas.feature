@@ -10,34 +10,37 @@ Feature: Relatorio de vendas
   @TestCaseKey=SMP-T339
   Scenario Outline: Visualização de relatorio de vendas no menu Conta Pix
     Given que tenho EC <Hierarquia> com o Perfil <Perfil>
-    And a Contratacao do Pix ja foi realizada no Portal do Cliente
+    And esteja cadastrado na Serpro <Serpro>
+    And Possua CP (POS) ativo <POS>
     And foram efetuados transacoes de venda via Pix no POS
     When acessar o menu conta Pix no Portal
     Then as transacoes de Pix serão exibidas no relatório de vendas
     Examples:
-      | EC  | Perfil             | Hierarquia |
-      | EC1 | Master             | Matriz     |
-      | EC2 | Assitente Operador | Filho      |
-      | EC3 | Assitente Consulta | Neto       |
-      | EC4 | Operador com F     | Matriz     |
-      | EC5 | Operador sem F     | Filho      |
+      | EC  | Perfil             | Hierarquia | Serpro | POS |
+      | EC1 | Master             | Matriz     | OK     | OK  |
+      | EC2 | Assitente Operador | Filho      | OK     | OK  |
+      | EC3 | Assitente Consulta | Neto       | OK     | OK  |
+      | EC4 | Operador com F     | Matriz     | OK     | OK  |
+      | EC5 | Operador sem F     | Filho      | OK     | OK  |
 
   @TestCaseKey=SMP-T346
   Scenario Outline: Visualização de relatório de vendas sem lancamentos no menu Conta Pix
     Given que tenho EC <Hierarquia> com o Perfil <Perfil>
-    And a Contratacao do Pix ja foi realizada no Portal do Cliente
+    And esteja cadastrado na Serpro <Serpro>
+    And Possua CP (POS) ativo <POS>
     And não foram efetuados transacoes de venda via Pix no POS
     When acessar o menu Conta Pix no Portal
     Then o relatório de vendas estará vazio dentro do menu conta Pix
     Examples:
-      | EC  | Perfil             | Hierarquia |
-      | EC1 | Master             | Matriz     |
-      | EC2 | Assitente Operador | Filho      |
+      | EC  | Perfil             | Hierarquia | Serpro | POS |
+      | EC1 | Master             | Matriz     | OK     | OK  |
+      | EC2 | Assitente Operador | Filho      | OK     | OK  |
 
   @TestCaseKey=SMP-T338
   Scenario: Visualizar relatório de vendas Por Paginacao
     Given que tenho Documento "Assitente Operador" com o Perfil "Filho"
-    When a habilitacao do Pix ja foi realizada no Portal do Cliente
+    And esteja cadastrado na Serpro "Serpro OK"
+    And possua CP (POS) ativo "POS OK"
     And  foram efetuadas mais de 50 transacoes de venda via Pix no POS
     Then serão exibidas as transações de vendas no relatório de vendas
     And e será possível visualizar a pagina seguinte do relatório
