@@ -21,26 +21,28 @@ Feature: Transacao Pix via POS
       | EC2 | Assitente Operador | Filho      | OK     | OK  |
       | EC3 | Master             | Neto       | OK     | OK  |
 
-    @TestCaseKey=SMP-T336
+  @TestCaseKey=SMP-T336
   Scenario: Pix não habilitado para transacionar no POS
     Given que tenho EC "Master" com o Perfil "Matriz"
     And não foi feita a habilitacao do Pix no Portal do Cliente
     And esteja cadastrado na Serpro <Serpro>
     When tentar transacionar no POS
     Then então não sera permitido
-   #esse é um fluxo que sera feito pela Api e pelo POS fisico
 
+  #esse é um fluxo que sera feito pela Api e pelo POS fisico
+  @TestCaseKey=SMP-T348
   Scenario: Habilitar Pix com Hierarquia Filho 1 e realizar transação Pix com Hierarquia Matriz
     Given acesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso
     When Realizo uma transação de Pix via POS com EC Master
     Then a transação é exibida no Relatório de Vendas
-#esse é um fluxo que sera feito pela Api e pelo POS fisico
 
+  #esse é um fluxo que sera feito pela Api e pelo POS fisico
+  @TestCaseKey=SMP-T349
   Scenario: Habilitar Pix com Hierarquia Filho 1 e realizar transação Pix com Hierarquia Filho 2
     Given cesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso
     When realizo uma transação de Pix via POS com "Filho 2"
     Then a transacao é exibida com sucesso no Relatorio de Vendas
- #esse é um fluxo que sera feito pela Api e pelo POS fisico
 
+#esse é um fluxo que sera feito pela Api e pelo POS fisico
