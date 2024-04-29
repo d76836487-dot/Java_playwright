@@ -68,10 +68,13 @@ Feature: Detalhe da UR
     When usuário clica "Detalhe da UR - Visualizar Pagamentos"
     Then Usuário visualizar status pago com bolinha na cor verde
 
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR”
-#  When Usuário clicar Pagamentos
-#  Then Usuário visualizara pagamento com Status Pago (na Cor Verde), CPF/CNPJ do beneficiário, Data, Valor, Situação, Domicílio bancário, CPF/CNPJ do titular da conta,
-#  Tipo de conta, Agência, Conta.
+  Scenario: Consultar Pagamentos da UR (Status Programado)
+    Given Usuário seleciona Próximos 14 Dias
+    And usuário clicou sobre um lote (bandeira e produto) da listagem apresentada que tenha saldo negociável maior que zero
+    And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
+    When usuário clica "Detalhe da UR - Visualizar Pagamentos"
+    Then Usuário visualizar status programado com bolinha na cor amarelo
+
 #produto,
 #botão Mostrar todos os detalhes
 #  Scenario: Consultar Abas na Tela / Detalhe da UR

@@ -45,6 +45,11 @@ public class DateRangerPage extends BasePage {
         setDateInCalendar(-30, "Date ranger - Dia inicial Digitado");
     }
 
+    public void userSelectsNextFourteenDays() {
+        setDateInCalendar(0, "Date ranger - Dia inicial Digitado");
+        setDateInCalendar(14, "Date ranger - Dia final Digitado");
+    }
+
     public void userSelectsNextThirdDays() {
         setDateInCalendar(30, "Date ranger - Dia final Digitado");
     }

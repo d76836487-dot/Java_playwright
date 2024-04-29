@@ -38,4 +38,10 @@ public class ReceivableUnitReceiptScheduleDetailPage extends BasePage {
         log.info("Status color found: " + style);
         return style.contains("--color-success");
     }
+
+    public boolean statusColorIsYellow(PageField pageField) {
+        String style = pageField.getLocator().getAttribute("style");
+        log.info("Status color found: " + style);
+        return style.contains("--color-warning");
+    }
 }
