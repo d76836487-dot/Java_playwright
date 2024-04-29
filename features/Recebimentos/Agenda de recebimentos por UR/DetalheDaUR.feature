@@ -68,6 +68,7 @@ Feature: Detalhe da UR
     When usuário clica "Detalhe da UR - Visualizar Pagamentos"
     Then Usuário visualizar status pago com bolinha na cor verde
 
+  @TestCaseKey=SMP-T350
   Scenario: Consultar Pagamentos da UR (Status Programado)
     Given Usuário seleciona Próximos 14 Dias
     And usuário clicou sobre um lote (bandeira e produto) da listagem apresentada que tenha saldo negociável maior que zero
