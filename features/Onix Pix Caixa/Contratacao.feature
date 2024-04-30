@@ -94,4 +94,3 @@ Feature: Contratacao
     And aceito os termos e condicoes
     Then a habilitacao Pix sera concluida com sucesso
     And os dados da Conta Pix serão as mesmos da conta da Software Express
-#
