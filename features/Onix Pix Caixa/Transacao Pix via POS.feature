@@ -44,3 +44,4 @@ Feature: Transacao Pix via POS
     Then a transacao é exibida com sucesso no Relatorio de Vendas no menu Conta Pix
  #Transação PIX sera feito pela Api e pelo POS fisico
 
+#

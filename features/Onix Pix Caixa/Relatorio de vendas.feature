@@ -43,6 +43,6 @@ Feature: Relatorio de vendas
     And  foram efetuadas mais de 50 transacoes de venda via Pix no POS
     Then serão exibidas as transações de vendas no relatório de vendas
     And e será possível visualizar a pagina seguinte do relatório
-    #
+
 
 
