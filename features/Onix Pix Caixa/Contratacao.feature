@@ -41,7 +41,7 @@ Feature: Contratacao
       | EC2 | Operador com F        | Filho      | OK     | OK  |
       | EC3 | Operador sem F        | Neto       | OK     | OK  |
 
-  #qual seria o fluxo esperado de um usuario que não esta cadastrado na Serpro
+
   @TestCaseKey=SMP-T340
   Scenario: Contratacao de Pix no Portal do Cliente elegível Com Perfil Serpro NOK e POS OK
     # Testes do bloco 1 (Sem habilitação)
@@ -50,7 +50,7 @@ Feature: Contratacao
     And Possua CP (POS) ativo
     When acessar o Portal do Cliente
     And realizar acessar o menu Conta Pix
-    Then será direcionado na webview
+    Then será direcionado para o Menu Conta Pix
 
   @TestCaseKey=SMP-T343
   Scenario Outline: Contratacao de Pix no Portal do Cliente Com Perfil elegivel e chave Pix invalida

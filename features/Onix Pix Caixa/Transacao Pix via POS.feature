@@ -28,7 +28,7 @@ Feature: Transacao Pix via POS
     And esteja cadastrado na Serpro <Serpro>
     When tentar transacionar no POS
     Then então não sera permitido a transação
-   #esse é um fluxo que sera feito pela Api e pelo POS fisico
+   #esse fluxo sera feito pela Api e pelo POS fisico
 
   Scenario: Habilitar Pix com Hierarquia Filho 1 e realizar transação Pix com Hierarquia Matriz
     Given acesse o Portal com EC com o Perfil "Filho 1"

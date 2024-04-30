@@ -22,7 +22,7 @@ Feature: Login Portal
       | EC3 | Neto       | Assistente Consulta | OK     | OK  |
       | EC1 | Filho      | Operador com F      | OK     | OK  |
       | EC2 | Neto       | Operador sem F      | OK     | OK  |
-  #ver com a stefanie / apresenta o modal ou não ?
+
   @TestCaseKey=SMP-T344
   Scenario Outline: Exibição de modal de Habilitação Conta Pix - Primeiro acesso e usuário não elegível
     Given que tenho EC <Hierarquia> com o Perfil <Perfil>
