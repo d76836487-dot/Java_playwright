@@ -106,6 +106,11 @@ public class PageField {
     }
 
     public PageField firstOf() {
+        waitUntilTrue(() -> allVisiblePageField().findAny().isPresent());
+        return firstOfRightNow();
+    }
+
+    public PageField firstOfRightNow() {
         return allVisiblePageField().findFirst().orElseThrow(() -> new RuntimeException("Couldn't find any of %s".formatted(selector)));
     }
 

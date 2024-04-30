@@ -73,7 +73,7 @@ public class SalesVoucherSteps extends BasePage {
     public void countMatchesScreen() throws IOException {
         long countQuantityPre = salesVoucherExportExcel.getCountPre();
         long quantityPre = salesVoucherExportExcel.getCount();
-        int quantitySalesFromPage = pageField.from("Vendas - Voucher - Total Vendas").firstOf().getAsNumber();
+        int quantitySalesFromPage = pageField.from("Vendas - Voucher - Total Vendas").firstOfRightNow().getAsNumber();
 
         assertEquals("Quantidade vendas voucher da tela não é igual à planilha.",
                 quantitySalesFromPage, quantityPre);

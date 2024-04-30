@@ -107,12 +107,7 @@ Feature: Consultar Campos em Resumo
 #  Obs.: Apresentar bandeira com total ainda que o total seja zero.
 #
 #
-#QScenario: Consultar  Botão Ocultar Valores
-#
-#    Given Usuário está Agenda de recebimentos por UR
-#    When clica no Botão ocultar valores
-#    Then deve ocultar todos os valores da seção RESUMO desta página (TOTALIZADORES)
-#
+
 #
 #QScenario: Consultar  Botão Período
 #

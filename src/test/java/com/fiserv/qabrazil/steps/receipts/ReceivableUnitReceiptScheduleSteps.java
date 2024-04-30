@@ -93,10 +93,15 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         assumeThat(receiptBatches.getCount() >= 1).isTrue();
     }
 
+    @Given("Usuário clicou em uma linha de recebimento")
+    public void userClickBatch() {
+        pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total").firstOf().click();
+    }
+
     @Given("usuário clicou sobre um lote \\(bandeira e produto) da listagem apresentada")
     @When("usuário clica sobre um lote \\(bandeira e produto) da listagem apresentada")
     public void userClicksReceiptBatchInThePresentedList() {
-        pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total").firstOf().click();
+        pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total").firstOfRightNow().click();
         selectBrandAndNavigateToDetail();
     }
 
@@ -130,7 +135,7 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
     private void selectBrandAndNavigateToDetail() {
         PageField buttonReceiptBatch = pageField.from("Agenda de Recebimentos por UR - Unidade de Recebível Registrada");
         waitUntilTrue(() -> buttonReceiptBatch.allVisiblePageField().findAny().isPresent());
-        buttonReceiptBatch.firstOf().click();
+        buttonReceiptBatch.firstOfRightNow().click();
     }
 
     @Given("usuário clicou sobre o lote {int} \\(bandeira e produto) da listagem apresentada")

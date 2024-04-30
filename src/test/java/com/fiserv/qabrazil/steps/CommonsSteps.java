@@ -76,6 +76,14 @@ public class CommonsSteps {
         assertEquals(expectedText, textFound);
     }
 
+    @Then("Usuário verá em todos os {pageField} o mesmo valor/texto/rótulo {string}")
+    public void matchValueForAllFields(PageField pageField, String expectedText) {
+        List<String> textsFound = pageField.getAllAsText();
+        for(String textFound: textsFound) {
+            assertEquals(expectedText, textFound);
+        }
+    }
+
     @Then("Usuário não verá nenhum {pageField}")
     public void notVisible(PageField pageField) {
         assertFalse("%s não deveria ser visível".formatted(pageField.getDisplayName()),
