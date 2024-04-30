@@ -19,11 +19,11 @@ Feature: Contratacao
     And aceito os termos e condicoes
     Then a habilitacao Pix sera concluida com sucesso
     Examples:
-      | EC  |  Perfil                | Hierarquia | Chave Pix | Status Serpro | POS |
-      | EC1 |  Master                | Matriz     | Hash      | OK            | OK  |
-      | EC2 |  Assitente de Operador | Filho      | Email     | OK            | OK  |
-      | EC3 |  Master                | Neto       | CNPJ      | OK            | OK  |
-      | EC4 |  Assitente de Operador | Matriz     | Celular   | OK            | OK  |
+      | EC  | Perfil                | Hierarquia | Chave Pix | Status Serpro | POS |
+      | EC1 | Master                | Matriz     | Hash      | OK            | OK  |
+      | EC2 | Assitente de Operador | Filho      | Email     | OK            | OK  |
+      | EC3 | Master                | Neto       | CNPJ      | OK            | OK  |
+      | EC4 | Assitente de Operador | Matriz     | Celular   | OK            | OK  |
 
   @TestCaseKey=SMP-T347
   Scenario Outline: Contratacao de Pix no Portal do Cliente Com Perfil inelegivel
@@ -40,7 +40,6 @@ Feature: Contratacao
       | EC1 | Assitente de Consulta | Matriz     | OK     | OK  |
       | EC2 | Operador com F        | Filho      | OK     | OK  |
       | EC3 | Operador sem F        | Neto       | OK     | OK  |
-
 
   @TestCaseKey=SMP-T340
   Scenario: Contratacao de Pix no Portal do Cliente elegível Com Perfil Serpro NOK e POS OK
@@ -64,10 +63,11 @@ Feature: Contratacao
     Then recebo mensagem "A Chave Pix informada não corresponde a um domicílio bancário válido. Tente novamente com outra Chave Pix."
     #verificar mensagem de erro
     Examples:
-      | EC  |  Perfil             | Hierarquia | Chave Pix          | Serpro | POS |
-      | EC1 |  Master             | Matriz     | Outra titularidade | OK     | OK  |
-      | EC2 |  Assitente Operador | Filho      | Chave Invalida     | OK     | OK  |
+      | EC  | Perfil             | Hierarquia | Chave Pix          | Serpro | POS |
+      | EC1 | Master             | Matriz     | Outra titularidade | OK     | OK  |
+      | EC2 | Assitente Operador | Filho      | Chave Invalida     | OK     | OK  |
 
+  @TestCaseKey=SMP-T351
   Scenario: Habilitar Pix com Hierarquia Filho 1 e validar que o perfil Matriz não entrem no fluxo de contratação
     Given acesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso
@@ -75,6 +75,7 @@ Feature: Contratacao
     And acessar o menu Conta Pix
     Then não deve entrar no fluxo de contratação de Conta Pix
 
+  @TestCaseKey=SMP-T353
   Scenario: Habilitar Pix com Hierarquia Filho 1 e validar que o perfil Filho 2 não entrem no fluxo de contratação
     Given acesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso
@@ -82,6 +83,7 @@ Feature: Contratacao
     And acessar o menu Conta Pix
     Then não deve entrar no fluxo de contratação de Conta Pix
 
+  @TestCaseKey=SMP-T352
   Scenario: Contratacao de Pix no Portal do Cliente com chave Pix valida Serpro Ok e POS OK - Possui conta na Software Express
     # Testes do bloco 3 (Contratação)
     Given que tenho EC "Master"
@@ -94,3 +96,4 @@ Feature: Contratacao
     And aceito os termos e condicoes
     Then a habilitacao Pix sera concluida com sucesso
     And os dados da Conta Pix serão as mesmos da conta da Software Express
+
