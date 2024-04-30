@@ -19,11 +19,11 @@ Feature: Contratacao
     And aceito os termos e condicoes
     Then a habilitacao Pix sera concluida com sucesso
     Examples:
-      | EC  |  | Perfil                | Hierarquia | Chave Pix | Status Serpro | POS |
-      | EC1 |  | Master                | Matriz     | Hash      | OK            | OK  |
-      | EC2 |  | Assitente de Operador | Filho      | Email     | OK            | OK  |
-      | EC3 |  | Master                | Neto       | CNPJ      | OK            | OK  |
-      | EC4 |  | Assitente de Operador | Matriz     | Celular   | OK            | OK  |
+      | EC  |  Perfil                | Hierarquia | Chave Pix | Status Serpro | POS |
+      | EC1 |  Master                | Matriz     | Hash      | OK            | OK  |
+      | EC2 |  Assitente de Operador | Filho      | Email     | OK            | OK  |
+      | EC3 |  Master                | Neto       | CNPJ      | OK            | OK  |
+      | EC4 |  Assitente de Operador | Matriz     | Celular   | OK            | OK  |
 
   @TestCaseKey=SMP-T347
   Scenario Outline: Contratacao de Pix no Portal do Cliente Com Perfil inelegivel
