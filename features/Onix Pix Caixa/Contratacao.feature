@@ -64,9 +64,9 @@ Feature: Contratacao
     Then recebo mensagem "A Chave Pix informada não corresponde a um domicílio bancário válido. Tente novamente com outra Chave Pix."
     #verificar mensagem de erro
     Examples:
-      | EC  |  | Perfil             | Hierarquia | Chave Pix          | Serpro | POS |
-      | EC1 |  | Master             | Matriz     | Outra titularidade | OK     | OK  |
-      | EC2 |  | Assitente Operador | Filho      | Chave Invalida     | OK     | OK  |
+      | EC  |  Perfil             | Hierarquia | Chave Pix          | Serpro | POS |
+      | EC1 |  Master             | Matriz     | Outra titularidade | OK     | OK  |
+      | EC2 |  Assitente Operador | Filho      | Chave Invalida     | OK     | OK  |
 
   Scenario: Habilitar Pix com Hierarquia Filho 1 e validar que o perfil Matriz não entrem no fluxo de contratação
     Given acesse o Portal com EC com o Perfil "Filho 1"
