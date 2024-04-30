@@ -45,5 +45,5 @@ Feature: Transacao Pix via POS
     When realizo uma transação de Pix via POS com "Filho 2"
     Then a transacao é exibida com sucesso no Relatorio de Vendas no menu Conta Pix
 
-#Transação PIX sera feito pela Api e pelo POS fisico
-#
+
+
