@@ -401,6 +401,13 @@ public class TestIdsConfig {
 
             entry("Agenda de Recebimentos por UR - card Totais líquidos por bandeira", "[data-block='UnidadeRecebivel.ValorPagoTotalLiquidoPorProduto']"),
             entry("Agenda de Recebimentos por UR - Totais - sem valores", "[data-block='UnidadeRecebivel.ValorPagoTotalLiquidoPorProduto'] .margin-left-base"),
+            entry("Agenda de Recebimentos por UR - gráfico - tooltip", ".highcharts-tooltip text"),
+            entry("Agenda de Recebimentos por UR - gráfico - barra Mastercard", "//*[local-name()='rect'][contains(@class,'highcharts-point')][contains(@aria-label,'Totais líquidos por produto')][contains(@aria-label,'Mastercard')]"),
+            entry("Agenda de Recebimentos por UR - gráfico - barra ELO", "//*[local-name()='rect'][contains(@class,'highcharts-point')][contains(@aria-label,'Totais líquidos por produto')][contains(@aria-label,'ELO')]"),
+            entry("Agenda de Recebimentos por UR - gráfico - barra Visa", "//*[local-name()='rect'][contains(@class,'highcharts-point')][contains(@aria-label,'Totais líquidos por produto')][contains(@aria-label,'Visa')]"),
+            entry("Agenda de Recebimentos por UR - gráfico - barra Hipercard", "//*[local-name()='rect'][contains(@class,'highcharts-point')][contains(@aria-label,'Totais líquidos por produto')][contains(@aria-label,'Hipercard')]"),
+            entry("Agenda de Recebimentos por UR - gráfico - barra Amex", "//*[local-name()='rect'][contains(@class,'highcharts-point')][contains(@aria-label,'Totais líquidos por produto')][contains(@aria-label,'Amex')]"),
+            entry("Agenda de Recebimentos por UR - gráfico - barra Cabal", "//*[local-name()='rect'][contains(@class,'highcharts-point')][contains(@aria-label,'Totais líquidos por produto')][contains(@aria-label,'Cabal')]"),
             entry("Agenda de Recebimentos por UR - legenda gráfico Totais - cor ELO", "//*[local-name()='text'][starts-with(text(),'ELO')]/../*[local-name()='rect']"),
             entry("Agenda de Recebimentos por UR - legenda gráfico Totais - cor Visa", "//*[local-name()='text'][starts-with(text(),'Visa')]/../*[local-name()='rect']"),
             entry("Agenda de Recebimentos por UR - legenda gráfico Totais - cor Hipercard", "//*[local-name()='text'][starts-with(text(),'Hipercard')]/../*[local-name()='rect']"),

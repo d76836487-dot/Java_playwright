@@ -76,14 +76,19 @@ Feature: Consultar Campos em Resumo
       | Amex       | azul claro  | rgb(46, 177, 229) |
       | Cabal      | azul escuro | rgb(13, 92, 147)  |
 
-  #QScenario: Consultar Componente “gráfico”
-  #
-  #    Given Usuário está logado em Agenda de recebimentos por UR
-  #    When Usuário passa mouse por cima do Componente “gráfico” em Totais líquidos por bandeira
-  #    Then deve ser apresentado um tooltip informando qual a bandeira e o valor que se refere aquela cor. A ordem de apresentação e coloração deve ser:  Mastercard (laranja), Elo (amarelo), Visa (roxo), Hipercard (Vermelho), American Express (azul claro) e Cabal (azul escuro).
-  #
-  #
-  #
+  Scenario: Consultar Componente “gráfico”
+    Given Usuário acessou a página de Agenda de Recebimentos por UR
+    And houver dados no Campo Totais líquidos por bandeira
+    When Usuário passa mouse por cima do Componente “gráfico” em Totais líquidos por bandeira
+    Then deve ser apresentado um tooltip informando qual a bandeira e o valor que se refere aquela cor. A ordem de apresentação e coloração deve ser:
+      | bandeira   | coloração   | rgb               |
+      | Mastercard | laranja     | rgb(255, 95, 0)   |
+      | ELO        | amarelo     | rgb(255, 198, 34) |
+      | Visa       | roxo        | rgb(26, 31, 113)  |
+      | Hipercard  | Vermelho    | rgb(184, 33, 38)  |
+      | Amex       | azul claro  | rgb(46, 177, 229) |
+      | Cabal      | azul escuro | rgb(13, 92, 147)  |
+
   @TestCaseKey=SMP-T334
   Scenario: Consultar Componente “gráfico” sem valores
     Given Usuário acessou a página de Agenda de Recebimentos por UR
