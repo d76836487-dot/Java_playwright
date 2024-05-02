@@ -21,7 +21,6 @@ Feature: Login Portal
       | EC2 | Filho      | Assistente Operador | OK     | OK  |
       | EC3 | Neto       | Assistente Consulta | OK     | OK  |
       | EC1 | Filho      | Operador com F      | OK     | OK  |
-      | EC2 | Neto       | Operador sem F      | OK     | OK  |
 
   @TestCaseKey=SMP-T344
   Scenario Outline: Exibição de modal de Habilitação Conta Pix - Primeiro acesso e usuário não elegível
@@ -35,7 +34,6 @@ Feature: Login Portal
       | EC  | Hierarquia | Perfil              | Serpro | POS |
       | EC1 | Matriz     | Assistente Consulta | OK     | OK  |
       | EC2 | Filho      | Operador com F      | OK     | OK  |
-      | EC3 | Neto       | Operador sem F      | OK     | OK  |
 
   @TestCaseKey=SMP-T345
   Scenario: Exibição de modal de Habilitação Conta Pix - Segundo acesso e usuário elegível

@@ -37,7 +37,7 @@ Feature: Transacao Pix via POS
     Then a transação é exibida no Relatório de Vendas no menu Conta Pix
 #Transação PIX sera feito pela Api e pelo POS fisico
 
-  Scenario: Habilitar Pix com Hierarquia Filho 1 e realizar transação Pix com Hierarquia Filho 2
+  Scenario:
     Given cesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso
     When realizo uma transação de Pix via POS com "Filho 2"

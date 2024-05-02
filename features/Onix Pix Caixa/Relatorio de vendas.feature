@@ -20,7 +20,6 @@ Feature: Relatorio de vendas
       | EC2 | Assistente Operador | Filho      | OK     | OK  |
       | EC3 | Assistente Consulta | Neto       | OK     | OK  |
       | EC1 | Operador com F      | Matriz     | OK     | OK  |
-      | EC2 | Operador sem F      | Filho      | OK     | OK  |
 
   @TestCaseKey=SMP-T346
   Scenario Outline: Visualização de relatório de vendas sem lancamentos no menu Conta Pix

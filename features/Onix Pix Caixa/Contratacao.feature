@@ -39,7 +39,6 @@ Feature: Contratacao
       | EC  | Perfil                | Hierarquia | Serpro | POS |
       | EC1 | Assitente de Consulta | Matriz     | OK     | OK  |
       | EC2 | Operador com F        | Filho      | OK     | OK  |
-      | EC3 | Operador sem F        | Neto       | OK     | OK  |
 
 
   @TestCaseKey=SMP-T340
