@@ -43,3 +43,4 @@ Feature: Relatorio de vendas
     Then serão exibidas as transações de vendas no relatório de vendas
     And e será possível visualizar a pagina seguinte do relatório
 
+#

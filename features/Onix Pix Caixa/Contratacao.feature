@@ -84,7 +84,6 @@ Feature: Contratacao
 
   @TestCaseKey=SMP-T352
   Scenario: Contratacao de Pix no Portal do Cliente com chave Pix valida Serpro Ok e POS OK - Possui conta na Software Express
-    # Testes do bloco 3 (Contratação)
     Given que tenho EC "Master"
     And esteja cadastrado na Serpro
     And possua CP (POS) ativo
