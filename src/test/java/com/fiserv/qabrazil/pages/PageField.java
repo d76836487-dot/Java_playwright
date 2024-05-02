@@ -56,6 +56,20 @@ public class PageField {
         public PageField sectionWithPageField(String section, String displayName) {
             return from(section + " - " + displayName);
         }
+
+        public PageField anyOf(List<PageField> pageFields) {
+            String displayName = pageFields.stream()
+                    .map(pf -> pf.displayName)
+                    .collect(Collectors.joining(" or "));
+            String selector = pageFields.stream()
+                    .map(pf -> pf.selector)
+                    .collect(Collectors.joining(" or "));
+            Locator locator = pageFields.stream()
+                    .map(pf -> pf.locator)
+                    .reduce(Locator::or)
+                    .orElseThrow();
+            return new PageField(displayName, context, selector, locator);
+        }
     }
 
     private final String displayName;
@@ -92,6 +106,11 @@ public class PageField {
     }
 
     public PageField firstOf() {
+        waitUntilTrue(() -> allVisiblePageField().findAny().isPresent());
+        return firstOfRightNow();
+    }
+
+    public PageField firstOfRightNow() {
         return allVisiblePageField().findFirst().orElseThrow(() -> new RuntimeException("Couldn't find any of %s".formatted(selector)));
     }
 
@@ -198,6 +217,11 @@ public class PageField {
         locator.last().hover();
     }
 
+    public void hoverOverFirst() {
+        highlightIfPossible();
+        locator.first().hover();
+    }
+
     public void hoverAway() {
         locator.last().page().mouse().move(0, 0);
     }
@@ -268,6 +292,10 @@ public class PageField {
 
     public boolean attributeDataTestidContains(String text) {
         return locator.getAttribute("data-testid").contains(text);
+    }
+
+    public String attributeAsString(String attributeName) {
+        return locator.getAttribute(attributeName);
     }
 
     @Override

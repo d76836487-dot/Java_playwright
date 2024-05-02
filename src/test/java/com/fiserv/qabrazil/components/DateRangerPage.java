@@ -20,7 +20,13 @@ public class DateRangerPage extends BasePage {
     public void userSelectsYesterday() {
         bandaidSMP57();
         pageField.from("Date ranger - Image").click();
-        pageField.from("Date ranger - Ontem").click();
+        PageField yesterdayButton = pageField.from("Date ranger - Ontem");
+        if (yesterdayButton.elementIsVisibleRightNow()) {
+            yesterdayButton.click();
+        } else {
+            setDateInCalendar(-1, "Date ranger - Dia inicial Digitado");
+            setDateInCalendar(-1, "Date ranger - Dia final Digitado");
+        }
     }
 
     public void userSelectsThisMonth() {

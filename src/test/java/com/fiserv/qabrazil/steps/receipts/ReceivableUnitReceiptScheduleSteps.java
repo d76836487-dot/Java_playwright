@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.pages.PageField.assertThat;
@@ -92,10 +93,15 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         assumeThat(receiptBatches.getCount() >= 1).isTrue();
     }
 
+    @Given("Usuário clicou em uma linha de recebimento")
+    public void userClickBatch() {
+        pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total").firstOf().click();
+    }
+
     @Given("usuário clicou sobre um lote \\(bandeira e produto) da listagem apresentada")
     @When("usuário clica sobre um lote \\(bandeira e produto) da listagem apresentada")
     public void userClicksReceiptBatchInThePresentedList() {
-        pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total").firstOf().click();
+        pageField.from("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total").firstOfRightNow().click();
         selectBrandAndNavigateToDetail();
     }
 
@@ -129,7 +135,7 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
     private void selectBrandAndNavigateToDetail() {
         PageField buttonReceiptBatch = pageField.from("Agenda de Recebimentos por UR - Unidade de Recebível Registrada");
         waitUntilTrue(() -> buttonReceiptBatch.allVisiblePageField().findAny().isPresent());
-        buttonReceiptBatch.firstOf().click();
+        buttonReceiptBatch.firstOfRightNow().click();
     }
 
     @Given("usuário clicou sobre o lote {int} \\(bandeira e produto) da listagem apresentada")
@@ -187,11 +193,11 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
                 total, netValue + paidValue, 0.001);
     }
 
-    @When("não houver dados no Campo Totais líquidos por bandeira")
-    public void thereIsNoDataForTotalsPerBrand() {
+    @When("{shakespeareBoolean} dados no Campo Totais líquidos por bandeira")
+    public void totalsPerBrandVisibility(boolean value) {
         PageField noValuesMessage = pageField.from("Agenda de Recebimentos por UR - Totais - sem valores");
         assumeThat(noValuesMessage.elementIsVisible())
-                .isTrue();
+                .isEqualTo(!value);
     }
 
     @Then("deve ser apresentado a frase {string}")
@@ -207,5 +213,51 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         for (PageField field : allFields) {
             assertThat(field).containsText(Pattern.compile("R\\$ 0,00$"));
         }
+    }
+
+    @When("Usuário passa mouse por cima do Componente “gráfico” em Totais líquidos por bandeira")
+    public void hoversOverGraphComponent() {
+        pageField.anyOf(pageField.allWithPrefix("Agenda de Recebimentos por UR - gráfico - barra")).hoverOverFirst();
+    }
+
+    @Then("deve ser apresentado um tooltip informando qual a bandeira e o valor que se refere aquela cor. A ordem de apresentação e coloração deve ser:")
+    public void shouldShowTooltipAboutWhichBrandAndValueEachColorCorresponds(DataTable table) {
+        PageField tooltip = pageField.from("Agenda de Recebimentos por UR - gráfico - tooltip");
+        assertThat(tooltip).isVisible();
+        assertThat(tooltip.getAsText())
+                .withFailMessage("Graph tooltip doesn't match ")
+                .matches("(Mastercard|ELO|Visa|Hipercard|Amex|Cabal) R\\$ [\\d.]+,\\d{2}");
+
+        List<String> brandsOrder = table.asMaps().stream()
+                .map(map -> map.get("bandeira"))
+                .toList();
+
+        List<PageField> bars = pageField.anyOf(pageField.allWithPrefix("Agenda de Recebimentos por UR - gráfico - barra")).getAllPageField();
+        List<String> brands = bars.stream()
+                .map(pf -> pf.attributeAsString("aria-label"))
+                .map(ReceivableUnitReceiptScheduleSteps::extractBrand)
+                .toList();
+
+        assertThat(brands)
+                .containsExactlyElementsOf(brandsOrder);
+
+        List<String> colors = table.asMaps().stream()
+                .map(map -> map.get("rgb"))
+                .toList();
+
+        for (int i = 0; i < colors.size(); i++) {
+            String color = colors.get(i);
+            assertThat(bars.get(i))
+                    .hasCSS("fill", color);
+        }
+    }
+
+    private static String extractBrand(String graphLabel) {
+        Pattern p = Pattern.compile("^Totais líquidos por produto, [\\d,.]+ (Mastercard|ELO|Visa|Hipercard|Amex|Cabal) R\\$ [\\d,.]+$");
+        Matcher m = p.matcher(graphLabel);
+        if (!m.matches()) {
+            throw new IllegalArgumentException("Could not extract brand from \"" + graphLabel + "\"");
+        }
+        return m.group(1);
     }
 }

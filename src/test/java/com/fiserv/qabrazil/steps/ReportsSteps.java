@@ -501,7 +501,7 @@ public class ReportsSteps extends BaseSteps {
 
     @When("usuário filtra por uma data")
     public void userFiltersByADateRange() {
-        String dateToFilter = pageField.from("Relatórios - Item - Período").firstOf().getAsText();
+        String dateToFilter = pageField.from("Relatórios - Item - Período").firstOfRightNow().getAsText();
 
         pageField.from("Filtros de relatório - Accordion Período").click();
         pageField.from("Filtros de relatório - Item Período").click();

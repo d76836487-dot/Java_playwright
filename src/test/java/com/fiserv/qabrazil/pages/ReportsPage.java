@@ -204,11 +204,11 @@ public class ReportsPage extends CheckedBasePage {
     }
 
     public ReportDto getFirstReportInTable() {
-        PageField cellFileName = pageField.from("Relatórios - Item - Nome Arquivo").firstOf();
-        PageField cellDocument = pageField.from("Relatórios - Item - Documento").firstOf();
-        PageField cellReportType = pageField.from("Relatórios - Item - Tipo Relatório").firstOf();
-        PageField cellRequestedIn = pageField.from("Relatórios - Item - Solicitado Em").firstOf();
-        PageField cellReportRange = pageField.from("Relatórios - Item - Período").firstOf();
+        PageField cellFileName = pageField.from("Relatórios - Item - Nome Arquivo").firstOfRightNow();
+        PageField cellDocument = pageField.from("Relatórios - Item - Documento").firstOfRightNow();
+        PageField cellReportType = pageField.from("Relatórios - Item - Tipo Relatório").firstOfRightNow();
+        PageField cellRequestedIn = pageField.from("Relatórios - Item - Solicitado Em").firstOfRightNow();
+        PageField cellReportRange = pageField.from("Relatórios - Item - Período").firstOfRightNow();
 
         return new ReportDto()
                 .setName(cellFileName.getAsText())
