@@ -36,6 +36,7 @@ public class TestIdsConfig {
             entry("Filter - Produtos (0) - Benefícios", "generic-filter-check-produto-Benefícios"),
             entry("Filter - Produtos (0) - Mutiplo", "generic-filter-check-produto-Multiplo"),
 
+            entry("Filter - Bandeiras (0)", "generic-filter-div-bandeira-.*"),
             entry("Filter - Bandeiras (0) - Mastercard", "generic-filter-div-bandeira-Mastercard"),
             entry("Filter - Bandeiras (0) - Visa", "generic-filter-div-bandeira-Visa"),
 
@@ -420,6 +421,7 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - legenda gráfico Totais - texto Mastercard", "//*[local-name()='text'][starts-with(text(),'Mastercard')]"),
             entry("Agenda de Recebimentos por UR - legenda gráfico Totais - texto Amex", "//*[local-name()='text'][starts-with(text(),'Amex')]"),
             entry("Agenda de Recebimentos por UR - legenda gráfico Totais - texto Cabal", "//*[local-name()='text'][starts-with(text(),'Cabal')]"),
+            entry("Agenda de Recebimentos por UR - Botão Filtrar", "(//span[text()='Filtros'])[last()]"),
 
             entry("Detalhe da UR - Resumo - Título", "//span[starts-with(text(), 'Resumo')]"),
             entry("Detalhe da UR - Botão Exportar", "//button[contains(@class, 'btn-primary')][//span[text()='Exportar']]"),

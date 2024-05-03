@@ -66,6 +66,7 @@ public class LoginPage extends BasePage {
         selectECOrDtcoPage.selectAllDocumentsIfAvailable();
         startMonitoringRequests(page, contractConfig);
         headerComponent.selectShowValuesButton(true);
+        closeAllPopups();
     }
 
     public synchronized void loginWithOneRetry() {

@@ -10,6 +10,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static com.fiserv.qabrazil.pages.PageField.assertThat;
@@ -94,6 +95,15 @@ public class CommonsSteps {
     public void matchValuesPerFields(PageField pageField, String[] expectedTexts) {
         List<String> valuesFound = pageField.getAllAsText();
         assertThat(valuesFound).containsExactly(expectedTexts);
+    }
+
+    @Then("Usuário verá em {pageField} as opções abaixo somente")
+    public void userWillOnlySeeInFiltersTheOptions(String filter, String allOptions) {
+        List<String> expectedOptions = Arrays.stream(allOptions.split(","))
+                .map(String::trim)
+                .sorted()
+                .toList();
+        commonsPage.allOptionsArePresentAndExclusive(filter, expectedOptions);
     }
 
     @Then("usuário verá em {pageField} valor maior que {double}")
@@ -192,5 +202,14 @@ public class CommonsSteps {
     @Then("Usuário visualizará o campo {pageFieldWithSection}")
     public void pageFieldIsVisible(PageField pageField) {
         assertThat(pageField).isVisible();
+    }
+
+    @Then("Usuário verá em {pageField} na cor primária {string}")
+    public void userWillSeeColor(PageField allPageField, String expectedColor) {
+        for(PageField pageField: allPageField.getAllVisiblePageField()) {
+            String actualPrimaryColor = commonsPage.getPrimaryColor(pageField);
+
+            assertEquals(expectedColor, actualPrimaryColor);
+        }
     }
 }

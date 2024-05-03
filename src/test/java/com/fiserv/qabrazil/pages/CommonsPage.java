@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
 
 @ScenarioComponent
 public class CommonsPage extends BasePage {
@@ -69,5 +70,18 @@ public class CommonsPage extends BasePage {
     public void scrollToBottom() {
         Integer result = (Integer) page.evaluate("document.body.scrollHeight");
         page.mouse().wheel(0, result);
+    }
+
+    public void allOptionsArePresentAndExclusive(String filter, List<String> expectedOptions) {
+        List<String> actualOptions = pageField.from(filter).getAllAsText().stream()
+                .sorted()
+                .toList();
+
+        assertArrayEquals(expectedOptions.toArray(String[]::new), actualOptions.toArray(String[]::new));
+    }
+
+    public String getPrimaryColor(PageField pageField) {
+        pageField.highlightIfPossible();
+        return (String) pageField.getLocator().evaluate("node => window.getComputedStyle(node).getPropertyValue('color')");
     }
 }

@@ -36,3 +36,32 @@ Feature: Agenda de recebimentos por UR
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total de deduções" o mesmo valor "- R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total ajustes crédito" o mesmo valor "R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total contratos" o mesmo valor "R$ ••••"
+
+  Scenario Outline: Consultar Botão Filtros
+    Given usuário clicou no "Agenda de Recebimentos por UR - Botão Filtrar"
+    And usuário clica no "Bandeiras (0)" em "Filter - Accordion"
+    Then Usuário verá em "Filter - Bandeiras (0)" as opções abaixo somente
+    """
+    Mastercard Débito, Mastercard Crédito, Visa Débito, Visa Crédito, ELO Débito, ELO Crédito,
+    Cabal Débito, Cabal Crédito, Hipercard Crédito, Amex Crédito
+    """
+    And Usuário verá em "Filter - Bandeiras (0)" na cor primária "<cor>"
+    @sicredi
+    Examples:
+      | cor     |
+      | rgb(63, 161, 10) |
+
+    @azulzinha
+    Examples:
+      | cor     |
+      | rgb(0, 102, 179) |
+
+    @bin007 @bin003
+    Examples:
+      | cor     |
+      | rgb(255, 102, 0) |
+
+    @afinz
+    Examples:
+      | cor     |
+      | rgb(0, 198, 204) |
