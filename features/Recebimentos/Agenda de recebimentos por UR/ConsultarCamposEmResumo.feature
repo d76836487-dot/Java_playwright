@@ -96,17 +96,40 @@ Feature: Consultar Campos em Resumo
     Then deve ser apresentado a frase "Sem informações para detalhamento"
     And todas as bandeiras deve vir com valores zerados
 
-#
-#
-#
-#QScenario: Consultar Detalhe totais por bandeira e produto
-#
-#    Given Usuário está logado em Agenda de recebimentos por UR
-#    When clica no botão Detalhe totais por bandeira e produto em Totais líquidos por bandeira
-#    Then abrira um modal com:  Totais líquidos por bandeira e produtos, Bolinha na cor do Cartão, Logo do Cartão e Nome do Cartão, Total em Crédito, Total em Débito, e o Botões, X acima e fechar na cor da Instituição abaixo
-#  Obs.: Apresentar bandeira com total ainda que o total seja zero.
-#
-#
+  Scenario Outline: Consultar Detalhe totais por bandeira e produto
+
+  Obs.: Apresentar bandeira com total ainda que o total seja zero.
+
+    Given Usuário acessou a página de Agenda de Recebimentos por UR
+    When usuário clica no "Botão Detalhe totais por bandeira" em "Agenda de Recebimentos por UR"
+    Then abrira um modal com: Totais líquidos por bandeira e produtos, Bolinha na cor do Cartão, Logo do Cartão e Nome do Cartão, Total em Crédito, Total em Débito, e o Botões, X acima e fechar na "<cor da Instituição>" abaixo
+      | bandeira   | colorações  | rgb               | logo                     |
+      | Mastercard | laranja     | rgb(255, 95, 0)   | BandeiraMastercard       |
+      | ELO        | amarelo     | rgb(255, 198, 34) | BandeiraElo              |
+      | Visa       | roxo        | rgb(26, 31, 113)  | visalogo_logotyp_us1_old |
+      | Hipercard  | Vermelho    | rgb(184, 33, 38)  | BandeiraHipercard        |
+      | Amex       | azul claro  | rgb(46, 177, 229) | BandeiraAmex             |
+      | Cabal      | azul escuro | rgb(13, 92, 147)  | BandeiraCabal            |
+
+    @afinz
+    Examples:
+      | cor da Instituição |
+      | rgb(0, 198, 204) |
+
+    @azulzinha
+    Examples:
+      | cor da Instituição |
+      | rgb(247, 148, 30) |
+
+    @bin003 @bin007
+    Examples:
+      | cor da Instituição |
+      | rgb(255, 102, 0) |
+
+    @sicredi
+    Examples:
+      | cor da Instituição |
+      | rgb(63, 161, 16) |
 
 #
 #QScenario: Consultar  Botão Período

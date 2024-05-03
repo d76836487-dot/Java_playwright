@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
+import static java.util.stream.Collectors.toMap;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.assertEquals;
@@ -250,6 +251,15 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
             assertThat(bars.get(i))
                     .hasCSS("fill", color);
         }
+    }
+
+    @Then("abrira um modal com: Totais líquidos por bandeira e produtos, Bolinha na cor do Cartão, Logo do Cartão e Nome do Cartão, Total em Crédito, Total em Débito, e o Botões, X acima e fechar na {string} abaixo")
+    public void modalOpens(String color, DataTable dataTable) {
+        Map<String, String> balls = dataTable.asMaps().stream()
+                        .collect(toMap(map -> map.get("bandeira"), map -> map.get("rgb")));
+        Map<String, String> logos = dataTable.asMaps().stream()
+                        .collect(toMap(map -> map.get("bandeira"), map -> map.get("logo")));
+        receivableUnitReceiptSchedulePage.validateModal(balls, logos, color);
     }
 
     private static String extractBrand(String graphLabel) {
