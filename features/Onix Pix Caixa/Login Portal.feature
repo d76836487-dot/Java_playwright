@@ -20,7 +20,7 @@ Feature: Login Portal
       | EC1 | Matriz     | Master              | OK     | OK  |
       | EC2 | Filho      | Assistente Operador | OK     | OK  |
       | EC3 | Neto       | Assistente Consulta | OK     | OK  |
-      | EC1 | Filho      | Operador com F      | OK     | OK  |
+
 
   @TestCaseKey=SMP-T344
   Scenario Outline: Exibição de modal de Habilitação Conta Pix - Primeiro acesso e usuário não elegível
