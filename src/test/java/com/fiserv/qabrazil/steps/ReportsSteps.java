@@ -36,6 +36,7 @@ import java.util.regex.Pattern;
 
 import static com.fiserv.automation.api.util.DateUtil.toLocalDate;
 import static com.fiserv.qabrazil.steps.home.HomeCustomizeModalSteps.csv;
+import static com.fiserv.qabrazil.util.ExcelFormatValidation.validateFormatForCellsInTable;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.*;
@@ -535,34 +536,7 @@ public class ReportsSteps extends BaseSteps {
     public void valuesOfColumnsInFileWillHaveSameFormat() throws Exception {
         ExcelWrapper excel = reportsPage.getDownloadAsExcel();
 
-        String[] headers = excel.getTableHeaderCells();
-
-        for(String header: headers) {
-            if(header.toLowerCase().contains("data")) {
-                validateForDateColumn(header, excel);
-            }
-
-            if(header.toLowerCase().contains("valor")){
-                validateForCurrencyColumn(header, excel);
-            }
-
-            List<String> formatsDistinct = excel.getColumnsFormatForNotEmptyCells(header).stream().distinct().toList();
-
-            assertTrue("Mais de um formato para a coluna %s. \nEncontrado: %s".formatted(header, formatsDistinct),
-                    formatsDistinct.size() <= 1);
-        }
-    }
-
-    private static void validateForCurrencyColumn(String header, ExcelWrapper excel) {
-        String expectedFormat = "\"R$\"\\ #,##0.00";
-        assertTrue("As células da coluna %s deveriam ter a formatação %s".formatted(header, expectedFormat),
-                excel.allFormatsMatchForColumn(header, value -> value.equals(expectedFormat)));
-    }
-
-    private static void validateForDateColumn(String header, ExcelWrapper excel) {
-        assertTrue("Coluna %s possui datas fora do padrão esperado".formatted(header),
-                excel.allValuesMatchForColumn(header, t -> DateUtil.isInFormat(t, "dd/MM/yyyy")
-                        || DateUtil.isInFormat(t, "dd/MM/yyyy 'às' HH:mm:ss")));
+        validateFormatForCellsInTable(excel);
     }
 
     private boolean isInTheFilteredDate(String[] dates) {

@@ -2,8 +2,6 @@ package com.fiserv.qabrazil.util;
 
 import org.apache.commons.lang3.StringUtils;
 import org.dhatim.fastexcel.reader.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,15 +14,13 @@ import java.util.stream.IntStream;
 
 public class ExcelWrapper implements AutoCloseable {
     public static final ExcelWrapper NULL = new ExcelWrapper();
-    private static final Logger log = LoggerFactory.getLogger(ExcelWrapper.class);
-
     private final InputStream inputStream;
     private final ReadableWorkbook workbook;
-    private final Sheet sheet;
-    private final int rowTableStart;
+    private Sheet sheet;
+    private int rowTableStart;
     private final String filename;
 
-    private final List<Row> rows;
+    private List<Row> rows;
 
     private ExcelWrapper() {
         inputStream = null;
@@ -169,7 +165,7 @@ public class ExcelWrapper implements AutoCloseable {
         return getCell(row.getRowNum() - 1, column);
     }
 
-    private Cell getCell(int row, int column) {
+    public Cell getCell(int row, int column) {
         if (cellDoesNotExist(row, column)) return null;
 
         return rows.get(row).getCell(column);
@@ -188,7 +184,7 @@ public class ExcelWrapper implements AutoCloseable {
                 && StringUtils.isNotEmpty(cell.getRawValue());
     }
 
-    private List<Cell> getColumnsCell(String columnName) {
+    public List<Cell> getColumnsCell(String columnName) {
         if (sheet == null) return Collections.emptyList();
 
         int col = getHeaderColumn(columnName);
@@ -204,7 +200,12 @@ public class ExcelWrapper implements AutoCloseable {
         return getColumnsCell(header).stream().map(Cell::getRawValue).allMatch(predicate);
     }
 
-    public boolean allFormatsMatchForColumn(String header, Predicate<String> predicate) {
-        return getColumnsCell(header).stream().map(Cell::getDataFormatString).allMatch(predicate);
+    public void goToSheet(String sheetName, String rowTableStartName) throws IOException {
+        sheet = workbook.findSheet(sheetName).orElse(null);
+        if (sheet == null) {
+            throw new RuntimeException("Não encontrei aba " + sheetName);
+        }
+        rows = sheet.read();
+        this.rowTableStart = lookForRowStartingWithValue(rowTableStartName, 0);
     }
 }

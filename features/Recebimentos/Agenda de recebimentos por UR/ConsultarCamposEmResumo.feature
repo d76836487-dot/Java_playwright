@@ -369,13 +369,6 @@ Feature: Consultar Campos em Resumo
 #
 #  Feature: Consultar Arquivos Excel / Detalhe da UR
 #
-#
-#QScenario: Consultar Arquivo Excel
-#
-#  Given Usuário já exportou o Arquivo Excel
-#  When Usuário abrir o Arquivo Excel
-#  Then Arquivo deve vir com Nome do arquivo, Relatório_Agenda de recebimentos por UR_ [data e hora de exportação], Todas as abas da página “Agenda de recebimentos por UR – Detalhe da UR”, (Resumo, Vendas vinculadas, Pagamentos, Créditos e deduções, Contratos)
-#
 #  Feature: Vendas Vinculadas / Detalhe da UR
 #
 #

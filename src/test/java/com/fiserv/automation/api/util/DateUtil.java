@@ -62,6 +62,13 @@ public class DateUtil {
         SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyyMMdd");
         return simpleFormat.format(cal.getTime());
     }
+    
+    public static String formattedDateAddMinute(int minutesToAdd, String dateFormat) {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MINUTE, minutesToAdd);
+        SimpleDateFormat simpleFormat = new SimpleDateFormat(dateFormat);
+        return simpleFormat.format(cal.getTime());
+    }
 
     public static LocalDateTime convertToDateTimeFromPage(String dateTimeFromPage) {
         String onlyNumbers = dateTimeFromPage.replaceAll("\\D", "");

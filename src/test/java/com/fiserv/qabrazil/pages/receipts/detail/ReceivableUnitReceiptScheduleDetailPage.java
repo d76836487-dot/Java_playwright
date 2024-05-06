@@ -29,7 +29,7 @@ public class ReceivableUnitReceiptScheduleDetailPage extends BasePage {
         download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
         return new ReceivableUnitReceiptScheduleDetailExportExcel(
-                new ExcelWrapper(download.createReadStream(), 0));
+                new ExcelWrapper(download.createReadStream(), 0), download.suggestedFilename());
 
     }
 

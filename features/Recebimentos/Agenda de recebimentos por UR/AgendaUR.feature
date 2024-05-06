@@ -48,20 +48,20 @@ Feature: Agenda de recebimentos por UR
     And Usuário verá em "Filter - Bandeiras (0)" na cor primária "<cor>"
     @sicredi
     Examples:
-      | cor     |
+      | cor              |
       | rgb(63, 161, 10) |
 
     @azulzinha
     Examples:
-      | cor     |
+      | cor              |
       | rgb(0, 102, 179) |
 
     @bin007 @bin003
     Examples:
-      | cor     |
+      | cor              |
       | rgb(255, 102, 0) |
 
     @afinz
     Examples:
-      | cor     |
+      | cor              |
       | rgb(0, 198, 204) |

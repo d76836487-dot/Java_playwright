@@ -83,3 +83,51 @@ Feature: Detalhe da UR
 #    When Clicar sobre um lote (bandeira e produto) da listagem apresentada
 #    And estiver na tela “Agenda de recebimentos por UR > Detalhe da UR”
 #    Then usuário visualizara as abas (Vendas vinculadas, Pagamentos, Créditos e deduções, Contratos)
+
+  Scenario: Nome das colunas do Arquivo Excel
+    Given usuário clicou sobre um lote (bandeira e produto) da listagem apresentada que tenha saldo negociável maior que zero
+    And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
+    And Todas as barras de carregamento sumiram
+    When Usuário clica em Exportar como Excel
+    Then Nome do arquivo será "Relatório_simplificado_Agenda_de_recebimentos_por_UR_" seguido de data e hora padrão "dd_MM_yyyy_HHmm"
+    And Terá campo com um dos valores ou formatações abaixo na aba Resumo
+      | campo                        | valor                                    | tipo validação |
+      | Bandeira                     | Mastercard,ELO,Visa,Hipercard,Amex,Cabal | csv            |
+      | Produto                      | Crédito,Débito                           | csv            |
+      | Valor total                  | valor monetário                          | formato        |
+      | Total atualizado de UR       | valor monetário                          | formato        |
+      | Valor pago                   | valor monetário                          | formato        |
+      | Total de deduções            | valor monetário                          | formato        |
+      | Total bruto                  | valor monetário                          | formato        |
+      | Total taxa MDR               | valor monetário                          | formato        |
+      | Total antecipação eventual   | valor monetário                          | formato        |
+      | Total antecipação automática | valor monetário                          | formato        |
+      | Total taxa de antecipação    | valor monetário                          | formato        |
+      | Total deduções               | valor monetário                          | formato        |
+      | Total ajustes crédito        | valor monetário                          | formato        |
+      | Total contratos              | valor monetário                          | formato        |
+    And Terá as colunas abaixo na aba "Vendas vinculadas" em Detalhe UR
+    """
+    Produto ,Bandeira,Data prevista de liquidação,Data da venda,Cód. de autorização,Tipo do Produto,Parcela,Valor bruto,
+    Valor bruto da parcela,Valor líquido,Valor da taxa,NSU,Canal,Terminal,Estabelecimento,Data efetiva de pagamento
+    """
+    And Os valores das colunas do excel em Detalhe UR baixado terão mesma formatação
+    And Terá as colunas abaixo na aba "Pagamentos" em Detalhe UR
+    """
+    Produto,Bandeira,Data prevista de liquidação,CPF/CNPJ do beneficiário,Data do pagamento, Valor ,Situação,
+    Domicílio bancário,CPF/CNPJ do títular ,Tipo de conta,Agência ,Conta
+    """
+    And Os valores das colunas do excel em Detalhe UR baixado terão mesma formatação
+    And Terá as colunas abaixo na aba "Créditos e Deduções" em Detalhe UR
+    """
+    Produto,Bandeira,Data prevista de liquidação,Tipo de evento,Data do evento,NSU,Order ID ,Valor,Valor da venda,
+    Valor líquido do cancelamento,Valor deduzido da UR,Código de autorização,UR de origem da venda,Data da UR de origem
+    """
+    And Os valores das colunas do excel em Detalhe UR baixado terão mesma formatação
+    And Terá as colunas abaixo na aba "Contratos" em Detalhe UR
+    """
+    Produto,Bandeira,Data prevista de liquidação,Situação,CPF/CNPJ do beneficiário,Razão Social do beneficiario ,
+    Identificador do contrato,Tipo de contrato,Prioridade de Contrato,Valor comprometido,Valor pago / a pagar,
+    Data do pagamento,Domicílio bancário,CPF/CNPJ do titular da conta,Tipo de conta,Agência,Conta
+    """
+    And Os valores das colunas do excel em Detalhe UR baixado terão mesma formatação
