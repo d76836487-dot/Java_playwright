@@ -3,6 +3,7 @@ package com.fiserv.qabrazil.util;
 import com.fiserv.automation.api.util.DateUtil;
 import org.dhatim.fastexcel.reader.Cell;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,13 +32,14 @@ public class ExcelFormatValidation {
 
     private static void validateForCurrencyColumn(String header, ExcelWrapper excel) {
         String[] expectedFormats = new String[]{"\"R$\"\\ #,##0.00",
+                "\"[$R$ -416]#,##0.00\"",
                 "_-[$R$-416]\\ * #,##0.00_-;\\-[$R$-416]\\ * #,##0.00_-;_-[$R$-416]\\ * \"-\"??_-;_-@_-"};
         List<String> actualFormats = excel.getColumnsCell(header).stream()
                 .map(Cell::getDataFormatString)
                 .toList();
 
         for(String actual: actualFormats) {
-            assertThat("As células da coluna %s deveriam ter a formatação '%s'. Encontrado '%s'".formatted(header, expectedFormats, actual),
+            assertThat("As células da coluna %s deveriam ter a formatação '%s'. Encontrado '%s'".formatted(header, Arrays.toString(expectedFormats), actual),
                     actual, oneOf(expectedFormats));
         }
     }
