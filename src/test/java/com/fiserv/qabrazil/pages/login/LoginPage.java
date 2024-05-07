@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.pages.login;
 
+import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.automation.mfa.MfaGenerator;
 import com.fiserv.automation.playwright.configuration.StorageState;
@@ -45,6 +46,9 @@ public class LoginPage extends BasePage {
     @Autowired
     MfaGenerator mfaGenerator;
 
+    @Autowired
+    private ApiUserDetailsService apiUserDetailsService;
+
     public boolean pageHasImageWith(String contract) {
         Pattern pattern = Pattern.compile(String.format(".*%s", contract));
         System.out.println(page.getByTestId("header-brand-img"));
@@ -70,7 +74,7 @@ public class LoginPage extends BasePage {
     }
 
     public synchronized void loginWithOneRetry() {
-        if (storageState.stateIsReady()) {
+        if (storageState.stateIsReady() && apiUserDetailsService.tokenIsStillValid()) {
             navigateTo(storageState.getLoggedUrl());
         } else {
             login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
