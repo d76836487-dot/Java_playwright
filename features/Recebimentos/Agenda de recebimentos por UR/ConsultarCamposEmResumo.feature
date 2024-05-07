@@ -417,10 +417,6 @@ Feature: Consultar Campos em Resumo
 #
 #
 #
-#QScenario: Detalhe Venda
-#  Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR” > aba vendas vinculadas
-#  When Usuário clicar sobre uma venda da listagem
-#  Then abrira um modal com mais informações da venda
 #
 #
 #QScenario: Consultar Modal Detalhe de Venda vinculada
@@ -442,14 +438,6 @@ Feature: Consultar Campos em Resumo
 #  Then Usuário deverá retornar a página “Agenda de recebimentos por UR / Detalhe da UR” > aba vendas vinculadas
 #
 #  Feature: Pagamento
-#
-#
-#QScenario: Consultar Layout aba Pagamentos
-#  Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR”
-#  When Usuário clicar na aba Pagamentos
-#  Then Usuário visualizara as informações CPF/CNPJ do beneficiário, Data, Valor, Situação, Domicílio bancário com imagem e nome do banco, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta.
-#
-#
 #
 #
 #QScenario: Consultar Sem Pagamento / Pagamentos da UR

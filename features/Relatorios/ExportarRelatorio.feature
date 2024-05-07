@@ -24,7 +24,7 @@ Feature: Exportar Relatorio
     When Usuário baixa um relatório do tipo "Vendas", formato "<arquivo>"
     Then Usuário visualizará no "<arquivo>" baixado, as colunas
     """
-    Data da venda, Hora da venda, Código de autorização, Código do estabelecimento, Comprovante de venda,
+    Data da venda, Hora da venda, Código de autorização, Código de estabelecimento, Comprovante de venda,
     Código do pedido, Canal, Número do Terminal, Produto, Parcelas, Tipo de cartão, Bandeira, Status,
     Valor bruto da transação, Valor bruto da parcela, Valor da taxa (MDR), Valor líquido da parcela/transação,
     Número do cartão, Cartão pré pago, Data prevista de pagamento da venda, Status do pagamento da venda,

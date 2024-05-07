@@ -131,3 +131,14 @@ Feature: Detalhe da UR
     Data do pagamento,Domicílio bancário,CPF/CNPJ do titular da conta,Tipo de conta,Agência,Conta
     """
     And Os valores das colunas do excel em Detalhe UR baixado terão mesma formatação
+
+  Scenario: Detalhe Venda
+    Given usuário clicou sobre um lote (bandeira e produto) da listagem apresentada que tenha saldo negociável maior que zero
+    And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
+    And Todas as barras de carregamento sumiram
+    When Usuário clica sobre uma venda da listagem
+
+
+#    Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR” > aba vendas vinculadas
+#    When Usuário clicar sobre uma venda da listagem
+#    Then abrira um modal com mais informações da venda
