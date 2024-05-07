@@ -136,9 +136,7 @@ Feature: Detalhe da UR
     Given usuário clicou sobre um lote (bandeira e produto) da listagem apresentada que tenha saldo negociável maior que zero
     And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
     And Todas as barras de carregamento sumiram
-    When Usuário clica sobre uma venda da listagem
-
-
-#    Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR” > aba vendas vinculadas
-#    When Usuário clicar sobre uma venda da listagem
-#    Then abrira um modal com mais informações da venda
+    When usuário clica "Detalhe da UR - Venda - Data Venda 0"
+    Then Usuário verá "Detalhe da UR - Popup"
+    And Valores da popup da UR da venda tem mesmas informações que listagem
+    And Popup da UR da venda será fechada após usuário clicar no botão Fechar

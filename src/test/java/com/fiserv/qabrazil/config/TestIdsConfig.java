@@ -277,8 +277,16 @@ public class TestIdsConfig {
             entry("Detalhe da UR - Resumo - Total de Deduções", "detalhe-ur-total-deducao"),
             entry("Detalhe da UR - Resumo - Mostrar todos os detalhes", "detalhe-ur-mostrar-detalhes"),
             entry("Detalhe da UR - Visualizar Pagamentos", "detalhe-ur-tab-pagamentos"),
-            entry("Detalhe da UR - Pagamentos - Situação", "detalhe-ur-tab-pagamentos-situacao-.*")
+            entry("Detalhe da UR - Pagamentos - Situação", "detalhe-ur-tab-pagamentos-situacao-.*"),
 
+            entry("Detalhe da UR - Venda - Data Venda 0", "detalhe-ur-tab-vendas-data-venda-0"),
+            entry("Detalhe da UR - Venda - Cod Autorização 0", "detalhe-ur-tab-vendas-cod-autorizacao-0"),
+            entry("Detalhe da UR - Venda - Produto 0", "detalhe-ur-tab-vendas-produto-0"),
+            entry("Detalhe da UR - Venda - Parcela 0", "detalhe-ur-tab-vendas-parcela-0"),
+            entry("Detalhe da UR - Venda - Valor Bruto 0", "detalhe-ur-tab-vendas-valor-bruto-0"),
+            entry("Detalhe da UR - Venda - Valor Bruto Parcela 0", "detalhe-ur-tab-vendas-valor-bruto-da-parcela-0"),
+            entry("Detalhe da UR - Venda - Valor Líquido 0", "detalhe-ur-tab-vendas-valor-liquido-0"),
+            entry("Detalhe da UR - Venda - Valor Taxa 0", "detalhe-ur-tab-vendas-valor-taxa-0")
     );
 
 
@@ -441,7 +449,10 @@ public class TestIdsConfig {
             entry("Detalhe da UR - Resumo - Total deduções", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total deduções')]"),
             entry("Detalhe da UR - Resumo - Total ajuste crédito", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total ajuste crédito')]"),
             entry("Detalhe da UR - Resumo - Total contratos", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total contratos')]"),
-            entry("Detalhe da UR - Pagamentos - Bolinha Situação", "//*[@data-testid='detalhe-ur-tab-pagamentos-situacao-0']/preceding-sibling::i")
+            entry("Detalhe da UR - Pagamentos - Bolinha Situação", "//*[@data-testid='detalhe-ur-tab-pagamentos-situacao-0']/preceding-sibling::i"),
+
+            entry("Detalhe da UR - Popup", "//div[contains(@class, 'popup-dialog')]"),
+            entry("Detalhe da UR - Popup - Botão Fechar", "//span[contains(text(), 'Fechar')]")
     );
 
     public static String getTestId(String identifier) {

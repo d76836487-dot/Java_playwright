@@ -431,12 +431,6 @@ Feature: Consultar Campos em Resumo
 #  When Usuário clica no Botão X
 #  Then Usuário deverá retornar a página “Agenda de recebimentos por UR / Detalhe da UR” > aba vendas vinculadas
 #
-#
-#QScenario: Botão Fechar Modal Detalhe de Venda vinculada
-#  Given Usuário está no modal Detalhe da venda vinculada
-#  When Usuário clica no Botão Fechar
-#  Then Usuário deverá retornar a página “Agenda de recebimentos por UR / Detalhe da UR” > aba vendas vinculadas
-#
 #  Feature: Pagamento
 #
 #

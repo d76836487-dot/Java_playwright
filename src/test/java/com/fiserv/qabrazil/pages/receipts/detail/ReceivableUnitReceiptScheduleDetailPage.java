@@ -44,4 +44,8 @@ public class ReceivableUnitReceiptScheduleDetailPage extends BasePage {
         log.info("Status color found: " + style);
         return style.contains("--color-warning");
     }
+
+    public boolean lookForTextInPopup(String textLookingFor) {
+        return page.locator("//div[contains(@class, 'popup-dialog')]//span[text()='%s']".formatted(textLookingFor)).count() > 0;
+    }
 }

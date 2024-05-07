@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -21,11 +22,11 @@ import java.util.function.BiFunction;
 
 import static com.fiserv.qabrazil.steps.home.HomeCustomizeModalSteps.csv;
 import static com.fiserv.qabrazil.util.ExcelFormatValidation.validateFormatForCellsInTable;
+import static com.fiserv.qabrazil.util.WaitUtil.sleep;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.*;
 
 public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
 
@@ -118,7 +119,7 @@ public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
         assertEquals("Número de descrição de status e bolinhas é diferente.",
                 statusesDescription.size(), statusesColor.size());
 
-        for(int i = 0; i < statusesDescription.size(); i++) {
+        for (int i = 0; i < statusesDescription.size(); i++) {
             boolean descriptionIsPaid = statusesDescription.get(i).getAsText().equals(expectedDescription);
             boolean expectedColor = method.apply(receivableUnitReceiptScheduleDetailPage, statusesColor.get(i));
             boolean colorAsExpected = !descriptionIsPaid || expectedColor;
@@ -143,7 +144,7 @@ public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
 
     @Then("Terá campo com um dos valores ou formatações abaixo na aba Resumo")
     public void fieldWithOneOfThoseValues(List<Map<String, String>> table) throws IOException {
-        for(Map<String, String> map: table) {
+        for (Map<String, String> map : table) {
             assertIfCsv(map.get("campo"), map.get("valor"), map.get("tipo validação"));
             assertIfCurrency(map.get("campo"), map.get("valor"), map.get("tipo validação"));
         }
@@ -161,7 +162,7 @@ public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
         String[] values = Arrays.stream(value.split(","))
                 .map(String::trim)
                 .toArray(String[]::new);
-         assertThat(excel.getFieldFirstColAsText(fieldName), oneOf(values));
+        assertThat(excel.getFieldFirstColAsText(fieldName), oneOf(values));
     }
 
     @Then("Terá as colunas abaixo na aba {string} em Detalhe UR")
@@ -179,5 +180,34 @@ public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
     @Then("Os valores das colunas do excel em Detalhe UR baixado terão mesma formatação")
     public void formatColumns() {
         validateFormatForCellsInTable(excel.getExcelWrapper());
+    }
+
+    @Then("Valores da popup da UR da venda tem mesmas informações que listagem")
+    public void popupSameValuesInListing() {
+        List<String> displayNames = List.of(
+                "Detalhe da UR - Venda - Data Venda 0",
+                "Detalhe da UR - Venda - Cod Autorização 0",
+                "Detalhe da UR - Venda - Produto 0",
+                "Detalhe da UR - Venda - Parcela 0",
+                "Detalhe da UR - Venda - Valor Bruto 0",
+                "Detalhe da UR - Venda - Valor Bruto Parcela 0",
+                "Detalhe da UR - Venda - Valor Líquido 0",
+                "Detalhe da UR - Venda - Valor Taxa 0");
+
+        for(String displayName: displayNames) {
+            String textLookingFor = pageField.from(displayName).getAsText();
+            boolean hasValueVisibleInPopup = receivableUnitReceiptScheduleDetailPage.lookForTextInPopup(textLookingFor);
+
+            assertTrue("Não encontrei texto '%s' no popup com detalhe da venda".formatted(textLookingFor),
+                    hasValueVisibleInPopup);
+        }
+    }
+
+    @Then("Popup da UR da venda será fechada após usuário clicar no botão Fechar")
+    public void closePopup() {
+        pageField.from("Detalhe da UR - Popup - Botão Fechar").click();
+        sleep(Duration.ofMillis(500));
+        assertFalse("Popup não fechou após clicar no botão fechar.",
+                pageField.from("Detalhe da UR - Popup").elementIsVisibleRightNow());
     }
 }
