@@ -98,12 +98,16 @@ public class CommonsSteps {
     }
 
     @Then("Usuário verá o accordion em {pageField} as opções abaixo somente")
-    public void userWillOnlySeeInFiltersTheOptions(String filter, String allOptions) {
+    public void userWillOnlySeeInFiltersTheOptions(PageField filter, String allOptions) {
         List<String> expectedOptions = Arrays.stream(allOptions.split(","))
                 .map(String::trim)
                 .sorted()
                 .toList();
-        commonsPage.allOptionsArePresentAndExclusive(filter, expectedOptions);
+        List<String> actualOptions = filter.getAllAsText().stream()
+                .sorted()
+                .toList();
+
+        assertArrayEquals(expectedOptions.toArray(String[]::new), actualOptions.toArray(String[]::new));
     }
 
     @Then("usuário verá em {pageField} valor maior que {double}")
