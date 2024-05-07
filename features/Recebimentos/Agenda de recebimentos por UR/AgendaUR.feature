@@ -40,7 +40,7 @@ Feature: Agenda de recebimentos por UR
   Scenario Outline: Consultar Botão Filtros
     Given usuário clicou no "Agenda de Recebimentos por UR - Botão Filtrar"
     And usuário clica no "Bandeiras (0)" em "Filter - Accordion"
-    Then Usuário verá em "Filter - Bandeiras (0)" as opções abaixo somente
+    Then Usuário verá o accordion em "Filter - Bandeiras (0)" as opções abaixo somente
     """
     Mastercard Débito, Mastercard Crédito, Visa Débito, Visa Crédito, ELO Débito, ELO Crédito,
     Cabal Débito, Cabal Crédito, Hipercard Crédito, Amex Crédito

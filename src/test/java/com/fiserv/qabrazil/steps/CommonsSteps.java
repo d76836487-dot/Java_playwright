@@ -97,7 +97,7 @@ public class CommonsSteps {
         assertThat(valuesFound).containsExactly(expectedTexts);
     }
 
-    @Then("Usuário verá em {pageField} as opções abaixo somente")
+    @Then("Usuário verá o accordion em {pageField} as opções abaixo somente")
     public void userWillOnlySeeInFiltersTheOptions(String filter, String allOptions) {
         List<String> expectedOptions = Arrays.stream(allOptions.split(","))
                 .map(String::trim)
