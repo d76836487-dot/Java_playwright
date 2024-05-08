@@ -11,6 +11,7 @@ import java.time.Duration;
 import java.util.Calendar;
 
 import static com.fiserv.qabrazil.util.WaitUtil.sleep;
+import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
 public class DateRangerPage extends BasePage {
@@ -67,7 +68,16 @@ public class DateRangerPage extends BasePage {
         typeDayInCalendar("Date ranger - Dia final Digitado", dateToType);
         pageField.from("Date ranger - Aplicar").click();
 
+        waitCalendarClose(dateToType);
+    }
+
+    private void waitCalendarClose(String dateToType) {
         sleep(Duration.ofSeconds(2));
+        boolean appliedDate = waitUntilTrue(() -> page.locator("//*[contains(@class,'validation-message')]").count() == 0);
+
+        if (!appliedDate) {
+            throw new RuntimeException("Ocorre um erro ao aplicar a data digitada %s".formatted(dateToType));
+        }
     }
 
     private void setDateInCalendar(int daysToAdd, String typedDateField) {
