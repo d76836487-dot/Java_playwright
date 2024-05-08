@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.hooks;
 
+import com.fiserv.qabrazil.components.FilesToAttachToScenario;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.After;
@@ -17,6 +18,9 @@ public class RecordingHook {
     @Autowired
     private BrowserContext context;
 
+    @Autowired
+    private FilesToAttachToScenario filesToAttachToScenario;
+
     @After("@playwright and not @ignore")
     public void tearDown(Scenario scenario) {
         saveScreenshotAndUrl(scenario);
@@ -29,6 +33,10 @@ public class RecordingHook {
             scenario.attach(page.screenshot(new Page.ScreenshotOptions().setFullPage(true)),
                     "image/png", "Screen Shot");
             scenario.attach(page.content(), "text/html", "Content");
+        }
+
+        if (filesToAttachToScenario.hasAttachment()) {
+            scenario.attach(filesToAttachToScenario.getContent(), filesToAttachToScenario.getContentType(), filesToAttachToScenario.getName());
         }
     }
 

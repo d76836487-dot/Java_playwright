@@ -14,6 +14,7 @@ import java.util.stream.IntStream;
 
 public class ExcelWrapper implements AutoCloseable {
     public static final ExcelWrapper NULL = new ExcelWrapper();
+    public static final String CONTENT_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
     private final InputStream inputStream;
     private final ReadableWorkbook workbook;
     private Sheet sheet;

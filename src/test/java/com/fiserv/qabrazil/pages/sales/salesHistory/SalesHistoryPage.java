@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.pages.sales.salesHistory;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.components.FilesToAttachToScenario;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.sales.salesToday.SalesTodayPage;
@@ -12,6 +13,7 @@ import com.microsoft.playwright.options.AriaRole;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
@@ -25,6 +27,9 @@ public class SalesHistoryPage extends BasePage {
 
     @Autowired
     private SalesTodayPage salesTodayPage;
+
+    @Autowired
+    private FilesToAttachToScenario filesToAttachToScenario;
 
     public void navigateTo() {
         salesTodayPage.navigateTo();
@@ -44,8 +49,10 @@ public class SalesHistoryPage extends BasePage {
 
         if (readStreamFilename == null) return SalesHistoryExportExcelSimplified.NULL;
 
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFilename.getLeft(), ExcelWrapper.CONTENT_TYPE, "Excel simplificado");
+
         return new SalesHistoryExportExcelSimplified(
-                new ExcelWrapper(readStreamFilename.getLeft(), "Data da venda", readStreamFilename.getRight()));
+                new ExcelWrapper(bufferedInputStream, "Data da venda", readStreamFilename.getRight()));
     }
 
     public SalesHistoryExportExcelDetailed getDownloadAsExcelDetailed() throws IOException {
