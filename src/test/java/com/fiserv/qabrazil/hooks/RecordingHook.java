@@ -24,13 +24,11 @@ public class RecordingHook {
     }
 
     private void saveScreenshotAndUrl(Scenario scenario) {
-        if (scenario.isFailed()) {
-            for (Page page : context.pages()) {
-                scenario.attach(page.url(), "text/plain", "Url");
-                scenario.attach(page.screenshot(new Page.ScreenshotOptions().setFullPage(true)),
-                        "image/png", "Screen Shot");
-                scenario.attach(page.content(), "text/html", "Content");
-            }
+        for (Page page : context.pages()) {
+            scenario.attach(page.url(), "text/plain", "Url");
+            scenario.attach(page.screenshot(new Page.ScreenshotOptions().setFullPage(true)),
+                    "image/png", "Screen Shot");
+            scenario.attach(page.content(), "text/html", "Content");
         }
     }
 
