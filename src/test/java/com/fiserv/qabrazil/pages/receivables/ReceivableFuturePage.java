@@ -1,9 +1,11 @@
 package com.fiserv.qabrazil.pages.receivables;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.components.FilesToAttachToScenario;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.receivables.paid.ReceivablePaidPage;
+import com.fiserv.qabrazil.util.CSVWrapper;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.microsoft.playwright.Download;
@@ -11,8 +13,8 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -21,6 +23,9 @@ import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests
 
 @ScenarioComponent
 public class ReceivableFuturePage extends BasePage {
+    @Autowired
+    private FilesToAttachToScenario filesToAttachToScenario;
+
     public static class ReceivableFutureExportExcel {
         public static final ReceivableFutureExportExcel NULL = new ReceivableFutureExportExcel(ExcelWrapper.NULL);
 
@@ -91,9 +96,10 @@ public class ReceivableFuturePage extends BasePage {
         Download download = page.waitForDownload(() ->
                 pageField.from("Recebimentos - Futuros - Exportar - Botão Gerar Arquivo").click());
 
-        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(download.createReadStream(),
+                CSVWrapper.CONTENT_TYPE, "Excel");
 
         return new ReceivableFutureExportExcel(
-                new ExcelWrapper(download.createReadStream(), "Data prevista de pagamento", download.suggestedFilename()));
+                new ExcelWrapper(bufferedInputStream, "Data prevista de pagamento", download.suggestedFilename()));
     }
 }

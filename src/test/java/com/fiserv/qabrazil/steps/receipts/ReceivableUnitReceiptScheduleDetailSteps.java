@@ -88,7 +88,7 @@ public class ReceivableUnitReceiptScheduleDetailSteps extends BaseSteps {
 
     @When("Usuário clica em Exportar como Excel")
     public void userExportsExcel() throws IOException {
-        excel = receivableUnitReceiptScheduleDetailPage.downloadExport();
+        excel = receivableUnitReceiptScheduleDetailPage.downloadExportExcel();
     }
 
     @Then("{string} do Detalhe da UR será igual ao {string} do Excel")

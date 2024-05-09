@@ -416,16 +416,6 @@ Feature: Consultar Campos em Resumo
 #  Then usuário verá a mensagem: Valor líquido da parcela paga
 #
 #
-#
-#
-#
-#QScenario: Consultar Modal Detalhe de Venda vinculada
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR” > aba vendas vinculadas
-#  When clicar sobre uma venda na Listagem
-#  Then abrira um modal
-#  And apresentará as informações: (Título Detalhe da venda vinculada), Informações gerais, logo da bandeira, nome da bandeira, Data da venda, Cód. Autorização, Tipo do Produto, Parcela, NSU, Valor bruto da venda, Valor líquido da venda, Valor bruto da parcela, Valor líquido da parcela, Valor taxa MDR, % taxa MDR, Canal, Terminal, Estabelecimento, Data prevista para pagamento, Data efetiva do pagamento, Botão X e Fechar (que deve vir na cor da instituição)
-#
-#
 #QScenario: Botão X Modal Detalhe de Venda vinculada
 #  Given Usuário está no modal Detalhe da venda vinculada
 #  When Usuário clica no Botão X

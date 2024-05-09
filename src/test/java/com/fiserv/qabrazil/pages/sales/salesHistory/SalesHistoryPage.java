@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.WaitUtil.retryIfGotException;
@@ -62,8 +61,11 @@ public class SalesHistoryPage extends BasePage {
 
         if (readStreamFilename == null) return SalesHistoryExportExcelDetailed.NULL;
 
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFilename.getLeft(),
+                ExcelWrapper.CONTENT_TYPE, "Excel detalhado");
+
         return new SalesHistoryExportExcelDetailed(
-                new ExcelWrapper(readStreamFilename.getLeft(), "Data da venda", readStreamFilename.getRight()));
+                new ExcelWrapper(bufferedInputStream, "Data da venda", readStreamFilename.getRight()));
     }
 
     public SalesHistoryExportCsvSimplified getDownloadAsCsvSimplified() throws Exception {
@@ -73,8 +75,11 @@ public class SalesHistoryPage extends BasePage {
 
         if (readStreamFilename == null) return SalesHistoryExportCsvSimplified.NULL;
 
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFilename.getLeft(),
+                CSVWrapper.CONTENT_TYPE, "Csv simplificado");
+
         return new SalesHistoryExportCsvSimplified(
-                new CSVWrapper(readStreamFilename.getLeft(), readStreamFilename.getRight()));
+                new CSVWrapper(bufferedInputStream, readStreamFilename.getRight()));
     }
 
     public SalesHistoryExportCsvDetailed getDownloadAsCsvDetailed() throws Exception {
@@ -84,8 +89,11 @@ public class SalesHistoryPage extends BasePage {
 
         if (readStreamFilename == null) return SalesHistoryExportCsvDetailed.NULL;
 
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFilename.getLeft(),
+                CSVWrapper.CONTENT_TYPE, "Csv detalhado");
+
         return new SalesHistoryExportCsvDetailed(
-                new CSVWrapper(readStreamFilename.getLeft(), readStreamFilename.getRight()));
+                new CSVWrapper(bufferedInputStream, readStreamFilename.getRight()));
     }
 
     private ImmutablePair<InputStream, String> downloadReport(String formatType, String simpleAdvancedButton) {
@@ -107,8 +115,6 @@ public class SalesHistoryPage extends BasePage {
 
         Download download = page.waitForDownload(() ->
                 pageField.from("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo").click());
-
-        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
         return new ImmutablePair<>(download.createReadStream(), download.suggestedFilename());
     }
