@@ -1,19 +1,19 @@
 #!/bin/bash
 
-if [ $1 = '-h' ]; then
+tags="@playwright and not @ignore and not @rebatedor"
+profiles="sicredi azulzinha afinz ota-azulzinha ota-afinz bin003 bin007"
+cycle_id=
+all_pids=
+
+if [ $# -eq 1 ] && [ $1 = '-h' ]; then
   echo "Roda testes automatizados para todos os perfis."
   echo "Opções: "
   echo " -h: ói eu aqui."
-  echo " -t <tags>: quais tags para rodar. Ex: -t '@playwright and not @ignore'"
-  echo " -p <perfils>: quais tags para rodar. Ex: -p 'afinz azulzinha'"
-  echo " -z <cycle id>: qual id do test cycle para subir evidências. Ex: -z 'SMP-C13'"
+  echo " -t <tags>: quais tags para rodar. Ex: -t '@playwright and not @ignore'. Padrão: '$tags'."
+  echo " -p <perfis>: quais perfis deve rodar. Ex: -p 'afinz azulzinha'. Padrão: '$profiles'."
+  echo " -z <cycle id>: qual id do test cycle para subir evidências. Ex: -z 'SMP-C13'. Padrão: não subir no zephyr."
   exit 0
 fi
-
-tags="@playwright and not @ignore and not @rebatedor"
-profiles="sicredi azulzinha"
-cycle_id=
-zephyr_cmd=
 
 while getopts t:p:z: option
 do
@@ -22,7 +22,7 @@ do
         t)tags=${OPTARG};;
         p)profiles=${OPTARG};;
         z)cycle_id=${OPTARG};;
-        *)echo "opção desconhecida $OPTARG"; exit 0
+        *)echo "opção desconhecida $OPTARG"; exit 1
     esac
 done
 
@@ -44,7 +44,8 @@ do
 
   { mvn test -P $profile -Dcucumber.plugin=$plugins -Dcucumber.filter.tags="$tags" > output/$profile.out;
     mvn com.trivago.rta:cluecumber-maven:3.5.1:reporting -P $profile >> output/$profile.out;
-    `$zephyr_cmd` ; } &
+    `$zephyr_cmd` ; } & all_pids="$profile=$!, $all_pids"
 done
 
-echo "Acompanhe os arquivos de saída com 'tail -f output/azulzinha.out' por exemplo"
+echo "Acompanhe os arquivos de saída com 'tail -f output/azulzinha.out' (por exemplo)"
+echo "Pids: $all_pids" | tee output/pids
