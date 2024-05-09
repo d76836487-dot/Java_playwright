@@ -49,7 +49,7 @@ Feature: Agenda de recebimentos por UR
     @sicredi
     Examples:
       | cor              |
-      | rgb(63, 161, 10) |
+       | rgb(63, 161, 16) |
 
     @azulzinha
     Examples:

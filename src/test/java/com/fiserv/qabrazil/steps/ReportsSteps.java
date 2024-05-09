@@ -140,7 +140,6 @@ public class ReportsSteps extends BaseSteps {
         UserDetailDto userDetail = apiUserDetailsService.getUserDetail();
         List<String> userNames = userDetail.ecCods.stream().map(x -> x.nomeFantasia).toList();
 
-        //TODO: change for testid
         String businessDepartment = pageField.from("Modal Gerar Relatórios - Estabelecimento Comercial").getAsText();
         PageField businessDepartmentDocument = pageField.from("Modal Gerar Relatórios - CPF ou CNPJ");
         String documentInPage = businessDepartmentDocument.getAsText().replaceAll("\\D+", "");

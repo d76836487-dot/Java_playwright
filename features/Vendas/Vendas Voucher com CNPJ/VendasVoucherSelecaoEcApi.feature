@@ -18,7 +18,7 @@ Feature: Tela Vendas Voucher com CNPJ com API e Seleção EC
     Then Opções do filtro tem somente os ECs selecionados
     And A exportação do relatório 'Voucher' terá somente o EC selecionado no detalhamento
     And A exportação do relatório 'Voucher' terá exatamente os ECs selecionado no cabeçalho
-    And A contagem de vendas voucher é igual a Total de Vendas
+     And A contagem de vendas voucher do excel é igual a Total de Vendas da tela
     And A soma de vendas voucher é igual ao valor bruto autorizado
 
   @TestCaseKey=SMP-T307
@@ -32,6 +32,6 @@ Feature: Tela Vendas Voucher com CNPJ com API e Seleção EC
     Then Opções do filtro tem somente os ECs selecionados
     And A exportação do relatório 'Voucher' terá somente o EC selecionado no detalhamento
     And A exportação do relatório 'Voucher' terá exatamente os ECs selecionado no cabeçalho
-    And A contagem de vendas voucher é igual a Total de Vendas
+    And A contagem de vendas voucher do excel é igual a Total de Vendas da tela
     And A soma de vendas voucher é igual ao valor bruto autorizado
 

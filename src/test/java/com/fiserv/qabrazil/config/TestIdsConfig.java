@@ -102,7 +102,7 @@ public class TestIdsConfig {
             entry("Recebimentos - Pagos - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
             entry("Recebimentos - Pagos - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
 
-            entry("Recebimentos - Futuros - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"), // TODO: ajustar aqui
+             entry("Recebimentos - Futuros - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
             entry("Recebimentos - Futuros - Botão Cancelar Filtro", "generic-filter-link-sair"),
 
             entry("Home - Card Vendas Hoje - Valor Vendas Hoje", "home-card-vendas-hoje-text-vlr"),
