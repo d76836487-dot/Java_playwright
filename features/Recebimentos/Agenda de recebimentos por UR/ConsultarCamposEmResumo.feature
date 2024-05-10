@@ -76,6 +76,7 @@ Feature: Consultar Campos em Resumo
       | Amex       | azul claro  | rgb(46, 177, 229) |
       | Cabal      | azul escuro | rgb(13, 92, 147)  |
 
+  @TestCaseKey=SMP-T354
   Scenario: Consultar Componente “gráfico”
     Given Usuário acessou a página de Agenda de Recebimentos por UR
     And houver dados no Campo Totais líquidos por bandeira
@@ -96,6 +97,7 @@ Feature: Consultar Campos em Resumo
     Then deve ser apresentado a frase "Sem informações para detalhamento"
     And todas as bandeiras deve vir com valores zerados
 
+  @TestCaseKey=SMP-T357
   Scenario Outline: Consultar Detalhe totais por bandeira e produto
 
   Obs.: Apresentar bandeira com total ainda que o total seja zero.
@@ -110,36 +112,38 @@ Feature: Consultar Campos em Resumo
       | Hipercard  | Vermelho    | rgb(184, 33, 38)  | BandeiraHipercard        |
       | Amex       | azul claro  | rgb(46, 177, 229) | BandeiraAmex             |
       | Cabal      | azul escuro | rgb(13, 92, 147)  | BandeiraCabal            |
-
     @afinz
     Examples:
       | cor da Instituição |
-      | rgb(0, 198, 204) |
+      | rgb(0, 198, 204)   |
 
     @azulzinha
     Examples:
       | cor da Instituição |
-      | rgb(247, 148, 30) |
+      | rgb(247, 148, 30)  |
 
     @bin003 @bin007
     Examples:
       | cor da Instituição |
-      | rgb(255, 102, 0) |
+      | rgb(255, 102, 0)   |
 
     @sicredi
     Examples:
       | cor da Instituição |
-      | rgb(63, 161, 16) |
+      | rgb(63, 161, 16)   |
 
-    Scenario: Consultar Botão Período
-    Obs: Esse menu terá dados de histórico (passado) mas também de futuro.
-      Given Usuário acessou a página de Agenda de Recebimentos por UR
-      When Usuário seleciona Botão Período
-      Then Abrirá componente de calendário que deve vir por default "Este Mês"
-      And 'Date ranger - Início Data Selecionada' representará 'data início do mês'
-      And 'Date ranger - Fim Data Selecionada' representará 'data final do mês'
-      And Usuário pode selecionar a data conforme desejado
-      And Usuário pode preencher a data conforme desejado
+  @TestCaseKey=SMP-T360
+  Scenario: Consultar Botão Período
+
+  Obs: Esse menu terá dados de histórico (passado) mas também de futuro.
+
+    Given Usuário acessou a página de Agenda de Recebimentos por UR
+    When Usuário seleciona Botão Período
+    Then Abrirá componente de calendário que deve vir por default "Este Mês"
+    And 'Date ranger - Início Data Selecionada' representará 'data início do mês'
+    And 'Date ranger - Fim Data Selecionada' representará 'data final do mês'
+    And Usuário pode selecionar a data conforme desejado
+    And Usuário pode preencher a data conforme desejado
 
 #
 #QScenario: Consultar Período (Hoje)

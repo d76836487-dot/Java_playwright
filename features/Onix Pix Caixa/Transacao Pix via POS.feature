@@ -37,13 +37,10 @@ Feature: Transacao Pix via POS
     When Realizo uma transação de Pix via POS com EC Master
     Then a transação é exibida no Relatório de Vendas no menu Conta Pix
 
-
   @TestCaseKey=SMP-T349
   Scenario: Habilitar Pix com Hierarquia Filho 1 e realizar transação Pix com Hierarquia Filho 2
     Given cesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso
     When realizo uma transação de Pix via POS com "Filho 2"
     Then a transacao é exibida com sucesso no Relatorio de Vendas no menu Conta Pix
-
-
 

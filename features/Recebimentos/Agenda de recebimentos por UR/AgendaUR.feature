@@ -21,6 +21,7 @@ Feature: Agenda de recebimentos por UR
     Given existem recebimentos listados
     Then Valor total é igual a soma do Valor Líquido com o Valor Pago
 
+  @TestCaseKey=SMP-T355
   Scenario: Botão Ocultar Valores na Agenda UR
     Given Usuário seleciona Ontem
     And Todas as barras de carregamento sumiram
@@ -37,6 +38,7 @@ Feature: Agenda de recebimentos por UR
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total ajustes crédito" o mesmo valor "R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total contratos" o mesmo valor "R$ ••••"
 
+  @TestCaseKey=SMP-T356
   Scenario Outline: Consultar Botão Filtros
     Given usuário clicou no "Agenda de Recebimentos por UR - Botão Filtrar"
     And usuário clica no "Bandeiras (0)" em "Filter - Accordion"
@@ -49,7 +51,7 @@ Feature: Agenda de recebimentos por UR
     @sicredi
     Examples:
       | cor              |
-       | rgb(63, 161, 16) |
+      | rgb(63, 161, 16) |
 
     @azulzinha
     Examples:
@@ -66,10 +68,11 @@ Feature: Agenda de recebimentos por UR
       | cor              |
       | rgb(0, 198, 204) |
 
-
+  @TestCaseKey=SMP-T364
   Scenario: Consultar Período (Esse Mês)
     Given Usuário selecionou Botão Período
     And usuário clicou no "Date ranger - Este mês"
     When usuário clica "Paginação - abrir opção de paginação"
     And usuário clica "Paginação - mostrar 50 itens"
     Then Irá apresentar resultados do dia 01 do mês corrente até o último dia do mês
+
