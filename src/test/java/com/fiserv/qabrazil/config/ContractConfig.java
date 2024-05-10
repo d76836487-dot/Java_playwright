@@ -30,7 +30,7 @@ public class ContractConfig {
 
     public ProfileData getActiveUserProfile() {
 
-  //      activeProfiles = "sicredi";
+        activeProfiles = "sicredi";
 
         return userProfiles.computeIfAbsent(activeProfiles, profile -> {
             if (profile.isEmpty()) {

@@ -36,7 +36,7 @@ Feature: Health check Cancelamento de Vendas
  # Dado que o usuário está logado E está na seção de Vendas
  # Quando ele clica em "Cancelamento de vendas"
  # Então ele deve ser capaz de cancelar vendas realizadas, conforme necessário
-  Scenario Outline: Cancelamento de vendas
+  Scenario Outline: Health check Cancelamento de vendas
   Given que o usuário está logado e está na seção de Vendas
   When solicitar um cancelamento de uma venda em "Historico de vendas" informando o motivo "<motivos>"
   Then A solicitação de cancelamento deve estar listada em "Histórico de cancelamentos" no menu "Cancelamento de Vendas"
