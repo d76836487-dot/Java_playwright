@@ -21,7 +21,6 @@ Feature: Login Portal
       | EC2 | Filho      | Assistente Operador | OK     | OK  |
       | EC3 | Neto       | Assistente Consulta | OK     | OK  |
 
-
   @TestCaseKey=SMP-T344
   Scenario Outline: Exibição de modal de Habilitação Conta Pix - Primeiro acesso e usuário não elegível
     Given que tenho EC <Hierarquia> com o Perfil <Perfil>
@@ -43,5 +42,4 @@ Feature: Login Portal
     And visualizei o modal de habilitacao do Pix no primeiro acesso
     When realizo um novo login no Portal do Cliente
     Then não é apresentado o modal para habilitação do PIX
-
 

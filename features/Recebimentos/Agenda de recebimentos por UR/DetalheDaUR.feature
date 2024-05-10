@@ -76,14 +76,14 @@ Feature: Detalhe da UR
     When usuário clica "Detalhe da UR - Visualizar Pagamentos"
     Then Usuário visualizar status programado com bolinha na cor amarelo
 
-#produto,
-#botão Mostrar todos os detalhes
-#  Scenario: Consultar Abas na Tela / Detalhe da UR
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Clicar sobre um lote (bandeira e produto) da listagem apresentada
-#    And estiver na tela “Agenda de recebimentos por UR > Detalhe da UR”
-#    Then usuário visualizara as abas (Vendas vinculadas, Pagamentos, Créditos e deduções, Contratos)
-
+  #produto,
+  #botão Mostrar todos os detalhes
+  #  Scenario: Consultar Abas na Tela / Detalhe da UR
+  #    Given Usuário está logado Agenda de recebimentos por UR
+  #    When Clicar sobre um lote (bandeira e produto) da listagem apresentada
+  #    And estiver na tela “Agenda de recebimentos por UR > Detalhe da UR”
+  #    Then usuário visualizara as abas (Vendas vinculadas, Pagamentos, Créditos e deduções, Contratos)
+  @TestCaseKey=SMP-T358
   Scenario: Nome das colunas do Arquivo Excel
     Given usuário clicou sobre um lote (bandeira e produto) da listagem apresentada que tenha saldo negociável maior que zero
     And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
@@ -132,6 +132,7 @@ Feature: Detalhe da UR
     """
     And Os valores das colunas do excel em Detalhe UR baixado terão mesma formatação
 
+  @TestCaseKey=SMP-T359
   Scenario: Detalhe Venda
     Given usuário clicou sobre um lote (bandeira e produto) da listagem apresentada que tenha saldo negociável maior que zero
     And usuário foi redirecionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
@@ -140,3 +141,4 @@ Feature: Detalhe da UR
     Then Usuário verá "Detalhe da UR - Popup"
     And Valores da popup da UR da venda tem mesmas informações que listagem
     And Popup da UR da venda será fechada após usuário clicar no botão Fechar
+
