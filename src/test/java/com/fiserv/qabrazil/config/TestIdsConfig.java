@@ -244,6 +244,7 @@ public class TestIdsConfig {
             entry("Date ranger - Últimos 7 dias", "generic-calendar-pill-últimos-7-dias"),
             entry("Date ranger - Últimos 14 dias", "generic-calendar-pill-últimos-14-dias"),
             entry("Date ranger - Mês Atual", "generic-calendar-pill-mês-atual"),
+            entry("Date ranger - Este mês", "generic-calendar-pill-este-mês"),
             entry("Date ranger - Aplicar", "generic-calendar-button-aplicar"),
 
             entry("Gestão de Acessos - Abas - Usuários", "gestao-tab-usuarios"),
@@ -308,11 +309,14 @@ public class TestIdsConfig {
 
             entry("Date ranger - Image", "//*[@data-testid='generic-calendar-icon-calendar']//img"),
             entry("Date ranger - Ano", "//input[@aria-label='Year']"),
-            entry("Date ranger - Mês", "//input[@aria-label='Month']"),
+            entry("Date ranger - Mês", "//select[@aria-label='Month']"),
             entry("Date ranger - Início Data Selecionada", "//span[contains(@class,'startRange')]"),
             entry("Date ranger - Fim Data Selecionada", "//span[contains(@class,'endRange')]"),
+            entry("Date ranger - Este mês selecionado", "[data-testid='generic-calendar-pill-este-mês'] [data-block='Utilities.InlineSVG']"),
             entry("Date ranger - Dia inicial Digitado", "//*[@data-testid='generic-calendar-input-init-date']//input"),
             entry("Date ranger - Dia final Digitado", "//*[@data-testid='generic-calendar-input-end-date']//input"),
+            entry("Date ranger - Dia 15", "//*[contains(@class,'custom-data-picker-calendar')]//span[contains(@class,'flatpickr-day')][text()=15]"),
+            entry("Date ranger - Dia 22", "//*[contains(@class,'custom-data-picker-calendar')]//span[contains(@class,'flatpickr-day')][text()=22]"),
             entry("Modal Gerar Relatórios - Dia Calendário", "//*[@class='flatpickr-days']//span[contains(@class, 'flatpickr-day')]"),
             entry("Modal Gerar Relatórios - Ano Calendário", "//*[contains(@class, 'DateInputPicker-periodo-calendar')]//input[contains(@class, 'numInput')][contains(@class, 'cur-year')]"),
             entry("Modal Gerar Relatórios - Mês Calendário", "//*[contains(@class, 'DateInputPicker-periodo-calendar')]//select[@aria-label='Month']"),
