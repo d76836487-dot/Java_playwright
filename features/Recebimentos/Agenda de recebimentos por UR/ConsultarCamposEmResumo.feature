@@ -131,15 +131,17 @@ Feature: Consultar Campos em Resumo
       | cor da Instituição |
       | rgb(63, 161, 16) |
 
-#
-#QScenario: Consultar  Botão Período
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Período
-#    Then Abrirá componente de calendário que deve vir por default “Esse Mês”, porém mostrando as datas, conforme mês em questão, o cliente pode selecionar ou preencher a data conforme desejada.
-#
-#  Obs: Esse menu terá Given s de histórico (passado) mas também de futuro.
-#
+    Scenario: Consultar Botão Período
+    Obs: Esse menu terá Given s de histórico (passado) mas também de futuro.
+      Given Usuário acessou a página de Agenda de Recebimentos por UR
+      When Usuário seleciona Botão Período
+      Then Abrirá componente de calendário que deve vir por default "Este Mês"
+      And 'Date ranger - Início Data Selecionada' representará 'data início do mês'
+      And 'Date ranger - Fim Data Selecionada' representará 'data final do mês'
+      And Usuário pode selecionar a data conforme desejado
+      And Usuário pode preencher a data conforme desejado
+
+
 #
 #QScenario: Consultar Período (Hoje)
 #

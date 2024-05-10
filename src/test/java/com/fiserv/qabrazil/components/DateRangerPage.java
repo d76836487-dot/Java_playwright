@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Calendar;
 
+import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.sleep;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
@@ -17,6 +18,10 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 public class DateRangerPage extends BasePage {
     @Autowired
     Page page;
+
+    public void openCalendarComponent() {
+        pageField.from("Date ranger - Image").click();
+    }
 
     public void userSelectsYesterday() {
         bandaidSMP57();
@@ -78,6 +83,19 @@ public class DateRangerPage extends BasePage {
         if (!appliedDate) {
             throw new RuntimeException("Ocorre um erro ao aplicar a data digitada %s".formatted(dateToType));
         }
+    }
+
+    public void ensureThisMonthIsSelected() {
+        PageField button = pageField.from("Date ranger - Este mês selecionado");
+        assertThat(button)
+                .isVisible();
+    }
+
+    public void userClicksOnDays(int start, int end) {
+        pageField.from("Date ranger - Image").click();
+        pageField.from("Date ranger - Dia " + start).click();
+        pageField.from("Date ranger - Dia " + end).click();
+        pageField.from("Date ranger - Aplicar").click();
     }
 
     private void setDateInCalendar(int daysToAdd, String typedDateField) {
