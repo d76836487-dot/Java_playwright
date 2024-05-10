@@ -43,7 +43,7 @@ public class SalesPages extends CheckedBasePage {
     }
 
     private boolean checkItemsMenu(String arg0){
-        Locator userHasOnlyItem1 = page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Cancelamento de vendas")).locator("span");
+        Locator userHasOnlyItem1 = page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName(arg0)).locator("span");
         waitUntilTrue(() -> userHasOnlyItem1.isVisible());
         return userHasOnlyItem1.isVisible();
     }

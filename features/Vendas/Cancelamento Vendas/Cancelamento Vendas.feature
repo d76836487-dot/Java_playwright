@@ -7,8 +7,11 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 #noinspection CucumberUndefinedStep
 
-@CancVds
-Feature: Acesso aos menus dentro de Vendas
+
+Feature: Health check Cancelamento de Vendas
+
+
+  @HealthCheck
   Scenario:Visualização das opções adicionais ao acessar Vendas
     Given Usuário efetue logon
     When Usuário acessou página de Vendas
@@ -17,8 +20,8 @@ Feature: Acesso aos menus dentro de Vendas
 
 
 #==========================================================================================================================================================
-  @CancVds
-  Scenario:Acesso ao Relatório de vendas
+ @HealthCheck
+  Scenario:Health check Relatório de vendas
     Given Usuário efetue logon
     #When Usuário tenta logar na aplicação
     When Usuário acessou página de Vendas
@@ -28,11 +31,18 @@ Feature: Acesso aos menus dentro de Vendas
 
 #==========================================================================================================================================================
 
-
-  Scenario:Acesso ao Cancelamento de vendas
-  Dado que o usuário está logado E está na seção de Vendas
-  Quando ele clica em "Cancelamento de vendas"
-  Então ele deve ser capaz de cancelar vendas realizadas, conforme necessário
+@SmokeTest @HealthCheck
+ # Scenario:Funcionalidade Cancelamento de vendas
+ # Dado que o usuário está logado E está na seção de Vendas
+ # Quando ele clica em "Cancelamento de vendas"
+ # Então ele deve ser capaz de cancelar vendas realizadas, conforme necessário
+  Scenario Outline: Cancelamento de vendas
+  Given que o usuário está logado e está na seção de Vendas
+  When solicitar um cancelamento de uma venda em "Historico de vendas" informando o motivo "<motivos>"
+  Then A solicitação de cancelamento deve estar listada em "Histórico de cancelamentos" no menu "Cancelamento de Vendas"
+    Examples:
+    |Motivos|
+    |Cobrança Duplicata|
 
 #==========================================================================================================================================================
 

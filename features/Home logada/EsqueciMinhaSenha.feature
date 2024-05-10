@@ -16,3 +16,6 @@ Feature: Esqueci Minha Senha
     When Usuário tenta recuperar senha com "81633816000210"
     Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
 
+
+
+
