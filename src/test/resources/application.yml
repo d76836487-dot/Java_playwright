@@ -85,8 +85,8 @@ user-profiles:
     allianceName: BIN
   sicredi:
     url: https://sicredi.qa.portaldocliente.fiserv.com
-    user: ${SICREDI_CONTRACT_USER}
-    password: ${SICREDI_CONTRACT_PASSWORD}
+    user: 53362504060
+    password: Fiserv@456
     mfaSecretKey: ${SICREDI_MFA_SECRETKEY}
     identity: sicredi
     primaryCssClass: cor-verde
@@ -124,10 +124,12 @@ framework:
     launch-options:
       # Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary"
       # channel: chrome
-      headless: true
+      headless: false
       slowMo: 300
       # timeout: 30000
-      # args:
+      args:
+          - --window-size = '1920,1080'
+          - --start-maximized
       #   - --ignore-certificate-errors
       #   - --proxy-server=http://127.0.0.1:8080
       # chromiumSandbox: false

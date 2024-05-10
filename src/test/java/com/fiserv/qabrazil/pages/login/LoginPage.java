@@ -97,6 +97,13 @@ public class LoginPage extends BasePage {
         startMonitoringRequests(page, contractConfig);
     }
 
+
+    public void applicationlogin(String url, String user, String pwd) {
+        navigateTo(url);
+        page.getByTestId("login").pressSequentially(user);
+        page.getByTestId("password").fill(pwd);
+        page.getByTestId("entrar").click();
+    }
     public void login(String url, String user, String pwd) {
         navigateTo(url);
         page.getByTestId("login").pressSequentially(user);

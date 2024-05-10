@@ -10,7 +10,7 @@ import java.util.Map;
 @ConfigurationProperties
 public class ContractConfig {
 
-    @Value("${spring.profiles.active:}")
+    //@Value("${spring.profiles.active:}")
     private String activeProfiles;
 
     private Map<String, ProfileData> userProfiles;
@@ -24,10 +24,13 @@ public class ContractConfig {
     }
 
     public String getActiveProfiles() {
+
         return activeProfiles;
     }
 
     public ProfileData getActiveUserProfile() {
+        activeProfiles = "sicredi";
+
         return userProfiles.computeIfAbsent(activeProfiles, profile -> {
             if (profile.isEmpty()) {
                 throw new IllegalStateException("No profile specified by spring.profiles.active property");
