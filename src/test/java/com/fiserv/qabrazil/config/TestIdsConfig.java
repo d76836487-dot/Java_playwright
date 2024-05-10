@@ -456,7 +456,10 @@ public class TestIdsConfig {
             entry("Detalhe da UR - Pagamentos - Bolinha Situação", "//*[@data-testid='detalhe-ur-tab-pagamentos-situacao-0']/preceding-sibling::i"),
 
             entry("Detalhe da UR - Popup", "//div[contains(@class, 'popup-dialog')]"),
-            entry("Detalhe da UR - Popup - Botão Fechar", "//span[contains(text(), 'Fechar')]")
+            entry("Detalhe da UR - Popup - Botão Fechar", "//span[contains(text(), 'Fechar')]"),
+
+            entry("Paginação - mostrar 50 itens", "//a[text()='50 Itens']"),
+            entry("Paginação - abrir opção de paginação", "//span[contains(text(),'Exibindo')][contains(text(),'itens')]")
     );
 
     public static String getTestId(String identifier) {

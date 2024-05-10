@@ -65,3 +65,11 @@ Feature: Agenda de recebimentos por UR
     Examples:
       | cor              |
       | rgb(0, 198, 204) |
+
+
+  Scenario: Consultar Período (Esse Mês)
+    Given Usuário selecionou Botão Período
+    And usuário clicou no "Date ranger - Este mês"
+    When usuário clica "Paginação - abrir opção de paginação"
+    And usuário clica "Paginação - mostrar 50 itens"
+    Then Irá apresentar resultados do dia 01 do mês corrente até o último dia do mês

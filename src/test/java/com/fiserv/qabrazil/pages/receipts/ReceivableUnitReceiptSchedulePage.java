@@ -5,8 +5,14 @@ import com.fiserv.qabrazil.pages.CheckedBasePage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.Currency;
 import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -102,5 +108,20 @@ public class ReceivableUnitReceiptSchedulePage extends CheckedBasePage {
         closeButton.highlight();
         assertThat(closeButton).isVisible();
         assertThat(closeButton).hasCSS("background-color", backgroundColor);
+    }
+
+    public boolean foundReceivableByTheDate(LocalDate day) {
+        String textLookingFor = getFormattedDate(day);
+
+        // TODO: trocar por data-testid aqui...
+        return page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(textLookingFor)).count() > 0 ||
+                page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(textLookingFor + " Valor")).count() > 0;
+    }
+
+    private String getFormattedDate(LocalDate day) {
+        DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String weekday = day.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
+                .replaceAll(", .*", "");
+        return "%s %s".formatted(day.format(formatter), StringUtils.capitalize(weekday));
     }
 }

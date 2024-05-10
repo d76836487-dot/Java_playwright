@@ -12,17 +12,22 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.fiserv.automation.api.util.DateUtil.calculateLocalDate;
 import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static java.util.stream.Collectors.toMap;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
@@ -269,5 +274,17 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
             throw new IllegalArgumentException("Could not extract brand from \"" + graphLabel + "\"");
         }
         return m.group(1);
+    }
+
+    @Then("Irá apresentar resultados do dia 01 do mês corrente até o último dia do mês")
+    public void checkResultsFromThisMonth() {
+        LocalDate oneDay = calculateLocalDate("data início do mês");
+        LocalDate lastDay = calculateLocalDate("data final do mês");
+
+        while (oneDay.isBefore(lastDay) || oneDay.isEqual(lastDay)) {
+            assertTrue("Não encontrei referência ao dia %s".formatted(oneDay.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
+                    receivableUnitReceiptSchedulePage.foundReceivableByTheDate(oneDay));
+            oneDay = oneDay.plusDays(1);
+        }
     }
 }

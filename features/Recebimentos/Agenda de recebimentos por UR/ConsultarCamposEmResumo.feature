@@ -161,13 +161,6 @@ Feature: Consultar Campos em Resumo
 #  Obs: O fitro rápido “Essa semana” contempla os 7 dias da semana, independente do dia que for, ou seja, apresentará dados de Domingo  a sábado
 #
 #
-#QScenario: Consultar Período (Esse Mês)
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Período > Esse Mês
-#    And Clica no Botão Aplicar
-#    Then deve apresentar resultados do dia 01 do mês corrente até o último dia do mês (30 ou 31 a depender do mês). Esse mês deve ser apresentado no componente do calendário os dias Exe: 01/11/2023 a 30/11/2023 e não vir escrito “Esse mês”
-#
 #
 #QScenario: Consultar Período (anterior a abril /2024) ***
 #

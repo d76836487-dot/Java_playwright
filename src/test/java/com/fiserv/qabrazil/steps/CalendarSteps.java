@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.qabrazil.components.DateRangerPage;
 import com.fiserv.qabrazil.consistency.ConsistencyFile;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
@@ -21,6 +22,7 @@ public class CalendarSteps extends BaseSteps {
     @Autowired
     ConsistencyFile consistencyFile;
 
+    @Given("Usuário selecionou Botão Período")
     @When("Usuário seleciona Botão Período")
     public void openCalendar() {
         calendarPage.openCalendarComponent();
@@ -32,6 +34,7 @@ public class CalendarSteps extends BaseSteps {
     }
 
 
+    @Given("Usuário selecionou Mês Atual")
     @When("Usuário seleciona Mês Atual")
     public void userSelectsThisMonth() {
         calendarPage.userSelectsThisMonth();
@@ -93,31 +96,19 @@ public class CalendarSteps extends BaseSteps {
 
     @ParameterType("'(dia início do mês|dia final do mês|dia de ontem|dia de sete dias atrás)'")
     public int expectedDay(String expectedDate) {
-        LocalDate day = calculateLocalDate(expectedDate);
+        LocalDate day = DateUtil.calculateLocalDate(expectedDate);
         return day.getDayOfMonth();
     }
 
     @ParameterType("'(data início do mês|data final do mês|data de ontem|data de sete dias atrás)'")
     public String expectedYearMonthDay(String expectedDate) {
-        LocalDate day = calculateLocalDate(expectedDate);
+        LocalDate day = DateUtil.calculateLocalDate(expectedDate);
         return day.toString();
     }
 
     @ParameterType("'(Date ranger -.* Digitado)'")
     public String typedDateOnCalendar(String displayName) {
         return pageField.from(displayName).getInputValue();
-    }
-
-    private LocalDate calculateLocalDate(String expectedDate) {
-        return switch (expectedDate) {
-            case "dia início do mês", "data início do mês" -> LocalDate.now().withDayOfMonth(1);
-            case "dia final do mês", "data final do mês" -> LocalDate.now().withDayOfMonth(1)
-                    .plusMonths(1)
-                    .minusDays(1);
-            case "dia de sete dias atrás", "data de sete dias atrás" -> LocalDate.now().minusDays(7);
-            case "dia de ontem", "data de ontem" -> LocalDate.now().minusDays(1);
-            default -> throw new IllegalStateException("Unexpected value: " + expectedDate);
-        };
     }
 
     @Given("Usuário selecionou data com base no arquivo de consistência")
