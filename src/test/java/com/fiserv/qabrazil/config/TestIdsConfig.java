@@ -412,8 +412,8 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='UnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),
             entry("Agenda de Recebimentos por UR - Modal Detalhe totais por bandeira - Valores", "//*[contains(@class,'popup-dialog')]//span[contains(text(),'R$')]"),
 
-            entry("Agenda de Recebimentos por UR - card Totais líquidos por bandeira", "[data-block='UnidadeRecebivel.ValorPagoTotalLiquidoPorProduto']"),
-            entry("Agenda de Recebimentos por UR - Totais - sem valores", "[data-block='UnidadeRecebivel.ValorPagoTotalLiquidoPorProduto'] .margin-left-base"),
+            entry("Agenda de Recebimentos por UR - card Totais líquidos por bandeira", "[data-block='AppRecebimentosUnidadeRecebivel.ValorPagoTotalLiquidoPorProduto']"),
+            entry("Agenda de Recebimentos por UR - Totais - sem valores", "[data-block='AppRecebimentosUnidadeRecebivel.ValorPagoTotalLiquidoPorProduto'] .margin-left-base"),
             entry("Agenda de Recebimentos por UR - gráfico - tooltip", ".highcharts-tooltip text"),
             entry("Agenda de Recebimentos por UR - gráfico - barra Mastercard", "//*[local-name()='rect'][contains(@class,'highcharts-point')][contains(@aria-label,'Totais líquidos por produto')][contains(@aria-label,'Mastercard')]"),
             entry("Agenda de Recebimentos por UR - gráfico - barra ELO", "//*[local-name()='rect'][contains(@class,'highcharts-point')][contains(@aria-label,'Totais líquidos por produto')][contains(@aria-label,'ELO')]"),
