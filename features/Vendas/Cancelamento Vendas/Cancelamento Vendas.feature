@@ -32,11 +32,7 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
 @SmokeTest @HealthCheck
- # Scenario:Funcionalidade Cancelamento de vendas
- # Dado que o usuário está logado E está na seção de Vendas
- # Quando ele clica em "Cancelamento de vendas"
- # Então ele deve ser capaz de cancelar vendas realizadas, conforme necessário
-  Scenario Outline: Health check Cancelamento de vendas
+ Scenario Outline: Health check Cancelamento de vendas
   Given que o usuário está logado e está na seção de Vendas
   When solicitar um cancelamento de uma venda em "Historico de vendas" informando o motivo "<motivos>"
   Then A solicitação de cancelamento deve estar listada em "Histórico de cancelamentos" no menu "Cancelamento de Vendas"
@@ -47,50 +43,50 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
   Scenario:Cliente solicita cancelamento de transação
-  Dado que o cliente está navegando no menu Histórico de vendas
-  Quando o cliente clica sobre a transação que deseja cancelar
-  Então um modal é aberto exibindo os detalhes da transação
-  E há um botão "Solicitar cancelamento" disponível no modal
+  Given que o cliente está navegando no menu Histórico de vendas
+  When o cliente clica sobre a transação que deseja cancelar
+  Then um modal é aberto exibindo os detalhes da transação
+  And há um botão "Solicitar cancelamento" disponível no modal
 
 #==========================================================================================================================================================
   Scenario: Preenchimento do campo Valor para cancelamento parcial
-  Dado que o cliente está visualizando os detalhes da transação no modal
-  Quando o cliente preenche o campo Valor com um valor menor do que o valor original da transação
-  Então o sistema entende que o cancelamento é parcial
+  Given que o cliente está visualizando os detalhes da transação no modal
+  When o cliente preenche o campo Valor com um valor menor do que o valor original da transação
+  Then o sistema entende que o cancelamento é parcial
 
  #==========================================================================================================================================================
 
   Scenario:Preenchimento do campo Valor para cancelamento total
-  Dado que o cliente está visualizando os detalhes da transação no modal
-  Quando o cliente preenche o campo Valor com um valor igual ao valor original da transação
-  Então o sistema entende que o cancelamento é total
+  Given que o cliente está visualizando os detalhes da transação no modal
+  When o cliente preenche o campo Valor com um valor igual ao valor original da transação
+  Then o sistema entende que o cancelamento é total
 
 #==========================================================================================================================================================
 
   Scenario:Preenchimento do campo Valor com valor maior que o original
-  Dado que o cliente está visualizando os detalhes da transação no modal
-  Quando o cliente preenche o campo Valor com um valor maior do que o valor original da transação
-  Então o sistema exibe a mensagem "O valor inserido é maior do que o valor original da transação. Por favor, insira um valor válido."
+  Given que o cliente está visualizando os detalhes da transação no modal
+  When o cliente preenche o campo Valor com um valor maior do que o valor original da transação
+  Then o sistema exibe a mensagem "O valor inserido é maior do que o valor original da transação. Por favor, insira um valor válido."
 
 #==========================================================================================================================================================
 
   Scenario:Preenchimento do campo Valor com valor negativo
-  Dado que o cliente está visualizando os detalhes da transação no modal
-  Quando o cliente preenche o campo Valor com um valor negativo
-  Então o sistema exibe a mensagem "O valor inserido é inválido. Por favor, insira um valor positivo."
+  Given que o cliente está visualizando os detalhes da transação no modal
+  When o cliente preenche o campo Valor com um valor negativo
+  Then o sistema exibe a mensagem "O valor inserido é inválido. Por favor, insira um valor positivo."
 
 #==========================================================================================================================================================
 
   Scenario: Preenchimento do campo Valor com valor não numérico
-  Dado que o cliente está visualizando os detalhes da transação no modal
-  Quando o cliente preenche o campo Valor com um valor não numérico
-  Então o sistema exibe a mensagem "O valor inserido é inválido. Por favor, insira um valor numérico válido."
+  Given que o cliente está visualizando os detalhes da transação no modal
+  When o cliente preenche o campo Valor com um valor não numérico
+  Then o sistema exibe a mensagem "O valor inserido é inválido. Por favor, insira um valor numérico válido."
 
 #==========================================================================================================================================================
   Scenario: Seleção de motivo para cancelamento
-  Dado que o cliente está visualizando os detalhes da transação no modal
-  Quando o cliente procura pelo campo Motivo
-  Então o sistema exibe as seguintes opções para seleção:
+  Given que o cliente está visualizando os detalhes da transação no modal
+  When o cliente procura pelo campo Motivo
+  Then o sistema exibe as seguintes opções para seleção:
   | Motivo                              |
   | Produto defeituoso                  |
   | Desistência da compra               |
@@ -99,18 +95,18 @@ Feature: Cancelamento de Vendas
 
 #==========================================================================================================================================================
   Scenario: Seleção de "Outro motivo" e exibição do componente "Descreva brevemente o motivo"
-  Dado que o cliente selecionou "Outro motivo" como motivo para cancelamento
-  Quando o campo "Outro motivo" é selecionado
-  Então o sistema exibe o componente "Descreva brevemente o motivo" com um contador regressivo de caracteres limitado a 40
+  Given que o cliente selecionou "Outro motivo" como motivo para cancelamento
+  When o campo "Outro motivo" é selecionado
+  Then o sistema exibe o componente "Descreva brevemente o motivo" com um contador regressivo de caracteres limitado a 40
 
 #==========================================================================================================================================================
   Scenario: Fechamento do modal
-  Dado que o cliente está visualizando os detalhes da transação no modal
-  Quando o cliente clica no botão "x" ou "Fechar"
-  Então o modal é fechado e o cliente é devolvido para o detalhe da venda anteriormente selecionada
+  Given que o cliente está visualizando os detalhes da transação no modal
+  When o cliente clica no botão "x" ou "Fechar"
+  Then o modal é fechado e o cliente é devolvido para o detalhe da venda anteriormente selecionada
 
 #==========================================================================================================================================================
   Scenario: Registro do pedido de cancelamento
-  Dado que o cliente preencheu todas as informações necessárias para o cancelamento da transação
-  Quando o cliente clica no botão "Solicitar cancelamento"
-  Então o sistema registra o pedido de cancelamen
+  Given que o cliente preencheu todas as informações necessárias para o cancelamento da transação
+  When o cliente clica no botão "Solicitar cancelamento"
+  Then o sistema registra o pedido de cancelamen
