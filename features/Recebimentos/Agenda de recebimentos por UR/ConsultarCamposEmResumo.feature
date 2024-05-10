@@ -132,7 +132,7 @@ Feature: Consultar Campos em Resumo
       | rgb(63, 161, 16) |
 
     Scenario: Consultar Botão Período
-    Obs: Esse menu terá Given s de histórico (passado) mas também de futuro.
+    Obs: Esse menu terá dados de histórico (passado) mas também de futuro.
       Given Usuário acessou a página de Agenda de Recebimentos por UR
       When Usuário seleciona Botão Período
       Then Abrirá componente de calendário que deve vir por default "Este Mês"
@@ -141,14 +141,13 @@ Feature: Consultar Campos em Resumo
       And Usuário pode selecionar a data conforme desejado
       And Usuário pode preencher a data conforme desejado
 
-
 #
 #QScenario: Consultar Período (Hoje)
 #
 #    Given Usuário está logado Agenda de recebimentos por UR
 #    When Usuário seleciona Botão Período > Hoje
 #    And Clica no Botão Aplicar
-#    Then trará os Given s referentes aquele período
+#    Then trará os dados referentes aquele período
 #
 #
 #
@@ -157,9 +156,9 @@ Feature: Consultar Campos em Resumo
 #    Given Usuário está logado Agenda de recebimentos por UR
 #    When Usuário seleciona Botão Período > Essa semana
 #    And Clica no Botão Aplicar
-#    Then trará os Given s referentes a Essa semana
+#    Then trará os dados referentes a Essa semana
 #
-#  Obs: O fitro rápido “Essa semana” contempla os 7 dias da semana, independente do dia que for, ou seja, apresentará Given s de Domingo  a sábado
+#  Obs: O fitro rápido “Essa semana” contempla os 7 dias da semana, independente do dia que for, ou seja, apresentará dados de Domingo  a sábado
 #
 #
 #QScenario: Consultar Período (Esse Mês)
