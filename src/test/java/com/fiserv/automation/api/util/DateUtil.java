@@ -43,8 +43,18 @@ public class DateUtil {
                     .minusDays(1);
             case "dia de sete dias atrás", "data de sete dias atrás" -> LocalDate.now().minusDays(7);
             case "dia de ontem", "data de ontem" -> LocalDate.now().minusDays(1);
+            case "início da semana" -> lookForDayWeek(DayOfWeek.SUNDAY, -1);
+            case "fim da semana" -> lookForDayWeek(DayOfWeek.SATURDAY, 1);
             default -> throw new IllegalStateException("Unexpected value: " + expectedDate);
         };
+    }
+
+    private static LocalDate lookForDayWeek(DayOfWeek dayOfWeek, int advanceDay) {
+        LocalDate day = LocalDate.now();
+        while (day.getDayOfWeek().compareTo(dayOfWeek) != 0) {
+            day = day.plusDays(advanceDay);
+        }
+        return day;
     }
 
     @PostConstruct

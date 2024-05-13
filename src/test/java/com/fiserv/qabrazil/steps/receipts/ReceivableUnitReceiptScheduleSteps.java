@@ -287,6 +287,18 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         }
     }
 
+    @Then("Irá apresentar resultados referentes a Essa semana")
+    public void checkResultsFromThisWeek() {
+        LocalDate oneDay = calculateLocalDate("início da semana");
+        LocalDate saturday = calculateLocalDate("fim da semana");
+
+        while (oneDay.isBefore(saturday) || oneDay.isEqual(saturday)) {
+            assertTrue("Não encontrei referência ao dia %s".formatted(oneDay.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
+                    receivableUnitReceiptSchedulePage.foundReceivableByTheDate(oneDay));
+            oneDay = oneDay.plusDays(1);
+        }
+    }
+
     @Then("Irá apresentar resultados do dia atual apenas")
     public void checkResultsFromToday() {
         LocalDate yesterday = LocalDate.now().minusDays(1);

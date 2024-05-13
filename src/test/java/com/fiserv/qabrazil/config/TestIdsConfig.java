@@ -244,6 +244,7 @@ public class TestIdsConfig {
             entry("Date ranger - Hoje", "generic-calendar-pill-hoje"),
             entry("Date ranger - Ontem", "generic-calendar-pill-ontem"),
             entry("Date ranger - Últimos 7 dias", "generic-calendar-pill-últimos-7-dias"),
+            entry("Date ranger - Essa semana", "generic-calendar-pill-essa-semana"),
             entry("Date ranger - Últimos 14 dias", "generic-calendar-pill-últimos-14-dias"),
             entry("Date ranger - Mês Atual", "generic-calendar-pill-mês-atual"),
             entry("Date ranger - Este mês", "generic-calendar-pill-este-mês"),

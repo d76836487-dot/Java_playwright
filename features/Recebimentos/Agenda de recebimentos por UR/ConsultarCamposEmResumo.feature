@@ -146,15 +146,6 @@ Feature: Consultar Campos em Resumo
     And Usuário pode preencher a data conforme desejado
 
 #
-#QScenario: Consultar Período (Essa semana)
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Período > Essa semana
-#    And Clica no Botão Aplicar
-#    Then trará os dados referentes a Essa semana
-#
-#  Obs: O fitro rápido “Essa semana” contempla os 7 dias da semana, independente do dia que for, ou seja, apresentará dados de Domingo  a sábado
-#
 #
 #
 #QScenario: Consultar Período (anterior a abril /2024) ***
