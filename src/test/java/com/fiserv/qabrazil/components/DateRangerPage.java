@@ -32,6 +32,7 @@ public class DateRangerPage extends BasePage {
         } else {
             setDateInCalendar(-1, "Date ranger - Dia inicial Digitado");
             setDateInCalendar(-1, "Date ranger - Dia final Digitado");
+            pageField.from("Date ranger - Aplicar").click();
         }
     }
 
@@ -54,16 +55,22 @@ public class DateRangerPage extends BasePage {
     }
 
     public void userSelectsLastThirdDays() {
+        pageField.from("Date ranger - Image").click();
         setDateInCalendar(-30, "Date ranger - Dia inicial Digitado");
+        pageField.from("Date ranger - Aplicar").click();
     }
 
     public void userSelectsNextFourteenDays() {
+        pageField.from("Date ranger - Image").click();
         setDateInCalendar(0, "Date ranger - Dia inicial Digitado");
         setDateInCalendar(14, "Date ranger - Dia final Digitado");
+        pageField.from("Date ranger - Aplicar").click();
     }
 
     public void userSelectsNextThirdDays() {
+        pageField.from("Date ranger - Image").click();
         setDateInCalendar(30, "Date ranger - Dia final Digitado");
+        pageField.from("Date ranger - Aplicar").click();
     }
 
     public void userSelectsSpecificDay(String dateToType) {
@@ -104,9 +111,7 @@ public class DateRangerPage extends BasePage {
         SimpleDateFormat simpleFormat = new SimpleDateFormat("dMyyyy");
         String thirdDaysAgo = simpleFormat.format(cal.getTime());
 
-        pageField.from("Date ranger - Image").click();
         typeDayInCalendar(typedDateField, thirdDaysAgo);
-        pageField.from("Date ranger - Aplicar").click();
     }
 
     private void typeDayInCalendar(String typedDateField, String date) {
