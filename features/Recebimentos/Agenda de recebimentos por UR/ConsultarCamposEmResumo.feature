@@ -145,15 +145,7 @@ Feature: Consultar Campos em Resumo
     And Usuário pode selecionar a data conforme desejado
     And Usuário pode preencher a data conforme desejado
 
-#
-#QScenario: Consultar Período (Hoje)
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Período > Hoje
-#    And Clica no Botão Aplicar
-#    Then trará os dados referentes aquele período
-#
-#
+
 #
 #QScenario: Consultar Período (Essa semana)
 #

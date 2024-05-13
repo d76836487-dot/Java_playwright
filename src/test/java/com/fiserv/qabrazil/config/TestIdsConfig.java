@@ -242,6 +242,7 @@ public class TestIdsConfig {
             entry("Login - Campo Token MFA", "login-codigos-token"),
             entry("Login - Botão Confirmar Token MFA", "login-confirmar-token"),
 
+            entry("Date ranger - Hoje", "generic-calendar-pill-hoje"),
             entry("Date ranger - Ontem", "generic-calendar-pill-ontem"),
             entry("Date ranger - Últimos 7 dias", "generic-calendar-pill-últimos-7-dias"),
             entry("Date ranger - Últimos 14 dias", "generic-calendar-pill-últimos-14-dias"),
