@@ -124,4 +124,9 @@ public class ReceivableUnitReceiptSchedulePage extends CheckedBasePage {
                 .replaceAll(", .*", "");
         return "%s %s".formatted(day.format(formatter), StringUtils.capitalize(weekday));
     }
+
+    public List<PageField> getBrandOptionsAtFilter(PageField allPageField) {
+        waitUntilTrue(() -> allPageField.getCount() >= 10);
+        return allPageField.getAllPageField();
+    }
 }

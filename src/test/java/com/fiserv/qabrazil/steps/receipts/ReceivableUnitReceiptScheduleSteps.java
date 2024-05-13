@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.steps.receipts;
 
+import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.pages.receipts.ReceivableUnitReceiptSchedulePage;
@@ -26,6 +27,7 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static java.util.stream.Collectors.toMap;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
+import static org.testng.Assert.assertNotEquals;
 import static org.testng.AssertJUnit.*;
 
 public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
@@ -38,6 +40,9 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
     @Autowired
     ReceivableUnitReceiptSchedulePage receivableUnitReceiptSchedulePage;
+
+    @Autowired
+    private CommonsPage commonsPage;
 
     @Then("usuário {shakespeareBoolean} em {string} opção de Alterar Documento")
     public void ensureWeAreAtTheCorrectPageAndHeaderDoNotHaveChangeDocument(boolean value, String pageName) {
@@ -287,6 +292,18 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         }
     }
 
+    @Then("Irá apresentar resultados referentes a Essa semana")
+    public void checkResultsFromThisWeek() {
+        LocalDate oneDay = calculateLocalDate("início da semana");
+        LocalDate saturday = calculateLocalDate("fim da semana");
+
+        while (oneDay.isBefore(saturday) || oneDay.isEqual(saturday)) {
+            assertTrue("Não encontrei referência ao dia %s".formatted(oneDay.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
+                    receivableUnitReceiptSchedulePage.foundReceivableByTheDate(oneDay));
+            oneDay = oneDay.plusDays(1);
+        }
+    }
+
     @Then("Irá apresentar resultados do dia atual apenas")
     public void checkResultsFromToday() {
         LocalDate yesterday = LocalDate.now().minusDays(1);
@@ -299,5 +316,18 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
                 receivableUnitReceiptSchedulePage.foundReceivableByTheDate(tomorrow));
         assertTrue("Não encontrei referência ao dia %s".formatted(today.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
                 receivableUnitReceiptSchedulePage.foundReceivableByTheDate(today));
+    }
+
+    @Then("Usuário verá fundo na cor primário {string} quando clicar nas bandeiras no {pageField}")
+    public void backgroundWhenClickBrand(String expectedColor, PageField allPageField) {
+        for(PageField pageField: receivableUnitReceiptSchedulePage.getBrandOptionsAtFilter(allPageField)) {
+            String originalPrimaryColor = commonsPage.getBackgroundColor(pageField);
+            pageField.click();
+            String actualPrimaryColor = commonsPage.getBackgroundColor(pageField);
+
+            assertEquals(expectedColor, actualPrimaryColor);
+            assertNotEquals("Cor da bandeira deveria ser diferente após ser selecionada.",
+                    actualPrimaryColor, originalPrimaryColor);
+        }
     }
 }

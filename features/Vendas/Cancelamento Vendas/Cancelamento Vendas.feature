@@ -5,7 +5,6 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-
 Feature: Cancelamento de Vendas
 
   @HealthCheck
@@ -38,7 +37,6 @@ Feature: Cancelamento de Vendas
       | Cobrança Duplicata |
 
   #==========================================================================================================================================================
-
   @TestCaseKey=SMP-T368
   Scenario: Cliente solicita cancelamento de transação
     Given que o cliente está navegando no menu Histórico de vendas

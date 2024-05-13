@@ -48,6 +48,7 @@ Feature: Agenda de recebimentos por UR
     Cabal Débito, Cabal Crédito, Hipercard Crédito, Amex Crédito
     """
     And Usuário verá em "Filter - Bandeiras (0)" na cor primária "<cor>"
+    Then Usuário verá fundo na cor primário "<cor>" quando clicar nas bandeiras no "Filter - Bandeiras (0)"
     @sicredi
     Examples:
       | cor              |
@@ -83,4 +84,11 @@ Feature: Agenda de recebimentos por UR
     When usuário clica "Date ranger - Hoje"
     And existem recebimentos listados
     Then Irá apresentar resultados do dia atual apenas
+
+  @TestCaseKey=SMP-T376
+  Scenario: Consultar Período (Essa semana)
+    Given Usuário selecionou Botão Período
+    When usuário clica "Date ranger - Essa semana"
+    And existem recebimentos listados
+    Then Irá apresentar resultados referentes a Essa semana
 

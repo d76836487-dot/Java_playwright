@@ -62,7 +62,6 @@ public class TestIdsConfig {
             entry("Vendas Hoje - Botão Filtrar", "vendas-hoje-link-filtrar"),
             entry("Vendas Hoje - Botão Cancelar Filtro", "generic-filter-link-sair"),
 
-            entry("Vendas - Histórico de Vendas - Resumo - Valor bruto", "historico-vendas-valor-bruto"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor líquido", "historico-vendas-valor-liquido"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor cancelado", "historico-vendas-valor-cancelado"),
             entry("Vendas - Histórico de Vendas - Botão Exportar", "exportar-historicovendas"),
@@ -245,6 +244,7 @@ public class TestIdsConfig {
             entry("Date ranger - Hoje", "generic-calendar-pill-hoje"),
             entry("Date ranger - Ontem", "generic-calendar-pill-ontem"),
             entry("Date ranger - Últimos 7 dias", "generic-calendar-pill-últimos-7-dias"),
+            entry("Date ranger - Essa semana", "generic-calendar-pill-essa-semana"),
             entry("Date ranger - Últimos 14 dias", "generic-calendar-pill-últimos-14-dias"),
             entry("Date ranger - Mês Atual", "generic-calendar-pill-mês-atual"),
             entry("Date ranger - Este mês", "generic-calendar-pill-este-mês"),
@@ -328,6 +328,7 @@ public class TestIdsConfig {
             entry("Filtros de Relatório - Mês Calendário", "//*[contains(@class, 'DateInputPicker-generic-filter-periodo-calendar')]//select[@aria-label='Month']"),
 
             // TODO: maps below should be changed for data-testid
+            entry("Vendas - Histórico de Vendas - Resumo - Valor bruto", "(//*[@data-testid='historico-vendas-valor-bruto'])[1]"),
             entry("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo", "//button[contains(text(),'Gerar arquivo')]"),
             entry("Vendas - Histórico de Vendas - Exportar - Relatório Simplificado", "//div[contains(text(),'Relatório simplificado')]"),
             entry("Vendas - Histórico de Vendas - Exportar - Relatório Detalhado", "//div[contains(text(),'Relatório detalhado')]"),
@@ -357,7 +358,7 @@ public class TestIdsConfig {
             entry("Relatórios - Tabela - Item", "//tr[.//*[@data-testid='relatorios-table-row-nome-arquivo']]"),
             entry("Relatórios - Notificação de Falha", "//span[starts-with(text(), 'O intervalo da seleção deve ser')]"),
             entry("Modal Gerar Relatórios - Período Calendário", "DateInputPicker-periodo-range-selected"),
-            entry("Modal Gerar Relatórios - Ícone Fechar (X)", "//div[@data-block='AppRelatorios.ModalGerarRelatorio']//a"),
+            entry("Modal Gerar Relatórios - Ícone Fechar (X)", "//div[@data-block='AppFiservRelatorios.ModalGerarRelatorio']//a"),
             entry("Modal Gerar Relatórios - Botão Gerar", "[data-testid='relatorios-btn-cancel']~[data-testid='relatorios-btn-gerar-relatorio']"),
             entry("Modal Gerar Relatórios - Título Informativo", "//*[@data-testid='relatorios-tipo-entrega-section']/span[1]"),
 
@@ -406,11 +407,11 @@ public class TestIdsConfig {
 
             entry("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']"),
             entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']/../..//span[contains(text(),'R$')]"),
-            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor atualizado das URs", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor atualizado das URs']/../..//span[contains(text(),'R$')]"),
-            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor pago", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor pago']/../..//span[contains(text(),'R$')]"),
-            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Saldo disponível negociável", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Saldo disponível negociável']/../../../..//span[contains(text(),'R$')]"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor atualizado das URs", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentosLinha']//span[text()='Valor atualizado das URs']/../..//span[contains(text(),'R$')]"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor pago", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentosLinha']//span[text()='Valor pago']/../..//span[contains(text(),'R$')]"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Saldo disponível negociável", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentosLinha']//span[text()='Saldo disponível negociável']/../../../..//span[contains(text(),'R$')]"),
             entry("Agenda de Recebimentos por UR - Lote de Recebimento - Sem Recebíveis", "//span[contains(text(),'Sem unidades de recebíveis')]"),
-            entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='UnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),
+            entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),
             entry("Agenda de Recebimentos por UR - Modal Detalhe totais por bandeira - Valores", "//*[contains(@class,'popup-dialog')]//span[contains(text(),'R$')]"),
 
             entry("Agenda de Recebimentos por UR - card Totais líquidos por bandeira", "[data-block='AppRecebimentosUnidadeRecebivel.ValorPagoTotalLiquidoPorProduto']"),

@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -43,6 +44,8 @@ public class DateUtil {
                     .minusDays(1);
             case "dia de sete dias atrás", "data de sete dias atrás" -> LocalDate.now().minusDays(7);
             case "dia de ontem", "data de ontem" -> LocalDate.now().minusDays(1);
+            case "início da semana" -> LocalDate.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
+            case "fim da semana" -> LocalDate.now().with(TemporalAdjusters.nextOrSame(DayOfWeek.SATURDAY));
             default -> throw new IllegalStateException("Unexpected value: " + expectedDate);
         };
     }
