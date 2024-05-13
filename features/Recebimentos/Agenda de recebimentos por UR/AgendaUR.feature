@@ -74,5 +74,13 @@ Feature: Agenda de recebimentos por UR
     And usuário clicou no "Date ranger - Este mês"
     When usuário clica "Paginação - abrir opção de paginação"
     And usuário clica "Paginação - mostrar 50 itens"
+    And existem recebimentos listados
     Then Irá apresentar resultados do dia 01 do mês corrente até o último dia do mês
+
+  @TestCaseKey=SMP-T375
+  Scenario: Consultar Período (Hoje)
+    Given Usuário selecionou Botão Período
+    When usuário clica "Date ranger - Hoje"
+    And existem recebimentos listados
+    Then Irá apresentar resultados do dia atual apenas
 

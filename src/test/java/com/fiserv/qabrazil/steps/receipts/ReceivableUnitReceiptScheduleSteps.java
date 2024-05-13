@@ -26,8 +26,7 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static java.util.stream.Collectors.toMap;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.*;
 
 public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
@@ -286,5 +285,19 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
                     receivableUnitReceiptSchedulePage.foundReceivableByTheDate(oneDay));
             oneDay = oneDay.plusDays(1);
         }
+    }
+
+    @Then("Irá apresentar resultados do dia atual apenas")
+    public void checkResultsFromToday() {
+        LocalDate yesterday = LocalDate.now().minusDays(1);
+        LocalDate today = LocalDate.now();
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+
+        assertFalse("Não deveria encontrar referência ao dia %s".formatted(yesterday.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
+                receivableUnitReceiptSchedulePage.foundReceivableByTheDate(yesterday));
+        assertFalse("Não deveria encontrar referência ao dia %s".formatted(tomorrow.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
+                receivableUnitReceiptSchedulePage.foundReceivableByTheDate(tomorrow));
+        assertTrue("Não encontrei referência ao dia %s".formatted(today.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
+                receivableUnitReceiptSchedulePage.foundReceivableByTheDate(today));
     }
 }
