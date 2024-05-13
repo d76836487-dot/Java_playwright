@@ -4,7 +4,6 @@
 @Zephyr:Folder=/Portal_do_Cliente/Transacoes_tokenizadas/Pre-autorizacoes
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
-
 Feature: Pre-autorizacoes
 
   @TestCaseKey=SMP-T266
