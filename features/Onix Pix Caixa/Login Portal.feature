@@ -1,11 +1,11 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Onix_Pix_Caixa/Login_Portal
+@Zephyr:Folder=/Portal_do_Cliente/Onix_Pix_Caixa/Onix Login_Portal
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Login Portal
+Feature: Onix Login Portal
 
   @TestCaseKey=SMP-T341
   Scenario Outline: Exibição do modal de Habilitação Conta Pix - Primeiro acesso e usuário elegível
