@@ -4,7 +4,6 @@
 @Zephyr:Folder=/Portal_do_Cliente/Transacoes_tokenizadas/Vendas_Hoje
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
-
 Feature: Vendas Hoje
 
   @TestCaseKey=SMP-T214
