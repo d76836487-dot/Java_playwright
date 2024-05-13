@@ -84,8 +84,10 @@ Feature: Agenda de recebimentos por UR
     And existem recebimentos listados
     Then Irá apresentar resultados do dia atual apenas
 
+  @TestCaseKey=SMP-T376
   Scenario: Consultar Período (Essa semana)
     Given Usuário selecionou Botão Período
     When usuário clica "Date ranger - Essa semana"
     And existem recebimentos listados
     Then Irá apresentar resultados referentes a Essa semana
+
