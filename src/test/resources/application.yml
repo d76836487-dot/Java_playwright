@@ -57,8 +57,8 @@ user-profiles:
     allianceName: CAIXA
   bin003:
     url: https://bin.qa.portaldocliente.fiserv.com
-    user: ${BIN003_CONTRACT_USER}
-    password: ${BIN003_CONTRACT_PASSWORD}
+    user: 37421677070
+    password: Fiserv@456
     mfaSecretKey: ${BIN003_MFA_SECRETKEY}
     identity: bin
     primaryCssClass: cor-laranja

@@ -5,7 +5,7 @@
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-#noinspection CucumberUndefinedStep
+
 Feature: Historico de Vendas
 
   @TestCaseKey=SMP-T262
