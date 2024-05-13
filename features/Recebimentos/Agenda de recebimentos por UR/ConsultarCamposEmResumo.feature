@@ -145,7 +145,6 @@ Feature: Consultar Campos em Resumo
     And Usuário pode selecionar a data conforme desejado
     And Usuário pode preencher a data conforme desejado
 
-
 #
 #QScenario: Consultar Período (Essa semana)
 #
