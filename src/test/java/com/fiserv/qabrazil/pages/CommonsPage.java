@@ -75,4 +75,9 @@ public class CommonsPage extends BasePage {
         pageField.highlightIfPossible();
         return (String) pageField.getLocator().evaluate("node => window.getComputedStyle(node).getPropertyValue('color')");
     }
+
+    public String getBackgroundColor(PageField pageField) {
+        pageField.highlightIfPossible();
+        return (String) pageField.getLocator().evaluate("node => window.getComputedStyle(node).getPropertyValue('background-color')");
+    }
 }

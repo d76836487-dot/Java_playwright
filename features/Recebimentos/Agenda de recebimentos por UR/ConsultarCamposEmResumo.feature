@@ -148,33 +148,13 @@ Feature: Consultar Campos em Resumo
 #
 #
 #
-#QScenario: Consultar Período (anterior a abril /2024) ***
+#Scenario: Consultar Período (anterior a abril /2024) ***
 #
 #    Given Usuário está logado Agenda de recebimentos por UR
 #    When Usuário seleciona Botão Período
 #    And seleciona um Período anterior a abril/2024
 #    And Clica no Botão Aplicar
 #    Then Mostrara O card com os dias bloqueados e a seguinte mensagem: Para períodos anteriores a abril/2024 consulte Recebimentos > Resumo de recebimentos
-#
-#
-#QScenario: Consultar Botão Filtros
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When seleciona Botão Filtros
-#    Then usuário visualizara Título Filtros, mensagem: Os itens selecionados serão aplicados na pesquisa Botão X, Botões: Bandeiras (0) que deve vir por default 0, Botões Limpar Filtros, Mostrar resultados (na cor da instituição)
-#
-#  Obs.: Filtro fixo, ou seja, apresentar todas as bandeiras abaixo e seus respectivos produtos
-#  Master débito
-#  Master crédito
-#  Visa débito
-#  Visa crédito
-#  Elo débito
-#  Elo crédito
-#  Cabal débito
-#  Cabal crédito
-#  Hipercard crédito
-#  Amex crédito
-#
 #
 #QScenario: Consultar Aplicando filtros
 #
@@ -188,7 +168,7 @@ Feature: Consultar Campos em Resumo
 #  Obs.: Testar com diferentes bandeiras e também com bandeiras múltiplas, tipo master débito e visa crédito, etc...
 #
 #
-#QScenario: Consultar Coloração do Componente Filtros
+# QScenario: Consultar Coloração do Componente Filtros
 #
 #    Given Usuário está logado em Agenda de recebimentos por UR
 #    When Usuário já aplicou um filtro

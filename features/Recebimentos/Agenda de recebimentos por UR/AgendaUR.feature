@@ -48,6 +48,7 @@ Feature: Agenda de recebimentos por UR
     Cabal Débito, Cabal Crédito, Hipercard Crédito, Amex Crédito
     """
     And Usuário verá em "Filter - Bandeiras (0)" na cor primária "<cor>"
+    Then Usuário verá fundo na cor primário "<cor>" quando clicar nas bandeiras no "Filter - Bandeiras (0)"
     @sicredi
     Examples:
       | cor              |
