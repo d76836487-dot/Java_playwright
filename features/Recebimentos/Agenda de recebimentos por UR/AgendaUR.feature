@@ -102,7 +102,7 @@ Feature: Agenda de recebimentos por UR
     When usuário clica "Agenda de Recebimentos por UR - Exportar - Botão X"
     Then Usuário não verá nenhum "Agenda de Recebimentos por UR - Exportar - Modal"
 
-  Scenario Outline: Consultar  Arquivo Excel
+  Scenario Outline: Baixar Arquivo Excel e CSV
     Given Usuário selecionou Botão Período
     And usuário clicou no "Date ranger - Essa semana"
     And Todas as barras de carregamento sumiram
@@ -111,3 +111,4 @@ Feature: Agenda de recebimentos por UR
     Examples:
       | format |
       | Excel  |
+      | CSV    |

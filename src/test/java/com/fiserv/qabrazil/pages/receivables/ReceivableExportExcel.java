@@ -12,7 +12,7 @@ public class ReceivableExportExcel implements ReceivableExport {
     }
 
     @Override
-    public String getResume() {
-        return excelWrapper.getCell(0, 0).getText();
+    public boolean looksHaveData() {
+        return !excelWrapper.getCell(0, 0).getText().isEmpty();
     }
 }

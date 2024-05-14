@@ -270,6 +270,7 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Exportar - Gerar arquivo", "exportar-arquivos-gerar-arquivo"),
             entry("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo", "simple-dropdown-select-"),
             entry("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
+            entry("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
             entry("Agenda de Recebimentos por UR - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
 
             entry("Detalhe da UR - Resumo - Total bruto valor", "total-bruto-ur"),

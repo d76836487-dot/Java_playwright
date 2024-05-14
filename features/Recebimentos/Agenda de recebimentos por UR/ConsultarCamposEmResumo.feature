@@ -182,17 +182,6 @@ Feature: Consultar Campos em Resumo
 #Feature: Exportando arquivos Excel/CSV/PDF
 #
 #
-#
-#
-#QScenario: Consultar  Arquivo CSV
-#
-#  Given Usuário está logado Agenda de recebimentos por UR
-#  When Usuário clica no Botão Exportar
-#  And Usuário seleciona Tipo de arquivo CSV
-#  And seleciona Botão Gerar arquivo
-#  Then arquivo será exportado com sucesso
-#
-#
 #QScenario: Consultar  Arquivo PDF
 #
 #  Given Usuário está logado Agenda de recebimentos por UR

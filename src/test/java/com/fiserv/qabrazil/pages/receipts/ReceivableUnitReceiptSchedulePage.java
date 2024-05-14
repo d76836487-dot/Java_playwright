@@ -156,6 +156,18 @@ public class ReceivableUnitReceiptSchedulePage extends CheckedBasePage {
                 new ExcelWrapper(bufferedInputStream, "Data", readStreamFileName.getRight()));
     }
 
+    public ReceivableExport downloadCsv() throws Exception {
+        String formatType = "Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo - CSV";
+        ImmutablePair<InputStream, String> readStreamFileName = downloadReport(formatType);
+
+        if (readStreamFileName == null) return ReceivableExportCsv.NULL;
+
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFileName.getLeft(),
+                CSVWrapper.CONTENT_TYPE, "CSV");
+
+        return new ReceivableExportCsv(new CSVWrapper(bufferedInputStream));
+    }
+
     private ImmutablePair<InputStream, String> downloadReport(String formatType) {
         PageField exportButton = pageField.from("Agenda de Recebimentos por UR - Botão Exportar");
 

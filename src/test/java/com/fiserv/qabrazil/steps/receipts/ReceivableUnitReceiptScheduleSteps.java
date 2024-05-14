@@ -14,7 +14,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -335,18 +334,19 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
     }
 
     @When("Usuário faz exportação em {string} do Recebimentos por UR")
-    public void exportReport(String format) throws IOException {
+    public void exportReport(String format) throws Exception {
         receivableExport = downloadReport(format);
     }
 
-    private ReceivableExport downloadReport(String format) throws IOException {
+    private ReceivableExport downloadReport(String format) throws Exception {
         if (format.equals("Excel")) return receivableUnitReceiptSchedulePage.downloadExcel();
+        if (format.equals("CSV")) return receivableUnitReceiptSchedulePage.downloadCsv();
 
         throw new RuntimeException("Tipo de formato '%s' desconhecido.".formatted(format));
     }
 
     @Then("Exportação foi feita com sucesso")
     public void checkExport() {
-        assertFalse(receivableExport.getResume().isEmpty());
+        assertTrue(receivableExport.looksHaveData());
     }
 }
