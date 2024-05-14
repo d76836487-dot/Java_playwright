@@ -439,6 +439,7 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Botão Exportar", "//button/span[text()='Exportar']"),
 
             entry("Agenda de Recebimentos por UR - Exportar - Botão Cancelar", "//button/span[text()='Cancelar']"),
+            entry("Agenda de Recebimentos por UR - Exportar - Botão X", "//img[contains(@src,'close')]"),
             entry("Agenda de Recebimentos por UR - Exportar - Modal", "//div[contains(@class, 'popup-dialog')]"),
 
             entry("Detalhe da UR - Resumo - Título", "//span[starts-with(text(), 'Resumo')]"),
