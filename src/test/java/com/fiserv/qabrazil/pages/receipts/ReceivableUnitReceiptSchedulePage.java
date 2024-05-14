@@ -1,15 +1,26 @@
 package com.fiserv.qabrazil.pages.receipts;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.components.FilesToAttachToScenario;
 import com.fiserv.qabrazil.pages.CheckedBasePage;
 import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.pages.receivables.ReceivableExport;
+import com.fiserv.qabrazil.pages.receivables.ReceivableExportExcel;
+import com.fiserv.qabrazil.util.CSVWrapper;
 import com.fiserv.qabrazil.util.Currency;
+import com.fiserv.qabrazil.util.ExcelWrapper;
+import com.microsoft.playwright.Download;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -24,6 +35,8 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 @ScenarioComponent
 @Component("Agenda de Recebimentos por UR")
 public class ReceivableUnitReceiptSchedulePage extends CheckedBasePage {
+    @Autowired
+    private FilesToAttachToScenario filesToAttachToScenario;
 
     public ReceivableUnitReceiptSchedulePage() {
         super(Pattern.compile("^.*/AgendaRecebimentosUR$"));
@@ -128,5 +141,36 @@ public class ReceivableUnitReceiptSchedulePage extends CheckedBasePage {
     public List<PageField> getBrandOptionsAtFilter(PageField allPageField) {
         waitUntilTrue(() -> allPageField.getCount() >= 10);
         return allPageField.getAllPageField();
+    }
+
+    public ReceivableExport downloadExcel() throws IOException {
+        String formatType = "Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo - Excel";
+        ImmutablePair<InputStream, String> readStreamFileName = downloadReport(formatType);
+
+        if (readStreamFileName == null) return ReceivableExportExcel.NULL;
+
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFileName.getLeft(),
+                ExcelWrapper.CONTENT_TYPE, "Excel");
+
+        return new ReceivableExportExcel(
+                new ExcelWrapper(bufferedInputStream, "Data", readStreamFileName.getRight()));
+    }
+
+    private ImmutablePair<InputStream, String> downloadReport(String formatType) {
+        PageField exportButton = pageField.from("Agenda de Recebimentos por UR - Botão Exportar");
+
+        if (!exportButton.fieldIsOneVisibleAndEnabled()) return null;
+
+        exportButton.click();
+        pageField.from("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo").hoverOver();
+        pageField.from("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo").click();
+        pageField.from(formatType).hoverOver();
+        pageField.from(formatType).click();
+        pageField.from(formatType).hoverAway();
+
+        Download download = page.waitForDownload(new Page.WaitForDownloadOptions().setTimeout(100000), () ->
+                pageField.from("Agenda de Recebimentos por UR - Exportar - Botão Gerar Arquivo").click());
+
+        return new ImmutablePair<>(download.createReadStream(), download.suggestedFilename());
     }
 }

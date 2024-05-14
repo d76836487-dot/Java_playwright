@@ -267,6 +267,11 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Agenda Futura - Saldo", "agenda-futura-ur"),
             entry("Agenda de Recebimentos por UR - Botão Detalhe totais por bandeira", "detalhe-totais-por-bandeira-produto-ur"),
 
+            entry("Agenda de Recebimentos por UR - Exportar - Gerar arquivo", "exportar-arquivos-gerar-arquivo"),
+            entry("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo", "simple-dropdown-select-"),
+            entry("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
+            entry("Agenda de Recebimentos por UR - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
+
             entry("Detalhe da UR - Resumo - Total bruto valor", "total-bruto-ur"),
             entry("Detalhe da UR - Resumo - Total taxa MDR valor", "total-taxa-mdr-ur"),
             entry("Detalhe da UR - Resumo - Total antecipação eventual valor", "total-antecipacao-eventual-ur"),
@@ -441,6 +446,7 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Exportar - Botão Cancelar", "//button/span[text()='Cancelar']"),
             entry("Agenda de Recebimentos por UR - Exportar - Botão X", "//img[contains(@src,'close')]"),
             entry("Agenda de Recebimentos por UR - Exportar - Modal", "//div[contains(@class, 'popup-dialog')]"),
+            entry("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo - Gerar arquivo", "//button[text()='Gerar arquivo']"),
 
             entry("Detalhe da UR - Resumo - Título", "//span[starts-with(text(), 'Resumo')]"),
             entry("Detalhe da UR - Botão Exportar", "//button[contains(@class, 'btn-primary')][//span[text()='Exportar']]"),

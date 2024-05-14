@@ -102,6 +102,12 @@ Feature: Agenda de recebimentos por UR
     When usuário clica "Agenda de Recebimentos por UR - Exportar - Botão X"
     Then Usuário não verá nenhum "Agenda de Recebimentos por UR - Exportar - Modal"
 
-#    Given Usuário está logado em Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Exportar
-#    Then abrira modal com a mensagem: Escolha como deseja exportar o relatório Opções de Exportar (Excel,CSV,PDF) , os botões: X, Cancelar e Gerar arquivo
+  Scenario Outline: Consultar  Arquivo Excel
+    Given Usuário selecionou Botão Período
+    And usuário clicou no "Date ranger - Essa semana"
+    And Todas as barras de carregamento sumiram
+    When Usuário faz exportação em "<format>" do Recebimentos por UR
+    Then Exportação foi feita com sucesso
+    Examples:
+      | format |
+      | Excel  |

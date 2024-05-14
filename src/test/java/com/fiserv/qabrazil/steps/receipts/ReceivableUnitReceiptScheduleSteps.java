@@ -4,6 +4,7 @@ import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.pages.receipts.ReceivableUnitReceiptSchedulePage;
+import com.fiserv.qabrazil.pages.receivables.ReceivableExport;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.UrlCheckers;
 import io.cucumber.datatable.DataTable;
@@ -13,6 +14,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -31,6 +33,7 @@ import static org.testng.Assert.assertNotEquals;
 import static org.testng.AssertJUnit.*;
 
 public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
+    ReceivableExport receivableExport ;
 
     @Autowired
     UrlCheckers urlCheckers;
@@ -329,5 +332,21 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
             assertNotEquals("Cor da bandeira deveria ser diferente após ser selecionada.",
                     actualPrimaryColor, originalPrimaryColor);
         }
+    }
+
+    @When("Usuário faz exportação em {string} do Recebimentos por UR")
+    public void exportReport(String format) throws IOException {
+        receivableExport = downloadReport(format);
+    }
+
+    private ReceivableExport downloadReport(String format) throws IOException {
+        if (format.equals("Excel")) return receivableUnitReceiptSchedulePage.downloadExcel();
+
+        throw new RuntimeException("Tipo de formato '%s' desconhecido.".formatted(format));
+    }
+
+    @Then("Exportação foi feita com sucesso")
+    public void checkExport() {
+        assertFalse(receivableExport.getResume().isEmpty());
     }
 }

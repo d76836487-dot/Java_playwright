@@ -178,33 +178,10 @@ Feature: Consultar Campos em Resumo
 #    Then abrira modal com a mensagem: Escolha como deseja exportar o relatório Opções de Exportar (Excel,CSV,PDF) , os botões: X, Cancelar e Gerar arquivo
 #
 #
-#QScenario: Consultar Botão X no Modal Exportar
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Exportar
-#    Then abrira o modal
-#    And Usuário seleciona o Botão X
-#    Then usuário retornara para a página que estava anteriormente
-#
-#
-#
-#QScenario: Consultar  Botão Cancelar no Modal Exportar
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Exportar
-#    Then abrira o modal
-#    And Usuário seleciona o Botão Cancelar
-#    Then usuário retornara para a página que estava anteriormente
 #
 #Feature: Exportando arquivos Excel/CSV/PDF
 #
 #
-#QScenario: Consultar  Arquivo Excel
-#
-#  Given Usuário está logado Agenda de recebimentos por UR
-#  When Usuário clica no Botão Exportar
-#  And Usuário seleciona Tipo de arquivo Excel
-#  And seleciona Botão Gerar arquivo
-#  Then arquivo será exportado com sucesso
 #
 #
 #QScenario: Consultar  Arquivo CSV
