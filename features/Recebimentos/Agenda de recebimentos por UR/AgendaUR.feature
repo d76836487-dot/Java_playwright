@@ -92,16 +92,19 @@ Feature: Agenda de recebimentos por UR
     And existem recebimentos listados
     Then Irá apresentar resultados referentes a Essa semana
 
+  @TestCaseKey=SMP-T378
   Scenario: Botão Cancelar da modal Exportar
     Given usuário clicou no "Agenda de Recebimentos por UR - Botão Exportar"
     When usuário clica "Agenda de Recebimentos por UR - Exportar - Botão Cancelar"
     Then Usuário não verá nenhum "Agenda de Recebimentos por UR - Exportar - Modal"
 
+  @TestCaseKey=SMP-T379
   Scenario: Botão X da modal Exportar
     Given usuário clicou no "Agenda de Recebimentos por UR - Botão Exportar"
     When usuário clica "Agenda de Recebimentos por UR - Exportar - Botão X"
     Then Usuário não verá nenhum "Agenda de Recebimentos por UR - Exportar - Modal"
 
+  @TestCaseKey=SMP-T377
   Scenario Outline: Baixar Arquivo Excel e CSV
     Given Usuário selecionou Botão Período
     And usuário clicou no "Date ranger - Essa semana"
@@ -112,3 +115,4 @@ Feature: Agenda de recebimentos por UR
       | format |
       | Excel  |
       | CSV    |
+
