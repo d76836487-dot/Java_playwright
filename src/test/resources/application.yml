@@ -91,7 +91,7 @@ user-profiles:
     identity: sicredi
     primaryCssClass: cor-verde
     institutionTags: '@pt-br,@sicredi,@PermiteAdiantamento,@PermiteSolicitações'
-    clientTags: '@MDRPadrão,@UsuárioMaster'
+    clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
     serviceContract: "110"
@@ -123,7 +123,7 @@ framework:
   playwright:
     launch-options:
       # Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary"
-      # channel: chrome
+      channel: chrome
       headless: false
       slowMo: 300
       # timeout: 30000

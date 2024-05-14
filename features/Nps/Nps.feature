@@ -1,5 +1,5 @@
 #language:en
-@ignore
+@playwright @api @ignore
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/NPS/Acessar_Pesquisa_NPS
 @Zephyr:Status=Approved

@@ -2,7 +2,7 @@
 @ignore
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Cancelamento_Vendas/Cancelamento_de_Vendas
-@Zephyr:Status=Approved
+@Zephyr:Status=Draft
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Cancelamento de Vendas

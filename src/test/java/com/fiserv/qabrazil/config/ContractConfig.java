@@ -29,6 +29,9 @@ public class ContractConfig {
     }
 
     public ProfileData getActiveUserProfile() {
+//
+//        activeProfiles = "sicredi";
+//
         return userProfiles.computeIfAbsent(activeProfiles, profile -> {
             if (profile.isEmpty()) {
                 throw new IllegalStateException("No profile specified by spring.profiles.active property");
