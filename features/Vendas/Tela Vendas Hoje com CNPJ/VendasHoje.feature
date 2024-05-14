@@ -49,6 +49,7 @@ Feature: Tela Vendas Hoje com CNPJ
   @TestCaseKey=SMP-T149
   Scenario: Ocultar valores de Vendas Hoje
     Given Usuário acessa Vendas Hoje
+    And Todas as barras de carregamento sumiram
     When usuário clica no "Ocultar Valores" no "Header"
     Then Usuário verá em "Vendas Hoje - Resumo - Quantidade Vendas" o valor "••••"
     And Usuário verá em "Vendas Hoje - Resumo - Valor Vendas" o valor "R$ ••••"
