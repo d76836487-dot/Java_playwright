@@ -62,9 +62,7 @@ Feature: Consultar Campos em Resumo
 
   @TestCaseKey=SMP-T329
   Scenario: Consultar Componente Totais líquidos por bandeira
-
-  #OBS: Apresentar a relação das bandeiras de forma fixa no front e popular CASO retorne valor da API. Se não retornar valor, apresentar com R$ 0,00
-
+    #OBS: Apresentar a relação das bandeiras de forma fixa no front e popular CASO retorne valor da API. Se não retornar valor, apresentar com R$ 0,00
     Given Usuário acessou a página de Agenda de Recebimentos por UR
     When Usuário visualizará o campo "card Totais líquidos por bandeira" na seção "Agenda de Recebimentos por UR"
     Then abaixo do gráfico deve ser apresentado uma bolinha na cor da sua respectiva bandeira nas colorações:
@@ -99,9 +97,7 @@ Feature: Consultar Campos em Resumo
 
   @TestCaseKey=SMP-T357
   Scenario Outline: Consultar Detalhe totais por bandeira e produto
-
-  #Obs.: Apresentar bandeira com total ainda que o total seja zero.
-
+    #Obs.: Apresentar bandeira com total ainda que o total seja zero.
     Given Usuário acessou a página de Agenda de Recebimentos por UR
     When usuário clica no "Botão Detalhe totais por bandeira" em "Agenda de Recebimentos por UR"
     Then abrira um modal com: Totais líquidos por bandeira e produtos, Bolinha na cor do Cartão, Logo do Cartão e Nome do Cartão, Total em Crédito, Total em Débito, e o Botões, X acima e fechar na "<cor da Instituição>" abaixo
@@ -134,9 +130,7 @@ Feature: Consultar Campos em Resumo
 
   @TestCaseKey=SMP-T360
   Scenario: Consultar Botão Período
-
-  #Obs: Esse menu terá dados de histórico (passado) mas também de futuro.
-
+    #Obs: Esse menu terá dados de histórico (passado) mas também de futuro.
     Given Usuário acessou a página de Agenda de Recebimentos por UR
     When Usuário seleciona Botão Período
     Then Abrirá componente de calendário que deve vir por default "Este Mês"
@@ -148,7 +142,7 @@ Feature: Consultar Campos em Resumo
 #
 #
 #
-  # aguardando confirmação PO. Este cenário não está acontecendo mais
+# aguardando confirmação PO. Este cenário não está acontecendo mais
 #Scenario: Consultar Período (anterior a abril /2024) ***
 #
 #    Given Usuário está logado Agenda de recebimentos por UR
@@ -157,7 +151,7 @@ Feature: Consultar Campos em Resumo
 #    And Clica no Botão Aplicar
 #    Then Mostrara O card com os dias bloqueados e a seguinte mensagem: Para períodos anteriores a abril/2024 consulte Recebimentos > Resumo de recebimentos
 #
-  # quando eu filtro, mas abro uma linha, está trazendo as bandeiras não filtradas. Aguardando confirmação PO
+# quando eu filtro, mas abro uma linha, está trazendo as bandeiras não filtradas. Aguardando confirmação PO
 #Scenario: Consultar Aplicando filtros
 #
 #    Given Usuário está logado em Agenda de recebimentos por UR
