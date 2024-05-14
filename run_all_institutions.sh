@@ -3,7 +3,6 @@
 tags="@playwright and not @ignore and not @rebatedor"
 profiles="sicredi azulzinha afinz ota-azulzinha ota-afinz bin003 bin007"
 cycle_id=
-all_pids=
 
 if [ $# -eq 1 ] && [ "$1" = '-h' ]; then
   echo "Roda testes automatizados para todos os perfis."
@@ -38,7 +37,7 @@ do
   plugins="junit:output/$profile/target/cucumber/junit-report.xml,json:output/$profile/target/cucumber/cucumber.json,me.jvt.cucumber.report.PrettyReports:output/$profile/target/cucumber"
 
   if [ "$cycle_id" != '' ]; then
-    zephyr_cmd=`zephyr save-result -f=output/$profile/target/cucumber/cucumber.json -c=$cycle_id`
+    zephyr_cmd=`zephyr save-result -f=output/$profile/target/cucumber/cucumber.json -a -c=$cycle_id`
   else
     zephyr_cmd=`echo 'sem opção para subir evidências no zephyr.'`
   fi
