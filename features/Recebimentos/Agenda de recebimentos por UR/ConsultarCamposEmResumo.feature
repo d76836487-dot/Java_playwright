@@ -148,6 +148,7 @@ Feature: Consultar Campos em Resumo
 #
 #
 #
+  # aguardando confirmação PO. Este cenário não está acontecendo mais
 #Scenario: Consultar Período (anterior a abril /2024) ***
 #
 #    Given Usuário está logado Agenda de recebimentos por UR
@@ -156,7 +157,8 @@ Feature: Consultar Campos em Resumo
 #    And Clica no Botão Aplicar
 #    Then Mostrara O card com os dias bloqueados e a seguinte mensagem: Para períodos anteriores a abril/2024 consulte Recebimentos > Resumo de recebimentos
 #
-#QScenario: Consultar Aplicando filtros
+  # quando eu filtro, mas abro uma linha, está trazendo as bandeiras não filtradas. Aguardando confirmação PO
+#Scenario: Consultar Aplicando filtros
 #
 #    Given Usuário está logado em Agenda de recebimentos por UR
 #    When Usuário seleciona Botão Filtros
@@ -168,15 +170,8 @@ Feature: Consultar Campos em Resumo
 #  Obs.: Testar com diferentes bandeiras e também com bandeiras múltiplas, tipo master débito e visa crédito, etc...
 #
 #
-# QScenario: Consultar Coloração do Componente Filtros
 #
-#    Given Usuário está logado em Agenda de recebimentos por UR
-#    When Usuário já aplicou um filtro
-#    Then Selecionando um cartão em (Filtro) na página Meus recebimentos, deve ficar com uma coloração na cor da Instituição.
-#
-#
-#
-#QScenario: Consultar  Botão Exportar
+#Scenario: Consultar  Botão Exportar
 #
 #    Given Usuário está logado em Agenda de recebimentos por UR
 #    When Usuário seleciona Botão Exportar

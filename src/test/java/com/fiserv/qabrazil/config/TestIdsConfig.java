@@ -436,6 +436,10 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - legenda gráfico Totais - texto Amex", "//*[local-name()='text'][starts-with(text(),'Amex')]"),
             entry("Agenda de Recebimentos por UR - legenda gráfico Totais - texto Cabal", "//*[local-name()='text'][starts-with(text(),'Cabal')]"),
             entry("Agenda de Recebimentos por UR - Botão Filtrar", "(//span[text()='Filtros'])[last()]"),
+            entry("Agenda de Recebimentos por UR - Botão Exportar", "//button/span[text()='Exportar']"),
+
+            entry("Agenda de Recebimentos por UR - Exportar - Botão Cancelar", "//button/span[text()='Cancelar']"),
+            entry("Agenda de Recebimentos por UR - Exportar - Modal", "//div[contains(@class, 'popup-dialog')]"),
 
             entry("Detalhe da UR - Resumo - Título", "//span[starts-with(text(), 'Resumo')]"),
             entry("Detalhe da UR - Botão Exportar", "//button[contains(@class, 'btn-primary')][//span[text()='Exportar']]"),

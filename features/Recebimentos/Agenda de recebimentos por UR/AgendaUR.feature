@@ -92,3 +92,11 @@ Feature: Agenda de recebimentos por UR
     And existem recebimentos listados
     Then Irá apresentar resultados referentes a Essa semana
 
+  Scenario: Botão Cancelar da modal Exportar
+    Given usuário clicou no "Agenda de Recebimentos por UR - Botão Exportar"
+    When usuário clica "Agenda de Recebimentos por UR - Exportar - Botão Cancelar"
+    Then Usuário não verá nenhum "Agenda de Recebimentos por UR - Exportar - Modal"
+
+#    Given Usuário está logado em Agenda de recebimentos por UR
+#    When Usuário seleciona Botão Exportar
+#    Then abrira modal com a mensagem: Escolha como deseja exportar o relatório Opções de Exportar (Excel,CSV,PDF) , os botões: X, Cancelar e Gerar arquivo
