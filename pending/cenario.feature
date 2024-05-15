@@ -7,6 +7,7 @@
 #noinspection CucumberUndefinedStep
 Feature: NPS
   Scenario: Acessar pesquisa de NPS
+
     Given usuario perfil admin
     When acessa a area cliente
     And clica na caixa NPS
