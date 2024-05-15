@@ -1,6 +1,6 @@
 #language: en
 @playwright
-@UsuárioMaster
+@UsuárioComHierarquia
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Agenda_de_recebimentos_por_UR/Agenda_de_Recebimentos_por_UR_Consulta
 @Zephyr:Status=Draft

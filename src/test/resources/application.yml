@@ -21,7 +21,7 @@ user-profiles:
     identity: afinz
     primaryCssClass: cor-azul
     institutionTags: '@pt-br,@afinz,@NaoPermiteAdiantamento,@NaoPermiteSolicitações'
-    clientTags: '@MDRFlex,@UsuárioMaster'
+    clientTags: '@MDRFlex,@UsuárioComHierarquia'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
     serviceContract: "143"
@@ -77,7 +77,7 @@ user-profiles:
     identity: bin
     primaryCssClass: cor-laranja
     institutionTags: '@pt-br,@bin007,@PermiteAdiantamento,@PermiteSolicitações'
-    clientTags: '@MDRPadrão,@UsuárioMaster'
+    clientTags: '@MDRPadrão,@UsuárioComHierarquia'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
     serviceContract: "125"

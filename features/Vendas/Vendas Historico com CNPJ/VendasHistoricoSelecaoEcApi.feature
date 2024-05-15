@@ -1,5 +1,5 @@
 #language: en
-@playwright @api  @UsuárioMaster
+@playwright @api  @UsuárioComHierarquia
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Histórico_com_CNPJ
 @Zephyr:Status=Draft

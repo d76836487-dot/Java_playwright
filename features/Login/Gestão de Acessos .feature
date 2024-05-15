@@ -1,5 +1,5 @@
 #language: en
-@playwright @UsuárioMaster
+@playwright @UsuárioComHierarquia
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Login/Login_Gestao_de_Acessos
 @Zephyr:Status=Draft

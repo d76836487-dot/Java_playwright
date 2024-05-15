@@ -59,7 +59,7 @@ public class ContractConfig {
             String allianceName) {
 
         public boolean isMaster() {
-            return clientTags.contains("@UsuárioMaster");
+            return clientTags.contains("@UsuárioComHierarquia");
         }
     }
 }

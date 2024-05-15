@@ -1,5 +1,5 @@
 #language: en
-@playwright @api @UsuárioMaster
+@playwright @api @UsuárioComHierarquia
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Recebimentos_Resumo_Futuro
 @Zephyr:Status=Draft

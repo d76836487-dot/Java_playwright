@@ -1,5 +1,5 @@
 #language: en
-@playwright @api @UsuárioMaster
+@playwright @api @UsuárioComHierarquia
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Antecipação_Trocar_Estabelecimento
 @Zephyr:Status=Draft
