@@ -1,11 +1,11 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Onix_Pix_Caixa/Transacao_Pix_via_POS
+@Zephyr:Folder=/Portal_do_Cliente/Onix_Pix_Caixa/Pix_Transacao_POS
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Transacao Pix via POS
+Feature: Pix Transacao POS
 
   @TestCaseKey=SMP-T337
   Scenario Outline: Realizar transacao Pix via POS apos Contratacao do Pix

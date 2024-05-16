@@ -1,11 +1,11 @@
 #language: en
 @playwright @UsuárioMaster
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Seleção_de_EC_ou_DCTO_-_Usuário_Master
+@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Loagada_Health_Check_User_Master
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Seleção de EC ou DCTO - Usuário Master
+Feature: Home Loagada Health Check User Master
 
   @TestCaseKey=SMP-T172
   Scenario: Redirecionamento Correto (Usuário Master) - o usuário verá modal Personalizar ao logar

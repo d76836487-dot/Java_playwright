@@ -2,11 +2,11 @@
 @playwright
 @UsuárioMaster
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Agenda_de_recebimentos_por_UR/Consultar_Campos_em_Resumo
+@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Agenda_de_recebimentos_por_UR/Agenda_de_Recebimentos_por_UR_Consulta
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Consultar Campos em Resumo
+Feature: Agenda de Recebimentos por UR Consulta
 
   Background:
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão

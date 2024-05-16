@@ -1,11 +1,11 @@
 #language: en
 @playwright @api
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada_Conferindo_Com_Api_e_Seleção_EC
+@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada_Health_Check_EC
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Home Logada Conferindo Com Api e Seleção EC
+Feature: Home Logada Health Check EC
 
   @ignore # TODO: confirmar a api
   @UsuárioMaster

@@ -1,11 +1,11 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Relatorios/Exportar_Relatorio
+@Zephyr:Folder=/Portal_do_Cliente/Relatorios/Relatorio_Exportacoes
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Exportar Relatorio
+Feature: Relatorio Exportacoes
 
   Background:
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão

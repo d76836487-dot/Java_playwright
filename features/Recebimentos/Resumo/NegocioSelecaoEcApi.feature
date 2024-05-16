@@ -1,11 +1,11 @@
-#language: en
+  #language: en
 @playwright @api @UsuárioMaster
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Tela_Negócio_com_API_e_Seleção_EC
+@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Recebimento_Resumo_Negócio
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Tela Negócio com API e Seleção EC
+Feature: Recebimento Resumo Negócio
 
   @TestCaseKey=SMP-T314
   Scenario: Tela Negócio - botão trocar estabelecimento - com seleção de Documento

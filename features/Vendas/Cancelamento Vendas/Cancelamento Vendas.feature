@@ -1,11 +1,11 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Cancelamento_Vendas/Cancelamento_de_Vendas
+@Zephyr:Folder=/Portal_do_Cliente/Cancelamento_Vendas/Vendas_Cancelamento
 @Zephyr:Status=Draft
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Cancelamento de Vendas
+Feature: Vendas Cancelamento
 
   @HealthCheck
   @TestCaseKey=SMP-T361

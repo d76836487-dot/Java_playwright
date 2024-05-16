@@ -1,11 +1,11 @@
 #language: en
 @playwright @api @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Hoje_com_CNPJ_com_API
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_Hoje_com_CNPJ
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Tela Vendas Hoje com CNPJ com API
+Feature: Vendas Hoje com CNPJ
 
   Background:
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão

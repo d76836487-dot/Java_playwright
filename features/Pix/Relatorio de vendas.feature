@@ -1,11 +1,11 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Onix_Pix_Caixa/Relatorio_de_vendas
+@Zephyr:Folder=/Portal_do_Cliente/Pix/Pix_Relatorio_de_vendas
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Relatorio de vendas
+Feature: Pix Relatorio de vendas
 
   @TestCaseKey=SMP-T339
   Scenario Outline: Visualização de relatorio de vendas no menu Conta Pix

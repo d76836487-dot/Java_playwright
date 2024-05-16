@@ -1,12 +1,12 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/NPS/Base_de_respostas_NPS
+@Zephyr:Folder=/Portal_do_Cliente/NPS/NPS_Base_resposta
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 #noinspection CucumberUndefinedStep
-Feature: Base de respostas NPS
+Feature: NPS Base Resposta
 
   @TestCaseKey=SMP-T120
   Scenario: Acesso a pesquisas NPS Com relatorio

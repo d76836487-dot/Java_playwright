@@ -1,12 +1,12 @@
 #language:en
 @playwright @api @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/NPS/Acessar_Pesquisa_NPS
+@Zephyr:Folder=/Portal_do_Cliente/NPS/NPS_Pesquisa
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 #noinspection CucumberUndefinedStep
-Feature: Acessar Pesquisa NPS
+Feature: NPSA Pesquisa
 
   @TestCaseKey=SMP-T60
   Scenario: Fechando Pesquisa NPS Após Antecipação Automática

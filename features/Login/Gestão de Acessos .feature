@@ -1,11 +1,11 @@
 #language: en
 @playwright @UsuárioMaster
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Tela_Gestão_de_Acessos/Gestão_de_Acessos_Secundarios
+@Zephyr:Folder=/Portal_do_Cliente/Login/Login_Gestao_de_Acessos
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Gestão de Acessos Secundarios
+Feature: Login Gestao de Acessos
 
   @TestCaseKey=SMP-T100
   Scenario: Consultar tela Gestão de Acessos

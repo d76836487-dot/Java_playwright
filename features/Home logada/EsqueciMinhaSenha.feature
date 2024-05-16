@@ -5,7 +5,7 @@
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Esqueci Minha Senha
+Feature: Home Logada Esqueci Minha Senha
 
   Background:
     Given Usuário acessou o portal

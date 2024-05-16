@@ -6,7 +6,7 @@
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 #noinspection CucumberUndefinedStep
-Feature: Acessar Pesquisa NPS Com Usuário Secundário
+Feature: NPS Usuario Secundario
 
   @TestCaseKey=SMP-T130
   Scenario: Fechando Pesquisa NPS Após Antecipação Automática - Usuario Secundario

@@ -1,11 +1,11 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Agenda_de_recebimentos_por_UR/Detalhe_da_UR
+@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Agenda_de_recebimentos_por_UR/Agenda_de_Recebimentos_por_UR_Detalhe
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Detalhe da UR
+Feature: Agenda de Recebimentos por UR Detalhe
 
   Background:
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
