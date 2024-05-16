@@ -1,7 +1,7 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Esqueci_Minha_Senha
+@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada_Esqueci_Minha_Senha
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo

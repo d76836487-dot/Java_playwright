@@ -1,11 +1,11 @@
 #language: en
 @playwright @api @UsuárioMaster
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Antecipação_com_API_e_Seleção_EC
+@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Antecipação_Trocar_Estabelecimento
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Antecipação com API e Seleção EC
+Feature: Antecipação Trocar Estabelecimento
 
   @azulzinha @bin003 @bin007 @sicredi @PermiteAdiantamento
   @TestCaseKey=SMP-T317
