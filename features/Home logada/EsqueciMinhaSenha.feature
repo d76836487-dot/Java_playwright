@@ -1,11 +1,11 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada_Esqueci_Minha_Senha
+@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Home Logada Esqueci Minha Senha
+Feature: Home Logada
 
   Background:
     Given Usuário acessou o portal

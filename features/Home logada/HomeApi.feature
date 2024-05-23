@@ -1,11 +1,11 @@
 #language: en
 @playwright @api @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada_Health_CHeck
+@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Home Logada Health CHeck
+Feature: Home Logada
 
   Background:
     When Usuário tenta logar na aplicação
