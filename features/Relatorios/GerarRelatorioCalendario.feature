@@ -1,11 +1,11 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Relatorios/Relatorio_Calendario
+@Zephyr:Folder=/Portal_do_Cliente/Relatorios/Relatorios
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Relatorio Calendario
+Feature: Relatorios
 
   Background:
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão

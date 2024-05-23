@@ -1,11 +1,11 @@
 #language: en
 @playwright @api @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_Histórico_com_CNPJ
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Vendas Histórico com CNPJ
+Feature: Vendas
 
   Background:
     Given Usuário tenta logar na aplicação

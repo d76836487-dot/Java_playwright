@@ -1,11 +1,11 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Relatorios/Relatorios_Consultas
+@Zephyr:Folder=/Portal_do_Cliente/Relatorios/Relatorios
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Relatorios Consultas
+Feature: Relatorios
 
   # TODO: fix all scenarios when we have data-testid for side menu
   Background:

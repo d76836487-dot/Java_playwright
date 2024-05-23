@@ -1,11 +1,11 @@
 #language: en
 @playwright @api @UsuárioComHierarquia
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Tela_Relatórios_Valores
+@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Relatorios
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Tela Relatórios Valores
+Feature: Relatorios
 
   @TestCaseKey=SMP-T312
   Scenario: Valores tela Relatórios - com seleção de Documento
