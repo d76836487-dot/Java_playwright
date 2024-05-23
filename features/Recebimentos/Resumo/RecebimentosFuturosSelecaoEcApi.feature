@@ -5,7 +5,7 @@
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Recebimento Resumo Futuro
+Feature: Recebimentos Resumo Futuro
 
   @TestCaseKey=SMP-T311
   Scenario: Valores tela Recebimentos - Futuros - deve bater com exportação - com seleção de Documento
