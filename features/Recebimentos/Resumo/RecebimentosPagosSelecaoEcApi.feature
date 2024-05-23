@@ -5,7 +5,7 @@
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-  Feature: Recebimentos Resumo Pago
+Feature: Recebimentos Resumo Pago
 
   @TestCaseKey=SMP-T308
   Scenario Outline: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de Documento

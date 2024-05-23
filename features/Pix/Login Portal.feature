@@ -7,7 +7,6 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Pix Login
 
-
   @TestCaseKey=SMP-T341
   Scenario Outline: Exibição do modal de Habilitação Conta Pix - Primeiro acesso e usuário elegível
     Given que tenho EC <Hierarquia> com o <Perfil>

@@ -1,4 +1,4 @@
-  #language: en
+#language: en
 @playwright @api @UsuárioMaster
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Recebimento_Resumo_Negócio
