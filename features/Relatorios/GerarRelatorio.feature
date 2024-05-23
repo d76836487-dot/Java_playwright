@@ -1,11 +1,11 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Relatorios/Gerar_Relatorio
+@Zephyr:Folder=/Portal_do_Cliente/Relatorios/Relatorio
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Gerar Relatorio
+Feature: Relatorio
 
   Background:
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão

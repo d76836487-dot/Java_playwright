@@ -1,8 +1,10 @@
 package com.fiserv.qabrazil.steps.receipts;
 
+import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.pages.receipts.ReceivableUnitReceiptSchedulePage;
+import com.fiserv.qabrazil.pages.receivables.ReceivableExport;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.UrlCheckers;
 import io.cucumber.datatable.DataTable;
@@ -12,18 +14,25 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.fiserv.automation.api.util.DateUtil.calculateLocalDate;
 import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
+import static java.util.stream.Collectors.toMap;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
-import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.Assert.assertNotEquals;
+import static org.testng.AssertJUnit.*;
 
 public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
+    ReceivableExport receivableExport ;
 
     @Autowired
     UrlCheckers urlCheckers;
@@ -33,6 +42,9 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
     @Autowired
     ReceivableUnitReceiptSchedulePage receivableUnitReceiptSchedulePage;
+
+    @Autowired
+    private CommonsPage commonsPage;
 
     @Then("usuário {shakespeareBoolean} em {string} opção de Alterar Documento")
     public void ensureWeAreAtTheCorrectPageAndHeaderDoNotHaveChangeDocument(boolean value, String pageName) {
@@ -252,6 +264,15 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
         }
     }
 
+    @Then("abrira um modal com: Totais líquidos por bandeira e produtos, Bolinha na cor do Cartão, Logo do Cartão e Nome do Cartão, Total em Crédito, Total em Débito, e o Botões, X acima e fechar na {string} abaixo")
+    public void modalOpens(String color, DataTable dataTable) {
+        Map<String, String> balls = dataTable.asMaps().stream()
+                        .collect(toMap(map -> map.get("bandeira"), map -> map.get("rgb")));
+        Map<String, String> logos = dataTable.asMaps().stream()
+                        .collect(toMap(map -> map.get("bandeira"), map -> map.get("logo")));
+        receivableUnitReceiptSchedulePage.validateModal(balls, logos, color);
+    }
+
     private static String extractBrand(String graphLabel) {
         Pattern p = Pattern.compile("^Totais líquidos por produto, [\\d,.]+ (Mastercard|ELO|Visa|Hipercard|Amex|Cabal) R\\$ [\\d,.]+$");
         Matcher m = p.matcher(graphLabel);
@@ -259,5 +280,73 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
             throw new IllegalArgumentException("Could not extract brand from \"" + graphLabel + "\"");
         }
         return m.group(1);
+    }
+
+    @Then("Irá apresentar resultados do dia 01 do mês corrente até o último dia do mês")
+    public void checkResultsFromThisMonth() {
+        LocalDate oneDay = calculateLocalDate("data início do mês");
+        LocalDate lastDay = calculateLocalDate("data final do mês");
+
+        while (oneDay.isBefore(lastDay) || oneDay.isEqual(lastDay)) {
+            assertTrue("Não encontrei referência ao dia %s".formatted(oneDay.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
+                    receivableUnitReceiptSchedulePage.foundReceivableByTheDate(oneDay));
+            oneDay = oneDay.plusDays(1);
+        }
+    }
+
+    @Then("Irá apresentar resultados referentes a Essa semana")
+    public void checkResultsFromThisWeek() {
+        LocalDate oneDay = calculateLocalDate("início da semana");
+        LocalDate saturday = calculateLocalDate("fim da semana");
+
+        while (oneDay.isBefore(saturday) || oneDay.isEqual(saturday)) {
+            assertTrue("Não encontrei referência ao dia %s".formatted(oneDay.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
+                    receivableUnitReceiptSchedulePage.foundReceivableByTheDate(oneDay));
+            oneDay = oneDay.plusDays(1);
+        }
+    }
+
+    @Then("Irá apresentar resultados do dia atual apenas")
+    public void checkResultsFromToday() {
+        LocalDate yesterday = LocalDate.now().minusDays(1);
+        LocalDate today = LocalDate.now();
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+
+        assertFalse("Não deveria encontrar referência ao dia %s".formatted(yesterday.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
+                receivableUnitReceiptSchedulePage.foundReceivableByTheDate(yesterday));
+        assertFalse("Não deveria encontrar referência ao dia %s".formatted(tomorrow.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
+                receivableUnitReceiptSchedulePage.foundReceivableByTheDate(tomorrow));
+        assertTrue("Não encontrei referência ao dia %s".formatted(today.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))),
+                receivableUnitReceiptSchedulePage.foundReceivableByTheDate(today));
+    }
+
+    @Then("Usuário verá fundo na cor primário {string} quando clicar nas bandeiras no {pageField}")
+    public void backgroundWhenClickBrand(String expectedColor, PageField allPageField) {
+        for(PageField pageField: receivableUnitReceiptSchedulePage.getBrandOptionsAtFilter(allPageField)) {
+            String originalPrimaryColor = commonsPage.getBackgroundColor(pageField);
+            pageField.click();
+            String actualPrimaryColor = commonsPage.getBackgroundColor(pageField);
+
+            assertEquals(expectedColor, actualPrimaryColor);
+            assertNotEquals("Cor da bandeira deveria ser diferente após ser selecionada.",
+                    actualPrimaryColor, originalPrimaryColor);
+        }
+    }
+
+    @When("Usuário faz exportação em {string} do Recebimentos por UR")
+    public void exportReport(String format) throws Exception {
+        receivableExport = downloadReport(format);
+    }
+
+    private ReceivableExport downloadReport(String format) throws Exception {
+        if (format.equals("Excel")) return receivableUnitReceiptSchedulePage.downloadExcel();
+        if (format.equals("CSV")) return receivableUnitReceiptSchedulePage.downloadCsv();
+
+        throw new RuntimeException("Tipo de formato '%s' desconhecido.".formatted(format));
+    }
+
+    @Then("Exportação foi feita com sucesso")
+    public void checkExport() {
+        assertTrue(receivableExport.looksHaveData());
     }
 }

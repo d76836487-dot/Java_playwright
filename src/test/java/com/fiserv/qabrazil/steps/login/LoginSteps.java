@@ -22,6 +22,13 @@ public class LoginSteps {
         loginPage.loginAndGetHomeReady();
     }
 
+    @Given("Usuário efetue logon")
+    public void usuário_efetue_logon() {
+        // Write code here that turns the phrase above into concrete actions
+        loginPage.applicationlogin(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
+
+    }
+
     @When("Usuário tenta logar na aplicação em {string} com {string} e {string}")
     public void login(String url, String user, String pwd, Object ignoredDataTable) {
         loginPage.login(url, user, pwd);

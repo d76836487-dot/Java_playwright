@@ -1,11 +1,11 @@
 #language: en
-@playwright @api  @UsuárioMaster
+@playwright @api  @UsuárioComHierarquia
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Histórico_com_CNPJ_com_API_e_Seleção_EC
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Histórico_com_CNPJ
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Tela Vendas Histórico com CNPJ com API e Seleção EC
+Feature: Vendas Histórico com CNPJ
 
   @TestCaseKey=SMP-T299
   Scenario Outline: Valores tela Vendas - HISTÓRICO DE VENDAS deve bater com exportação - com seleção de Documento

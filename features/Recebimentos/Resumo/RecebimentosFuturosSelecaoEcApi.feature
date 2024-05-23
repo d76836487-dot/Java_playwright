@@ -1,11 +1,11 @@
 #language: en
-@playwright @api @UsuárioMaster
+@playwright @api @UsuárioComHierarquia
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Tela_Recebimentos_Futuros_com_API_e_Seleção_EC
+@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Recebimentos_Resumo_Futuro
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Tela Recebimentos Futuros com API e Seleção EC
+Feature: Recebimento Resumo Futuro
 
   @TestCaseKey=SMP-T311
   Scenario: Valores tela Recebimentos - Futuros - deve bater com exportação - com seleção de Documento

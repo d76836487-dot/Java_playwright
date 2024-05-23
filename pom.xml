@@ -131,6 +131,7 @@
         <profile>
             <id>afinz</id>
             <build>
+                <directory>output\afinz</directory>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -146,6 +147,7 @@
         <profile>
             <id>azulzinha</id>
             <build>
+                <directory>output\azulzinha\target</directory>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -161,6 +163,7 @@
         <profile>
             <id>ota-azulzinha</id>
             <build>
+                <directory>output\ota-azulzinha\target</directory>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -176,6 +179,7 @@
         <profile>
             <id>bin</id>
             <build>
+                <directory>output\bin\target</directory>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -191,6 +195,7 @@
         <profile>
             <id>sicredi</id>
             <build>
+                <directory>output\sicredi\target</directory>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -206,6 +211,7 @@
         <profile>
             <id>oto-sicredi</id>
             <build>
+                <directory>output\oto-sicredi\target</directory>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>

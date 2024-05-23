@@ -1,16 +1,18 @@
 package com.fiserv.qabrazil.pages.receivables.paid;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.components.FilesToAttachToScenario;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.CSVWrapper;
 import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.microsoft.playwright.Download;
 import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
@@ -18,11 +20,14 @@ import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests
 @ScenarioComponent
 public class ReceivablePaidPage extends BasePage {
 
+    @Autowired
+    private FilesToAttachToScenario filesToAttachToScenario;
+
     public void navigateTo() {
         pageField.from("Menu Lateral - Recebimentos").click();
         pageField.from("Menu Lateral - Recebimentos Resumo").click();
         startMonitoringRequests(page, contractConfig);
-        page.waitForURL(Pattern.compile("^.*/RecebimentosPagosV2$"));
+        page.waitForURL(Pattern.compile("^.*/Recebimentos$"));
         closeAllPopups();
     }
 
@@ -33,8 +38,11 @@ public class ReceivablePaidPage extends BasePage {
 
         if (readStreamFileName == null) return ReceivablePaidExportExcelSimplified.NULL;
 
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFileName.getLeft(),
+                CSVWrapper.CONTENT_TYPE, "Excel");
+
         return new ReceivablePaidExportExcelSimplified(
-                new ExcelWrapper(readStreamFileName.getLeft(), "Data do pagamento", readStreamFileName.getRight()));
+                new ExcelWrapper(bufferedInputStream, "Data do pagamento", readStreamFileName.getRight()));
     }
 
     public ReceivablePaidExport getDownloadAsCsvSimplified() throws Exception {
@@ -44,8 +52,11 @@ public class ReceivablePaidPage extends BasePage {
 
         if (readStreamFileName == null) return ReceivablePaidExportCsvSimplified.NULL;
 
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFileName.getLeft(),
+                CSVWrapper.CONTENT_TYPE, "Csv");
+
         return new ReceivablePaidExportCsvSimplified(
-                new CSVWrapper(readStreamFileName.getLeft(), readStreamFileName.getRight()));
+                new CSVWrapper(bufferedInputStream, readStreamFileName.getRight()));
     }
 
     private ImmutablePair<InputStream, String> downloadReport(String formatType, String simpleAdvancedButton) {
@@ -68,8 +79,6 @@ public class ReceivablePaidPage extends BasePage {
 
         Download download = page.waitForDownload(() ->
                 pageField.from("Recebimentos - Pagos - Exportar - Botão Gerar Arquivo").click());
-
-        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
         return new ImmutablePair<>(download.createReadStream(), download.suggestedFilename());
     }

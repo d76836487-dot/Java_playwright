@@ -1,4 +1,4 @@
-.env
+src/test/resources/.env
 ##############################
 ## Java
 ##############################
@@ -87,3 +87,4 @@ nb-configuration.xml
 
 Relatorio*.csv
 /src/test/resources/application-*.yml
+/output/*

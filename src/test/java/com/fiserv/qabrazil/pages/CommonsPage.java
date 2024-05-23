@@ -70,4 +70,14 @@ public class CommonsPage extends BasePage {
         Integer result = (Integer) page.evaluate("document.body.scrollHeight");
         page.mouse().wheel(0, result);
     }
+
+    public String getPrimaryColor(PageField pageField) {
+        pageField.highlightIfPossible();
+        return (String) pageField.getLocator().evaluate("node => window.getComputedStyle(node).getPropertyValue('color')");
+    }
+
+    public String getBackgroundColor(PageField pageField) {
+        pageField.highlightIfPossible();
+        return (String) pageField.getLocator().evaluate("node => window.getComputedStyle(node).getPropertyValue('background-color')");
+    }
 }

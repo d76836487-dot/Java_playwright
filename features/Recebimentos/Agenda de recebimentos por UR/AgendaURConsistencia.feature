@@ -16,9 +16,7 @@ Feature: Agenda de recebimentos por UR com Consistência
     Given Carregou arquivo com histórico do "UR" de <dias úteis> dias úteis
     And Usuário selecionou data com base no arquivo de consistência
     And Carregou recebimentos listados
-    Then Campo "Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs" terá mesmo valor que consultado antes, salvando em arquivo
-    And Campo "Agenda de Recebimentos por UR - Resumo - Valor Total" terá mesmo valor que consultado antes, salvando em arquivo
-    And Campo "Agenda de Recebimentos por UR - Resumo - Valor pago" terá mesmo valor que consultado antes, salvando em arquivo
+    Then Campo "Agenda de Recebimentos por UR - Resumo - Valor Total" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Resumo - Total bruto" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Resumo - Total taxa MDR" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Resumo - Total antecipação Eventual" terá mesmo valor que consultado antes, salvando em arquivo

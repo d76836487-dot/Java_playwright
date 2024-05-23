@@ -1,9 +1,11 @@
 package com.fiserv.qabrazil.pages.sales;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.components.FilesToAttachToScenario;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.sales.salesToday.SalesTodayPage;
+import com.fiserv.qabrazil.util.CSVWrapper;
 import com.fiserv.qabrazil.util.Currency;
 import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.fiserv.qabrazil.util.WaitUtil;
@@ -12,8 +14,8 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -23,6 +25,9 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
 public class SalesVoucherPage extends BasePage {
+    @Autowired
+    private FilesToAttachToScenario filesToAttachToScenario;
+
     public static class SalesVoucherExportExcel {
         public static final SalesVoucherExportExcel NULL = new SalesVoucherExportExcel(ExcelWrapper.NULL);
 
@@ -82,7 +87,7 @@ public class SalesVoucherPage extends BasePage {
             page.waitForURL(Pattern.compile("^.*/Voucher.*$"));
             closeAllPopups();
         });
-        waitUntilTrue(360, () -> hasNoLoadingBars());
+        waitUntilTrue(360, this::hasNoLoadingBars);
     }
 
     public SalesVoucherExportExcel getDownloadAsExcel() throws IOException {
@@ -99,9 +104,10 @@ public class SalesVoucherPage extends BasePage {
         Download download = page.waitForDownload(() ->
                 pageField.from("Vendas - Voucher - Exportar - Botão Gerar Arquivo").click());
 
-        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(download.createReadStream(),
+                CSVWrapper.CONTENT_TYPE, "Excel");
 
         return new SalesVoucherExportExcel(
-                new ExcelWrapper(download.createReadStream(), "Data da venda", download.suggestedFilename()));
+                new ExcelWrapper(bufferedInputStream, "Data da venda", download.suggestedFilename()));
     }
 }

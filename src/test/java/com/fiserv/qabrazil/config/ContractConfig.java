@@ -24,10 +24,14 @@ public class ContractConfig {
     }
 
     public String getActiveProfiles() {
+
         return activeProfiles;
     }
 
     public ProfileData getActiveUserProfile() {
+//
+//        activeProfiles = "sicredi";
+//
         return userProfiles.computeIfAbsent(activeProfiles, profile -> {
             if (profile.isEmpty()) {
                 throw new IllegalStateException("No profile specified by spring.profiles.active property");
@@ -55,7 +59,7 @@ public class ContractConfig {
             String allianceName) {
 
         public boolean isMaster() {
-            return clientTags.contains("@UsuárioMaster");
+            return clientTags.contains("@UsuárioComHierarquia");
         }
     }
 }

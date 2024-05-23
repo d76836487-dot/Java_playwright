@@ -21,7 +21,7 @@ user-profiles:
     identity: afinz
     primaryCssClass: cor-azul
     institutionTags: '@pt-br,@afinz,@NaoPermiteAdiantamento,@NaoPermiteSolicitações'
-    clientTags: '@MDRFlex,@UsuárioMaster'
+    clientTags: '@MDRFlex,@UsuárioComHierarquia'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
     serviceContract: "143"
@@ -57,8 +57,8 @@ user-profiles:
     allianceName: CAIXA
   bin003:
     url: https://bin.qa.portaldocliente.fiserv.com
-    user: ${BIN003_CONTRACT_USER}
-    password: ${BIN003_CONTRACT_PASSWORD}
+    user: 37421677070
+    password: Fiserv@456
     mfaSecretKey: ${BIN003_MFA_SECRETKEY}
     identity: bin
     primaryCssClass: cor-laranja
@@ -77,7 +77,7 @@ user-profiles:
     identity: bin
     primaryCssClass: cor-laranja
     institutionTags: '@pt-br,@bin007,@PermiteAdiantamento,@PermiteSolicitações'
-    clientTags: '@MDRPadrão,@UsuárioMaster'
+    clientTags: '@MDRPadrão,@UsuárioComHierarquia'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
     serviceContract: "125"
@@ -85,13 +85,13 @@ user-profiles:
     allianceName: BIN
   sicredi:
     url: https://sicredi.qa.portaldocliente.fiserv.com
-    user: ${SICREDI_CONTRACT_USER}
-    password: ${SICREDI_CONTRACT_PASSWORD}
+    user: 53362504060
+    password: Fiserv@456
     mfaSecretKey: ${SICREDI_MFA_SECRETKEY}
     identity: sicredi
     primaryCssClass: cor-verde
     institutionTags: '@pt-br,@sicredi,@PermiteAdiantamento,@PermiteSolicitações'
-    clientTags: '@MDRPadrão,@UsuárioMaster'
+    clientTags: '@MDRPadrão'
     locale: pt-br
     apiHost: https://cat.api.firstdata.com/bwa/
     serviceContract: "110"
@@ -123,11 +123,13 @@ framework:
   playwright:
     launch-options:
       # Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary"
-      # channel: chrome
+      channel: chrome
       headless: true
       slowMo: 300
       # timeout: 30000
-      # args:
+      args:
+          - --window-size = '1920,1080'
+          - --start-maximized
       #   - --ignore-certificate-errors
       #   - --proxy-server=http://127.0.0.1:8080
       # chromiumSandbox: false

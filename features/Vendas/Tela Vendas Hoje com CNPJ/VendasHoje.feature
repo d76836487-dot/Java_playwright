@@ -1,11 +1,11 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Hoje_com_CNPJ
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_Hoje_com_CNPJ
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Tela Vendas Hoje com CNPJ
+Feature: Vendas Hoje com CNPJ
 
   Background:
     When Usuário tenta logar na aplicação
@@ -49,6 +49,7 @@ Feature: Tela Vendas Hoje com CNPJ
   @TestCaseKey=SMP-T149
   Scenario: Ocultar valores de Vendas Hoje
     Given Usuário acessa Vendas Hoje
+    And Todas as barras de carregamento sumiram
     When usuário clica no "Ocultar Valores" no "Header"
     Then Usuário verá em "Vendas Hoje - Resumo - Quantidade Vendas" o valor "••••"
     And Usuário verá em "Vendas Hoje - Resumo - Valor Vendas" o valor "R$ ••••"

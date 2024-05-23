@@ -44,7 +44,7 @@ public class ConsistencyFile {
         log.info("Carregando %s. Encontrou '%s'".formatted(filename, files.isEmpty()? "Não": "Sim"));
 
         if (files.isEmpty()) {
-            String day = DateUtil.addSubtractForWeekdays(weekdays, "dMyyyy");
+            String day = DateUtil.addSubtractForWeekdays(weekdays, "ddMyyyy");
             anyDayGeneralInfo = SavedInfoForConsistency.buildNull(day);
         } else {
             anyDayGeneralInfo = loadFile(files.get(0));

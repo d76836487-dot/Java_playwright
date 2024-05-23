@@ -1,12 +1,12 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Domicilio_Bancario_CX/Esqueci_Minha_Senha
+@Zephyr:Folder=/Portal_do_Cliente/Login/Login_Esqueci_Minha_Senha
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 #noinspection CucumberUndefinedStep
-Feature: Esqueci Minha Senha
+Feature: Login Esqueci Minha Senha
 
   @TestCaseKey=SMP-T204
   Scenario: Esqueci Minha Senha / Domicílio Bancário CX Econômica

@@ -1,11 +1,11 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Onix_Pix_Caixa/Contratacao
+@Zephyr:Folder=/Portal_do_Cliente/Pix/Pix_Contratacao
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Contratacao
+Feature: Pix Contratacao
 
   @TestCaseKey=SMP-T342
   Scenario Outline: Contratacao de Pix no Portal do Cliente com chave Pix valida Serpro Ok e POS OK

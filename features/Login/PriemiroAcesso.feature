@@ -1,12 +1,12 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Domicilio_Bancario_CX/Primeiro_Acesso
+@Zephyr:Folder=/Portal_do_Cliente/Login/Login_Primeiro_Acesso
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 #noinspection CucumberUndefinedStep
-Feature: Primeiro Acesso
+Feature: Login Primeiro Acesso
 
   @TestCaseKey=SMP-T207
   Scenario: Primeiro Acesso / Domicílio Bancário CX Econômica

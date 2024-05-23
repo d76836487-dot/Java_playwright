@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.pages.sales.salesUnmade;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.components.FilesToAttachToScenario;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.sales.salesToday.SalesTodayPage;
@@ -12,9 +13,9 @@ import com.microsoft.playwright.options.AriaRole;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.util.RequestMonitoring.startMonitoringRequests;
@@ -25,6 +26,8 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 public class SalesUnmadePage extends BasePage {
     @Autowired
     private SalesTodayPage salesTodayPage;
+    @Autowired
+    private FilesToAttachToScenario filesToAttachToScenario;
 
     public void navigateTo() {
         salesTodayPage.navigateTo();
@@ -44,8 +47,11 @@ public class SalesUnmadePage extends BasePage {
 
         if (readStreamFilename == null) return SalesUnmadeExportExcel.NULL;
 
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFilename.getLeft(),
+                CSVWrapper.CONTENT_TYPE, "Excel");
+
         return new SalesUnmadeExportExcel(
-                new ExcelWrapper(readStreamFilename.getLeft(), "Data da venda",readStreamFilename.getRight()));
+                new ExcelWrapper(bufferedInputStream, "Data da venda",readStreamFilename.getRight()));
     }
 
     public SalesUnmadeExportCsv getDownloadAsCsv() throws Exception {
@@ -54,7 +60,10 @@ public class SalesUnmadePage extends BasePage {
 
         if (readStreamFilename == null) return SalesUnmadeExportCsv.NULL;
 
-        return new SalesUnmadeExportCsv(new CSVWrapper(readStreamFilename.getLeft(), readStreamFilename.getRight()));
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFilename.getLeft(),
+                CSVWrapper.CONTENT_TYPE, "Csv");
+
+        return new SalesUnmadeExportCsv(new CSVWrapper(bufferedInputStream, readStreamFilename.getRight()));
     }
 
     private ImmutablePair<InputStream, String> downloadReport(String formatType) {
@@ -76,8 +85,6 @@ public class SalesUnmadePage extends BasePage {
 
         Download download = page.waitForDownload(() ->
                 pageField.from("Vendas - Não Efetivadas - Exportar - Botão Gerar Arquivo").click());
-
-        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
         return new ImmutablePair<>(download.createReadStream(), download.suggestedFilename());
     }

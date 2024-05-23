@@ -1,11 +1,11 @@
 #language: en
-@playwright @api @UsuárioMaster
+@playwright @api @UsuárioComHierarquia
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Vendas/Tela_Vendas_Voucher_com_CNPJ_com_API_e_Seleção_EC
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_Voucher_com_CNPJ
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Tela Vendas Voucher com CNPJ com API e Seleção EC
+Feature: Vendas Voucher com CNPJ
 
   @TestCaseKey=SMP-T306
   Scenario: Valores tela Vendas - Voucher - deve bater com exportação - com seleção de Documento
@@ -18,7 +18,7 @@ Feature: Tela Vendas Voucher com CNPJ com API e Seleção EC
     Then Opções do filtro tem somente os ECs selecionados
     And A exportação do relatório 'Voucher' terá somente o EC selecionado no detalhamento
     And A exportação do relatório 'Voucher' terá exatamente os ECs selecionado no cabeçalho
-    And A contagem de vendas voucher é igual a Total de Vendas
+    And A contagem de vendas voucher do excel é igual a Total de Vendas da tela
     And A soma de vendas voucher é igual ao valor bruto autorizado
 
   @TestCaseKey=SMP-T307
@@ -32,6 +32,6 @@ Feature: Tela Vendas Voucher com CNPJ com API e Seleção EC
     Then Opções do filtro tem somente os ECs selecionados
     And A exportação do relatório 'Voucher' terá somente o EC selecionado no detalhamento
     And A exportação do relatório 'Voucher' terá exatamente os ECs selecionado no cabeçalho
-    And A contagem de vendas voucher é igual a Total de Vendas
+    And A contagem de vendas voucher do excel é igual a Total de Vendas da tela
     And A soma de vendas voucher é igual ao valor bruto autorizado
 

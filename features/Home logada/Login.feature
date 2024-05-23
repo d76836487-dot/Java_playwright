@@ -1,11 +1,11 @@
 #language: en
 @playwright
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Login
+@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada_Login
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Login
+Feature: Home Logada Login
 
   @TestCaseKey=SMP-T10
   Scenario: Login com sucesso

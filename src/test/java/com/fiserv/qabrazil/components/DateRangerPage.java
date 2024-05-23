@@ -10,12 +10,18 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Calendar;
 
+import static com.fiserv.qabrazil.pages.PageField.assertThat;
 import static com.fiserv.qabrazil.util.WaitUtil.sleep;
+import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
 public class DateRangerPage extends BasePage {
     @Autowired
     Page page;
+
+    public void openCalendarComponent() {
+        pageField.from("Date ranger - Image").click();
+    }
 
     public void userSelectsYesterday() {
         bandaidSMP57();
@@ -26,6 +32,7 @@ public class DateRangerPage extends BasePage {
         } else {
             setDateInCalendar(-1, "Date ranger - Dia inicial Digitado");
             setDateInCalendar(-1, "Date ranger - Dia final Digitado");
+            pageField.from("Date ranger - Aplicar").click();
         }
     }
 
@@ -48,16 +55,22 @@ public class DateRangerPage extends BasePage {
     }
 
     public void userSelectsLastThirdDays() {
+        pageField.from("Date ranger - Image").click();
         setDateInCalendar(-30, "Date ranger - Dia inicial Digitado");
+        pageField.from("Date ranger - Aplicar").click();
     }
 
     public void userSelectsNextFourteenDays() {
+        pageField.from("Date ranger - Image").click();
         setDateInCalendar(0, "Date ranger - Dia inicial Digitado");
         setDateInCalendar(14, "Date ranger - Dia final Digitado");
+        pageField.from("Date ranger - Aplicar").click();
     }
 
     public void userSelectsNextThirdDays() {
+        pageField.from("Date ranger - Image").click();
         setDateInCalendar(30, "Date ranger - Dia final Digitado");
+        pageField.from("Date ranger - Aplicar").click();
     }
 
     public void userSelectsSpecificDay(String dateToType) {
@@ -67,7 +80,29 @@ public class DateRangerPage extends BasePage {
         typeDayInCalendar("Date ranger - Dia final Digitado", dateToType);
         pageField.from("Date ranger - Aplicar").click();
 
+        waitCalendarClose(dateToType);
+    }
+
+    private void waitCalendarClose(String dateToType) {
         sleep(Duration.ofSeconds(2));
+        boolean appliedDate = waitUntilTrue(() -> page.locator("//*[contains(@class,'validation-message')]").count() == 0);
+
+        if (!appliedDate) {
+            throw new RuntimeException("Ocorre um erro ao aplicar a data digitada %s".formatted(dateToType));
+        }
+    }
+
+    public void ensureThisMonthIsSelected() {
+        PageField button = pageField.from("Date ranger - Este mês selecionado");
+        assertThat(button)
+                .isVisible();
+    }
+
+    public void userClicksOnDays(int start, int end) {
+        pageField.from("Date ranger - Image").click();
+        pageField.from("Date ranger - Dia " + start).click();
+        pageField.from("Date ranger - Dia " + end).click();
+        pageField.from("Date ranger - Aplicar").click();
     }
 
     private void setDateInCalendar(int daysToAdd, String typedDateField) {
@@ -76,9 +111,7 @@ public class DateRangerPage extends BasePage {
         SimpleDateFormat simpleFormat = new SimpleDateFormat("dMyyyy");
         String thirdDaysAgo = simpleFormat.format(cal.getTime());
 
-        pageField.from("Date ranger - Image").click();
         typeDayInCalendar(typedDateField, thirdDaysAgo);
-        pageField.from("Date ranger - Aplicar").click();
     }
 
     private void typeDayInCalendar(String typedDateField, String date) {

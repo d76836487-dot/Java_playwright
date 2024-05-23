@@ -36,6 +36,7 @@ public class TestIdsConfig {
             entry("Filter - Produtos (0) - Benefícios", "generic-filter-check-produto-Benefícios"),
             entry("Filter - Produtos (0) - Mutiplo", "generic-filter-check-produto-Multiplo"),
 
+            entry("Filter - Bandeiras (0)", "generic-filter-div-bandeira-.*"),
             entry("Filter - Bandeiras (0) - Mastercard", "generic-filter-div-bandeira-Mastercard"),
             entry("Filter - Bandeiras (0) - Visa", "generic-filter-div-bandeira-Visa"),
 
@@ -61,7 +62,6 @@ public class TestIdsConfig {
             entry("Vendas Hoje - Botão Filtrar", "vendas-hoje-link-filtrar"),
             entry("Vendas Hoje - Botão Cancelar Filtro", "generic-filter-link-sair"),
 
-            entry("Vendas - Histórico de Vendas - Resumo - Valor bruto", "historico-vendas-valor-bruto"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor líquido", "historico-vendas-valor-liquido"),
             entry("Vendas - Histórico de Vendas - Resumo - Valor cancelado", "historico-vendas-valor-cancelado"),
             entry("Vendas - Histórico de Vendas - Botão Exportar", "exportar-historicovendas"),
@@ -101,7 +101,7 @@ public class TestIdsConfig {
             entry("Recebimentos - Pagos - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
             entry("Recebimentos - Pagos - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
 
-            entry("Recebimentos - Futuros - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"), // TODO: ajustar aqui
+             entry("Recebimentos - Futuros - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
             entry("Recebimentos - Futuros - Botão Cancelar Filtro", "generic-filter-link-sair"),
 
             entry("Home - Card Vendas Hoje - Valor Vendas Hoje", "home-card-vendas-hoje-text-vlr"),
@@ -201,9 +201,11 @@ public class TestIdsConfig {
             entry("Modal Gerar Relatórios - Select EC Selecionado", "simple-dropdown-select-ecs-text-selected"),
             entry("Modal Gerar Relatórios - Select EC Opções", "simple-dropdown-select-ecs-item.*"),
             entry("Modal Gerar Relatórios - Select Tipo", "simple-dropdown-select-tipo-relatorio"),
+            entry("Modal Gerar Relatórios - Select Tipo Label", "simple-dropdown-select-tipo-relatorio-text-label"),
             entry("Modal Gerar Relatórios - Select Tipo Selecionado", "simple-dropdown-select-tipo-relatorio-text-selected"),
             entry("Modal Gerar Relatórios - Select Tipo Opções", "simple-dropdown-select-tipo-relatorio-item.*"),
             entry("Modal Gerar Relatórios - Select Formato Arquivo", "simple-dropdown-select-formato-arquivo"),
+            entry("Modal Gerar Relatórios - Select Formato Arquivo Label", "simple-dropdown-select-formato-arquivo-text-label"),
             entry("Modal Gerar Relatórios - Select Formato Arquivo Selecionado", "simple-dropdown-select-formato-arquivo-text-selected"),
             entry("Modal Gerar Relatórios - Select Formato Arquivo Opções", "simple-dropdown-select-formato-arquivo-item.*"),
             entry("Modal Gerar Relatórios - Select Período", "DateInputPicker-periodo"),
@@ -239,10 +241,13 @@ public class TestIdsConfig {
             entry("Login - Campo Token MFA", "login-codigos-token"),
             entry("Login - Botão Confirmar Token MFA", "login-confirmar-token"),
 
+            entry("Date ranger - Hoje", "generic-calendar-pill-hoje"),
             entry("Date ranger - Ontem", "generic-calendar-pill-ontem"),
             entry("Date ranger - Últimos 7 dias", "generic-calendar-pill-últimos-7-dias"),
+            entry("Date ranger - Essa semana", "generic-calendar-pill-essa-semana"),
             entry("Date ranger - Últimos 14 dias", "generic-calendar-pill-últimos-14-dias"),
             entry("Date ranger - Mês Atual", "generic-calendar-pill-mês-atual"),
+            entry("Date ranger - Este mês", "generic-calendar-pill-este-mês"),
             entry("Date ranger - Aplicar", "generic-calendar-button-aplicar"),
 
             entry("Gestão de Acessos - Abas - Usuários", "gestao-tab-usuarios"),
@@ -262,6 +267,12 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Agenda Futura - Saldo", "agenda-futura-ur"),
             entry("Agenda de Recebimentos por UR - Botão Detalhe totais por bandeira", "detalhe-totais-por-bandeira-produto-ur"),
 
+            entry("Agenda de Recebimentos por UR - Exportar - Gerar arquivo", "exportar-arquivos-gerar-arquivo"),
+            entry("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo", "simple-dropdown-select-"),
+            entry("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo - Excel", "simple-dropdown-select--item-excel"),
+            entry("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo - CSV", "simple-dropdown-select--item-csv"),
+            entry("Agenda de Recebimentos por UR - Exportar - Botão Gerar Arquivo", "exportar-arquivos-gerar-arquivo"),
+
             entry("Detalhe da UR - Resumo - Total bruto valor", "total-bruto-ur"),
             entry("Detalhe da UR - Resumo - Total taxa MDR valor", "total-taxa-mdr-ur"),
             entry("Detalhe da UR - Resumo - Total antecipação eventual valor", "total-antecipacao-eventual-ur"),
@@ -276,8 +287,16 @@ public class TestIdsConfig {
             entry("Detalhe da UR - Resumo - Total de Deduções", "detalhe-ur-total-deducao"),
             entry("Detalhe da UR - Resumo - Mostrar todos os detalhes", "detalhe-ur-mostrar-detalhes"),
             entry("Detalhe da UR - Visualizar Pagamentos", "detalhe-ur-tab-pagamentos"),
-            entry("Detalhe da UR - Pagamentos - Situação", "detalhe-ur-tab-pagamentos-situacao-.*")
+            entry("Detalhe da UR - Pagamentos - Situação", "detalhe-ur-tab-pagamentos-situacao-.*"),
 
+            entry("Detalhe da UR - Venda - Data Venda 0", "detalhe-ur-tab-vendas-data-venda-0"),
+            entry("Detalhe da UR - Venda - Cod Autorização 0", "detalhe-ur-tab-vendas-cod-autorizacao-0"),
+            entry("Detalhe da UR - Venda - Produto 0", "detalhe-ur-tab-vendas-produto-0"),
+            entry("Detalhe da UR - Venda - Parcela 0", "detalhe-ur-tab-vendas-parcela-0"),
+            entry("Detalhe da UR - Venda - Valor Bruto 0", "detalhe-ur-tab-vendas-valor-bruto-0"),
+            entry("Detalhe da UR - Venda - Valor Bruto Parcela 0", "detalhe-ur-tab-vendas-valor-bruto-da-parcela-0"),
+            entry("Detalhe da UR - Venda - Valor Líquido 0", "detalhe-ur-tab-vendas-valor-liquido-0"),
+            entry("Detalhe da UR - Venda - Valor Taxa 0", "detalhe-ur-tab-vendas-valor-taxa-0")
     );
 
 
@@ -299,11 +318,14 @@ public class TestIdsConfig {
 
             entry("Date ranger - Image", "//*[@data-testid='generic-calendar-icon-calendar']//img"),
             entry("Date ranger - Ano", "//input[@aria-label='Year']"),
-            entry("Date ranger - Mês", "//input[@aria-label='Month']"),
+            entry("Date ranger - Mês", "//select[@aria-label='Month']"),
             entry("Date ranger - Início Data Selecionada", "//span[contains(@class,'startRange')]"),
             entry("Date ranger - Fim Data Selecionada", "//span[contains(@class,'endRange')]"),
+            entry("Date ranger - Este mês selecionado", "[data-testid='generic-calendar-pill-este-mês'] [data-block='Utilities.InlineSVG']"),
             entry("Date ranger - Dia inicial Digitado", "//*[@data-testid='generic-calendar-input-init-date']//input"),
             entry("Date ranger - Dia final Digitado", "//*[@data-testid='generic-calendar-input-end-date']//input"),
+            entry("Date ranger - Dia 15", "//*[contains(@class,'custom-data-picker-calendar')]//span[contains(@class,'flatpickr-day')][text()=15]"),
+            entry("Date ranger - Dia 22", "//*[contains(@class,'custom-data-picker-calendar')]//span[contains(@class,'flatpickr-day')][text()=22]"),
             entry("Modal Gerar Relatórios - Dia Calendário", "//*[@class='flatpickr-days']//span[contains(@class, 'flatpickr-day')]"),
             entry("Modal Gerar Relatórios - Ano Calendário", "//*[contains(@class, 'DateInputPicker-periodo-calendar')]//input[contains(@class, 'numInput')][contains(@class, 'cur-year')]"),
             entry("Modal Gerar Relatórios - Mês Calendário", "//*[contains(@class, 'DateInputPicker-periodo-calendar')]//select[@aria-label='Month']"),
@@ -312,6 +334,7 @@ public class TestIdsConfig {
             entry("Filtros de Relatório - Mês Calendário", "//*[contains(@class, 'DateInputPicker-generic-filter-periodo-calendar')]//select[@aria-label='Month']"),
 
             // TODO: maps below should be changed for data-testid
+            entry("Vendas - Histórico de Vendas - Resumo - Valor bruto", "(//*[@data-testid='historico-vendas-valor-bruto'])[1]"),
             entry("Vendas - Histórico de Vendas - Exportar - Botão Gerar Arquivo", "//button[contains(text(),'Gerar arquivo')]"),
             entry("Vendas - Histórico de Vendas - Exportar - Relatório Simplificado", "//div[contains(text(),'Relatório simplificado')]"),
             entry("Vendas - Histórico de Vendas - Exportar - Relatório Detalhado", "//div[contains(text(),'Relatório detalhado')]"),
@@ -340,10 +363,8 @@ public class TestIdsConfig {
             entry("Relatórios - Texto Descritivo", "//span[contains(text(),'Caso já tenha gerado')]"),
             entry("Relatórios - Tabela - Item", "//tr[.//*[@data-testid='relatorios-table-row-nome-arquivo']]"),
             entry("Relatórios - Notificação de Falha", "//span[starts-with(text(), 'O intervalo da seleção deve ser')]"),
-            entry("Modal Gerar Relatórios - Select Tipo Label", "//div[@role='dialog']//div[@data-block='AppAntecipacao.SimpleDropdownSelect'][.//span[starts-with(text(), 'Tipo de relat')]]//label/span"),
-            entry("Modal Gerar Relatórios - Select Formato Arquivo Label", "//div[@role='dialog']//div[@data-block='AppAntecipacao.SimpleDropdownSelect'][.//span[starts-with(text(), 'Formato do arquivo')]]//label/span"),
             entry("Modal Gerar Relatórios - Período Calendário", "DateInputPicker-periodo-range-selected"),
-            entry("Modal Gerar Relatórios - Ícone Fechar (X)", "//div[@data-block='AppRelatorios.ModalGerarRelatorio']//a"),
+            entry("Modal Gerar Relatórios - Ícone Fechar (X)", "//div[@data-block='AppFiservRelatorios.ModalGerarRelatorio']//a"),
             entry("Modal Gerar Relatórios - Botão Gerar", "[data-testid='relatorios-btn-cancel']~[data-testid='relatorios-btn-gerar-relatorio']"),
             entry("Modal Gerar Relatórios - Título Informativo", "//*[@data-testid='relatorios-tipo-entrega-section']/span[1]"),
 
@@ -384,23 +405,23 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - Resumo - Tooltip do Valor Total", "(//*[@class='flex-totais']//*[@aria-label='toggle tooltip'])[1]"),
             entry("Agenda de Recebimentos por UR - Resumo - Texto do tooltip do Valor Total", "//div[starts-with(text(),'Esse campo é a soma dos campos')]"),
             entry("Agenda de Recebimentos por UR - Resumo - Valor pago", "(//*[@data-testid='valor-pago-ur'])[2]"),
-            entry("Agenda de Recebimentos por UR - Resumo - Total de entradas e saídas", "[data-block='UnidadeRecebivel.TotalLiquidoDeURs'] .vertical-align.flex-direction-row .title-item-content"),
+            entry("Agenda de Recebimentos por UR - Resumo - Total de entradas e saídas", "[data-block='AppRecebimentosUnidadeRecebivel.TotalLiquidoDeURs'] .vertical-align.flex-direction-row .title-item-content"),
             entry("Agenda de Recebimentos por UR - Resumo - O que são esses totais?", ".vertical-align.flex-direction-row .link-duvida-modal"),
             entry("Agenda de Recebimentos por UR - Resumo - Popup - Entenda os termos usados", "span.header-title-term, span.title-term, span.text-term"),
             entry("Agenda de Recebimentos por UR - Resumo - Popup - Fechar", ".popup-content a i.fa-2x"),
             entry("Agenda de Recebimentos por UR - Resumo - Popup - Entendi", ".popup-content button"),
 
-            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']"),
-            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']/../..//span[contains(text(),'R$')]"),
-            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor atualizado das URs", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor atualizado das URs']/../..//span[contains(text(),'R$')]"),
-            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor pago", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Valor pago']/../..//span[contains(text(),'R$')]"),
-            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Saldo disponível negociável", "//div[@data-block='UnidadeRecebivel.RecebimentosLinha']//span[text()='Saldo disponível negociável']/../../../..//span[contains(text(),'R$')]"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Label Valor Total", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentosLinha']//span[text()='Valor total']/../..//span[contains(text(),'R$')]"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor atualizado das URs", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentosLinha']//span[text()='Valor atualizado das URs']/../..//span[contains(text(),'R$')]"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Valor pago", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentosLinha']//span[text()='Valor pago']/../..//span[contains(text(),'R$')]"),
+            entry("Agenda de Recebimentos por UR - Lote de Recebimento - Saldo disponível negociável", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentosLinha']//span[text()='Saldo disponível negociável']/../../../..//span[contains(text(),'R$')]"),
             entry("Agenda de Recebimentos por UR - Lote de Recebimento - Sem Recebíveis", "//span[contains(text(),'Sem unidades de recebíveis')]"),
-            entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='UnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),
+            entry("Agenda de Recebimentos por UR - Unidade de Recebível Registrada", "//div[@data-block='AppRecebimentosUnidadeRecebivel.RecebimentoArranjo']//div[contains(@class, 'item-arranjo-list')]"),
             entry("Agenda de Recebimentos por UR - Modal Detalhe totais por bandeira - Valores", "//*[contains(@class,'popup-dialog')]//span[contains(text(),'R$')]"),
 
-            entry("Agenda de Recebimentos por UR - card Totais líquidos por bandeira", "[data-block='UnidadeRecebivel.ValorPagoTotalLiquidoPorProduto']"),
-            entry("Agenda de Recebimentos por UR - Totais - sem valores", "[data-block='UnidadeRecebivel.ValorPagoTotalLiquidoPorProduto'] .margin-left-base"),
+            entry("Agenda de Recebimentos por UR - card Totais líquidos por bandeira", "[data-block='AppRecebimentosUnidadeRecebivel.ValorPagoTotalLiquidoPorProduto']"),
+            entry("Agenda de Recebimentos por UR - Totais - sem valores", "[data-block='AppRecebimentosUnidadeRecebivel.ValorPagoTotalLiquidoPorProduto'] .margin-left-base"),
             entry("Agenda de Recebimentos por UR - gráfico - tooltip", ".highcharts-tooltip text"),
             entry("Agenda de Recebimentos por UR - gráfico - barra Mastercard", "//*[local-name()='rect'][contains(@class,'highcharts-point')][contains(@aria-label,'Totais líquidos por produto')][contains(@aria-label,'Mastercard')]"),
             entry("Agenda de Recebimentos por UR - gráfico - barra ELO", "//*[local-name()='rect'][contains(@class,'highcharts-point')][contains(@aria-label,'Totais líquidos por produto')][contains(@aria-label,'ELO')]"),
@@ -420,6 +441,13 @@ public class TestIdsConfig {
             entry("Agenda de Recebimentos por UR - legenda gráfico Totais - texto Mastercard", "//*[local-name()='text'][starts-with(text(),'Mastercard')]"),
             entry("Agenda de Recebimentos por UR - legenda gráfico Totais - texto Amex", "//*[local-name()='text'][starts-with(text(),'Amex')]"),
             entry("Agenda de Recebimentos por UR - legenda gráfico Totais - texto Cabal", "//*[local-name()='text'][starts-with(text(),'Cabal')]"),
+            entry("Agenda de Recebimentos por UR - Botão Filtrar", "(//span[text()='Filtros'])[last()]"),
+            entry("Agenda de Recebimentos por UR - Botão Exportar", "//button/span[text()='Exportar']"),
+
+            entry("Agenda de Recebimentos por UR - Exportar - Botão Cancelar", "//button/span[text()='Cancelar']"),
+            entry("Agenda de Recebimentos por UR - Exportar - Botão X", "//img[contains(@src,'close')]"),
+            entry("Agenda de Recebimentos por UR - Exportar - Modal", "//div[contains(@class, 'popup-dialog')]"),
+            entry("Agenda de Recebimentos por UR - Exportar - Dropdown Tipo Arquivo - Gerar arquivo", "//button[text()='Gerar arquivo']"),
 
             entry("Detalhe da UR - Resumo - Título", "//span[starts-with(text(), 'Resumo')]"),
             entry("Detalhe da UR - Botão Exportar", "//button[contains(@class, 'btn-primary')][//span[text()='Exportar']]"),
@@ -439,7 +467,13 @@ public class TestIdsConfig {
             entry("Detalhe da UR - Resumo - Total deduções", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total deduções')]"),
             entry("Detalhe da UR - Resumo - Total ajuste crédito", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total ajuste crédito')]"),
             entry("Detalhe da UR - Resumo - Total contratos", "//div[@data-block='Content.AccordionItem']//div[@data-block='UnidadeRecebivel.TotalLiquidoDeURs']//span[starts-with(text(), 'Total contratos')]"),
-            entry("Detalhe da UR - Pagamentos - Bolinha Situação", "//*[@data-testid='detalhe-ur-tab-pagamentos-situacao-0']/preceding-sibling::i")
+            entry("Detalhe da UR - Pagamentos - Bolinha Situação", "//*[@data-testid='detalhe-ur-tab-pagamentos-situacao-0']/preceding-sibling::i"),
+
+            entry("Detalhe da UR - Popup", "//div[contains(@class, 'popup-dialog')]"),
+            entry("Detalhe da UR - Popup - Botão Fechar", "//span[contains(text(), 'Fechar')]"),
+
+            entry("Paginação - mostrar 50 itens", "//a[text()='50 Itens']"),
+            entry("Paginação - abrir opção de paginação", "//span[contains(text(),'Exibindo')][contains(text(),'itens')]")
     );
 
     public static String getTestId(String identifier) {

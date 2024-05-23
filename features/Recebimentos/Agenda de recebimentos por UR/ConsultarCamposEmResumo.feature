@@ -1,12 +1,12 @@
 #language: en
 @playwright
-@UsuárioMaster
+@UsuárioComHierarquia
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Agenda_de_recebimentos_por_UR/Consultar_Campos_em_Resumo
+@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Agenda_de_recebimentos_por_UR/Agenda_de_Recebimentos_por_UR_Consulta
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Consultar Campos em Resumo
+Feature: Agenda de Recebimentos por UR Consulta
 
   Background:
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
@@ -62,9 +62,7 @@ Feature: Consultar Campos em Resumo
 
   @TestCaseKey=SMP-T329
   Scenario: Consultar Componente Totais líquidos por bandeira
-
-  OBS: Apresentar a relação das bandeiras de forma fixa no front e popular CASO retorne valor da API. Se não retornar valor, apresentar com R$ 0,00
-
+    #OBS: Apresentar a relação das bandeiras de forma fixa no front e popular CASO retorne valor da API. Se não retornar valor, apresentar com R$ 0,00
     Given Usuário acessou a página de Agenda de Recebimentos por UR
     When Usuário visualizará o campo "card Totais líquidos por bandeira" na seção "Agenda de Recebimentos por UR"
     Then abaixo do gráfico deve ser apresentado uma bolinha na cor da sua respectiva bandeira nas colorações:
@@ -76,6 +74,7 @@ Feature: Consultar Campos em Resumo
       | Amex       | azul claro  | rgb(46, 177, 229) |
       | Cabal      | azul escuro | rgb(13, 92, 147)  |
 
+  @TestCaseKey=SMP-T354
   Scenario: Consultar Componente “gráfico”
     Given Usuário acessou a página de Agenda de Recebimentos por UR
     And houver dados no Campo Totais líquidos por bandeira
@@ -96,56 +95,55 @@ Feature: Consultar Campos em Resumo
     Then deve ser apresentado a frase "Sem informações para detalhamento"
     And todas as bandeiras deve vir com valores zerados
 
-#
-#
-#
-#QScenario: Consultar Detalhe totais por bandeira e produto
-#
-#    Given Usuário está logado em Agenda de recebimentos por UR
-#    When clica no botão Detalhe totais por bandeira e produto em Totais líquidos por bandeira
-#    Then abrira um modal com:  Totais líquidos por bandeira e produtos, Bolinha na cor do Cartão, Logo do Cartão e Nome do Cartão, Total em Crédito, Total em Débito, e o Botões, X acima e fechar na cor da Instituição abaixo
-#  Obs.: Apresentar bandeira com total ainda que o total seja zero.
-#
-#
+  @TestCaseKey=SMP-T357
+  Scenario Outline: Consultar Detalhe totais por bandeira e produto
+    #Obs.: Apresentar bandeira com total ainda que o total seja zero.
+    Given Usuário acessou a página de Agenda de Recebimentos por UR
+    When usuário clica no "Botão Detalhe totais por bandeira" em "Agenda de Recebimentos por UR"
+    Then abrira um modal com: Totais líquidos por bandeira e produtos, Bolinha na cor do Cartão, Logo do Cartão e Nome do Cartão, Total em Crédito, Total em Débito, e o Botões, X acima e fechar na "<cor da Instituição>" abaixo
+      | bandeira   | colorações  | rgb               | logo                     |
+      | Mastercard | laranja     | rgb(255, 95, 0)   | BandeiraMastercard       |
+      | ELO        | amarelo     | rgb(255, 198, 34) | BandeiraElo              |
+      | Visa       | roxo        | rgb(26, 31, 113)  | visalogo_logotyp_us1_old |
+      | Hipercard  | Vermelho    | rgb(184, 33, 38)  | BandeiraHipercard        |
+      | Amex       | azul claro  | rgb(46, 177, 229) | BandeiraAmex             |
+      | Cabal      | azul escuro | rgb(13, 92, 147)  | BandeiraCabal            |
+    @afinz
+    Examples:
+      | cor da Instituição |
+      | rgb(0, 198, 204)   |
+
+    @azulzinha
+    Examples:
+      | cor da Instituição |
+      | rgb(247, 148, 30)  |
+
+    @bin003 @bin007
+    Examples:
+      | cor da Instituição |
+      | rgb(255, 102, 0)   |
+
+    @sicredi
+    Examples:
+      | cor da Instituição |
+      | rgb(63, 161, 16)   |
+
+  @TestCaseKey=SMP-T360
+  Scenario: Consultar Botão Período
+    #Obs: Esse menu terá dados de histórico (passado) mas também de futuro.
+    Given Usuário acessou a página de Agenda de Recebimentos por UR
+    When Usuário seleciona Botão Período
+    Then Abrirá componente de calendário que deve vir por default "Este Mês"
+    And 'Date ranger - Início Data Selecionada' representará 'data início do mês'
+    And 'Date ranger - Fim Data Selecionada' representará 'data final do mês'
+    And Usuário pode selecionar a data conforme desejado
+    And Usuário pode preencher a data conforme desejado
 
 #
-#QScenario: Consultar  Botão Período
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Período
-#    Then Abrirá componente de calendário que deve vir por default “Esse Mês”, porém mostrando as datas, conforme mês em questão, o cliente pode selecionar ou preencher a data conforme desejada.
-#
-#  Obs: Esse menu terá Given s de histórico (passado) mas também de futuro.
 #
 #
-#QScenario: Consultar Período (Hoje)
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Período > Hoje
-#    And Clica no Botão Aplicar
-#    Then trará os Given s referentes aquele período
-#
-#
-#
-#QScenario: Consultar Período (Essa semana)
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Período > Essa semana
-#    And Clica no Botão Aplicar
-#    Then trará os Given s referentes a Essa semana
-#
-#  Obs: O fitro rápido “Essa semana” contempla os 7 dias da semana, independente do dia que for, ou seja, apresentará Given s de Domingo  a sábado
-#
-#
-#QScenario: Consultar Período (Esse Mês)
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Período > Esse Mês
-#    And Clica no Botão Aplicar
-#    Then deve apresentar resultados do dia 01 do mês corrente até o último dia do mês (30 ou 31 a depender do mês). Esse mês deve ser apresentado no componente do calendário os dias Exe: 01/11/2023 a 30/11/2023 e não vir escrito “Esse mês”
-#
-#
-#QScenario: Consultar Período (anterior a abril /2024) ***
+# aguardando confirmação PO. Este cenário não está acontecendo mais
+#Scenario: Consultar Período (anterior a abril /2024) ***
 #
 #    Given Usuário está logado Agenda de recebimentos por UR
 #    When Usuário seleciona Botão Período
@@ -153,27 +151,8 @@ Feature: Consultar Campos em Resumo
 #    And Clica no Botão Aplicar
 #    Then Mostrara O card com os dias bloqueados e a seguinte mensagem: Para períodos anteriores a abril/2024 consulte Recebimentos > Resumo de recebimentos
 #
-#
-#QScenario: Consultar Botão Filtros
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When seleciona Botão Filtros
-#    Then usuário visualizara Título Filtros, mensagem: Os itens selecionados serão aplicados na pesquisa Botão X, Botões: Bandeiras (0) que deve vir por default 0, Botões Limpar Filtros, Mostrar resultados (na cor da instituição)
-#
-#  Obs.: Filtro fixo, ou seja, apresentar todas as bandeiras abaixo e seus respectivos produtos
-#  Master débito
-#  Master crédito
-#  Visa débito
-#  Visa crédito
-#  Elo débito
-#  Elo crédito
-#  Cabal débito
-#  Cabal crédito
-#  Hipercard crédito
-#  Amex crédito
-#
-#
-#QScenario: Consultar Aplicando filtros
+# quando eu filtro, mas abro uma linha, está trazendo as bandeiras não filtradas. Aguardando confirmação PO
+#Scenario: Consultar Aplicando filtros
 #
 #    Given Usuário está logado em Agenda de recebimentos por UR
 #    When Usuário seleciona Botão Filtros
@@ -185,57 +164,16 @@ Feature: Consultar Campos em Resumo
 #  Obs.: Testar com diferentes bandeiras e também com bandeiras múltiplas, tipo master débito e visa crédito, etc...
 #
 #
-#QScenario: Consultar Coloração do Componente Filtros
 #
-#    Given Usuário está logado em Agenda de recebimentos por UR
-#    When Usuário já aplicou um filtro
-#    Then Selecionando um cartão em (Filtro) na página Meus recebimentos, deve ficar com uma coloração na cor da Instituição.
-#
-#
-#
-#QScenario: Consultar  Botão Exportar
+#Scenario: Consultar  Botão Exportar
 #
 #    Given Usuário está logado em Agenda de recebimentos por UR
 #    When Usuário seleciona Botão Exportar
 #    Then abrira modal com a mensagem: Escolha como deseja exportar o relatório Opções de Exportar (Excel,CSV,PDF) , os botões: X, Cancelar e Gerar arquivo
 #
 #
-#QScenario: Consultar Botão X no Modal Exportar
-#
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Exportar
-#    Then abrira o modal
-#    And Usuário seleciona o Botão X
-#    Then usuário retornara para a página que estava anteriormente
-#
-#
-#
-#QScenario: Consultar  Botão Cancelar no Modal Exportar
-#    Given Usuário está logado Agenda de recebimentos por UR
-#    When Usuário seleciona Botão Exportar
-#    Then abrira o modal
-#    And Usuário seleciona o Botão Cancelar
-#    Then usuário retornara para a página que estava anteriormente
 #
 #Feature: Exportando arquivos Excel/CSV/PDF
-#
-#
-#QScenario: Consultar  Arquivo Excel
-#
-#  Given Usuário está logado Agenda de recebimentos por UR
-#  When Usuário clica no Botão Exportar
-#  And Usuário seleciona Tipo de arquivo Excel
-#  And seleciona Botão Gerar arquivo
-#  Then arquivo será exportado com sucesso
-#
-#
-#QScenario: Consultar  Arquivo CSV
-#
-#  Given Usuário está logado Agenda de recebimentos por UR
-#  When Usuário clica no Botão Exportar
-#  And Usuário seleciona Tipo de arquivo CSV
-#  And seleciona Botão Gerar arquivo
-#  Then arquivo será exportado com sucesso
 #
 #
 #QScenario: Consultar  Arquivo PDF
@@ -346,13 +284,6 @@ Feature: Consultar Campos em Resumo
 #
 #  Feature: Consultar Arquivos Excel / Detalhe da UR
 #
-#
-#QScenario: Consultar Arquivo Excel
-#
-#  Given Usuário já exportou o Arquivo Excel
-#  When Usuário abrir o Arquivo Excel
-#  Then Arquivo deve vir com Nome do arquivo, Relatório_Agenda de recebimentos por UR_ [data e hora de exportação], Todas as abas da página “Agenda de recebimentos por UR – Detalhe da UR”, (Resumo, Vendas vinculadas, Pagamentos, Créditos e deduções, Contratos)
-#
 #  Feature: Vendas Vinculadas / Detalhe da UR
 #
 #
@@ -400,40 +331,12 @@ Feature: Consultar Campos em Resumo
 #  Then usuário verá a mensagem: Valor líquido da parcela paga
 #
 #
-#
-#QScenario: Detalhe Venda
-#  Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR” > aba vendas vinculadas
-#  When Usuário clicar sobre uma venda da listagem
-#  Then abrira um modal com mais informações da venda
-#
-#
-#QScenario: Consultar Modal Detalhe de Venda vinculada
-#  Given Usuário está na tela “Agenda de recebimentos por UR / Detalhe da UR” > aba vendas vinculadas
-#  When clicar sobre uma venda na Listagem
-#  Then abrira um modal
-#  And apresentará as informações: (Título Detalhe da venda vinculada), Informações gerais, logo da bandeira, nome da bandeira, Data da venda, Cód. Autorização, Tipo do Produto, Parcela, NSU, Valor bruto da venda, Valor líquido da venda, Valor bruto da parcela, Valor líquido da parcela, Valor taxa MDR, % taxa MDR, Canal, Terminal, Estabelecimento, Data prevista para pagamento, Data efetiva do pagamento, Botão X e Fechar (que deve vir na cor da instituição)
-#
-#
 #QScenario: Botão X Modal Detalhe de Venda vinculada
 #  Given Usuário está no modal Detalhe da venda vinculada
 #  When Usuário clica no Botão X
 #  Then Usuário deverá retornar a página “Agenda de recebimentos por UR / Detalhe da UR” > aba vendas vinculadas
 #
-#
-#QScenario: Botão Fechar Modal Detalhe de Venda vinculada
-#  Given Usuário está no modal Detalhe da venda vinculada
-#  When Usuário clica no Botão Fechar
-#  Then Usuário deverá retornar a página “Agenda de recebimentos por UR / Detalhe da UR” > aba vendas vinculadas
-#
 #  Feature: Pagamento
-#
-#
-#QScenario: Consultar Layout aba Pagamentos
-#  Given Usuário está na tela “Agenda de recebimentos por UR > Detalhe da UR”
-#  When Usuário clicar na aba Pagamentos
-#  Then Usuário visualizara as informações CPF/CNPJ do beneficiário, Data, Valor, Situação, Domicílio bancário com imagem e nome do banco, CPF/CNPJ do titular da conta, Tipo de conta, Agência, Conta.
-#
-#
 #
 #
 #QScenario: Consultar Sem Pagamento / Pagamentos da UR

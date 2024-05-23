@@ -3,6 +3,8 @@ package com.fiserv.qabrazil.pages;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.microsoft.playwright.Locator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 
 @ScenarioComponent
 public class SelectECOrDtcoPage extends BasePage {
+    private static final Logger log = LoggerFactory.getLogger(SelectECOrDtcoPage.class);
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
 
@@ -112,6 +115,9 @@ public class SelectECOrDtcoPage extends BasePage {
         pageField.from("Trocar Estabelecimento - Botão selecionar por Documento").click();
         PageField buttonAllDocs = pageField.from("Trocar Estabelecimento - Botão Todos Documentos");
         waitUntilTrue(360, this::allDocsHaveBeenLoaded);
+        if (!buttonAllDocs.elementIsVisibleAndEnabledRightNow()) {
+            log.info("Não carregou documentos. Isso significa uma lentidão muito grande ou token expirou...");
+        }
         buttonAllDocs.click();
         selectSetAsDefault(true);
 

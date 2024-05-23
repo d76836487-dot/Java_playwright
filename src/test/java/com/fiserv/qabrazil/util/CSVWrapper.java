@@ -18,6 +18,7 @@ import java.util.stream.IntStream;
 
 public class CSVWrapper {
     public static final CSVWrapper NULL = new CSVWrapper();
+    public static final String CONTENT_TYPE = "text/csv";
     private static final Logger log = LoggerFactory.getLogger(CSVWrapper.class);
 
     private final List<String[]> lines;

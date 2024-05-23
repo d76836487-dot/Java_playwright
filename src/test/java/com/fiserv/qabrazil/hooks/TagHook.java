@@ -21,7 +21,7 @@ public class TagHook {
             Set.of("@PermiteAdiantamento","@NaoPermiteAdiantamento"),
             Set.of("@PermiteSolicitações","@NaoPermiteSolicitações"),
             Set.of("@MDRPadrão","@MDRFlex"),
-            Set.of("@UsuárioMaster","@UsuárioNãoMaster"));
+            Set.of("@UsuárioComHierarquia","@UsuárioSemHierarquia"));
 
     @Autowired
     ContractConfig contractConfig;

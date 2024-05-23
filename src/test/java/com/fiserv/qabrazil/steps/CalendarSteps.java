@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.steps;
 
+import com.fiserv.automation.api.util.DateUtil;
 import com.fiserv.qabrazil.components.DateRangerPage;
 import com.fiserv.qabrazil.consistency.ConsistencyFile;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
@@ -9,9 +10,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.LocalDate;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class CalendarSteps extends BaseSteps {
@@ -21,12 +22,19 @@ public class CalendarSteps extends BaseSteps {
     @Autowired
     ConsistencyFile consistencyFile;
 
+    @Given("Usuário selecionou Botão Período")
+    @When("Usuário seleciona Botão Período")
+    public void openCalendar() {
+        calendarPage.openCalendarComponent();
+    }
+
     @When("Usuário seleciona Ontem")
     public void userSelectsYesterday() {
         calendarPage.userSelectsYesterday();
     }
 
 
+    @Given("Usuário selecionou Mês Atual")
     @When("Usuário seleciona Mês Atual")
     public void userSelectsThisMonth() {
         calendarPage.userSelectsThisMonth();
@@ -62,6 +70,12 @@ public class CalendarSteps extends BaseSteps {
         assertEquals(expectedDay, dayOnCalendar);
     }
 
+    @Then("{selectedYearMonthDayOnCalendar} representará {expectedYearMonthDay}")
+    public void selectedDate(String yearMonthDayOnCalendar, String expectedYearMonthDay) {
+        assertThat(yearMonthDayOnCalendar)
+                .isEqualTo(expectedYearMonthDay);
+    }
+
     @Then("{typedDateOnCalendar} representará {expectedYearMonthDay}")
     public void typedDate(String typedDateOnCalendar, String calculatedDate) {
         assertEquals(calculatedDate, typedDateOnCalendar);
@@ -72,16 +86,24 @@ public class CalendarSteps extends BaseSteps {
         return pageField.from(displayName).getAsNumber();
     }
 
-    @ParameterType("'(dia início do mês|dia de ontem|dia de sete dias atrás)'")
-    public int expectedDay(String expectedDate) {
-        Calendar day = calculateCalendar(expectedDate);
-        return day.get(Calendar.DAY_OF_MONTH);
+    @ParameterType("'(Date ranger -.* Selecionada)'")
+    public String selectedYearMonthDayOnCalendar(String displayName) {
+        int year = Integer.parseInt(pageField.from("Date ranger - Ano").getInputValue());
+        int month = Integer.parseInt(pageField.from("Date ranger - Mês").getInputValue()) + 1;
+        int day = pageField.from(displayName).getAsNumber();
+        return LocalDate.of(year, month, day).toString();
     }
 
-    @ParameterType("'(data início do mês|data de ontem|data de sete dias atrás)'")
+    @ParameterType("'(dia início do mês|dia final do mês|dia de ontem|dia de sete dias atrás)'")
+    public int expectedDay(String expectedDate) {
+        LocalDate day = DateUtil.calculateLocalDate(expectedDate);
+        return day.getDayOfMonth();
+    }
+
+    @ParameterType("'(data início do mês|data final do mês|data de ontem|data de sete dias atrás)'")
     public String expectedYearMonthDay(String expectedDate) {
-        Calendar day = calculateCalendar(expectedDate);
-        return new SimpleDateFormat("yyyy-MM-dd").format(day.getTime());
+        LocalDate day = DateUtil.calculateLocalDate(expectedDate);
+        return day.toString();
     }
 
     @ParameterType("'(Date ranger -.* Digitado)'")
@@ -89,31 +111,26 @@ public class CalendarSteps extends BaseSteps {
         return pageField.from(displayName).getInputValue();
     }
 
-    private Calendar calculateCalendar(String expectedDate) {
-        Calendar day = Calendar.getInstance();
-        switch (expectedDate) {
-            case "dia início do mês":
-            case "data início do mês":
-                day.set(Calendar.DAY_OF_MONTH, 1);
-                break;
-            case "dia de sete dias atrás":
-            case "data de sete dias atrás":
-                day.add(Calendar.DAY_OF_MONTH, -7);
-                break;
-            case "dia de ontem":
-            case "data de ontem":
-                day.add(Calendar.DAY_OF_MONTH, -1);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + expectedDate);
-        }
-        return day;
-    }
     @Given("Usuário selecionou data com base no arquivo de consistência")
     @When("Usuário seleciona data com base no arquivo de consistência")
     public void selectsDate() {
         String dateToType = consistencyFile.getAnyDayGeneralInfo().date;
 
         calendarPage.userSelectsSpecificDay(dateToType);
+    }
+
+    @Then("Abrirá componente de calendário que deve vir por default \"Este Mês\"")
+    public void calendarComponentOpensWithThisMonthAsDefault() {
+        calendarPage.ensureThisMonthIsSelected();
+    }
+
+    @Then("Usuário pode selecionar a data conforme desejado")
+    public void userWishesForADateAndSelectIt() {
+        calendarPage.userClicksOnDays(15, 22);
+    }
+
+    @Then("Usuário pode preencher a data conforme desejado")
+    public void userWishesForADateAndTypeIt() {
+        calendarPage.userSelectsSpecificDay("01012024");
     }
 }

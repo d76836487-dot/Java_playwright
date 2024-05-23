@@ -11,3 +11,4 @@ Feature: NPS
     When acessa a area cliente
     And clica na caixa NPS
     Then  exibe quadro coluna nome
+

@@ -1,18 +1,22 @@
 package com.fiserv.qabrazil.pages.sales.salesToday;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.components.FilesToAttachToScenario;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.CSVWrapper;
 import com.fiserv.qabrazil.util.ExcelWrapper;
 import com.microsoft.playwright.Download;
 import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.BufferedInputStream;
 import java.io.InputStream;
-import java.nio.file.Paths;
 
 @ScenarioComponent
 public class SalesTodayExportPage extends BasePage {
+    @Autowired
+    FilesToAttachToScenario filesToAttachToScenario;
 
     public SalesTodayExportExcel getDownloadAsExcel() throws Exception {
         String formatType = "Vendas Hoje - Exportar - Dropdown Tipo Arquivo - Excel";
@@ -20,8 +24,11 @@ public class SalesTodayExportPage extends BasePage {
 
         if (readStreamFilename == null) return SalesTodayExportExcel.NULL;
 
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFilename.getLeft(),
+                ExcelWrapper.CONTENT_TYPE, "Excel");
+
         return new SalesTodayExportExcel(
-                new ExcelWrapper(readStreamFilename.getLeft(), "Data da venda", readStreamFilename.getRight()));
+                new ExcelWrapper(bufferedInputStream, "Data da venda", readStreamFilename.getRight()));
     }
 
     public SalesTodayExportCsv getDownloadAsCsv() throws Exception {
@@ -29,7 +36,10 @@ public class SalesTodayExportPage extends BasePage {
 
         if (readStreamFilename == null) return SalesTodayExportCsv.NULL;
 
-        return new SalesTodayExportCsv(new CSVWrapper(readStreamFilename.getLeft(), readStreamFilename.getRight()));
+        BufferedInputStream bufferedInputStream = filesToAttachToScenario.setAttachment(readStreamFilename.getLeft(),
+                CSVWrapper.CONTENT_TYPE, "Excel");
+
+        return new SalesTodayExportCsv(new CSVWrapper(bufferedInputStream, readStreamFilename.getRight()));
     }
 
     private ImmutablePair<InputStream, String> download(String formatType) {
@@ -52,8 +62,6 @@ public class SalesTodayExportPage extends BasePage {
 
         Download download = page.waitForDownload(() ->
                 pageField.from("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - Gerar arquivo").click());
-
-        download.saveAs(Paths.get("target/" + download.suggestedFilename()));
 
         return new ImmutablePair<>(download.createReadStream(), download.suggestedFilename());
     }

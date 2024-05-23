@@ -69,7 +69,7 @@ public class SalesVoucherSteps extends BasePage {
                 grossValuePage, gross);
     }
 
-    @Then("A contagem de vendas voucher é igual a Total de Vendas")
+    @Then("A contagem de vendas voucher do excel é igual a Total de Vendas da tela")
     public void countMatchesScreen() throws IOException {
         long countQuantityPre = salesVoucherExportExcel.getCountPre();
         long quantityPre = salesVoucherExportExcel.getCount();

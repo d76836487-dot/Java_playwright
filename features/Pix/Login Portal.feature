@@ -1,11 +1,12 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Onix_Pix_Caixa/Login_Portal
+@Zephyr:Folder=/Portal_do_Cliente/Pix/Pix_Login
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Login Portal
+Feature: Pix Login
+
 
   @TestCaseKey=SMP-T341
   Scenario Outline: Exibição do modal de Habilitação Conta Pix - Primeiro acesso e usuário elegível
@@ -19,7 +20,7 @@ Feature: Login Portal
       | EC  | Hierarquia | Perfil              | Serpro | POS |
       | EC1 | Matriz     | Master              | OK     | OK  |
       | EC2 | Filho      | Assistente Operador | OK     | OK  |
-
+      | EC3 | Neto       | Assistente Consulta | OK     | OK  |
 
   @TestCaseKey=SMP-T344
   Scenario Outline: Exibição de modal de Habilitação Conta Pix - Primeiro acesso e usuário não elegível
@@ -27,7 +28,7 @@ Feature: Login Portal
     And esteja cadastrado na Serpro <Serpro>
     And Possua CP (POS) ativo <POS>
     And não acessei ao Portal do Cliente após implementação da funcionalidade de PIX
-    And realizo o login no Portal do Cliente
+    When realizo o login no Portal do Cliente
     Then não é apresentado o modal para habilitação do PIX
     Examples:
       | EC  | Hierarquia | Perfil              | Serpro | POS |
@@ -42,7 +43,4 @@ Feature: Login Portal
     And visualizei o modal de habilitacao do Pix no primeiro acesso
     When realizo um novo login no Portal do Cliente
     Then não é apresentado o modal para habilitação do PIX
-
-    #t
-
 

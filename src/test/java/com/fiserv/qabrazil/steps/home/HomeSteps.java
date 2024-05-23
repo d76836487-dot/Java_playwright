@@ -12,6 +12,7 @@ import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.testng.AssertJUnit.assertEquals;
 
@@ -37,7 +38,9 @@ public class HomeSteps extends BaseSteps {
     @Then("Usuário {booleanValue} card Antecipação")
     public void userSeesAnticipationCard(boolean cardShouldBeVisible) {
         boolean cardAnticipation = homePage.anticipationCardIsVisible();
-        assertEquals("Visibilidade do card inesperada", cardAnticipation, cardShouldBeVisible);
+        assertThat(cardAnticipation)
+                .withFailMessage("Esperava card estar " + (cardShouldBeVisible ? "visível" : "invisivel") + ", mas não estava")
+                .isEqualTo(cardShouldBeVisible);
     }
 
     @ParameterType(value = "verá|não verá")
