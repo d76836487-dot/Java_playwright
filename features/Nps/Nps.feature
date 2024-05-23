@@ -6,7 +6,7 @@
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 #noinspection CucumberUndefinedStep
-Feature: NPSA Pesquisa
+Feature: NPS Pesquisa
 
   @TestCaseKey=SMP-T60
   Scenario: Fechando Pesquisa NPS Após Antecipação Automática
