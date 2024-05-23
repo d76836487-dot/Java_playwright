@@ -1,7 +1,7 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/NPS/Acessar_Pesquisa_NPS_Com_Usuário_Secundário
+@Zephyr:Folder=/Portal_do_Cliente/NPS/NPS_Usuario_Secundario
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
