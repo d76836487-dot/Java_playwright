@@ -10,7 +10,6 @@ Feature: Agenda de recebimentos por UR
   #Background:
   #  Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
   #  And Usuário acessou a página de Agenda de Recebimentos por UR
-
   @TestCaseKey=SMP-T328
   Scenario: Valor total Líquido de UR igual a soma do Valor de Bandeiras
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
@@ -135,7 +134,8 @@ Feature: Agenda de recebimentos por UR
       | format |
       | Excel  |
       | CSV    |
-#==>
+
+  #==>
   @TestCaseKey=SMP-T300
   Scenario: Acesso a Agenda de recebimentos por UR Com apenas um Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -163,10 +163,7 @@ Feature: Agenda de recebimentos por UR
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
     Then Usuário visualizará em Agenda de recebimentos por UR o Documento selecionado
 
-
-
-    #==
-
+  #==
   @TestCaseKey=SMP-T326
   Scenario Outline: Valida valores da UR se é igual a outras datas já consultadas
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
@@ -212,7 +209,7 @@ Feature: Agenda de recebimentos por UR
       | -6         |
 
   @ignore # o portal é muito lento para validar ausência de informações
-    @TestCaseKey=SMP-T332
+  @TestCaseKey=SMP-T332
   Scenario Outline: Valida ausência de valores do lote da UR se é igual a outras datas já consultadas
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessou a página de Agenda de Recebimentos por UR
