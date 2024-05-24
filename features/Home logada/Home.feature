@@ -7,8 +7,6 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Home Logada
 
-  
-
   @TestCaseKey=SMP-T16
   Scenario Outline: Banner de comunicação comercial
     When Usuário tenta logar na aplicação
@@ -214,45 +212,40 @@ Feature: Home Logada
     And não existem valores futuros para receber
     Then Usuário verá em "Home - Card Recebimento - Recebimento Previsto" o valor "R$ 0,00"
 
-#*Dado* que estou na tela “início” do Portal
-#*Quando* não tiver agenda de recebimentos da semana para exibir
-#*Então* devo visualizar a mensagem “Você não possui nenhum recebimento previsto para essa semana”
-#*E* um botão “Ver recebimentos detalhado”
-#
-#{panel}
-#h2. INFORMAÇÕES ADICIONAIS
-#{panel:title=SISTEMAS ENVOLVIDOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1} Preencher lista de sistemas
-#{panel}
-#{panel:title=CANAIS ENVOLVIDOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1} Portal
-#{panel}
-#{panel:title=FORA DO ESCOPO|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#Mudanças nas jornadas que decorrem do botão “ver tudo”
-#{panel}
-#{panel:title=TECNOLOGIAS ENVOLVIDAS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1} Preencher lista de sistemas
-#{panel}
-#{panel:title=ARTEFATOS GERADOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#FIGMA https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
-#{panel}
-#{panel:title=INTEGRAÇÕES|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#integração com API do BW
-#{panel}
-#{panel:title=TELAS/PROTÓTIPOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
-#{panel}
-#{panel:title=TAQUEAMENTO|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#Solicito tagueamento da jornada end to end conforme PPT anexado na story.
-#{panel}
-#{panel:title=SISTEMA CROSS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#integração com BW
-#{panel}
-#{panel:title=LIGA/DESLIGA|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
-#Sim. Necessário desenvolver todos os cards com feature toggle.
-#{panel}
-
-
-
-
-
+  #*Dado* que estou na tela “início” do Portal
+  #*Quando* não tiver agenda de recebimentos da semana para exibir
+  #*Então* devo visualizar a mensagem “Você não possui nenhum recebimento previsto para essa semana”
+  #*E* um botão “Ver recebimentos detalhado”
+  #
+  #{panel}
+  #h2. INFORMAÇÕES ADICIONAIS
+  #{panel:title=SISTEMAS ENVOLVIDOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1} Preencher lista de sistemas
+  #{panel}
+  #{panel:title=CANAIS ENVOLVIDOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1} Portal
+  #{panel}
+  #{panel:title=FORA DO ESCOPO|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
+  #Mudanças nas jornadas que decorrem do botão “ver tudo”
+  #{panel}
+  #{panel:title=TECNOLOGIAS ENVOLVIDAS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1} Preencher lista de sistemas
+  #{panel}
+  #{panel:title=ARTEFATOS GERADOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
+  #FIGMA https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
+  #{panel}
+  #{panel:title=INTEGRAÇÕES|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
+  #integração com API do BW
+  #{panel}
+  #{panel:title=TELAS/PROTÓTIPOS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
+  #https://www.figma.com/file/8CGYv8LIHXTkuQctMyemss/Merchant-Portal?node-id=13407%3A10749
+  #{panel}
+  #{panel:title=TAQUEAMENTO|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
+  #Solicito tagueamento da jornada end to end conforme PPT anexado na story.
+  #{panel}
+  #{panel:title=SISTEMA CROSS|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
+  #integração com BW
+  #{panel}
+  #{panel:title=LIGA/DESLIGA|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=1}
+  #Sim. Necessário desenvolver todos os cards com feature toggle.
+  #{panel}
   @TestCaseKey=SMP-T118
   Scenario: Recebimentos Hoje no card Recebimentos é igual a API
     When Usuário tenta logar na aplicação
@@ -299,7 +292,6 @@ Feature: Home Logada
     Given Usuário acessou o Home
     Then 'Home - Card Antecipação - ECs' são os mesmos que a API
 
-
   @ignore # TODO: confirmar a api
   @UsuárioComHierarquia
   @TestCaseKey=SMP-T287
@@ -317,7 +309,6 @@ Feature: Home Logada
     When Usuário selecionar um documento e clicar Acessar
     Then Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API do EC selecionado
     And 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API do EC selecionado
-
 
   @TestCaseKey=SMP-T10
   Scenario: Login com sucesso
@@ -338,9 +329,6 @@ Feature: Home Logada
     Examples:
       | descrição                                                                                           |
       | Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
-
-
-
 
   @TestCaseKey=SMP-T172
   Scenario: Redirecionamento Correto (Usuário Master) - o usuário verá modal Personalizar ao logar
@@ -445,7 +433,6 @@ Feature: Home Logada
   Scenario: Validar não seleção no checkbox de não mostrar novamente (Usuário Master)
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
     Then Usuário verá modal para selecionar EC ou DTCO
-
 
   @TestCaseKey=SMP-T14
   Scenario: Usuário não existente no GA1 nem no GA2 e sem cadastro na Fiserv
