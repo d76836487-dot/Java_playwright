@@ -137,7 +137,7 @@ Feature: Exclusao de Conta
 
 
 
-  Scenario:Login com Usuário Excluído
+  Scenario:Login com Usuário Master Excluído
     Given que o usuário Master foi excluído
     When inserir login e senha
     Then Visualizara “Boas-Vindas! Verificamos que esse é seu primeiro acesso ao portal. Para criar sua senha acesse o Primeiro acesso”
@@ -145,7 +145,7 @@ Feature: Exclusao de Conta
 
 
 
-  Scenario:Login com Usuário Excluído
+  Scenario:Login com Usuário Secundario Excluído
     Given que o usuário secundário foi excluído
     When inserir login e senha
     Then Visualizara “Parece que você ainda não é nosso cliente... Não encontramos o cadastro da sua empresa”
@@ -156,7 +156,7 @@ Feature: Exclusao de Conta
 
 
 
-  Scenario:Login com Usuário Excluído com Hierarquia
+  Scenario:Login com Usuário com Hierarquia Excluído
     Given que o usuário Pai foi excluído
     When inserir login e senha de um ‘’ EC Filho ‘’
     Then O filho devera conseguir fazer o login normalmente
