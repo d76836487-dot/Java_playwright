@@ -164,7 +164,7 @@ Feature: Exclusao de Conta
 
 
 
-  Scenario:Esqueci minha senha com Usuário Excluído
+  Scenario:Esqueci minha senha com Usuário Excluído Master
     Given que o usuário Master esteja em Esqueci minha senha
     When inserir o documento excluído
     And clicar em Continuar
@@ -174,7 +174,7 @@ Feature: Exclusao de Conta
 
 
 
-  Scenario:Esqueci minha senha com Usuário Excluído
+  Scenario:Esqueci minha senha com Usuário Excluído Secundario
     Given que o usuário secundário esteja em Esqueci minha senha
     When inserir o documento excluído
     And clicar em Continuar
