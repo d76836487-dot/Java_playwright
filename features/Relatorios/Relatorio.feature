@@ -8,8 +8,6 @@
 Feature: Relatorios
 
   # TODO: fix all scenarios when we have data-testid for side menu
-
-
   @TestCaseKey=SMP-T140
   Scenario: O menu expande quando o usuário passa o mouse
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
@@ -82,11 +80,7 @@ Feature: Relatorios
     Then o download do relatório começará
     And o nome do arquivo baixado seguirá o da listagem (primeiro relatório da lista)
 
-
-
-
-    #==>
-
+  #==>
   @TestCaseKey=SMP-T279
   Scenario: Componente Período não deve permitir mais que 12 meses
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
@@ -105,10 +99,6 @@ Feature: Relatorios
     And usuário seleciona o período do dia anterior
     And usuário clica no "Botão Gerar" em "Modal Gerar Relatórios"
     Then Usuário verá em "Relatórios - Notificação Sucesso" o texto "Relatório Solicitado com Sucesso!!"
-
-
-
-
 
   @TestCaseKey=SMP-T171
   Scenario: Validar rótulos dos campos na geração de relatórios
@@ -172,7 +162,7 @@ Feature: Relatorios
     And usuário poderá selecionar alguma das outras opções de EC disponíveis
 
   @api
-    @TestCaseKey=SMP-T198
+  @TestCaseKey=SMP-T198
   Scenario Outline: Gerar Relatório Cliente com Apenas Um Estabelecimento Comercial Vinculado e Tipo de Relatório de Vendas
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -192,7 +182,7 @@ Feature: Relatorios
       | .xlsx-(excel)  | vendas     |
 
   @api
-    @TestCaseKey=SMP-T268
+  @TestCaseKey=SMP-T268
   Scenario Outline: Gerar Relatório em arquivo CSV Cliente com Mais que Um Estabelecimento Comercial Vinculado
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -211,21 +201,15 @@ Feature: Relatorios
       | .csv           | vendas     |
       | .xlsx-(excel)  | vendas     |
 
-# TODO: não possível no momento @rebatedor
-#  43.    Cenário: Validar mensagem de erro Sistema Indisponível
-#  Dado que o usuário está logado no Merchant Portal
-#  E o usuário está no modal Relatórios
-#  E o usuário preencheu todos os campos obrigatórios
-#  Quando o usuário clica no botão Gerar Relatórios
-#  E o sistema está indisponível
-#  Então usuário visualizará o popup de erro com a mensagem “Sua solicitação não foi concluída! Refaça a solicitação do seu relatório”, e os botões “Fechar” e “X”
-
-
-
+  # TODO: não possível no momento @rebatedor
+  #  43.    Cenário: Validar mensagem de erro Sistema Indisponível
+  #  Dado que o usuário está logado no Merchant Portal
+  #  E o usuário está no modal Relatórios
+  #  E o usuário preencheu todos os campos obrigatórios
+  #  Quando o usuário clica no botão Gerar Relatórios
+  #  E o sistema está indisponível
+  #  Então usuário visualizará o popup de erro com a mensagem “Sua solicitação não foi concluída! Refaça a solicitação do seu relatório”, e os botões “Fechar” e “X”
   #==>
-
-
-
   @TestCaseKey=SMP-T292
   Scenario: Opções de Filtros Disponíveis
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
@@ -279,23 +263,17 @@ Feature: Relatorios
     When usuário limpa os filtros de relatório
     Then Usuário voltará a visualizar ambos relatórios de vendas e pagamentos
 
-
-
-    #==>>
-
-
-
+  #==>>
   @TestCaseKey=SMP-T275
   Scenario: Relatório Arquivo em CSV contém Transações Parceladas
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
-
     Given Existem relatórios já extraídos do tipo "Vendas", no formato ".csv", disponíveis para download
     When Usuário baixa um relatório do tipo "Vendas", formato ".csv"
     Then Usuário visualizará no arquivo baixado a coluna "Parcelas", contendo as parcelas das vendas
 
   @api
-    @TestCaseKey=SMP-T276
+  @TestCaseKey=SMP-T276
   Scenario Outline: Validar Arquivo de Relatório de Vendas
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -315,7 +293,7 @@ Feature: Relatorios
       | .xlsx   |
 
   @api
-    @TestCaseKey=SMP-T277
+  @TestCaseKey=SMP-T277
   Scenario Outline: Validar Arquivo de Relatório de Pagamentos
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -345,8 +323,6 @@ Feature: Relatorios
       | Pagamentos |
       | Vendas     |
 
-
-
   @TestCaseKey=SMP-T312
   Scenario: Valores tela Relatórios - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -364,3 +340,4 @@ Feature: Relatorios
     When usuário clica no "Botão Gerar Relatório" em "Relatórios"
     Then "Todos os estabelecimentos" estará selecionado por padrão
     And usuário terá apenas um EC disponível para seleção
+
