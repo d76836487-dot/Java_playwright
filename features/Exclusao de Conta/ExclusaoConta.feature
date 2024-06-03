@@ -9,24 +9,25 @@ Feature: Exclusao de Conta
 
   @TestCaseKey=SMP-T386
   Scenario: Header Meu Perfil
-    Given que o usuário esteja logado
-    When clicar no Meu perfil no cabeçalho
-    Then Visualizara Informações da conta com “Documento ou usuário “ ,“Endereço de e-mail“ e “celular” e Configurações da Conta com “Excluir acesso digital”
-      | Usuário             |
-      | Master              |
-      | Secundário operação |
-      | Secundário consulta |
-      | Usuário Com F       |
-      | Usuário sem F       |
+    When Usuário tenta logar na aplicação
+    When usuário clica "Header - Meu Perfil"
+    And waiting
+    And Usuário verá "Meu Perfil - Label Documento ou usuário"
+    And Usuário verá "Meu Perfil - Label Endereço de e-mail"
+    And Usuário verá "Meu Perfil - Label Celular"
+    And Usuário verá "Meu Perfil - Label Configurações da conta"
+    And Usuário verá "Meu Perfil - Label Excluir acesso digital"
+
+
 
   @TestCaseKey=SMP-T388
-  Scenario: Excluir acesso Digital Operadores
-    Given que o usuário esteja em Meu Perfil
-    When selecionar “Excluir acesso digital”
-    Then Visualizará um popup “Excluir acesso digital” com o botão “INABILITADO”
-      | Usuário       |
-      | Usuário Com F |
-      | Usuário sem F |
+  Scenario: Popup Excluir acesso Digital
+    Given Usuário tenta logar na aplicação
+    When usuário clica "Header - Meu Perfil"
+    Then usuário clica "Meu Perfil - Label Excluir acesso digital"
+    And Usuário verá "Excluir - Popup Excluir acesso digital"
+
+
 
   @TestCaseKey=SMP-T391
   Scenario: Informativo Excluir acesso digital

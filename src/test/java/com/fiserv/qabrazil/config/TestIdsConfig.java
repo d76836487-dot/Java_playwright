@@ -222,6 +222,7 @@ public class TestIdsConfig {
             entry("Header - Ajuda", "head-ajuda"),
             entry("Header - Notificações", "head-notificacoes"),
             entry("Header - Trocar Estabelecimento", "head-trocar-estabelecimentos"),
+            entry("Header - Meu Perfil", "head-ajuda"),
             entry("Header - Sair", "head-sair"),
             entry("Trocar Estabelecimento - Marcar como Padrão", "alterar-matriz-selecionar-padrao"),
             entry("Trocar Estabelecimento - Botão Acessar", "alterar-matriz-button-acessar"),
@@ -471,6 +472,13 @@ public class TestIdsConfig {
 
             entry("Detalhe da UR - Popup", "//div[contains(@class, 'popup-dialog')]"),
             entry("Detalhe da UR - Popup - Botão Fechar", "//span[contains(text(), 'Fechar')]"),
+
+            entry("Meu Perfil - Label Documento ou usuário", "//span[text()='Documento ou usuário']"),
+            entry("Meu Perfil - Label Endereço de e-mail", "//span[contains(text(),'Endereço de e-mail')]/../following-sibling::div"),
+            entry("Meu Perfil - Label Celular", "//span[text()='Celular']"),
+            entry("Meu Perfil - Label Configurações da conta", "//span[text()='Configurações da conta']"),
+            entry("Meu Perfil - Label Excluir acesso digital", "//span[text()='Excluir acesso digital']"),
+            entry("Excluir - Popup Excluir acesso digital", "//span[text()='Ao excluir seu acesso:']"),
 
             entry("Paginação - mostrar 50 itens", "//a[text()='50 Itens']"),
             entry("Paginação - abrir opção de paginação", "//span[contains(text(),'Exibindo')][contains(text(),'itens')]")
