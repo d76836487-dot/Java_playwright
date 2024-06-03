@@ -18,16 +18,12 @@ Feature: Exclusao de Conta
     And Usuário verá "Meu Perfil - Label Configurações da conta"
     And Usuário verá "Meu Perfil - Label Excluir acesso digital"
 
-
-
   @TestCaseKey=SMP-T388
   Scenario: Popup Excluir acesso Digital
     Given Usuário tenta logar na aplicação
     When usuário clica "Header - Meu Perfil"
     Then usuário clica "Meu Perfil - Label Excluir acesso digital"
     And Usuário verá "Excluir - Popup Excluir acesso digital"
-
-
 
   @TestCaseKey=SMP-T391
   Scenario: Informativo Excluir acesso digital
