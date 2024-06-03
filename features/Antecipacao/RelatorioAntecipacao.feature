@@ -50,9 +50,7 @@ And quando clicar na SOC para detalhar devera ser exibido as vendas que compõem
   Scenario: Calendario Filtros Rapidos
 Given Usuário acessou ao Menu Antecipação
 When Usuário selecionar a aba Relatório de antecipações
-Then usuário visualizara nos Filtros rapidos
-Ontem, Últimos 7 dias: Ontem + últimos 6 dias passados,Últimos 14 dias: Ontem + últimos 13 dias passados,Mês passado: do dia primeiro ao último dia do mês passado fechado
-Range de busca:
+Then usuário visualizara nos Filtros rapidos Ontem, Últimos 7 dias: Ontem + últimos 6 dias passados,Últimos 14 dias: Ontem + últimos 13 dias passados,Mês passado: do dia primeiro ao último dia do mês passado fechado Range de busca:
 
   Scenario: Filtros Fixos
 Given Usuário acessou ao Menu Antecipação
