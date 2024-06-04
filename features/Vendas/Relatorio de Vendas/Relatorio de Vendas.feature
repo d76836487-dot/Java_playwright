@@ -16,4 +16,3 @@ Feature: Relatorio de Vendas
     And ao clicar no menu lateral "Relatório de vendas"
     Then ele deve ver as informações de vendas atuais, incluindo abas para "Hoje", "Histórico de vendas", "Não efetivadas", "Pré autorizações" e "Voucher"
 
-

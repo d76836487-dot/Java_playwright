@@ -15,10 +15,9 @@ Feature: Cancelamento de Vendas
     Then ao clicar no menu lateral "Cancelamento de vendas"
     And verifica se a pagina  "Cancelamento de vendas" carregou com sucesso
 
-   #==========================================================================================================================================================
-
+  #==========================================================================================================================================================
   @SmokeTest @HealthCheck
-    @TestCaseKey=SMP-T362
+  @TestCaseKey=SMP-T362
   Scenario Outline: Health check Cancelamento de vendas
     Given que o usuário está logado e está na seção de Vendas
     When solicitar um cancelamento de uma venda em "Historico de vendas" informando o motivo "<motivos>"
@@ -27,8 +26,7 @@ Feature: Cancelamento de Vendas
       | Motivos            |
       | Cobrança Duplicata |
 
- #==========================================================================================================================================================
-
+  #==========================================================================================================================================================
   @TestCaseKey=SMP-T368
   Scenario: Cliente solicita cancelamento de transação
     Given que o cliente está navegando no menu Histórico de vendas
@@ -50,7 +48,7 @@ Feature: Cancelamento de Vendas
     When o cliente preenche o campo Valor com um valor igual ao valor original da transação
     Then o sistema entende que o cancelamento é total
 
- #==========================================================================================================================================================
+  #==========================================================================================================================================================
   @TestCaseKey=SMP-T366
   Scenario: Preenchimento do campo Valor com valor maior que o original
     Given que o cliente está visualizando os detalhes da transação no modal
@@ -104,5 +102,4 @@ Feature: Cancelamento de Vendas
     When o cliente clica no botão "Solicitar cancelamento"
     Then o sistema registra o pedido de cancelamen
 
-
-  #==========================================================================================================================================================
+#==========================================================================================================================================================
