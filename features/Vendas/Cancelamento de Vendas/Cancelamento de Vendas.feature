@@ -106,6 +106,7 @@ Feature: Cancelamento de Vendas
 # adicionado Demetrios
 
   Scenario: Acessando os Menus
+
     Given que o usuário está logado no Portal
     When o usuário clica na seção Vendas no menu lateral esquerdo
     Then usuário deve visualizar as opções: "Relatório de vendas" e "Cancelamento de vendas"
@@ -113,6 +114,7 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
   Scenario: Acesso ao menu Relatório de Vendas
+
     Given que o usuário está logado no Portal
     When o usuário clica na seção Vendas no menu lateral esquerdo
     And seleciona "Relatório de vendas"
@@ -121,6 +123,7 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
   Scenario: Acesso ao menu Cancelamento de vendas
+
     Given que o usuário está logado no Portal
     When o usuário clica na seção Vendas no menu lateral esquerdo
     And seleciona "Cancelamento de vendas"
@@ -129,6 +132,7 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
   Scenario: Campo valor com saldo maior que o Valor total da venda
+
   Given que esteja Modal Detalhes da venda
     When o usuário “Solicitar o cancelamento” da venda
     And preencher o campo valor com um valor maior que o valor total da venda
@@ -137,6 +141,7 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
   Scenario: Mensagem de obrigatoriedade com outro motivo
+
     Given que o usuário esteja em cancelamento da venda
     When selecionar Outro Motivo
     And Não descrever nada
@@ -145,6 +150,7 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
   Scenario: Modal de Resumo com as informações do cancelamento
+
     Given que o usuário esteja em cancelamento da venda
     When preencher o campo valor com um valor parcial e Motivo
     And selecionar o Botão: solicitar o cancelamento
@@ -153,6 +159,7 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
   Scenario: Confirmar solicitação de Cancelamento
+
     Given que o usuário esteja em Resumo do cancelamento
     When confirmar a solicitação de cancelamento
     Then será exibida a mensagem: “Sua solicitação de cancelamento de venda foi criada com sucesso e já está em análise”
@@ -178,6 +185,7 @@ Feature: Cancelamento de Vendas
   #==========================================================================================================================================================
 
   Scenario:Solicitando Cancelamento / valor não numérico
+
   Given esteja em Cancelamento de Venda
   When digitar caractere ou letra no campo Valor
   Then não deverá ser permitido
@@ -185,6 +193,7 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
   Scenario: Botão Fechar no Modal Detalhe da Venda
+
   Given esteja em Cancelamento de Venda
   When selecionar o Fechar
   Then deverá retornar a tela Histórico de Vendas
@@ -192,6 +201,7 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
   Scenario:Botão X no Modal Detalhe da Venda
+
   Given esteja em Cancelamento de Venda
   When selecionar o ‘’X’’
   Then deverá retornar a tela Histórico de Vendas
@@ -199,6 +209,7 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
   Scenario:Botão Fechar no Resumo cancelar venda
+
   Given usuário esteja no Resumo da venda
   When selecionar “Fechar” abaixo
   Then deverá retornar a tela Histórico de Vendas
@@ -206,11 +217,13 @@ Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 
   Scenario:Botão X no Resumo cancelar venda
+
   Given usuário esteja no Resumo da venda
   When selecionar “X” acima
   Then deverá retornar a tela Histórico de Vendas
 
 #==========================================================================================================================================================
+
   Scenario:Itens em Cancelamento de Vendas
 
   Given que o usuário está logado no Portal
@@ -341,7 +354,7 @@ Feature: Cancelamento de Vendas
 
 #==========================================================================================================================================================
 
-  Scenario:Exportar comprovante no Modal Detalhes da venda
+  Scenario:Exportar comprovante Detalhes da venda
 
   Given que o usuário esteja em "Cancelamento de vendas"
   When clicar em uma venda na aba de efetivados
@@ -360,7 +373,7 @@ Feature: Cancelamento de Vendas
 
 #==========================================================================================================================================================
 
-  Scenario:Comprovante no Modal Detalhes da venda Informações gerais
+  Scenario:Comprovante Modal Detalhes da venda Informações gerais
 
   Given que o usuário esteja em "Cancelamento de vendas"
   When clicar em uma venda na aba de efetivados
@@ -370,7 +383,7 @@ Feature: Cancelamento de Vendas
 
 #==========================================================================================================================================================
 
-  Scenario:Comprovante no Modal Detalhes da venda Givens de pagamento
+  Scenario:Comprovante no Modal Detalhe da venda Givens de pagamento
 
   Given que o usuário esteja em "Cancelamento de vendas"
   When clicar em uma venda na aba de efetivados
@@ -379,7 +392,7 @@ Feature: Cancelamento de Vendas
 
 #==========================================================================================================================================================
 
-  Scenario:Comprovante no Modal Detalhes da venda Detalhes do recebimento
+  Scenario:Comprovante no Modal detalhes da venda Detalhes do recebimento
 
   Given que o usuário esteja em "Cancelamento de vendas"
   When clicar em uma venda na aba de efetivados
@@ -388,7 +401,7 @@ Feature: Cancelamento de Vendas
 
 #==========================================================================================================================================================
 
-  Scenario:Comprovante no Modal Detalhes da venda cancelamento
+  Scenario:Comprovante no Modal Detalhes da venda Cancelamento
 
   Given que o usuário esteja em "Cancelamento de vendas"
   When clicar em uma venda na aba de efetivados
@@ -397,7 +410,7 @@ Feature: Cancelamento de Vendas
 
 #==========================================================================================================================================================
 
-  Scenario:Comprovante no Modal Detalhes da venda
+  Scenario:Comprovante no Modal Detalhes da Venda
 
   Given que o usuário esteja em "Cancelamento de vendas"
   When clicar em uma venda na aba de solicitados
@@ -406,7 +419,7 @@ Feature: Cancelamento de Vendas
 
 #==========================================================================================================================================================
 
-  Scenario:Comprovante no Modal Detalhes da venda Detalhe da venda status em análise
+  Scenario:Comprovante no Modal Detalhe da venda Detalhe da Venda status em análise
 
   Given que o usuário esteja em "Cancelamento de vendas"
   When clicar em uma venda na aba de solicitados
@@ -415,7 +428,7 @@ Feature: Cancelamento de Vendas
 
 #==========================================================================================================================================================
 
-  Scenario:Modal Detalhes da venda Detalhe da solicitação status em análise
+  Scenario:Modal Detalhe da venda Detalhe da solicitação status em análise
 
   Given que o usuário esteja em "Cancelamento de vendas"
   When clicar em uma venda na aba de solicitados
@@ -423,7 +436,7 @@ Feature: Cancelamento de Vendas
 
 #==========================================================================================================================================================
 
-  Scenario:Comprovante no Modal Detalhes da venda Detalhe da solicitação status fechado
+  Scenario:Comprovante no Modal Detalhe da venda Detalhe da solicitação status fechado
 
   Given que o usuário esteja em "Cancelamento de vendas"
   When clicar em uma venda na aba de solicitados
@@ -432,7 +445,7 @@ Feature: Cancelamento de Vendas
 
 #==========================================================================================================================================================
 
-  Scenario:Modal Detalhes da venda Detalhe da solicitação status fechado
+  Scenario:Modal Detalhes da venda Detalhe da solicitação Status fechado
 
   Given que o usuário esteja em "Cancelamento de vendas"
   When clicar em uma venda na aba de solicitados
