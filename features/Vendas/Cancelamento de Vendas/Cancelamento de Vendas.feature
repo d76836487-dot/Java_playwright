@@ -1,11 +1,11 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Cancelamento_Vendas/Vendas_Cancelamento
+@Zephyr:Folder=/Portal_do_Cliente/Cancelamento_Vendas/Cancelamento_de_Vendas
 @Zephyr:Status=Draft
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Vendas Cancelamento
+Feature: Cancelamento de Vendas
 
   @HealthCheck
   @TestCaseKey=SMP-T361
@@ -15,19 +15,10 @@ Feature: Vendas Cancelamento
     Then ao clicar no menu lateral "Cancelamento de vendas"
     And verifica se a pagina  "Cancelamento de vendas" carregou com sucesso
 
-  #==========================================================================================================================================================
-  @HealthCheck
-  @TestCaseKey=SMP-T363
-  Scenario: Health check Relatório de vendas
-    Given Usuário efetue logon
-    #When Usuário tenta logar na aplicação
-    When Usuário acessou página de Vendas
-    And ao clicar no menu lateral "Relatório de vendas"
-    Then ele deve ver as informações de vendas atuais, incluindo abas para "Hoje", "Histórico de vendas", "Não efetivadas", "Pré autorizações" e "Voucher"
+   #==========================================================================================================================================================
 
-  #==========================================================================================================================================================
   @SmokeTest @HealthCheck
-  @TestCaseKey=SMP-T362
+    @TestCaseKey=SMP-T362
   Scenario Outline: Health check Cancelamento de vendas
     Given que o usuário está logado e está na seção de Vendas
     When solicitar um cancelamento de uma venda em "Historico de vendas" informando o motivo "<motivos>"
@@ -36,7 +27,8 @@ Feature: Vendas Cancelamento
       | Motivos            |
       | Cobrança Duplicata |
 
-  #==========================================================================================================================================================
+ #==========================================================================================================================================================
+
   @TestCaseKey=SMP-T368
   Scenario: Cliente solicita cancelamento de transação
     Given que o cliente está navegando no menu Histórico de vendas
@@ -58,7 +50,7 @@ Feature: Vendas Cancelamento
     When o cliente preenche o campo Valor com um valor igual ao valor original da transação
     Then o sistema entende que o cancelamento é total
 
-  #==========================================================================================================================================================
+ #==========================================================================================================================================================
   @TestCaseKey=SMP-T366
   Scenario: Preenchimento do campo Valor com valor maior que o original
     Given que o cliente está visualizando os detalhes da transação no modal
@@ -112,3 +104,5 @@ Feature: Vendas Cancelamento
     When o cliente clica no botão "Solicitar cancelamento"
     Then o sistema registra o pedido de cancelamen
 
+
+  #==========================================================================================================================================================

@@ -28,12 +28,12 @@ Feature: Agenda de recebimentos por UR
   Scenario: Botão Ocultar Valores na Agenda UR
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessou a página de Agenda de Recebimentos por UR
-    Given Usuário seleciona Ontem
+    #Given Usuário seleciona Ontem
     And Todas as barras de carregamento sumiram
     And Usuário clicou em uma linha de recebimento
     When usuário clica no "Ocultar Valores" no "Header"
     Then Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs" o mesmo valor "R$ ••••"
-    And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Valor Total" o mesmo valor "R$ ••••"
+    And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Valor total" o mesmo valor "R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Valor pago" o mesmo valor "R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total bruto" o mesmo valor "R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total taxa MDR" o mesmo valor "- R$ ••••"

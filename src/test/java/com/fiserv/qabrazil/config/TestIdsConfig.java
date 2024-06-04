@@ -256,7 +256,7 @@ public class TestIdsConfig {
             entry("Gestão de Acessos - Convidar novo usuário", "gestao-new-user"),
 
             entry("Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs", "total-liquido-ur"),
-            entry("Agenda de Recebimentos por UR - Resumo - Valor Total", "valor-total-ur"),
+            entry("Agenda de Recebimentos por UR - Resumo - Valor total", "valor-total-ur"),
             entry("Agenda de Recebimentos por UR - Resumo - Valor pago", "valor-pago-ur"),
             entry("Agenda de Recebimentos por UR - Resumo - Total bruto", "total-bruto-ur"),
             entry("Agenda de Recebimentos por UR - Resumo - Total taxa MDR", "total-taxa-mdr-ur"),
