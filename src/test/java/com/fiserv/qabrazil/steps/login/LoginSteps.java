@@ -17,7 +17,7 @@ public class LoginSteps {
     @Autowired
     ContractConfig contractConfig;
 
-    @When("Usuário tenta logar na aplicação")
+    @When("Usuário loga na aplicação")
     public void login() {
         loginPage.loginAndGetHomeReady();
     }

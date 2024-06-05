@@ -8,7 +8,7 @@
 Feature: Ajuda Whatsapp BIN 003 ou 007
 
   Background:
-    When Usuário tenta logar na aplicação
+    When Usuário loga na aplicação
     Then Usuário estará com acesso e sessão foi salva
     And Todas as requisições HTTP foram respondidas
 
@@ -64,21 +64,18 @@ Feature: Ajuda Whatsapp BIN 003 ou 007
       | url                                  |
       | https://wa.me/message/FC2JELHHFGAKJ1 |
 
-  @sicredi
   @TestCaseKey=SMP-T192
   Scenario: Visualização do componente Chatbot
     Given que estou na tela “início” do Portal
     When usuário clica "Header - Ajuda"
     Then usuário visualiza o componente "Ajuda - Chatbot" na cor "rgb(20, 110, 55)" no canto inferior à direita da tela
 
-  @sicredi
   @TestCaseKey=SMP-T191
   Scenario: Validação da flutuação do componente Chatbot
     Given usuário está na página Ajuda
     When usuário move a tela através do scroll
     Then usuário visualizará o componente "Ajuda - Chatbot" acompanhando a rolagem da tela
 
-  @sicredi
   @TestCaseKey=SMP-T193
   Scenario: Validação da URL do Chatbot
     Given usuário está na página Ajuda

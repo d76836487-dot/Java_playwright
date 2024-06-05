@@ -8,7 +8,7 @@
 Feature: Vendas Historico
 
   Background:
-    Given Usuário tenta logar na aplicação
+    Given Usuário loga na aplicação
     And Usuário acessou com sucesso
 
   @TestCaseKey=SMP-T164

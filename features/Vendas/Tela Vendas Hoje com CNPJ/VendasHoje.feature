@@ -8,7 +8,7 @@
 Feature: Vendas Hoje com CNPJ
 
   Background:
-    When Usuário tenta logar na aplicação
+    When Usuário loga na aplicação
     Then Usuário estará com acesso e sessão foi salva
 
   @TestCaseKey=SMP-T9

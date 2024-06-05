@@ -26,11 +26,12 @@ Feature: Acesso Rápido
   - CLIENTE MDR FLEX - Devemos permitir que o cliente selecione Meu negócio, Relatórios, Documentos, Informe de rendimento, Vendas, Detalhe de pagamentos e solicitações.
 
   Background:
-    When Usuário tenta logar na aplicação
+    When Usuário loga na aplicação
     Then Usuário estará com acesso e sessão foi salva
 
   @PermiteAdiantamento
   @TestCaseKey=SMP-T25
+  @sicredi
   Scenario: Antecipação no acesso rápido
     Given que estou na tela “início” do Portal
     And "item Antecipação" está disponível na "Home - acesso rápido"
@@ -38,6 +39,7 @@ Feature: Acesso Rápido
     Then será direcionado para a jornada de "Antecipação"
 
   @TestCaseKey=SMP-T27
+  @sicredi
   Scenario: Relatórios no acesso rápido
     Given que estou na tela “início” do Portal
     And "item Relatórios" está disponível na "Home - acesso rápido"
@@ -48,6 +50,7 @@ Feature: Acesso Rápido
   #*Quando* clicar no item Documentos no acesso rápido
   #*Então* devo ser direcionado para a jornada de Documentos
   @TestCaseKey=SMP-T28
+  @sicredi
   Scenario: Informe de rendimentos no acesso rápido
     Given que estou na tela “início” do Portal
     And "item Informe de rendimento" está disponível na "Home - acesso rápido"
@@ -55,6 +58,7 @@ Feature: Acesso Rápido
     Then será direcionado para a jornada de "Informe de rendimento" na nova aba
 
   @TestCaseKey=SMP-T30
+  @sicredi
   Scenario: Vendas no acesso rápido
     Given que estou na tela “início” do Portal
     And "item Vendas" está disponível na "Home - acesso rápido"
@@ -75,6 +79,7 @@ Feature: Acesso Rápido
 
   @PermiteSolicitações
   @TestCaseKey=SMP-T32
+  @sicredi
   Scenario: Solicitações no acesso rápido
     Given que estou na tela “início” do Portal
     And "item Solicitações" está disponível na "Home - acesso rápido"

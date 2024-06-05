@@ -8,8 +8,8 @@
 Feature: Exclusao de Conta
 
   @TestCaseKey=SMP-T386
-  Scenario: Header Meu Perfil
-    When Usuário tenta logar na aplicação
+  Scenario: Health Meu Perfil
+    When Usuário loga na aplicação
     When usuário clica "Header - Meu Perfil"
     And waiting
     And Usuário verá "Meu Perfil - Label Documento ou usuário"
@@ -20,7 +20,7 @@ Feature: Exclusao de Conta
 
   @TestCaseKey=SMP-T388
   Scenario: Popup Excluir acesso Digital
-    Given Usuário tenta logar na aplicação
+    Given Usuário loga na aplicação
     When usuário clica "Header - Meu Perfil"
     Then usuário clica "Meu Perfil - Label Excluir acesso digital"
     And Usuário verá "Excluir - Popup Excluir acesso digital"

@@ -45,7 +45,8 @@ public class CommonsSteps {
     }
 
     @Then("Usuário verá {pageField}")
-    public void userWillSee(PageField pageField) {
+    public void userWillSee(PageField pageField) throws InterruptedException {
+        Thread.sleep(100);
         assertTrue("Campo %s não está visível como esperado".formatted(pageField.getDisplayName()),
                 pageField.elementIsVisibleRightNow());
     }

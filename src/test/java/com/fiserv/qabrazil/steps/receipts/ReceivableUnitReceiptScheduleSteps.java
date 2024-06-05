@@ -197,7 +197,7 @@ public class ReceivableUnitReceiptScheduleSteps extends BaseSteps {
 
     @Then("Valor total é igual a soma do Valor Líquido com o Valor Pago")
     public void sumLiquidAndPaidEqualToTotal() {
-        double total = pageField.from("Agenda de Recebimentos por UR - Resumo - Valor Total").getAsCurrency().doubleValue();
+        double total = pageField.from("Agenda de Recebimentos por UR - Resumo - Valor total").getAsCurrency().doubleValue();
         double netValue = pageField.from("Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs").getAsCurrency().doubleValue();
         double paidValue = pageField.from("Agenda de Recebimentos por UR - Resumo - Valor pago").getAsCurrency().doubleValue();
 

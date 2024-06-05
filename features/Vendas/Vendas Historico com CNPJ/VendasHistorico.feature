@@ -8,7 +8,7 @@
 Feature: Vendas
 
   Background:
-    Given Usuário tenta logar na aplicação
+    Given Usuário loga na aplicação
     And Usuário acessou com sucesso
     And Usuário acessou Vendas - Histórico de Vendas
     And Todas as requisições HTTP foram respondidas
