@@ -15,7 +15,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 
 @ScenarioComponent
-@Component("Vendas")
+@Component("features/Regressivo/Vendas")
 public class SalesPages extends CheckedBasePage {
     public SalesPages() {
         super(Pattern.compile("^.*/Vendas$"));
@@ -28,8 +28,12 @@ public class SalesPages extends CheckedBasePage {
     }
 
     public void ao_clicar_no_menu_lateral(String arg0) {
-        Locator locator = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName(arg0));
-        locator.click();
+        /*Locator locator = page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName(arg0));
+        locator.click();*/
+
+        String linkTo = getQuerySelector(arg0);
+        page.locator(linkTo).last().click();
+        waitUntilTrue(this::hasNoLoadingBars);
     }
 
 

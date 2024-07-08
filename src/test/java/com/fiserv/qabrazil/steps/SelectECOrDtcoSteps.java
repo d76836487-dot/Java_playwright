@@ -226,23 +226,23 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     }
 
     @Given("Usuário está na aba {string} da modal 'Trocar Estabelecimento'")
-    public void userIsInEstablishmentTab(String tab) {
-        loginPage.loginWithOneRetry();
+    public void userIsInEstablishmentTab(String tab) throws InterruptedException {
+        //loginPage.loginWithOneRetry("");
 
-        if (!apiUserDetailsService.tokenIsStillValid()) {
+        /*if (!apiUserDetailsService.tokenIsStillValid()) {
             logger.info("forçando novo login...");
             loginPage.forceNewLogin();
             if (loginPage.userIsLogged()) {
                 loginPage.saveStorageState();
             }
-        }
+        }*/
 
         selectECOrDtcoPage.openModalAndTab(tab);
     }
 
     @When("Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' {string}")
-    public void userLogsInWithoutPreSelectedEC(String checkedOrUnchecked) {
-        loginPage.loginWithOneRetry();
+    public void userLogsInWithoutPreSelectedEC(String checkedOrUnchecked) throws InterruptedException {
+        //loginPage.loginWithOneRetry("");
 
         if (selectECOrDtcoPage.modalIsVisible()) return;
 

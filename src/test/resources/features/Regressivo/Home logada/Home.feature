@@ -1,0 +1,940 @@
+#language: en
+ @Zephyr:ProjectKey=SMP
+@Zephyr:Folder=/Portal_do_Cliente/Home_logada/Home_Logada
+@Zephyr:Status=Draft
+@Zephyr:Priority=Normal
+@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+
+
+Feature: Home Logada
+
+
+@TestCaseKey=SMP-T10
+Scenario Outline: Login com sucesso
+  Given open portal "<alianca>" and logon
+  @sicredi @alliances
+  Examples:
+  |Description        |alianca  |
+  |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+  |Description        |alianca  |
+  |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+  |Description        |alianca  |
+  |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+  |Description        |alianca  |
+  |Usuario master     |bin      |
+
+@TestCaseKey=SMP-T11
+  @alliances
+Scenario: Usuário não encontrado no GA1 nem no GA2 e sem cadastro na Fiserv
+  When Usuário tenta logar na aplicação com "81633816000210" e "Fiserv@123"
+  Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
+
+
+    @TestCaseKey=SMP-T13
+Scenario Outline: Usuário tenta logar com senha errada
+  When Usuário loga com senha errada
+  And Todas as requisições HTTP foram respondidas
+  Then Usuário verá em "Login - mensagem de erro" o valor "<descrição>"
+@pt-br
+Examples:
+  | descrição                                                                                           |
+  | Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
+
+
+@TestCaseKey=SMP-T16
+Scenario Outline: Banner de comunicação comercial
+  Given open portal "<alianca>" and logon
+  Then Usuário estará com acesso e sessão foi salva
+  And Todas as requisições HTTP foram respondidas
+  Given Usuário acessou o Home
+  Then Usuário verá em "Home - Maquininha" o valor "<descrição>"
+  And Usuário verá em "Home - Maquininha - Botão Confira" o valor "<texto botão>"
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |descrição                           | texto botão |
+    |Usuario master     |sicredi  | Veja as vantagens da sua maquininha | Confira     |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |descrição                           | texto botão |
+    |Usuario master     |afinz    | Veja as vantagens da sua maquininha | Confira     |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |descrição                           | texto botão |
+    |Usuario master     |azulzinha| Veja as vantagens da sua maquininha | Confira     |
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |descrição                           | texto botão |
+    |Usuario master     |bin      | Veja as vantagens da sua maquininha | Confira     |
+
+@TestCaseKey=SMP-T19
+Scenario Outline: Usuário será direcionado ao Vendas Hoje ao clicar em Ver Tudo da seção Vendas Hoje
+  Given open portal "<alianca>" and logon
+  Then Usuário estará com acesso e sessão foi salva
+  And Todas as requisições HTTP foram respondidas
+  Given Usuário acessou o Home
+  When usuário clica "Home - Card Vendas Hoje - Ver Tudo"
+  Then será direcionado ao menu "Vendas Hoje"
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+# TODO: fix to use anticipation linked to data-testid
+@MDRPadrão @PermiteAdiantamento
+@TestCaseKey=SMP-T17
+
+Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
+  Given open portal "<alianca>" and logon
+  Then Usuário estará com acesso e sessão foi salva
+  And Todas as requisições HTTP foram respondidas
+  Given Usuário acessou o Home
+  Then Usuário verá card Antecipação
+  And Usuário verá em "Home - Card Antecipação - Botão Ir" o valor "<texto botão>"
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |texto botão         |
+    |Usuario master     |sicredi  | Ir para antecipação |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |texto botão         |
+    |Usuario master     |afinz    | Ir para antecipação |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |texto botão         |
+    |Usuario master     |azulzinha| Ir para antecipação |
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |texto botão         |
+    |Usuario master     |bin      | Ir para antecipação |
+
+@TestCaseKey=SMP-T26
+
+Scenario Outline: Total de Recebimentos na Home deve ser igual ao de hoje de futuro previstos
+  Given open portal "<alianca>" and logon
+  Then Usuário estará com acesso e sessão foi salva
+  And Todas as requisições HTTP foram respondidas
+  Given Usuário acessou o Home
+  Then Total de Recebimentos será igual ao recebimento de hoje + futuro previsto
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+@TestCaseKey=SMP-T148
+
+Scenario Outline: Ocultar valores da Home
+  Given open portal "<alianca>" and logon
+  Then Usuário estará com acesso e sessão foi salva
+  And Todas as requisições HTTP foram respondidas
+  Given Usuário acessou o Home
+  When usuário clica no "Ocultar Valores" no "Header"
+  Then Usuário verá em "Home - Card Vendas Hoje - Valor Vendas Hoje" o valor "R$ ••••"
+  And Usuário verá em "Home - Card Recebimento - Total Recebimento" o valor "R$ ••••"
+  And Usuário verá em "Home - Card Recebimento - Recebimento Hoje" o valor "R$ ••••"
+  And Usuário verá em "Home - Card Recebimento - Recebimento Previsto" o valor "R$ ••••"
+  And Usuário verá em todos os campos "Home - Card Últimas Vendas - Valor" o valor "R$ ••••" - se existir
+  And Usuário verá em todos os campos "Home - Card Antecipação - Valor" o valor "R$ •••• /" - se existir
+  And Usuário verá em "Home - Agenda Recebimento - Valor Segunda" o valor "R$ ••••" - se existir
+  And Usuário verá em "Home - Agenda Recebimento - Valor Terça" o valor "R$ ••••" - se existir
+  And Usuário verá em "Home - Agenda Recebimento - Valor Quarta" o valor "R$ ••••" - se existir
+  And Usuário verá em "Home - Agenda Recebimento - Valor Quinta" o valor "R$ ••••" - se existir
+  And Usuário verá em "Home - Agenda Recebimento - Valor Sexta" o valor "R$ ••••" - se existir
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+
+
+@PermiteAdiantamento
+@TestCaseKey=SMP-T20
+
+Scenario Outline: Abrir Modal Personalizar Acesso Rápido (inclui Adiantamento)
+  Given open portal "<alianca>" and logon
+  Then Usuário estará com acesso e sessão foi salva
+  And Todas as requisições HTTP foram respondidas
+  Given Usuário acessou o Home
+  When clicar no botão "Personalizar"
+  Then devo visualizar a um modal com demais <funcionalidades> para escolher
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  | funcionalidades                                                                             |
+    |Usuario master     |sicredi  | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  | funcionalidades                                                                             |
+    |Usuario master     |afinz    | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  | funcionalidades                                                                             |
+    |Usuario master     |azulzinha| Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+  @bin @alliances
+  Examples:
+    |Description        |alianca  | funcionalidades                                                                             |
+    |Usuario master     |bin      | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+
+@TestCaseKey=SMP-T152
+Scenario Outline: recebimentos futuros existem
+  Given open portal "<alianca>" and logon
+  Then Usuário estará com acesso e sessão foi salva
+  And Todas as requisições HTTP foram respondidas
+  Given que estou na tela “início” do Portal
+  And existem valores futuros a receber
+  Then usuário verá em "Home - Card Recebimento - Recebimento Previsto" valor maior que 0,00
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+
+
+@TestCaseKey=SMP-T118
+
+Scenario Outline: Recebimentos Hoje no card Recebimentos é igual a API
+  Given open portal "<alianca>" and logon
+  Then Usuário estará com acesso e sessão foi salva
+  Given Usuário acessou o Home
+  Then Total de 'Home - Recebimentos - Recebimentos hoje' será igual à API
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+@TestCaseKey=SMP-T139
+
+Scenario Outline: Valor de Recebimentos Futuros Previstos na Home é igual à API
+  Given open portal "<alianca>" and logon
+  Then Usuário estará com acesso e sessão foi salva
+  Given Usuário acessou o Home
+  Then Total de 'Home - Card Recebimento - Recebimento Previsto' será igual à API
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+@TestCaseKey=SMP-T29
+
+Scenario Outline: Valor de Vendas Hoje na Home é igual à API
+  Given open portal "<alianca>" and logon
+  Then Usuário estará com acesso e sessão foi salva
+  Given Usuário acessou o Home
+  Then Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API
+
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+
+@TestCaseKey=SMP-T182
+@sicrediMaster @Home
+Scenario Outline: Busca de código EC valido aba Estabelecimento (Usuário Master)
+  Given open portal "<alianca>" and logon
+  Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+  When Usuário digitar um EC válido em 'Buscar por documento ou número do estabelecimento'
+  Then Dropdown irá filtrar e apresentar somente o EC correspondente
+  And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+
+@TestCaseKey=SMP-T186
+Scenario Outline: Busca de código EC inválido aba Estabelecimento (Usuário Master)
+  Given open portal "<alianca>" and logon
+  Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+  When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
+  Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+@TestCaseKey=SMP-T187
+Scenario Outline: Busca de Documento (CNPJ ou CPF) inválido aba Estabelecimento (Usuário Master)
+  Given open portal "<alianca>" and logon
+  Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+  When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
+  Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+@TestCaseKey=SMP-T188
+Scenario Outline: Validar botão “X” no componente “Buscar por documento” na aba Documento na tela de personalize sua visualização (Usuário Master)
+  Given open portal "<alianca>" and logon
+  Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+  When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
+  Then Usuário poderá limpar a busca clicando no X
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+@TestCaseKey=SMP-T189
+Scenario Outline: Busca de documento válido aba Documento (Usuário Master)
+  Given open portal "<alianca>" and logon
+  Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+  When Usuário digitar um documento válido em 'Buscar por documento'
+  Then Filtro apresentará somente a informação correspondente
+  And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+@TestCaseKey=SMP-T14
+Scenario Outline: Usuário não existente no GA1 nem no GA2 e sem cadastro na Fiserv
+  Given open portal "<alianca>" and logon
+  And Usuário clicou no botão esqueci minha senha
+  When Usuário tenta recuperar senha com "81633816000210"
+  Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+  @TestCaseKey=SMP-T190
+  Scenario Outline: Busca de documento inválido aba Documento (Usuário Master)
+    Given open portal "<alianca>" and logon
+    Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+    When Usuário digitar um documento inválido em 'Buscar por documento'
+    Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
+#And Botão "Trocar Estabelecimento - Botão Acessar" estará visível e desabilitado
+#And Botão "Trocar Estabelecimento - Marcar como Padrão" estará visível e desabilitado
+    @sicredi @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |sicredi  |
+    @afinz @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |afinz    |
+    @azulzinha @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |azulzinha|
+    @bin @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |bin      |
+
+
+
+
+#======================================================================================================================
+#==testes falhando sicredi
+
+
+@TestCaseKey=SMP-T183
+Scenario Outline: Validar Campos do Personalize sua Visualização aba Documento. (Usuário Master)
+  Given open portal "<alianca>" and logon
+Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+When usuário clica no "Botão Todos Documentos" em "Trocar Estabelecimento"
+Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento ou nome"
+And Usuário verá em "Trocar Estabelecimento - Botão Todos Documentos - Explicação" o texto "Essa visão irá agrupar todos os estabelecimentos abaixo do documento "
+And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
+And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Ao selecionar esse formato, as informações do Portal serão apresentadas de forma consolidada, agrupando os estabelecimentos abaixo do documento. Você poderá alterar a seleção a qualquer momento no portal."
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+
+
+@TestCaseKey=SMP-T180
+Scenario Outline: Valida Nomes, CNPJ/CPFs, número EC e status com API
+  Given open portal "<alianca>" and logon
+Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
+When usuário clica "Header - Trocar Estabelecimento"
+And usuário clica no "Botão selecionar por Estabelecimento" em "Trocar Estabelecimento"
+Then Todos Nomes, CNPJ CPFs, número ECs e status são iguais a API
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+@TestCaseKey=SMP-T155
+Scenario Outline: abrir notificações
+  Given open portal "<alianca>" and logon
+Given Usuário acessou o Home
+And Usuário tinha de mais de uma notificação
+When usuário clica no "Notificações" na "Header"
+Then o Portal deve abrir as "Minhas Notificações"
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+Scenario Outline: recebimentos futuros não existem
+  Given open portal "<alianca>" and logon
+Given que estou na tela “início” do Portal
+And não existem valores futuros para receber
+Then Usuário verá em "Home - Card Recebimento - Recebimento Previsto" o valor "R$ 0,00"
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+@TestCaseKey=SMP-T172
+Scenario Outline: Redirecionamento Correto (Usuário Master) - o usuário verá modal Personalizar ao logar
+  Given open portal "<alianca>" and logon
+When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
+Then Usuário verá modal para selecionar EC ou DTCO
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+@TestCaseKey=SMP-T174
+Scenario Outline: Validar Campos do Personalize sua Visualização aba Estabelecimento. (Usuário Master)
+  Given open portal "<alianca>" and logon
+When Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+Then Usuário verá em "Trocar Estabelecimento - Buscar documento" o placeholder "Buscar por documento, ou número do estabelecimento ou nome"
+And Listagem por documento contendo dropdown com as informações de Nome fantasia do documento e o número do documento
+And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
+And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Ao selecionar esse formato, as informações do Portal serão apresentadas de forma correspondente ao estabelecimento escolhido. Você poderá alterar a seleção a qualquer momento no portal."
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+
+@TestCaseKey=SMP-T31
+Scenario Outline: Compara últimas vendas na Home com a API
+  Given open portal "<alianca>" and logon
+Given Usuário acessou o Home
+And encontrou o campo "Home - Card Últimas Vendas - Valor"
+Then 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+@TestCaseKey=SMP-T196
+Scenario Outline: Validar não seleção no checkbox de não mostrar novamente (Usuário Master)
+  Given open portal "<alianca>" and logon
+When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
+Then Usuário verá modal para selecionar EC ou DTCO
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+@TestCaseKey=SMP-T194
+Scenario Outline: Validação do Botão Acessar (Usuário Master)
+  Given open portal "<alianca>" and logon
+Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+When Usuário selecionar um documento e clicar Acessar
+Then Documento estará previamente selecionado
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+
+@TestCaseKey=SMP-T169
+Scenario Outline: Abrir Modal Personalizar Acesso Rápido (exclui Adiantamento)
+  Given open portal "<alianca>" and logon
+Given Usuário acessou o Home
+When clicar no botão "Personalizar"
+Then devo visualizar a um modal com demais <funcionalidades> para escolher
+
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |funcionalidades                                                                |
+    |Usuario master     |sicredi  |Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |funcionalidades                                                                |
+    |Usuario master     |afinz    |Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |funcionalidades                                                                |
+    |Usuario master     |azulzinha|Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |funcionalidades                                                                |
+    |Usuario master     |bin      |Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+
+@TestCaseKey=SMP-T177
+Scenario Outline: Validar expansão do dropdown na aba Estabelecimento. (Usuário Master)
+  Given open portal "<alianca>" and logon
+Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+When Usuário expande primeiro dropdown
+Then O primeiro dropdown estará expandido
+And O dropdown conterá com as informações de Nome fantasia do EC
+And O dropdown conterá com as informações de número do EC
+And O dropdown conterá com as informações do status do EC no BW
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+@api
+@TestCaseKey=SMP-T184
+
+Scenario Outline: Busca de Documento (CNPJ ou CPF) válido aba Estabelecimento (Usuário Master)
+  Given open portal "<alianca>" and logon
+Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+When Usuário digitar um documento válido em 'Buscar por documento ou número do estabelecimento'
+Then Dropdown irá filtrar e apresentar somente EC do documento correspondente
+And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+# TODO: fix to use anticipation linked to data-testid
+# TODO: fix this: And Usuário não verá botão com texto "<texto botão>"
+
+@TestCaseKey=SMP-T18
+Scenario Outline: Usuário MDR Padrão NÃO verá card "Receba antes"
+  Given open portal "<alianca>" and logon
+  Given Usuário acessou o Home
+Then Usuário não verá card Antecipação
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+@TestCaseKey=SMP-T24
+Scenario Outline: Valor de vendas hoje e percentual no card Vendas Hoje do Home
+  Given open portal "<alianca>" and logon
+Given Usuário acessou o Home
+Then Usuário verá em "Home - Card Vendas Hoje - Valor Vendas Hoje" o valor "<valor venda>"
+And Usuário verá em "Home - Card Vendas Hoje - Percentual Vendas Hoje" o valor "<percentual>"
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |valor venda  | percentual |
+    |Usuario master     |sicredi  | R$ 55.400,00 | 21%        |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |valor venda  | percentual |
+    |Usuario master     |afinz    | R$ 55.400,00 | 21%        |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |valor venda  | percentual |
+    |Usuario master     |azulzinha| R$ 55.400,00 | 21%        |
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |valor venda  | percentual |
+    |Usuario master     |bin      | R$ 55.400,00 | 21%        |
+
+ # não tenho certeza se este teste está correto
+@ignore
+@TestCaseKey=SMP-T146
+Scenario Outline: Compara agenda de recebimento da semana com a API
+  Given open portal "<alianca>" and logon
+Given Usuário acessou o Home
+Then 'Home - Card agenda semana' será igual a API
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+ # TODO: confirmar a api
+@UsuárioComHierarquia
+@TestCaseKey=SMP-T287
+Scenario Outline: Vendas HOJE com seleção de EC (Usuário Master)
+  Given open portal "<alianca>" and logon
+Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
+When Usuário selecionar um EC e clicar Acessar
+Then Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API do EC selecionado
+And 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API do EC selecionado
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+# TODO: confirmar a api
+@UsuárioComHierarquia
+@TestCaseKey=SMP-T290
+Scenario Outline: Vendas HOJE com seleção de Documento (Usuário Master)
+  Given open portal "<alianca>" and logon
+Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
+When Usuário selecionar um documento e clicar Acessar
+Then Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API do EC selecionado
+And 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API do EC selecionado
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+ # não tenho certeza se este teste está correto
+ @MDRPadrão @PermiteAdiantamento
+@TestCaseKey=SMP-T162
+Scenario Outline: Está trazendo todos os ECs no card Adiantamento igual a API
+Given open portal "<alianca>" and logon
+Given Usuário acessou o Home
+Then 'Home - Card Antecipação - ECs' são os mesmos que a API
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |
+
+@TestCaseKey=SMP-T195
+Scenario Outline: Validar seleção no checkbox de não mostrar novamente (Usuário Master)
+  Given open portal "<alianca>" and logon
+When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "marcada"
+Then Usuário estará com acesso e sessão foi salva
+  @sicredi @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |sicredi  |
+  @afinz @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |afinz    |
+  @azulzinha @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |azulzinha|
+  @bin @alliances
+  Examples:
+    |Description        |alianca  |
+    |Usuario master     |bin      |

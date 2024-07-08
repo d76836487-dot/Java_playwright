@@ -57,6 +57,8 @@
             <version>3.5.1</version>
         </dependency>
 
+
+
         <dependency>
             <groupId>org.dhatim</groupId>
             <artifactId>fastexcel-reader</artifactId>
@@ -89,9 +91,9 @@
     </dependencies>
 
     <build>
-        <testResources>
+         <testResources>
             <testResource>
-                <directory>features</directory>
+                <directory>src/test/resources/features</directory>
                 <targetPath>com/fiserv/qabrazil/features</targetPath>
             </testResource>
             <testResource>

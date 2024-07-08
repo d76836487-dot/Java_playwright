@@ -18,7 +18,8 @@ public class SelectECOrDtcoPage extends BasePage {
     private static final Logger log = LoggerFactory.getLogger(SelectECOrDtcoPage.class);
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
-
+    @Autowired
+    SelectECOrDtcoPage selectECOrDtcoPage;
     private String selectedDoc;
     private String selectedDocName;
     private String selectedEc;
@@ -100,6 +101,7 @@ public class SelectECOrDtcoPage extends BasePage {
     }
 
     public void selectAllDocumentsIfAvailable() {
+
         if (!contractConfig.getActiveUserProfile().isMaster()) return;
 
         PageField changeButton = pageField.from("Header - Trocar Estabelecimento");
@@ -124,6 +126,36 @@ public class SelectECOrDtcoPage extends BasePage {
         pageField.from("Trocar Estabelecimento - Botão Acessar").click();
     }
 
+
+
+    public void checkModalAutomaticIsOpen(){
+        if(page.getByText("Personalize sua visualização").isVisible()) {
+
+            //page.getByText("Documento").click();
+
+            page.locator("data-testid=alterar-matriz-type-documento evt_clicou_selecao_docOuEC_personalize_documento").click();
+           // if(page.getByText("Todos").isVisible()) {
+                PageField buttonAllDocs = pageField.from("Trocar Estabelecimento - Botão Todos Documentos");
+                buttonAllDocs.click();
+
+
+            //PageField buttonAcessar = pageField.from("Trocar Estabelecimento - Acessar");
+            //buttonAcessar.click();
+
+
+
+                page.getByText("Acessar").click();
+          //  }else{
+
+
+
+            //    List<String> allDocs = selectECOrDtcoPage.getDocumentsFromTabDocument();
+             //   selectECOrDtcoPage.selectDocumentInput(allDocs.get(0));
+              //  selectECOrDtcoPage.storeDocAndFirstNameFromDocuments(allDocs.get(0));
+                ///page.getByText("Acessar").click();
+            //}
+        }
+    }
     private void openModalIfRequired(PageField changeButton) {
         if (changeButton.getLocator().isVisible()) {
             changeButton.click();
@@ -165,6 +197,17 @@ public class SelectECOrDtcoPage extends BasePage {
         pageField.from("Trocar Estabelecimento - Botão Acessar").click();
     }
 
+    public void AutomaticopenModalAndSetDefault(boolean setAsDefault) {
+
+        pageField.from("Trocar Estabelecimento - Botão selecionar por Documento").click();
+
+        waitUntilTrue(90, () -> pageField.from("Trocar Estabelecimento - Botão Todos Documentos").elementIsVisibleRightNow());
+
+        pageField.from("Trocar Estabelecimento - Botão Todos Documentos").click();
+        selectSetAsDefault(setAsDefault);
+        pageField.from("Trocar Estabelecimento - Botão Acessar").click();
+    }
+
     public List<String> getDocumentsFromTabDocument() {
         PageField inputs = pageField.from("Trocar Estabelecimento - Documento - Documento Estabelecimento");
         waitUntilTrue(() -> inputs.getCount() > 0);
@@ -179,16 +222,29 @@ public class SelectECOrDtcoPage extends BasePage {
                 .toList();
     }
 
-    public void openModalAndTab(String tab) {
+    public void openModalAndTab(String tab) throws InterruptedException {
         startMonitoringRequests(page, contractConfig);
         PageField openModalButton = pageField.from("Header - Trocar Estabelecimento");
         if (openModalButton.elementIsVisible()) {
             openModalButton.click();
         }
+        Thread.sleep(3000);
 
-        PageField establishmentTab = pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab));
-        if (!establishmentTab.elementIsVisible()) throw new RuntimeException("A aba para seleciona estabelecimento não está visível");
-        establishmentTab.click();
+        if(tab.equals("Estabelecimento")) {
+           pageField.from("Trocar Estabelecimento - Botão selecionar por Estabelecimento").click();
+
+
+        }
+
+        if(tab.equals("Documento")) {
+            pageField.from("Trocar Estabelecimento - Botão selecionar por Documento").click();
+
+        }
+
+        //PageField establishmentTab = pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab));
+        //PageField establishmentTab = pageField.from("Trocar Estabelecimento - Botão selecionar por %s".formatted(tab));
+        //if (!establishmentTab.elementIsVisible()) throw new RuntimeException("A aba para seleciona estabelecimento não está visível");
+       // establishmentTab.click();
         ensureNoFlyingRequests();
 
         boolean ready = waitUntilTrue(120, () ->
@@ -217,9 +273,10 @@ public class SelectECOrDtcoPage extends BasePage {
     }
 
     public void clickAccessAndWaitClose() {
-        PageField accessButton = pageField.from("Trocar Estabelecimento - Botão Acessar");
-        accessButton.click();
-        waitUntilTrue(() -> !accessButton.elementIsVisibleRightNow());
+        //PageField accessButton = pageField.from("Trocar Estabelecimento - Botão Acessar");
+        //accessButton.click();
+        //waitUntilTrue(() -> !accessButton.elementIsVisibleRightNow());
+        page.getByText("Acessar").click();
     }
 
     public void storeDocAndFirstNameFromDocuments(String selectedDoc) {

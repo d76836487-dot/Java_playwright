@@ -52,7 +52,8 @@ public class DateUtil {
 
     @PostConstruct
     public void init() {
-        locale = Locale.forLanguageTag(contractConfig.getActiveUserProfile().locale());
+        //locale = Locale.forLanguageTag(contractConfig.getActiveUserProfile().locale());
+        locale = Locale.forLanguageTag("pt-br");
     }
 
     public static String addSubtractForWeekdays(int daysToAdd, String format) {

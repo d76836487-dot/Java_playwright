@@ -221,14 +221,13 @@ public class TestIdsConfig {
             entry("Header - Ocultar Valores", "head-ocultar-valores"),
             entry("Header - Ajuda", "head-ajuda"),
             entry("Header - Notificações", "head-notificacoes"),
-            entry("Header - Trocar Estabelecimento", "head-trocar-estabelecimentos"),
+            entry("Header - Trocar Estabelecimento", "header-trocar-estabelecimento"),
             entry("Header - Meu Perfil", "head-ajuda"),
             entry("Header - Sair", "head-sair"),
             entry("Trocar Estabelecimento - Marcar como Padrão", "alterar-matriz-selecionar-padrao"),
-            entry("Trocar Estabelecimento - Botão Acessar", "alterar-matriz-button-acessar"),
+            entry("Trocar Estabelecimento - Botão Acessar", "alterar-matriz-button-acessar evt_clicou_selecao_docOuEC_personalize_documento_acessar"),
             
-            entry("Trocar Estabelecimento - Botão selecionar por Documento", "alterar-matriz-type-documento"),
-            entry("Trocar Estabelecimento - Botão selecionar por Estabelecimento", "alterar-matriz-type-estabelecimento"),
+
             entry("Trocar Estabelecimento - Buscar documento", "alterar-matriz-input-buscar"),
             entry("Trocar Estabelecimento - Limpar buscar documento", "alterar-matriz-close-input-search"),
             entry("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento", "alterar-matriz-nome-estabelecimento-\\d.*"),
@@ -237,6 +236,11 @@ public class TestIdsConfig {
             entry("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-detalhe-\\d.*"),
             entry("Trocar Estabelecimento - Estabelecimento - Status Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-status-\\d.*"),
             entry("Trocar Estabelecimento - Documento - Nome Estabelecimento", "alterar-matriz-text-documento-nome-fantasia-.*"),
+            entry("Trocar Estabelecimento - Botão selecionar por Documento", "alterar-matriz-type-documento evt_clicou_selecao_docOuEC_personalize_documento"),
+            entry("Trocar Estabelecimento - Botão selecionar por Estabelecimento", "alterar-matriz-type-estabelecimento evt_clicou_selecao_docOuEC_personalize_estabelecimento"),
+
+
+
 
             entry("Login - mensagem de erro", "login-usuario-incorreto"),
             entry("Login - Campo Token MFA", "login-codigos-token"),
@@ -302,6 +306,9 @@ public class TestIdsConfig {
 
 
     private static final Map<String, String> otherSelectors = Map.<String, String>ofEntries(
+            entry("Relatorio de Vendas", ".om-root-menu [data-testid=menu-vendas]"),
+
+
             entry("Loading Bars", ".ph-picture-small"),
             entry("Popup", ".popup-content"),
             entry("Menu Lateral - Vendas", ".om-root-menu [data-testid=menu-vendas]"),
@@ -382,6 +389,11 @@ public class TestIdsConfig {
             entry("Trocar Estabelecimento - Texto Explicativo", "//*[contains(text(),'Ao selecionar esse ')]"),
             entry("Trocar Estabelecimento - Nenhum resultado", "//*[@role='dialog']//*[contains(text(),'Nenhum resultado')]"),
             entry("Trocar Estabelecimento - Documento - Documento Estabelecimento", "//*[@role='radiogroup']//input"),
+            entry("Trocar Estabelecimento - Acessar", "//*[contains(text(),'Acessar')]]"),
+
+
+
+
 
             entry("Vendas Hoje - Botão Exportar", "//button//span[text()='Exportar']"),
             entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - Gerar arquivo", "//button[text()='Gerar arquivo']"),
@@ -481,7 +493,13 @@ public class TestIdsConfig {
             entry("Excluir - Popup Excluir acesso digital", "//span[text()='Ao excluir seu acesso:']"),
 
             entry("Paginação - mostrar 50 itens", "//a[text()='50 Itens']"),
-            entry("Paginação - abrir opção de paginação", "//span[contains(text(),'Exibindo')][contains(text(),'itens')]")
+            entry("Paginação - abrir opção de paginação", "//span[contains(text(),'Exibindo')][contains(text(),'itens')]"),
+
+            //Cancelamento de Vendas
+            entry("Histórico de cancelamentos - Label Data do cancelamento", "//*[contains(text(),'Data do cancelamento')]"),
+            entry("Histórico de cancelamentos - Label Valor cancelado", "//span[text()='Valor cancelado']")
+
+
     );
 
     public static String getTestId(String identifier) {

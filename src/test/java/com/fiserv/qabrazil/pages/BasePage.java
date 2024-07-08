@@ -27,7 +27,7 @@ public abstract class BasePage {
     protected PageField.Factory pageField;
 
     @Autowired
-    protected Page page;
+    protected  Page page;
 
     public List<Number> getAllNumbersFromCurrencyElement(String testId) {
         List<String> textFromElement = getAllTextsFromElement(testId);

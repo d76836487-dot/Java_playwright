@@ -59,7 +59,7 @@ public class ReportsPage extends CheckedBasePage {
     }
 
     public void ensureIsNotInReportsPage() {
-        if(page.url().contains("/Relatorios"))
+        if(page.url().contains("/pending/Relatorios"))
             navigateTo(toUrl("/Home"));
     }
 
@@ -252,7 +252,7 @@ public class ReportsPage extends CheckedBasePage {
 
     public boolean thereIsAtLeastOneReportOfEachType() {
         Optional<PageField> salesReport = pageField.from("Relatórios - Item - Tipo Relatório")
-                .firstWith(p -> p.getAsText().equals("Vendas"));
+                .firstWith(p -> p.getAsText().equals("features/Regressivo/Vendas"));
 
         Optional<PageField> paymentsReport = pageField.from("Relatórios - Item - Tipo Relatório")
                 .firstWith(p -> p.getAsText().equals("Pagamentos"));
