@@ -1,13 +1,11 @@
 #language: en
-@sicredi @bin003
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Antecipação_Trocar_Estabelecimento
+@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Antecipação
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Antecipação Trocar Estabelecimento
+Feature: Antecipação
 
-  @azulzinha @bin003 @bin007   @PermiteAdiantamento
   @TestCaseKey=SMP-T317
   Scenario Outline: Tela Antecipação - botão trocar estabelecimento - com seleção de Documento
     Given open portal "<alianca>" and logon
@@ -35,7 +33,8 @@ Feature: Antecipação Trocar Estabelecimento
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
-  @azulzinha @bin003 @bin007  @PermiteAdiantamento
+
+
   @TestCaseKey=SMP-T316
   Scenario Outline: Tela Antecipação - botão trocar estabelecimento - com seleção de EC
     Given open portal "<alianca>" and logon

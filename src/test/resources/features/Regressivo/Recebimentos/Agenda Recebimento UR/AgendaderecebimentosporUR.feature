@@ -734,6 +734,8 @@ Feature: Agenda de recebimentos por UR
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
+
   @TestCaseKey=SMP-T320
   Scenario Outline: Consultar Layout da seção Resumo
     Given open portal "<alianca>" and logon
@@ -813,27 +815,22 @@ Feature: Agenda de recebimentos por UR
     And "Total deduções valor" do Detalhe da UR será igual ao "Total deduções" do Excel
     And "Total ajuste crédito valor" do Detalhe da UR será igual ao "Total ajustes crédito" do Excel
     And "Total contratos valor" do Detalhe da UR será igual ao "Total contratos" do Excel
-    Examples:
-      | numero lote |
-      | 0           |
-      | 1           |
-      | 2           |
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      |Description        |alianca  |numero lote |
+      |Usuario master     |sicredi  |0           |
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      |Description        |alianca  |numero lote |
+      |Usuario master     |afinz    |0           |
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      |Description        |alianca  |numero lote |
+      |Usuario master     |azulzinha|0           |
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      |Description        |alianca  |numero lote |
+      |Usuario master     |bin      |0           |
 
   @TestCaseKey=SMP-T335
   Scenario Outline: Consultar Pagamentos da UR (Status Pago)

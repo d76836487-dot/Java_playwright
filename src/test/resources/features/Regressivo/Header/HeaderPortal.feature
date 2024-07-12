@@ -1,5 +1,4 @@
 #language: en
-@sicredi @bin003
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Header_Portal/Header_Portal
 @Zephyr:Status=Draft
@@ -30,6 +29,8 @@ Feature: Header Portal
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
+
   @TestCaseKey=SMP-T270
   Scenario Outline: Validação do Header quando for selecionado DOCUMENTO (Usuário Master)
     Given open portal "<alianca>" and logon
@@ -53,6 +54,7 @@ Feature: Header Portal
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
   @TestCaseKey=SMP-T269
   Scenario Outline: Validação do Header quando for selecionado na aba DOCUMENTO a opção TODOS (Usuário Master)
     Given open portal "<alianca>" and logon
@@ -75,6 +77,7 @@ Feature: Header Portal
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
   @TestCaseKey=SMP-T271
   Scenario Outline: Validação do comportamento do Header do Portal não se mover com scroll (Usuário Master)
     Given open portal "<alianca>" and logon
@@ -97,6 +100,7 @@ Feature: Header Portal
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
   @TestCaseKey=SMP-T272
   Scenario Outline: Validação informações home logada com seleção de EC (Usuário Master)
     Given open portal "<alianca>" and logon
@@ -121,6 +125,7 @@ Feature: Header Portal
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
   @TestCaseKey=SMP-T273
   Scenario Outline: Validação informações home logada com seleção de Documento (Usuário Master)
     Given open portal "<alianca>" and logon
@@ -144,6 +149,7 @@ Feature: Header Portal
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
   @TestCaseKey=SMP-T274
   Scenario Outline: Validação informações home logada com seleção todos Documentos (Usuário Master)
     Given open portal "<alianca>" and logon
@@ -163,6 +169,58 @@ Feature: Header Portal
       |Description        |alianca  |
       |Usuario master     |azulzinha|
   @bin @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |bin      |
+
+
+
+  @TestCaseKey=SMP-T386
+  Scenario Outline: Health check Minha Meu Perfil
+    Given open portal "<alianca>" and logon
+    When usuário clica "Header - Meu Perfil"
+    And waiting
+    And Usuário verá "Meu Perfil - Label Documento ou usuário"
+    And Usuário verá "Meu Perfil - Label Endereço de e-mail"
+    And Usuário verá "Meu Perfil - Label Celular"
+    And Usuário verá "Meu Perfil - Label Configurações da conta"
+    And Usuário verá "Meu Perfil - Label Excluir acesso digital"
+    @sicredi @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |sicredi  |
+    @afinz @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |afinz    |
+    @azulzinha @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |azulzinha|
+    @bin @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |bin      |
+
+  @TestCaseKey=SMP-T388
+  Scenario Outline: Popup Excluir acesso Digital
+    Given open portal "<alianca>" and logon
+    When usuário clica "Header - Meu Perfil"
+    Then usuário clica "Meu Perfil - Label Excluir acesso digital"
+    And Usuário verá "Excluir - Popup Excluir acesso digital"
+    @sicredi @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |sicredi  |
+    @afinz @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |afinz    |
+    @azulzinha @alliances
+    Examples:
+      |Description        |alianca  |
+      |Usuario master     |azulzinha|
+    @bin @alliances
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |

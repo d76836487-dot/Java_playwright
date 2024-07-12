@@ -6,7 +6,6 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Cancelamento de Vendas
 
-  @sicredi
   @TestCaseKey=SMP-T361
   Scenario Outline: Verifica se a pagina Cancelamento de vendas carregou com sucesso
     Given open portal "<alianca>" and logon

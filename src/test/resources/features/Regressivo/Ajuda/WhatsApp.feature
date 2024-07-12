@@ -1,5 +1,4 @@
 #language: en
-@sicredi @bin003
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Ajuda/Ajuda_Whatsapp_BIN_003_ou_007
 @Zephyr:Status=Draft
@@ -16,9 +15,7 @@ Feature: Ajuda Whatsapp
     #When usuário clica "Menu Ajuda"
     When usuário clica no Menu Ajuda
     Then usuário visualiza o componente "Ajuda - Whatsapp" na cor "<cor>" no canto inferior à direita da tela
-
-
-    @sicredi @alliances @WhatsApp
+  @sicredi @alliances @WhatsApp
     Examples:
       |Description        |alianca  |cor               |
       |Usuario master     |sicredi  |#146E37           |
@@ -36,7 +33,6 @@ Feature: Ajuda Whatsapp
       |Usuario master     |bin      |rgb(46, 139, 201) |
 
   @TestCaseKey=SMP-T175
-  @bin003 @bin007 @azulzinha
   Scenario Outline: Validação da flutuação do componente Whatsapp
     Given open portal "<alianca>" and logon
     Given usuário está na página Ajuda
@@ -58,6 +54,7 @@ Feature: Ajuda Whatsapp
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
   @TestCaseKey=SMP-T181
   Scenario Outline: Visualização do campo Atendimento pelo Whatsapp
     Given open portal "<alianca>" and logon
@@ -127,6 +124,8 @@ Feature: Ajuda Whatsapp
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
+
   @TestCaseKey=SMP-T191
   Scenario Outline: Validação da flutuação do componente Chatbot
     Given open portal "<alianca>" and logon
@@ -149,6 +148,8 @@ Feature: Ajuda Whatsapp
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
+
   @TestCaseKey=SMP-T193
   Scenario Outline: Validação da URL do Chatbot
     Given open portal "<alianca>" and logon
