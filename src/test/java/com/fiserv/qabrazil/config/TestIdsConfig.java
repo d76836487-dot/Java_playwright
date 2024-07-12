@@ -11,6 +11,7 @@ import static java.util.Map.entry;
 
 public class TestIdsConfig {
     private static final Map<String, String> testIdMaps = Map.<String, String>ofEntries(
+
             entry("Filter - Accordion - Status (0)", "generic-filter-accordion-title-status"),
             entry("Filter - Accordion - Bandeiras (0)", "generic-filter-accordion-title-bandeira"),
             entry("Filter - Accordion - Produtos (0)", "generic-filter-accordion-title-produtos"),
@@ -301,8 +302,12 @@ public class TestIdsConfig {
             entry("Detalhe da UR - Venda - Valor Bruto 0", "detalhe-ur-tab-vendas-valor-bruto-0"),
             entry("Detalhe da UR - Venda - Valor Bruto Parcela 0", "detalhe-ur-tab-vendas-valor-bruto-da-parcela-0"),
             entry("Detalhe da UR - Venda - Valor Líquido 0", "detalhe-ur-tab-vendas-valor-liquido-0"),
-            entry("Detalhe da UR - Venda - Valor Taxa 0", "detalhe-ur-tab-vendas-valor-taxa-0")
-    );
+            entry("Detalhe da UR - Venda - Valor Taxa 0", "detalhe-ur-tab-vendas-valor-taxa-0"),
+
+            entry("Menu Ajuda", "m-menu-ajuda")
+
+
+            );
 
 
     private static final Map<String, String> otherSelectors = Map.<String, String>ofEntries(

@@ -8,14 +8,23 @@ import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.interfaces.DriverFactory;
 import com.fiserv.qabrazil.pages.BasePage;
+import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
+import com.fiserv.qabrazil.steps.CommonsSteps;
 import com.fiserv.qabrazil.util.Config;
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.AriaRole;
+import io.cucumber.java.Scenario;
+import jakarta.validation.constraints.AssertTrue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.Assert;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -52,8 +61,11 @@ public class LoginPage extends BasePage {
     private ApiUserDetailsService apiUserDetailsService;
 
 
+    @Autowired
+    private CommonsPage commonsPage;
 
-    public  void openBrowser(String arg0){
+
+    public void openBrowser(String arg0){
         page.navigate(arg0);
         //DriverFactory.openBrowser(arg0);
     }
@@ -204,19 +216,54 @@ public class LoginPage extends BasePage {
         page.waitForURL(Pattern.compile("^.*/EsqueceuSenha$"));
     }
 
-    public void logonportal(String arg0, String arg1) {
+    public void logonportal(String arg0, String arg1) throws InterruptedException, IOException {
+        Config.acessLogonCount =0;
+        String Ret ="";
+
         page.locator("id=b2-b2-b4-InputMask").type(arg0);
         page.locator("id=b2-b2-Input_Password").type(arg1);
         page.locator("data-testid=entrar").click();
 
-
-        if(page.getByText("Não foi possivél acessar o canal neste momento. Tente novamente mais tarde.").isVisible()) {
-            Config.errorLogonCount +=1;
-            page.locator("data-testid=entrar").click();
-            System.out.println( Config.errorLogonCount);
+        for (int i = 0; i < 1200; i++) {
+            Config.acessLogonCount +=1;
+             Ret = commonsPage.retryLogin();
+            if (Ret.equals("S")) {
+                break;
+            }
         }
 
+        System.out.println(Config.acessLogonCount);
+        if (Ret.equals("")) {
+            Config.errorLogonCount +=1;
+            FileWriter arq = new FileWriter("C:\\eveidencia\\error.txt");
+            PrintWriter gravarArq = new PrintWriter(arq);
+            gravarArq.printf("Resultado " + Config.errorLogonCount);
+            arq.close();
+            Assert.fail();
+        }
 
-        selectECOrDtcoPage.checkModalAutomaticIsOpen();
+        if (Ret.equals("S")) {
+            for (int i = 0; i < 500; i++) {
+                if (page.getByText("Personalize sua visualização").isVisible()) {
+                    selectECOrDtcoPage.checkModalAutomaticIsOpen();
+                    break;
+                }
+            }
+        }
+
+        //Contador de Sucesso
+        if(page.getByText("Acesso rápido").isVisible()){
+            Config.sucessLogonCount +=1;
+            FileWriter arq = new FileWriter("C:\\eveidencia\\sucess.txt");
+            PrintWriter gravarArq = new PrintWriter(arq);
+            gravarArq.printf("Resultado " + Config.sucessLogonCount);
+            arq.close();
+        }
+
+    }
+
+    public void usuárioClicaNoMenuAjuda() {
+        page.navigate("https://sicredi.qa.portaldocliente.fiserv.com/Ajuda");
+
     }
 }

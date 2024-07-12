@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_Voucher_com_CNPJ
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_Voucher
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Vendas Voucher com CNPJ
+Feature: Vendas Voucher
 
   @TestCaseKey=SMP-T306
   Scenario Outline: Valores tela Vendas - Voucher - deve bater com exportação - com seleção de Documento

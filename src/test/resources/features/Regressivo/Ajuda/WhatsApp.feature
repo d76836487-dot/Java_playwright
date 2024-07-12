@@ -12,15 +12,16 @@ Feature: Ajuda Whatsapp
   @TestCaseKey=SMP-T176
   Scenario Outline: Visualização do componente Whatsapp
     Given open portal "<alianca>" and logon
-    Given que estou na tela “início” do Portal
-    When usuário clica "Header - Ajuda"
+    #Given que estou na tela “início” do Portal
+    #When usuário clica "Menu Ajuda"
+    When usuário clica no Menu Ajuda
     Then usuário visualiza o componente "Ajuda - Whatsapp" na cor "<cor>" no canto inferior à direita da tela
 
 
-    @sicredi @alliances
+    @sicredi @alliances @WhatsApp
     Examples:
       |Description        |alianca  |cor               |
-      |Usuario master     |sicredi  |                  |
+      |Usuario master     |sicredi  |#146E37           |
     @afinz @alliances
     Examples:
       |Description        |alianca  |cor               |
@@ -107,7 +108,7 @@ Feature: Ajuda Whatsapp
   @TestCaseKey=SMP-T192
   Scenario Outline: Visualização do componente Chatbot
     Given open portal "<alianca>" and logon
-    Given que estou na tela “início” do Portal
+    #Given que estou na tela “início” do Portal
     When usuário clica "Header - Ajuda"
     Then usuário visualiza o componente "Ajuda - Chatbot" na cor "rgb(20, 110, 55)" no canto inferior à direita da tela
   @sicredi @alliances

@@ -4,6 +4,8 @@ public class Config {
 
 
     public static int errorLogonCount =0;
+    public static int sucessLogonCount =0;
+    public static int acessLogonCount =0;
     public static final String error_user = "81633816000210";
     public static final String error_pass = "Fiserv@123";
 

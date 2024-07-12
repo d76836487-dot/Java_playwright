@@ -1,16 +1,98 @@
 #language: en
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_histórico
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Vendas histórico com CNPJ
+Feature: Vendas histórico
 
   #Background:
   #  Given Usuário loga na aplicação
   #  And Usuário acessou com sucesso
   #  And Usuário acessou Vendas - Histórico de Vendas
   #  And Todas as requisições HTTP foram respondidas
+
+  @TestCaseKey=SMP-T164
+  Scenario Outline: Selecionar Ontem seleciona o dia anterior
+    Given open portal "<alianca>" and logon
+    When click on menu "<menu>" "<submenu>" "<thirdmenu>"
+    When Usuário seleciona Ontem
+    Then 'Date ranger - Início Data Selecionada' representará 'dia de ontem'
+    And 'Date ranger - Fim Data Selecionada' representará 'dia de ontem'
+    And 'Date ranger - Dia inicial Digitado' representará 'data de ontem'
+    And 'Date ranger - Dia final Digitado' representará 'data de ontem'
+    @sicredi @alliances @sicredi_T164
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |sicredi  |Vendas       |        |Histórico de vendas   |
+    @afinz @alliances
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |afinz    |Vendas       |        |Histórico de vendas   |
+    @azulzinha @alliances
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |azulzinha|Vendas       |        |Histórico de vendas   |
+    @bin @alliances
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |bin      |Vendas       |        |Histórico de vendas   |
+
+  @TestCaseKey=SMP-T165
+  Scenario Outline: Selecionar Mês Atual seleciona o dia anterior
+    Given open portal "<alianca>" and logon
+    When click on menu "<menu>" "<submenu>" "<thirdmenu>"
+    When Usuário seleciona Mês Atual
+    Then 'Date ranger - Início Data Selecionada' representará 'dia início do mês'
+    And 'Date ranger - Fim Data Selecionada' representará 'dia de ontem'
+    And 'Date ranger - Dia inicial Digitado' representará 'data início do mês'
+    And 'Date ranger - Dia final Digitado' representará 'data de ontem'
+    @sicredi @alliances
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |sicredi  |Vendas       |        |Histórico de vendas   |
+    @afinz @alliances
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |afinz    |Vendas       |        |Histórico de vendas   |
+    @azulzinha @alliances
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |azulzinha|Vendas       |        |Histórico de vendas   |
+    @bin @alliances
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |bin      |Vendas       |        |Histórico de vendas   |
+
+
+  @TestCaseKey=SMP-T166
+  Scenario Outline: Selecionar Últimos 7 Dias seleciona 7 dias anteriores
+    Given open portal "<alianca>" and logon
+    When click on menu "<menu>" "<submenu>" "<thirdmenu>"
+    When Usuário seleciona Últimos 7 Dias
+    Then 'Date ranger - Início Data Selecionada' representará 'dia de sete dias atrás'
+    And 'Date ranger - Fim Data Selecionada' representará 'dia de ontem'
+    And 'Date ranger - Dia inicial Digitado' representará 'data de sete dias atrás'
+    And 'Date ranger - Dia final Digitado' representará 'data de ontem'
+    @sicredi @alliances
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |sicredi  |Vendas       |        |Histórico de vendas   |
+    @afinz @alliances
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |afinz    |Vendas       |        |Histórico de vendas   |
+    @azulzinha @alliances
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |azulzinha|Vendas       |        |Histórico de vendas   |
+    @bin @alliances
+    Examples:
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |bin      |Vendas       |        |Histórico de vendas   |
+
+
+
 
   @TestCaseKey=SMP-T157
   Scenario Outline: Rodapé de Vendas Hoje
@@ -19,7 +101,7 @@ Feature: Vendas histórico com CNPJ
     Then Página conterá rodapé "<descrição>" com o ano atual
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |  descrição                                                                             |
+      |Description        |alianca  |  descrição                                                                           |
       |Usuario master     |sicredi  |© %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
     @afinz @alliances
     Examples:
@@ -33,50 +115,54 @@ Feature: Vendas histórico com CNPJ
     Examples:
       |Description        |alianca   | descrição                                                                             |
       |Usuario master     |bin      |© %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
+
   @TestCaseKey=SMP-T156
   Scenario Outline: Traz como padrão Ontem no filtro do período
     Given open portal "<alianca>" and logon
+    When click on menu "<menu>" "<submenu>" "<thirdmenu>"
     Then Usuário verá em "Vendas - Histórico Vendas - Período - Descrição" o valor "<período>"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  | período |
-      |Usuario master     |sicredi  | Ontem   |
+      |Description        |alianca  | período |menu         |submenu |thirdmenu             |
+      |Usuario master     |sicredi  | Ontem   |Vendas       |        |Histórico de vendas   |
     @afinz @alliances
     Examples:
-      |Description        |alianca  | período |
-      |Usuario master     |afinz    | Ontem   |
+      |Description        |alianca  | período |menu|submenu|thirdmenu|
+      |Usuario master     |afinz    | Ontem   |Vendas       |        |Histórico de vendas   |
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  | período |
-      |Usuario master     |azulzinha| Ontem   |
+      |Description        |alianca  | período |menu|submenu|thirdmenu|
+      |Usuario master     |azulzinha| Ontem   |Vendas       |        |Histórico de vendas   |
     @bin @alliances
     Examples:
-      |Description        |alianca  | período |
-      |Usuario master     |bin      | Ontem   |
+      |Description        |alianca  | período |menu|submenu|thirdmenu|
+      |Usuario master     |bin      | Ontem   |Vendas       |        |Histórico de vendas   |
+
   @TestCaseKey=SMP-T167
   Scenario Outline: Ocultar valores de Vendas - Histórico de Vendas
     Given open portal "<alianca>" and logon
+    When click on menu "<menu>" "<submenu>" "<thirdmenu>"
     When usuário clica no "Ocultar Valores" no "Header"
     Then Usuário verá em "Vendas - Histórico de Vendas - Resumo - Quantidade de vendas" o valor "••••"
     And Usuário verá em "Vendas - Histórico de Vendas - Resumo - Valor bruto" o valor "R$ ••••"
     And Usuário verá em "Vendas - Histórico de Vendas - Resumo - Valor líquido" o valor "R$ ••••"
     And Usuário verá em "Vendas - Histórico de Vendas - Resumo - Valor cancelado" o valor "R$ ••••"
-  @sicredi @alliances
+  @sicredi @alliances @sicredi_T167
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      |Description        |alianca  |menu|submenu|thirdmenu|
+      |Usuario master     |sicredi  |Vendas       |        |Histórico de vendas   |
   @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      |Description        |alianca  |menu|submenu|thirdmenu|
+      |Usuario master     |afinz    |Vendas       |        |Histórico de vendas   |
   @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      |Description        |alianca  |menu|submenu|thirdmenu|
+      |Usuario master     |azulzinha|Vendas       |        |Histórico de vendas   |
   @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      |Description        |alianca  |menu|submenu|thirdmenu|
+      |Usuario master     |bin      |Vendas       |        |Histórico de vendas   |
 
 
 

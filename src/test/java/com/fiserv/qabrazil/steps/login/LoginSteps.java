@@ -14,6 +14,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
+
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -25,7 +27,7 @@ public class LoginSteps extends BasePage {
     ContractConfig contractConfig;
 
 
-    @Given("^open portal \"([^\"]*)\" and logon$")
+    @Given("open portal {string} and logon")
     public void openPortalAnd(String arg0) throws Throwable {
        String url=null;
         String user=null;
@@ -55,6 +57,8 @@ public class LoginSteps extends BasePage {
         loginPage.openBrowser(url);
 
         loginPage.logonportal(user,pass);
+
+        Thread.sleep(1000);
     }
 
 
@@ -75,7 +79,7 @@ public class LoginSteps extends BasePage {
     }
 
     @Given("Usuário efetue logon no portal do cliente {string} {string} {string}")
-    public void usuário_efetue_logon_no_portal_EC(String url,String user,String pass) throws InterruptedException {
+    public void usuário_efetue_logon_no_portal_EC(String url,String user,String pass) throws InterruptedException, IOException {
        // loginPage.loginAndGetHomeReady();
        // loginPage.newLogin(url,user,pass);
         loginPage.logonportal(user,pass);
@@ -136,4 +140,8 @@ public class LoginSteps extends BasePage {
     }
 
 
+    @When("usuário clica no Menu Ajuda")
+    public void usuárioClicaNoMenuAjuda() {
+        loginPage.usuárioClicaNoMenuAjuda();
+    }
 }

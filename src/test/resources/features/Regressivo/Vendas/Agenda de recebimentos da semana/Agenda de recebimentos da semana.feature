@@ -1,4 +1,5 @@
 #language: en
+ @Vendas_Agenda_recebimentos_semana
 @Zephyr:ProjectKey=SMP
 @Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_Agenda_de_recebimentos_da_semana
 @Zephyr:Status=Draft
@@ -30,31 +31,33 @@ Feature: Vendas Agenda de recebimentos da semana
 
   @TestCaseKey=SMP-T144
   Scenario Outline: conteúdo correto da Agenda de recebimentos da semana
-    GGiven open portal "<alianca>" and logon
-    Given que estou na tela “início” do Portal
+    Given open portal "<alianca>" and logon
+    #Given que estou na tela “início” do Portal
     And existir Agenda de recebimentos da semana para exibir
     When visualizar o box "Agenda de recebimentos da semana"
     Then usuário visualizará 5 dias com as respectivas informações data, mês, dia da semana, valor líquido, e quantidade de depósitos realizados
-  @sicredi @alliances
+  @sicredi @alliances @_agenda
     Examples:
       |Description        |alianca  |
       |Usuario master     |sicredi  |
-  @afinz @alliances
+  @afinz @alliances @_agenda
     Examples:
       |Description        |alianca  |
       |Usuario master     |afinz    |
-  @azulzinha @alliances
+  @azulzinha @alliances @_agenda
     Examples:
       |Description        |alianca  |
       |Usuario master     |azulzinha|
-  @bin @alliances
+  @bin @alliances @_agenda
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
+
   @TestCaseKey=SMP-T150
   Scenario Outline: destaque para as informações da agenda de recebimentos
     Given open portal "<alianca>" and logon
-    Given que estou na tela “início” do Portal
+    #Given que estou na tela “início” do Portal
     And existir Agenda de recebimentos da semana para exibir
     When visualizar o box "Agenda de recebimentos da semana"
     Then usuário visualizará o dia "hoje" destacado e os dias anteriores com valores verdes e os próximos com letras pretas
@@ -74,6 +77,7 @@ Feature: Vendas Agenda de recebimentos da semana
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
   @TestCaseKey=SMP-T145
   Scenario Outline: Agenda de recebimentos da semana vazia
     Given open portal "<alianca>" and logon

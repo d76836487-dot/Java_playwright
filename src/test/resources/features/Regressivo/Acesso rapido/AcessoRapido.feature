@@ -36,7 +36,7 @@ Feature: Acesso Rápido
     @Acessorapido
   Scenario Outline: Antecipação no acesso rápido
     Given open portal "<alianca>" and logon
-    Given que estou na tela “início” do Portal
+    #Given que estou na tela “início” do Portal
     And "item Antecipação" está disponível na "Home - acesso rápido"
     When usuário clica no "item Antecipação" na "Home - acesso rápido"
     Then será direcionado para a jornada de "Antecipação"
@@ -71,7 +71,7 @@ Feature: Acesso Rápido
   @sicredi
   Scenario Outline:Relatórios no acesso rápido
     Given open portal "<alianca>" and logon
-    Given que estou na tela “início” do Portal
+    #Given que estou na tela “início” do Portal
     And "item Relatórios" está disponível na "Home - acesso rápido"
     When usuário clica no "item Relatórios" na "Home - acesso rápido"
     Then será direcionado para a jornada de "Relatórios"
@@ -100,7 +100,7 @@ Feature: Acesso Rápido
   @sicredi
   Scenario Outline:: Informe de rendimentos no acesso rápido
     Given open portal "<alianca>" and logon
-    Given que estou na tela “início” do Portal
+    #Given que estou na tela “início” do Portal
     And "item Informe de rendimento" está disponível na "Home - acesso rápido"
     When usuário clica no "item Informe de rendimento" na "Home - acesso rápido" e uma nova aba se abre
     Then será direcionado para a jornada de "Informe de rendimento" na nova aba
@@ -126,7 +126,7 @@ Feature: Acesso Rápido
   @sicredi
   Scenario Outline:: Vendas no acesso rápido
     Given open portal "<alianca>" and logon
-    Given que estou na tela “início” do Portal
+    #Given que estou na tela “início” do Portal
     And "item Vendas" está disponível na "Home - acesso rápido"
     When usuário clica no "item Vendas" na "Home - acesso rápido"
     Then será direcionado para a jornada de "Vendas Hoje"
@@ -156,7 +156,7 @@ Feature: Acesso Rápido
   @TestCaseKey=SMP-T84
   Scenario Outline: Negócio no acesso rápido
     Given open portal "<alianca>" and logon
-    Given que estou na tela “início” do Portal
+    #Given que estou na tela “início” do Portal
     And "item Meu negócio" está disponível na "Home - acesso rápido"
     When usuário clica no "item Meu negócio" na "Home - acesso rápido"
     Then será direcionado para a jornada de "Negócio"
@@ -183,7 +183,7 @@ Feature: Acesso Rápido
   @sicredi
   Scenario Outline: Solicitações no acesso rápido
     Given open portal "<alianca>" and logon
-    Given que estou na tela “início” do Portal
+    #Given que estou na tela “início” do Portal
     And "item Solicitações" está disponível na "Home - acesso rápido"
     When usuário clica no "item Solicitações" na "Home - acesso rápido"
     Then será direcionado para a jornada de "Solicitações"

@@ -217,4 +217,9 @@ public class CommonsSteps {
             assertEquals(expectedColor, actualPrimaryColor);
         }
     }
+
+    @When("click on menu {string} {string} {string}")
+    public void clickOnMenu(String arg0, String arg1, String arg2) {
+        commonsPage.clickOnMenu(arg0,arg1,arg2);
+    }
 }

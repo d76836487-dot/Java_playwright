@@ -128,7 +128,9 @@ public class SelectECOrDtcoPage extends BasePage {
 
 
 
-    public void checkModalAutomaticIsOpen(){
+    public void checkModalAutomaticIsOpen() throws InterruptedException {
+        Thread.sleep(4000);
+
         if(page.getByText("Personalize sua visualização").isVisible()) {
 
             //page.getByText("Documento").click();

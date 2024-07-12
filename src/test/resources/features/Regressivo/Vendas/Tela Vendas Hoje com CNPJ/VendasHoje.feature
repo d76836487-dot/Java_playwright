@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_Hoje_com_CNPJ
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_Hoje
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Vendas Hoje com CNPJ
+Feature: Vendas Hoje
 
   @TestCaseKey=SMP-T9
   Scenario Outline: Mensagem de Resumo de Vendas

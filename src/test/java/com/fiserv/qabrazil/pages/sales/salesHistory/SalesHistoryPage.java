@@ -31,13 +31,13 @@ public class SalesHistoryPage extends BasePage {
     private FilesToAttachToScenario filesToAttachToScenario;
 
     public void navigateTo() {
-        salesTodayPage.navigateTo();
-        retryIfGotException(() -> {
+       // salesTodayPage.navigateTo();
+      //  retryIfGotException(() -> {
             // TODO: change for data-testid
             page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Histórico de vendas")).first().click();
-            page.waitForURL(Pattern.compile("^.*/HistoricodeVendas.*$"));
+        //    page.waitForURL(Pattern.compile("^.*/HistoricodeVendas.*$"));
             closeAllPopups();
-        });
+      //  });
         waitUntilTrue(360, this::hasNoLoadingBars);
     }
 

@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_Não_Efetivadas_com_CNPJ
+@Zephyr:Folder=/Portal_do_Cliente/Vendas/Vendas_Não_Efetivadas
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Vendas Não Efetivadas com CNPJ
+Feature: Vendas Não Efetivadas
 
   @TestCaseKey=SMP-T301
   Scenario Outline: Valores tela Vendas - NÃO EFETIVADAS deve bater com exportação - com seleção de Documento

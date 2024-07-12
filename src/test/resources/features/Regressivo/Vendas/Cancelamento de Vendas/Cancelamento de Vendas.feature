@@ -4,7 +4,7 @@
 @Zephyr:Status=Draft
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-Feature: Vendas Cancelamento de Vendas
+Feature: Cancelamento de Vendas
 
   @sicredi
   @TestCaseKey=SMP-T361

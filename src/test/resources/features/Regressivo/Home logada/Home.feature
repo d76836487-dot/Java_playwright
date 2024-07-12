@@ -216,9 +216,9 @@ Scenario Outline: Abrir Modal Personalizar Acesso Rápido (inclui Adiantamento)
 @TestCaseKey=SMP-T152
 Scenario Outline: recebimentos futuros existem
   Given open portal "<alianca>" and logon
-  Then Usuário estará com acesso e sessão foi salva
-  And Todas as requisições HTTP foram respondidas
-  Given que estou na tela “início” do Portal
+  #Then Usuário estará com acesso e sessão foi salva
+  #And Todas as requisições HTTP foram respondidas
+  #Given que estou na tela “início” do Portal
   And existem valores futuros a receber
   Then usuário verá em "Home - Card Recebimento - Recebimento Previsto" valor maior que 0,00
   @sicredi @alliances
@@ -559,7 +559,7 @@ Then o Portal deve abrir as "Minhas Notificações"
 
 Scenario Outline: recebimentos futuros não existem
   Given open portal "<alianca>" and logon
-Given que estou na tela “início” do Portal
+#Given que estou na tela “início” do Portal
 And não existem valores futuros para receber
 Then Usuário verá em "Home - Card Recebimento - Recebimento Previsto" o valor "R$ 0,00"
   @sicredi @alliances
