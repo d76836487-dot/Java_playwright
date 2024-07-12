@@ -33,6 +33,7 @@ Feature: Exclusao de Conta
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
   @TestCaseKey=SMP-T388
   Scenario Outline: Popup Excluir acesso Digital
     Given open portal "<alianca>" and logon

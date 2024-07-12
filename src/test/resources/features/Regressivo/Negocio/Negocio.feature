@@ -33,6 +33,7 @@ Feature: Recebimento Resumo Negócio
     Examples:
       |Description        |alianca  |
       |Usuario master     |bin      |
+
   @TestCaseKey=SMP-T315
   Scenario Outline: Tela Negócio - botão trocar estabelecimento - com seleção de EC
     Given open portal "<alianca>" and logon
