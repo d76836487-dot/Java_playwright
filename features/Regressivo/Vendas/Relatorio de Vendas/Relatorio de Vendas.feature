@@ -1,6 +1,6 @@
 #language:en
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Relatorio_de_Vendas/Relatorio_de_Vendas
+@Zephyr:Folder=/Portal_do_Cliente/Regressivo/Relatorio_de_Vendas/Vendas_Relatorio_de_Vendas
 @Zephyr:Status=Draft
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
