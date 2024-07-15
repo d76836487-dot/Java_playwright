@@ -14,7 +14,7 @@ Feature: Vendas Relatorio de Vendas
     When Usuário acessou página de Vendas
     And ao clicar no menu lateral "Relatorio de Vendas"
     Then ele deve ver as informações de vendas atuais, incluindo abas para "Hoje", "Histórico de vendas", "Não efetivadas", "Pré autorizações" e "Voucher"
-  @sicredi @alliances
+  @sicredi @alliances  @TestCaseKey=SMP-T363_Sicredi
     Examples:
       |Description        |alianca  |
       |Usuario master     |sicredi  |
@@ -32,11 +32,13 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      |
 
 
+
   @TestCaseKey=SMP-T306
   Scenario Outline: Valores tela Vendas - Voucher - deve bater com exportação - com seleção de Documento
     Given open portal "<alianca>" and logon
-    And Usuário selecionou um documento com maior número de ECs e clicar Acessar
-    And Usuário acessou Vendas - Voucher
+    #And Usuário selecionou um documento com maior número de ECs e clicar Acessar
+    #And Usuário acessou Vendas - Voucher
+    When click on menu "<menu>" "<submenu>" "<thirdmenu>"
     And Usuário seleciona Últimos 14 Dias
     And usuário clicou no "Vendas - Voucher - Botão Filtrar"
     When usuário clica no "Accordion Estabelecimentos" em "Filtros de relatório"
@@ -47,21 +49,20 @@ Feature: Vendas Relatorio de Vendas
     And A soma de vendas voucher é igual ao valor bruto autorizado
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-    @afinz @alliances
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |sicredi  |Vendas       |        |Voucher               |
+    @afinz @alliances @TestCaseKey=SMP-T306-Sicredi
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |afinz    |Vendas       |        |Voucher               |
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |azulzinha|Vendas       |        |Voucher               |
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
-
+      |Description        |alianca  |menu         |submenu |thirdmenu             |
+      |Usuario master     |bin      |Vendas       |        |Voucher               |
 
   @TestCaseKey=SMP-T307
   Scenario Outline: Valores tela Vendas - Voucher - deve bater com exportação - com seleção de EC

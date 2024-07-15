@@ -33,7 +33,14 @@ public class Config {
     public static final String bin_user = "71925286096";
     public static final String bin_pass = "Fiserv@456";
 
+    public static final String  apiKey =  "kaGC9uLpusCBi3BgR8QBAz35gJxIkEST";
+    public static final String apiSecret = "sU7aBf8bHhQfoeQ8wILCkAjAa23tgJd7KAcUc79ueiN";
+    public static final String requestId =  "857fe690-2ae9-41a9-81a6-a1ceb0777a6d";
+    public static final String clientChannelId =  "09b609197bb3eb06cd4c42af586c2825451cd2fc";
 
+
+    public static String serviceContract = "";
+    public static String institution = "";
 
 
 }

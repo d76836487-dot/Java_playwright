@@ -21,7 +21,7 @@ public class RecordingHook {
     @Autowired
     private FilesToAttachToScenario filesToAttachToScenario;
 
-    @After("@playwright and not @ignore")
+    @After()
     public void tearDown(Scenario scenario) {
         saveScreenshotAndUrl(scenario);
 //        saveVideo(scenario);

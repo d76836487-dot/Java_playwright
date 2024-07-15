@@ -106,20 +106,31 @@ public class CommonsPage extends BasePage {
     }
 
     public void clickOnMenu(String menu, String submenu, String thirdmenu) {
-        if(menu.equals("Vendas")){
-            page.locator("data-testid=menu-vendas").click();
-            if(submenu.equals("Relatório de vendas")){
-                page.getByRole(AriaRole.LINK,new Page.GetByRoleOptions().setName(submenu)).click();
-                if(thirdmenu.equals("histórico de vendas")){
 
-                }
+        if(menu.equals("Vendas")){
+
+            page.locator("data-testid=menu-vendas").click();
+
+            if(submenu.equals("Relatório de vendas")){
+
+                page.getByRole(AriaRole.LINK,new Page.GetByRoleOptions().setName(submenu)).click();
+
+
+
+
             }
 
             if(submenu.equals("")){
+
                 if(thirdmenu.equals("Histórico de vendas")){
                     page.getByRole(AriaRole.TAB, new Page.GetByRoleOptions().setName("Histórico de vendas")).click();
                 }
+
+                if(thirdmenu.equals("Voucher")){
+                    page.getByRole(AriaRole.TAB, new Page.GetByRoleOptions().setName("Voucher")).click();
+                }
             }
+
        }
 
         if(menu.equals("Recebimentos")){

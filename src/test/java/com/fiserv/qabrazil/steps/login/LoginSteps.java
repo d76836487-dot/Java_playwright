@@ -37,22 +37,30 @@ public class LoginSteps extends BasePage {
             url = Config.sicredi_url;
             user = Config.sicredi_user;
             pass = Config.sicredi_pass;
+            Config.serviceContract = "110";
+            Config.institution = "00000004";
         }
 
         if(arg0.equals("afinz")){
             url = Config.afinz_url;
             user = Config.afinz_user;
             pass = Config.afinzi_pass;
+            Config.serviceContract = "143";
+            Config.institution = "00000010";
         }
         if(arg0.equals("azulzinha")){
             url = Config.azulzinha_url;
             user = Config.azulzinhaz_user;
             pass = Config.azulzinha_pass;
+            Config.serviceContract = "149";
+            Config.institution = "00000007";
         }
         if(arg0.equals("bin")){
             url = Config.bin_url;
             user = Config.bin_user;
             pass = Config.bin_pass;
+            Config.serviceContract = "101";
+            Config.institution = "00000003";
         }
         loginPage.openBrowser(url);
 

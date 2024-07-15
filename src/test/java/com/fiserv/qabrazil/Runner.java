@@ -10,7 +10,9 @@ import io.cucumber.testng.CucumberOptions;
         //Agenda de recebimentos
         //tags= "@Vendas_Agenda_recebimentos_semana"
         //tags="@_agenda"
-        tags="@sicredi"
+        tags="@TestCaseKey=SMP-T306-Sicredi" // este teste esta chamado token de API, ver com Wandart..
+        //tags="@TestCaseKey=SMP-T363_Sicredi"
+
 )
 public class Runner extends AbstractTestNGCucumberTests{
 
