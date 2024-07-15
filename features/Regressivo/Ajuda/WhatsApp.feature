@@ -1,6 +1,6 @@
 #language: en
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Ajuda/Ajuda_Whatsapp_BIN_003_ou_007
+@Zephyr:Folder=/Portal_do_Cliente/Regressivo/Ajuda/Ajuda_Whatsapp
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
