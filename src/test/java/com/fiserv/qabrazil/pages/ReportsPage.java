@@ -252,7 +252,7 @@ public class ReportsPage extends CheckedBasePage {
 
     public boolean thereIsAtLeastOneReportOfEachType() {
         Optional<PageField> salesReport = pageField.from("Relatórios - Item - Tipo Relatório")
-                .firstWith(p -> p.getAsText().equals("features/Regressivo/Vendas"));
+                .firstWith(p -> p.getAsText().equals("Regressivo/Vendas"));
 
         Optional<PageField> paymentsReport = pageField.from("Relatórios - Item - Tipo Relatório")
                 .firstWith(p -> p.getAsText().equals("Pagamentos"));

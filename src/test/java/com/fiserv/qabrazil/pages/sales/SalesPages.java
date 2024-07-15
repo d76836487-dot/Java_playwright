@@ -15,7 +15,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 
 @ScenarioComponent
-@Component("features/Regressivo/Vendas")
+@Component("Regressivo/Vendas")
 public class SalesPages extends CheckedBasePage {
     public SalesPages() {
         super(Pattern.compile("^.*/Vendas$"));
