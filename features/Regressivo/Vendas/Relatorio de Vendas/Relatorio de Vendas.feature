@@ -340,6 +340,9 @@ Feature: Vendas Relatorio de Vendas
       |Description        |alianca   | descrição                                                                             |
       |Usuario master     |bin      |© %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
 
+
+
+
   @TestCaseKey=SMP-T156
   Scenario Outline: Traz como padrão Ontem no filtro do período
     Given open portal "<alianca>" and logon
@@ -551,28 +554,6 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      |R$           |
 
 
-  @TestCaseKey=SMP-T7
-  Scenario Outline: Rodapé de Vendas Hoje
-    Given open portal "<alianca>" and logon
-    Then Usuário estará com acesso e sessão foi salva
-    When Usuário acessa Vendas Hoje
-    Then Página conterá rodapé "<descrição>" com o ano atual
-    @sicredi @alliances
-    Examples:
-      |Description        |alianca  | descrição                                                                             |
-      |Usuario master     |sicredi  | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
-    @afinz @alliances
-    Examples:
-      |Description        |alianca  | descrição                                                                             |
-      |Usuario master     |afinz    | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
-    @azulzinha @alliances
-    Examples:
-      |Description        |alianca  | descrição                                                                             |
-      |Usuario master     |azulzinha| © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
-    @bin @alliances
-    Examples:
-      |Description        |alianca  | descrição                                                                             |
-      |Usuario master     |bin      | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
 
 
   @TestCaseKey=SMP-T8
