@@ -1,4 +1,4 @@
-
+#language:en
 @Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Cancelamento_de_Vendas/Cancelamento_de_Vendas
 @Zephyr:Status=Draft
