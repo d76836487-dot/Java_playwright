@@ -1,6 +1,6 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Agenda_de_recebimentos_por_UR/Agenda_de_recebimentos_por_UR
+@Zephyr:Folder=/Portal_do_Cliente/Regressivo/Recebimentos/Agenda_de_recebimentos_por_UR/Agenda_de_recebimentos_por_UR
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo

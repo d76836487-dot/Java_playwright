@@ -1,6 +1,6 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/regressivo/Header/Header_Portal
+@Zephyr:Folder=/Portal_do_Cliente/Regressivo/Header/Header_Portal
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
