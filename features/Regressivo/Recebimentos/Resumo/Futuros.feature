@@ -1,12 +1,12 @@
 #language: en
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Recebimentos_Resumo_Futuro
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Recebimentos Resumo Futuro
 
-  @TestCaseKey=SMP-T311
+
   Scenario Outline: Valores tela Recebimentos - Futuros - deve bater com exportação - com seleção de Documento
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -37,7 +37,7 @@ Feature: Recebimentos Resumo Futuro
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T310
+
   Scenario Outline: Valores tela Recebimentos - Futuros - deve bater com exportação - com seleção de EC
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'

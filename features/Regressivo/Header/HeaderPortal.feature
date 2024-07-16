@@ -1,12 +1,12 @@
 #language: en
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Header_Portal/Header_Portal
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Header Portal
 
-  @TestCaseKey=SMP-T197
+
   Scenario Outline: Validação do Header quando for selecionado ESTABELECIMENTO (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -31,7 +31,7 @@ Feature: Header Portal
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T270
+
   Scenario Outline: Validação do Header quando for selecionado DOCUMENTO (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -55,7 +55,7 @@ Feature: Header Portal
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T269
+
   Scenario Outline: Validação do Header quando for selecionado na aba DOCUMENTO a opção TODOS (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -78,7 +78,7 @@ Feature: Header Portal
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T271
+
   Scenario Outline: Validação do comportamento do Header do Portal não se mover com scroll (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
@@ -101,7 +101,7 @@ Feature: Header Portal
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T272
+
   Scenario Outline: Validação informações home logada com seleção de EC (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -126,7 +126,7 @@ Feature: Header Portal
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T273
+
   Scenario Outline: Validação informações home logada com seleção de Documento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -150,7 +150,7 @@ Feature: Header Portal
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T274
+
   Scenario Outline: Validação informações home logada com seleção todos Documentos (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
@@ -175,7 +175,7 @@ Feature: Header Portal
 
 
 
-  @TestCaseKey=SMP-T386
+
   Scenario Outline: Health check Minha Meu Perfil
     Given open portal "<alianca>" and logon
     When usuário clica "Header - Meu Perfil"
@@ -202,7 +202,7 @@ Feature: Header Portal
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T388
+
   Scenario Outline: Popup Excluir acesso Digital
     Given open portal "<alianca>" and logon
     When usuário clica "Header - Meu Perfil"

@@ -1,5 +1,5 @@
 #language:en
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Regressivo/Relatorio_de_Vendas/Vendas_Relatorio_de_Vendas
 @Zephyr:Status=Draft
 @Zephyr:Priority=Low
@@ -8,13 +8,13 @@
 
 Feature: Vendas Relatorio de Vendas
   #Ajustado e passando 13/06/2024 - Bressan
-  @TestCaseKey=SMP-T363
+
   Scenario Outline: Health check Relatório de vendas
     Given open portal "<alianca>" and logon
     When Usuário acessou página de Vendas
     And ao clicar no menu lateral "Relatorio de Vendas"
     Then ele deve ver as informações de vendas atuais, incluindo abas para "Hoje", "Histórico de vendas", "Não efetivadas", "Pré autorizações" e "Voucher"
-  @sicredi @alliances  @TestCaseKey=SMP-T363_Sicredi
+  @sicredi @alliances
     Examples:
       |Description        |alianca  |
       |Usuario master     |sicredi  |
@@ -33,7 +33,7 @@ Feature: Vendas Relatorio de Vendas
 
 
 
-  @TestCaseKey=SMP-T306
+
   Scenario Outline: Valores tela Vendas - Voucher - deve bater com exportação - com seleção de Documento
     Given open portal "<alianca>" and logon
     #And Usuário selecionou um documento com maior número de ECs e clicar Acessar
@@ -51,7 +51,7 @@ Feature: Vendas Relatorio de Vendas
     Examples:
       |Description        |alianca  |menu         |submenu |thirdmenu             |
       |Usuario master     |sicredi  |Vendas       |        |Voucher               |
-    @afinz @alliances @TestCaseKey=SMP-T306-Sicredi
+    @afinz @alliances
     Examples:
       |Description        |alianca  |menu         |submenu |thirdmenu             |
       |Usuario master     |afinz    |Vendas       |        |Voucher               |
@@ -64,7 +64,7 @@ Feature: Vendas Relatorio de Vendas
       |Description        |alianca  |menu         |submenu |thirdmenu             |
       |Usuario master     |bin      |Vendas       |        |Voucher               |
 
-  @TestCaseKey=SMP-T307
+
   Scenario Outline: Valores tela Vendas - Voucher - deve bater com exportação - com seleção de EC
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -95,7 +95,7 @@ Feature: Vendas Relatorio de Vendas
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T303
+
   Scenario Outline: Valores tela Vendas - PRÉ-AUTORIZADAS deve bater com exportação - com seleção de Documento
     Given open portal "<alianca>" and logon
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
@@ -130,7 +130,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      |Excel  |
       |Usuario master     |bin      |CSV  |
 
-  @TestCaseKey=SMP-T304
+
   Scenario Outline: Valores tela Vendas - PRÉ-AUTORIZADAS deve bater com exportação - com seleção de EC
     Given open portal "<alianca>" and logon
     And Usuário selecionou um EC e clicar Acessar
@@ -166,7 +166,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      |CSV  |
 
 
-  @TestCaseKey=SMP-T301
+
   Scenario Outline: Valores tela Vendas - NÃO EFETIVADAS deve bater com exportação - com seleção de Documento
     #Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     Given open portal "<alianca>" and logon
@@ -201,7 +201,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      |Excel  |
       |Usuario master     |bin      |CSV  |
 
-  @TestCaseKey=SMP-T302
+
   Scenario Outline: Valores tela Vendas - NÃO EFETIVADAS deve bater com exportação - com seleção de EC
     Given open portal "<alianca>" and logon
     And Usuário selecionou um EC e clicar Acessar
@@ -236,7 +236,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      |CSV  |
 
 
-  @TestCaseKey=SMP-T164
+
   Scenario Outline: Selecionar Ontem seleciona o dia anterior
     Given open portal "<alianca>" and logon
     When click on menu "<menu>" "<submenu>" "<thirdmenu>"
@@ -262,7 +262,7 @@ Feature: Vendas Relatorio de Vendas
       |Description        |alianca  |menu         |submenu |thirdmenu             |
       |Usuario master     |bin      |Vendas       |        |Histórico de vendas   |
 
-  @TestCaseKey=SMP-T165
+
   Scenario Outline: Selecionar Mês Atual seleciona o dia anterior
     Given open portal "<alianca>" and logon
     When click on menu "<menu>" "<submenu>" "<thirdmenu>"
@@ -289,7 +289,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      |Vendas       |        |Histórico de vendas   |
 
 
-  @TestCaseKey=SMP-T166
+
   Scenario Outline: Selecionar Últimos 7 Dias seleciona 7 dias anteriores
     Given open portal "<alianca>" and logon
     When click on menu "<menu>" "<submenu>" "<thirdmenu>"
@@ -318,7 +318,7 @@ Feature: Vendas Relatorio de Vendas
 
 
 
-  @TestCaseKey=SMP-T157
+
   Scenario Outline: Rodapé de Vendas Hoje
     Given open portal "<alianca>" and logon
     When Usuário acessa Vendas Hoje
@@ -343,7 +343,7 @@ Feature: Vendas Relatorio de Vendas
 
 
 
-  @TestCaseKey=SMP-T156
+
   Scenario Outline: Traz como padrão Ontem no filtro do período
     Given open portal "<alianca>" and logon
     When click on menu "<menu>" "<submenu>" "<thirdmenu>"
@@ -365,7 +365,7 @@ Feature: Vendas Relatorio de Vendas
       |Description        |alianca  | período |menu|submenu|thirdmenu|
       |Usuario master     |bin      | Ontem   |Vendas       |        |Histórico de vendas   |
 
-  @TestCaseKey=SMP-T167
+
   Scenario Outline: Ocultar valores de Vendas - Histórico de Vendas
     Given open portal "<alianca>" and logon
     When click on menu "<menu>" "<submenu>" "<thirdmenu>"
@@ -393,7 +393,7 @@ Feature: Vendas Relatorio de Vendas
 
 
 
-  @TestCaseKey=SMP-T161
+
   Scenario Outline: Compara valores bruto, líquido e total de vendas com api
     Given open portal "<alianca>" and logon
     And Usuário acessou Vendas - Histórico de Vendas
@@ -421,7 +421,7 @@ Feature: Vendas Relatorio de Vendas
 
 
 
-  @TestCaseKey=SMP-T299
+
   Scenario Outline: Valores tela Vendas - HISTÓRICO DE VENDAS deve bater com exportação - com seleção de Documento
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -460,7 +460,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T298
+
   Scenario Outline: Valores tela Vendas - HISTÓRICO DE VENDAS deve bater com exportação - com seleção de EC
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -505,7 +505,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin  |CSV Detalhado      |
 
 
-  @TestCaseKey=SMP-T9
+
   Scenario Outline: Mensagem de Resumo de Vendas
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -529,7 +529,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      | Visualize suas vendas realizadas no dia. Não achou a venda que estava procurando? Ela pode levar até 15 minutos para ser apresentada aqui. E lembre-se, essas vendas estão em processamento, vendas estornadas ou não efetivadas aparecem aqui até o final do dia. |
 
   # TODO: fix me when we have 'rebatedores'
-  @TestCaseKey=SMP-T6
+
   Scenario Outline: Visualização da Quantidade e Valor de Vendas Hoje
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -556,7 +556,7 @@ Feature: Vendas Relatorio de Vendas
 
 
 
-  @TestCaseKey=SMP-T8
+
   Scenario Outline: O menu expande quando o usuário passa o mouse
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -580,7 +580,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T149
+
   Scenario Outline: Ocultar valores de Vendas Hoje
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -609,7 +609,7 @@ Feature: Vendas Relatorio de Vendas
 #=========================vendas Hoje com API
 
 
-  #@TestCaseKey=SMP-T151
+  #
   #Scenario Outline: Quantidade de vendas é igual a API
   #  Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
   #  And Usuário acessa Vendas Hoje
@@ -617,7 +617,7 @@ Feature: Vendas Relatorio de Vendas
   #  Given Usuário acessou Vendas Hoje
   #  Then Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API
 
-  #@TestCaseKey=SMP-T154
+  #
   #Scenario Outline: Estabelecimentos no filtro é igual a API
   #  Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
   #  And Usuário acessa Vendas Hoje
@@ -630,7 +630,7 @@ Feature: Vendas Relatorio de Vendas
   #    | Estabelecimento (0) |
 
   #@ignore
-  #@TestCaseKey=SMP-T163
+  #
   #Scenario Outline: Compara primeira página do histórico de venda hoje com API
   #  Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
   #  And Usuário acessa Vendas Hoje
@@ -642,7 +642,7 @@ Feature: Vendas Relatorio de Vendas
 
 
 
-  @TestCaseKey=SMP-T23
+
   Scenario Outline: Filtrar histórico de vendas por Produtos
     Given open portal "<alianca>" and logon
     And Usuário acessa Vendas Hoje
@@ -667,7 +667,7 @@ Feature: Vendas Relatorio de Vendas
       |Description        |alianca  |tipoDeProduto        |
       |Usuario master     |bin      |Alimentação          |
 
-  @TestCaseKey=SMP-T15
+
   Scenario Outline: Filtrar histórico de vendas por status
     Given open portal "<alianca>" and logon
     And Usuário acessa Vendas Hoje
@@ -701,7 +701,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      |Recusada     | Status (0)   |
       |Usuario master     |bin      | Estornada    | Status (0)   |
 
-  @TestCaseKey=SMP-T21
+
   Scenario Outline: Filtrar histórico de vendas por bandeira
     Given open portal "<alianca>" and logon
     And Usuário acessa Vendas Hoje
@@ -735,7 +735,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      |Visa       | Bandeiras (0) |
 
 
-  @TestCaseKey=SMP-T22
+
   Scenario Outline: Filtrar histórico de vendas por status e bandeira
     Given open portal "<alianca>" and logon
     And Usuário acessa Vendas Hoje
@@ -775,7 +775,7 @@ Feature: Vendas Relatorio de Vendas
     #================ Vendaws Hoje com seleção EC
 
   #@ignore # TODO: confirmar a api desta tela...
-  #@TestCaseKey=SMP-T288
+  #
   #Scenario Outline: Vendas HOJE com seleção de EC (Usuário Master)
   #  Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
   #  And Usuário selecionou um EC e clicar Acessar
@@ -783,7 +783,7 @@ Feature: Vendas Relatorio de Vendas
   #  Then Total de 'Vendas Hoje - Resumo - Quantidade Vendas' será igual à API do EC selecionado
 
   #@ignore # TODO: confirmar a api desta tela...
-  #@TestCaseKey=SMP-T291
+  #
   #Scenario Outline: Vendas HOJE com seleção de Documento (Usuário Master) terá mesma quantidade vendas
   #  Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
   #  And Usuário selecionou um documento e clicar Acessar
@@ -792,7 +792,7 @@ Feature: Vendas Relatorio de Vendas
 
 
 
-  @TestCaseKey=SMP-T294
+
   Scenario Outline: Vendas HOJE com seleção de Documento (Usuário Master) terá mesmos estabelecimentos no filtro
     Given open portal "<alianca>" and logon
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
@@ -823,7 +823,7 @@ Feature: Vendas Relatorio de Vendas
       |Usuario master     |bin      | Excel   |
       |Usuario master     |bin      | CSV     |
 
-  @TestCaseKey=SMP-T295
+
   Scenario Outline: Vendas HOJE com seleção de EC (Usuário Master) terá mesmos estabelecimentos no filtro
     Given open portal "<alianca>" and logon
     And Usuário selecionou um EC e clicar Acessar

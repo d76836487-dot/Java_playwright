@@ -1,12 +1,12 @@
 #language:en
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Regressivo/Cancelamento_Vendas/Cancelamento_de_Vendas
 @Zephyr:Status=Draft
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Cancelamento de Vendas
 
-  @TestCaseKey=SMP-T361
+
   Scenario Outline: Verifica se a pagina Cancelamento de vendas carregou com sucesso
     Given open portal "<alianca>" and logon
     When Usuário acessou página de Vendas
@@ -30,7 +30,7 @@ Feature: Cancelamento de Vendas
       |Usuario master     |bin      |
   #==========================================================================================================================================================
   #@sicredi
-  #@TestCaseKey=SMP-T362
+  #
   #Scenario Outline: Cancela Venda e confere
   #  Given que o usuário está logado e está na seção de Vendas
   #  When solicitar um cancelamento de uma venda em "Historico de vendas" informando o motivo "<motivos>"
@@ -40,7 +40,7 @@ Feature: Cancelamento de Vendas
   #    | Cobrança Duplicata |
 
  #==========================================================================================================================================================
-  @TestCaseKey=SMP-T422
+
   Scenario Outline: Acesso ao menu Relatório de Vendas
     Given open portal "<alianca>" and logon
     When Usuário acessou página de Vendas

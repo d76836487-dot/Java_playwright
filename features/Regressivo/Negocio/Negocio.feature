@@ -1,12 +1,12 @@
 #language: en
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Recebimento_Resumo_Negócio
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Recebimento Resumo Negócio
 
-  @TestCaseKey=SMP-T314
+
   Scenario Outline: Tela Negócio - botão trocar estabelecimento - com seleção de Documento
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -34,7 +34,7 @@ Feature: Recebimento Resumo Negócio
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T315
+
   Scenario Outline: Tela Negócio - botão trocar estabelecimento - com seleção de EC
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'

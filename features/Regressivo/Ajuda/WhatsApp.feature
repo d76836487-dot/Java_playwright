@@ -1,5 +1,5 @@
 #language: en
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Regressivo/Ajuda/Ajuda_Whatsapp
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
@@ -8,7 +8,7 @@ Feature: Ajuda Whatsapp
 
 
 
-  @TestCaseKey=SMP-T176
+
   Scenario Outline: Visualização do componente Whatsapp
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -32,7 +32,7 @@ Feature: Ajuda Whatsapp
       |Description        |alianca  |cor               |
       |Usuario master     |bin      |rgb(46, 139, 201) |
 
-  @TestCaseKey=SMP-T175
+
   Scenario Outline: Validação da flutuação do componente Whatsapp
     Given open portal "<alianca>" and logon
     Given usuário está na página Ajuda
@@ -55,7 +55,7 @@ Feature: Ajuda Whatsapp
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T181
+
   Scenario Outline: Visualização do campo Atendimento pelo Whatsapp
     Given open portal "<alianca>" and logon
     Given usuário está na página Ajuda
@@ -78,7 +78,7 @@ Feature: Ajuda Whatsapp
       |Description        |alianca  |dados                                                                                                                           |
       |Usuario master     |bin      | Atendimento pelo Whatsapp,Tire suas dúvidas com nosso atendimento pelo Whatsapp a qualquer momento,Telefone,+55 (11) 94270 1270 |
 
-  @TestCaseKey=SMP-T185
+
   Scenario Outline: Validação da URL do Whatsapp
     Given open portal "<alianca>" and logon
     Given usuário está na página Ajuda
@@ -102,7 +102,7 @@ Feature: Ajuda Whatsapp
       |Usuario master     |bin      | https://wa.me/message/FC2JELHHFGAKJ1 |
 
 
-  @TestCaseKey=SMP-T192
+
   Scenario Outline: Visualização do componente Chatbot
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -126,7 +126,7 @@ Feature: Ajuda Whatsapp
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T191
+
   Scenario Outline: Validação da flutuação do componente Chatbot
     Given open portal "<alianca>" and logon
     Given usuário está na página Ajuda
@@ -150,7 +150,7 @@ Feature: Ajuda Whatsapp
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T193
+
   Scenario Outline: Validação da URL do Chatbot
     Given open portal "<alianca>" and logon
     Given usuário está na página Ajuda

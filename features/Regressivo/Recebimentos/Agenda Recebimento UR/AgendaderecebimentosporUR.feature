@@ -1,5 +1,5 @@
 #language: en
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Agenda_de_recebimentos_por_UR/Agenda_de_recebimentos_por_UR
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
@@ -7,7 +7,7 @@
 Feature: Agenda de recebimentos por UR
 
 
-  @TestCaseKey=SMP-T328
+
   Scenario Outline: Valor total Líquido de UR igual a soma do Valor de Bandeiras
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -31,7 +31,7 @@ Feature: Agenda de recebimentos por UR
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T330
+
   Scenario Outline: Valor total é igual a soma do Valor Líquido com o Valor Pago
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -55,7 +55,7 @@ Feature: Agenda de recebimentos por UR
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T355
+
   Scenario Outline: Botão Ocultar Valores na Agenda UR
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -91,7 +91,7 @@ Feature: Agenda de recebimentos por UR
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T356
+
   Scenario Outline: Consultar Botão Filtros
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -124,7 +124,7 @@ Feature: Agenda de recebimentos por UR
       | cor              |alianca|
       | rgb(0, 198, 204) |afinz  |
 
-  @TestCaseKey=SMP-T364
+
   Scenario Outline: Consultar Período (Esse Mês)
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -151,7 +151,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T375
+
   Scenario Outline: Consultar Período (Hoje)
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -176,7 +176,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T376
+
   Scenario Outline: Consultar Período (Essa semana)
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -201,7 +201,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T378
+
   Scenario Outline: Botão Cancelar da modal Exportar
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -225,7 +225,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T379
+
   Scenario Outline: Botão X da modal Exportar
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -249,7 +249,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T377
+
   Scenario Outline: Baixar Arquivo Excel e CSV
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -264,7 +264,7 @@ Feature: Agenda de recebimentos por UR
       | CSV    |
 
   #==>
-  @TestCaseKey=SMP-T300
+
  Scenario Outline: Acesso a Agenda de recebimentos por UR Com apenas um Documento
     Given open portal "<alianca>" and logon
     And Usuário selecionar um documento e clicar Acessar
@@ -289,7 +289,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T305
+
   Scenario Outline: Acesso a Agenda de recebimentos por UR Com vários Documentos
     Given open portal "<alianca>" and logon
     And Usuário acessou o Home
@@ -314,7 +314,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T318
+
   Scenario Outline: Acesso a Agenda de recebimentos por UR selecionando um Estabelecimento no Modal
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -340,7 +340,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T326
+
   Scenario Outline: Valida valores da UR se é igual a outras datas já consultadas
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -373,7 +373,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |dias úteis|
       |Usuario master     |bin      |-1        |
 
-  @TestCaseKey=SMP-T331
+
   Scenario Outline: Valida valores do lote da UR se é igual a outras datas já consultadas
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -407,7 +407,7 @@ Feature: Agenda de recebimentos por UR
       |Usuario master     |bin      |-1        |
 # o portal é muito lento para validar ausência de informações
 
-  @TestCaseKey=SMP-T332
+
   Scenario Outline: Valida ausência de valores do lote da UR se é igual a outras datas já consultadas
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -429,7 +429,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |dias úteis|
       |Usuario master     |bin      |-1        |
 
-  @TestCaseKey=SMP-T327
+
   Scenario Outline: Valida valores futuro da UR se é igual a outras datas já consultadas
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -462,7 +462,7 @@ Feature: Agenda de recebimentos por UR
 
 
 
-  @TestCaseKey=SMP-T322
+
   Scenario Outline: Consultar Campos Valor Total, Valor Total líquido de URs, Valor pago, na Seção Resumo
     Given open portal "<alianca>" and logon
     Given Usuário acessou a página de Agenda de Recebimentos por UR
@@ -490,7 +490,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T324
+
   Scenario Outline: Consultar Campos Total de Entradas e saídas , na Seção Resumo
     Given open portal "<alianca>" and logon
     Given Usuário acessou a página de Agenda de Recebimentos por UR
@@ -520,7 +520,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T325
+
   Scenario Outline: Botão “O que são esses totais?”
     Given open portal "<alianca>" and logon
     Given Usuário acessou a página de Agenda de Recebimentos por UR
@@ -562,7 +562,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T329
+
   Scenario Outline: Consultar Componente Totais líquidos por bandeira
     Given open portal "<alianca>" and logon
     #OBS: Apresentar a relação das bandeiras de forma fixa no front e popular CASO retorne valor da API. Se não retornar valor, apresentar com R$ 0,00
@@ -593,7 +593,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T354
+
   Scenario Outline: Consultar Componente “gráfico”
     Given open portal "<alianca>" and logon
     Given Usuário acessou a página de Agenda de Recebimentos por UR
@@ -624,7 +624,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T334
+
   Scenario Outline: Consultar Componente “gráfico” sem valores
     Given open portal "<alianca>" and logon
     Given Usuário acessou a página de Agenda de Recebimentos por UR
@@ -648,7 +648,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T357
+
   Scenario Outline: Consultar Detalhe totais por bandeira e produto
     Given open portal "<alianca>" and logon
     #Obs.: Apresentar bandeira com total ainda que o total seja zero.
@@ -682,7 +682,7 @@ Feature: Agenda de recebimentos por UR
       | cor da Instituição |
       | rgb(63, 161, 16)   |
 
-  @TestCaseKey=SMP-T360
+
   Scenario Outline: Consultar Botão Período
     Given open portal "<alianca>" and logon
     #Obs: Esse menu terá dados de histórico (passado) mas também de futuro.
@@ -711,7 +711,7 @@ Feature: Agenda de recebimentos por UR
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T319
+
   Scenario Outline: Direcionamento
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -736,7 +736,7 @@ Feature: Agenda de recebimentos por UR
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T320
+
   Scenario Outline: Consultar Layout da seção Resumo
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -764,7 +764,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T321
+
   Scenario Outline: Seção Resumo Botão Mostrar todos os detalhes
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -794,7 +794,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T323
+
   Scenario Outline: Confere Valor Total de Agenda de recebimentos por UR com exportação
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -832,7 +832,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |numero lote |
       |Usuario master     |bin      |0           |
 
-  @TestCaseKey=SMP-T335
+
   Scenario Outline: Consultar Pagamentos da UR (Status Pago)
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -858,7 +858,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T350
+
   Scenario Outline: Consultar Pagamentos da UR (Status Programado)
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -892,7 +892,7 @@ Feature: Agenda de recebimentos por UR
   #    And estiver na tela “Agenda de recebimentos por UR > Detalhe da UR”
   #    Then usuário visualizara as abas (Vendas vinculadas, Pagamentos, Créditos e deduções, Contratos)
 
-  @TestCaseKey=SMP-T358
+
   Scenario Outline: Nome das colunas do Arquivo Excel
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -960,7 +960,7 @@ Feature: Agenda de recebimentos por UR
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T359
+
   Scenario Outline: Detalhe Venda
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR

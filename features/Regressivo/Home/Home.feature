@@ -1,5 +1,5 @@
 #language: en
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Regressivo/Home
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
@@ -62,7 +62,7 @@ Feature: Home
     #|Usuario Sem F      |https://afinz.qa.portaldocliente.fiserv.com/externo      |bressan@sec    |Fiserv@456     |
 
 
-  @TestCaseKey=SMP-T27
+
   Scenario Outline:Relatórios na Home
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -90,7 +90,7 @@ Feature: Home
   #*Dado* que estou na tela “início” do Portal
   #*Quando* clicar no item Documentos no acesso rápido
   #*Então* devo ser direcionado para a jornada de Documentos
-  @TestCaseKey=SMP-T28
+
   Scenario Outline:: Informe de rendimentos na Home
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -115,7 +115,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T30
+
   Scenario Outline:: Vendas na Home
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -144,7 +144,7 @@ Feature: Home
   #*Quando* clicar no item Detalhe de pagamentos no acesso rápido
   #*Então* devo ser direcionado para a jornada de Detalhe de pagamentos
   # TODO: aguardar corrigir o testId
-  @TestCaseKey=SMP-T84
+
   Scenario Outline: Negócio na Home
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -170,7 +170,7 @@ Feature: Home
 
 
 
-  @TestCaseKey=SMP-T32
+
   Scenario Outline: Solicitações na Home
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -215,7 +215,7 @@ Feature: Home
 
 
 
-  @TestCaseKey=SMP-T10
+
   Scenario Outline: Login com sucesso
     Given open portal "<alianca>" and logon
     @sicredi @alliances
@@ -235,14 +235,14 @@ Feature: Home
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T11
+
   @alliances
   Scenario: Usuário não encontrado no GA1 nem no GA2 e sem cadastro na Fiserv
     When Usuário tenta logar na aplicação com "81633816000210" e "Fiserv@123"
     Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
 
 
-  @TestCaseKey=SMP-T13
+
   Scenario Outline: Usuário tenta logar com senha errada
     When Usuário loga com senha errada
     And Todas as requisições HTTP foram respondidas
@@ -253,7 +253,7 @@ Feature: Home
       | Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
 
 
-  @TestCaseKey=SMP-T16
+
   Scenario Outline: Banner de comunicação comercial
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -278,7 +278,7 @@ Feature: Home
       |Description        |alianca  |descrição                           | texto botão |
       |Usuario master     |bin      | Veja as vantagens da sua maquininha | Confira     |
 
-  @TestCaseKey=SMP-T19
+
   Scenario Outline: Usuário será direcionado ao Vendas Hoje ao clicar em Ver Tudo da seção Vendas Hoje
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -304,7 +304,7 @@ Feature: Home
       |Usuario master     |bin      |
 # TODO: fix to use anticipation linked to data-testid
 
-  @TestCaseKey=SMP-T17
+
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -329,7 +329,7 @@ Feature: Home
       |Description        |alianca  |texto botão         |
       |Usuario master     |bin      | Ir para antecipação |
 
-  @TestCaseKey=SMP-T26
+
   Scenario Outline: Total de Recebimentos na Home deve ser igual ao de hoje de futuro previstos
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -353,7 +353,7 @@ Feature: Home
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T148
+
   Scenario Outline: Ocultar valores da Home
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -391,7 +391,7 @@ Feature: Home
 
 
 
-    @TestCaseKey=SMP-T20
+
   Scenario Outline: Abrir Modal Personalizar Acesso Rápido (inclui Adiantamento)
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -416,7 +416,7 @@ Feature: Home
       |Description        |alianca  | funcionalidades                                                                             |
       |Usuario master     |bin      | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
 
-  @TestCaseKey=SMP-T152
+
   Scenario Outline: recebimentos futuros existem
     Given open portal "<alianca>" and logon
   #Then Usuário estará com acesso e sessão foi salva
@@ -443,7 +443,7 @@ Feature: Home
 
 
 
-  @TestCaseKey=SMP-T118
+
   Scenario Outline: Recebimentos Hoje no card Recebimentos é igual a API
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -467,7 +467,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T139
+
   Scenario Outline: Valor de Recebimentos Futuros Previstos na Home é igual à API
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -491,7 +491,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T29
+
   Scenario Outline: Valor de Vendas Hoje na Home é igual à API
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -516,7 +516,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T182
+
   Scenario Outline: Busca de código EC valido aba Estabelecimento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -541,7 +541,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T186
+
   Scenario Outline: Busca de código EC inválido aba Estabelecimento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -565,7 +565,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T187
+
   Scenario Outline: Busca de Documento (CNPJ ou CPF) inválido aba Estabelecimento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -589,7 +589,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T188
+
   Scenario Outline: Validar botão “X” no componente “Buscar por documento” na aba Documento na tela de personalize sua visualização (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -613,7 +613,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T189
+
   Scenario Outline: Busca de documento válido aba Documento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -638,7 +638,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T14
+
   Scenario Outline: Usuário não existente no GA1 nem no GA2 e sem cadastro na Fiserv
     Given open portal "<alianca>" and logon
     And Usuário clicou no botão esqueci minha senha
@@ -662,7 +662,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T190
+
   Scenario Outline: Busca de documento inválido aba Documento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -694,7 +694,7 @@ Feature: Home
 #==testes falhando sicredi
 
 
-  @TestCaseKey=SMP-T183
+
   Scenario Outline: Validar Campos do Personalize sua Visualização aba Documento. (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -722,7 +722,7 @@ Feature: Home
 
 
 
-  @TestCaseKey=SMP-T180
+
   Scenario Outline: Valida Nomes, CNPJ/CPFs, número EC e status com API
     Given open portal "<alianca>" and logon
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
@@ -746,7 +746,7 @@ Feature: Home
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T155
+
   Scenario Outline: abrir notificações
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
@@ -793,7 +793,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T172
+
   Scenario Outline: Redirecionamento Correto (Usuário Master) - o usuário verá modal Personalizar ao logar
     Given open portal "<alianca>" and logon
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
@@ -816,7 +816,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T174
+
   Scenario Outline: Validar Campos do Personalize sua Visualização aba Estabelecimento. (Usuário Master)
     Given open portal "<alianca>" and logon
     When Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -842,7 +842,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T31
+
   Scenario Outline: Compara últimas vendas na Home com a API
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
@@ -865,7 +865,7 @@ Feature: Home
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T196
+
   Scenario Outline: Validar não seleção no checkbox de não mostrar novamente (Usuário Master)
     Given open portal "<alianca>" and logon
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
@@ -887,7 +887,7 @@ Feature: Home
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T194
+
   Scenario Outline: Validação do Botão Acessar (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -911,7 +911,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T169
+
   Scenario Outline: Abrir Modal Personalizar Acesso Rápido (exclui Adiantamento)
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
@@ -935,7 +935,7 @@ Feature: Home
       |Description        |alianca  |funcionalidades                                                                |
       |Usuario master     |bin      |Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
 
-  @TestCaseKey=SMP-T177
+
   Scenario Outline: Validar expansão do dropdown na aba Estabelecimento. (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -962,7 +962,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-    @TestCaseKey=SMP-T184
+
   Scenario Outline: Busca de Documento (CNPJ ou CPF) válido aba Estabelecimento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -989,7 +989,7 @@ Feature: Home
 # TODO: fix to use anticipation linked to data-testid
 # TODO: fix this: And Usuário não verá botão com texto "<texto botão>"
 
-  @TestCaseKey=SMP-T18
+
   Scenario Outline: Usuário MDR Padrão NÃO verá card "Receba antes"
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
@@ -1011,7 +1011,7 @@ Feature: Home
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T24
+
   Scenario Outline: Valor de vendas hoje e percentual no card Vendas Hoje do Home
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
@@ -1035,7 +1035,7 @@ Feature: Home
       |Usuario master     |bin      | R$ 55.400,00 | 21%        |
 
  # não tenho certeza se este teste está correto
-    @TestCaseKey=SMP-T146
+
   Scenario Outline: Compara agenda de recebimento da semana com a API
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
@@ -1058,7 +1058,7 @@ Feature: Home
       |Usuario master     |bin      |
  # TODO: confirmar a api
   @UsuárioComHierarquia
-    @TestCaseKey=SMP-T287
+
   Scenario Outline: Vendas HOJE com seleção de EC (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -1083,7 +1083,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 # TODO: confirmar a api
-    @TestCaseKey=SMP-T290
+
   Scenario Outline: Vendas HOJE com seleção de Documento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -1108,7 +1108,7 @@ Feature: Home
       |Usuario master     |bin      |
 
  # não tenho certeza se este teste está correto
-    @TestCaseKey=SMP-T162
+
   Scenario Outline: Está trazendo todos os ECs no card Adiantamento igual a API
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
@@ -1130,7 +1130,7 @@ Feature: Home
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T195
+
   Scenario Outline: Validar seleção no checkbox de não mostrar novamente (Usuário Master)
     Given open portal "<alianca>" and logon
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "marcada"
@@ -1153,7 +1153,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T144
+
   Scenario Outline: conteúdo correto da Agenda de recebimentos da semana
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -1178,7 +1178,7 @@ Feature: Home
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T150
+
   Scenario Outline: destaque para as informações da agenda de recebimentos
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -1202,7 +1202,7 @@ Feature: Home
       |Description        |alianca  |
       |Usuario master     |bin      |
 
-  @TestCaseKey=SMP-T145
+
   Scenario Outline: Agenda de recebimentos da semana vazia
     Given open portal "<alianca>" and logon
     And não existir Agenda de recebimentos da semana para exibir

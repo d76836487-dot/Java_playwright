@@ -1,6 +1,6 @@
 #language:en
 @ignore
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Login/Login_Esqueci_Minha_Senha
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
@@ -8,7 +8,7 @@
 #noinspection CucumberUndefinedStep
 Feature: Login Esqueci Minha Senha
 
-  @TestCaseKey=SMP-T204
+
   Scenario: Esqueci Minha Senha / Domicílio Bancário CX Econômica
     Given Usuário já está cadastrado no Portal Cliente
     When usuário inserir CPF/CNPJ ou Usuário
@@ -21,7 +21,7 @@ Feature: Login Esqueci Minha Senha
     And Clica em Confirmar os dados
     Then Usuário seleciona novo Tel e Email para receber o Token e Redefinir Senha
 
-  @TestCaseKey=SMP-T205
+
   Scenario: Esqueci Minha Senha / Erro Domicílio Bancário CX Econômica
     Given Usuário não está cadastrado no Portal Cliente
     When usuário inserir CPF/CNPJ ou Usuário
@@ -34,7 +34,7 @@ Feature: Login Esqueci Minha Senha
     #Verificamos uma inconsistência nos dados informados, mas não se preocupe, você pode retornar para o início do processo e tentar novamente
     And Botão Tentar novamente na cor da Instituição
 
-  @TestCaseKey=SMP-T206
+
   Scenario: Esqueci Minha Senha / Erro Domicílio Bancário CX Econômica pela 2 vez
     Given Usuário não está cadastrado no Portal Cliente
     When usuário inserir CPF/CNPJ ou Usuário
@@ -52,7 +52,7 @@ Feature: Login Esqueci Minha Senha
   #Outras Localidades
   #Atendimento todos os dias das 8h as 22h. Suporte técnico 24h.
   #Telefone xxxxxxxx
-  @TestCaseKey=SMP-T210
+
   Scenario: Esqueci Minha Senha / Erro Domicílio Bancário CX Econômica Com Letras e caracteres especiais em Agência bancária
     Given Usuário não está cadastrado no Portal Cliente
     When usuário inserir CPF/CNPJ ou Usuário
@@ -62,7 +62,7 @@ Feature: Login Esqueci Minha Senha
     And na próxima tela usuário informar os dados com domicílio bancário Cx econômica Federal: Banco, Agência Bancária com Letras ou caracteres especiais
     Then Usuário não conseguira digitar
 
-  @TestCaseKey=SMP-T209
+
   Scenario: Esqueci Minha Senha / Erro Domicílio Bancário CX Econômica Com Letras e caracteres especiais em Operação
     Given Usuário não está cadastrado no Portal Cliente
     Then usuário inserir CPF/CNPJ ou Usuário
@@ -72,7 +72,7 @@ Feature: Login Esqueci Minha Senha
     And na próxima tela usuário informar os dados com domicílio bancário Cx econômica Federal: Banco,Agencia, Operação com Letras ou caracteres especiais
     Then Usuário não conseguira digitar
 
-  @TestCaseKey=SMP-T208
+
   Scenario: Esqueci Minha Senha / Erro Domicílio Bancário CX Econômica Com Letras e caracteres especiais em Conta
     Given Usuário não está cadastrado no Portal Cliente
     Then usuário inserir CPF/CNPJ ou Usuário

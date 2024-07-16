@@ -1,12 +1,12 @@
 #language: en
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Antecipação
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Antecipação
 
-  @TestCaseKey=SMP-T317
+
   Scenario Outline: Tela Antecipação - botão trocar estabelecimento - com seleção de Documento
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -35,7 +35,7 @@ Feature: Antecipação
       |Usuario master     |bin      |
 
 
-  @TestCaseKey=SMP-T316
+
   Scenario Outline: Tela Antecipação - botão trocar estabelecimento - com seleção de EC
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'

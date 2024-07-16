@@ -1,12 +1,12 @@
 #language: en
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Recebimentos_Resumo_Pago
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Recebimentos Resumo Pago
 
-  @TestCaseKey=SMP-T308
+
   Scenario Outline: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de Documento
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -45,7 +45,7 @@ Feature: Recebimentos Resumo Pago
       |Usuario master     |bin      |Excel Simplificado |
       |Usuario master     |bin  | CSV Simplificado |
 
-  @TestCaseKey=SMP-T309
+
   Scenario Outline: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de EC
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'

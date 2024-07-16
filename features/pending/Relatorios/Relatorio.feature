@@ -1,6 +1,6 @@
 #language: en
 @playwright
-@Zephyr:ProjectKey=SMP
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Relatorios/Relatorios
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
@@ -8,20 +8,20 @@
 Feature: Relatorios
 
   # TODO: fix all scenarios when we have data-testid for side menu
-  @TestCaseKey=SMP-T140
+
   Scenario: O menu expande quando o usuário passa o mouse
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     When Usuário passa o mouse sobre "Menu Lateral - Relatórios"
     Then O menu lateral expandiu contendo "Relatórios"
 
-  @TestCaseKey=SMP-T142
+
   Scenario: O usuário acessa a página de relatórios pelo menu lateral
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     Given Usuário não está na página de Relatórios
     When Usuário acessa página de Relatórios através do menu lateral
     Then será direcionado para a jornada de Relatórios
 
-  @TestCaseKey=SMP-T141
+
   Scenario Outline: Rodapé de Relatórios
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     Given Usuário acessa página de Relatórios
@@ -31,14 +31,14 @@ Feature: Relatorios
       | descrição                                                                             |
       | © %d Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados. %s |
 
-  @TestCaseKey=SMP-T159
+
   Scenario: Visualização de mensagem informativa
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     Given Usuário acessa página de Relatórios
     Then Usuário verá em "Relatórios - Texto Descritivo" o valor
       | Caso já tenha gerado um relatório, aguarde o processamento de até 1 dia para o mesmo ser exibido para baixar na tabela. |
 
-  @TestCaseKey=SMP-T143
+
   Scenario Outline: Colunas dos relatórios na tela inicial
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     Given Usuário acessa página de Relatórios
@@ -57,21 +57,21 @@ Feature: Relatorios
   #  - Usuário visualizará a coluna Solicitado Em contendo a data no formato dia/mês/ano
   #  - Usuário visualizará a coluna Período contendo a data de início no formato dia/mês/ano e a data de final no formato dia/mês/ano
   @api
-  @TestCaseKey=SMP-T147
+
   Scenario: Colunas nome do arquivo
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     Given Usuário acessa página de Relatórios
     And Existem relatórios já extraídos
     Then Usuário visualizará a listagem do relatório com valores corretos
 
-  @TestCaseKey=SMP-T158
+
   Scenario: Coluna baixar
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     Given Usuário acessa página de Relatórios
     And Existem relatórios já extraídos disponíveis para download
     Then botão download possui ícone com seta para baixo
 
-  @TestCaseKey=SMP-T160
+
   Scenario: Fazer download do arquivo de relatório
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     Given Usuário acessa página de Relatórios
@@ -81,7 +81,7 @@ Feature: Relatorios
     And o nome do arquivo baixado seguirá o da listagem (primeiro relatório da lista)
 
   #==>
-  @TestCaseKey=SMP-T279
+
   Scenario: Componente Período não deve permitir mais que 12 meses
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -91,7 +91,7 @@ Feature: Relatorios
     Then Usuário verá em "Relatórios - Notificação de Falha" o texto
       | O intervalo da seleção deve ser menor ou igual a 12 meses |
 
-  @TestCaseKey=SMP-T286
+
   Scenario: Componente Período permite data anterior a data de hoje
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -100,7 +100,7 @@ Feature: Relatorios
     And usuário clica no "Botão Gerar" em "Modal Gerar Relatórios"
     Then Usuário verá em "Relatórios - Notificação Sucesso" o texto "Relatório Solicitado com Sucesso!!"
 
-  @TestCaseKey=SMP-T171
+
   Scenario: Validar rótulos dos campos na geração de relatórios
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -117,7 +117,7 @@ Feature: Relatorios
     And Usuário verá em "Modal Gerar Relatórios - Mensagem sobre prazo" o texto
       | O relatório leva até 24 horas para ser exibido para download. |
 
-  @TestCaseKey=SMP-T173
+
   Scenario Outline: Validar botões de fechar tela Gerar Relatórios
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -130,7 +130,7 @@ Feature: Relatorios
       | "Botão Cancelar" em "Modal Gerar Relatórios"   |
 
   @api
-  @TestCaseKey=SMP-T170
+
   Scenario: Validar campos na geração de relatórios
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -142,7 +142,7 @@ Feature: Relatorios
     And Usuário verá em "Modal Gerar Relatórios - Select Formato Arquivo Opções" as opções .XLSX (Excel), .CSV
 
   @api
-  @TestCaseKey=SMP-T178
+
   Scenario: Validar Cliente com Apenas 1 Estabelecimento Comercial Vinculado
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -151,7 +151,7 @@ Feature: Relatorios
     Then usuário verá no campo Estabelecimento Comercial o número deste único estabelecimento já selecionado
 
   @api
-  @TestCaseKey=SMP-T179
+
   Scenario: Validar Cliente com 2 ou Mais Estabelecimentos Comerciais Vinculados
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -162,7 +162,7 @@ Feature: Relatorios
     And usuário poderá selecionar alguma das outras opções de EC disponíveis
 
   @api
-  @TestCaseKey=SMP-T198
+
   Scenario Outline: Gerar Relatório Cliente com Apenas Um Estabelecimento Comercial Vinculado e Tipo de Relatório de Vendas
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -182,7 +182,7 @@ Feature: Relatorios
       | .xlsx-(excel)  | vendas     |
 
   @api
-  @TestCaseKey=SMP-T268
+
   Scenario Outline: Gerar Relatório em arquivo CSV Cliente com Mais que Um Estabelecimento Comercial Vinculado
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -210,7 +210,7 @@ Feature: Relatorios
   #  E o sistema está indisponível
   #  Então usuário visualizará o popup de erro com a mensagem “Sua solicitação não foi concluída! Refaça a solicitação do seu relatório”, e os botões “Fechar” e “X”
   #==>
-  @TestCaseKey=SMP-T292
+
   Scenario: Opções de Filtros Disponíveis
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -223,7 +223,7 @@ Feature: Relatorios
     And usuário verá no filtro um ou mais documentos
 
   @api
-  @TestCaseKey=SMP-T289
+
   Scenario: Opções de Filtros Exibem Todos os documentos
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -231,7 +231,7 @@ Feature: Relatorios
     And usuário clica no "Accordion Documentos" em "Filtros de relatório"
     And usuário verá no filtro todos os seus documentos
 
-  @TestCaseKey=SMP-T293
+
   Scenario Outline: Filtro por tipo de relatório
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -244,7 +244,7 @@ Feature: Relatorios
       | Vendas     | .csv             |
       | Pagamentos | .csv             |
 
-  @TestCaseKey=SMP-T297
+
   Scenario: Filtro de relatório por data
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -253,7 +253,7 @@ Feature: Relatorios
     And usuário filtra por uma data
     Then serão exibidos apenas relatórios extraídos da mesma data
 
-  @TestCaseKey=SMP-T296
+
   Scenario: Limpar filtros
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -264,7 +264,7 @@ Feature: Relatorios
     Then Usuário voltará a visualizar ambos relatórios de vendas e pagamentos
 
   #==>>
-  @TestCaseKey=SMP-T275
+
   Scenario: Relatório Arquivo em CSV contém Transações Parceladas
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -273,7 +273,7 @@ Feature: Relatorios
     Then Usuário visualizará no arquivo baixado a coluna "Parcelas", contendo as parcelas das vendas
 
   @api
-  @TestCaseKey=SMP-T276
+
   Scenario Outline: Validar Arquivo de Relatório de Vendas
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -293,7 +293,7 @@ Feature: Relatorios
       | .xlsx   |
 
   @api
-  @TestCaseKey=SMP-T277
+
   Scenario Outline: Validar Arquivo de Relatório de Pagamentos
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -311,7 +311,7 @@ Feature: Relatorios
       | .csv    |
       | .xlsx   |
 
-  @TestCaseKey=SMP-T333
+
   Scenario Outline: Colunas do excel possuem formatações corretas
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
     And Usuário acessa página de Relatórios
@@ -323,7 +323,7 @@ Feature: Relatorios
       | Pagamentos |
       | Vendas     |
 
-  @TestCaseKey=SMP-T312
+
   Scenario: Valores tela Relatórios - com seleção de Documento
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um documento com maior número de ECs e clicar Acessar
@@ -332,7 +332,7 @@ Feature: Relatorios
     Then "Todos os estabelecimentos" estará selecionado por padrão
     And usuário poderá selecionar alguma das outras opções de EC disponíveis
 
-  @TestCaseKey=SMP-T313
+
   Scenario: Valores tela Relatórios - com seleção de EC
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     And Usuário selecionou um EC e clicar Acessar
