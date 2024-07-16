@@ -59,7 +59,7 @@ public class ReportsPage extends CheckedBasePage {
     }
 
     public void ensureIsNotInReportsPage() {
-        if(page.url().contains("/pending/Relatorios"))
+        if(page.url().contains("/features/pending/Relatorios"))
             navigateTo(toUrl("/Home"));
     }
 

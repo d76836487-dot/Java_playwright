@@ -93,7 +93,7 @@
     <build>
          <testResources>
             <testResource>
-                <directory>src/test/resources/features</directory>
+                <directory>features</directory>
                 <targetPath>com/fiserv/qabrazil/features</targetPath>
             </testResource>
             <testResource>
