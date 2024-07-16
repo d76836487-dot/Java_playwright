@@ -1,4 +1,11 @@
-Feature: Cancelamento de Vendas - todo
+
+@Zephyr:ProjectKey=SMP
+@Zephyr:Folder=/Portal_do_Cliente/Pending/Cancelamento_de_Vendas/Cancelamento_de_Vendas
+@Zephyr:Status=Draft
+@Zephyr:Priority=Normal
+@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+
+Feature: Cancelamento de Vendas
 #==========================================================================================================================================================
 @TestCaseKey=SMP-T368
 Scenario: Cliente solicita cancelamento de transação

@@ -1,7 +1,7 @@
 #language: en
 @ignore
 @Zephyr:ProjectKey=SMP
-@Zephyr:Folder=/Portal_do_Cliente/Pending/Transacoes_tokenizadas/Historico_de_Vendas
+@Zephyr:Folder=/Portal_do_Cliente/Pending/Historico_de_Vendas/Historico_de_Vendas
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
