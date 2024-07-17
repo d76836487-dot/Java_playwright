@@ -7,6 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "classpath:com/fiserv/qabrazil/features/Regressivo",
 
+        tags= "@alliance s"
         //tags= "@sicredi_T164"
         //Agenda de recebimentos
         //tags= "@Vendas_Agenda_recebimentos_semana"
@@ -14,7 +15,7 @@ import io.cucumber.testng.CucumberOptions;
         //tags="@TestCaseKey=SMP-T306-Sicredi" //Feito
         //tags="@TestCaseKey=SMP-T363_Sicredi"
 
-        tags="@WhatsApp"
+
 
 )
 public class Runner extends AbstractTestNGCucumberTests{
