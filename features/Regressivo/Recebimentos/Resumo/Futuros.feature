@@ -6,7 +6,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Recebimentos Resumo Futuro
 
-
+  @TestCaseKey=LPDC-T427
   Scenario Outline: Valores tela Recebimentos - Futuros - deve bater com exportação - com seleção de Documento
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -22,22 +22,25 @@ Feature: Recebimentos Resumo Futuro
     And Total líquido em 'Recibos Futuro' é igual ao exportado
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T397
   Scenario Outline: Valores tela Recebimentos - Futuros - deve bater com exportação - com seleção de EC
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -53,18 +56,21 @@ Feature: Recebimentos Resumo Futuro
     And Total líquido em 'Recibos Futuro' é igual ao exportado
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
