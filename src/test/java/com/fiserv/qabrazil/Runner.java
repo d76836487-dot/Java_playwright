@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "classpath:com/fiserv/qabrazil/features/Regressivo",
 
-        tags= "@alliance s"
+        tags= "@alliances"
         //tags= "@sicredi_T164"
         //Agenda de recebimentos
         //tags= "@Vendas_Agenda_recebimentos_semana"

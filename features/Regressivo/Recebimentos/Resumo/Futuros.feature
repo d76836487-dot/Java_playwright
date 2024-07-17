@@ -1,6 +1,6 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Recebimentos/Resumo/Recebimentos_Resumo_Futuro
+@Zephyr:Folder=/Portal_do_Cliente/Regressivo/Recebimentos/Resumo/Recebimentos_Resumo_Futuro
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
