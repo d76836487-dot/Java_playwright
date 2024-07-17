@@ -8,7 +8,7 @@
 #noinspection CucumberUndefinedStep
 Feature: Login Primeiro Acesso
 
-
+  @TestCaseKey=LPDC-T207
   Scenario: Primeiro Acesso / Domicílio Bancário CX Econômica
     Given Usuário não está cadastrado no Portal Cliente
     When usuário inserir CPF/CNPJ ou Usuário
@@ -21,7 +21,7 @@ Feature: Login Primeiro Acesso
     And Clica em Confirmar os dados
     Then insere novo Tel e Email para receber o Token e fazer o primeiro acesso
 
-
+  @TestCaseKey=LPDC-T209
   Scenario: Primeiro Acesso / Erro Domicílio Bancário CX Econômica
     Given Usuário não está cadastrado no Portal Cliente
     When usuário inserir CPF/CNPJ ou Usuário
@@ -31,7 +31,7 @@ Feature: Login Primeiro Acesso
     And Clicar no Botão (Onde encontro esses dados?)
     Then Usuário visualizara um modal com:  Agência, Operação, Conta, Digito
 
-
+  @TestCaseKey=LPDC-T146
   Scenario: Primeiro Acesso / Erro Domicílio Bancário CX Econômica Com Letras e caracteres especiais em Agência bancária
     Given Usuário não está cadastrado no Portal Cliente
     When usuário inserir CPF/CNPJ ou Usuário
@@ -41,7 +41,7 @@ Feature: Login Primeiro Acesso
     And na próxima tela usuário informar os dados com domicílio bancário Cx econômica Federal: Banco, Agência Bancária com Letras ou caracteres especiais
     Then Usuário não conseguira digitar
 
-
+  @TestCaseKey=LPDC-T356
   Scenario: Primeiro Acesso / Erro Domicílio Bancário CX Econômica Com Letras e caracteres especiais em Operação
     Given Usuário não está cadastrado no Portal Cliente
     When usuário inserir CPF/CNPJ ou Usuário
@@ -51,7 +51,7 @@ Feature: Login Primeiro Acesso
     And na próxima tela usuário informar os dados com domicílio bancário Cx econômica Federal: Banco, Agência, Operação com Letras ou caracteres especiais
     Then Usuário não conseguira digitar
 
-
+  @TestCaseKey=LPDC-T174
   Scenario: Primeiro Acesso / Erro Domicílio Bancário CX Econômica Com Letras e caracteres especiais em Conta
     Given Usuário não está cadastrado no Portal Cliente
     When usuário inserir CPF/CNPJ ou Usuário
@@ -61,7 +61,7 @@ Feature: Login Primeiro Acesso
     And na próxima tela usuário informar os dados com domicílio bancário Cx econômica Federal: Banco,Agencia, Operação, Conta com Letras ou caracteres especiais
     Then Usuário não conseguira digitar
 
-
+  @TestCaseKey=LPDC-T342
   Scenario: Primeiro Acesso / Erro Domicílio Bancário CX Econômica pela 2 vez
     Given Usuário não está cadastrado no Portal Cliente
     When usuário inserir CPF/CNPJ ou Usuário

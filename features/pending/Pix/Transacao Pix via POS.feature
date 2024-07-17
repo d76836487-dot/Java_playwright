@@ -7,7 +7,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Pix Transacao POS
 
-
+  @TestCaseKey=LPDC-T114
   Scenario Outline: Realizar transacao Pix via POS apos Contratacao do Pix
     Given que tenho EC <Hierarquia> com o Perfil <Perfil>
     And esteja cadastrado na Serpro <Serpro>
@@ -21,7 +21,7 @@ Feature: Pix Transacao POS
       | EC2 | Assitente Operador | Filho      | OK     | OK  |
       | EC3 | Master             | Neto       | OK     | OK  |
 
-
+  @TestCaseKey=LPDC-T127
   Scenario: Pix não habilitado para transacionar no POS
     Given que tenho EC "Master" com o Perfil "Matriz"
     And não foi feita a habilitacao do Pix no Portal do Cliente
@@ -30,14 +30,14 @@ Feature: Pix Transacao POS
     Then então não sera permitido a transação
 
   #esse fluxo sera feito pela Api e pelo POS fisico
-
+  @TestCaseKey=LPDC-T109
   Scenario: Habilitar Pix com Hierarquia Filho 1 e realizar transação Pix com Hierarquia Matriz
     Given acesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso
     When Realizo uma transação de Pix via POS com EC Master
     Then a transação é exibida no Relatório de Vendas no menu Conta Pix
 
-
+  @TestCaseKey=LPDC-T136
   Scenario: Habilitar Pix com Hierarquia Filho 1 e realizar transação Pix com Hierarquia Filho 2
     Given cesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso

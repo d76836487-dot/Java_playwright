@@ -7,7 +7,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Login Gestao de Acessos
 
-
+  @TestCaseKey=LPDC-T142
   Scenario: Consultar tela Gestão de Acessos
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no "Menu Lateral"
@@ -18,7 +18,7 @@ Feature: Login Gestao de Acessos
     And visualizará botão Convidar novo usuáriogit checkout main
 
   @ignore
-
+  @TestCaseKey=LPDC-T91
   Scenario: Consultar com usuários cadastrados
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -26,7 +26,7 @@ Feature: Login Gestao de Acessos
     And  usuário deve visualizar a lista de usuários secundários cadastrados ao documento Master
 
   @ignore
-
+  @TestCaseKey=LPDC-T412
   Scenario: Consulta sem usuários cadastrados
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -34,7 +34,7 @@ Feature: Login Gestao de Acessos
     And usuário deve visualizar a mensagem “Nenhum usuário encontrado” com imagem com as cores da instituição.
 
   @ignore
-
+  @TestCaseKey=LPDC-T94
   Scenario: Consultar colunas na Aba Usuarios
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -42,7 +42,7 @@ Feature: Login Gestao de Acessos
     And  usuário visualizará na aba Usuarios, as colunas Nome, CPF, E-mail, Telefone, Permissão, assistente de operação ou assistente de consulta, Status: Ativo, secundário que acessa o portal, ou Inativo, secundário que não acessa o portal.
 
   @ignore
-
+  @TestCaseKey=LPDC-T89
   Scenario: Busca por nome ou usuário
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -52,7 +52,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará lista de usuários secundários, conforme foi selecionado na busca
 
   @ignore
-
+  @TestCaseKey=LPDC-T407
   Scenario: Busca por email de um Usuario secundario
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -61,7 +61,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará lista de usuários secundários que contenham o email pesquisado
 
   @ignore
-
+  @TestCaseKey=LPDC-T441
   Scenario: Busca por usuário não cadastrado ou inválido
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -70,7 +70,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem “Nenhum usuário encontrado”.
 
   @ignore
-
+  @TestCaseKey=LPDC-T392
   Scenario: Consultar campos no Detalhe do Usuário
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -81,7 +81,7 @@ Feature: Login Gestao de Acessos
     And Botões Editar e Excluir
 
   @ignore
-
+  @TestCaseKey=LPDC-T92
   Scenario: Ativando usuário
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -91,7 +91,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará mensagem de confirmação “Usuário ativo com sucesso”.
 
   @ignore
-
+  @TestCaseKey=LPDC-T413
   Scenario: Inativando usuário
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -102,7 +102,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará mensagem de confirmação “Usuário inativo com sucesso”.
 
   @ignore
-
+  @TestCaseKey=LPDC-T419
   Scenario: Acessando com usuário secundário com perfil inativo
     Given usuário Master inativou o acesso de um usuário secundário
     When usuário secundário tentar acessar o canal com usuário e senha
@@ -110,7 +110,7 @@ Feature: Login Gestao de Acessos
     And deve visualizar a mensagem “Você não tem permissão para fazer login neste momento. Por favor, tente novamente mais tarde”.
 
   @ignore
-
+  @TestCaseKey=LPDC-T93
   Scenario: Consultar Botoes no Modal de Exclusão de Usuario
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -120,7 +120,7 @@ Feature: Login Gestao de Acessos
     Then  visualizará um modal com os Botoes, Excluir, Cancelar e o “X”, que fecham o modal e nenhuma ação é salva.
 
   @ignore
-
+  @TestCaseKey=LPDC-T158
   Scenario: Excluindo usuario
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -132,7 +132,7 @@ Feature: Login Gestao de Acessos
     Then visualizara a mensagem, "Usuario deletado com sucesso"
 
   @ignore
-
+  @TestCaseKey=LPDC-T430
   Scenario: Fechando Modal atraves do Botão Cancelar
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -144,7 +144,7 @@ Feature: Login Gestao de Acessos
     Then Usuario retornara para a pagina que estava anteriormente
 
   @ignore
-
+  @TestCaseKey=LPDC-T160
   Scenario: Fechando Modal atraves do Botão X
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -156,7 +156,7 @@ Feature: Login Gestao de Acessos
     Then Usuario retornara para a pagina que estava anteriormente
 
   @ignore
-
+  @TestCaseKey=LPDC-T88
   Scenario: Recebendo Mensagem de erro ao tentar “Excluir” usuario, quando o sistema estiver com indisponibilidade
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -167,7 +167,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem de erro: “Ops. Ocorreu um erro, tente novamente”
 
   @ignore
-
+  @TestCaseKey=LPDC-T90
   Scenario: Recebendo Mensagem de erro ao tentar “Inativar” usuario, quando o sistema estiver com indisponibilidade
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -178,7 +178,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem de erro: “Ops. Ocorreu um erro, tente novamente”
 
   @ignore
-
+  @TestCaseKey=LPDC-T416
   Scenario: Recebendo Mensagem de erro ao tentar “Ativar” usuario, quando o sistema estiver com indisponibilidade
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -189,7 +189,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem de erro: “Ops. Ocorreu um erro, tente novamente”
 
   @ignore
-
+  @TestCaseKey=LPDC-T469
   Scenario: Consultando campos habilitados para edição
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -199,7 +199,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará os seguintes campos habiitados, e-mail, telefone, permissionamento habilitados para edição.
 
   @ignore
-
+  @TestCaseKey=LPDC-T424
   Scenario: Inserindo e-mail correto
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -212,7 +212,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem “Alterações salvas com sucesso”.
 
   @ignore
-
+  @TestCaseKey=LPDC-T280
   Scenario: Inserindo e-mail incorreto
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -224,7 +224,7 @@ Feature: Login Gestao de Acessos
     Then o Botão "salvar" não deve ficar habilitado para salvar
 
   @ignore
-
+  @TestCaseKey=LPDC-T414
   Scenario: Inserindo Emails diferentes
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -236,7 +236,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem “Os e-mails não coincidem” no campo "Conmfirme o email"
 
   @ignore
-
+  @TestCaseKey=LPDC-T468
   Scenario: Inserindo telefone correto
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -248,7 +248,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem “Usuario editado com sucesso”.
 
   @ignore
-
+  @TestCaseKey=LPDC-T418
   Scenario: Inserindo telefone incorreto
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -260,7 +260,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem “Ops.. Ocorreu um erro, tente novamente"
 
   @ignore
-
+  @TestCaseKey=LPDC-T452
   Scenario: Editando usuário
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -272,7 +272,7 @@ Feature: Login Gestao de Acessos
     Then visualizará a mensagem “usuario editado com sucesso”.
 
   @ignore
-
+  @TestCaseKey=LPDC-T433
   Scenario: Alterando campo “Qual documento o usuário poderá acessar?” – Cenário de massa com Hierarquia
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -286,7 +286,7 @@ Feature: Login Gestao de Acessos
     And usuário master visualizará a mensagem “Alterações salvas com sucesso”.
 
   @ignore
-
+  @TestCaseKey=LPDC-T435
   Scenario: Alterando campo “Qual documento o usuário poderá acessar?” – Cenário de outra com Hierarquia
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -301,7 +301,7 @@ Feature: Login Gestao de Acessos
     And o usuário master visualizará a mensagem “Alterações salvas com sucesso”.
 
   @ignore
-
+  @TestCaseKey=LPDC-T431
   Scenario: Alterando o campo “Qual documento o usuário poderá acessar?” – Cenário de massa com apenas um documento e um EC
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -311,7 +311,7 @@ Feature: Login Gestao de Acessos
     Then usuário não tera Opção edição de documento a fazer, pois a massa só possui um documento e um EC
 
   @ignore
-
+  @TestCaseKey=LPDC-T178
   Scenario: Alterando o campo “Qual documento o usuário poderá acessar?” – Cenário de massa com apenas um documento e X ECs
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -321,7 +321,7 @@ Feature: Login Gestao de Acessos
     Then usuário podera alterar o Estabelecimento comercial de acordo com a apresentação em tela dos ECs atrelados ao documento em questão
 
   @ignore
-
+  @TestCaseKey=LPDC-T411
   Scenario: Consultando Tela Convites pendentes
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -330,7 +330,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a tela de Gestão de Acessos o logotipo da instituição,ícones ocultar valores, ajuda, notificações e sair, as abas de usuários e convites pendentes, campo Busca por usuário ou nome, botão Convidar novo usuário, campo de quantidade de exibição de usuários.
 
   @ignore
-
+  @TestCaseKey=LPDC-T176
   Scenario: Consultando colunas Tela Convites pendentes
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -339,7 +339,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará as colunas Nome, CPF, usuário, E-mail, Telefone, Permissão: assistente de operação ou assistente de consulta, Status: Pendente (único status para essa tela)
 
   @ignore
-
+  @TestCaseKey=LPDC-T169
   Scenario: Consultando componente de busca “Buscar por usuário ou nome” pelo nome
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -350,7 +350,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará o nome selecionado na Busca
 
   @ignore
-
+  @TestCaseKey=LPDC-T428
   Scenario: Consultando componente de busca “Buscar por usuário ou nome” pelo usuario
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -361,7 +361,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará o usuario selecionado na Busca
 
   @ignore
-
+  @TestCaseKey=LPDC-T455
   Scenario: Consultando componente de busca com usuário não cadastrado ou inválido
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -372,7 +372,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem “Nenhum usuário encontrado”.
 
   @ignore
-
+  @TestCaseKey=LPDC-T436
   Scenario: Detalhe do Usuário em Convites Pendentes
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -382,7 +382,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará nome, cpf, email, telefone, permissão, usuário, data de criação do perfil, criado por, permissão de acesso, documento (CNPJ), estabelecimento comercial, Status de Convite Pendente sinalizado em amarelo, botão Excluir e botão Reenviar e-mail
 
   @ignore
-
+  @TestCaseKey=LPDC-T473
   Scenario: Botão Excluir na tela Detalhe do usuário
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -393,7 +393,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará o modal solicitando a confirmação da ação com a mensagem: “Excluir usuário? Tem certeza que deseja excluir o usuário (nome do usuário secundário)? Essa ação não poderá ser desfeita”
 
   @ignore
-
+  @TestCaseKey=LPDC-T454
   Scenario: Botão Reenviar e-mail na tela Detalhe do usuário
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -404,7 +404,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará o modal com a mensagem: “Convite enviado com sucesso. Enviamos um convite para o e-mail informado para o usuário completar seu acesso. Caso o usuário não tenha recebido o e-mail, você pode solicitar o reenvio na página de convites pendentes.” E os botãos X e Entendi!
 
   @ignore
-
+  @TestCaseKey=LPDC-T429
   Scenario: Botão “Convidar novo usuário” em Convites pendentes
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -415,7 +415,7 @@ Feature: Login Gestao de Acessos
     Then usuario sera direcionado para a tela "Convidar novo usuario"
 
   @ignore
-
+  @TestCaseKey=LPDC-T426
   Scenario: Consultando os Campos na aba convites pendentes
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -426,7 +426,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará os campos obrigatórios habilitados para preenchimento: Nome completo, CPF, E-mail, Confirme o e-mail, Permissão de acesso ao EC e box de confirmação de leitura e aceite dos Termos e Condições, botões Cancelar e Convidar
 
   @ignore
-
+  @TestCaseKey=LPDC-T438
   Scenario: Convidar Usuario inserindo e-mails incorretos
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -436,7 +436,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem de erro “Os e-mails não coincidem”
 
   @ignore
-
+  @TestCaseKey=LPDC-T485
   Scenario: Convidar Usuario inserindo e-mail invalido
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -446,7 +446,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem de erro “Os e-mails não coincidem”
 
   @ignore
-
+  @TestCaseKey=LPDC-T422
   Scenario: Convidar Usuario inserindo Telefone invalido
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -456,7 +456,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem de erro “Telefone invalido”
 
   @ignore
-
+  @TestCaseKey=LPDC-T450
   Scenario: Convidar Usuario secundário ja cadastrado na base
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -466,7 +466,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem de erro “Este usuário já está em uso. Tente outro” , abaixo do campo Usuario
 
   @ignore
-
+  @TestCaseKey=LPDC-T415
   Scenario: Campo “permissionamento” com um EC e um documento, para assistente de operações
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -476,14 +476,14 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem ao lado de permissionamento, “Quais funcionalidades o perfil tem acesso: Vendas, Recebimentos, Antecipação, Solicitações, Relatórios, Negócio e Ajuda”
 
   @ignore
-
+  @TestCaseKey=LPDC-T184
   Scenario: Secundário com perfil assistente de operações com permissão para acessar menu antecipação
     Given usuário com perfil Assistente de operações esta logado no Portal do Cliente
     When ele acessar o menu Antecipação do lado esquerdo
     Then ele deve conseguir navegar e contratar antecipação de recebíveis, porem não deve visualizar Aba Gestão de Acessos
 
   @ignore
-
+  @TestCaseKey=LPDC-T409
   Scenario: Campo “permissionamento” com um EC e um documento, para assistente de consulta
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -493,14 +493,14 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem ao lado de permissionamento, “Quais funcionalidades o perfil tem acesso, Vendas, Recebimentos, Solicitações, Relatórios, Negócio e Ajuda.
 
   @ignore
-
+  @TestCaseKey=LPDC-T179
   Scenario: Secundário com “permissionamento” de assistente de consulta
     Given usuário com perfil Assistente de consulta esta logado no Portal do Cliente
     When ele acessar o menu lateral esquerdo
     Then NÃO deve conseguir visualizar a aba Gestão de acessos, Antecipação no menu lateral nem como opção de acesso rápido nem no dash da home logada
 
   @ignore
-
+  @TestCaseKey=LPDC-T148
   Scenario: Consulta do campo “estabelecimento comercial (EC)” com mais de um EC todos documentos
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -509,7 +509,7 @@ Feature: Login Gestao de Acessos
     Then visualiza na parte debaixo, “Qual documento o usuário poderá acessar?” se acessar Todos aparecera todos os documentos atrelados ao EC Master
 
   @ignore
-
+  @TestCaseKey=LPDC-T417
   Scenario: Consulta do campo “estabelecimento comercial (EC)” com mais de um EC e um documento
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -520,7 +520,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará o campo preenchido com o EC selecionado
 
   @ignore
-
+  @TestCaseKey=LPDC-T425
   Scenario: Consulta do campo “estabelecimentos comercial (EC)” com mais de um EC e mais de um documento
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -532,7 +532,7 @@ Feature: Login Gestao de Acessos
     And tooltip com a mensagem: “Ao selecionar o CNPJ raiz, o usuário terá acesso a todos os CNPJs abaixo dele.”
 
   @ignore
-
+  @TestCaseKey=LPDC-T453
   Scenario: Consulta campo “estabelecimento comercial (EC)” com mais de um EC e mais de 1 documento
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral esquerdo
@@ -544,7 +544,7 @@ Feature: Login Gestao de Acessos
     Then o usuário visualizará no campo Estabelecimento comercial (EC) todos os Ec´s do documento selecionado, mas por default vira “Todos” preenchido
 
   @ignore
-
+  @TestCaseKey=LPDC-T451
   Scenario: link “Termos e condições”
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral
@@ -553,7 +553,7 @@ Feature: Login Gestao de Acessos
     Then o usuário visualizará o link “Termos e Condições” abaixo da tela
 
   @ignore
-
+  @TestCaseKey=LPDC-T449
   Scenario: Botão “Fechar” em “Termos e condições”
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral
@@ -565,7 +565,7 @@ Feature: Login Gestao de Acessos
     And usuário será redirecionado para a tela anterior “Convidar novo usuário”
 
   @ignore
-
+  @TestCaseKey=LPDC-T472
   Scenario: Botão X em “Termos e condições”
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral
@@ -577,7 +577,7 @@ Feature: Login Gestao de Acessos
     And usuário será redirecionado para a tela anterior “Convidar novo usuário”
 
   @ignore
-
+  @TestCaseKey=LPDC-T432
   Scenario: Botão “Convidar”
     Given usuário Master está logado no Portal do Cliente
     When usuário clica em "Gestão de Acessos" no menu lateral
@@ -588,7 +588,7 @@ Feature: Login Gestao de Acessos
     Then usuário visualizará a mensagem: “Convite enviado com sucesso. Enviamos um convite para o e-mail informado para o usuário completar seu acesso. Caso o usuário não tenha recebido o e-mail, você pode solicitar o reenvio na página de convites pendentes. Entendi!”
 
   @ignore
-
+  @TestCaseKey=LPDC-T420
   Scenario: Consultando texto do convite enviado
     Given que o usuário master envio o convite para o usuário secundário
     When o usuário secundário recebe o e-mail com o conteúdo
