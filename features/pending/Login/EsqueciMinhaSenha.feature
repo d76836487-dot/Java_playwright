@@ -5,7 +5,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-#noinspection CucumberUndefinedStep
+
 Feature: Login Esqueci Minha Senha
 
 
