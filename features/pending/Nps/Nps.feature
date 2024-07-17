@@ -1,6 +1,6 @@
 #language:en
 @playwright @api @ignore
-@Zephyr:ProjectKey=L
+@Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Pending/NPS/NPS_Pesquisa
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
