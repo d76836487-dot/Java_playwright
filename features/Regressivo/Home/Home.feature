@@ -24,11 +24,10 @@ Feature: Home
   - CLIENTE MDR PADRÃO - Devemos permitir que o cliente selecione Antecipação, Relatórios, Documentos, Informe de rendimento, Vendas, Detalhe de pagamentos, Meu negócio e solicitações.
   - CLIENTE MDR FLEX - Devemos permitir que o cliente selecione Meu negócio, Relatórios, Documentos, Informe de rendimento, Vendas, Detalhe de pagamentos e solicitações.
 
- # Background:
-#    When Usuário loga na aplicação
- #   Then Usuário estará com acesso e sessão foi salva
-
-
+  # Background:
+  #    When Usuário loga na aplicação
+  #   Then Usuário estará com acesso e sessão foi salva
+  @TestCaseKey=LPDC-T47
   Scenario Outline: Antecipação na Home
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -37,33 +36,34 @@ Feature: Home
     Then será direcionado para a jornada de "Antecipação"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
   #  |Usuario secundario |https://bin.qa.portaldocliente.fiserv.com                |bressan@sec    |Fiserv@456   |
-#colocar por yaml
-   # |Usuario Com F      |https://bin.qa.portaldocliente.fiserv.com/operador       |bressan@sec    |Fiserv@456   |
-   #|Usuario Com F      |https://afinz.qa.portaldocliente.fiserv.com/operador     |bressan@sec    |Fiserv@456   |
-   # |Usuario Com F      |https://azulzinha.qa.portaldocliente.fiserv.com/operador |bressan@sec    |Fiserv@456   |
-   # |Usuario Com F      |https://sicredi.qa.portaldocliente.fiserv.com/operador   |bressan@sec    |Fiserv@456   |
-    #|Usuario Sem F      |https://sicredi.qa.portaldocliente.fiserv.com/externo    |bressan@sec    |Fiserv@456     |
-    #|Usuario Sem F      |https://afinz.qa.portaldocliente.fiserv.com/externo      |bressan@sec    |Fiserv@456     |
-
-
-
-  Scenario Outline:Relatórios na Home
+  #colocar por yaml
+  # |Usuario Com F      |https://bin.qa.portaldocliente.fiserv.com/operador       |bressan@sec    |Fiserv@456   |
+  #|Usuario Com F      |https://afinz.qa.portaldocliente.fiserv.com/operador     |bressan@sec    |Fiserv@456   |
+  # |Usuario Com F      |https://azulzinha.qa.portaldocliente.fiserv.com/operador |bressan@sec    |Fiserv@456   |
+  # |Usuario Com F      |https://sicredi.qa.portaldocliente.fiserv.com/operador   |bressan@sec    |Fiserv@456   |
+  #|Usuario Sem F      |https://sicredi.qa.portaldocliente.fiserv.com/externo    |bressan@sec    |Fiserv@456     |
+  #|Usuario Sem F      |https://afinz.qa.portaldocliente.fiserv.com/externo      |bressan@sec    |Fiserv@456     |
+  @TestCaseKey=LPDC-T53
+  Scenario Outline: Relatórios na Home
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
     And "item Relatórios" está disponível na "Home - acesso rápido"
@@ -71,27 +71,29 @@ Feature: Home
     Then será direcionado para a jornada de "Relatórios"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
-
+      | Description    | alianca |
+      | Usuario master | bin     |
 
   #*Dado* que estou na tela “início” do Portal
   #*Quando* clicar no item Documentos no acesso rápido
   #*Então* devo ser direcionado para a jornada de Documentos
-
-  Scenario Outline:: Informe de rendimentos na Home
+  @TestCaseKey=LPDC-T107
+  Scenario Outline: : Informe de rendimentos na Home
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
     And "item Informe de rendimento" está disponível na "Home - acesso rápido"
@@ -99,24 +101,26 @@ Feature: Home
     Then será direcionado para a jornada de "Informe de rendimento" na nova aba
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
-  Scenario Outline:: Vendas na Home
+  @TestCaseKey=LPDC-T236
+  Scenario Outline: : Vendas na Home
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
     And "item Vendas" está disponível na "Home - acesso rápido"
@@ -124,27 +128,29 @@ Feature: Home
     Then será direcionado para a jornada de "Vendas Hoje"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
-
+      | Description    | alianca |
+      | Usuario master | bin     |
 
   #*Dado* que estou na tela “início” do Portal
   #*Quando* clicar no item Detalhe de pagamentos no acesso rápido
   #*Então* devo ser direcionado para a jornada de Detalhe de pagamentos
   # TODO: aguardar corrigir o testId
-
+  @TestCaseKey=LPDC-T362
   Scenario Outline: Negócio na Home
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -153,24 +159,25 @@ Feature: Home
     Then será direcionado para a jornada de "Negócio"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
-
+  @TestCaseKey=LPDC-T274
   Scenario Outline: Solicitações na Home
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -179,70 +186,70 @@ Feature: Home
     Then será direcionado para a jornada de "Solicitações"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-#*Dado* que eu sou um cliente MDR FLEX
-#*Quando* me logar ao Portal
-#*Então* não devo visualizar no acesso rápido a opção “Antecipação”
-#
-#*Dado* que eu sou um cliente MDR PADRÃO
-#*Quando* me logar ao Portal
-#*Então* devo visualizar no acesso rápido a opção “Antecipação”
-#
-#{panel}
-#{panel:title=CENÁRIO DE TESTE|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=2}
-#h6. *CENÁRIOS: VALIDAÇÕES DE DIRECIONAMENTOS DOS BOXES DA HOME *
-#
-#
-#*Dado* que estou na tela “início” do Portal
-#*Então* devo visualizar uma espécie de carrossel com quatro funcionalidades “default” sendo elas “Antecipação”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
-#
-
-
-
-
-
-
+  #*Dado* que eu sou um cliente MDR FLEX
+  #*Quando* me logar ao Portal
+  #*Então* não devo visualizar no acesso rápido a opção “Antecipação”
+  #
+  #*Dado* que eu sou um cliente MDR PADRÃO
+  #*Quando* me logar ao Portal
+  #*Então* devo visualizar no acesso rápido a opção “Antecipação”
+  #
+  #{panel}
+  #{panel:title=CENÁRIO DE TESTE|borderStyle=solid|borderColor=#000|titleBGColor=#e3e3e3|bgColor=#f4f4f4|borderWidth=2}
+  #h6. *CENÁRIOS: VALIDAÇÕES DE DIRECIONAMENTOS DOS BOXES DA HOME *
+  #
+  #
+  #*Dado* que estou na tela “início” do Portal
+  #*Então* devo visualizar uma espécie de carrossel com quatro funcionalidades “default” sendo elas “Antecipação”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
+  #
+  @TestCaseKey=LPDC-T273
   Scenario Outline: Login com sucesso
     Given open portal "<alianca>" and logon
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
-
+      | Description    | alianca |
+      | Usuario master | bin     |
 
   @alliances
+  @TestCaseKey=LPDC-T111
   Scenario: Usuário não encontrado no GA1 nem no GA2 e sem cadastro na Fiserv
     When Usuário tenta logar na aplicação com "81633816000210" e "Fiserv@123"
     Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
 
-
-
+  @TestCaseKey=LPDC-T137
   Scenario Outline: Usuário tenta logar com senha errada
     When Usuário loga com senha errada
     And Todas as requisições HTTP foram respondidas
@@ -252,8 +259,7 @@ Feature: Home
       | descrição                                                                                           |
       | Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
 
-
-
+  @TestCaseKey=LPDC-T100
   Scenario Outline: Banner de comunicação comercial
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -263,22 +269,25 @@ Feature: Home
     And Usuário verá em "Home - Maquininha - Botão Confira" o valor "<texto botão>"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |descrição                           | texto botão |
-      |Usuario master     |sicredi  | Veja as vantagens da sua maquininha | Confira     |
+      | Description    | alianca | descrição                           | texto botão |
+      | Usuario master | sicredi | Veja as vantagens da sua maquininha | Confira     |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |descrição                           | texto botão |
-      |Usuario master     |afinz    | Veja as vantagens da sua maquininha | Confira     |
+      | Description    | alianca | descrição                           | texto botão |
+      | Usuario master | afinz   | Veja as vantagens da sua maquininha | Confira     |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |descrição                           | texto botão |
-      |Usuario master     |azulzinha| Veja as vantagens da sua maquininha | Confira     |
+      | Description    | alianca   | descrição                           | texto botão |
+      | Usuario master | azulzinha | Veja as vantagens da sua maquininha | Confira     |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |descrição                           | texto botão |
-      |Usuario master     |bin      | Veja as vantagens da sua maquininha | Confira     |
+      | Description    | alianca | descrição                           | texto botão |
+      | Usuario master | bin     | Veja as vantagens da sua maquininha | Confira     |
 
-
+  @TestCaseKey=LPDC-T260
   Scenario Outline: Usuário será direcionado ao Vendas Hoje ao clicar em Ver Tudo da seção Vendas Hoje
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -288,23 +297,26 @@ Feature: Home
     Then será direcionado ao menu "Vendas Hoje"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
-# TODO: fix to use anticipation linked to data-testid
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  # TODO: fix to use anticipation linked to data-testid
+  @TestCaseKey=LPDC-T258
   Scenario Outline: Usuário MDR Padrão verá card "Receba antes"
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -314,22 +326,25 @@ Feature: Home
     And Usuário verá em "Home - Card Antecipação - Botão Ir" o valor "<texto botão>"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |texto botão         |
-      |Usuario master     |sicredi  | Ir para antecipação |
+      | Description    | alianca | texto botão         |
+      | Usuario master | sicredi | Ir para antecipação |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |texto botão         |
-      |Usuario master     |afinz    | Ir para antecipação |
+      | Description    | alianca | texto botão         |
+      | Usuario master | afinz   | Ir para antecipação |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |texto botão         |
-      |Usuario master     |azulzinha| Ir para antecipação |
+      | Description    | alianca   | texto botão         |
+      | Usuario master | azulzinha | Ir para antecipação |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |texto botão         |
-      |Usuario master     |bin      | Ir para antecipação |
+      | Description    | alianca | texto botão         |
+      | Usuario master | bin     | Ir para antecipação |
 
-
+  @TestCaseKey=LPDC-T350
   Scenario Outline: Total de Recebimentos na Home deve ser igual ao de hoje de futuro previstos
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -338,22 +353,25 @@ Feature: Home
     Then Total de Recebimentos será igual ao recebimento de hoje + futuro previsto
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T386
   Scenario Outline: Ocultar valores da Home
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -373,25 +391,25 @@ Feature: Home
     And Usuário verá em "Home - Agenda Recebimento - Valor Sexta" o valor "R$ ••••" - se existir
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
-
-
+  @TestCaseKey=LPDC-T126
   Scenario Outline: Abrir Modal Personalizar Acesso Rápido (inclui Adiantamento)
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -401,49 +419,53 @@ Feature: Home
     Then devo visualizar a um modal com demais <funcionalidades> para escolher
     @sicredi @alliances
     Examples:
-      |Description        |alianca  | funcionalidades                                                                             |
-      |Usuario master     |sicredi  | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+      | Description    | alianca | funcionalidades                                                                             |
+      | Usuario master | sicredi | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  | funcionalidades                                                                             |
-      |Usuario master     |afinz    | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+      | Description    | alianca | funcionalidades                                                                             |
+      | Usuario master | afinz   | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  | funcionalidades                                                                             |
-      |Usuario master     |azulzinha| Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+      | Description    | alianca   | funcionalidades                                                                             |
+      | Usuario master | azulzinha | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  | funcionalidades                                                                             |
-      |Usuario master     |bin      | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+      | Description    | alianca | funcionalidades                                                                             |
+      | Usuario master | bin     | Antecipação, Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
 
-
+  @TestCaseKey=LPDC-T112
   Scenario Outline: recebimentos futuros existem
     Given open portal "<alianca>" and logon
-  #Then Usuário estará com acesso e sessão foi salva
-  #And Todas as requisições HTTP foram respondidas
-  #Given que estou na tela “início” do Portal
+    #Then Usuário estará com acesso e sessão foi salva
+    #And Todas as requisições HTTP foram respondidas
+    #Given que estou na tela “início” do Portal
     And existem valores futuros a receber
     Then usuário verá em "Home - Card Recebimento - Recebimento Previsto" valor maior que 0,00
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
-
+  @TestCaseKey=LPDC-T64
   Scenario Outline: Recebimentos Hoje no card Recebimentos é igual a API
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -451,23 +473,25 @@ Feature: Home
     Then Total de 'Home - Recebimentos - Recebimentos hoje' será igual à API
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T62
   Scenario Outline: Valor de Recebimentos Futuros Previstos na Home é igual à API
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
@@ -475,48 +499,51 @@ Feature: Home
     Then Total de 'Home - Card Recebimento - Recebimento Previsto' será igual à API
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T130
   Scenario Outline: Valor de Vendas Hoje na Home é igual à API
     Given open portal "<alianca>" and logon
     Then Usuário estará com acesso e sessão foi salva
     Given Usuário acessou o Home
     Then Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API
-
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T275
   Scenario Outline: Busca de código EC valido aba Estabelecimento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -525,23 +552,25 @@ Feature: Home
     And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T349
   Scenario Outline: Busca de código EC inválido aba Estabelecimento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -549,23 +578,25 @@ Feature: Home
     Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T390
   Scenario Outline: Busca de Documento (CNPJ ou CPF) inválido aba Estabelecimento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -573,23 +604,25 @@ Feature: Home
     Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T399
   Scenario Outline: Validar botão “X” no componente “Buscar por documento” na aba Documento na tela de personalize sua visualização (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -597,23 +630,25 @@ Feature: Home
     Then Usuário poderá limpar a busca clicando no X
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T118
   Scenario Outline: Busca de documento válido aba Documento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -622,23 +657,25 @@ Feature: Home
     And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T54
   Scenario Outline: Usuário não existente no GA1 nem no GA2 e sem cadastro na Fiserv
     Given open portal "<alianca>" and logon
     And Usuário clicou no botão esqueci minha senha
@@ -646,55 +683,55 @@ Feature: Home
     Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T115
   Scenario Outline: Busca de documento inválido aba Documento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento inválido em 'Buscar por documento'
     Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
-#And Botão "Trocar Estabelecimento - Botão Acessar" estará visível e desabilitado
-#And Botão "Trocar Estabelecimento - Marcar como Padrão" estará visível e desabilitado
+    #And Botão "Trocar Estabelecimento - Botão Acessar" estará visível e desabilitado
+    #And Botão "Trocar Estabelecimento - Marcar como Padrão" estará visível e desabilitado
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
-
-#======================================================================================================================
-#==testes falhando sicredi
-
-
-
+  #======================================================================================================================
+  #==testes falhando sicredi
+  @TestCaseKey=LPDC-T341
   Scenario Outline: Validar Campos do Personalize sua Visualização aba Documento. (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -705,24 +742,25 @@ Feature: Home
     And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Ao selecionar esse formato, as informações do Portal serão apresentadas de forma consolidada, agrupando os estabelecimentos abaixo do documento. Você poderá alterar a seleção a qualquer momento no portal."
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
-
+  @TestCaseKey=LPDC-T242
   Scenario Outline: Valida Nomes, CNPJ/CPFs, número EC e status com API
     Given open portal "<alianca>" and logon
     Given Usuário logou na aplicação, selecionou todos os documentos e salvou sessão
@@ -731,22 +769,25 @@ Feature: Home
     Then Todos Nomes, CNPJ CPFs, número ECs e status são iguais a API
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T119
   Scenario Outline: abrir notificações
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
@@ -755,68 +796,76 @@ Feature: Home
     Then o Portal deve abrir as "Minhas Notificações"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
+  @TestCaseKey=LPDC-T270
   Scenario Outline: recebimentos futuros não existem
     Given open portal "<alianca>" and logon
-#Given que estou na tela “início” do Portal
+    #Given que estou na tela “início” do Portal
     And não existem valores futuros para receber
     Then Usuário verá em "Home - Card Recebimento - Recebimento Previsto" o valor "R$ 0,00"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T134
   Scenario Outline: Redirecionamento Correto (Usuário Master) - o usuário verá modal Personalizar ao logar
     Given open portal "<alianca>" and logon
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
     Then Usuário verá modal para selecionar EC ou DTCO
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T104
   Scenario Outline: Validar Campos do Personalize sua Visualização aba Estabelecimento. (Usuário Master)
     Given open portal "<alianca>" and logon
     When Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -826,23 +875,25 @@ Feature: Home
     And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Ao selecionar esse formato, as informações do Portal serão apresentadas de forma correspondente ao estabelecimento escolhido. Você poderá alterar a seleção a qualquer momento no portal."
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T255
   Scenario Outline: Compara últimas vendas na Home com a API
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
@@ -850,44 +901,50 @@ Feature: Home
     Then 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T55
   Scenario Outline: Validar não seleção no checkbox de não mostrar novamente (Usuário Master)
     Given open portal "<alianca>" and logon
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
     Then Usuário verá modal para selecionar EC ou DTCO
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T267
   Scenario Outline: Validação do Botão Acessar (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -895,47 +952,51 @@ Feature: Home
     Then Documento estará previamente selecionado
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T116
   Scenario Outline: Abrir Modal Personalizar Acesso Rápido (exclui Adiantamento)
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
     When clicar no botão "Personalizar"
     Then devo visualizar a um modal com demais <funcionalidades> para escolher
-
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |funcionalidades                                                                |
-      |Usuario master     |sicredi  |Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+      | Description    | alianca | funcionalidades                                                                |
+      | Usuario master | sicredi | Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |funcionalidades                                                                |
-      |Usuario master     |afinz    |Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+      | Description    | alianca | funcionalidades                                                                |
+      | Usuario master | afinz   | Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |funcionalidades                                                                |
-      |Usuario master     |azulzinha|Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+      | Description    | alianca   | funcionalidades                                                                |
+      | Usuario master | azulzinha | Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |funcionalidades                                                                |
-      |Usuario master     |bin      |Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
+      | Description    | alianca | funcionalidades                                                                |
+      | Usuario master | bin     | Informe de Rendimento, Vendas, Recebimentos, Negócio, Relatórios, Solicitações |
 
-
+  @TestCaseKey=LPDC-T99
   Scenario Outline: Validar expansão do dropdown na aba Estabelecimento. (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -946,23 +1007,25 @@ Feature: Home
     And O dropdown conterá com as informações do status do EC no BW
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T381
   Scenario Outline: Busca de Documento (CNPJ ou CPF) válido aba Estabelecimento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -971,47 +1034,52 @@ Feature: Home
     And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-# TODO: fix to use anticipation linked to data-testid
-# TODO: fix this: And Usuário não verá botão com texto "<texto botão>"
-
-
+  # TODO: fix to use anticipation linked to data-testid
+  # TODO: fix this: And Usuário não verá botão com texto "<texto botão>"
+  @TestCaseKey=LPDC-T382
   Scenario Outline: Usuário MDR Padrão NÃO verá card "Receba antes"
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
     Then Usuário não verá card Antecipação
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T121
   Scenario Outline: Valor de vendas hoje e percentual no card Vendas Hoje do Home
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
@@ -1019,46 +1087,53 @@ Feature: Home
     And Usuário verá em "Home - Card Vendas Hoje - Percentual Vendas Hoje" o valor "<percentual>"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |valor venda  | percentual |
-      |Usuario master     |sicredi  | R$ 55.400,00 | 21%        |
+      | Description    | alianca | valor venda  | percentual |
+      | Usuario master | sicredi | R$ 55.400,00 | 21%        |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |valor venda  | percentual |
-      |Usuario master     |afinz    | R$ 55.400,00 | 21%        |
+      | Description    | alianca | valor venda  | percentual |
+      | Usuario master | afinz   | R$ 55.400,00 | 21%        |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |valor venda  | percentual |
-      |Usuario master     |azulzinha| R$ 55.400,00 | 21%        |
+      | Description    | alianca   | valor venda  | percentual |
+      | Usuario master | azulzinha | R$ 55.400,00 | 21%        |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |valor venda  | percentual |
-      |Usuario master     |bin      | R$ 55.400,00 | 21%        |
+      | Description    | alianca | valor venda  | percentual |
+      | Usuario master | bin     | R$ 55.400,00 | 21%        |
 
- # não tenho certeza se este teste está correto
-
+  # não tenho certeza se este teste está correto
+  @TestCaseKey=LPDC-T106
   Scenario Outline: Compara agenda de recebimento da semana com a API
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
     Then 'Home - Card agenda semana' será igual a API
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
- # TODO: confirmar a api
-  @UsuárioComHierarquia
+      | Description    | alianca |
+      | Usuario master | bin     |
 
+  # TODO: confirmar a api
+  @UsuárioComHierarquia
+  @TestCaseKey=LPDC-T266
   Scenario Outline: Vendas HOJE com seleção de EC (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -1067,23 +1142,26 @@ Feature: Home
     And 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API do EC selecionado
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-# TODO: confirmar a api
-
+  # TODO: confirmar a api
+  @TestCaseKey=LPDC-T237
   Scenario Outline: Vendas HOJE com seleção de Documento (Usuário Master)
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -1092,68 +1170,76 @@ Feature: Home
     And 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API do EC selecionado
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
- # não tenho certeza se este teste está correto
-
+  # não tenho certeza se este teste está correto
+  @TestCaseKey=LPDC-T361
   Scenario Outline: Está trazendo todos os ECs no card Adiantamento igual a API
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
     Then 'Home - Card Antecipação - ECs' são os mesmos que a API
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T437
   Scenario Outline: Validar seleção no checkbox de não mostrar novamente (Usuário Master)
     Given open portal "<alianca>" and logon
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "marcada"
     Then Usuário estará com acesso e sessão foi salva
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T105
   Scenario Outline: conteúdo correto da Agenda de recebimentos da semana
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -1162,23 +1248,25 @@ Feature: Home
     Then usuário visualizará 5 dias com as respectivas informações data, mês, dia da semana, valor líquido, e quantidade de depósitos realizados
     @sicredi @alliances @_agenda
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances @_agenda
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances @_agenda
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances @_agenda
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T110
   Scenario Outline: destaque para as informações da agenda de recebimentos
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
@@ -1187,22 +1275,25 @@ Feature: Home
     Then usuário visualizará o dia "hoje" destacado e os dias anteriores com valores verdes e os próximos com letras pretas
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T123
   Scenario Outline: Agenda de recebimentos da semana vazia
     Given open portal "<alianca>" and logon
     And não existir Agenda de recebimentos da semana para exibir
@@ -1210,17 +1301,21 @@ Feature: Home
     And usuário visualizará um botão "Ver recebimentos detalhado"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
+

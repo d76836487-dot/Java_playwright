@@ -6,56 +6,59 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Agenda de recebimentos por UR
 
-
-
+  @TestCaseKey=LPDC-T319
   Scenario Outline: Valor total Líquido de UR igual a soma do Valor de Bandeiras
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
     Given existem recebimentos listados
     Then Valor total Líquido de UR será igual à soma dos valores das Bandeiras
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-  @afinz @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
-  @azulzinha @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
-  @bin @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | sicredi |
 
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | afinz   |
 
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
 
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | bin     |
+
+  @TestCaseKey=LPDC-T284
   Scenario Outline: Valor total é igual a soma do Valor Líquido com o Valor Pago
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
     Given existem recebimentos listados
     Then Valor total é igual a soma do Valor Líquido com o Valor Pago
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-  @afinz @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
-  @azulzinha @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
-  @bin @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | sicredi |
 
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | afinz   |
 
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
 
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | bin     |
+
+  @TestCaseKey=LPDC-T301
   Scenario Outline: Botão Ocultar Valores na Agenda UR
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -73,25 +76,27 @@ Feature: Agenda de recebimentos por UR
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total de deduções" o mesmo valor "- R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total ajustes crédito" o mesmo valor "R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total contratos" o mesmo valor "R$ ••••"
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-  @afinz @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
-  @azulzinha @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
-  @bin @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | sicredi |
 
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | afinz   |
 
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
 
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | bin     |
+
+  @TestCaseKey=LPDC-T285
   Scenario Outline: Consultar Botão Filtros
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -106,25 +111,25 @@ Feature: Agenda de recebimentos por UR
     Then Usuário verá fundo na cor primário "<cor>" quando clicar nas bandeiras no "Filter - Bandeiras (0)"
     @sicredi
     Examples:
-      | cor              |alianca|
-      | rgb(63, 161, 16) |sicredi|
+      | cor              | alianca |
+      | rgb(63, 161, 16) | sicredi |
 
     @azulzinha
     Examples:
-      | cor              |alianca|
-      | rgb(0, 102, 179) |afinz  |
+      | cor              | alianca |
+      | rgb(0, 102, 179) | afinz   |
 
     @bin
     Examples:
-      | cor              |alianca|
-      | rgb(255, 102, 0) |bin    |
+      | cor              | alianca |
+      | rgb(255, 102, 0) | bin     |
 
     @afinz
     Examples:
-      | cor              |alianca|
-      | rgb(0, 198, 204) |afinz  |
+      | cor              | alianca |
+      | rgb(0, 198, 204) | afinz   |
 
-
+  @TestCaseKey=LPDC-T282
   Scenario Outline: Consultar Período (Esse Mês)
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -134,24 +139,27 @@ Feature: Agenda de recebimentos por UR
     And usuário clica "Paginação - mostrar 50 itens"
     And existem recebimentos listados
     Then Irá apresentar resultados do dia 01 do mês corrente até o último dia do mês
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-  @afinz @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
-  @azulzinha @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
-  @bin @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | sicredi |
 
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | afinz   |
 
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | bin     |
+
+  @TestCaseKey=LPDC-T314
   Scenario Outline: Consultar Período (Hoje)
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -159,24 +167,27 @@ Feature: Agenda de recebimentos por UR
     When usuário clica "Date ranger - Hoje"
     And existem recebimentos listados
     Then Irá apresentar resultados do dia atual apenas
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-  @afinz @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
-  @azulzinha @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
-  @bin @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | sicredi |
 
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | afinz   |
 
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | bin     |
+
+  @TestCaseKey=LPDC-T287
   Scenario Outline: Consultar Período (Essa semana)
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -184,72 +195,81 @@ Feature: Agenda de recebimentos por UR
     When usuário clica "Date ranger - Essa semana"
     And existem recebimentos listados
     Then Irá apresentar resultados referentes a Essa semana
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-  @afinz @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
-  @azulzinha @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
-  @bin @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | sicredi |
 
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | afinz   |
 
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | bin     |
+
+  @TestCaseKey=LPDC-T316
   Scenario Outline: Botão Cancelar da modal Exportar
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
     Given usuário clicou no "Agenda de Recebimentos por UR - Botão Exportar"
     When usuário clica "Agenda de Recebimentos por UR - Exportar - Botão Cancelar"
     Then Usuário não verá nenhum "Agenda de Recebimentos por UR - Exportar - Modal"
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-  @afinz @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
-  @azulzinha @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
-  @bin @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | sicredi |
 
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | afinz   |
 
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | bin     |
+
+  @TestCaseKey=LPDC-T385
   Scenario Outline: Botão X da modal Exportar
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
     Given usuário clicou no "Agenda de Recebimentos por UR - Botão Exportar"
     When usuário clica "Agenda de Recebimentos por UR - Exportar - Botão X"
     Then Usuário não verá nenhum "Agenda de Recebimentos por UR - Exportar - Modal"
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-  @afinz @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
-  @azulzinha @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
-  @bin @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | sicredi |
 
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | afinz   |
 
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | bin     |
+
+  @TestCaseKey=LPDC-T295
   Scenario Outline: Baixar Arquivo Excel e CSV
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -264,32 +284,35 @@ Feature: Agenda de recebimentos por UR
       | CSV    |
 
   #==>
-
- Scenario Outline: Acesso a Agenda de recebimentos por UR Com apenas um Documento
+  @TestCaseKey=LPDC-T308
+  Scenario Outline: Acesso a Agenda de recebimentos por UR Com apenas um Documento
     Given open portal "<alianca>" and logon
     And Usuário selecionar um documento e clicar Acessar
     And Usuário acessou o Home
     When Usuário passa o mouse sobre "Menu Lateral - Recebimentos"
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
     Then usuário não verá em "Agenda de Recebimentos por UR" opção de Alterar Documento
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-  @afinz @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
-  @azulzinha @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
-  @bin @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | sicredi |
 
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | afinz   |
 
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | bin     |
+
+  @TestCaseKey=LPDC-T294
   Scenario Outline: Acesso a Agenda de recebimentos por UR Com vários Documentos
     Given open portal "<alianca>" and logon
     And Usuário acessou o Home
@@ -297,24 +320,27 @@ Feature: Agenda de recebimentos por UR
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
     Then usuário verá em "Agenda de Recebimentos por UR" opção de Alterar Documento
     And selecionando o Documento no Header o Usuário visualizara o Respectivo Documento selecionado
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-  @afinz @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
-  @azulzinha @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
-  @bin @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | sicredi |
 
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | afinz   |
 
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | bin     |
+
+  @TestCaseKey=LPDC-T318
   Scenario Outline: Acesso a Agenda de recebimentos por UR selecionando um Estabelecimento no Modal
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -323,24 +349,27 @@ Feature: Agenda de recebimentos por UR
     When Usuário passa o mouse sobre "Menu Lateral - Recebimentos"
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
     Then Usuário visualizará em Agenda de recebimentos por UR o Documento selecionado
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
-  @afinz @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
-  @azulzinha @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
-  @bin @alliances
-    Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | sicredi |
 
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | afinz   |
 
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | Usuario master | bin     |
+
+  @TestCaseKey=LPDC-T298
   Scenario Outline: Valida valores da UR se é igual a outras datas já consultadas
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -357,23 +386,25 @@ Feature: Agenda de recebimentos por UR
     And Campo "Agenda de Recebimentos por UR - Resumo - Total contratos" terá mesmo valor que consultado antes, salvando em arquivo
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |dias úteis|
-      |Usuario master     |sicredi    |-1        |
-        @afinz @alliances
+      | Description    | alianca | dias úteis |
+      | Usuario master | sicredi | -1         |
+
+    @afinz @alliances
     Examples:
-      |Description        |alianca  |dias úteis|
-      |Usuario master     |afinz    |-1        |
+      | Description    | alianca | dias úteis |
+      | Usuario master | afinz   | -1         |
 
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  | dias úteis|
-      |Usuario master     |azulzinha|-1        |
+      | Description    | alianca   | dias úteis |
+      | Usuario master | azulzinha | -1         |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |dias úteis|
-      |Usuario master     |bin      |-1        |
+      | Description    | alianca | dias úteis |
+      | Usuario master | bin     | -1         |
 
-
+  @TestCaseKey=LPDC-T304
   Scenario Outline: Valida valores do lote da UR se é igual a outras datas já consultadas
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -385,29 +416,31 @@ Feature: Agenda de recebimentos por UR
     And Campo "Agenda de Recebimentos por UR - Lote de Recebimento - Valor pago" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Lote de Recebimento - Saldo disponível negociável" terá mesmo valor que consultado antes, salvando em arquivo
     Examples:
-      | dias úteis |alianca  |
-      | -1         |sicredi|
-      | -2         |sicredi|
-      | -3         |sicredi|
-      | -4         |sicredi|
-      | -5         |sicredi|
-      | -6         |sicredi|
+      | dias úteis | alianca |
+      | -1         | sicredi |
+      | -2         | sicredi |
+      | -3         | sicredi |
+      | -4         | sicredi |
+      | -5         | sicredi |
+      | -6         | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |dias úteis|
-      |Usuario master     |afinz    |-1        |
+      | Description    | alianca | dias úteis |
+      | Usuario master | afinz   | -1         |
 
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  | dias úteis|
-      |Usuario master     |azulzinha|-1        |
+      | Description    | alianca   | dias úteis |
+      | Usuario master | azulzinha | -1         |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |dias úteis|
-      |Usuario master     |bin      |-1        |
-# o portal é muito lento para validar ausência de informações
+      | Description    | alianca | dias úteis |
+      | Usuario master | bin     | -1         |
 
-
+  # o portal é muito lento para validar ausência de informações
+  @TestCaseKey=LPDC-T299
   Scenario Outline: Valida ausência de valores do lote da UR se é igual a outras datas já consultadas
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -417,19 +450,20 @@ Feature: Agenda de recebimentos por UR
     Then Campo "Agenda de Recebimentos por UR - Lote de Recebimento - Valor Total" terá valor "sem lote de recebimento", salvando em arquivo
     @afinz @alliances
     Examples:
-      |Description        |alianca  |dias úteis|
-      |Usuario master     |afinz    |-1        |
+      | Description    | alianca | dias úteis |
+      | Usuario master | afinz   | -1         |
 
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  | dias úteis|
-      |Usuario master     |azulzinha|-1        |
+      | Description    | alianca   | dias úteis |
+      | Usuario master | azulzinha | -1         |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |dias úteis|
-      |Usuario master     |bin      |-1        |
+      | Description    | alianca | dias úteis |
+      | Usuario master | bin     | -1         |
 
-
+  @TestCaseKey=LPDC-T305
   Scenario Outline: Valida valores futuro da UR se é igual a outras datas já consultadas
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -438,31 +472,30 @@ Feature: Agenda de recebimentos por UR
     When Usuário seleciona data com base no arquivo de consistência
     Then Campo "Agenda de Recebimentos por UR - Agenda Futura - Saldo" terá mesmo valor que consultado antes, salvando em arquivo
     Examples:
-      | dias úteis |alianca  |
-      | 1          |sicredi|
-      | 2          |sicredi|
-      | 3          |sicredi|
-      | 4          |sicredi|
-      | 5          |sicredi|
-      | 6          |sicredi|
+      | dias úteis | alianca |
+      | 1          | sicredi |
+      | 2          | sicredi |
+      | 3          | sicredi |
+      | 4          | sicredi |
+      | 5          | sicredi |
+      | 6          | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |dias úteis|
-      |Usuario master     |afinz    |1        |
+      | Description    | alianca | dias úteis |
+      | Usuario master | afinz   | 1          |
 
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  | dias úteis|
-      |Usuario master     |azulzinha|1        |
+      | Description    | alianca   | dias úteis |
+      | Usuario master | azulzinha | 1          |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |dias úteis|
-      |Usuario master     |bin      |1        |
+      | Description    | alianca | dias úteis |
+      | Usuario master | bin     | 1          |
 
-
-
-
-
+  @TestCaseKey=LPDC-T288
   Scenario Outline: Consultar Campos Valor Total, Valor Total líquido de URs, Valor pago, na Seção Resumo
     Given open portal "<alianca>" and logon
     Given Usuário acessou a página de Agenda de Recebimentos por UR
@@ -475,22 +508,25 @@ Feature: Agenda de recebimentos por UR
     And Usuário visualizará o campo "Valor pago" na seção "Agenda de Recebimentos por UR - Resumo"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T297
   Scenario Outline: Consultar Campos Total de Entradas e saídas , na Seção Resumo
     Given open portal "<alianca>" and logon
     Given Usuário acessou a página de Agenda de Recebimentos por UR
@@ -505,22 +541,25 @@ Feature: Agenda de recebimentos por UR
     And Usuário visualizará o campo "O que são esses totais?" na seção "Agenda de Recebimentos por UR - Resumo"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T302
   Scenario Outline: Botão “O que são esses totais?”
     Given open portal "<alianca>" and logon
     Given Usuário acessou a página de Agenda de Recebimentos por UR
@@ -547,22 +586,25 @@ Feature: Agenda de recebimentos por UR
       | Valor total a pagar ou já pago ao estabelecimento ou financiador referente a operações como gravame, cessão e outros ônus, realizadas pelo estabelecimento junto ao financiador no período selecionado. |
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T286
   Scenario Outline: Consultar Componente Totais líquidos por bandeira
     Given open portal "<alianca>" and logon
     #OBS: Apresentar a relação das bandeiras de forma fixa no front e popular CASO retorne valor da API. Se não retornar valor, apresentar com R$ 0,00
@@ -578,22 +620,25 @@ Feature: Agenda de recebimentos por UR
       | Cabal      | azul escuro | rgb(13, 92, 147)  |
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T320
   Scenario Outline: Consultar Componente “gráfico”
     Given open portal "<alianca>" and logon
     Given Usuário acessou a página de Agenda de Recebimentos por UR
@@ -609,22 +654,25 @@ Feature: Agenda de recebimentos por UR
       | Cabal      | azul escuro | rgb(13, 92, 147)  |
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T309
   Scenario Outline: Consultar Componente “gráfico” sem valores
     Given open portal "<alianca>" and logon
     Given Usuário acessou a página de Agenda de Recebimentos por UR
@@ -633,22 +681,25 @@ Feature: Agenda de recebimentos por UR
     And todas as bandeiras deve vir com valores zerados
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T322
   Scenario Outline: Consultar Detalhe totais por bandeira e produto
     Given open portal "<alianca>" and logon
     #Obs.: Apresentar bandeira com total ainda que o total seja zero.
@@ -682,7 +733,7 @@ Feature: Agenda de recebimentos por UR
       | cor da Instituição |
       | rgb(63, 161, 16)   |
 
-
+  @TestCaseKey=LPDC-T393
   Scenario Outline: Consultar Botão Período
     Given open portal "<alianca>" and logon
     #Obs: Esse menu terá dados de histórico (passado) mas também de futuro.
@@ -695,23 +746,25 @@ Feature: Agenda de recebimentos por UR
     And Usuário pode preencher a data conforme desejado
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T312
   Scenario Outline: Direcionamento
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -720,23 +773,25 @@ Feature: Agenda de recebimentos por UR
     Then usuário será direcionado à tela "Agenda de recebimentos por UR > Detalhe da UR"
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T321
   Scenario Outline: Consultar Layout da seção Resumo
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -749,22 +804,25 @@ Feature: Agenda de recebimentos por UR
     And Usuário verá no card da seção Resumo o Valor total, Total atualizado da UR, Valor pago, Total de deduções
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T324
   Scenario Outline: Seção Resumo Botão Mostrar todos os detalhes
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -779,22 +837,25 @@ Feature: Agenda de recebimentos por UR
     """
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T317
   Scenario Outline: Confere Valor Total de Agenda de recebimentos por UR com exportação
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -817,22 +878,25 @@ Feature: Agenda de recebimentos por UR
     And "Total contratos valor" do Detalhe da UR será igual ao "Total contratos" do Excel
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |numero lote |
-      |Usuario master     |sicredi  |0           |
+      | Description    | alianca | numero lote |
+      | Usuario master | sicredi | 0           |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |numero lote |
-      |Usuario master     |afinz    |0           |
+      | Description    | alianca | numero lote |
+      | Usuario master | afinz   | 0           |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |numero lote |
-      |Usuario master     |azulzinha|0           |
+      | Description    | alianca   | numero lote |
+      | Usuario master | azulzinha | 0           |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |numero lote |
-      |Usuario master     |bin      |0           |
+      | Description    | alianca | numero lote |
+      | Usuario master | bin     | 0           |
 
-
+  @TestCaseKey=LPDC-T306
   Scenario Outline: Consultar Pagamentos da UR (Status Pago)
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -843,22 +907,25 @@ Feature: Agenda de recebimentos por UR
     Then Usuário visualizar status pago com bolinha na cor verde
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T292
   Scenario Outline: Consultar Pagamentos da UR (Status Programado)
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -870,20 +937,24 @@ Feature: Agenda de recebimentos por UR
     Then Usuário visualizar status programado com bolinha na cor amarelo
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
+
   #produto,
   #botão Mostrar todos os detalhes
   #  Scenario Outline: Consultar Abas na Tela / Detalhe da UR
@@ -891,8 +962,7 @@ Feature: Agenda de recebimentos por UR
   #    When Clicar sobre um lote (bandeira e produto) da listagem apresentada
   #    And estiver na tela “Agenda de recebimentos por UR > Detalhe da UR”
   #    Then usuário visualizara as abas (Vendas vinculadas, Pagamentos, Créditos e deduções, Contratos)
-
-
+  @TestCaseKey=LPDC-T290
   Scenario Outline: Nome das colunas do Arquivo Excel
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -945,22 +1015,25 @@ Feature: Agenda de recebimentos por UR
     And Os valores das colunas do excel em Detalhe UR baixado terão mesma formatação
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T283
   Scenario Outline: Detalhe Venda
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
@@ -974,20 +1047,24 @@ Feature: Agenda de recebimentos por UR
     And Popup da UR da venda será fechada após usuário clicar no botão Fechar
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |sicredi  |
+      | Description    | alianca |
+      | Usuario master | sicredi |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |afinz    |
+      | Description    | alianca |
+      | Usuario master | afinz   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |azulzinha|
+      | Description    | alianca   |
+      | Usuario master | azulzinha |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |
-      |Usuario master     |bin      |
+      | Description    | alianca |
+      | Usuario master | bin     |
+
 #
 #
 #

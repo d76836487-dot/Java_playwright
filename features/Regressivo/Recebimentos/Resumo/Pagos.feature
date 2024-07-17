@@ -6,7 +6,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Recebimentos Resumo Pago
 
-
+  @TestCaseKey=LPDC-T388
   Scenario Outline: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de Documento
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
@@ -26,26 +26,29 @@ Feature: Recebimentos Resumo Pago
     And Total cedido em 'Recibos Pagos' é igual ao exportado
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |format             |
-      |Usuario master     |sicredi  | Excel Simplificado |
-      |Usuario master     |sicredi  | CSV Simplificado |
+      | Description    | alianca | format             |
+      | Usuario master | sicredi | Excel Simplificado |
+      | Usuario master | sicredi | CSV Simplificado   |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |format             |
-      |Usuario master     |afinz    |Excel Simplificado |
-      |Usuario master     |afinz  | CSV Simplificado |
+      | Description    | alianca | format             |
+      | Usuario master | afinz   | Excel Simplificado |
+      | Usuario master | afinz   | CSV Simplificado   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |format             |
-      |Usuario master     |azulzinha|Excel Simplificado |
-      |Usuario master     |azulzinha  | CSV Simplificado |
+      | Description    | alianca   | format             |
+      | Usuario master | azulzinha | Excel Simplificado |
+      | Usuario master | azulzinha | CSV Simplificado   |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |format             |
-      |Usuario master     |bin      |Excel Simplificado |
-      |Usuario master     |bin  | CSV Simplificado |
+      | Description    | alianca | format             |
+      | Usuario master | bin     | Excel Simplificado |
+      | Usuario master | bin     | CSV Simplificado   |
 
-
+  @TestCaseKey=LPDC-T383
   Scenario Outline: Valores tela Recebimentos - Pagos - deve bater com exportação - com seleção de EC
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
@@ -65,23 +68,25 @@ Feature: Recebimentos Resumo Pago
     And Total cedido em 'Recibos Pagos' é igual ao exportado
     @sicredi @alliances
     Examples:
-      |Description        |alianca  |format             |
-      |Usuario master     |sicredi  | Excel Simplificado |
-      |Usuario master     |sicredi  | CSV Simplificado |
+      | Description    | alianca | format             |
+      | Usuario master | sicredi | Excel Simplificado |
+      | Usuario master | sicredi | CSV Simplificado   |
+
     @afinz @alliances
     Examples:
-      |Description        |alianca  |format             |
-      |Usuario master     |afinz    |Excel Simplificado |
-      |Usuario master     |afinz  | CSV Simplificado |
+      | Description    | alianca | format             |
+      | Usuario master | afinz   | Excel Simplificado |
+      | Usuario master | afinz   | CSV Simplificado   |
+
     @azulzinha @alliances
     Examples:
-      |Description        |alianca  |format             |
-      |Usuario master     |azulzinha|Excel Simplificado |
-      |Usuario master     |azulzinha  | CSV Simplificado |
+      | Description    | alianca   | format             |
+      | Usuario master | azulzinha | Excel Simplificado |
+      | Usuario master | azulzinha | CSV Simplificado   |
+
     @bin @alliances
     Examples:
-      |Description        |alianca  |format             |
-      |Usuario master     |bin      |Excel Simplificado |
-      |Usuario master     |bin  | CSV Simplificado |
-
+      | Description    | alianca | format             |
+      | Usuario master | bin     | Excel Simplificado |
+      | Usuario master | bin     | CSV Simplificado   |
 
