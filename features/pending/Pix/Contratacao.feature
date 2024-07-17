@@ -7,7 +7,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Pix Contratacao
 
-
+  @TestCaseKey=LPDC-T131
   Scenario Outline: Contratacao de Pix no Portal do Cliente com chave Pix valida Serpro Ok e POS OK
     # Testes do bloco 3 (Contratação)
     Given que tenho EC <Hierarquia> com o Perfil <Perfil>
@@ -25,7 +25,7 @@ Feature: Pix Contratacao
       | EC3 | Master                | Neto       | CNPJ      | OK            | OK  |
       | EC4 | Assitente de Operador | Matriz     | Celular   | OK            | OK  |
 
-
+  @TestCaseKey=LPDC-T124
   Scenario Outline: Contratacao de Pix no Portal do Cliente Com Perfil inelegivel
     # Testes do bloco 1 (Sem perfil)
     Given que tenho EC <Hierarquia> com o Perfil <Perfil>
@@ -40,7 +40,7 @@ Feature: Pix Contratacao
       | EC1 | Assitente de Consulta | Matriz     | OK     | OK  |
       | EC2 | Operador com F        | Filho      | OK     | OK  |
 
-
+  @TestCaseKey=LPDC-T128
   Scenario: Contratacao de Pix no Portal do Cliente elegível Com Perfil Serpro NOK e POS OK
     # Testes do bloco 1 (Sem habilitação)
     Given que tenho EC "Master" com o Perfil "Matriz" EC5
@@ -50,7 +50,7 @@ Feature: Pix Contratacao
     And realizar acessar o menu Conta Pix
     Then será direcionado para o Menu Conta Pix
 
-
+  @TestCaseKey=LPDC-T125
   Scenario Outline: Contratacao de Pix no Portal do Cliente Com Perfil elegivel e chave Pix invalida
     # Testes do bloco 2 (Chave Pix Inválida)
     Given que tenho EC <Hierarquia> com o Perfil <Perfil>
@@ -66,7 +66,7 @@ Feature: Pix Contratacao
       | EC1 | Master             | Matriz     | Outra titularidade | OK     | OK  |
       | EC2 | Assitente Operador | Filho      | Chave Invalida     | OK     | OK  |
 
-
+  @TestCaseKey=LPDC-T95
   Scenario: Habilitar Pix com Hierarquia Filho 1 e validar que o perfil Matriz não entrem no fluxo de contratação
     Given acesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso
@@ -74,7 +74,7 @@ Feature: Pix Contratacao
     And acessar o menu Conta Pix
     Then não deve entrar no fluxo de contratação de Conta Pix
 
-
+  @TestCaseKey=LPDC-T97
   Scenario: Habilitar Pix com Hierarquia Filho 1 e validar que o perfil Filho 2 não entrem no fluxo de contratação
     Given acesse o Portal com EC com o Perfil "Filho 1"
     And realiza a habilitação Conta Pix com sucesso
@@ -82,7 +82,7 @@ Feature: Pix Contratacao
     And acessar o menu Conta Pix
     Then não deve entrar no fluxo de contratação de Conta Pix
 
-
+  @TestCaseKey=LPDC-T102
   Scenario: Contratacao de Pix no Portal do Cliente com chave Pix valida Serpro Ok e POS OK - Possui conta na Software Express
     Given que tenho EC "Master"
     And esteja cadastrado na Serpro
