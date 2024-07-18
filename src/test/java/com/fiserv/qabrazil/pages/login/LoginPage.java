@@ -266,4 +266,14 @@ public class LoginPage extends BasePage {
         page.navigate("https://sicredi.qa.portaldocliente.fiserv.com/Ajuda");
 
     }
+
+    public void logonportalEasy(String arg0, String arg1) throws InterruptedException, IOException {
+        Config.acessLogonCount = 0;
+        String Ret = "";
+
+        page.locator("id=b2-b2-b4-InputMask").type(arg0);
+        page.locator("id=b2-b2-Input_Password").type(arg1);
+        page.locator("data-testid=entrar").click();
+    }
+
 }

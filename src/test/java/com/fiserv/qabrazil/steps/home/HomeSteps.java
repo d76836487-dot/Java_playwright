@@ -6,6 +6,7 @@ import com.fiserv.qabrazil.pages.home.HomeCustomizeModal;
 import com.fiserv.qabrazil.pages.home.HomePage;
 import com.fiserv.qabrazil.util.Currency;
 import io.cucumber.java.ParameterType;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -63,7 +64,7 @@ public class HomeSteps extends BaseSteps {
         commonsPage.clickButtonWithText(buttonText);
     }
 
-    @Then("Total de Recebimentos será igual ao recebimento de hoje + futuro previsto")
+    @Then("Calcula Card Recebimentos")
     public void totalReceivableMatches() {
         PageField todayReceivableId = pageField.from("Home - Card Recebimento - Recebimento Hoje");
         PageField foreseenReceivableId = pageField.from("Home - Card Recebimento - Recebimento Previsto");
@@ -109,5 +110,43 @@ public class HomeSteps extends BaseSteps {
         boolean zeroNotifications = pageField.from("Header - Notificações").getAsText().contains("0Notificações");
         System.out.printf("Notifications: %b - %s%n", zeroNotifications, pageField.from("Header - Notificações").getAsText());
         assumeThat(zeroNotifications).isFalse();
+    }
+
+    @And("{string} esta visivel no acesso rapido")
+    public void estaVisivelNoAcessoRapido(String arg0) {
+        homePage.cheTextElementOnage(arg0);
+    }
+
+    @And("{string} esta visivel na home")
+    public void estaVisivelNaHome(String arg0) {
+        homePage.cheTextElementOnage(arg0);
+    }
+
+    @Then("verifica mensagem em tela {string}")
+    public void verificaMensagemEmTela(String arg0) {
+        homePage.cheTextElementOnage(arg0);
+    }
+
+    @And("check screen text {string}")
+    public void checkScreenText(String arg0) {
+        homePage.cheTextElementOnage(arg0);
+    }
+
+    @And("Usuário clica em ver tudo no card {string}")
+    public void usuárioClicaEmVerTudoNoCard(String arg0) {
+        if(arg0.equals("Recebimentos")) {
+            homePage.usuárioClicaEmVerTudoNoCardRecebimento(arg0);
+        }
+
+        if(arg0.equals("Últimas vendas")) {
+            homePage.usuárioClicaEmVerTudoNoCardultimasVendas(arg0);
+        }
+        if(arg0.equals("Agenda de recebimentos da semana")) {
+            homePage.usuárioClicaEmVerTudoNoCarAgRecSem(arg0);
+        }
+
+
+
+
     }
 }

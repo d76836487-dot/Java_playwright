@@ -111,9 +111,48 @@ public class LoginSteps extends BasePage {
         assertTrue(accessGranted);
     }
 
-    @When("Usuário tenta logar na aplicação com \"([^\"]*)\" e \"([^\"]*)\"")
-    public void userTriesToLoginWith(String login, String password) throws InterruptedException {
-        loginPage.login(contractConfig.getActiveUserProfile().url(), login, password);
+    @When("Usuário tenta logar na aplicação {string} com {string} e {string}")
+    public void userTriesToLoginWith(String arg0,String login, String password) throws InterruptedException, IOException {
+       // loginPage.login(contractConfig.getActiveUserProfile().url(), login, password);
+
+        String url=null;
+        String user=null;
+        String pass=null;
+
+        if(arg0.equals("sicredi")){
+            url = Config.sicredi_url;
+            user = login;
+            pass = password;
+            Config.serviceContract = "110";
+            Config.institution = "00000004";
+        }
+
+        if(arg0.equals("afinz")){
+            url = Config.afinz_url;
+            user = login;
+            pass = password;
+            Config.serviceContract = "143";
+            Config.institution = "00000010";
+        }
+        if(arg0.equals("azulzinha")){
+            url = Config.azulzinha_url;
+            user = login;
+            pass = password;
+            Config.serviceContract = "149";
+            Config.institution = "00000007";
+        }
+        if(arg0.equals("bin")){
+            url = Config.bin_url;
+            user = login;
+            pass = password;
+            Config.serviceContract = "101";
+            Config.institution = "00000003";
+        }
+        loginPage.openBrowser(url);
+
+        loginPage.logonportalEasy(user,pass);
+
+        Thread.sleep(1000);
     }
 
     @Given("Usuário logou na aplicação, selecionou todos os documentos e salvou sessão")
@@ -137,9 +176,44 @@ public class LoginSteps extends BasePage {
         loginPage.loginAnotherSession();
     }
 
-    @When("Usuário loga com senha errada")
-    public void userLogsInWithWrongPassword() throws InterruptedException {
-        loginPage.loginAndStartMonitoringRequests(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), "senhaerrada");
+    @When("Usuário loga com senha errada {string}")
+    public void userLogsInWithWrongPassword(String arg0) throws InterruptedException, IOException {
+//        loginPage.loginAndStartMonitoringRequests(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), "senhaerrada");
+
+        String url=null;
+        String user=null;
+        String pass="TESTE19XVB5%";
+
+        if(arg0.equals("sicredi")){
+            url = Config.sicredi_url;
+            user = Config.sicredi_user;
+            Config.serviceContract = "110";
+            Config.institution = "00000004";
+        }
+
+        if(arg0.equals("afinz")){
+            url = Config.afinz_url;
+            user = Config.afinz_user;
+            Config.serviceContract = "143";
+            Config.institution = "00000010";
+        }
+        if(arg0.equals("azulzinha")){
+            url = Config.azulzinha_url;
+            user = Config.azulzinhaz_user;
+            Config.serviceContract = "149";
+            Config.institution = "00000007";
+        }
+        if(arg0.equals("bin")){
+            url = Config.bin_url;
+            user = Config.bin_user;
+            Config.serviceContract = "101";
+            Config.institution = "00000003";
+        }
+        loginPage.openBrowser(url);
+
+        loginPage.logonportalEasy(user,pass);
+
+        Thread.sleep(1000);
     }
 
     @Given("Usuário clicou no botão esqueci minha senha")

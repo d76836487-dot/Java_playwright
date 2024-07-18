@@ -120,7 +120,7 @@ public class TestIdsConfig {
 
             entry("Home - Card Antecipação - ECs", "home-card-antecipacao-text-ec"),
             entry("Home - Card Antecipação - Valor", "home-card-antecipacao-text-valor"),
-            entry("Home - Card Antecipação - Botão Ir", "home-card-antecipacao-btn-antecipacao"),
+            entry("Home - Card Antecipação - Botão Ir", "home-card-antecipacao-btn-antecipacao evt_clicou_home_logada_em_saldo_antecipacao"),
 
             entry("Home - acesso rápido - item Antecipação", "home-card-personalizar-link-antecipacao"),
             entry("Home - acesso rápido - item Relatórios", "home-card-personalizar-link-relatorios"),
