@@ -65,7 +65,6 @@ Feature: Ajuda Whatsapp
     When usuário clica no "Ajuda - Atendimento pelo Whatsapp - número do telefone sublinhado" e uma nova aba se abre
     Then usuário será direcionado para url "<url>" na nova aba
     And logout
-
     @azulzinha @alliances  @WhatsApp
     Examples:
       | Description    | alianca   | url                                  |
@@ -88,8 +87,6 @@ Feature: Ajuda Whatsapp
       | Description    | alianca |
       | Usuario master | sicredi |
 
-
-
   @TestCaseKey=LPDC-T120
   Scenario Outline: Validação da flutuação do componente Chatbot
     Given open portal "<alianca>" and logon
@@ -102,8 +99,6 @@ Feature: Ajuda Whatsapp
       | Description    | alianca |
       | Usuario master | sicredi |
 
-
-
   @TestCaseKey=LPDC-T133
   Scenario Outline: Validação da URL do Chatbot
     Given open portal "<alianca>" and logon
@@ -115,6 +110,4 @@ Feature: Ajuda Whatsapp
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
-
-
 
