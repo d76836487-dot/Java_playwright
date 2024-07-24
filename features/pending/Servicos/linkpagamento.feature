@@ -72,7 +72,7 @@ Scenario: 5.1. Selecionar no header "todos os documentos" e ao menos um document
 
 
 
-Scenario: 5.2. Selecionar no header "todos os documentos" e nenhum documento possui EC de link de pagamento
+Scenario: 5.2. Selecionar no header "todos os documentos" e nenhum documento possui EC de link de pagamentos
   Given usuário esteja em Link de pagamento
   When selecionar "todos" na aba Documentos do header
   And nenhum Documento tiver EC de link de pagamento
