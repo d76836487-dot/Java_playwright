@@ -282,7 +282,7 @@ Feature: Link de Pagamento
 
 
 
-  @TestCaseKey=LPDC-T542
+
   Scenario: 34.Link de Pagamento recorrente sem Termino
     Given usuário seleciona Solicitar link de pagamento recorrente
     When estiver na tela Dados da venda
