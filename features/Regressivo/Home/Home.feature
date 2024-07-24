@@ -6,7 +6,6 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Home
 
-
   @TestCaseKey=LPDC-T273
   Scenario Outline: Login com sucesso
     Given open portal "<alianca>" and logon
@@ -32,8 +31,7 @@ Feature: Home
       | Description    | alianca |
       | Usuario master | bin     |
 
-
-
+  @TestCaseKey=LPDC-T488
   Scenario Outline: Health Check Itens Home
     Given open portal "<alianca>" and logon
     And "Informe de Rendimento" esta visivel no acesso rapido
@@ -66,34 +64,31 @@ Feature: Home
       | Description    | alianca |
       | Usuario master | bin     |
 
-
   @TestCaseKey=LPDC-T111
   Scenario Outline: Logim com credenciais invalidas
     When Usuário tenta logar na aplicação "<alianca>" com "81633816000210" e "Fiserv@123"
     Then verifica mensagem em tela "Parece que você ainda não é nosso cliente"
     And logout
     #Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
-  @sicredi @alliances
+    @sicredi @alliances
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
 
-  @afinz @alliances
+    @afinz @alliances
     Examples:
       | Description    | alianca |
       | Usuario master | afinz   |
 
-  @azulzinha @alliances
+    @azulzinha @alliances
     Examples:
       | Description    | alianca   |
       | Usuario master | azulzinha |
 
-  @bin @alliances
+    @bin @alliances
     Examples:
       | Description    | alianca |
       | Usuario master | bin     |
-
-
 
   @TestCaseKey=LPDC-T137
   Scenario Outline: Usuário tenta logar com senha errada
@@ -103,23 +98,23 @@ Feature: Home
     And logout
     @sicredi @alliancesr
     Examples:
-      | Description    | alianca |descrição                                                                                           |
-      | Usuario master | sicredi |Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
+      | Description    | alianca | descrição                                                                                           |
+      | Usuario master | sicredi | Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
 
     @afinz @alliances
     Examples:
-      | Description    | alianca |descrição                                                                                           |
-      | Usuario master | afinz   |Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
+      | Description    | alianca | descrição                                                                                           |
+      | Usuario master | afinz   | Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
 
     @azulzinha @alliances
     Examples:
-      | Description    | alianca   |descrição                                                                                           |
-      | Usuario master | azulzinha |Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
+      | Description    | alianca   | descrição                                                                                           |
+      | Usuario master | azulzinha | Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
 
     @bin @alliances
     Examples:
-      | Description    | alianca |descrição                                                                                           |
-      | Usuario master | bin     |Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
+      | Description    | alianca | descrição                                                                                           |
+      | Usuario master | bin     | Usuário ou senha incorretos. para você restam ainda mais 4 tentativas antes de bloquear seu acesso. |
 
   #@TestCaseKey=LPDC-T47
   #Scenario Outline: Antecipação na Home
@@ -128,7 +123,6 @@ Feature: Home
   #  And "item Antecipação" está disponível na "Home - acesso rápido"
   #  When usuário clica no "item Antecipação" na "Home - acesso rápido"
   #  Then será direcionado para a jornada de "Antecipação"
-
   #  |Usuario secundario |https://bin.qa.portaldocliente.fiserv.com                |bressan@sec    |Fiserv@456   |
   #colocar por yaml
   # |Usuario Com F      |https://bin.qa.portaldocliente.fiserv.com/operador       |bressan@sec    |Fiserv@456   |
@@ -137,7 +131,6 @@ Feature: Home
   # |Usuario Com F      |https://sicredi.qa.portaldocliente.fiserv.com/operador   |bressan@sec    |Fiserv@456   |
   #|Usuario Sem F      |https://sicredi.qa.portaldocliente.fiserv.com/externo    |bressan@sec    |Fiserv@456     |
   #|Usuario Sem F      |https://afinz.qa.portaldocliente.fiserv.com/externo      |bressan@sec    |Fiserv@456     |
-
   #@TestCaseKey=LPDC-T53
   #Scenario Outline: Relatórios na Home
   #  Given open portal "<alianca>" and logon
@@ -145,7 +138,6 @@ Feature: Home
   #  And "item Relatórios" está disponível na "Home - acesso rápido"
   #  When usuário clica no "item Relatórios" na "Home - acesso rápido"
   #  Then será direcionado para a jornada de "Relatórios"
-
   #*Dado* que estou na tela “início” do Portal
   #*Quando* clicar no item Documentos no acesso rápido
   #*Então* devo ser direcionado para a jornada de Documentos
@@ -156,7 +148,6 @@ Feature: Home
   #  And "item Informe de rendimento" está disponível na "Home - acesso rápido"
   #  When usuário clica no "item Informe de rendimento" na "Home - acesso rápido" e uma nova aba se abre
   #  Then será direcionado para a jornada de "Informe de rendimento" na nova aba
-
   #@TestCaseKey=LPDC-T236
   #Scenario Outline: : Vendas na Home
   #  Given open portal "<alianca>" and logon
@@ -164,27 +155,24 @@ Feature: Home
   #  And "item Vendas" está disponível na "Home - acesso rápido"
   #  When usuário clica no "item Vendas" na "Home - acesso rápido"
   #  Then será direcionado para a jornada de "Vendas Hoje"
-
   #*Dado* que estou na tela “início” do Portal
   #*Quando* clicar no item Detalhe de pagamentos no acesso rápido
   #*Então* devo ser direcionado para a jornada de Detalhe de pagamentos
   # TODO: aguardar corrigir o testId
- # @TestCaseKey=LPDC-T362
- # Scenario Outline: Negócio na Home
- #   Given open portal "<alianca>" and logon
- #   #Given que estou na tela “início” do Portal
- #   And "item Meu negócio" está disponível na "Home - acesso rápido"
- #   When usuário clica no "item Meu negócio" na "Home - acesso rápido"
- #   Then será direcionado para a jornada de "Negócio"
-
- # @TestCaseKey=LPDC-T274
- # Scenario Outline: Solicitações na Home
- #   Given open portal "<alianca>" and logon
-    #Given que estou na tela “início” do Portal
- #   And "item Solicitações" está disponível na "Home - acesso rápido"
- #   When usuário clica no "item Solicitações" na "Home - acesso rápido"
- #   Then será direcionado para a jornada de "Solicitações"
-
+  # @TestCaseKey=LPDC-T362
+  # Scenario Outline: Negócio na Home
+  #   Given open portal "<alianca>" and logon
+  #   #Given que estou na tela “início” do Portal
+  #   And "item Meu negócio" está disponível na "Home - acesso rápido"
+  #   When usuário clica no "item Meu negócio" na "Home - acesso rápido"
+  #   Then será direcionado para a jornada de "Negócio"
+  # @TestCaseKey=LPDC-T274
+  # Scenario Outline: Solicitações na Home
+  #   Given open portal "<alianca>" and logon
+  #Given que estou na tela “início” do Portal
+  #   And "item Solicitações" está disponível na "Home - acesso rápido"
+  #   When usuário clica no "item Solicitações" na "Home - acesso rápido"
+  #   Then será direcionado para a jornada de "Solicitações"
   #*Dado* que eu sou um cliente MDR FLEX
   #*Quando* me logar ao Portal
   #*Então* não devo visualizar no acesso rápido a opção “Antecipação”
@@ -201,11 +189,6 @@ Feature: Home
   #*Dado* que estou na tela “início” do Portal
   #*Então* devo visualizar uma espécie de carrossel com quatro funcionalidades “default” sendo elas “Antecipação”, “Relatórios”, “Documentos” e “Informe de rendimento”, respectivamente.
   #
-
-
-
-
-
   @TestCaseKey=LPDC-T100
   Scenario Outline: Banner de comunicação comercial maquininha
     Given open portal "<alianca>" and logon
@@ -290,7 +273,7 @@ Feature: Home
       | Description    | alianca |
       | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T487
   Scenario Outline: Drill down Antecipação
     Given open portal "<alianca>" and logon
     #Then Usuário estará com acesso e sessão foi salva
@@ -305,11 +288,10 @@ Feature: Home
       | Description    | alianca | texto botão         |
       | Usuario master | sicredi | Ir para antecipação |
 
-
-
+  @TestCaseKey=LPDC-T490
   Scenario Outline: Drill down Ultimas vendas
     Given open portal "<alianca>" and logon
-     Given Usuário acessou o Home
+    Given Usuário acessou o Home
     And Usuário clica em ver tudo no card "Últimas vendas"
     And check screen text "Vendas"
     And logout
@@ -333,7 +315,7 @@ Feature: Home
       | Description    | alianca |
       | Usuario master | bin     |
 
-
+  @TestCaseKey=LPDC-T489
   Scenario Outline: Drill down Agenda de recebimentos da semana
     Given open portal "<alianca>" and logon
     Given Usuário acessou o Home
@@ -359,7 +341,6 @@ Feature: Home
     Examples:
       | Description    | alianca |
       | Usuario master | bin     |
-
 
   @TestCaseKey=LPDC-T350
   Scenario Outline: Validação de calculos Card Recebimentos
