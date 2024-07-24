@@ -838,7 +838,7 @@ Feature: Home
     And não existem valores futuros para receber
     Then Usuário verá em "Home - Card Recebimento - Recebimento Previsto" o valor "R$ 0,00"
     And logout
-    @sicredi @alliances
+    @sicredi @alliances @RecebimentoPrevisto
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
