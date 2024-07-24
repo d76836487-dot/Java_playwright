@@ -265,13 +265,11 @@ Feature: Link de Pagamento
     Then Ver links ativo
     Then usuário visualizara a aba de Consultar links
 
-
   @TestCaseKey=LPDC-T542
   Scenario: 32.layout Link de Pagamento recorrente
     Given usuário seleciona Solicitar link de pagamento recorrente
     When estiver na tela Dados da venda
     Then Visualizara os campos Descrição, Valor mensal, número de execuções (de 2 até 12), botão "Com termino" habilitado, botão Continuar desabilitado e "X"
-
 
   @TestCaseKey=LPDC-T523
   Scenario: 33.Link de Pagamento recorrente com Termino
@@ -280,15 +278,11 @@ Feature: Link de Pagamento
     And deixar a flag "Com termino" desligada e clicou em continuar
     Then Visualizara Resumo com Valor, Descrição, Pagamento, Mensalidade (recorrente), Execuções (numero selecionado no step anterior e x ao lado), Primeiro pagamento e Ultimo pagamento preenchidos (formato mês/ano / ago/2024 ), (e os botões Editar, Gerar link de pagamento e ‘’X’’ (fechar) . (Caso o pagamento não seja efetuado em 48h o link é expirado)
 
-
-
-
+  @TestCaseKey=LPDC-T536
   Scenario: 34.Link de Pagamento recorrente sem Termino
     Given usuário seleciona Solicitar link de pagamento recorrente
     When estiver na tela Dados da venda
     Then Visualizara os campos Descrição, Valor mensal, número de execuções (de 2 até 12), botão "Com termino" habilitado, botão Continuar desabilitado e "X"
-
-
 
   @TestCaseKey=LPDC-T509
   Scenario: 35.Link de Pagamento recorrente sem Termino
@@ -296,9 +290,6 @@ Feature: Link de Pagamento
     When Preencher Descrição, valor mensal, numero de execuções
     And flegar o botão "Com termino" para "Sem termino" e clicou em Continuar
     Then Visualizara Resumo com Valor, Descrição, Pagamento, Mensalidade, Execuções, Primeiro pagamento e Ultimo pagamento ("-"), (e os botões Editar, Gerar link de pagamento e ‘’X’’ (fechar). (Caso o pagamento não seja efetuado em 48h o link é expirado)
-
-
-
 
   @TestCaseKey=LPDC-T521
   Scenario: 36.Editar Link de Pagamento único Parcelado Lojista
