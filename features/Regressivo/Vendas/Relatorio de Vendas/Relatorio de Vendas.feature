@@ -478,23 +478,23 @@ Feature: Vendas Relatorio de Vendas
     And logout
     @sicredi @alliances
     Examples:
-      | Description    | alianca |formato            |
-      | Usuario master | sicredi |Excel Simplificado |
+      | Description    | alianca | formato            |
+      | Usuario master | sicredi | Excel Simplificado |
 
     @afinz @alliances
     Examples:
-      | Description    | alianca |formato            |
-      | Usuario master | afinz   |Excel Detalhado    |
+      | Description    | alianca | formato         |
+      | Usuario master | afinz   | Excel Detalhado |
 
     @azulzinha @alliances
     Examples:
-      | Description    | alianca   |formato            |
-      | Usuario master | azulzinha |CSV Simplificado   |
+      | Description    | alianca   | formato          |
+      | Usuario master | azulzinha | CSV Simplificado |
 
     @bin @alliances
     Examples:
-      | Description    | alianca |formato            |
-      | Usuario master | bin     |CSV Detalhado      |
+      | Description    | alianca | formato       |
+      | Usuario master | bin     | CSV Detalhado |
 
   @TestCaseKey=LPDC-T61
   Scenario Outline: Valores tela Vendas - HISTÓRICO DE VENDAS deve bater com exportação - com seleção de EC

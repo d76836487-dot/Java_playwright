@@ -10,7 +10,6 @@ Feature: Home
   Scenario Outline: Login com sucesso
     Given open portal "<alianca>" and logon
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -447,7 +446,6 @@ Feature: Home
     And existem valores futuros a receber
     Then usuário verá em "Home - Card Recebimento - Recebimento Previsto" valor maior que 0,00
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -475,7 +473,6 @@ Feature: Home
     Given Usuário acessou o Home
     Then Total de 'Home - Recebimentos - Recebimentos hoje' será igual à API
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
