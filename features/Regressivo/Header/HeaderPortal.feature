@@ -120,7 +120,7 @@ Feature: Header Portal
       | Usuario master | bin     |
 
   @TestCaseKey=LPDC-T239
-  Scenario Outline: Header exportação excel - Vendas Hoje - validação cabecalho
+  Scenario Outline: Header exportação excel - Vendas Hoje - validação cabecalho EC
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar um EC e clicar Acessar
@@ -149,7 +149,7 @@ Feature: Header Portal
       | Usuario master | bin     |
 
   @TestCaseKey=LPDC-T257
-  Scenario Outline: Header exportação excel - Vendas Hoje - validação cabeçalho
+  Scenario Outline: Header exportação excel - Vendas Hoje - validação cabeçalho Valor
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar um documento e clicar Acessar
