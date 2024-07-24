@@ -141,14 +141,14 @@ Feature: Link de Pagamento
     And acessara a jornada de criação do link diretamente
 
   @TestCaseKey=LPDC-T529
-  Scenario: 7.2 Cliente deu aceite aos termos pelo App Gestão, portanto não apresentar novamente no Portal
+  Scenario: 7.3 Cliente deu aceite aos termos pelo App Gestão, portanto não apresentar novamente no Portal
     Given usuário já deu o aceite aos termos e condições pelo App
     When acessar o portal e selecionar alguma das opções Solicitar Link de pagamento unico ou Solicitar Link de pagamento recorrente
     Then não visualizara o modal de Termos e condições
     And acessara a jornada de criação do link diretamente
 
   @TestCaseKey=LPDC-T520
-  Scenario: 7.3 Cliente deu aceite aos termos pelo Portal, portanto não apresentar novamente no App
+  Scenario: 7.4 Cliente deu aceite aos termos pelo Portal, portanto não apresentar novamente no App
     Given usuário já deu o aceite aos termos e condições pelo Portal
     When acessar o App e selecionar alguma das opções Solicitar Link de pagamento unico ou Solicitar Link de pagamento recorrente
     Then não visualizara o modal de Termos e condições
@@ -265,11 +265,6 @@ Feature: Link de Pagamento
     Then Ver links ativo
     Then usuário visualizara a aba de Consultar links
 
-  @TestCaseKey=LPDC-T542
-  Scenario: 16.1 layout Link de Pagamento recorrente
-    Given usuário seleciona Solicitar link de pagamento recorrente
-    When estiver na tela Dados da venda
-    Then Visualizara os campos Descrição, Valor mensal, número de execuções (de 2 até 12), botão "Com termino" habilitado, botão Continuar desabilitado e "X"
 
   @TestCaseKey=LPDC-T523
   Scenario: 16. Link de Pagamento recorrente com Termino
@@ -278,12 +273,14 @@ Feature: Link de Pagamento
     And deixar a flag "Com termino" desligada e clicou em continuar
     Then Visualizara Resumo com Valor, Descrição, Pagamento, Mensalidade (recorrente), Execuções (numero selecionado no step anterior e x ao lado), Primeiro pagamento e Ultimo pagamento preenchidos (formato mês/ano / ago/2024 ), (e os botões Editar, Gerar link de pagamento e ‘’X’’ (fechar) . (Caso o pagamento não seja efetuado em 48h o link é expirado)
 
-  @TestCaseKey=LPDC-T536
-  Scenario: 17.1 Link de Pagamento recorrente sem Termino
+
+  @TestCaseKey=LPDC-T542
+  Scenario: 16.1 layout Link de Pagamento recorrente
     Given usuário seleciona Solicitar link de pagamento recorrente
-    When Preencher Descrição e  valor mensal
-    And flegar o botão "Com termino" para "Sem termino"
-    Then usuário não podera mais selecionar nada no campo "Número de execuções"
+    When estiver na tela Dados da venda
+    Then Visualizara os campos Descrição, Valor mensal, número de execuções (de 2 até 12), botão "Com termino" habilitado, botão Continuar desabilitado e "X"
+
+
 
   @TestCaseKey=LPDC-T509
   Scenario: 17. Link de Pagamento recorrente sem Termino
@@ -291,6 +288,16 @@ Feature: Link de Pagamento
     When Preencher Descrição, valor mensal, numero de execuções
     And flegar o botão "Com termino" para "Sem termino" e clicou em Continuar
     Then Visualizara Resumo com Valor, Descrição, Pagamento, Mensalidade, Execuções, Primeiro pagamento e Ultimo pagamento ("-"), (e os botões Editar, Gerar link de pagamento e ‘’X’’ (fechar). (Caso o pagamento não seja efetuado em 48h o link é expirado)
+
+
+  @TestCaseKey=LPDC-T536
+  Scenario: 17.1 Link de Pagamento recorrente sem Termino
+    Given usuário seleciona Solicitar link de pagamento recorrente
+    When Preencher Descrição e  valor mensal
+    And flegar o botão "Com termino" para "Sem termino"
+    Then usuário não podera mais selecionar nada no campo "Número de execuções"
+
+
 
   @TestCaseKey=LPDC-T521
   Scenario: 18. Editar Link de Pagamento único Parcelado Lojista
