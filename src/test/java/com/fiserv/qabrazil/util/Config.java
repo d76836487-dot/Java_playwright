@@ -42,5 +42,7 @@ public class Config {
     public static String serviceContract = "";
     public static String institution = "";
 
+    public static String url = "";
+    public static String SessionLogado = "YES";
 
 }

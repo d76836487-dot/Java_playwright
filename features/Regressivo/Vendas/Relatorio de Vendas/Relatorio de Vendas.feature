@@ -13,6 +13,7 @@ Feature: Vendas Relatorio de Vendas
     When Usuário acessou página de Vendas
     And ao clicar no menu lateral "Relatorio de Vendas"
     Then ele deve ver as informações de vendas atuais, incluindo abas para "Hoje", "Histórico de vendas", "Não efetivadas", "Pré autorizações" e "Voucher"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -47,6 +48,7 @@ Feature: Vendas Relatorio de Vendas
     And A exportação do relatório 'Voucher' terá exatamente os ECs selecionado no cabeçalho
     And A contagem de vendas voucher do excel é igual a Total de Vendas da tela
     And A soma de vendas voucher é igual ao valor bruto autorizado
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | menu   | submenu | thirdmenu |
@@ -81,6 +83,7 @@ Feature: Vendas Relatorio de Vendas
     And A exportação do relatório 'Voucher' terá exatamente os ECs selecionado no cabeçalho
     And A contagem de vendas voucher do excel é igual a Total de Vendas da tela
     And A soma de vendas voucher é igual ao valor bruto autorizado
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -115,6 +118,7 @@ Feature: Vendas Relatorio de Vendas
     And A soma de vendas autorizadas (confirmadas) é igual ao valor bruto autorizado
     And A soma de vendas pré-autorizadas é igual ao valor bruto a confirmar
     And A contagem de vendas pré-autorizadas é igual a Total de Vendas
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | format |
@@ -153,6 +157,7 @@ Feature: Vendas Relatorio de Vendas
     And A soma de vendas autorizadas (confirmadas) é igual ao valor bruto autorizado
     And A soma de vendas pré-autorizadas é igual ao valor bruto a confirmar
     And A contagem de vendas pré-autorizadas é igual a Total de Vendas
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | format |
@@ -191,6 +196,7 @@ Feature: Vendas Relatorio de Vendas
     And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no cabeçalho
     And A soma de vendas recusadas é igual a "Não Efetivadas - Recusadas"
     And A soma de vendas estornadas é igual a "Não Efetivadas - Estornadas"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | format |
@@ -228,6 +234,7 @@ Feature: Vendas Relatorio de Vendas
     And A exportação do relatório 'Não Efetivadas' terá somente o EC selecionado no cabeçalho
     And A soma de vendas recusadas é igual a "Não Efetivadas - Recusadas"
     And A soma de vendas estornadas é igual a "Não Efetivadas - Estornadas"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | format |
@@ -261,6 +268,7 @@ Feature: Vendas Relatorio de Vendas
     And 'Date ranger - Fim Data Selecionada' representará 'dia de ontem'
     And 'Date ranger - Dia inicial Digitado' representará 'data de ontem'
     And 'Date ranger - Dia final Digitado' representará 'data de ontem'
+    And logout
     @sicredi @alliances @sicredi_T164
     Examples:
       | Description    | alianca | menu   | submenu | thirdmenu           |
@@ -290,6 +298,7 @@ Feature: Vendas Relatorio de Vendas
     And 'Date ranger - Fim Data Selecionada' representará 'dia de ontem'
     And 'Date ranger - Dia inicial Digitado' representará 'data início do mês'
     And 'Date ranger - Dia final Digitado' representará 'data de ontem'
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | menu   | submenu | thirdmenu           |
@@ -319,6 +328,7 @@ Feature: Vendas Relatorio de Vendas
     And 'Date ranger - Fim Data Selecionada' representará 'dia de ontem'
     And 'Date ranger - Dia inicial Digitado' representará 'data de sete dias atrás'
     And 'Date ranger - Dia final Digitado' representará 'data de ontem'
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | menu   | submenu | thirdmenu           |
@@ -344,6 +354,7 @@ Feature: Vendas Relatorio de Vendas
     Given open portal "<alianca>" and logon
     When Usuário acessa Vendas Hoje
     Then Página conterá rodapé "<descrição>" com o ano atual
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | descrição                                                                             |
@@ -369,6 +380,7 @@ Feature: Vendas Relatorio de Vendas
     Given open portal "<alianca>" and logon
     When click on menu "<menu>" "<submenu>" "<thirdmenu>"
     Then Usuário verá em "Vendas - Histórico Vendas - Período - Descrição" o valor "<período>"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | período | menu   | submenu | thirdmenu           |
@@ -398,6 +410,7 @@ Feature: Vendas Relatorio de Vendas
     And Usuário verá em "Vendas - Histórico de Vendas - Resumo - Valor bruto" o valor "R$ ••••"
     And Usuário verá em "Vendas - Histórico de Vendas - Resumo - Valor líquido" o valor "R$ ••••"
     And Usuário verá em "Vendas - Histórico de Vendas - Resumo - Valor cancelado" o valor "R$ ••••"
+    And logout
     @sicredi @alliances @sicredi_T167
     Examples:
       | Description    | alianca | menu   | submenu | thirdmenu           |
@@ -426,6 +439,7 @@ Feature: Vendas Relatorio de Vendas
     Then Valor bruto será igual a API
     And Valor líquido será igual a API
     And Total de vendas será igual a API
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | período |
@@ -461,32 +475,26 @@ Feature: Vendas Relatorio de Vendas
     And A soma de todos valores Brutos é igual a "Vendas Histórico - Valor Bruto"
     And A soma de todos valores Líquidos é igual a "Vendas Histórico - Valor Líquido"
     And A soma de todos valores Cancelados é igual a "Vendas Histórico - Valor Cancelados"
-    Examples:
-      | formato            |
-      | Excel Simplificado |
-      | Excel Detalhado    |
-      | CSV Simplificado   |
-      | CSV Detalhado      |
-
+    And logout
     @sicredi @alliances
     Examples:
-      | Description    | alianca |
-      | Usuario master | sicredi |
+      | Description    | alianca |formato            |
+      | Usuario master | sicredi |Excel Simplificado |
 
     @afinz @alliances
     Examples:
-      | Description    | alianca |
-      | Usuario master | afinz   |
+      | Description    | alianca |formato            |
+      | Usuario master | afinz   |Excel Detalhado    |
 
     @azulzinha @alliances
     Examples:
-      | Description    | alianca   |
-      | Usuario master | azulzinha |
+      | Description    | alianca   |formato            |
+      | Usuario master | azulzinha |CSV Simplificado   |
 
     @bin @alliances
     Examples:
-      | Description    | alianca |
-      | Usuario master | bin     |
+      | Description    | alianca |formato            |
+      | Usuario master | bin     |CSV Detalhado      |
 
   @TestCaseKey=LPDC-T61
   Scenario Outline: Valores tela Vendas - HISTÓRICO DE VENDAS deve bater com exportação - com seleção de EC
@@ -503,6 +511,7 @@ Feature: Vendas Relatorio de Vendas
     And A soma de todos valores Brutos é igual a "Vendas Histórico - Valor Bruto"
     And A soma de todos valores Líquidos é igual a "Vendas Histórico - Valor Líquido"
     And A soma de todos valores Cancelados é igual a "Vendas Histórico - Valor Cancelados"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | formato            |
@@ -541,6 +550,7 @@ Feature: Vendas Relatorio de Vendas
     Then Usuário estará com acesso e sessão foi salva
     When Usuário acessa Vendas Hoje
     Then Usuário verá em "Home - Resumo" o valor "<descrição>"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | descrição                                                                                                                                                                                                                                                          |
@@ -569,6 +579,7 @@ Feature: Vendas Relatorio de Vendas
     When Usuário acessa Vendas Hoje
     Then Usuário verá em "Vendas Hoje - Resumo - Quantidade Vendas" o valor "0"
     And Usuário verá em "Vendas Hoje - Resumo - Valor Vendas" o valor "<valor vendas>"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | valor vendas |
@@ -595,6 +606,7 @@ Feature: Vendas Relatorio de Vendas
     Then Usuário estará com acesso e sessão foi salva
     When Usuário passa o mouse sobre "Menu Lateral - Vendas"
     Then O menu lateral expandiu contendo "Vendas"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -624,6 +636,7 @@ Feature: Vendas Relatorio de Vendas
     When usuário clica no "Ocultar Valores" no "Header"
     Then Usuário verá em "Vendas Hoje - Resumo - Quantidade Vendas" o valor "••••"
     And Usuário verá em "Vendas Hoje - Resumo - Valor Vendas" o valor "R$ ••••"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -680,6 +693,7 @@ Feature: Vendas Relatorio de Vendas
     Given Existem vendas com "Vendas Hoje - Histórico - Coluna Produto" tipo "<tipoDeProduto>"
     When Usuário filtra por tudo, exceto "<tipoDeProduto>", em "Produtos (0)"
     Then Serão filtradas as vendas com produto "<tipoDeProduto>"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | tipoDeProduto |
@@ -709,6 +723,7 @@ Feature: Vendas Relatorio de Vendas
     And Existem vendas com status "<status venda>"
     When Usuário filtra por tudo, exceto "<status venda>", em "<grupo filtro>"
     Then Serão filtradas as vendas com status "<status venda>"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | status venda | grupo filtro |
@@ -746,6 +761,7 @@ Feature: Vendas Relatorio de Vendas
     And Existem vendas com bandeira "<bandeira>"
     When Usuário filtra por tudo, exceto "<bandeira>", em "<grupo filtro>"
     Then Serão filtradas as vendas com bandeira "<bandeira>"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | bandeira   | grupo filtro  |
@@ -782,6 +798,7 @@ Feature: Vendas Relatorio de Vendas
     And Usuário filtra por tudo, exceto "<bandeira>", em "<filtro bandeira>"
     Then Serão filtradas as vendas com bandeira "<bandeira>"
     And Serão filtradas as vendas com status "<status venda>"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | status venda | filtro status | bandeira   | filtro bandeira |
@@ -831,6 +848,7 @@ Feature: Vendas Relatorio de Vendas
     Then Opções do filtro tem somente os ECs selecionados
     And A exportação do relatório em "<formato>" 'Vendas Hoje' terá somente o ECs do documento selecionado
     And A soma de todos valores Brutos é igual a "Vendas Hoje - Resumo - Valor Vendas"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | formato |
@@ -865,6 +883,7 @@ Feature: Vendas Relatorio de Vendas
     Then Opções do filtro tem somente os ECs selecionados
     And A exportação do relatório em "<formato>" 'Vendas Hoje' terá somente o ECs do documento selecionado
     And A soma de todos valores Brutos é igual a "Vendas Hoje - Resumo - Valor Vendas"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | formato |

@@ -62,6 +62,8 @@ public class LoginSteps extends BasePage {
             Config.serviceContract = "101";
             Config.institution = "00000003";
         }
+        Config.url = url;
+
         loginPage.openBrowser(url);
 
         loginPage.logonportal(user,pass);
@@ -148,6 +150,8 @@ public class LoginSteps extends BasePage {
             Config.serviceContract = "101";
             Config.institution = "00000003";
         }
+        Config.url = url;
+
         loginPage.openBrowser(url);
 
         loginPage.logonportalEasy(user,pass);
@@ -209,6 +213,8 @@ public class LoginSteps extends BasePage {
             Config.serviceContract = "101";
             Config.institution = "00000003";
         }
+        Config.url = url;
+
         loginPage.openBrowser(url);
 
         loginPage.logonportalEasy(user,pass);

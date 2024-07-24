@@ -20,6 +20,7 @@ Feature: Recebimentos Resumo Futuro
     And A exportação do relatório 'Recibos Futuros' terá exatamente os ECs selecionado no cabeçalho
     And Quantidade vendas em 'Recibos Futuros' é igual ao exportado
     And Total líquido em 'Recibos Futuro' é igual ao exportado
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -54,6 +55,7 @@ Feature: Recebimentos Resumo Futuro
     And A exportação do relatório 'Recibos Futuros' terá exatamente os ECs selecionado no cabeçalho
     And Quantidade vendas em 'Recibos Futuros' é igual ao exportado
     And Total líquido em 'Recibos Futuro' é igual ao exportado
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |

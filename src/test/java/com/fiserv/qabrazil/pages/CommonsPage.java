@@ -22,6 +22,8 @@ public class CommonsPage extends BasePage {
     @Autowired
     ContractConfig contractConfig;
 
+    @Autowired
+    BusinessPage businessPage;
     public  String retryLogin() {
         String Ret = "S";
         try {
@@ -143,6 +145,11 @@ public class CommonsPage extends BasePage {
             }
         }
 
+
+
+        if(menu.equals("Negócio")){
+            businessPage.navigateTo();
+        }
 
     }
 }

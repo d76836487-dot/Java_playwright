@@ -263,7 +263,7 @@ public class LoginPage extends BasePage {
     }
 
     public void usuárioClicaNoMenuAjuda() {
-        page.navigate("https://sicredi.qa.portaldocliente.fiserv.com/Ajuda");
+        page.navigate(Config.url  + "/Ajuda");
 
     }
 

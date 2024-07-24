@@ -24,6 +24,7 @@ Feature: Recebimentos Resumo Pago
     And Total recebido em 'Recibos Pagos' é igual ao exportado
     And Total agendado em 'Recibos Pagos' é igual ao exportado
     And Total cedido em 'Recibos Pagos' é igual ao exportado
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | format             |
@@ -66,6 +67,7 @@ Feature: Recebimentos Resumo Pago
     And Total recebido em 'Recibos Pagos' é igual ao exportado
     And Total agendado em 'Recibos Pagos' é igual ao exportado
     And Total cedido em 'Recibos Pagos' é igual ao exportado
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | format             |

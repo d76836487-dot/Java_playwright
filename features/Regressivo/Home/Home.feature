@@ -10,6 +10,8 @@ Feature: Home
   @TestCaseKey=LPDC-T273
   Scenario Outline: Login com sucesso
     Given open portal "<alianca>" and logon
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -43,6 +45,7 @@ Feature: Home
     And "Recebimentos" esta visivel na home
     And "Últimas vendas" esta visivel na home
     And "Agenda de recebimentos da semana" esta visivel na home
+    And logout
     @sicredi @alliances @HealthCheckHomeItens
     Examples:
       | Description    | alianca |
@@ -68,6 +71,7 @@ Feature: Home
   Scenario Outline: Logim com credenciais invalidas
     When Usuário tenta logar na aplicação "<alianca>" com "81633816000210" e "Fiserv@123"
     Then verifica mensagem em tela "Parece que você ainda não é nosso cliente"
+    And logout
     #Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
   @sicredi @alliances
     Examples:
@@ -96,6 +100,7 @@ Feature: Home
     When Usuário loga com senha errada "<alianca>"
     And Todas as requisições HTTP foram respondidas
     Then Usuário verá em "Login - mensagem de erro" o valor "<descrição>"
+    And logout
     @sicredi @alliancesr
     Examples:
       | Description    | alianca |descrição                                                                                           |
@@ -209,6 +214,7 @@ Feature: Home
     Given Usuário acessou o Home
     Then Usuário verá em "Home - Maquininha" o valor "<descrição>"
     And Usuário verá em "Home - Maquininha - Botão Confira" o valor "<texto botão>"
+    And logout
     @sicredi @alliances @banner
     Examples:
       | Description    | alianca | descrição                           | texto botão |
@@ -235,6 +241,7 @@ Feature: Home
     Given Usuário acessou o Home
     When usuário clica "Home - Card Vendas Hoje - Ver Tudo"
     And check screen text "Vendas"
+    And logout
     @sicredi @alliances @vendasHoje
     Examples:
       | Description    | alianca |
@@ -262,6 +269,7 @@ Feature: Home
     Given Usuário acessou o Home
     And Usuário clica em ver tudo no card "Recebimentos"
     And check screen text "Recebimentos"
+    And logout
     @sicredi @alliances @Recebimentos
     Examples:
       | Description    | alianca |
@@ -291,6 +299,7 @@ Feature: Home
     Then Usuário verá card Antecipação
     And Usuário verá em "Home - Card Antecipação - Botão Ir" o valor "<texto botão>"
     And check screen text "Antecipação"
+    And logout
     @sicredi @alliances @Antecipação
     Examples:
       | Description    | alianca | texto botão         |
@@ -303,6 +312,7 @@ Feature: Home
      Given Usuário acessou o Home
     And Usuário clica em ver tudo no card "Últimas vendas"
     And check screen text "Vendas"
+    And logout
     @sicredi @alliances @UltimasVendas
     Examples:
       | Description    | alianca |
@@ -329,6 +339,7 @@ Feature: Home
     Given Usuário acessou o Home
     And Usuário clica em ver tudo no card "Agenda de recebimentos da semana"
     And check screen text "Recebimentos"
+    And logout
     @sicredi @alliances @AgeRecSemana
     Examples:
       | Description    | alianca |
@@ -357,6 +368,7 @@ Feature: Home
     #And Todas as requisições HTTP foram respondidas
     Given Usuário acessou o Home
     Then Calcula Card Recebimentos
+    And logout
     @sicredi @alliances @CalcCardRec
     Examples:
       | Description    | alianca |
@@ -395,6 +407,7 @@ Feature: Home
     And Usuário verá em "Home - Agenda Recebimento - Valor Quarta" o valor "R$ ••••" - se existir
     And Usuário verá em "Home - Agenda Recebimento - Valor Quinta" o valor "R$ ••••" - se existir
     And Usuário verá em "Home - Agenda Recebimento - Valor Sexta" o valor "R$ ••••" - se existir
+    And logout
     @sicredi @alliances @Ocultarvalores
     Examples:
       | Description    | alianca |
@@ -423,6 +436,7 @@ Feature: Home
     Given Usuário acessou o Home
     When clicar no botão "Personalizar"
     Then devo visualizar a um modal com demais <funcionalidades> para escolher
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | funcionalidades                                                                             |
@@ -451,6 +465,8 @@ Feature: Home
     #Given que estou na tela “início” do Portal
     And existem valores futuros a receber
     Then usuário verá em "Home - Card Recebimento - Recebimento Previsto" valor maior que 0,00
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -477,6 +493,8 @@ Feature: Home
     Then Usuário estará com acesso e sessão foi salva
     Given Usuário acessou o Home
     Then Total de 'Home - Recebimentos - Recebimentos hoje' será igual à API
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -503,6 +521,7 @@ Feature: Home
     Then Usuário estará com acesso e sessão foi salva
     Given Usuário acessou o Home
     Then Total de 'Home - Card Recebimento - Recebimento Previsto' será igual à API
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -529,6 +548,7 @@ Feature: Home
     Then Usuário estará com acesso e sessão foi salva
     Given Usuário acessou o Home
     Then Total de 'Home - Card Vendas Hoje - Valor Vendas Hoje' será igual à API
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -556,6 +576,7 @@ Feature: Home
     When Usuário digitar um EC válido em 'Buscar por documento ou número do estabelecimento'
     Then Dropdown irá filtrar e apresentar somente o EC correspondente
     And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -582,6 +603,7 @@ Feature: Home
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
     Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -608,6 +630,7 @@ Feature: Home
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
     Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -634,6 +657,7 @@ Feature: Home
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário digitar um documento inválido em 'Buscar por documento ou número do estabelecimento'
     Then Usuário poderá limpar a busca clicando no X
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -661,6 +685,7 @@ Feature: Home
     When Usuário digitar um documento válido em 'Buscar por documento'
     Then Filtro apresentará somente a informação correspondente
     And Usuário não verá nenhum "Trocar Estabelecimento - Nenhum resultado"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -687,6 +712,7 @@ Feature: Home
     And Usuário clicou no botão esqueci minha senha
     When Usuário tenta recuperar senha com "81633816000210"
     Then Usuário verá em "Login - Esqueceu senha - Título" o valor "Parece que você ainda não é nosso cliente"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -715,6 +741,7 @@ Feature: Home
     Then Usuário verá em "Trocar Estabelecimento - Nenhum resultado" o texto "Nenhum resultado encontrado."
     #And Botão "Trocar Estabelecimento - Botão Acessar" estará visível e desabilitado
     #And Botão "Trocar Estabelecimento - Marcar como Padrão" estará visível e desabilitado
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -746,6 +773,7 @@ Feature: Home
     And Usuário verá em "Trocar Estabelecimento - Botão Todos Documentos - Explicação" o texto "Essa visão irá agrupar todos os estabelecimentos abaixo do documento "
     And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
     And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Ao selecionar esse formato, as informações do Portal serão apresentadas de forma consolidada, agrupando os estabelecimentos abaixo do documento. Você poderá alterar a seleção a qualquer momento no portal."
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -773,6 +801,7 @@ Feature: Home
     When usuário clica "Header - Trocar Estabelecimento"
     And usuário clica no "Botão selecionar por Estabelecimento" em "Trocar Estabelecimento"
     Then Todos Nomes, CNPJ CPFs, número ECs e status são iguais a API
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -800,6 +829,7 @@ Feature: Home
     And Usuário tinha de mais de uma notificação
     When usuário clica no "Notificações" na "Header"
     Then o Portal deve abrir as "Minhas Notificações"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -826,6 +856,7 @@ Feature: Home
     #Given que estou na tela “início” do Portal
     And não existem valores futuros para receber
     Then Usuário verá em "Home - Card Recebimento - Recebimento Previsto" o valor "R$ 0,00"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -851,6 +882,7 @@ Feature: Home
     Given open portal "<alianca>" and logon
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
     Then Usuário verá modal para selecionar EC ou DTCO
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -879,6 +911,7 @@ Feature: Home
     And Listagem por documento contendo dropdown com as informações de Nome fantasia do documento e o número do documento
     And Usuário verá em "Trocar Estabelecimento - Marcar como Padrão" o texto "Definir como padrão e não mostrar novamente"
     And Usuário verá em "Trocar Estabelecimento - Texto Explicativo" o texto "Ao selecionar esse formato, as informações do Portal serão apresentadas de forma correspondente ao estabelecimento escolhido. Você poderá alterar a seleção a qualquer momento no portal."
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -905,6 +938,7 @@ Feature: Home
     Given Usuário acessou o Home
     And encontrou o campo "Home - Card Últimas Vendas - Valor"
     Then 'Home - Card Últimas Vendas - Valor' correspondem aos valores últimas vendas da API
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -930,6 +964,7 @@ Feature: Home
     Given open portal "<alianca>" and logon
     When Usuário faz login, com a opção 'Definir como padrão e não mostrar novamente' "desmarcada"
     Then Usuário verá modal para selecionar EC ou DTCO
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -956,6 +991,7 @@ Feature: Home
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar um documento e clicar Acessar
     Then Documento estará previamente selecionado
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -982,6 +1018,7 @@ Feature: Home
     Given Usuário acessou o Home
     When clicar no botão "Personalizar"
     Then devo visualizar a um modal com demais <funcionalidades> para escolher
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca | funcionalidades                                                                |

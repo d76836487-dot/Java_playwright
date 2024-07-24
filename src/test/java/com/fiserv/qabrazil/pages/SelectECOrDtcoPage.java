@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.pages;
 
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.Config;
 import com.microsoft.playwright.Locator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -149,7 +150,7 @@ public class SelectECOrDtcoPage extends BasePage {
                 page.getByText("Acessar").click();
           //  }else{
 
-
+                Config.SessionLogado = "YES";
 
             //    List<String> allDocs = selectECOrDtcoPage.getDocumentsFromTabDocument();
              //   selectECOrDtcoPage.selectDocumentInput(allDocs.get(0));
@@ -225,7 +226,7 @@ public class SelectECOrDtcoPage extends BasePage {
     }
 
     public void openModalAndTab(String tab) throws InterruptedException {
-        startMonitoringRequests(page, contractConfig);
+        //startMonitoringRequests(page, contractConfig);
         PageField openModalButton = pageField.from("Header - Trocar Estabelecimento");
         if (openModalButton.elementIsVisible()) {
             openModalButton.click();

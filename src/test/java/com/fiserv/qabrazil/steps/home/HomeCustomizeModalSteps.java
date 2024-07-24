@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.steps.home;
 
 import com.fiserv.qabrazil.pages.home.HomeCustomizeModal;
 import io.cucumber.java.ParameterType;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,5 +32,11 @@ public class HomeCustomizeModalSteps {
             list.add(scanner.next());
         }
         return list.toArray(String[]::new);
+    }
+
+    @And("logout")
+    public void logout() {
+        homeCustomizeModal.logout();
+
     }
 }

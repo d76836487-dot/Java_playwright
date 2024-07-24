@@ -13,22 +13,13 @@ Feature: Ajuda Whatsapp
     #When usuário clica "Menu Ajuda"
     When usuário clica no Menu Ajuda
     Then usuário visualiza o componente "Ajuda - Whatsapp" na cor "<cor>" no canto inferior à direita da tela
-    @sicredi @alliances @WhatsApp
-    Examples:
-      | Description    | alianca | cor     |
-      | Usuario master | sicredi | #146E37 |
-
-    @afinz @alliances
-    Examples:
-      | Description    | alianca | cor |
-      | Usuario master | afinz   |     |
-
-    @azulzinha @alliances
+    And logout
+    @azulzinha @alliances @WhatsApp
     Examples:
       | Description    | alianca   | cor               |
       | Usuario master | azulzinha | rgb(247, 148, 30) |
 
-    @bin @alliances
+    @bin @alliances @WhatsApp
     Examples:
       | Description    | alianca | cor               |
       | Usuario master | bin     | rgb(46, 139, 201) |
@@ -36,25 +27,16 @@ Feature: Ajuda Whatsapp
   @TestCaseKey=LPDC-T129
   Scenario Outline: Validação da flutuação do componente Whatsapp
     Given open portal "<alianca>" and logon
-    Given usuário está na página Ajuda
+    When usuário clica no Menu Ajuda
     When usuário move a tela através do scroll
     Then usuário visualizará o componente "Ajuda - Whatsapp" acompanhando a rolagem da tela
-    @sicredi @alliances
-    Examples:
-      | Description    | alianca |
-      | Usuario master | sicredi |
-
-    @afinz @alliances
-    Examples:
-      | Description    | alianca |
-      | Usuario master | afinz   |
-
-    @azulzinha @alliances
+    And logout
+    @azulzinha @alliances  @WhatsApp
     Examples:
       | Description    | alianca   |
       | Usuario master | azulzinha |
 
-    @bin @alliances
+    @bin @alliances  @WhatsApp
     Examples:
       | Description    | alianca |
       | Usuario master | bin     |
@@ -62,25 +44,16 @@ Feature: Ajuda Whatsapp
   @TestCaseKey=LPDC-T122
   Scenario Outline: Visualização do campo Atendimento pelo Whatsapp
     Given open portal "<alianca>" and logon
-    Given usuário está na página Ajuda
+    When usuário clica no Menu Ajuda
     When usuário move a tela através do scroll até o final da página
     Then usuário visualizará o campo Atendimento pelo Whatsapp contendo a frase e o número do telefone sublinhado: <dados>
-    @sicredi @alliances
-    Examples:
-      | Description    | alianca | dados |
-      | Usuario master | sicredi |       |
-
-    @afinz @alliances
-    Examples:
-      | Description    | alianca | dados |
-      | Usuario master | afinz   |       |
-
-    @azulzinha @alliances
+    And logout
+    @azulzinha @alliances  @WhatsApp
     Examples:
       | Description    | alianca   | dados                                                                                                                           |
       | Usuario master | azulzinha | Atendimento pelo Whatsapp,Tire suas dúvidas com nosso atendimento pelo Whatsapp a qualquer momento,Telefone,+55 (11) 94147 3336 |
 
-    @bin @alliances
+    @bin @alliances  @WhatsApp
     Examples:
       | Description    | alianca | dados                                                                                                                           |
       | Usuario master | bin     | Atendimento pelo Whatsapp,Tire suas dúvidas com nosso atendimento pelo Whatsapp a qualquer momento,Telefone,+55 (11) 94270 1270 |
@@ -88,20 +61,12 @@ Feature: Ajuda Whatsapp
   @TestCaseKey=LPDC-T108
   Scenario Outline: Validação da URL do Whatsapp
     Given open portal "<alianca>" and logon
-    Given usuário está na página Ajuda
-    When usuário clica no "número do telefone sublinhado" na "Ajuda - Atendimento pelo Whatsapp" e uma nova aba se abre
+    When usuário clica no Menu Ajuda
+    When usuário clica no "Ajuda - Atendimento pelo Whatsapp - número do telefone sublinhado" e uma nova aba se abre
     Then usuário será direcionado para url "<url>" na nova aba
-    @sicredi @alliances
-    Examples:
-      | Description    | alianca | url |
-      | Usuario master | sicredi |     |
+    And logout
 
-    @afinz @alliances
-    Examples:
-      | Description    | alianca | url |
-      | Usuario master | afinz   |     |
-
-    @azulzinha @alliances
+    @azulzinha @alliances  @WhatsApp
     Examples:
       | Description    | alianca   | url                                  |
       | Usuario master | azulzinha | https://wa.me/message/LVFYRJUOSFODE1 |
@@ -115,77 +80,41 @@ Feature: Ajuda Whatsapp
   Scenario Outline: Visualização do componente Chatbot
     Given open portal "<alianca>" and logon
     #Given que estou na tela “início” do Portal
-    When usuário clica "Header - Ajuda"
+    When usuário clica no Menu Ajuda
     Then usuário visualiza o componente "Ajuda - Chatbot" na cor "rgb(20, 110, 55)" no canto inferior à direita da tela
-    @sicredi @alliances
+    And logout
+    @sicredi @alliances  @WhatsApp
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
 
-    @afinz @alliances
-    Examples:
-      | Description    | alianca |
-      | Usuario master | afinz   |
 
-    @azulzinha @alliances
-    Examples:
-      | Description    | alianca   |
-      | Usuario master | azulzinha |
-
-    @bin @alliances
-    Examples:
-      | Description    | alianca |
-      | Usuario master | bin     |
 
   @TestCaseKey=LPDC-T120
   Scenario Outline: Validação da flutuação do componente Chatbot
     Given open portal "<alianca>" and logon
-    Given usuário está na página Ajuda
+    When usuário clica no Menu Ajuda
     When usuário move a tela através do scroll
     Then usuário visualizará o componente "Ajuda - Chatbot" acompanhando a rolagem da tela
-    @sicredi @alliances
+    And logout
+    @sicredi @alliances  @WhatsApp
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
 
-    @afinz @alliances
-    Examples:
-      | Description    | alianca |
-      | Usuario master | afinz   |
 
-    @azulzinha @alliances
-    Examples:
-      | Description    | alianca   |
-      | Usuario master | azulzinha |
-
-    @bin @alliances
-    Examples:
-      | Description    | alianca |
-      | Usuario master | bin     |
 
   @TestCaseKey=LPDC-T133
   Scenario Outline: Validação da URL do Chatbot
     Given open portal "<alianca>" and logon
-    Given usuário está na página Ajuda
+    When usuário clica no Menu Ajuda
     When usuário clica em "Ajuda - Chatbot" e uma nova aba se abre
     Then usuário será direcionado para url "https://firstdata-silver.virtualinteractions.com.br/pt_BR/avi-sicredi.html?id=106&source=3&target=1&channel=1&launchType=popup" na nova aba
-    @sicredi @alliances
+    And logout
+    @sicredi @alliances  @WhatsApp
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
 
-    @afinz @alliances
-    Examples:
-      | Description    | alianca |
-      | Usuario master | afinz   |
 
-    @azulzinha @alliances
-    Examples:
-      | Description    | alianca   |
-      | Usuario master | azulzinha |
-
-    @bin @alliances
-    Examples:
-      | Description    | alianca |
-      | Usuario master | bin     |
 

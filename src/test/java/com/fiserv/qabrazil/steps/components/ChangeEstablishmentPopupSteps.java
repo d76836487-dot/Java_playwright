@@ -3,6 +3,7 @@ package com.fiserv.qabrazil.steps.components;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.pages.components.ChangeEstablishmentPopupComponent;
+import com.fiserv.qabrazil.pages.home.HomePage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.CpfCnpjUtil;
 import io.cucumber.java.en.And;
@@ -25,6 +26,8 @@ public class ChangeEstablishmentPopupSteps extends BaseSteps {
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
 
+    @Autowired
+    HomePage homePage;
     @Then("Mostrará popup para selecionar estabelecimento")
     public void popupIsOpen() {
         boolean isOpen = changeEstablishmentPopupComponent.waitPopupOpen();
@@ -106,5 +109,10 @@ public class ChangeEstablishmentPopupSteps extends BaseSteps {
 
         assertTrue("Popup para troca de estabelecimento deveria fechar após Selecionar",
                 isClosed);
+    }
+
+    @And("{string} esta visivel na pagina de Antecipação")
+    public void estaVisivelNaPaginaDeAntecipação(String arg0) {
+        homePage.cheTextElementOnage(arg0);
     }
 }

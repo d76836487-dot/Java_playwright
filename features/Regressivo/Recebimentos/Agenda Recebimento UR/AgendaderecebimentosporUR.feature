@@ -7,11 +7,13 @@
 Feature: Agenda de recebimentos por UR
 
   @TestCaseKey=LPDC-T319
-  Scenario Outline: Valor total Líquido de UR igual a soma do Valor de Bandeiras
+  Scenario Outline: Totais líquidos por bandeira e produto
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
     Given existem recebimentos listados
     Then Valor total Líquido de UR será igual à soma dos valores das Bandeiras
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -33,11 +35,13 @@ Feature: Agenda de recebimentos por UR
       | Usuario master | bin     |
 
   @TestCaseKey=LPDC-T284
-  Scenario Outline: Valor total é igual a soma do Valor Líquido com o Valor Pago
+  Scenario Outline: Totais apresentados em Tela
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
     Given existem recebimentos listados
     Then Valor total é igual a soma do Valor Líquido com o Valor Pago
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -59,13 +63,14 @@ Feature: Agenda de recebimentos por UR
       | Usuario master | bin     |
 
   @TestCaseKey=LPDC-T301
-  Scenario Outline: Botão Ocultar Valores na Agenda UR
+  Scenario Outline: Ocultar Valores na Agenda UR
     Given open portal "<alianca>" and logon
     And Usuário acessou a página de Agenda de Recebimentos por UR
     #Given Usuário seleciona Ontem
     And Todas as barras de carregamento sumiram
-    And Usuário clicou em uma linha de recebimento
+    #And Usuário clicou em uma linha de recebimento
     When usuário clica no "Ocultar Valores" no "Header"
+    And Todas as barras de carregamento sumiram
     Then Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs" o mesmo valor "R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Valor total" o mesmo valor "R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Valor pago" o mesmo valor "R$ ••••"
@@ -76,6 +81,8 @@ Feature: Agenda de recebimentos por UR
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total de deduções" o mesmo valor "- R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total ajustes crédito" o mesmo valor "R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total contratos" o mesmo valor "R$ ••••"
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -117,7 +124,7 @@ Feature: Agenda de recebimentos por UR
     @azulzinha
     Examples:
       | cor              | alianca |
-      | rgb(0, 102, 179) | afinz   |
+      | rgb(0, 198, 204) | afinz   |
 
     @bin
     Examples:
@@ -139,6 +146,8 @@ Feature: Agenda de recebimentos por UR
     And usuário clica "Paginação - mostrar 50 itens"
     And existem recebimentos listados
     Then Irá apresentar resultados do dia 01 do mês corrente até o último dia do mês
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -158,6 +167,7 @@ Feature: Agenda de recebimentos por UR
     Examples:
       | Description    | alianca |
       | Usuario master | bin     |
+
 
   @TestCaseKey=LPDC-T314
   Scenario Outline: Consultar Período (Hoje)
@@ -167,25 +177,28 @@ Feature: Agenda de recebimentos por UR
     When usuário clica "Date ranger - Hoje"
     And existem recebimentos listados
     Then Irá apresentar resultados do dia atual apenas
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
 
-    @afinz @alliances
+    @afinz @alliances  @LPDC-T319
     Examples:
       | Description    | alianca |
       | Usuario master | afinz   |
 
-    @azulzinha @alliances
+    @azulzinha @alliances  @LPDC-T319
     Examples:
       | Description    | alianca   |
       | Usuario master | azulzinha |
 
-    @bin @alliances
+    @bin @alliances @LPDC-T319
     Examples:
       | Description    | alianca |
       | Usuario master | bin     |
+
 
   @TestCaseKey=LPDC-T287
   Scenario Outline: Consultar Período (Essa semana)
@@ -195,6 +208,8 @@ Feature: Agenda de recebimentos por UR
     When usuário clica "Date ranger - Essa semana"
     And existem recebimentos listados
     Then Irá apresentar resultados referentes a Essa semana
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -222,6 +237,8 @@ Feature: Agenda de recebimentos por UR
     Given usuário clicou no "Agenda de Recebimentos por UR - Botão Exportar"
     When usuário clica "Agenda de Recebimentos por UR - Exportar - Botão Cancelar"
     Then Usuário não verá nenhum "Agenda de Recebimentos por UR - Exportar - Modal"
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -249,6 +266,8 @@ Feature: Agenda de recebimentos por UR
     Given usuário clicou no "Agenda de Recebimentos por UR - Botão Exportar"
     When usuário clica "Agenda de Recebimentos por UR - Exportar - Botão X"
     Then Usuário não verá nenhum "Agenda de Recebimentos por UR - Exportar - Modal"
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -292,6 +311,8 @@ Feature: Agenda de recebimentos por UR
     When Usuário passa o mouse sobre "Menu Lateral - Recebimentos"
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
     Then usuário não verá em "Agenda de Recebimentos por UR" opção de Alterar Documento
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -320,6 +341,8 @@ Feature: Agenda de recebimentos por UR
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
     Then usuário verá em "Agenda de Recebimentos por UR" opção de Alterar Documento
     And selecionando o Documento no Header o Usuário visualizara o Respectivo Documento selecionado
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -349,6 +372,8 @@ Feature: Agenda de recebimentos por UR
     When Usuário passa o mouse sobre "Menu Lateral - Recebimentos"
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
     Then Usuário visualizará em Agenda de recebimentos por UR o Documento selecionado
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -384,6 +409,8 @@ Feature: Agenda de recebimentos por UR
     And Campo "Agenda de Recebimentos por UR - Resumo - Total de deduções" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Resumo - Total ajustes crédito" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Resumo - Total contratos" terá mesmo valor que consultado antes, salvando em arquivo
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca | dias úteis |
@@ -506,6 +533,8 @@ Feature: Agenda de recebimentos por UR
     And Usuário visualizará o campo "Tooltip do Valor Total" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "Valor Total líquido de URs" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "Valor pago" na seção "Agenda de Recebimentos por UR - Resumo"
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -539,6 +568,8 @@ Feature: Agenda de recebimentos por UR
     And Usuário visualizará o campo "Total ajustes crédito" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "Total contratos" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "O que são esses totais?" na seção "Agenda de Recebimentos por UR - Resumo"
+    And logout
+
     @sicredi @alliances
     Examples:
       | Description    | alianca |

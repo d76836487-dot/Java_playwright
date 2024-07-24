@@ -12,6 +12,7 @@ Feature: Cancelamento de Vendas
     When Usuário acessou página de Vendas
     Then ao clicar no menu lateral "Cancelamento de vendas"
     And verifica se a pagina  "Cancelamento de vendas" carregou com sucesso
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -51,6 +52,7 @@ Feature: Cancelamento de Vendas
     And seleciona 30 Dias
     And Usuário verá "Histórico de cancelamentos - Label Data do cancelamento"
     And Usuário verá "Histórico de cancelamentos - Label Valor cancelado"
+    And logout
     @sicredi @alliances
     Examples:
       | Description    | alianca |

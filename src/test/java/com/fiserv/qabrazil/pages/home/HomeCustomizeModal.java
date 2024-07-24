@@ -3,7 +3,7 @@ package com.fiserv.qabrazil.pages.home;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
-
+import com.fiserv.qabrazil.util.Config;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -47,5 +47,18 @@ public class HomeCustomizeModal extends BasePage {
         pageField.from("Home - personalizar - botão confirmar").click();
 
         return true;
+    }
+
+    public void logout() {
+        page.getByTestId("head-sair").first().click();
+        //page.locator("data-testid=head-sair").click();
+
+        Config.SessionLogado = "";
+
+        if(page.getByText("Avaliação de satisfação").isVisible()) {
+
+            page.getByText("Talvez depois").click();
+
+        }
     }
 }
