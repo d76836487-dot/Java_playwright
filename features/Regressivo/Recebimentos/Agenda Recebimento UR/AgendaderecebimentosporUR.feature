@@ -13,7 +13,6 @@ Feature: Agenda de recebimentos por UR
     Given existem recebimentos listados
     Then Valor total Líquido de UR será igual à soma dos valores das Bandeiras
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -41,7 +40,6 @@ Feature: Agenda de recebimentos por UR
     Given existem recebimentos listados
     Then Valor total é igual a soma do Valor Líquido com o Valor Pago
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -82,7 +80,6 @@ Feature: Agenda de recebimentos por UR
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total ajustes crédito" o mesmo valor "R$ ••••"
     And Usuário verá em todos os "Agenda de Recebimentos por UR - Resumo - Total contratos" o mesmo valor "R$ ••••"
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -147,7 +144,6 @@ Feature: Agenda de recebimentos por UR
     And existem recebimentos listados
     Then Irá apresentar resultados do dia 01 do mês corrente até o último dia do mês
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -168,7 +164,6 @@ Feature: Agenda de recebimentos por UR
       | Description    | alianca |
       | Usuario master | bin     |
 
-
   @TestCaseKey=LPDC-T314
   Scenario Outline: Consultar Período (Hoje)
     Given open portal "<alianca>" and logon
@@ -178,7 +173,6 @@ Feature: Agenda de recebimentos por UR
     And existem recebimentos listados
     Then Irá apresentar resultados do dia atual apenas
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -199,7 +193,6 @@ Feature: Agenda de recebimentos por UR
       | Description    | alianca |
       | Usuario master | bin     |
 
-
   @TestCaseKey=LPDC-T287
   Scenario Outline: Consultar Período (Essa semana)
     Given open portal "<alianca>" and logon
@@ -209,7 +202,6 @@ Feature: Agenda de recebimentos por UR
     And existem recebimentos listados
     Then Irá apresentar resultados referentes a Essa semana
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -238,7 +230,6 @@ Feature: Agenda de recebimentos por UR
     When usuário clica "Agenda de Recebimentos por UR - Exportar - Botão Cancelar"
     Then Usuário não verá nenhum "Agenda de Recebimentos por UR - Exportar - Modal"
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -267,7 +258,6 @@ Feature: Agenda de recebimentos por UR
     When usuário clica "Agenda de Recebimentos por UR - Exportar - Botão X"
     Then Usuário não verá nenhum "Agenda de Recebimentos por UR - Exportar - Modal"
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -312,7 +302,6 @@ Feature: Agenda de recebimentos por UR
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
     Then usuário não verá em "Agenda de Recebimentos por UR" opção de Alterar Documento
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -342,7 +331,6 @@ Feature: Agenda de recebimentos por UR
     Then usuário verá em "Agenda de Recebimentos por UR" opção de Alterar Documento
     And selecionando o Documento no Header o Usuário visualizara o Respectivo Documento selecionado
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -373,7 +361,6 @@ Feature: Agenda de recebimentos por UR
     And usuário clica em "Agenda de Recebimentos UR" no "Menu Lateral"
     Then Usuário visualizará em Agenda de recebimentos por UR o Documento selecionado
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -410,7 +397,6 @@ Feature: Agenda de recebimentos por UR
     And Campo "Agenda de Recebimentos por UR - Resumo - Total ajustes crédito" terá mesmo valor que consultado antes, salvando em arquivo
     And Campo "Agenda de Recebimentos por UR - Resumo - Total contratos" terá mesmo valor que consultado antes, salvando em arquivo
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca | dias úteis |
@@ -534,7 +520,6 @@ Feature: Agenda de recebimentos por UR
     And Usuário visualizará o campo "Valor Total líquido de URs" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "Valor pago" na seção "Agenda de Recebimentos por UR - Resumo"
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |
@@ -569,7 +554,6 @@ Feature: Agenda de recebimentos por UR
     And Usuário visualizará o campo "Total contratos" na seção "Agenda de Recebimentos por UR - Resumo"
     And Usuário visualizará o campo "O que são esses totais?" na seção "Agenda de Recebimentos por UR - Resumo"
     And logout
-
     @sicredi @alliances
     Examples:
       | Description    | alianca |

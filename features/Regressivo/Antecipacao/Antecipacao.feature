@@ -6,8 +6,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Antecipação
 
-
-
+  @TestCaseKey=LPDC-T491
   Scenario Outline: Health Check Tela Antecipação
     Given open portal "<alianca>" and logon
     And Usuário acessou página de Antecipação
@@ -32,9 +31,7 @@ Feature: Antecipação
       | Description    | alianca |
       | Usuario master | bin     |
 
-
-
-#testes em revisao da webview
+  #testes em revisao da webview
   @TestCaseKey=LPDC-T421
   Scenario Outline: Tela Antecipação - Troca de estabelecimento Documento
     Given open portal "<alianca>" and logon
@@ -53,8 +50,6 @@ Feature: Antecipação
       | Description    | alianca |
       | Usuario master | sicredi |
 
-
-
     @azulzinha @alliances  @Antecipacao1
     Examples:
       | Description    | alianca   |
@@ -64,10 +59,6 @@ Feature: Antecipação
     Examples:
       | Description    | alianca |
       | Usuario master | bin     |
-
-
-
-
 
   @TestCaseKey=LPDC-T406
   Scenario Outline: Tela Antecipação - Troca de estabelecimento  EC

@@ -6,16 +6,12 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Negócio
 
-
-
-
+  @TestCaseKey=LPDC-T492
   Scenario Outline: Health check Negócio
     Given open portal "<alianca>" and logon
     When click on menu "<menu>" "<submenu>" "<thirdmenu>"
-
     And "Negócio" esta visivel na pagina de negócios
     And "Trocar estabelecimento" esta visivel na pagina de negócios
-
     And "Dados Cadastrais" esta visivel na pagina de negócios
     And "Meus Domicílios" esta visivel na pagina de negócios
     And "Meus Terminais" esta visivel na pagina de negócios
@@ -23,23 +19,23 @@ Feature: Negócio
     And logout
     @sicredi @alliances @HealthCheck @HealthCheck
     Examples:
-      | Description    | alianca |menu|
-      | Usuario master | sicredi |Negócio    |
+      | Description    | alianca | menu    |
+      | Usuario master | sicredi | Negócio |
 
     @afinz @alliances @HealthCheck
     Examples:
-      | Description    | alianca |menu|
-      | Usuario master | afinz   |Negócio    |
+      | Description    | alianca | menu    |
+      | Usuario master | afinz   | Negócio |
 
     @azulzinha @alliances @HealthCheck
     Examples:
-      | Description    | alianca   |menu|
-      | Usuario master | azulzinha |Negócio    |
+      | Description    | alianca   | menu    |
+      | Usuario master | azulzinha | Negócio |
 
     @bin @alliances @HealthCheck
     Examples:
-      | Description    | alianca |menu|
-      | Usuario master | bin     |Negócio    |
+      | Description    | alianca | menu    |
+      | Usuario master | bin     | Negócio |
 
   @TestCaseKey=LPDC-T434
   Scenario Outline: Tela Negócio - botão trocar estabelecimento - com seleção de Documento
