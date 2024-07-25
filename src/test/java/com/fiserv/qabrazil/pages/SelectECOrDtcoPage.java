@@ -328,6 +328,10 @@ public class SelectECOrDtcoPage extends BasePage {
 
         storeNameAndEc();
 
-        clickAccessAndWaitClose();
+        if (page.getByText("Você só possui um estabelecimento para seleção").isVisible()){
+            page.locator("xpath=/html/body/div[4]/div/div/div/div/div/div/div[1]/a/img").click();
+    }else {
+            clickAccessAndWaitClose();
+        }
     }
 }

@@ -387,7 +387,7 @@ public class TestIdsConfig {
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
             entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana > div > div > div:nth-child(2)"),
 
-            entry("Header - Trocar Estabelecimento - Span Texto", "//*[@data-testid='head-trocar-estabelecimentos']//span[contains(text(), 'Trocar estabelecimento')]"),
+            entry("Header - Trocar Estabelecimento - Span Texto", "//span[contains(text(), 'Trocar estabelecimento')]"),
 
             entry("Trocar Estabelecimento - Botão Todos Documentos", "//input[@value='Todos']"),
             entry("Trocar Estabelecimento - Botão Todos Documentos - Explicação", "//span[contains(text(),'Essa visão')]"),

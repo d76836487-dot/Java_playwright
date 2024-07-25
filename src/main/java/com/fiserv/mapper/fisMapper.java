@@ -1,2 +1,4 @@
-package com.fiserv.mapper;public class fisMapper {
+package com.fiserv.mapper;
+
+public class fisMapper {
 }

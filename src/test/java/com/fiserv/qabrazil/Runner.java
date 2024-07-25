@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
         features = "classpath:com/fiserv/qabrazil/features/Regressivo",
 
         //tags= "@alliances"
-
+        //tags= "@sicredi"
         //tags= "@HealthCheck"
 
         //tags= "@sicredi_T164"
@@ -31,9 +31,11 @@ import io.cucumber.testng.CucumberOptions;
 
         //tags= "@LPDC-T319"
 
-        // tags= "@Antecipacao1"
+        //tags= "@Antecipacao1" // OK
 
-        tags= "@RecebimentoPrevisto"
+       // tags= "@RecebimentoPrevisto"
+
+        tags= "@HeaderAll"
 
 
 )

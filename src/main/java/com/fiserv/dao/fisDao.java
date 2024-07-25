@@ -1,2 +1,4 @@
-package com.fiserv.dao;public class fisDao {
+package com.fiserv.dao;
+
+public class fisDao {
 }

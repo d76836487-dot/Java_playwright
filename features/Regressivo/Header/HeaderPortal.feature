@@ -1,4 +1,5 @@
 #language: en
+
 @Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Regressivo/Header/Header_Portal
 @Zephyr:Status=Draft
@@ -12,24 +13,24 @@ Feature: Header Portal
     Given Usuário está na aba "Estabelecimento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar um EC e clicar Acessar
     Then Usuário visualizará no Header do Portal (todas as páginas) o Nome fantasia e número do EC
-    And Usuário visualizará um botão abaixo escrito “Trocar estabelecimento” com destaque na coloração da aliança
+    And Usuário visualizará um label escrito “Trocar estabelecimento”
     And logout
-    @sicredi @alliances
+    @sicredi @alliances @HeaderAll
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
 
-    @afinz @alliances
+    @afinz @alliances @HeaderAll
     Examples:
       | Description    | alianca |
       | Usuario master | afinz   |
 
-    @azulzinha @alliances
+    @azulzinha @alliances @HeaderAll
     Examples:
       | Description    | alianca   |
       | Usuario master | azulzinha |
 
-    @bin @alliances
+    @bin @alliances @HeaderAll
     Examples:
       | Description    | alianca |
       | Usuario master | bin     |

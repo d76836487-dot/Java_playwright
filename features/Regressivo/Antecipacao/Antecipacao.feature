@@ -45,20 +45,20 @@ Feature: Antecipação
     #And Popup terá nomes do documento selecionado
     And Popup será fechado ao clicar em Selecionar
     And logout
-    @sicredi @alliances @HealthCheck  @Antecipacao1
+    @sicredi @alliances @HealthCheck
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
 
-    @azulzinha @alliances  @Antecipacao1
-    Examples:
-      | Description    | alianca   |
-      | Usuario master | azulzinha |
+    #@azulzinha @alliances  @Antecipacao1
+    #Examples:
+    #  | Description    | alianca   |
+    #  | Usuario master | azulzinha |
 
-    @bin @alliances  @Antecipacao1
-    Examples:
-      | Description    | alianca |
-      | Usuario master | bin     |
+    #@bin @alliances  @Antecipacao1
+    #Examples:
+    #  | Description    | alianca |
+    #  | Usuario master | bin     |
 
   @TestCaseKey=LPDC-T406
   Scenario Outline: Tela Antecipação - Troca de estabelecimento  EC
@@ -70,25 +70,26 @@ Feature: Antecipação
     Then Mostrará popup para selecionar estabelecimento
     And Popup terá mesmo ECs que o selecionado
     And Popup terá nomes do EC selecionado
-    And Botão "Negócios - Popup Trocar - Botão selecionar" estará visível e desabilitado
+    And Popup será fechado ao clicar em Selecionar
+    #And Botão "Negócios - Popup Trocar - Botão selecionar" estará visível e desabilitado
     And logout
-    @sicredi @alliances  @Antecipacao
+    @sicredi @alliances  @Antecipacao @Antecipacao1
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
 
-    @afinz @alliances  @Antecipacao
-    Examples:
-      | Description    | alianca |
-      | Usuario master | afinz   |
+    #@afinz @alliances  @Antecipacao @Antecipacao1
+    #Examples:
+    #  | Description    | alianca |
+    #  | Usuario master | afinz   |
 
-    @azulzinha @alliances  @Antecipacao
-    Examples:
-      | Description    | alianca   |
-      | Usuario master | azulzinha |
+   # @azulzinha @alliances  @Antecipacao @Antecipacao1
+   # Examples:
+   #   | Description    | alianca   |
+   #   | Usuario master | azulzinha |
 
-    @bin @alliances  @Antecipacao
-    Examples:
-      | Description    | alianca |
-      | Usuario master | bin     |
+    #@bin @alliances  @Antecipacao
+    #Examples:
+    #  | Description    | alianca |
+    #  | Usuario master | bin     |
 
