@@ -1,5 +1,4 @@
 #language: en
-
 @Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Regressivo/Header/Header_Portal
 @Zephyr:Status=Draft
