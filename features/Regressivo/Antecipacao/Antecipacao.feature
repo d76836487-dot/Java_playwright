@@ -50,16 +50,14 @@ Feature: Antecipação
       | Description    | alianca |
       | Usuario master | sicredi |
 
-    #@azulzinha @alliances  @Antecipacao1
-    #Examples:
-    #  | Description    | alianca   |
-    #  | Usuario master | azulzinha |
-
-    #@bin @alliances  @Antecipacao1
-    #Examples:
-    #  | Description    | alianca |
-    #  | Usuario master | bin     |
-
+  #@azulzinha @alliances  @Antecipacao1
+  #Examples:
+  #  | Description    | alianca   |
+  #  | Usuario master | azulzinha |
+  #@bin @alliances  @Antecipacao1
+  #Examples:
+  #  | Description    | alianca |
+  #  | Usuario master | bin     |
   @TestCaseKey=LPDC-T406
   Scenario Outline: Tela Antecipação - Troca de estabelecimento  EC
     Given open portal "<alianca>" and logon
@@ -78,18 +76,15 @@ Feature: Antecipação
       | Description    | alianca |
       | Usuario master | sicredi |
 
-    #@afinz @alliances  @Antecipacao @Antecipacao1
-    #Examples:
-    #  | Description    | alianca |
-    #  | Usuario master | afinz   |
-
-   # @azulzinha @alliances  @Antecipacao @Antecipacao1
-   # Examples:
-   #   | Description    | alianca   |
-   #   | Usuario master | azulzinha |
-
-    #@bin @alliances  @Antecipacao
-    #Examples:
-    #  | Description    | alianca |
-    #  | Usuario master | bin     |
-
+#@afinz @alliances  @Antecipacao @Antecipacao1
+#Examples:
+#  | Description    | alianca |
+#  | Usuario master | afinz   |
+# @azulzinha @alliances  @Antecipacao @Antecipacao1
+# Examples:
+#   | Description    | alianca   |
+#   | Usuario master | azulzinha |
+#@bin @alliances  @Antecipacao
+#Examples:
+#  | Description    | alianca |
+#  | Usuario master | bin     |
