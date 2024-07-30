@@ -52,13 +52,11 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>com.trivago.rta</groupId>
             <artifactId>cluecumber-maven</artifactId>
             <version>3.5.1</version>
         </dependency>
-
 
 
         <dependency>
@@ -98,11 +96,16 @@
             <type>pom</type>
         </dependency>
 
+        <dependency>
+            <groupId>org.xmlunit</groupId>
+            <artifactId>xmlunit-core</artifactId>
+            <version>2.10.0</version>
+        </dependency>
 
     </dependencies>
 
     <build>
-         <testResources>
+        <testResources>
             <testResource>
                 <directory>features</directory>
                 <targetPath>com/fiserv/qabrazil/features</targetPath>
