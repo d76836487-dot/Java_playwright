@@ -6,7 +6,7 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Refresh Token
 
-
+  @TestCaseKey=LPDC-T557
   Scenario Outline: Refresh Token verificacao em minutos de inatividade
     Given open portal "<alianca>" and logon
     When click on menu "<menu>" "<submenu>" "<thirdmenu>"
@@ -23,7 +23,8 @@ Feature: Refresh Token
     And logout
     @refreshtoken15
     Examples:
-      | Description    | alianca | menu    |submenu|thirdmenu|minutos|
-      | Usuario master | sicredi | Negócio |       |         |5      |
-      | Usuario master | sicredi | Negócio |       |         |14     |
-      | Usuario master | sicredi | Negócio |       |         |15     |
+      | Description    | alianca | menu    | submenu | thirdmenu | minutos |
+      | Usuario master | sicredi | Negócio |         |           | 5       |
+      | Usuario master | sicredi | Negócio |         |           | 14      |
+      | Usuario master | sicredi | Negócio |         |           | 15      |
+
