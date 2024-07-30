@@ -317,8 +317,9 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     public void headerWillHaveSelectedDoc() throws ParseException {
         PageField button = pageField.from("Header - Trocar Estabelecimento");
         String formattedDoc = formatCpfCnpj(selectECOrDtcoPage.getSelectedDoc());
-        assertTrue("Botão trocar estabelecimento não tem o Documento selecionado <%s>. Encontrado <%s>".formatted(formattedDoc, button.getAsText()),
-                button.getAsText().contains(formattedDoc));
+
+        assertTrue("Botão trocar estabelecimento não tem o Documento selecionado <%s>. Encontrado <%s>".formatted(formattedDoc, button.getAsText()), button.getAsText().contains(formattedDoc));
+
         String selectedDocName = selectECOrDtcoPage.getSelectedDocName();
         String buttonText = button.getAsText()
                 .replaceAll(" - .*", "")

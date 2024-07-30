@@ -5,13 +5,20 @@ import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.home.HomeCustomizeModal;
 import com.fiserv.qabrazil.pages.home.HomePage;
 import com.fiserv.qabrazil.util.Currency;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.Assert;
 
+import java.time.LocalTime;
+
+import static com.fiserv.qabrazil.config.TestIdsConfig.getQuerySelector;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
@@ -27,6 +34,10 @@ public class HomeSteps extends BaseSteps {
 
     @Autowired
     HomeCustomizeModal homeCustomizeModal;
+
+    @Autowired
+    Page page;
+
 
     @When("Usuário acessou o Home")
     @Given("que estou na tela “início” do Portal")
@@ -148,5 +159,72 @@ public class HomeSteps extends BaseSteps {
 
 
 
+    }
+
+    @And("waiting time {string}")
+    public void waitingTime(String arg0) throws InterruptedException {
+    int cont = 0;
+    int seg=0;
+    int minuto=0;
+        System.out.println("Teste de >>>> " + arg0 + " Minutos");
+        LocalTime myTime = LocalTime.now();
+        System.out.println("Tempo " + myTime);
+
+
+
+            for (int i = 0; i < 1000000; i++) {
+
+                cont += 1;
+
+                if (cont == 11500) {
+                    minuto += 1;
+                    cont = 0;
+                    myTime = LocalTime.now();
+                    System.out.println("Tempo " + myTime);
+                    System.out.println("Aguarde para que a sesão caia >>> passou " + minuto + " minuto");
+                }
+
+
+
+                String inputTextField = String.valueOf(page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Sessão Expirada")).isVisible());
+                if (inputTextField.isEmpty()) {
+                    Assert.assertEquals("A sessao caiu em menor tempo previsto", "", String.valueOf(inputTextField));
+                }
+
+                if( arg0.equals("5") && minuto==5){
+
+                    break;
+                }
+                if( arg0.equals("14") && minuto==14){
+                    break;
+                }
+
+                if( arg0.equals("15") && minuto==15){
+                    break;
+                }
+            }
+
+
+        }
+
+
+
+
+    @And("Check empty session")
+    public void checkEmptySession() {
+
+        commonsPage.clickOnMenu("Vendas","Relatório de vendas","");
+
+
+        String inputTextField = String.valueOf(page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Sessão Expirada")).isVisible());
+        if (inputTextField.isEmpty()) {
+            Assert.assertEquals("A sessao caiu em menor tempo previsto", "", String.valueOf(inputTextField));
+        }
+
+
+        String inputTextField2=page.locator("data-testid=vendas-hoje-card-total-vendas").textContent();
+      if (inputTextField2.equals("0")){
+            Assert.assertEquals("A sessao caiu antes do previsto",inputTextField,"R$ 0,00");
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.steps;
 
 import com.fiserv.qabrazil.pages.AdvancePaymentPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,4 +14,6 @@ public class AdvancePaymentSteps extends BaseSteps {
     public void shouldBeAtReportsPage() {
         advancePaymentPage.navigateTo();
     }
+
+
 }

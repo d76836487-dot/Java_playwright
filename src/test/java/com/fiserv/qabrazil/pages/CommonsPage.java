@@ -109,6 +109,12 @@ public class CommonsPage extends BasePage {
 
     public void clickOnMenu(String menu, String submenu, String thirdmenu) {
 
+        if(menu.equals("Inicio")) {
+
+            page.locator("data-testid=m-menu-home").click();
+
+        }
+
         if(menu.equals("Vendas")){
 
             page.locator("data-testid=menu-vendas").click();
