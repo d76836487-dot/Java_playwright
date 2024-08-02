@@ -123,15 +123,6 @@ Scenario: Health Check
   #Obs.: Testar com diferentes tipos de estabelecimentos
 
 
-
-#language: en
-  @Zephyr:ProjectKey=LPDC
-  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Health_Check_Antecipação
-  @Zephyr:Status=Draft
-  @Zephyr:Priority=Normal
-  @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-  Feature: Abrindo antecipação de um EC Flex o para antecipar via dashboard
-
   Scenario: Mensagem título na página antecipação com plano Flex
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC Flex pelo dashboard Antecipação
@@ -145,13 +136,7 @@ Scenario: Health Check
   When usuário acessa a antecipação de um EC Flex pelo dashboard Antecipação
   Then usuário deve visualizar o texto “Você possui o plano de recebimento de suas vendas garantido através do plano de recebimento Flex”
 
-#language: en
-  @Zephyr:ProjectKey=LPDC
-  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Abrindo_antecipação_de_um_EC_padrão_com_saldo_para_antecipar_via_dashboard
-  @Zephyr:Status=Draft
-  @Zephyr:Priority=Normal
-  @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-  Feature: Abrindo antecipação de um EC padrão com saldo para antecipar via dashboard
+
 
   Scenario: Abas Solicitar antecipação e Histórico na antecipação
   Given usuário está logado no Merchant Portal
@@ -198,14 +183,7 @@ Scenario: Health Check
   And o botão “Solicitar antecipação eventual” na cor da aliança deve ser clicável
 
 
-  #language: en
-  @Zephyr:ProjectKey=LPDC
-  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Abrindo_antecipação_de_um_EC_padrão_sem_saldo_para_antecipar_via_dashboard
-  @Zephyr:Status=Draft
-  @Zephyr:Priority=Normal
-  @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 
-  Feature: Abrindo antecipação de um EC padrão sem saldo para antecipar via dashboard
 
   Scenario: Abas Solicitar antecipação e Histórico na antecipação
   Given usuário está logado no Merchant Portal
@@ -252,13 +230,7 @@ Scenario: Health Check
   Then usuário deve visualizar na caixa de antecipação automática o botão “Solicitar antecipação eventual”
   And o botão “Solicitar antecipação eventual” não deve ser clicável
 
-#language: en
-  @Zephyr:ProjectKey=LPDC
-  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Antecipando_eventualmente_sem_personalização
-  @Zephyr:Status=Draft
-  @Zephyr:Priority=Normal
-  @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-  Feature: Antecipando eventualmente sem personalização
+
 
   Scenario: Informações no “Resumo da antecipação eventual” com saldo disponível
   Given usuário está logado no Merchant Portal
@@ -337,13 +309,7 @@ Scenario: Health Check
   Then usuário deve visualizar um arquivo pdf contendo: logo da aliança, título: “Comprovante de solicitação de antecipação eventual”, data e hora de emissão do PDF, número do estabelecimento comercial e informações gerais (valor bruto solicitado em reais, taxa, valor do desconto em reais, valor líquido a receber em reais, status = em andamento, bandeiras = todas as bandeiras, produto = todos, período = antecipar todo o período até o momento e canal de contratação = Portal do cliente)
 
 
-  #language: en
-  @Zephyr:ProjectKey=LPDC
-  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Antecipando_eventualmente_com_personalização
-  @Zephyr:Status=Draft
-  @Zephyr:Priority=Normal
-  @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-  Feature: Antecipando eventualmente com personalização
+
 
   Scenario: Abrindo a personalização da antecipação eventual
   Given usuário está logado no Merchant Portal
