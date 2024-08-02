@@ -125,6 +125,11 @@ Scenario: Health Check
 
 
 #language: en
+  @Zephyr:ProjectKey=LPDC
+  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Abrindo_antecipação_de_um_EC_Flex_o_para-antecipar_via_dashboard
+  @Zephyr:Status=Draft
+  @Zephyr:Priority=Normal
+  @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
   Feature: Abrindo antecipação de um EC Flex o para antecipar via dashboard
 
   Scenario: Mensagem título na página antecipação com plano Flex
@@ -141,6 +146,11 @@ Scenario: Health Check
   Then usuário deve visualizar o texto “Você possui o plano de recebimento de suas vendas garantido através do plano de recebimento Flex”
 
 #language: en
+  @Zephyr:ProjectKey=LPDC
+  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Abrindo_antecipação_de_um_EC_padrão_com_saldo_para_antecipar_via_dashboard
+  @Zephyr:Status=Draft
+  @Zephyr:Priority=Normal
+  @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
   Feature: Abrindo antecipação de um EC padrão com saldo para antecipar via dashboard
 
   Scenario: Abas Solicitar antecipação e Histórico na antecipação
@@ -189,6 +199,12 @@ Scenario: Health Check
 
 
   #language: en
+  @Zephyr:ProjectKey=LPDC
+  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Abrindo_antecipação_de_um_EC_padrão_sem_saldo_para_antecipar_via_dashboard
+  @Zephyr:Status=Draft
+  @Zephyr:Priority=Normal
+  @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+
   Feature: Abrindo antecipação de um EC padrão sem saldo para antecipar via dashboard
 
   Scenario: Abas Solicitar antecipação e Histórico na antecipação
@@ -237,6 +253,11 @@ Scenario: Health Check
   And o botão “Solicitar antecipação eventual” não deve ser clicável
 
 #language: en
+  @Zephyr:ProjectKey=LPDC
+  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Antecipando_eventualmente_sem_personalização
+  @Zephyr:Status=Draft
+  @Zephyr:Priority=Normal
+  @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
   Feature: Antecipando eventualmente sem personalização
 
   Scenario: Informações no “Resumo da antecipação eventual” com saldo disponível
@@ -317,6 +338,11 @@ Scenario: Health Check
 
 
   #language: en
+  @Zephyr:ProjectKey=LPDC
+  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Antecipando_eventualmente_com_personalização
+  @Zephyr:Status=Draft
+  @Zephyr:Priority=Normal
+  @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
   Feature: Antecipando eventualmente com personalização
 
   Scenario: Abrindo a personalização da antecipação eventual
