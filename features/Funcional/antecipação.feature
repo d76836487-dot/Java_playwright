@@ -1,3 +1,4 @@
+#language: en
 Feature: Health Check Antecipação
 
 Scenario: Health Check
@@ -115,6 +116,7 @@ Scenario: Health Check
   #Obs.: Testar com diferentes tipos de estabelecimentos
 
 
+  #language: en
   Feature: Abrindo antecipação de um EC Flex o para antecipar via dashboard
 
   Scenario: Mensagem título na página antecipação com plano Flex
@@ -224,7 +226,7 @@ Scenario: Health Check
   Then usuário deve visualizar na caixa de antecipação automática o botão “Solicitar antecipação eventual”
   And o botão “Solicitar antecipação eventual” não deve ser clicável
 
-
+#language: en
   Feature: Antecipando eventualmente sem personalização
 
   Scenario: Informações no “Resumo da antecipação eventual” com saldo disponível
