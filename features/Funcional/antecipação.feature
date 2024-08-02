@@ -136,7 +136,7 @@ Scenario: Health Check
   When usuário acessa a antecipação de um EC Flex pelo dashboard Antecipação
   Then usuário deve visualizar o texto “Você possui o plano de recebimento de suas vendas garantido através do plano de recebimento Flex”
 
-
+#language: en
   Feature: Abrindo antecipação de um EC padrão com saldo para antecipar via dashboard
 
   Scenario: Abas Solicitar antecipação e Histórico na antecipação
