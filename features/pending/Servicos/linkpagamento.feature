@@ -655,4 +655,4 @@ Feature: Link de Pagamento
     Given usuário operador SEM F acessou a jornada de link de pagamento
     When estiver na aba links gerados
     And operador clicar no detlalhe de um link com status autorizado
-    Then o operador não deve conseguir copiar o link gerado
+    Then o operador não deve conseguir copiar o link gerado:

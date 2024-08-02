@@ -10,8 +10,9 @@ import io.cucumber.testng.CucumberOptions;
         //tags= "@alliances"
         //tags= "@sicredi"
         //tags= "@HealthCheck"
-
-        //tags= "@sicredi_T164"
+        //tags= "@WhatsApp"
+         tags="@Antecipacao1"
+        //tags= "@HeaderAll"
         //Agenda de recebimentos
         //tags= "@Vendas_Agenda_recebimentos_semana"
         //tags="@_agenda"
@@ -20,24 +21,18 @@ import io.cucumber.testng.CucumberOptions;
         //tags="@HealthCheckHomeItens"
         //tags="@banner" // quebrando na afiz, ligar o banner, falar com sandro
         //tags="@vendasHoje"
-        //tags="@Antecipação"
+
         //tags="@Recebimentos"
         //tags="@UltimasVendas"
         //tags="@AgeRecSemana"
         //tags="@CalcCardRec"
         //tags="@Ocultarvalores" //rever este
-
         //tags= "@HealthCheckAntecipação"
-
-        //tags= "@LPDC-T319"
-
+        //tags= "@LPDC-T248" << bug aberto https://enterprise-jira.onefiserv.net/browse/LPDC-243
         //tags= "@Antecipacao1" // OK
-
        // tags= "@RecebimentoPrevisto"
-
-        //tags= "@HeaderAll"
-
-        tags= "@refreshtoken15"
+       // tags= "@HeaderAll"
+        //tags= "@refreshtokenN"
 
 
 )

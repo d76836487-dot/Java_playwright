@@ -120,7 +120,7 @@ public class TestIdsConfig {
 
             entry("Home - Card Antecipação - ECs", "home-card-antecipacao-text-ec"),
             entry("Home - Card Antecipação - Valor", "home-card-antecipacao-text-valor"),
-            entry("Home - Card Antecipação - Botão Ir", "home-card-antecipacao-btn-antecipacao evt_clicou_home_logada_em_saldo_antecipacao"),
+            entry("Home - Card Antecipação - Botão Ir", "home-card-antecipacao-btn-antecipacao"),
 
             entry("Home - acesso rápido - item Antecipação", "home-card-personalizar-link-antecipacao"),
             entry("Home - acesso rápido - item Relatórios", "home-card-personalizar-link-relatorios"),
@@ -223,10 +223,12 @@ public class TestIdsConfig {
             entry("Header - Ajuda", "head-ajuda"),
             entry("Header - Notificações", "head-notificacoes"),
             entry("Header - Trocar Estabelecimento", "header-trocar-estabelecimento"),
-            entry("Header - Meu Perfil", "head-ajuda"),
+            entry("Head - Documento", "head-trocar-estabelecimentos"),
+
+            entry("Header - Meu Perfil", "evt_clicou_home_logada_meu_perfil"),
             entry("Header - Sair", "head-sair"),
             entry("Trocar Estabelecimento - Marcar como Padrão", "alterar-matriz-selecionar-padrao"),
-            entry("Trocar Estabelecimento - Botão Acessar", "alterar-matriz-button-acessar evt_clicou_selecao_docOuEC_personalize_documento_acessar"),
+            entry("Trocar Estabelecimento - Botão Acessar", "alterar-matriz-button-acessar"),
             
 
             entry("Trocar Estabelecimento - Buscar documento", "alterar-matriz-input-buscar"),
@@ -237,8 +239,8 @@ public class TestIdsConfig {
             entry("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-detalhe-\\d.*"),
             entry("Trocar Estabelecimento - Estabelecimento - Status Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-status-\\d.*"),
             entry("Trocar Estabelecimento - Documento - Nome Estabelecimento", "alterar-matriz-text-documento-nome-fantasia-.*"),
-            entry("Trocar Estabelecimento - Botão selecionar por Documento", "alterar-matriz-type-documento evt_clicou_selecao_docOuEC_personalize_documento"),
-            entry("Trocar Estabelecimento - Botão selecionar por Estabelecimento", "alterar-matriz-type-estabelecimento evt_clicou_selecao_docOuEC_personalize_estabelecimento"),
+            entry("Trocar Estabelecimento - Botão selecionar por Documento", "alterar-matriz-type-documento"),
+            entry("Trocar Estabelecimento - Botão selecionar por Estabelecimento", "alterar-matriz-type-estabelecimento"),
 
 
 
@@ -502,7 +504,12 @@ public class TestIdsConfig {
 
             //Cancelamento de Vendas
             entry("Histórico de cancelamentos - Label Data do cancelamento", "//*[contains(text(),'Data do cancelamento')]"),
-            entry("Histórico de cancelamentos - Label Valor cancelado", "//span[text()='Valor cancelado']")
+            entry("Histórico de cancelamentos - Label Valor cancelado", "//span[text()='Valor cancelado']"),
+            entry("Dashboard - Antecipação", "[data-testid=card-home-text-antecipacao]"),
+            entry("Dashboard - Valor Antecipação", "[data-testid=home-card-antecipacao-text-valor]"),
+            entry("Dashboard - Ir para Antecipação", "[data-testid=home-card-antecipacao-btn-antecipacao evt_clicou_home_logada_em_saldo_antecipacao]")
+
+
 
 
     );

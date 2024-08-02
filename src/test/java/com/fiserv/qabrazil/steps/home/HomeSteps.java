@@ -161,14 +161,15 @@ public class HomeSteps extends BaseSteps {
 
     }
 
-    @And("waiting time {string}")
-    public void waitingTime(String arg0) throws InterruptedException {
+    @And("aguarde o tempo de {string} minutos e mexa o mouse {string}")
+    public void waitingTime(String arg0,String arg1) throws InterruptedException {
     int cont = 0;
     int seg=0;
     int minuto=0;
         System.out.println("Teste de >>>> " + arg0 + " Minutos");
         LocalTime myTime = LocalTime.now();
-        System.out.println("Tempo " + myTime);
+
+        System.out.println("Contando o tempo  " + myTime);
 
 
 
@@ -176,16 +177,25 @@ public class HomeSteps extends BaseSteps {
 
                 cont += 1;
 
-                if (cont == 11500) {
+                if (cont == 16500) {
+
+                    if(arg1.equals("S")) {
+                        System.out.println("Movimente o mouse....");
+                        pageField.anyOf(pageField.allWithPrefix("Menu Lateral - Recebimentos")).hoverOverFirst();
+                    }
+                    myTime = LocalTime.now();
+                    System.out.println("Registrando Tempo  " + myTime);
                     minuto += 1;
                     cont = 0;
-                    myTime = LocalTime.now();
-                    System.out.println("Tempo " + myTime);
                     System.out.println("Aguarde para que a sesão caia >>> passou " + minuto + " minuto");
+                    if(arg1.equals("S")) {
+                        System.out.println("Movimente o mouse novamente ....");
+                        pageField.anyOf(pageField.allWithPrefix("Menu Lateral - Relatórios")).hoverOverFirst();
+                    }
+
                 }
 
-
-
+                //System.out.println("verificando se existe sessão ativa....");
                 String inputTextField = String.valueOf(page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Sessão Expirada")).isVisible());
                 if (inputTextField.isEmpty()) {
                     Assert.assertEquals("A sessao caiu em menor tempo previsto", "", String.valueOf(inputTextField));
@@ -199,7 +209,7 @@ public class HomeSteps extends BaseSteps {
                     break;
                 }
 
-                if( arg0.equals("15") && minuto==15){
+                if( arg0.equals("16") && minuto==16){
                     break;
                 }
             }
@@ -215,6 +225,7 @@ public class HomeSteps extends BaseSteps {
 
         commonsPage.clickOnMenu("Vendas","Relatório de vendas","");
 
+        pageField.anyOf(pageField.allWithPrefix("Menu Lateral - Recebimentos")).hoverOverFirst();
 
         String inputTextField = String.valueOf(page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Sessão Expirada")).isVisible());
         if (inputTextField.isEmpty()) {

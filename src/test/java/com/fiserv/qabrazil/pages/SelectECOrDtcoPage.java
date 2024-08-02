@@ -132,11 +132,11 @@ public class SelectECOrDtcoPage extends BasePage {
     public void checkModalAutomaticIsOpen() throws InterruptedException {
         Thread.sleep(4000);
 
-        if(page.getByText("Personalize sua visualização").isVisible()) {
+            if(page.getByText("Personalize sua visualização").isVisible()) {
 
             //page.getByText("Documento").click();
 
-            page.locator("data-testid=alterar-matriz-type-documento evt_clicou_selecao_docOuEC_personalize_documento").click();
+            page.locator("data-testid=alterar-matriz-type-documento").click();
            // if(page.getByText("Todos").isVisible()) {
                 PageField buttonAllDocs = pageField.from("Trocar Estabelecimento - Botão Todos Documentos");
                 buttonAllDocs.click();

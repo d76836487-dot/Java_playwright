@@ -33,13 +33,7 @@ public class ChangeEstablishmentPopupSteps extends BaseSteps {
     @Autowired
     Page page;
 
-    @Then("Mostrará popup para selecionar estabelecimento")
-    public void popupIsOpen() {
-        boolean isOpen = changeEstablishmentPopupComponent.waitPopupOpen();
 
-        assertTrue("Popup para troca de estabelecimento não está aberto",
-                isOpen);
-    }
 
     @Then("Popup terá nomes do documento selecionado")
     public void popupHaveDocumentName() throws Exception {
@@ -80,10 +74,7 @@ public class ChangeEstablishmentPopupSteps extends BaseSteps {
         page.getByText("Selecionar Estabelecimento comercial").click();
     }
 
-    @When("Usuário abre modal Trocar Estabelecimento na tela Negócio ou Antecipação")
-    public void openPopup() {
-        changeEstablishmentPopupComponent.openPopupChangeEstablishment();
-    }
+
 
     @Then("Popup terá mesmo ECs que o selecionado")
     public void popupSameEc() {
@@ -118,7 +109,7 @@ public class ChangeEstablishmentPopupSteps extends BaseSteps {
                 isClosed);
     }
 
-    @And("{string} esta visivel na pagina de Antecipação")
+    @And("o texto {string} esta visivel na pagina de Antecipação")
     public void estaVisivelNaPaginaDeAntecipação(String arg0) {
         homePage.cheTextElementOnage(arg0);
     }

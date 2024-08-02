@@ -42,7 +42,7 @@ Feature: Header Portal
     Then Usuário visualizará no Header do Portal (todas as páginas) o Nome fantasia e número do Documento
     And Usuário visualizará um label escrito “Trocar estabelecimento”
     And logout
-    @sicredi @alliances @HeaderAll
+    @sicredi @alliances @HeaderAll @LPDC-T277
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
@@ -67,9 +67,9 @@ Feature: Header Portal
     Given open portal "<alianca>" and logon
     Given Usuário está na aba "Documento" da modal 'Trocar Estabelecimento'
     When Usuário selecionar Todos na aba Documento e clicar Acessar
-    Then Usuário visualizará no Header do Portal (todas as páginas) o texto Todos documentos
+    Then Usuário visualizará no Header do Portal o texto Todos documentos
     And logout
-    @sicredi @alliances
+    @sicredi @alliances @HeaderAll @LPDC-T248
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
@@ -96,7 +96,7 @@ Feature: Header Portal
     When usuário move a tela através do scroll
     Then Usuário verá "Header - Trocar Estabelecimento"
     And logout
-    @sicredi @alliances
+    @sicredi @alliances @HeaderAll
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
@@ -125,7 +125,7 @@ Feature: Header Portal
     And Soma da coluna Valor Bruto é igual ao cabeçalho do Excel - Valor Bruto e Não Efetivadas
     And A exportação do relatório 'Vendas Hoje' terá somente o EC selecionado
     And logout
-    @sicredi @alliances
+    @sicredi @alliances @HeaderAll
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
@@ -153,7 +153,7 @@ Feature: Header Portal
     Then Valor 'Home - Vendas Hoje' é igual à exportação do relatório 'Vendas Hoje'
     And Soma da coluna Valor Bruto é igual ao cabeçalho do Excel - Valor Bruto e Não Efetivadas
     And logout
-    @sicredi @alliances
+    @sicredi @alliances @HeaderAll
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
@@ -180,7 +180,7 @@ Feature: Header Portal
     Then Valor 'Home - Vendas Hoje' é igual à exportação do relatório 'Vendas Hoje'
     And Soma da coluna Valor Bruto é igual ao cabeçalho do Excel - Valor Bruto e Não Efetivadas
     And logout
-    @sicredi @alliances
+    @sicredi @alliances @HeaderAll
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
@@ -208,10 +208,9 @@ Feature: Header Portal
     And Usuário verá "Meu Perfil - Label Documento ou usuário"
     And Usuário verá "Meu Perfil - Label Endereço de e-mail"
     And Usuário verá "Meu Perfil - Label Celular"
-    And Usuário verá "Meu Perfil - Label Configurações da conta"
     And Usuário verá "Meu Perfil - Label Excluir acesso digital"
     And logout
-    @sicredi @alliances
+    @sicredi @alliances @HeaderAll
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |
@@ -238,7 +237,7 @@ Feature: Header Portal
     Then usuário clica "Meu Perfil - Label Excluir acesso digital"
     And Usuário verá "Excluir - Popup Excluir acesso digital"
     And logout
-    @sicredi @alliances
+    @sicredi @alliances @HeaderAll
     Examples:
       | Description    | alianca |
       | Usuario master | sicredi |

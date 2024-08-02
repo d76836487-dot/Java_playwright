@@ -304,7 +304,8 @@ public class SelectECOrDtcoSteps extends BaseSteps {
     }
 
     @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o Nome fantasia e número do EC")
-    public void headerWillHaveSelectedEc() {
+    public void headerWillHaveSelectedEc() throws InterruptedException {
+        Thread.sleep(2000);
         PageField button = pageField.from("Header - Trocar Estabelecimento");
         //System.out.println("".formatted(selectECOrDtcoPage.getSelectedEc()+" - "+ button.getAsText())+" - "+ button.getAsText().contains(selectECOrDtcoPage.getSelectedEc()));
        //assertTrue("Botão trocar estabelecimento não tem o EC selecionado <%s>. Encontrado <%s>".formatted( selectECOrDtcoPage.getSelectedEc(), button.getAsText()), button.getAsText().contains(selectECOrDtcoPage.getSelectedEc()));
@@ -315,7 +316,11 @@ public class SelectECOrDtcoSteps extends BaseSteps {
 
     @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o Nome fantasia e número do Documento")
     public void headerWillHaveSelectedDoc() throws ParseException {
-        PageField button = pageField.from("Header - Trocar Estabelecimento");
+
+
+        PageField button = pageField.from("Head - Documento");
+        System.out.println(button.getAsText());
+
         String formattedDoc = formatCpfCnpj(selectECOrDtcoPage.getSelectedDoc());
 
         assertTrue("Botão trocar estabelecimento não tem o Documento selecionado <%s>. Encontrado <%s>".formatted(formattedDoc, button.getAsText()), button.getAsText().contains(formattedDoc));
@@ -329,11 +334,17 @@ public class SelectECOrDtcoSteps extends BaseSteps {
                 selectedDocName.contains(buttonText));
     }
 
-    @Then("Usuário visualizará no Header do Portal \\(todas as páginas) o texto Todos documentos")
+    @Then("Usuário visualizará no Header do Portal o texto Todos documentos")
     public void headerWillHaveTodos() {
-        PageField changeButton = pageField.from("Header - Trocar Estabelecimento");
-        assertTrue("Botão trocar estabelecimento não o texto Todos. Encontrado <%s>.".formatted(changeButton.getAsText()),
-                selectECOrDtcoPage.allDocumentsIsAlreadySelected(changeButton));
+        PageField changeButton = pageField.from("Head - Documento");
+        System.out.println(changeButton.getAsText());
+        System.out.println(selectECOrDtcoPage.allDocumentsIsAlreadySelected(changeButton));
+
+                assertTrue("Botão trocar estabelecimento texto Todos os Documento Encontrado <%s>.".formatted(changeButton.getAsText()),  selectECOrDtcoPage.allDocumentsIsAlreadySelected(changeButton));
+
+
+
+
     }
 
     @Then("Usuário visualizará um label escrito “Trocar estabelecimento” com destaque na coloração da aliança")

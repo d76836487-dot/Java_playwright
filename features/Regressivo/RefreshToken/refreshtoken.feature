@@ -7,23 +7,37 @@
 Feature: Refresh Token
 
 
-  Scenario Outline: Refresh Token verificacao em minutos de inatividade
+  Scenario Outline: Refresh Token verificacao em minutos de inatividade coim movimentação do mouse
     Given open portal "<alianca>" and logon
     When click on menu "<menu>" "<submenu>" "<thirdmenu>"
-    And waiting time "<minutos>"
+    And waiting time
+   And aguarde o tempo de "<minutos>" minutos e mexa o mouse "<mouse>"
     And Check empty session
+    #When click on menu "<menu>" "<submenu>" "<thirdmenu>"
+    #And waiting time "<minutos>"
+    #When click on menu "<menu>" "<submenu>" "<thirdmenu>"
+    #And waiting time "<minutos>"
+    #And Check empty session
+    #When click on menu "<menu>" "<submenu>" "<thirdmenu>"
+    #And waiting time "<minutos>"
+    #And Check empty session
+    And logout
+    @refreshtokenS
+    Examples:
+      | Description    | alianca | menu    |submenu|thirdmenu|minutos|mouse|
+      #| Usuario master | sicredi | Negócio |       |         |5      ||
+      #| Usuario master | sicredi | Negócio |       |         |14     ||
+      | Usuario master | sicredi | Negócio |       |         |16     |S   |
+
+
+
+  Scenario Outline: Refresh Token verificacao em minutos de inatividade sem mexer o mouse
+    Given open portal "<alianca>" and logon
     When click on menu "<menu>" "<submenu>" "<thirdmenu>"
-    And waiting time "<minutos>"
-    When click on menu "<menu>" "<submenu>" "<thirdmenu>"
-    And waiting time "<minutos>"
-    And Check empty session
-    When click on menu "<menu>" "<submenu>" "<thirdmenu>"
-    And waiting time "<minutos>"
+    And aguarde o tempo de "<minutos>" minutos e mexa o mouse "<mouse>"
     And Check empty session
     And logout
-    @refreshtoken15
+    @refreshtokenN
     Examples:
-      | Description    | alianca | menu    |submenu|thirdmenu|minutos|
-      | Usuario master | sicredi | Negócio |       |         |5      |
-      | Usuario master | sicredi | Negócio |       |         |14     |
-      | Usuario master | sicredi | Negócio |       |         |15     |
+      | Description    | alianca | menu     |submenu|thirdmenu|minutos|mouse|
+       | Usuario master | sicredi | Negócio |       |         |16     |N   |

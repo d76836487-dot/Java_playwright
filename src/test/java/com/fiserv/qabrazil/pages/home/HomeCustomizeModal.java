@@ -4,6 +4,9 @@ import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.util.Config;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +53,13 @@ public class HomeCustomizeModal extends BasePage {
     }
 
     public void logout() {
+
+
+        if(page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Excluir acesso digital")).isVisible()){
+            page.locator("//*[contains(text(), 'Cancelar')]").click();
+
+        }
+
         page.getByTestId("head-sair").first().click();
         //page.locator("data-testid=head-sair").click();
 
@@ -57,7 +67,9 @@ public class HomeCustomizeModal extends BasePage {
 
         if(page.getByText("Avaliação de satisfação").isVisible()) {
 
-            page.getByText("Talvez depois").click();
+            //page.getByText("Talvez depois").click();
+            page.locator("xapth=/html/body/div[3]/div/div/div/div/div/div[2]/a/img").click();
+
 
         }
     }
