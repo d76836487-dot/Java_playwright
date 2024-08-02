@@ -465,194 +465,156 @@ Feature: Link de Pagamento
     And selecionar o filtro rapido "Links recorrentes"
     Then o portal deve apresentar somente resultados do tipo "link recorrentes""
 
-
-    #===========================================================================================================
-
-
-  Scenario:57. Tooltip status Ativo
+  #===========================================================================================================
+  @TestCaseKey=LPDC-T551
+  Scenario: 57. Tooltip status Ativo
     Given usuário esteja na aba consulta de links
     When passar o mouse acima do tooltip de um link com status ativo
     Then deve ver a frase "Link criado e aguardando pagamento do cliente"
 
-
-
-
-  Scenario:58. Tooltip status Autorizado
+  @TestCaseKey=LPDC-T565
+  Scenario: 58. Tooltip status Autorizado
     Given usuário esteja na aba consulta de links
     When passar o mouse acima do tooltip de um link com status Autorizado
     Then deve ver a frase "Autorizado pela processadora"
 
-
-
-
-  Scenario:59. Tooltip status Pago
+  @TestCaseKey=LPDC-T556
+  Scenario: 59. Tooltip status Pago
     Given usuário esteja na aba consulta de links
     When passar o mouse acima do tooltip de um link com status Pago
     Then deve ver a frase "Link pago pelo cliente"
 
-
-
-
-  Scenario:60. Tooltip status Agendado
+  @TestCaseKey=LPDC-T554
+  Scenario: 60. Tooltip status Agendado
     Given usuário esteja na aba consulta de links
     When passar o mouse acima do tooltip de um link com status Agendado
     Then deve ver a frase "Link pago pelo cliente com pagamento recorrentes agendados"
 
-
+  @TestCaseKey=LPDC-T560
   Scenario: 61. Tooltip status Expirado
     Given usuário esteja na aba consulta de links
     When passar o mouse acima do tooltip de um link com status Expirado
     Then deve ver a frase "Link criado mas não pago pelo cliente"
 
-
-
-
-  Scenario:62. Tooltip status Negado
+  @TestCaseKey=LPDC-T558
+  Scenario: 62. Tooltip status Negado
     Given usuário esteja na aba consulta de links
     When passar o mouse acima do tooltip de um link com status Negado
     Then deve ver a frase "Pagamento não autorizado pela processadora"
 
-
-  Scenario:63. Tooltip status Estornado
+  @TestCaseKey=LPDC-T555
+  Scenario: 63. Tooltip status Estornado
     Given usuário esteja na aba consulta de links
     When passar o mouse acima do tooltip de um link com status Estornado
     Then deve ver a frase "Pagamento estornado"
 
-
-
-
-  Scenario:64. Tooltip status Inativo
+  @TestCaseKey=LPDC-T564
+  Scenario: 64. Tooltip status Inativo
     Given usuário esteja na aba consulta de links
     When passar o mouse acima do tooltip de um link com status Inavito
     Then deve ver a frase "Link pago pelo cliente e inativado a recorrência"
 
-
-
-
-  Scenario:65. Tooltip status Finalizado
+  @TestCaseKey=LPDC-T562
+  Scenario: 65. Tooltip status Finalizado
     Given usuário esteja na aba consulta de links
     When passar o mouse acima do tooltip de um link com status Finalizado
     Then deve ver a frase "Link finalizado de pagamento recorrentes"
 
-
-
-
-  Scenario:66. Validar apresentação no Portal de link único criado no App
+  @TestCaseKey=LPDC-T570
+  Scenario: 66. Validar apresentação no Portal de link único criado no App
     Given usuário criou link de pagamento único no App Gestão
     When Acessar o Portal do cliente
     Then Devera ver na aba Links gerados o registro desse link criado no App (ambos com mesmo status)
 
-
-
-
-  Scenario:67. Validar apresentação no Portal de link recorrente criado no App
+  @TestCaseKey=LPDC-T571
+  Scenario: 67. Validar apresentação no Portal de link recorrente criado no App
     Given usuário criou link de pagamento recorrente no App Gestão
     When Acessar o Portal do cliente
     Then Devera ver na aba Links gerados o registro desse link criado no App (ambos com mesmo status)
 
-
-
-
-  Scenario:68. Validar apresentação no App de link único criado no Portal
+  @TestCaseKey=LPDC-T550
+  Scenario: 68. Validar apresentação no App de link único criado no Portal
     Given usuário criou link de pagamento único no Portal
     When Acessar o App Gestão
     Then Devera ver na aba Links gerados o registro desse link criado no Portal (ambos com mesmo status)
 
-
-
-
-  Scenario:69. Validar apresentação no App de link recorrente criado no Portal
+  @TestCaseKey=LPDC-T563
+  Scenario: 69. Validar apresentação no App de link recorrente criado no Portal
     Given usuário criou link de pagamento recorrente no Portal
     When Acessar o App Gestão
     Then Devera ver na aba Links gerados o registro desse link criado no Portal (ambos com mesmo status)
 
-
-
-
   #Testes visão operador COM F 
-  Scenario:70. Termos e condições
+  @TestCaseKey=LPDC-T568
+  Scenario: 70. Termos e condições
     Given usuário operador COM F acessou a jornada de link de pagamento
     When todo o cadastro do EC do cliente estiver OK mas existir pendencia de dar aceite aos termos e condições
     Then o operador não poderá dar o aceite pelo cliente
 
-
-
-
-  Scenario:71. Criar link único
+  @TestCaseKey=LPDC-T573
+  Scenario: 71. Criar link único
     Given usuário operador COM F acessou a jornada de link de pagamento
     When todo o cadastro do EC do cliente estiver OK 
     And operador clicar em "Solicitar link de pagamento único"
     Then o operador deve conseguir chegar até a tela de resumo mas o botão "Gerar link de pagamento" deve ficar desabilitado
 
-
-
-
-  Scenario:72. Criar link recorrente
+  @TestCaseKey=LPDC-T566
+  Scenario: 72. Criar link recorrente
     Given usuário operador COM F acessou a jornada de link de pagamento
     When todo o cadastro do EC do cliente estiver OK 
     And operador clicar em "Solicitar link de pagamento recorrente"
     Then o operador deve conseguir chegar até a tela de resumo mas o botão "Gerar link de pagamento" deve ficar desabilitado
 
-
-
-
-  Scenario:73. Copiar link de pagamento gerado - aba Links gerados - status ativo
+  @TestCaseKey=LPDC-T572
+  Scenario: 73. Copiar link de pagamento gerado - aba Links gerados - status ativo
     Given usuário operador COM F acessou a jornada de link de pagamento
     When estiver na aba links gerados
     And operador clicar no detlalhe de um link com status ativo
     Then o operador não deve conseguir copiar o link gerado
 
-
-
-
-  Scenario:74. Copiar link de pagamento gerado - aba Links gerados - status autorizado 
+  @TestCaseKey=LPDC-T561
+  Scenario: 74. Copiar link de pagamento gerado - aba Links gerados - status autorizado 
     Given usuário operador COM F acessou a jornada de link de pagamento
     When estiver na aba links gerados
     And operador clicar no detlalhe de um link com status autorizado
     Then o operador não deve conseguir copiar o link gerado
-
-
-
 
   #Testes visão operador SEM F 
-
-  Scenario:75. Termos e condições
+  @TestCaseKey=LPDC-T569
+  Scenario: 75. Termos e condições
     Given usuário operador SEM F acessou a jornada de link de pagamento
     When todo o cadastro do EC do cliente estiver OK mas existir pendencia de dar aceite aos termos e condições
     Then o operador não poderá dar o aceite pelo cliente
 
-
-
-
-  Scenario:76. Criar link único
+  @TestCaseKey=LPDC-T553
+  Scenario: 76. Criar link único
     Given usuário operador SEM F acessou a jornada de link de pagamento
     When todo o cadastro do EC do cliente estiver OK 
     And operador clicar em "Solicitar link de pagamento único"
     Then o operador deve conseguir chegar até a tela de resumo mas o botão "Gerar link de pagamento" deve ficar desabilitado
 
-
-
-
-  Scenario:77. Criar link recorrente
+  @TestCaseKey=LPDC-T552
+  Scenario: 77. Criar link recorrente
     Given usuário operador SEM F acessou a jornada de link de pagamento
     When todo o cadastro do EC do cliente estiver OK 
     And operador clicar em "Solicitar link de pagamento recorrente"
     Then o operador deve conseguir chegar até a tela de resumo mas o botão "Gerar link de pagamento" deve ficar desabilitado
 
-
-
-
-  Scenario:78. Copiar link de pagamento gerado - aba Links gerados - status ativo
+  @TestCaseKey=LPDC-T559
+  Scenario: 78. Copiar link de pagamento gerado - aba Links gerados - status ativo
     Given usuário operador SEM F acessou a jornada de link de pagamento
     When estiver na aba links gerados
     And operador clicar no detlalhe de um link com status ativo
     Then o operador não deve conseguir copiar o link gerado
 
-
-
-
-  Scenario:79. Copiar link de pagamento gerado - aba Links gerados - status autorizado 
+  @TestCaseKey=LPDC-T567
+  Scenario: 79. Copiar link de pagamento gerado - aba Links gerados - status autorizado 
     Given usuário operador SEM F acessou a jornada de link de pagamento
     When estiver na aba links gerados
     And operador clicar no detlalhe de um link com status autorizado
+<<<<<<< HEAD
     Then o operador não deve conseguir copiar o link gerado:
+=======
+    Then o operador não deve conseguir copiar o link gerado
+
+>>>>>>> ee9f45e950f2efb9e45c123b637f89da639f64da

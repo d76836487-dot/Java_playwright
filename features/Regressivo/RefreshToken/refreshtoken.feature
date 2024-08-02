@@ -7,7 +7,10 @@
 Feature: Refresh Token
 
 
-  Scenario Outline: Refresh Token verificacao em minutos de inatividade coim movimentação do mouse
+
+  @TestCaseKey=LPDC-T557
+  Scenario Outline: Refresh Token verificacao em minutos de inatividade
+
     Given open portal "<alianca>" and logon
     When click on menu "<menu>" "<submenu>" "<thirdmenu>"
     And waiting time
@@ -39,5 +42,11 @@ Feature: Refresh Token
     And logout
     @refreshtokenN
     Examples:
-      | Description    | alianca | menu     |submenu|thirdmenu|minutos|mouse|
-       | Usuario master | sicredi | Negócio |       |         |16     |N   |
+
+      | Description    | alianca | menu    |submenu  |thirdmenu   |minutos  |mouse|
+      | Description    | alianca | menu    | submenu  | thirdmenu | minutos |S    |
+      | Usuario master | sicredi | Negócio |          |           | 5       |S    |
+      | Usuario master | sicredi | Negócio |          |           | 14      |S    |
+      | Usuario master | sicredi | Negócio |          |           |16       |N   |
+
+
