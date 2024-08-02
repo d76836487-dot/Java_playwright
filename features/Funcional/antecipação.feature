@@ -126,7 +126,7 @@ Scenario: Health Check
 
 #language: en
   @Zephyr:ProjectKey=LPDC
-  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Abrindo_antecipação_de_um_EC_Flex_o_para-antecipar_via_dashboard
+  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Health_Check_Antecipação
   @Zephyr:Status=Draft
   @Zephyr:Priority=Normal
   @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
