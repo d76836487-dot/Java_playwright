@@ -1,5 +1,11 @@
 #language: en
 Feature: Health Check Antecipação
+  @ignore
+  @Zephyr:ProjectKey=LPDC
+  @Zephyr:Folder=/Portal_do_Cliente/Funcional/Health_Check
+  @Zephyr:Status=Draft
+  @Zephyr:Priority=Normal
+  @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Manual
 
 Scenario: Health Check
   Given usuário está logado no Merchant Portal
