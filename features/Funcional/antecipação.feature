@@ -98,7 +98,7 @@ Scenario: Health Check
   And usuário clica em qualquer EC
   Then usuário deve visualizar o botão “Trocar estabelecimento”
 
-  Scenario: Clicar botão Trocar estabelecimento quando documento possuí outro estabelecimento
+  Scenario: Clicar botão Trocar estabelecimento quando documento possuí outro estabelecimento v1
   Given usuário está logado no Merchant Portal
   When usuário visualiza o dashboard Antecipação
   And usuário clica em qualquer EC
@@ -138,17 +138,17 @@ Scenario: Health Check
 
 
 
-  Scenario: Abas Solicitar antecipação e Histórico na antecipação
+  Scenario: Abas Solicitar antecipação e Histórico na antecipação v1
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão com saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar duas abas: Solicitar antecipação (selecionada com a cor da aliança) e Histórico (sem estar selecionada)
 
-  Scenario: Valor disponível para antecipar na caixa Valor disponível para antecipar
+  Scenario: Valor disponível para antecipar na caixa Valor disponível para antecipar v1
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão com saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar o valor disponível para antecipar igual ao apresentado no dashboard anteriormente
 
-  Scenario: Visualizar tooltip Valor disponível para antecipar na caixa Valor disponível para antecipar
+  Scenario: Visualizar tooltip Valor disponível para antecipar na caixa Valor disponível para antecipar v2
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão com saldo para antecipar pelo dashboard Antecipação
   And usuário passa o mouse sobre o tooltip do Valor disponível para antecipar
@@ -160,12 +160,12 @@ Scenario: Health Check
   When usuário acessa a antecipação de um EC padrão com saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar as seguintes informações: ícone circular com o ponto de interrogação, título “Como funciona?” e a mensagem “A antecipação é o recebimento adiantado das vendas feitas no crédito à vista ou parcelado. Nessa jornada você criará uma solicitação de antecipação, que passará por análises e poderá ser acompanhada na aba Histórico”
 
-  Scenario: Visualizar informações “Antecipação automática” na caixa Antecipação automática
+  Scenario: Visualizar informações “Antecipação automática” na caixa Antecipação automática v1
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão com saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar as seguintes informações na caixa de antecipação automática: ícone, título “Antecipação automática” e a mensagem “Ao contratar o serviço você define uma frequência de recebimento e automaticamente os recebíveis com cartão de crédito serão antecipados e creditados na conta de sua empresa. É a maneira mais simples de gerenciar suas vendas e seu fluxo de caixa”
 
-  Scenario: Visualizar botão “Solicitar antecipação automática” na caixa Antecipação automática
+  Scenario: Visualizar botão “Solicitar antecipação automática” na caixa Antecipação automática v1
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão com saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar na caixa de antecipação automática o botão “Solicitar antecipação automática” na cor da aliança
@@ -190,19 +190,19 @@ Scenario: Health Check
   When usuário acessa a antecipação de um EC padrão sem saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar duas abas: Solicitar antecipação (selecionada com a cor da aliança) e Histórico (sem estar selecionada)
 
-  Scenario: Valor disponível para antecipar na caixa Valor disponível para antecipar
+  Scenario: Valor disponível para antecipar na caixa Valor disponível para antecipar v3
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão sem saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar a mensagem “Você não possui valor disponível para antecipar”
 
 
-  Scenario: Visualizar tooltip Valor disponível para antecipar na caixa Valor disponível para antecipar
+  Scenario: Visualizar tooltip Valor disponível para antecipar na caixa Valor disponível para antecipar v4
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão sem saldo para antecipar pelo dashboard Antecipação
   And usuário passa o mouse sobre o tooltip do Valor disponível para antecipar
   Then usuário deve visualizar a seguinte mensagem: “O saldo disponível contempla o valor líquido das vendas”
 
-  Scenario: Visualizar informações “Como funciona?” na caixa Valor disponível para antecipar v1
+  Scenario: Visualizar informações “Como funciona?” na caixa Valor disponível para antecipar v2
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão sem saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar as seguintes informações: ícone circular com o ponto de interrogação, título “Como funciona?” e a mensagem “A antecipação é o recebimento adiantado das vendas feitas no crédito à vista ou parcelado. Nessa jornada você criará uma solicitação de antecipação, que passará por análises e poderá ser acompanhada na aba Histórico”
@@ -213,7 +213,7 @@ Scenario: Health Check
   Then usuário deve visualizar as seguintes informações na caixa de antecipação automática: ícone, título “Antecipação automática” e a mensagem “Ao contratar o serviço você define uma frequência de recebimento e automaticamente os recebíveis com cartão de crédito serão antecipados e creditados na conta de sua empresa. É a maneira mais simples de gerenciar suas vendas e seu fluxo de caixa”
 
 
-  Scenario: Visualizar botão “Solicitar antecipação automática” na caixa Antecipação automática v1
+  Scenario: Visualizar botão “Solicitar antecipação automática” na caixa Antecipação automática v2
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão sem saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar na caixa de antecipação automática o botão “Solicitar antecipação automática” na cor da aliança
