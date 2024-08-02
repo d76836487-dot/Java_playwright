@@ -116,8 +116,6 @@ Scenario: Health Check
   #Obs.: Testar com diferentes tipos de estabelecimentos
 
 
-  #language: en
-  Feature: Abrindo antecipação de um EC Flex o para antecipar via dashboard
 
   Scenario: Mensagem título na página antecipação com plano Flex
   Given usuário está logado no Merchant Portal
@@ -225,9 +223,6 @@ Scenario: Health Check
   When usuário acessa a antecipação de um EC padrão sem saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar na caixa de antecipação automática o botão “Solicitar antecipação eventual”
   And o botão “Solicitar antecipação eventual” não deve ser clicável
-
-#language: en
-  Feature: Antecipando eventualmente sem personalização
 
   Scenario: Informações no “Resumo da antecipação eventual” com saldo disponível
   Given usuário está logado no Merchant Portal
