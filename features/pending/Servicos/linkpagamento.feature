@@ -614,4 +614,3 @@ Feature: Link de Pagamento
     And operador clicar no detlalhe de um link com status autorizado
     Then o operador não deve conseguir copiar o link gerado
 
-
