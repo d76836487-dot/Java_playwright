@@ -546,7 +546,7 @@ Scenario: Health Check
   And usuário clica no botão “X”
   Then usuário será direcionado para a página inicial da antecipação
 
-  Scenario:  Fechar a nova simulação após antecipar eventualmente v3
+  Scenario:  Fechar a nova simulação após antecipar eventualmente v4
   Given usuário está logado no Merchant Portal
   When usuário deseja antecipar eventualmente
   And usuário solicita a antecipação
