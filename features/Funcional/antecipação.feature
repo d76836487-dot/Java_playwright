@@ -155,7 +155,7 @@ Scenario: Health Check
   Then usuário deve visualizar a seguinte mensagem: “O saldo disponível contempla o valor líquido das vendas”
 
 
-  Scenario: Visualizar informações “Como funciona?” na caixa Valor disponível para antecipar
+  Scenario: Visualizar informações “Como funciona?” na caixa Valor disponível para antecipar v1
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão com saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar as seguintes informações: ícone circular com o ponto de interrogação, título “Como funciona?” e a mensagem “A antecipação é o recebimento adiantado das vendas feitas no crédito à vista ou parcelado. Nessa jornada você criará uma solicitação de antecipação, que passará por análises e poderá ser acompanhada na aba Histórico”
@@ -171,7 +171,7 @@ Scenario: Health Check
   Then usuário deve visualizar na caixa de antecipação automática o botão “Solicitar antecipação automática” na cor da aliança
   And o botão “Solicitar antecipação automática” na cor da aliança deve ser clicável
 
-  Scenario: Visualizar informações “Antecipação eventual” na caixa Antecipação eventual
+  Scenario: Visualizar informações “Antecipação eventual” na caixa Antecipação eventual v1
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão com saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar as seguintes informações na caixa de antecipação eventual: ícone, título “Antecipação eventual” e a mensagem “Sempre que precisar você poderá solicitar a antecipação dos valores das vendas realizadas por cartão de crédito na própria máquina de cartão ou pelos canais digitais”
@@ -202,7 +202,7 @@ Scenario: Health Check
   And usuário passa o mouse sobre o tooltip do Valor disponível para antecipar
   Then usuário deve visualizar a seguinte mensagem: “O saldo disponível contempla o valor líquido das vendas”
 
-  Scenario: Visualizar informações “Como funciona?” na caixa Valor disponível para antecipar
+  Scenario: Visualizar informações “Como funciona?” na caixa Valor disponível para antecipar v1
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão sem saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar as seguintes informações: ícone circular com o ponto de interrogação, título “Como funciona?” e a mensagem “A antecipação é o recebimento adiantado das vendas feitas no crédito à vista ou parcelado. Nessa jornada você criará uma solicitação de antecipação, que passará por análises e poderá ser acompanhada na aba Histórico”
@@ -213,7 +213,7 @@ Scenario: Health Check
   Then usuário deve visualizar as seguintes informações na caixa de antecipação automática: ícone, título “Antecipação automática” e a mensagem “Ao contratar o serviço você define uma frequência de recebimento e automaticamente os recebíveis com cartão de crédito serão antecipados e creditados na conta de sua empresa. É a maneira mais simples de gerenciar suas vendas e seu fluxo de caixa”
 
 
-  Scenario: Visualizar botão “Solicitar antecipação automática” na caixa Antecipação automática
+  Scenario: Visualizar botão “Solicitar antecipação automática” na caixa Antecipação automática v1
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão sem saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar na caixa de antecipação automática o botão “Solicitar antecipação automática” na cor da aliança
@@ -224,7 +224,7 @@ Scenario: Health Check
   When usuário acessa a antecipação de um EC padrão sem saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar as seguintes informações na caixa de antecipação eventual: ícone, título “Antecipação eventual” e a mensagem “Sempre que precisar você poderá solicitar a antecipação dos valores das vendas realizadas por cartão de crédito na própria máquina de cartão ou pelos canais digitais”
 
-  Scenario: Visualizar botão “Solicitar antecipação eventual” na caixa Antecipação eventual
+  Scenario: Visualizar botão “Solicitar antecipação eventual” na caixa Antecipação eventual v1
   Given usuário está logado no Merchant Portal
   When usuário acessa a antecipação de um EC padrão sem saldo para antecipar pelo dashboard Antecipação
   Then usuário deve visualizar na caixa de antecipação automática o botão “Solicitar antecipação eventual”
@@ -232,7 +232,7 @@ Scenario: Health Check
 
 
 
-  Scenario: Informações no “Resumo da antecipação eventual” com saldo disponível
+  Scenario: Informações no “Resumo da antecipação eventual” com saldo disponível v1
   Given usuário está logado no Merchant Portal
   And usuário possui saldo para antecipar eventualmente
   When usuário deseja antecipar eventualmente
@@ -249,7 +249,7 @@ Scenario: Health Check
   And usuário não confirma a antecipação
   Then usuário deve visualizar a página anterior com a seleção feita
 
-  Scenario: Confirmar a antecipação eventual com saldo disponível
+  Scenario: Confirmar a antecipação eventual com saldo disponível v1
   Given usuário está logado no Merchant Portal
   And usuário possui saldo para antecipar eventualmente
   When usuário deseja antecipar eventualmente
@@ -470,7 +470,7 @@ Scenario: Health Check
   Then usuário deve visualizar um arquivo pdf contendo: logo da aliança, título: “Comprovante de solicitação de antecipação eventual”, data e hora de emissão do PDF, número do estabelecimento comercial e informações gerais (valor bruto solicitado em reais, taxa, valor do desconto em reais, valor líquido a receber em reais, status = em andamento, bandeiras = todas as bandeiras, produto = <produto>, período = antecipar todo o período até o momento e canal de contratação = Portal do cliente)
   # Exemplos:   Produto  Crédito a vista   Crédito parcelado   Todos
 
-  Scenario: Antecipar eventualmente com saldo disponível entre 00:00 e 12:15 personalizando período válido
+  Scenario: Antecipar eventualmente com saldo disponível entre 00:00 e 12:15 personalizando período válido v1
   Given usuário está logado no Merchant Portal
   And usuário possui saldo para antecipar eventualmente
   When usuário deseja antecipar eventualmente
@@ -528,7 +528,7 @@ Scenario: Health Check
   Then usuário deve visualizar um arquivo pdf contendo: logo da aliança, título: “Comprovante de solicitação de antecipação eventual”, data e hora de emissão do PDF, número do estabelecimento comercial e informações gerais (valor bruto solicitado em reais, taxa, valor do desconto em reais, valor líquido a receber em reais, status = em andamento, bandeiras = todas as bandeiras, produto = todos os produtos, período = <DD/MM/AAAA – DD/MM/AAAA> e canal de contratação = Portal do cliente)
   #Exemplos:   Período   Vencimento de: Do dia corrente (dia da consulta) – 12/07/2023   Até: Sem limitação no calendário – 12/08/2023
 
-  Scenario: Nova simulação após antecipar eventualmente
+  Scenario: Nova simulação após antecipar eventualmente v1
     Given usuário está logado no Merchant Portal
   When usuário deseja antecipar eventualmente
   And usuário solicita a antecipação
@@ -537,7 +537,7 @@ Scenario: Health Check
   Then usuário verá um pop-up com o seguinte texto: “Quer garantir o recebimento das suas próximas vendas?” “Contrate o nosso serviço de antecipação automática e garanta o recebimento imediato de suas próximas vendas” e o botão “X” e “fechar” e “ir para antecipação automática”
 
 
-  Scenario:  Fechar a nova simulação após antecipar eventualmente
+  Scenario:  Fechar a nova simulação após antecipar eventualmente v3
   Given usuário está logado no Merchant Portal
   When usuário deseja antecipar eventualmente
   And usuário solicita a antecipação
@@ -546,7 +546,7 @@ Scenario: Health Check
   And usuário clica no botão “X”
   Then usuário será direcionado para a página inicial da antecipação
 
-  Scenario:  Fechar a nova simulação após antecipar eventualmente
+  Scenario:  Fechar a nova simulação após antecipar eventualmente v3
   Given usuário está logado no Merchant Portal
   When usuário deseja antecipar eventualmente
   And usuário solicita a antecipação
@@ -555,7 +555,7 @@ Scenario: Health Check
   And usuário clica no botão “Fechar”
   Then usuário será direcionado para a página inicial da antecipação
 
-  Scenario:  Ir para antecipação automática na nova simulação após antecipar eventualmente
+  Scenario:  Ir para antecipação automática na nova simulação após antecipar eventualmente v4
   Given usuário está logado no Merchant Portal
   When usuário deseja antecipar eventualmente
   And usuário solicita a antecipação
