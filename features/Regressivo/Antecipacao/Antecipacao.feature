@@ -90,9 +90,6 @@ Feature: Antecipação
       | Description    | alianca |
       | usuário master | afinz   |
 
-
-
-
   @TestCaseKey=LPDC-T576
   Scenario Outline: Dashboard Antecipação com EC flex
     Given open portal "<alianca>" and logon
