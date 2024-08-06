@@ -15,6 +15,9 @@ public class Config {
     public static final String sicredi_pass = "Fiserv@456";
 
 
+    public static final String sicrediflex_url = "https://sicredi.qa.portaldocliente.fiserv.com";
+    public static final String sicrediflex_user = "68992232000107";
+    public static final String sicrediflex_pass = "Senha123@";
 
 
     public static final String afinz_url = "https://afinz.qa.portaldocliente.fiserv.com";

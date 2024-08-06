@@ -90,17 +90,20 @@ Feature: Antecipação
       | Description    | alianca |
       | usuário master | afinz   |
 
+
+
+
   @TestCaseKey=LPDC-T576
   Scenario Outline: Dashboard Antecipação com EC flex
     Given open portal "<alianca>" and logon
     Given o usuário visualiza o dashboard Antecipação
     Then o usuário visualizará o número do estabelecimento na coluna Estabelecimento e a mensagem "Plano Flex contratado"
-    And o usuário visualizará valor na coluna Valor/Produto
+    And o usuário visualizará valor na coluna 'ValorProduto'
     And o usuário visualizará o botão "Ir para antecipação
     @sicredi @alliances @Antecipacao
     Examples:
-      | Description    | alianca |
-      | usuário master | sicredi |
+      | Description    | alianca     |
+      | usuário master | sicrediflex |
 
     @azulzinha @alliances
     Examples:

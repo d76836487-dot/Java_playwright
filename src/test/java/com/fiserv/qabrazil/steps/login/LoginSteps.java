@@ -40,6 +40,13 @@ public class LoginSteps extends BasePage {
             Config.serviceContract = "110";
             Config.institution = "00000004";
         }
+        if(arg0.equals("sicrediflex")){
+            url = Config.sicrediflex_url;
+            user = Config.sicrediflex_user;
+            pass = Config.sicrediflex_pass;
+            Config.serviceContract = "110";
+            Config.institution = "00000004";
+        }
 
         if(arg0.equals("afinz")){
             url = Config.afinz_url;

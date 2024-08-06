@@ -134,29 +134,17 @@ public class SelectECOrDtcoPage extends BasePage {
 
             if(page.getByText("Personalize sua visualização").isVisible()) {
 
-            //page.getByText("Documento").click();
+                if(page.getByText("68.992.232/0001-07").isVisible()) {
+                    page.locator("data-testid=alterar-matriz-text-documento-nome-fantasia-TDM Test Data Team").click();
+                 }else {
+                    page.locator("data-testid=alterar-matriz-type-documento").click();
 
-            page.locator("data-testid=alterar-matriz-type-documento").click();
-           // if(page.getByText("Todos").isVisible()) {
-                PageField buttonAllDocs = pageField.from("Trocar Estabelecimento - Botão Todos Documentos");
-                buttonAllDocs.click();
+                    PageField buttonAllDocs = pageField.from("Trocar Estabelecimento - Botão Todos Documentos");
+                    buttonAllDocs.click();
+                }
+               page.getByText("Acessar").click();
+              Config.SessionLogado = "YES";
 
-
-            //PageField buttonAcessar = pageField.from("Trocar Estabelecimento - Acessar");
-            //buttonAcessar.click();
-
-
-
-                page.getByText("Acessar").click();
-          //  }else{
-
-                Config.SessionLogado = "YES";
-
-            //    List<String> allDocs = selectECOrDtcoPage.getDocumentsFromTabDocument();
-             //   selectECOrDtcoPage.selectDocumentInput(allDocs.get(0));
-              //  selectECOrDtcoPage.storeDocAndFirstNameFromDocuments(allDocs.get(0));
-                ///page.getByText("Acessar").click();
-            //}
         }
     }
     private void openModalIfRequired(PageField changeButton) {

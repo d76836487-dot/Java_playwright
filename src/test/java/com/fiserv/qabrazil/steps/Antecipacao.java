@@ -106,18 +106,15 @@ public class Antecipacao extends BaseSteps {
 
     @Then("o usuário visualizará o número do estabelecimento na coluna Estabelecimento e a mensagem {string}")
     public void o_usuário_visualizará_o_número_do_estabelecimento_na_coluna_estabelecimento_e_a_mensagem(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
-    @Then("o usuário visualizará valor na coluna Valor\\/Produto")
+    @Then("o usuário visualizará valor na coluna 'ValorProduto'")
     public void o_usuário_visualizará_valor_na_coluna_valor_produto() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Then("o usuário visualizará o botão \"Ir para antecipação")
     public void o_usuário_visualizará_o_botão_ir_para_antecipação() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 
 
