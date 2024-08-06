@@ -8,74 +8,64 @@
 Feature: Débitos e Aluguéis
 
   @TestCaseKey=LPDC-T666
-  Scenario : Visualizando Débitos e Aluguéis Máster
+  Scenario: Visualizando Débitos e Aluguéis Máster
     Given usuário esteja logado no Portal do Cliente
     When usuário selecionar Recebimentos no menu lateral esquerdo
     Then usuário visualizara as abas Pagos, Futuros, Débitos e Aluguéis
 
-
-  Scenario : Visualizando Débitos e Aluguéis Secundário assistente de consulta
+  @TestCaseKey=LPDC-T672
+  Scenario: Visualizando Débitos e Aluguéis Secundário assistente de consulta
     Given usuário esteja logado no Portal do Cliente
     When usuário selecionar Recebimentos no menu lateral esquerdo
     Then usuário visualizara as abas Pagos, Futuros, Débitos e Aluguéis
 
-
-
-  Scenario : Visualizando Débitos e Aluguéis Secundário assistente de operação
+  @TestCaseKey=LPDC-T671
+  Scenario: Visualizando Débitos e Aluguéis Secundário assistente de operação
     Given usuário esteja logado no Portal do Cliente
     When usuário selecionar Recebimentos no menu lateral esquerdo
     Then usuário visualizara as abas Pagos, Futuros, Débitos e Aluguéis
 
-
-  Scenario : Visualizando Débitos e Aluguéis  Operador com F
+  @TestCaseKey=LPDC-T670
+  Scenario: Visualizando Débitos e Aluguéis  Operador com F
     Given usuário esteja logado no Portal do Cliente
     When usuário selecionar Recebimentos no menu lateral esquerdo
     Then usuário visualizara as abas Pagos, Futuros, Débitos e Aluguéis
 
-
-
-  Scenario : Visualizando Débitos e Aluguéis  Operador sem F
+  @TestCaseKey=LPDC-T669
+  Scenario: Visualizando Débitos e Aluguéis  Operador sem F
     Given usuário esteja logado no Portal do Cliente
     When usuário selecionar Recebimentos no menu lateral esquerdo
     Then usuário visualizara as abas Pagos, Futuros, Débitos e Aluguéis
 
   @TestCaseKey=LPDC-T667
-  Scenario :  Visualizando Débitos e Aluguéis através do Acesso rápido Máster
+  Scenario: Visualizando Débitos e Aluguéis através do Acesso rápido Máster
     Given usuário esteja logado no Portal do Cliente
     When usuário selecionar Recebimentos na home logada "Acesso rápido"
     Then usuário visualizara as abas Pagos, Futuros, Débitos e Aluguéis
 
-
-
-  Scenario :  Visualizando Débitos e Aluguéis através do Acesso rápido Secundário assistente de consulta
+  @TestCaseKey=LPDC-T674
+  Scenario: Visualizando Débitos e Aluguéis através do Acesso rápido Secundário assistente de consulta
     Given usuário esteja logado no Portal do Cliente
     When usuário selecionar Recebimentos na home logada "Acesso rápido"
     Then usuário visualizara as abas Pagos, Futuros, Débitos e Aluguéis
 
-
-  Scenario :  Visualizando Débitos e Aluguéis através do Acesso rápido Secundário assistente de operação
+  @TestCaseKey=LPDC-T675
+  Scenario: Visualizando Débitos e Aluguéis através do Acesso rápido Secundário assistente de operação
     Given usuário esteja logado no Portal do Cliente
     When usuário selecionar Recebimentos na home logada "Acesso rápido"
     Then usuário visualizara as abas Pagos, Futuros, Débitos e Aluguéis
 
-
-
-  Scenario :  Visualizando Débitos e Aluguéis através do Acesso rápido Operador com F
+  @TestCaseKey=LPDC-T676
+  Scenario: Visualizando Débitos e Aluguéis através do Acesso rápido Operador com F
     Given usuário esteja logado no Portal do Cliente
     When usuário selecionar Recebimentos na home logada "Acesso rápido"
     Then usuário visualizara as abas Pagos, Futuros, Débitos e Aluguéis
 
-
-
-  Scenario :  Visualizando Débitos e Aluguéis através do Acesso rápido Operador sem F
+  @TestCaseKey=LPDC-T673
+  Scenario: Visualizando Débitos e Aluguéis através do Acesso rápido Operador sem F
     Given usuário esteja logado no Portal do Cliente
     When usuário selecionar Recebimentos na home logada "Acesso rápido"
     Then usuário visualizara as abas Pagos, Futuros, Débitos e Aluguéis
-
-
-
-
-
 
   @TestCaseKey=LPDC-T659
   Scenario Outline: Cenário: Acessando Débitos e Aluguéis
