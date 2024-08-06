@@ -7,7 +7,6 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Débitos e Ajustes
 
-
   @TestCaseKey=LPDC-T666
   Scenario Outline: Visualizando Débitos e Ajustes Máster
     Given usuário esteja logado no Portal do Cliente
@@ -20,9 +19,6 @@ Feature: Débitos e Ajustes
       | Secundário assistente de operação |
       | Operador com F                    |
       | Operador sem F                    |
-
-
-
 
   @TestCaseKey=LPDC-T667
   Scenario Outline: Visualizando Débitos e Ajustes através do Acesso rápido Máster
@@ -37,8 +33,6 @@ Feature: Débitos e Ajustes
       | Operador com F                    |
       | Operador sem F                    |
 
-
-
   @TestCaseKey=LPDC-T656
   Scenario Outline: Visualizando mensagem
     Given usuário esteja Logado no Portal
@@ -51,8 +45,6 @@ Feature: Débitos e Ajustes
       | Secundário assistente de operação |
       | Operador com F                    |
       | Operador sem F                    |
-
-
 
   #Visualizando Tipo de Ajuste
   @TestCaseKey=LPDC-T664
@@ -68,7 +60,6 @@ Feature: Débitos e Ajustes
       | Secundário assistente de operação |
       | Operador com F                    |
       | Operador sem F                    |
-
 
   @TestCaseKey=LPDC-T660
   Scenario Outline: Visualizando Filtro Período default último mês
