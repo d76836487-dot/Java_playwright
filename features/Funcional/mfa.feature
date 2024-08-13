@@ -369,7 +369,7 @@ When estiver na tela “Selecione o dispositivo que deseja informar o Token”
 And selecionar  o dispositivo
 Then vou visualizar a tela ‘’Informe o Token de 6 Dígitos” o texto “Acesse o Token no aplicativo Bin Gestão e informe o código de 6 dígitos abaixo” e os Botões “voltar”, “Não tenho esse token”, e “Confirmar”
 
-Scenario :  Cliente com mais de um dispositivo habilitado Onde encontrar o Token
+Scenario :  Cliente com mais de um dispositivo habilitado Onde encontrar o Token 1
 Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
 And tenho   mais de um dispositivo com Token cadastrado
 When estiver na tela “Informe o Token de 6 dígitos”
@@ -617,7 +617,7 @@ And clicar no botão “Voltar”
 Then visualizo a tela Acesse sua conta
 And não acesso o canal
 
-Scenario: Cliente com mais de um dispositivo habilitado onde encontrar o Token
+Scenario: Cliente com mais de um dispositivo habilitado onde encontrar o Token 2
 Given eu inseri um usuário e senha válido no Portal
 And tenho mais de um dispositivo com Token cadastrado
 When estiver na tela “Onde encontrar o Token”
@@ -633,7 +633,7 @@ And seguir passo a passo de resgatar o token no App
 When clicar no botão Informar código
 Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
-Scenario: Cliente com mais de um dispositivo habilitado onde encontrar o Token
+Scenario: Cliente com mais de um dispositivo habilitado onde encontrar o Token 3
 Given eu inseri um usuário e senha válido no Portal
 And tenho mais de um dispositivo com Token cadastrado
 When estiver na tela “Onde encontrar o Token”
