@@ -46,7 +46,6 @@ Feature: Débitos e Ajustes
       | Operador com F                    |
       | Operador sem F                    |
 
-
   @TestCaseKey=LPDC-T664
   Scenario Outline: Visualizando Tipo de Ajuste
     Given usuário esteja Logado no Portal
@@ -60,6 +59,7 @@ Feature: Débitos e Ajustes
       | Secundário assistente de operação |
       | Operador com F                    |
       | Operador sem F                    |
+
   @TestCaseKey=LPDC-T660
   Scenario Outline: Visualizando Filtro Período default último mês
     Given usuário esteja Logado no Portal
@@ -73,7 +73,6 @@ Feature: Débitos e Ajustes
       | Secundário assistente de operação |
       | Operador com F                    |
       | Operador sem F                    |
-
 
   @TestCaseKey=LPDC-T657
   Scenario Outline: Visualizando Botão Exportar
