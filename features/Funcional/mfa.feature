@@ -142,9 +142,6 @@ Feature: MFA
     When apertar o botão Entrar
     Then vou visualizar a tela ‘’Informe o Token de 6 Dígitos” o texto “Acesse o Token no aplicativo Bin Gestão e informe o código de 6 dígitos abaixo” e os Botões “voltar”, “Não tenho esse token”, e “Confirmar”
 
-
-
-
   @TestCaseKey=LPDC-T699
   Scenario: Cliente sem token habilitado -  usuario master
     Given  eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
