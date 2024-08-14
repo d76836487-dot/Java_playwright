@@ -142,15 +142,18 @@ Feature: MFA
     When apertar o botão Entrar
     Then vou visualizar a tela ‘’Informe o Token de 6 Dígitos” o texto “Acesse o Token no aplicativo Bin Gestão e informe o código de 6 dígitos abaixo” e os Botões “voltar”, “Não tenho esse token”, e “Confirmar”
 
+
+
+
   @TestCaseKey=LPDC-T699
-  Scenario: Cliente sem token habilitado
+  Scenario: Cliente sem token habilitado -  usuario master
     Given  eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     When  apertar o botão Entrar
     And não     tenho o Token habilitado no App
     Then  vou visualizar a tela ‘’Informe o Token de 6 Dígitos” o texto “Acesse o Token no aplicativo Bin Gestão e informe o código de 6 dígitos abaixo” e os Botões “voltar”, “Não tenho esse token”, e “Confirmar”
 
   @TestCaseKey=LPDC-T697
-  Scenario: Cliente sem token habilitado  Não tenho esse Token
+  Scenario: Cliente sem token habilitado  Não tenho esse Token -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não tenho o Token habilitado no App
     When estiver na tela “Informe o Token de 6 dígitos”
@@ -158,7 +161,7 @@ Feature: MFA
     Then visualiza a tela Onde encontrar o Token? com os botões “x” e Informar código”
 
   @TestCaseKey=LPDC-T690
-  Scenario: Cliente sem token habilitado  Não tenho esse Token não acesso o canal
+  Scenario: Cliente sem token habilitado  Não tenho esse Token não acesso o canal -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não tenho o Token habilitado no App
     When estiver na tela “Informe o Token de 6 dígitos”
@@ -167,7 +170,7 @@ Feature: MFA
     And não acesso o canal
 
   @TestCaseKey=LPDC-T691
-  Scenario: Cliente sem token habilitado clique x  redirecionado para a tela Informe o Token
+  Scenario: Cliente sem token habilitado clique x  redirecionado para a tela Informe o Token -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não tenho o Token habilitado no App
     When estiver na tela “Onde encontrar o Token”
@@ -176,7 +179,7 @@ Feature: MFA
     Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
   @TestCaseKey=LPDC-T752
-  Scenario: Cliente sem token habilitado  redirecionado para a tela Informe o Token
+  Scenario: Cliente sem token habilitado  redirecionado para a tela Informe o Token -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não tenho o Token habilitado no App
     When estiver na tela “Onde encontrar o Token”
@@ -185,7 +188,7 @@ Feature: MFA
     Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
   @TestCaseKey=LPDC-T683
-  Scenario: Cliente sem token habilitado validação de texto
+  Scenario: Cliente sem token habilitado validação de texto -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não tenho o Token habilitado no App
     When estiver na tela “Onde encontrar o Token”
@@ -193,7 +196,7 @@ Feature: MFA
     And visualizara “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.” “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
 
   @TestCaseKey=LPDC-T751
-  Scenario: Cliente sem token habilitado download no App store
+  Scenario: Cliente sem token habilitado download no App store -  usuario master
     Given  eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não     tenho o Token habilitado no App
     When  estiver na tela “Onde encontrar o Token”
@@ -201,7 +204,7 @@ Feature: MFA
     Then  será redirecionado para a página de download no App store
 
   @TestCaseKey=LPDC-T702
-  Scenario: Cliente sem token habilitado download no Google Play
+  Scenario: Cliente sem token habilitado download no Google Play -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não tenho o Token habilitado no App
     When estiver na tela “Onde encontrar o Token”
@@ -209,7 +212,7 @@ Feature: MFA
     Then será redirecionado para a página de download no Google Play
 
   @TestCaseKey=LPDC-T762
-  Scenario: Cliente sem token habilitado validação de texto 2
+  Scenario: Cliente sem token habilitado validação de texto 2 -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não tenho o Token habilitado no App
     When estiver na tela “Onde encontrar o Token”
@@ -217,7 +220,7 @@ Feature: MFA
     And visualizara   os textos “1. Você pode encontrar o Token na área de acesso e no menu de Serviços.” “2. Ao clicar será exibido um código válido por 30 segundos, esse é o código que precisa ser informado sempre que realizar uma antecipação no portal.” e um botão Informar código.
 
   @TestCaseKey=LPDC-T726
-  Scenario: Cliente sem token habilitado home logada
+  Scenario: Cliente sem token habilitado home logada -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não  tenho o Token habilitado no App
     When seguir passo a passo de baixar, acessar e habilitar o token no App
@@ -226,7 +229,7 @@ Feature: MFA
     Then  serei redirecionado para a home logada do Portal
 
   @TestCaseKey=LPDC-T698
-  Scenario: Cliente sem token habilitado  Código inválido
+  Scenario: Cliente sem token habilitado  Código inválido -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não tenho o Token habilitado no App
     When seguir passo a passo de baixar, acessar e habilitar o token no App
@@ -235,7 +238,7 @@ Feature: MFA
     Then o portal apresentará a mensagem “Código inválido ou expirado.”
 
   @TestCaseKey=LPDC-T764
-  Scenario: Cliente sem token habilitado  Código expirado
+  Scenario: Cliente sem token habilitado  Código expirado -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não tenho o Token habilitado no App
     When seguir passo a passo de baixar, acessar e habilitar o token no App
@@ -244,7 +247,7 @@ Feature: MFA
     Then o portal apresentará a mensagem “Código inválido ou expirado.”
 
   @TestCaseKey=LPDC-T718
-  Scenario: Cliente sem token habilitado  bloqueado 30 minutos
+  Scenario: Cliente sem token habilitado  bloqueado 30 minutos -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não tenho o Token habilitado no App
     When inserir qualquer código ERRADO ou EXPIRADO 3 vezes consecutivas na tela “Informe o Token de 6 dígitos”
@@ -252,7 +255,7 @@ Feature: MFA
     And portal apresentará a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
   @TestCaseKey=LPDC-T733
-  Scenario: Cliente sem token habilitado  bloqueado 3 vezes
+  Scenario: Cliente sem token habilitado  bloqueado 3 vezes -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And não tenho o Token habilitado no App
     When inserir qualquer código ERRADO ou EXPIRADO 3 vezes consecutivas na tela “Informe o Token de 6 dígitos”
@@ -261,7 +264,7 @@ Feature: MFA
     Then o portal apresentará novamente a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
   @TestCaseKey=LPDC-T712
-  Scenario: Cliente sem token habilitado Personalize sua Visualização
+  Scenario: Cliente sem token habilitado Personalize sua Visualização -  usuario master
     #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
     Given insira um documento (CNPJ ou CPF) ou usuário e senha
     And clicar no botão entrar
@@ -272,14 +275,14 @@ Feature: MFA
     Then Visualiza a Tela de Personalize sua Visualização com as abas documentos e estabelecimento
 
   @TestCaseKey=LPDC-T739
-  Scenario: Cliente com token habilitado validação texto 3
+  Scenario: Cliente com token habilitado validação texto 3 -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When apertar o botão Entrar
     Then vou visualizar a tela ‘’Informe o Token de 6 Dígitos” o texto “Acesse o Token no aplicativo Bin Gestão e informe o código de 6 dígitos abaixo” e os Botões “voltar”, “Não tenho esse token”, e “Confirmar”
 
   @TestCaseKey=LPDC-T714
-  Scenario: Cliente com token habilitado botões x
+  Scenario: Cliente com token habilitado botões x -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When  estiver na tela “Informe o Token de 6 dígitos”
@@ -287,7 +290,7 @@ Feature: MFA
     Then  visualiza a tela Onde encontrar o Token? com os botões “x” e Informar código”
 
   @TestCaseKey=LPDC-T729
-  Scenario: Cliente com token habilitado And não     acesso o canal
+  Scenario: Cliente com token habilitado And não acesso o canal -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Informe o Token de 6 dígitos”
@@ -296,7 +299,7 @@ Feature: MFA
     And não acesso o canal
 
   @TestCaseKey=LPDC-T717
-  Scenario: Cliente com token habilitado When  clicar no botão X
+  Scenario: Cliente com token habilitado When  clicar no botão X -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
@@ -305,7 +308,7 @@ Feature: MFA
     Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
   @TestCaseKey=LPDC-T722
-  Scenario: Cliente com token habilitado Token de 6 dígitos
+  Scenario: Cliente com token habilitado Token de 6 dígitos -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When  estiver na tela “Onde encontrar o Token”
@@ -314,7 +317,7 @@ Feature: MFA
     Then  serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
   @TestCaseKey=LPDC-T693
-  Scenario: Cliente com token habilitado validação de texto 4
+  Scenario: Cliente com token habilitado validação de texto 4 -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
@@ -322,7 +325,7 @@ Feature: MFA
     And visualizara   “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.” “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
 
   @TestCaseKey=LPDC-T745
-  Scenario: Cliente com token habilitado botão App store
+  Scenario: Cliente com token habilitado botão App store -  usuario master
     Given  eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
@@ -330,7 +333,7 @@ Feature: MFA
     Then será redirecionado para a página de download no App store
 
   @TestCaseKey=LPDC-T750
-  Scenario: Cliente com token habilitado download no Google Play
+  Scenario: Cliente com token habilitado download no Google Play -  usuario master
     Given  eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When  estiver na tela “Onde encontrar o Token”
@@ -338,7 +341,7 @@ Feature: MFA
     Then  será redirecionado para a página de download no Google Play
 
   @TestCaseKey=LPDC-T681
-  Scenario: Cliente com token habilitado Onde encontrar o Token
+  Scenario: Cliente com token habilitado Onde encontrar o Token -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
@@ -346,7 +349,7 @@ Feature: MFA
     And visualizara   os textos “1. Você pode encontrar o Token na área de acesso e no menu de Serviços.” “2. Ao clicar será exibido um código válido por 30 segundos, esse é o código que precisa ser informado sempre que realizar uma antecipação no portal.” e um botão Informar código.
 
   @TestCaseKey=LPDC-T731
-  Scenario: Cliente com token habilitado home logada
+  Scenario: Cliente com token habilitado home logada -  usuario master
     Given  eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When  seguir passo a passo de resgatar o token no App
@@ -355,7 +358,7 @@ Feature: MFA
     Then  serei redirecionado para a home logada do Portal
 
   @TestCaseKey=LPDC-T694
-  Scenario: Cliente com token habilitado Código inválido
+  Scenario: Cliente com token habilitado Código inválido -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When seguir passo a passo de resgatar o token no App
@@ -364,7 +367,7 @@ Feature: MFA
     Then o portal apresentará a mensagem “Código inválido ou expirado.”
 
   @TestCaseKey=LPDC-T772
-  Scenario: Cliente com token habilitado Código expirado
+  Scenario: Cliente com token habilitado Código expirado -  usuario master
     Given  eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When seguir passo a passo de resgatar o token no App
@@ -373,7 +376,7 @@ Feature: MFA
     Then o portal apresentará a mensagem “Código inválido ou expirado.”
 
   @TestCaseKey=LPDC-T767
-  Scenario: Cliente com token habilitado Número de tentativas excedido
+  Scenario: Cliente com token habilitado Número de tentativas excedido -  usuario master
     Given  eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When inserir qualquer código ERRADO ou EXPIRADO 3 vezes consecutivas na tela “Informe o Token de 6 dígitos”
@@ -381,7 +384,7 @@ Feature: MFA
     And o portal apresentará a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
   @TestCaseKey=LPDC-T724
-  Scenario: Cliente com token habilitado ou expirado 3 vezes
+  Scenario: Cliente com token habilitado ou expirado 3 vezes -  usuario master
     Given  eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When inserir qualquer código ERRADO ou EXPIRADO 3 vezes consecutivas na tela “Informe o Token de 6 dígitos”
@@ -391,7 +394,7 @@ Feature: MFA
 
   #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
   @TestCaseKey=LPDC-T707
-  Scenario: Cliente com token habilitado Personalize sua Visualização  aba documentos
+  Scenario: Cliente com token habilitado Personalize sua Visualização  aba documentos -  usuario master
     Given insira um documento (CNPJ ou CPF) ou usuário e senha
     And clicar no botão entrar
     When Visualiza a tela ‘Selecione o dispositivo que deseja informar o Token” com seus dispositivos cadastrados
@@ -401,14 +404,14 @@ Feature: MFA
     Then  Visualiza a Tela de Personalize sua Visualização com as abas documentos e estabelecimento
 
   @TestCaseKey=LPDC-T708
-  Scenario: Cliente com mais de um dispositivo habilitado validação de texto
+  Scenario: Cliente com mais de um dispositivo habilitado validação de texto -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When apertar o botão Entrar
     Then vou visualizar a tela “Selecione o dispositivo que deseja informar o Token” contendo os dispositivos cadastrados (nome do aparelho), setinha induzindo ao clique e botão voltar
 
   @TestCaseKey=LPDC-T742
-  Scenario: Cliente com mais de um dispositivo habilitado validação de texto 2
+  Scenario: Cliente com mais de um dispositivo habilitado validação de texto 2 -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Selecione o dispositivo que deseja informar o Token”
@@ -416,7 +419,7 @@ Feature: MFA
     Then vou visualizar a tela ‘’Informe o Token de 6 Dígitos” o texto “Acesse o Token no aplicativo Bin Gestão e informe o código de 6 dígitos abaixo” e os Botões “voltar”, “Não tenho esse token”, e “Confirmar”
 
   @TestCaseKey=LPDC-T719
-  Scenario: Cliente com mais de um dispositivo habilitado Onde encontrar o Token 1
+  Scenario: Cliente com mais de um dispositivo habilitado Onde encontrar o Token 1 -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho   mais de um dispositivo com Token cadastrado
     When estiver na tela “Informe o Token de 6 dígitos”
@@ -424,7 +427,7 @@ Feature: MFA
     Then visualiza a tela Onde encontrar o Token? com os botões “x” e Informar código”
 
   @TestCaseKey=LPDC-T758
-  Scenario: Cliente com mais de um dispositivo habilitado não acesso o canal
+  Scenario: Cliente com mais de um dispositivo habilitado não acesso o canal -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho   mais de um dispositivo com Token cadastrado
     When estiver na tela “Informe o Token de 6 dígitos”
@@ -433,7 +436,7 @@ Feature: MFA
     And não acesso o canal
 
   @TestCaseKey=LPDC-T759
-  Scenario: Cliente com mais de um dispositivo habilitado botão X
+  Scenario: Cliente com mais de um dispositivo habilitado botão X -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -442,7 +445,7 @@ Feature: MFA
     Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
   @TestCaseKey=LPDC-T757
-  Scenario: Cliente com mais de um dispositivo Informar código
+  Scenario: Cliente com mais de um dispositivo Informar código -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -451,7 +454,7 @@ Feature: MFA
     Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
   @TestCaseKey=LPDC-T748
-  Scenario: Cliente com mais de um dispositivo Não tenho o aplicativo
+  Scenario: Cliente com mais de um dispositivo Não tenho o aplicativo -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho   mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -459,7 +462,7 @@ Feature: MFA
     And visualizara “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.” “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
 
   @TestCaseKey=LPDC-T703
-  Scenario: Cliente com mais de um dispositivo download no App store
+  Scenario: Cliente com mais de um dispositivo download no App store -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -467,7 +470,7 @@ Feature: MFA
     Then será redirecionado para a página de download no App store
 
   @TestCaseKey=LPDC-T746
-  Scenario: Cliente com mais de um dispositivo download no Google Play
+  Scenario: Cliente com mais de um dispositivo download no Google Play -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -475,7 +478,7 @@ Feature: MFA
     Then será redirecionado para a página de download no Google Play
 
   @TestCaseKey=LPDC-T771
-  Scenario: Cliente com mais de um dispositivo Onde encontrar o Token
+  Scenario: Cliente com mais de um dispositivo Onde encontrar o Token -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -483,7 +486,7 @@ Feature: MFA
     And visualizara   os textos “1. Você pode encontrar o Token na área de acesso e no menu de Serviços.” “2. Ao clicar será exibido um código válido por 30 segundos, esse é o código que precisa ser informado sempre que realizar uma antecipação no portal.” e um botão Informar código.
 
   @TestCaseKey=LPDC-T725
-  Scenario: Cliente com mais de um dispositivo home logada do Portal
+  Scenario: Cliente com mais de um dispositivo home logada do Portal -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho   mais de um dispositivo com Token cadastrado
     When seguir passo a passo de resgatar o token no App
@@ -492,7 +495,7 @@ Feature: MFA
     Then serei redirecionado para a home logada do Portal
 
   @TestCaseKey=LPDC-T688
-  Scenario: Cliente com mais de um dispositivo Código inválido
+  Scenario: Cliente com mais de um dispositivo Código inválido -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho   mais de um dispositivo com Token cadastrado
     When seguir passo a passo de resgatar o token no App
@@ -501,7 +504,7 @@ Feature: MFA
     Then o portal apresentará a mensagem “Código inválido ou expirado.”
 
   @TestCaseKey=LPDC-T766
-  Scenario: Cliente com mais de um dispositivo Código expirado
+  Scenario: Cliente com mais de um dispositivo Código expirado -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When seguir passo a passo de resgatar o token no App
@@ -510,7 +513,7 @@ Feature: MFA
     Then o portal apresentará a mensagem “Código inválido ou expirado.”
 
   @TestCaseKey=LPDC-T723
-  Scenario: Cliente com mais de um dispositivo Número de tentativas excedido
+  Scenario: Cliente com mais de um dispositivo Número de tentativas excedido -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When inserir qualquer código ERRADO ou EXPIRADO 3 vezes consecutivas na tela “Informe o Token de 6 dígitos”
@@ -518,7 +521,7 @@ Feature: MFA
     And portal apresentará a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
   @TestCaseKey=LPDC-T736
-  Scenario: Cliente com mais de um dispositivo Número de tentativas tentativa DENTRO DOS 30
+  Scenario: Cliente com mais de um dispositivo Número de tentativas tentativa DENTRO DOS 30 -  usuario master
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When inserir qualquer código ERRADO ou EXPIRADO 3 vezes consecutivas na tela “Informe o Token de 6 dígitos”
@@ -527,7 +530,7 @@ Feature: MFA
     Then o portal apresentará novamente a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
   @TestCaseKey=LPDC-T706
-  Scenario: Cliente com mais de um dispositivo Personalize sua Visualização
+  Scenario: Cliente com mais de um dispositivo Personalize sua Visualização -  usuario master
     #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
     Given insira um documento (CNPJ ou CPF) ou usuário e senha
     And clicar no botão entrar
@@ -538,7 +541,7 @@ Feature: MFA
     Then Visualiza a Tela de Personalize sua Visualização com as abas documentos e estabelecimento
 
   @TestCaseKey=LPDC-T711
-  Scenario: Cliente com um dispositivo habilitado não tenho esse Token
+  Scenario: Cliente com um dispositivo habilitado não tenho esse Token -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When  estiver na tela “Informe o Token de 6 dígitos”
@@ -546,14 +549,14 @@ Feature: MFA
     Then  visualiza a tela Onde encontrar o Token? com os botões “x” e Informar código”
 
   @TestCaseKey=LPDC-T753
-  Scenario: Cliente com um dispositivo habilitado voltar
+  Scenario: Cliente com um dispositivo habilitado voltar -  usuario master
     When estiver na tela “Informe o Token de 6 dígitos”
     And clicar no botão “Voltar”
     Then visualizo a tela Acesse sua conta
     And não acesso o canal
 
   @TestCaseKey=LPDC-T680
-  Scenario: Cliente com um dispositivo habilitado When  clicar no botão X
+  Scenario: Cliente com um dispositivo habilitado When  clicar no botão X -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
@@ -562,7 +565,7 @@ Feature: MFA
     Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
   @TestCaseKey=LPDC-T738
-  Scenario: Cliente com um dispositivo habilitado código
+  Scenario: Cliente com um dispositivo habilitado código -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
@@ -571,7 +574,7 @@ Feature: MFA
     Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
   @TestCaseKey=LPDC-T756
-  Scenario: Cliente com um dispositivo habilitado App store valida botões
+  Scenario: Cliente com um dispositivo habilitado App store valida botões -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
@@ -579,7 +582,7 @@ Feature: MFA
     And visualizara   “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.” “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
 
   @TestCaseKey=LPDC-T754
-  Scenario: Cliente com um dispositivo habilitado app store
+  Scenario: Cliente com um dispositivo habilitado app store -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
@@ -587,7 +590,7 @@ Feature: MFA
     Then será redirecionado para a página de download no App store
 
   @TestCaseKey=LPDC-T692
-  Scenario: Cliente com um dispositivo habilitado google play
+  Scenario: Cliente com um dispositivo habilitado google play -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
@@ -595,7 +598,7 @@ Feature: MFA
     Then será redirecionado para a página de download no Google Play
 
   @TestCaseKey=LPDC-T749
-  Scenario: Cliente com um dispositivo habilitado encontrar o token
+  Scenario: Cliente com um dispositivo habilitado encontrar o token -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
@@ -603,7 +606,7 @@ Feature: MFA
     And visualizara   os textos “1. Você pode encontrar o Token na área de acesso e no menu de Serviços.” “2. Ao clicar será exibido um código válido por 30 segundos, esse é o código que precisa ser informado sempre que realizar uma antecipação no portal.” e um botão Informar código.
 
   @TestCaseKey=LPDC-T768
-  Scenario: Cliente com um dispositivo habilitado Informe home logada
+  Scenario: Cliente com um dispositivo habilitado Informe home logada -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When seguir passo a passo de resgatar o token no App
@@ -612,7 +615,7 @@ Feature: MFA
     Then  serei redirecionado para a home logada do Portal
 
   @TestCaseKey=LPDC-T713
-  Scenario: Cliente com um dispositivo habilitado código inválido
+  Scenario: Cliente com um dispositivo habilitado código inválido -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When seguir passo a passo de resgatar o token no App
@@ -621,7 +624,7 @@ Feature: MFA
     Then o portal apresentará a mensagem “Código inválido ou expirado.”
 
   @TestCaseKey=LPDC-T740
-  Scenario: Cliente com um dispositivo habilitado código expirado
+  Scenario: Cliente com um dispositivo habilitado código expirado -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When seguir passo a passo de resgatar o token no App
@@ -630,7 +633,7 @@ Feature: MFA
     Then o portal apresentará a mensagem “Código inválido ou expirado.”
 
   @TestCaseKey=LPDC-T765
-  Scenario: Cliente com um dispositivo habilitado 30 minutos
+  Scenario: Cliente com um dispositivo habilitado 30 minutos -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When inserir qualquer código ERRADO ou EXPIRADO 3 vezes consecutivas na tela “Informe o Token de 6 dígitos”
@@ -638,7 +641,7 @@ Feature: MFA
     And o portal apresentará a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
   @TestCaseKey=LPDC-T689
-  Scenario: Cliente com um dispositivo habilitado ou expirado 30 minutos
+  Scenario: Cliente com um dispositivo habilitado ou expirado 30 minutos -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When inserir qualquer código ERRADO ou EXPIRADO 3 vezes consecutivas na tela “Informe o Token de 6 dígitos”
@@ -648,7 +651,7 @@ Feature: MFA
 
   #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
   @TestCaseKey=LPDC-T732
-  Scenario: Cliente com um dispositivo habilitado personalize sua visualização
+  Scenario: Cliente com um dispositivo habilitado personalize sua visualização -  usuario master
     Given insira um documento (CNPJ ou CPF) ou usuário e senha
     And clicar no botão entrar
     When Visualiza a tela ‘Selecione o dispositivo que deseja informar o Token” com seus dispositivos cadastrados
@@ -658,14 +661,14 @@ Feature: MFA
     Then Visualiza a Tela de Personalize sua Visualização com as abas documentos e estabelecimento
 
   @TestCaseKey=LPDC-T761
-  Scenario: Cliente com mais de um dispositivo habilitado selecione um dispositivo
+  Scenario: Cliente com mais de um dispositivo habilitado selecione um dispositivo -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho   mais de um dispositivo com Token cadastrado
     When apertar o botão Entrar
     Then vou visualizar a tela “Selecione o dispositivo que deseja informar o Token” contendo os dispositivos cadastrados (nome do aparelho), setinha induzindo ao clique e botão voltar
 
   @TestCaseKey=LPDC-T705
-  Scenario: Cliente com mais de um dispositivo habilitado validação de textos
+  Scenario: Cliente com mais de um dispositivo habilitado validação de textos -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Selecione o dispositivo que deseja informar o Token”
@@ -673,7 +676,7 @@ Feature: MFA
     Then vou visualizar a tela ‘’Informe o Token de 6 Dígitos” o texto “Acesse o Token no aplicativo Bin Gestão e informe o código de 6 dígitos abaixo” e os Botões “voltar”, “Não tenho esse token”, e “Confirmar”
 
   @TestCaseKey=LPDC-T721
-  Scenario: Cliente com mais de um dispositivo habilitado não tenho esse Token
+  Scenario: Cliente com mais de um dispositivo habilitado não tenho esse Token -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Informe o Token de 6 dígitos”
@@ -681,7 +684,7 @@ Feature: MFA
     Then visualiza a tela Onde encontrar o Token? com os botões “x” e Informar código”
 
   @TestCaseKey=LPDC-T716
-  Scenario: Cliente com mais de um dispositivo habilitado voltar
+  Scenario: Cliente com mais de um dispositivo habilitado voltar -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Informe o Token de 6 dígitos”
@@ -690,7 +693,7 @@ Feature: MFA
     And não acesso o canal
 
   @TestCaseKey=LPDC-T755
-  Scenario: Cliente com mais de um dispositivo habilitado onde encontrar o Token 2
+  Scenario: Cliente com mais de um dispositivo habilitado onde encontrar o Token 2 -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -699,7 +702,7 @@ Feature: MFA
     Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
   @TestCaseKey=LPDC-T743
-  Scenario: Cliente com mais de um dispositivo habilitado onde resgatar o token
+  Scenario: Cliente com mais de um dispositivo habilitado onde resgatar o token -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -708,7 +711,7 @@ Feature: MFA
     Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
   @TestCaseKey=LPDC-T744
-  Scenario: Cliente com mais de um dispositivo habilitado onde encontrar o Token 3
+  Scenario: Cliente com mais de um dispositivo habilitado onde encontrar o Token 3 -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -716,7 +719,7 @@ Feature: MFA
     And visualizara “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.” “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
 
   @TestCaseKey=LPDC-T684
-  Scenario: Cliente com mais de um dispositivo habilitado página de download
+  Scenario: Cliente com mais de um dispositivo habilitado página de download -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -724,7 +727,7 @@ Feature: MFA
     Then será redirecionado para a página de download no App store
 
   @TestCaseKey=LPDC-T715
-  Scenario: Cliente com mais de um dispositivo habilitado google play
+  Scenario: Cliente com mais de um dispositivo habilitado google play -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -732,7 +735,7 @@ Feature: MFA
     Then será redirecionado para a página de download no Google Play
 
   @TestCaseKey=LPDC-T763
-  Scenario: Cliente com mais de um dispositivo habilitado validação de textos 2
+  Scenario: Cliente com mais de um dispositivo habilitado validação de textos 2 -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
@@ -740,7 +743,7 @@ Feature: MFA
     And visualizara os textos “1. Você pode encontrar o Token na área de acesso e no menu de Serviços.” “2. Ao clicar será exibido um código válido por 30 segundos, esse é o código que precisa ser informado sempre que realizar uma antecipação no portal.” e um botão Informar código.
 
   @TestCaseKey=LPDC-T700
-  Scenario: Cliente com mais de um dispositivo habilitado home logada
+  Scenario: Cliente com mais de um dispositivo habilitado home logada -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When seguir passo a passo de resgatar o token no App
@@ -749,7 +752,7 @@ Feature: MFA
     Then serei redirecionado para a home logada do Portal
 
   @TestCaseKey=LPDC-T770
-  Scenario: Cliente com mais de um dispositivo habilitado código inválido
+  Scenario: Cliente com mais de um dispositivo habilitado código inválido -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When seguir passo a passo de resgatar o token no App
@@ -758,7 +761,7 @@ Feature: MFA
     Then o portal apresentará a mensagem “Código inválido ou expirado.”
 
   @TestCaseKey=LPDC-T741
-  Scenario: Cliente com mais de um dispositivo habilitado código expirado
+  Scenario: Cliente com mais de um dispositivo habilitado código expirado -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And  tenho mais de um dispositivo com Token cadastrado
     When  seguir passo a passo de resgatar o token no App
@@ -767,7 +770,7 @@ Feature: MFA
     Then  o portal apresentará a mensagem “Código inválido ou expirado.”
 
   @TestCaseKey=LPDC-T769
-  Scenario: Cliente com mais de um dispositivo habilitado código expirado 3 vezes
+  Scenario: Cliente com mais de um dispositivo habilitado código expirado 3 vezes -  usuario master
     Given  eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When inserir qualquer código ERRADO ou EXPIRADO 3 vezes consecutivas na tela “Informe o Token de 6 dígitos”
@@ -775,7 +778,7 @@ Feature: MFA
     And o portal apresentará a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
   @TestCaseKey=LPDC-T734
-  Scenario: Cliente com mais de um dispositivo habilitado código expirado 30 minutos
+  Scenario: Cliente com mais de um dispositivo habilitado código expirado 30 minutos -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And tenho mais de um dispositivo com Token cadastrado
     When inserir qualquer código ERRADO ou EXPIRADO 3 vezes consecutivas na tela “Informe o Token de 6 dígitos”
@@ -785,7 +788,7 @@ Feature: MFA
 
   #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
   @TestCaseKey=LPDC-T727
-  Scenario: Cliente com mais de um dispositivo habilitado personalize sua visualização
+  Scenario: Cliente com mais de um dispositivo habilitado personalize sua visualização -  usuario master
     Given insira um usuário e senha válido no Portal
     And clicar no botão entrar
     When Visualiza a tela ‘Selecione o dispositivo que deseja informar o Token” com seus dispositivos cadastrados
@@ -795,20 +798,20 @@ Feature: MFA
     Then Visualiza a Tela de Personalize sua Visualização com as abas documentos e estabelecimento
 
   @TestCaseKey=LPDC-T735
-  Scenario: Cliente com mais de um dispositivo habilitado bloqueado 3 tentativas
+  Scenario: Cliente com mais de um dispositivo habilitado bloqueado 3 tentativas -  usuario master
     Given eu inseri um usuário e senha válido no Portal
     And estou bloquedo pois inseri 3 tokens incorretos consecutivamente
     When tento acessar o App com o dispositivo que “bloqueei a jornada”
     Then não será possível realizar login por 30 minutos
 
   @TestCaseKey=LPDC-T710
-  Scenario: Cliente com mais de um dispositivo habilitado canais digitais
+  Scenario: Cliente com mais de um dispositivo habilitado canais digitais -  usuario master
     Given eu sou um cliente que nunca acessou os canais digitais (App e Portal)
     When acessar a jornada de primeiro acesso através do Portal
     Then devo conseguir realizar com sucesso a jornada
 
   @TestCaseKey=LPDC-T728
-  Scenario: Cliente com mais de um dispositivo habilitado app
+  Scenario: Cliente com mais de um dispositivo habilitado app -  usuario master
     Given eu sou um cliente que nunca acessou os canais digitais (App e Portal)
     When realizar a jornada de primeiro acesso através do Portal com sucesso
     And inserir  documento e senha
@@ -816,7 +819,7 @@ Feature: MFA
     Then devo ser impactado pela jornada de inclusão de Token
 
   @TestCaseKey=LPDC-T760
-  Scenario: Cliente com mais de um dispositivo habilitado portal
+  Scenario: Cliente com mais de um dispositivo habilitado portal -  usuario master
     Given eu sou um cliente que já acessou os canais digitais (App e Portal)
     When realizar a jornada de esqueci minha senha com sucesso
     And inserir  documento e senha atualizados
