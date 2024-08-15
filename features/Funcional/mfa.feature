@@ -6,6 +6,89 @@
 @Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: MFA
 
+
+
+  Scenario: Criar usuário secundário a partir de um Cliente com token habilitado com mais de um device
+    Given criar um usuário secundário consulta
+    And Percorrer toda a jornada de ativação
+    And logar com usuário secundário com primeira jornada
+    And realizar o primeiro acesso
+    And selecionar o device
+    When estiver na tela “Informe o Token de 6 dígitos”
+    And Informar o token
+    Then visualizo a tela de inicio do portal
+
+
+  @TestCaseKey=LPDC-T683
+  Scenario: Cliente sem token habilitado validação de texto
+    Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
+    And não tenho o Token habilitado no App
+    When estiver na tela “Não tenho esse token”
+    Then visualizara na caixa “Onde encontrar o Token?” Caso ainda não tenha o aplicativo instalado, busque por Máquina de cartões do Sicredi e baixe através da sua loja (Play Store ou App Store):”
+    And visualizara “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza para acessar o portal. 2. Logo que acessar será apresentado a jornada de habilitação de Token para seu dispositivo!  3.  Ao finalizar o cadastro siga o tutorial ao lado:
+
+
+  @TestCaseKey=LPDC-T762
+  Scenario: Cliente sem token habilitado validação de texto 2
+    Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
+    And não tenho o Token habilitado no App
+    When estiver na tela “Onde encontrar o Token?”
+    Then visualizara na caixa “Já tenho o aplicativo e o Token” o texto “Acesse no seu celular aplicativo Bin Gestão. Busque por “token”:
+    And 1.Você pode encontrar o Token na área de acesso e no menu de Serviços.
+    And 2. Ao clicar será exibido um código válido por 30 segundos, esse é o código que precisa ser informado sempre que realizar uma antecipação no portal.
+    And e o botão com fundo branco e letra verde "Sou usuario inativo"
+    And e o botão com fundo ver e letra branca "Informar o Código"
+
+
+  @TestCaseKey=LPDC-T752
+  Scenario: Cliente sem token habilitado  redirecionado para a tela Informe o Token
+    Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
+    And não tenho o Token habilitado no App
+    When estiver na tela “Não tenho esse token” e clicar
+    And Sera direcionado a seguir passo a passo de baixar, acessar e habilitar o token no App
+    When clicar no botão Informar código
+    Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
+
+
+  @TestCaseKey=LPDC-T699
+  Scenario: Cliente sem token habilitado
+    Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
+    When apertar o botão Entrar
+    And não tenho o Token habilitado no App
+    Then vou visualizar a tela ‘Acesse o Token no aplicativo Máquina de cartões do Sicredi e informe o código de 6 dígitos abaixo:
+    And ” e os Botões “Continuar”, “Não tenho esse token
+
+
+#para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
+  @TestCaseKey=LPDC-T712
+  Scenario: Cliente sem token habilitado Personalize sua Visualização
+     Given insira um documento (CNPJ ou CPF) ou usuário e senha
+    And clicar no botão entrar
+    When Visualiza a tela ‘Selecione o dispositivo que deseja informar o Token” com seus dispositivos cadastrados
+    And Seleciona o dispositivo
+    And Visualiza a tela ‘’Informe o Token de 6 Dígitos”
+    And Preenche o Token e clica no Botão “Confirmar”
+    Then Visualiza a Tela de Personalize sua Visualização com as abas documentos e estabelecimento
+
+
+  @TestCaseKey=LPDC-T697
+  Scenario: Cliente sem token habilitado  Não tenho esse Token
+    Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
+    And não tenho o Token habilitado no App
+    When estiver na tela “Informe o Token de 6 dígitos”
+    And clicar no botão “Não tenho esse Token”
+    Then visualiza a tela Onde encontrar o Token? com os botões “x” ,  Informar código , sou usuário inativo”
+
+
+  @TestCaseKey=LPDC-T726
+  Scenario: Cliente sem token habilitado home logada
+    Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
+    And não  tenho o Token habilitado no App
+    When seguir passo a passo de baixar, acessar e habilitar o token no App
+    And inserir  o token VÁLIDO de 6 dígitos na tela “Informe o Token de 6 dígitos”
+    And clicar em Confirmar
+    Then serei redirecionado para a home logada do Portal
+
   @TestCaseKey=LPDC-T677
   Scenario: Cliente sem dispositivo habilitado entrar
     Given eu inseri um usuário e senha válido no Portal
@@ -87,7 +170,7 @@ Feature: MFA
     When seguir passo a passo de baixar, acessar e habilitar o token no App
     And inserir  o token VÁLIDO de 6 dígitos na tela “Informe o Token de 6 dígitos”
     And clicar em Confirmar
-    Then serei redirecionado para a home logada do Portal
+    Then não serei redirecionado para a home logada do Portal
 
   @TestCaseKey=LPDC-T695
   Scenario: Cliente sem dispositivo habilitado token errado
@@ -142,20 +225,8 @@ Feature: MFA
     When apertar o botão Entrar
     Then vou visualizar a tela ‘’Informe o Token de 6 Dígitos” o texto “Acesse o Token no aplicativo Bin Gestão e informe o código de 6 dígitos abaixo” e os Botões “voltar”, “Não tenho esse token”, e “Confirmar”
 
-  @TestCaseKey=LPDC-T699
-  Scenario: Cliente sem token habilitado
-    Given  eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
-    When  apertar o botão Entrar
-    And não     tenho o Token habilitado no App
-    Then  vou visualizar a tela ‘’Informe o Token de 6 Dígitos” o texto “Acesse o Token no aplicativo Bin Gestão e informe o código de 6 dígitos abaixo” e os Botões “voltar”, “Não tenho esse token”, e “Confirmar”
 
-  @TestCaseKey=LPDC-T697
-  Scenario: Cliente sem token habilitado  Não tenho esse Token
-    Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
-    And não tenho o Token habilitado no App
-    When estiver na tela “Informe o Token de 6 dígitos”
-    And clicar no botão “Não tenho esse Token”
-    Then visualiza a tela Onde encontrar o Token? com os botões “x” e Informar código”
+
 
   @TestCaseKey=LPDC-T690
   Scenario: Cliente sem token habilitado  Não tenho esse Token não acesso o canal
@@ -175,22 +246,8 @@ Feature: MFA
     When clicar no botão X
     Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
-  @TestCaseKey=LPDC-T752
-  Scenario: Cliente sem token habilitado  redirecionado para a tela Informe o Token
-    Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
-    And não tenho o Token habilitado no App
-    When estiver na tela “Onde encontrar o Token”
-    And seguir passo a passo de baixar, acessar e habilitar o token no App
-    When clicar no botão Informar código
-    Then serei redirecionado para a tela “Informe o Token de 6 dígitos”
 
-  @TestCaseKey=LPDC-T683
-  Scenario: Cliente sem token habilitado validação de texto
-    Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
-    And não tenho o Token habilitado no App
-    When estiver na tela “Onde encontrar o Token”
-    Then visualizara na caixa “Não tenho o aplicativo” o texto Caso ainda não tenha o aplicativo instalado, busque por Bin Gestão e baixe da sua loja (Play Stone ou APP Store): dois botões da App Store e da Play Store
-    And visualizara “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.” “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
+
 
   @TestCaseKey=LPDC-T751
   Scenario: Cliente sem token habilitado download no App store
@@ -208,22 +265,8 @@ Feature: MFA
     When Clicar no botão Google Play
     Then será redirecionado para a página de download no Google Play
 
-  @TestCaseKey=LPDC-T762
-  Scenario: Cliente sem token habilitado validação de texto 2
-    Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
-    And não tenho o Token habilitado no App
-    When estiver na tela “Onde encontrar o Token”
-    Then visualizara na caixa “Já tenho o aplicativo e o Token” o texto “Acesse no seu celular aplicativo Bin Gestão. Busque por “token”:
-    And visualizara   os textos “1. Você pode encontrar o Token na área de acesso e no menu de Serviços.” “2. Ao clicar será exibido um código válido por 30 segundos, esse é o código que precisa ser informado sempre que realizar uma antecipação no portal.” e um botão Informar código.
 
-  @TestCaseKey=LPDC-T726
-  Scenario: Cliente sem token habilitado home logada
-    Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
-    And não  tenho o Token habilitado no App
-    When seguir passo a passo de baixar, acessar e habilitar o token no App
-    And inserir  o token VÁLIDO de 6 dígitos na tela “Informe o Token de 6 dígitos”
-    And clicar em Confirmar
-    Then  serei redirecionado para a home logada do Portal
+
 
   @TestCaseKey=LPDC-T698
   Scenario: Cliente sem token habilitado  Código inválido
@@ -232,7 +275,7 @@ Feature: MFA
     When seguir passo a passo de baixar, acessar e habilitar o token no App
     And inserir  o token ERRADO de 6 dígitos na tela “Informe o Token de 6 dígitos”
     And clicar em Confirmar
-    Then o portal apresentará a mensagem “Código inválido ou expirado.”
+    Then o portal apresentará a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos”
 
   @TestCaseKey=LPDC-T764
   Scenario: Cliente sem token habilitado  Código expirado
@@ -260,16 +303,6 @@ Feature: MFA
     When realizar uma nova tentativa DENTRO DOS 30 MINUITOS DE BLOQUEIO
     Then o portal apresentará novamente a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
-  @TestCaseKey=LPDC-T712
-  Scenario: Cliente sem token habilitado Personalize sua Visualização
-    #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
-    Given insira um documento (CNPJ ou CPF) ou usuário e senha
-    And clicar no botão entrar
-    When Visualiza a tela ‘Selecione o dispositivo que deseja informar o Token” com seus dispositivos cadastrados
-    And Seleciona o dispositivo
-    And Visualiza a tela ‘’Informe o Token de 6 Dígitos”
-    And Preenche o Token e clica no Botão “Confirmar”
-    Then Visualiza a Tela de Personalize sua Visualização com as abas documentos e estabelecimento
 
   @TestCaseKey=LPDC-T739
   Scenario: Cliente com token habilitado validação texto 3
@@ -543,7 +576,7 @@ Feature: MFA
     And já tiver feito a jornada de habilitação de Token no App
     When  estiver na tela “Informe o Token de 6 dígitos”
     And clicar no botão “Não tenho esse Token”
-    Then  visualiza a tela Onde encontrar o Token? com os botões “x” e Informar código”
+    Then  visualiza a tela Onde encontrar o Token? com os botões “x” e Informar' código”
 
   @TestCaseKey=LPDC-T753
   Scenario: Cliente com um dispositivo habilitado voltar
