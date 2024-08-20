@@ -48,4 +48,6 @@ public class Config {
     public static String url = "";
     public static String SessionLogado = "YES";
 
+    public static String Totp = "";
+
 }

@@ -220,8 +220,8 @@ public class LoginPage extends BasePage {
         Config.acessLogonCount =0;
         String Ret ="";
 
-        page.locator("id=b2-b2-b4-InputMask").type(arg0);
-        page.locator("id=b2-b2-Input_Password").type(arg1);
+        page.locator("data-testid=login").type(arg0);
+        page.locator("data-testid=password").type(arg1);
         page.locator("data-testid=entrar").click();
 
         for (int i = 0; i < 1200; i++) {
@@ -241,6 +241,17 @@ public class LoginPage extends BasePage {
             arq.close();
             Assert.fail();
         }
+
+        // - 2FA
+        if(Config.Totp.equals("YES")){
+
+            page.locator("data-testid=login-nome-dispositivo-1").click();
+
+            page.navigate("https://totp.app/");
+        }
+
+
+
 
         if (Ret.equals("S")) {
             for (int i = 0; i < 500; i++) {

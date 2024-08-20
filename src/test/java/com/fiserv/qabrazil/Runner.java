@@ -8,10 +8,10 @@ import io.cucumber.testng.CucumberOptions;
         features = "classpath:com/fiserv/qabrazil/features/Regressivo",
 
         //tags= "@alliances"
-        tags= "@sicredi"
+        //tags= "@sicredi"
         //tags= "@HealthCheck"
         //tags= "@WhatsApp"
-        // tags="@Antecipacao1"
+         tags="@Antecipacao1"
         //tags= "@HeaderAll"
         //Agenda de recebimentos
         //tags= "@Vendas_Agenda_recebimentos_semana"

@@ -623,3 +623,129 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = Máster e Visa, Produto = Todos, canal de contratação = Portal do cliente, Período = Antecipar todo o período até o momento
     And usuário visualizará a seguinte mensagem nos Gives de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
+#======================================================================================================================
+#  ANTECIPACAO V2 - Entrega que desliga o BW e a antecipação passa a ser no Portal - 20/08/2024 - Bressan
+#======================================================================================================================
+
+
+
+  Scenario: Antecipação V2 eventual com uma única Bandeira
+  Given  usuário está logado no Portal do Cliente
+  When  usuário seleciona Antecipação no menu lateral esquerdo
+  And  usuário seleciona solicitar antecipação eventual
+  And  seleciona personalizar solicitação de antecipação
+  And seleciona no campo bandeiras uma única bandeira
+  And  Seleciona um valor no campo Valor
+  And  clica no Botão Solicitar antecipação
+  And  o portal apresenta um modal solicitando a confirmação com a frase "Deseja confirmar a solicitação de antecipação?  Deseja confirmar a solicitação de antecipação de R$ (VALOR)?"
+  And  o usuário confirma a antecipação
+  Then o usuário deve visualizar a seguinte mensagem: “Sua solicitação de antecipação se encontra em análise. Em caso de aprovação, o pagamento ocorrerá no próximo dia útil até às 10h.”
+
+
+  Scenario: Antecipação V2  Eventual Valor Mínimo
+    Given  usuário está na aba Solicitar Antecipação
+    When  usuário seleciona Antecipação Eventual
+    And  usuário seleciona Personalizar solicitação de antecipação
+    And  seleciona personalizar solicitação de antecipação
+    And  no Campo Valor selecionar um Valor
+    And  abaixo selecionar um valor Mínimo
+    And  clica no Botão Solicitar antecipação
+    And  o portal apresenta um modal solicitando a confirmação com a frase “Deseja confirmar a solicitação de antecipação? Deseja confirmar a solicitação de antecipação de R$ (VALOR)?”
+    And  usuário confirma a antecipação
+    Then  usuário deve visualizar a seguinte mensagem: “Sua solicitação de antecipação se encontra em análise. Em caso de aprovação, o pagamento ocorrerá no próximo dia útil até às 10h.”
+
+
+  Scenario: Antecipação V2 Eventual valor Máximo
+    Given  usuário está na aba Solicitar Antecipação
+    When  usuário seleciona Antecipação Eventual
+    And  usuário seleciona Personalizar solicitação de antecipação
+    And  seleciona personalizar solicitação de antecipação
+    And  no Campo Valor selecionar um Valor
+    And  abaixo selecionar um valor Máximo
+    And  clica no Botão Solicitar antecipação
+    And  o portal apresenta um modal solicitando a confirmação com a frase “Deseja confirmar a solicitação de antecipação? Deseja confirmar a solicitação de antecipação de R$ (VALOR)?”
+    And  usuário confirma a antecipação
+    Then  usuário deve visualizar a seguinte mensagem: “Sua solicitação de antecipação se encontra em análise. Em caso de aprovação, o pagamento ocorrerá no próximo dia útil até às 10h.”
+
+
+  Scenario: Antecipação V2  eventual Parcial
+    Given  usuário está na aba Solicitar Antecipação
+    When  usuário seleciona Antecipação Eventual
+    And  usuário seleciona Personalizar solicitação de antecipação
+    And  seleciona personalizar solicitação de antecipação
+    And  no Campo Valor selecionar um Valor
+    And  clica no Botão Solicitar antecipação
+    And  o portal apresenta um modal solicitando a confirmação com a frase “Deseja confirmar a solicitação de antecipação? Deseja confirmar a solicitação de antecipação de R$ (VALOR)?”
+    And  usuário confirma a antecipação
+    Then  usuário deve visualizar a seguinte mensagem: “Sua solicitação de antecipação se encontra em análise. Em caso de aprovação, o pagamento ocorrerá no próximo dia útil até às 10h.”
+
+
+  Scenario: Antecipação V2 Automática
+    Given  usuário está na aba Solicitar Antecipação
+    When  usuário seleciona Antecipação Automática
+    And  preenche os Campos, Bandeiras, Produtos, Frequência, Dia de recebimento
+    And  clica no Botão Solicitar antecipação
+    And  o portal apresenta um modal solicitando a confirmação com a frase “Deseja confirmar a solicitação de antecipação? Deseja confirmar a solicitação de antecipação automática
+    And  usuário clicar em confirmar a antecipação
+    Then  usuário deve visualizar a seguinte mensagem: “Antecipação automática cadastrada com sucesso”
+
+  Scenario: Antecipação V2 Automática Produtos com crédito a vista
+    Given  usuário está na aba Solicitar Antecipação
+    When  usuário seleciona Antecipação Automática
+    And  preenche os Campo Produtos com crédito a vista
+    And  clica no Botão Solicitar antecipação
+    And  o portal apresenta um modal solicitando a confirmação com a frase “Deseja confirmar a solicitação de antecipação? Deseja confirmar a solicitação de antecipação automática
+    And  usuário clicar em confirmar a antecipação
+    Then  usuário deve visualizar a seguinte mensagem: “Antecipação automática cadastrada com sucesso”
+
+
+  Scenario: Antecipação V2 Automática Produto Parcelado
+    Given  usuário está na aba Solicitar Antecipação
+    When  usuário seleciona Antecipação Automática
+    And  preenche os Campo Produtos com parcelado
+    And  clica no Botão Solicitar antecipação
+    And  o portal apresenta um modal solicitando a confirmação com a frase “Deseja confirmar a solicitação de antecipação? Deseja confirmar a solicitação de antecipação automática
+    And  usuário clicar em confirmar a antecipação
+    Then  usuário deve visualizar a seguinte mensagem:”Antecipação automática cadastrada com sucesso”
+
+  Scenario: Antecipação V2 Histórico Antecipação com Toggle desligado V2
+  #Premissa : (Inserir os passos de ligar e desligar o toggle)
+    Given  usuário está na aba Antecipação
+    When  usuário seleciona Histórico de Antecipações
+  Then usuário acessara a aba histórico antecipação nativo via BW
+
+  Scenario: Antecipação V2 Histórico Antecipação com Toggle ligado V2
+  # Premissa : (Inserir os passos de ligar e desligar o toggle)
+    Given  usuário está na aba Antecipação
+    When  usuário seleciona Histórico de Antecipações
+    Then  usuário acessara a aba histórico antecipação com o filtro por período
+
+
+  Scenario: Antecipação V2 Histórico Com período até 29/08/2024
+    Given  usuário está em Histórico de Antecipação
+    When  usuário seleciona o período até dia 29/08/2024
+    Then  usuário terá acesso a todas as antecipações que foram feitas pela mesa de recebíveis
+
+
+  Scenario: Antecipação V2 Histórico Com período após 29/08/2024
+    Given  usuário está em Histórico de Antecipação
+    When  usuário seleciona o período após dia 29/08/2024
+    Then  usuário terá acesso a todas as antecipações que foram feitas via BW
+
+  Scenario: Antecipação V2 Histórico Antecipação com Toggle desligado V2
+    Given  usuário está Histórico de Antecipação
+    When  usuário seleciona um Período que por default deve vir 7 dias
+    Then  usuário visualizara o calendário e abaixo a seguinte mensagem: “Caso não encontre lançamentos, consulte no filtro acima “até dia 29/08/2024”
+
+  Scenario: Antecipação V2 Exportando Excel
+  Given  usuário está Histórico de Antecipação
+  When  usuário clica em Exportar
+  And seleciona Excel
+  Then  Devera baixar o arquivo Excel
+
+
+  Scenario: Antecipação V2 Exportando CSV
+  Given usuário está Histórico de Antecipação
+  When usuário clica em Exportar
+  And seleciona CSV
+  Then Devera baixar o arquivo CSV

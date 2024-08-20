@@ -25,7 +25,8 @@ Feature: MFA
     And não tenho o Token habilitado no App
     When estiver na tela “Não tenho esse token”
     Then visualizara na caixa “Onde encontrar o Token?” Caso ainda não tenha o aplicativo instalado, busque por Máquina de cartões do Sicredi e baixe através da sua loja (Play Store ou App Store):”
-    And visualizara “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza para acessar o portal. 2. Logo que acessar será apresentado a jornada de habilitação de Token para seu dispositivo!  3.  Ao finalizar o cadastro siga o tutorial ao lado:
+    And visualizara “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza para acessar o portal.
+    And 2. Logo que acessar será apresentado a jornada de habilitação de Token para seu dispositivo!  3.  Ao finalizar o cadastro siga o tutorial ao lado:
 
 
   @TestCaseKey=LPDC-T762
@@ -137,7 +138,8 @@ Feature: MFA
     And não tenho o Token habilitado no App
     When estiver na tela “Onde encontrar o Token”
     Then visualizara na caixa “Não tenho o aplicativo” o texto Caso ainda não tenha o aplicativo instalado, busque por Bin Gestão e baixe da sua loja (Play Stone ou APP Store): dois botões da App Store e da Play Store
-    And visualizara   “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.” “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
+    And visualizara   “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.”
+    And “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
 
   @TestCaseKey=LPDC-T696
   Scenario: Cliente sem dispositivo habilitado página de download no App Store
@@ -352,7 +354,8 @@ Feature: MFA
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
     Then visualizara na caixa “Não tenho o aplicativo” o texto Caso ainda não tenha o aplicativo instalado, busque por Bin Gestão e baixe da sua loja (Play Stone ou APP Store): dois botões da App Store e da Play Store
-    And visualizara   “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.” “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
+    And visualizara   “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.”
+   And “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
 
   @TestCaseKey=LPDC-T745
   Scenario: Cliente com token habilitado botão App store
@@ -375,7 +378,7 @@ Feature: MFA
     Given eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
-    Then visualizara na caixa “Já tenho o aplicativo e o Token” o texto “Acesse no seu celular aplicativo Bin Gestão. Busque por “token”:
+    Then visualizara na caixa “681” o texto “Acesse no seu celular aplicativo Bin Gestão. Busque por “token”:
     And visualizara   os textos “1. Você pode encontrar o Token na área de acesso e no menu de Serviços.” “2. Ao clicar será exibido um código válido por 30 segundos, esse é o código que precisa ser informado sempre que realizar uma antecipação no portal.” e um botão Informar código.
 
   @TestCaseKey=LPDC-T731
@@ -489,7 +492,8 @@ Feature: MFA
     And tenho   mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
     Then visualizara na caixa “Não tenho o aplicativo” o texto Caso ainda não tenha o aplicativo instalado, busque por Bin Gestão e baixe da sua loja (Play Stone ou APP Store): dois botões da App Store e da Play Store
-    And visualizara “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.” “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
+    And visualizara “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.”
+    And “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
 
   @TestCaseKey=LPDC-T703
   Scenario: Cliente com mais de um dispositivo download no App store
@@ -609,7 +613,8 @@ Feature: MFA
     And já tiver feito a jornada de habilitação de Token no App
     When estiver na tela “Onde encontrar o Token”
     Then visualizara na caixa “Não tenho o aplicativo” o texto Caso ainda não tenha o aplicativo instalado, busque por Bin Gestão e baixe da sua loja (Play Stone ou APP Store): dois botões da App Store e da Play Store
-    And visualizara   “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.” “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
+    And visualizara   “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.”
+    And “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
 
   @TestCaseKey=LPDC-T754
   Scenario: Cliente com um dispositivo habilitado app store
@@ -746,7 +751,8 @@ Feature: MFA
     And tenho mais de um dispositivo com Token cadastrado
     When estiver na tela “Onde encontrar o Token”
     Then visualizara na caixa “Não tenho o aplicativo” o texto Caso ainda não tenha o aplicativo instalado, busque por Bin Gestão e baixe da sua loja (Play Stone ou APP Store): dois botões da App Store e da Play Store
-    And visualizara “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.” “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
+    And visualizara “1. Ao acessar o aplicativo você deverá inserir o mesmo usuário e senha que utiliza no portal.”
+    And “2. Logo que acessar será apresentado a jornada de habilitação de token para o dispositivo!” “3. Ao finalizar o cadastro siga o tutorial ao lado:”
 
   @TestCaseKey=LPDC-T684
   Scenario: Cliente com mais de um dispositivo habilitado página de download
