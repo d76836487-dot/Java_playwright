@@ -732,7 +732,7 @@ Feature: Health Check Antecipação
     When  usuário seleciona o período após dia 29/08/2024
     Then  usuário terá acesso a todas as antecipações que foram feitas via BW
 
-  Scenario: Antecipação V2 Histórico Antecipação com Toggle desligado V2
+  Scenario: Antecipação V2 Histórico Antecipação com Toggle desligado V2.1
     Given  usuário está Histórico de Antecipação
     When  usuário seleciona um Período que por default deve vir 7 dias
     Then  usuário visualizara o calendário e abaixo a seguinte mensagem: “Caso não encontre lançamentos, consulte no filtro acima “até dia 29/08/2024”
