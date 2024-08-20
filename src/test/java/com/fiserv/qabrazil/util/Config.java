@@ -49,5 +49,6 @@ public class Config {
     public static String SessionLogado = "YES";
 
     public static String Totp = "";
+    public static String SecretKey = "";
 
 }

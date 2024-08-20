@@ -40,6 +40,7 @@ public class LoginSteps extends BasePage {
             Config.serviceContract = "110";
             Config.institution = "00000004";
             Config.Totp = "YES";
+            Config.SecretKey = "HFAMJ26M7WCZOPJ6W7VOCBILQK5SR3IO";
         }
         if(arg0.equals("sicrediflex")){
             url = Config.sicrediflex_url;
