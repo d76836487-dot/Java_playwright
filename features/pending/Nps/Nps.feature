@@ -191,7 +191,7 @@ Feature: NPS Pesquisa
    When ao término aparecera um Modal de pesquisa na Tela com as seguintes informações: Pagina 1/2 , (Título) Avaliação “Nome da aliança” , (Mensagem) Em uma escala de 0 a 10, qual a probabilidade de você recomendar a empresa “xxxxxx” a um (a) amigo (a) ou colega?, Botões clicáveis de zero a dez, Informação nos extremos quanto as notas mínimas (0-Muito insatisfeito) e máxima (Muito sadisfeito-10)”, Dialog box OPCIONAL para inclusão de mensagens até 200 caracteres e os botões X (acima) e Botão Próximo (abaixo)
   Then Clicara em (X) para fechar o Modal e deverá ir para a página que estava navegando anteriormente.
 
-Scenario: Cenário: Acessando Pesquisa NPS Após Antecipação Automática
+Scenario: Cenário: Acessando Pesquisa NPS V2 Após Antecipação Automática
 Given Usuário tenha realizado uma Antecipação Automática
 When  ao término aparecera um Modal de pesquisa na Tela com as seguintes informações: pagina 1/2 , (Título) Avaliação de satisfação, (Mensagem) Em uma escala de 0 a 10, qual a probabilidade de você recomendar a empresa “xxxxxx” a um (a) amigo (a) ou colega?, Botões clicáveis de zero a dez, Informação nos extremos quanto as notas mínimas (0-Muito insatisfeito) e máxima (Muito sadisfeito-10)”, Dialog box OPCIONAL para inclusão de mensagens até 200 caracteres e os botões X (acima) e Botão Próximo (abaixo)
 And Usuário Clicara em um dos Botões Clicáveis de 0 a 10 para classificar a sua nota (Após deleção da nota, através do clique, o botão “Próximo” deve ficar habilitado)
@@ -272,7 +272,7 @@ Scenario: Acessando Pesquisa NPS V2 Após exportar com sucesso um arquivo PDF no
     And Usuário Clicará no Botão enviar e aparecera um modal com a seguinte mensagem “Avaliação concluída” A avaliação ajuda a melhorarmos sua experiência. Obrigado pela sua participação.
     Then clicara no Botão “x” OU “Fechar” visualizar a página que estava antes de ser     abordado pela pesquisa
 
-Scenario: Fechando Pesquisa Após exportar com sucesso um arquivo CSV/Excel.xls no Menu Recebimentos Pagos
+Scenario: Fechando Pesquisa NPS V2 Após exportar com sucesso um arquivo CSV/Excel.xls no Menu Recebimentos Pagos
     Given Usuário Fechando Pesquisa Após exportar com sucesso um arquivo CSV/Excel.xls no Menu Recebimentos Pagos
     When ao término aparecera um Modal de pesquisa na Tela com as seguintes informações: pagina 1/2 , (Título) Avaliação de satisfação, (Mensagem) Em uma escala de 0 a 10, qual a probabilidade de você recomendar a empresa “xxxxxx” a um (a) amigo (a) ou colega?, Botões clicáveis de zero a dez, Informação nos extremos quanto as notas mínimas (0-Muito insatisfeito) e máxima (Muito sadisfeito-10)”, Dialog box OPCIONAL para inclusão de mensagens até 200 caracteres e os botões X (acima) e Botão Próximo (abaixo)
     Then Clicara em (X) para fechar o Modal e deve ir para a página que estava navegando anteriormente.
