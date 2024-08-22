@@ -21,7 +21,7 @@ Feature: Antecipação
     And logout
     @sicredi @alliances
     Examples:
-      | Description    | alianca | nrestab  |
+      | Description    | alianca | nrestab     |
       | usuário master | sicredi | EC 99990109 |
 
     @azulzinha @alliances @Antecipacao1
