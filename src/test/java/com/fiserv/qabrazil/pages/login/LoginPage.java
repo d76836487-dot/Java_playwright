@@ -243,31 +243,25 @@ public class LoginPage extends BasePage {
         }
 
         // - 2FA
-        if(Config.Totp.equals("YES")){
+        if(Config.Totp.equals("YES")) {
 
-            page.locator("data-testid=login-nome-dispositivo-1").click();
-           /* page.navigate("https://totp.app/");*/
+            page.locator("data-testid=login-nome-dispositivo-0").click();
+            /* page.navigate("https://totp.app/");*/
 
 
             if (hasMfa()) {
-            List<Locator> inputs = pageField.from("Login - Campo Token MFA").getLocator().locator("input").all();
-            String token = mfaGenerator.getToken();
-            for (int i = 0; i < token.length(); i++) {
-                inputs.get(i).pressSequentially("" + token.charAt(i));
+                List<Locator> inputs = pageField.from("Login - Campo Token MFA").getLocator().locator("input").all();
+                String token = mfaGenerator.getToken();
+                for (int i = 0; i < token.length(); i++) {
+                    inputs.get(i).pressSequentially("" + token.charAt(i));
+                }
+                pageField.from("Login - Botão Confirmar Token MFA").click();
             }
-            pageField.from("Login - Botão Confirmar Token MFA").click();
-        }
 
-            //  Thread.sleep(4000);
-
-
-
-        boolean gotSomething = waitUntilTrue(6, () ->
-                page.locator("//*[contains(text(), 'Não foi possível acessar o canal neste momento. Tente novamente mais tarde.')]").count() == 1);
-
-        if (!gotSomething) {
-            throw new RuntimeException("Ambiente offline");
-        }
+     boolean gotSomething = waitUntilTrue(6, () -> page.locator("//*[contains(text(), 'Não foi possível acessar o canal neste momento. Tente novamente mais tarde.')]").count() == 1);
+            if (gotSomething) {
+                throw new RuntimeException("Ambiente offline");
+            }
         }
 
 

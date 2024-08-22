@@ -19,17 +19,17 @@ Feature: Antecipação
     And o usuário clica em "Dashboard - Ir para Antecipação"
     And Usuário verá "Dashboard - Antecipação"
     And logout
-    @sicredi @alliances @Antecipacao1
+    @sicredi @alliances
     Examples:
       | Description    | alianca | nrestab  |
-      | usuário master | sicredi | 99990109 |
+      | usuário master | sicredi | EC 99990109 |
 
-    @azulzinha @alliances
+    @azulzinha @alliances @Antecipacao1
     Examples:
       | Description    | alianca   |
       | usuário master | azulzinha |
 
-    @bin @alliances
+    @bin @alliances @Antecipacao1
     Examples:
       | Description    | alianca |
       | usuário master | bin     |
