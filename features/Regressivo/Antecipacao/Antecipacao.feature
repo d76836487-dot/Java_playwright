@@ -12,6 +12,7 @@ Feature: Antecipação
   @TestCaseKey=LPDC-T574
   Scenario Outline: Dashboard antecipação drill down
     Given open portal "<alianca>" and logon
+    And Todas as barras de carregamento sumiram
     And Usuário verá "Dashboard - Antecipação"
     And o número do estabelecimento "<nrestab>" na coluna Estabelecimento,
     #And a mensagem "Antecipação automática contratada" na coluna Valor/Produto
@@ -19,57 +20,34 @@ Feature: Antecipação
     And o usuário clica em "Dashboard - Ir para Antecipação"
     And Usuário verá "Dashboard - Antecipação"
     And logout
-    @sicredi @alliances
+    @sicredi @alliances @Antecipacao1
     Examples:
       | Description    | alianca | nrestab     |
       | usuário master | sicredi | EC 99990109 |
 
-    @azulzinha @alliances @Antecipacao1
-    Examples:
-      | Description    | alianca   |
-      | usuário master | azulzinha |
 
-    @bin @alliances @Antecipacao1
-    Examples:
-      | Description    | alianca |
-      | usuário master | bin     |
 
-    @afinz @alliances
-    Examples:
-      | Description    | alianca |
-      | usuário master | afinz   |
 
   @TestCaseKey=LPDC-T586
   Scenario Outline: Dashboard Antecipação validação de valores
     Given open portal "<alianca>" and logon
-    Given o usuário visualiza o dashboard Antecipação e salva o valor a antecipar
+    And Todas as barras de carregamento sumiram
+    And Usuário verá "Dashboard - Antecipação"
+    Given Salva o valor a antecipar "Home - Card Antecipação - Valor"
     Then o usuario vai para a pagina de antecipação
-    Then o usuário deve visualizar o valor disponível para antecipar igual ao apresentado no dashboard
+    Then o usuário deve visualizar o Valor disponível para antecipação igual ao apresentado no dashboard
     @sicredi @alliances @Antecipacao
     Examples:
       | Description    | alianca |
       | usuário master | sicredi |
 
-    @azulzinha @alliances
-    Examples:
-      | Description    | alianca   |
-      | usuário master | azulzinha |
 
-    @bin @alliances
-    Examples:
-      | Description    | alianca |
-      | usuário master | bin     |
-
-    @afinz @alliances
-    Examples:
-      | Description    | alianca |
-      | usuário master | afinz   |
 
   @TestCaseKey=LPDC-T615
   Scenario Outline: Dashboard Antecipação sem saldo
     Given open portal "<alianca>" and logon
     When o usuário visualiza o dashboard Antecipação
-    Then o valor zero reais na coluna Valor/Produto
+    Then o valor zero reais na coluna ValorProduto
     @sicredi @alliances @Antecipacao
     Examples:
       | Description    | alianca |

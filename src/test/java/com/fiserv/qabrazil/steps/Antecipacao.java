@@ -9,7 +9,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.fiserv.qabrazil.util.Config;
+import org.testng.Assert;
 
+import java.util.List;
+import java.util.regex.Pattern;
+
+import static com.fiserv.qabrazil.config.TestIdsConfig.getQuerySelector;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -22,6 +28,9 @@ public class Antecipacao extends BaseSteps {
 
     @Autowired
     Page page;
+
+    @Autowired
+    protected PageField.Factory pageField;
 
     @When("o usuário acessou página de Antecipação")
     public void shouldBeAtReportsPage() {
@@ -51,10 +60,13 @@ public class Antecipacao extends BaseSteps {
            assertTrue(true);
        }
     }
-    @Given("a mensagem {string} na coluna Valor\\/Produto")
+    @Given("a mensagem {string} na coluna ValorProduto")
     public void a_mensagem_na_coluna_valor_produto(String string) {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
+    }
+    @Then("o valor zero reais na coluna ValorProduto")
+    public void oValorZeroReaisNaColunaValorProduto() {
     }
 
     @Given("o valor que pode ser antecipado em {pageField}")
@@ -75,27 +87,35 @@ public class Antecipacao extends BaseSteps {
     }
     @Given("o usuário clica em {pageField}")
     public void o_usuário_clica_no_dashboard_em_ir_para_antecipação(PageField pageField) {
-        pageField.firstOf().click();
+        page.locator("[data-testid=home-card-antecipacao-btn-antecipacao evt_clicou_home_logada_em_saldo_antecipacao]").click();
+
     }
     @Then("a pagina de antecipação estara disponivel")
     public void a_pagina_de_antecipação_estara_disponivel() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-    @Given("o usuário visualiza o dashboard Antecipação e salva o valor a antecipar")
-    public void o_usuário_visualiza_o_dashboard_antecipação_e_salva_o_valor_a_antecipar() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Given("Salva o valor a antecipar {pageField}")
+    public void salva_o_valor_a_antecipar(PageField pageField) throws InterruptedException {
+        //Thread.sleep(13000);
+        List<String> allTextsFound = pageField.getAllAsText();
+        for (String textFound: allTextsFound) {
+            Config.valorAntecipacao = Config.valorAntecipacao + Double.parseDouble(textFound.replace("R$","").replace(".","").replace(",","."));
+        }
+
     }
     @Then("o usuario vai para a pagina de antecipação")
     public void o_usuario_vai_para_a_pagina_de_antecipação() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        String linkTo = getQuerySelector("Menu Lateral - Antecipação");
+        page.locator(linkTo).last().click();
+        page.waitForURL(Pattern.compile("^.*/Antecipacao$"));
     }
-    @Then("o usuário deve visualizar o valor disponível para antecipar igual ao apresentado no dashboard")
+
+
+    @Then("o usuário deve visualizar o Valor disponível para antecipação igual ao apresentado no dashboard")
     public void o_usuário_deve_visualizar_o_valor_disponível_para_antecipar_igual_ao_apresentado_no_dashboard() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        PageField VlDispAntecip = pageField.from("Valor disponível para antecipação");
+        Assert.assertEquals(Double.valueOf(VlDispAntecip.getAsText().replace("R$","").replace(".","").replace(",",".")),Config.valorAntecipacao);
     }
 
 
@@ -122,8 +142,7 @@ public class Antecipacao extends BaseSteps {
 
     @Given("o usuário clica no link {string}")
     public void o_usuário_clica_no_link(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+     page.locator("xpath=//*[@id='b5-b4-$b4']/button").click();
     }
     @Given("o texto {string} esta visivel na pagina de Antecipação Historico")
     public void o_texto_esta_visivel_na_pagina_de_antecipação_historico(String string) {

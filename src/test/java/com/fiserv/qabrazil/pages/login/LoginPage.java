@@ -266,7 +266,7 @@ public class LoginPage extends BasePage {
 
 
 
-
+Thread.sleep(3000);
         if (Ret.equals("S")) {
             for (int i = 0; i < 500; i++) {
                 if (page.getByText("Personalize sua visualização").isVisible()) {

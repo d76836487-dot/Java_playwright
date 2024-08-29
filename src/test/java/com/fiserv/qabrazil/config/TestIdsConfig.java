@@ -507,7 +507,8 @@ public class TestIdsConfig {
             entry("Histórico de cancelamentos - Label Valor cancelado", "//span[text()='Valor cancelado']"),
             entry("Dashboard - Antecipação", "[data-testid=card-home-text-antecipacao]"),
             entry("Dashboard - Valor Antecipação", "[data-testid=home-card-antecipacao-text-valor]"),
-            entry("Dashboard - Ir para Antecipação", "[data-testid=home-card-antecipacao-btn-antecipacao evt_clicou_home_logada_em_saldo_antecipacao]")
+            entry("Dashboard - Ir para Antecipação", "[data-testid=home-card-antecipacao-btn-antecipacao evt_clicou_home_logada_em_saldo_antecipacao]"),
+            entry("Valor disponível para antecipação", "[data-testid=valor-disponivel-antecipacao]")
 
 
 

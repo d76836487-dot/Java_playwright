@@ -12,7 +12,7 @@ public class Config {
 
     public static final String sicredi_url = "https://sicredi.qa.portaldocliente.fiserv.com";
     public static final String sicredi_user = "53362504060";
-    public static final String sicredi_pass = "Fiserv@456";
+    public static final String sicredi_pass = "Fiserv@457";
 
 
     public static final String sicrediflex_url = "https://sicredi.qa.portaldocliente.fiserv.com";
@@ -51,4 +51,6 @@ public class Config {
     public static String Totp = "";
     public static String SecretKey = "";
 
+
+    public static Double valorAntecipacao = Double.valueOf("0");
 }
