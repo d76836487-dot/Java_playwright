@@ -25,9 +25,6 @@ Feature: Antecipação
       | Description    | alianca | nrestab     |
       | usuário master | sicredi | EC 99990109 |
 
-
-
-
   @TestCaseKey=LPDC-T586
   Scenario Outline: Dashboard Antecipação validação de valores
     Given open portal "<alianca>" and logon
@@ -40,8 +37,6 @@ Feature: Antecipação
     Examples:
       | Description    | alianca |
       | usuário master | sicredi |
-
-
 
   @TestCaseKey=LPDC-T615
   Scenario Outline: Dashboard Antecipação sem saldo
