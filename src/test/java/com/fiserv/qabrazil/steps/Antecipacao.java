@@ -151,7 +151,7 @@ public class Antecipacao extends BaseSteps {
     }
     @Given("o texto {string} esta visivel na pagina de Antecipação Historico")
     public void o_texto_esta_visivel_na_pagina_de_antecipação_historico(String arg0) {
-        Locator btn = page.locator("//span[contains(text().'" + arg0 + "']");
+        Locator btn = page.getByText(arg0);
         assertThat(btn).containsText(arg0);
         btn.click();
     }
