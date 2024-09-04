@@ -4,7 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Login/Login_Esqueci_Minha_Senha
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
-@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Login Esqueci Minha Senha
 
   @TestCaseKey=LPDC-T78

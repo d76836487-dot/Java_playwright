@@ -4,7 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Pix/Pix_Relatorio_de_vendas
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
-@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Pix Relatorio de vendas
 
   @TestCaseKey=LPDC-T323

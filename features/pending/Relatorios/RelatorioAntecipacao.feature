@@ -4,7 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Relatorios/Relatorio_Antecipacao
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Relatorio Antecipacao
 
   Given que o usuário esteja logado no Portal do Cliente

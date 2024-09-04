@@ -3,7 +3,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Vendas/Exclusao_de_Conta
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Automation=Automated;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Exclusao de Conta
 
   @TestCaseKey=LPDC-T216

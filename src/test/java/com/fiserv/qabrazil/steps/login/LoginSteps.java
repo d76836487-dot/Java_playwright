@@ -39,7 +39,7 @@ public class LoginSteps extends BasePage {
             pass = Config.sicredi_pass;
             Config.serviceContract = "110";
             Config.institution = "00000004";
-            Config.Totp = "YES";
+            Config.Totp = "NO";
             Config.SecretKey = "HFAMJ26M7WCZOPJ6W7VOCBILQK5SR3IO";
         }
         if(arg0.equals("sicrediflex")){
