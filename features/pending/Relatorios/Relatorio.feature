@@ -4,7 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Relatorios/Relatorios
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Pending=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Relatorios
 
   # TODO: fix all scenarios when we have data-testid for side menu

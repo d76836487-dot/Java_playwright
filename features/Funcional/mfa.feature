@@ -3,7 +3,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Funcional/MFA
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Manual;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Manual=Manual;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: MFA
 
   @TestCaseKey=LPDC-T774

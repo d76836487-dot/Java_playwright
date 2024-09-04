@@ -4,7 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Onix_Pix_Caixa/Pix_Transacao_POS
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
-@Zephyr:CustomFields=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Pending=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Pix Transacao POS
 
   @TestCaseKey=LPDC-T114

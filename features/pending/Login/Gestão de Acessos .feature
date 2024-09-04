@@ -4,7 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Login/Login_Gestao_de_Acessos
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Pending=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Login Gestao de Acessos
 
   @TestCaseKey=LPDC-T142

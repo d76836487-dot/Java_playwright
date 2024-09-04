@@ -4,6 +4,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Transacoes_tokenizadas/Pre-autorizacoes
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
+@Zephyr:CustomFields=Pending=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Pre-autorizacoes
 
   @TestCaseKey=LPDC-T196
