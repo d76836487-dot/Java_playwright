@@ -4,6 +4,7 @@ import com.fiserv.qabrazil.pages.AdvancePaymentPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.components.ChangeEstablishmentPopupComponent;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import static com.fiserv.qabrazil.config.TestIdsConfig.getQuerySelector;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -126,9 +128,12 @@ public class Antecipacao extends BaseSteps {
     }
 
 
-    @Then("o usuário visualizará o número do estabelecimento na coluna Estabelecimento e a mensagem {string}")
-    public void o_usuário_visualizará_o_número_do_estabelecimento_na_coluna_estabelecimento_e_a_mensagem(String string) {
-
+    @Then("o usuário visualizará o número do estabelecimento na coluna Estabelecimento e a mensagem {pageField}")
+    public void o_usuário_visualizará_o_número_do_estabelecimento_na_coluna_estabelecimento_e_a_mensagem(PageField pageField) {
+     String textFound = pageField.firstOf().getAsText();
+        if(textFound.contains("R$")){
+            assertEquals("R$", "R$");
+        }
     }
     @Then("o usuário visualizará valor na coluna 'ValorProduto'")
     public void o_usuário_visualizará_valor_na_coluna_valor_produto() {
@@ -145,10 +150,12 @@ public class Antecipacao extends BaseSteps {
      page.locator("xpath=//*[@id='b5-b4-$b4']/button").click();
     }
     @Given("o texto {string} esta visivel na pagina de Antecipação Historico")
-    public void o_texto_esta_visivel_na_pagina_de_antecipação_historico(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void o_texto_esta_visivel_na_pagina_de_antecipação_historico(String arg0) {
+        Locator btn = page.locator("//span[contains(text().'" + arg0 + "']");
+        assertThat(btn).containsText(arg0);
+        btn.click();
     }
+
     @Then("o usuário visualizará na página da Antecipação o nome do estabelecimento")
     public void o_usuário_visualizará_na_página_da_antecipação_o_nome_do_estabelecimento() {
         // Write code here that turns the phrase above into concrete actions

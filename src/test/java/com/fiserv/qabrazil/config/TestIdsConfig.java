@@ -508,7 +508,9 @@ public class TestIdsConfig {
             entry("Dashboard - Antecipação", "[data-testid='card-home-text-antecipacao']"),
             entry("Dashboard - Valor Antecipação", "[data-testid='home-card-antecipacao-text-valor']"),
             entry("Dashboard - Ir para Antecipação", "[data-testid='menu-antecipacao']"),
-            entry("Valor disponível para antecipação", "[data-testid='valor-disponivel-antecipacao']")
+            entry("Valor disponível para antecipação", "[data-testid='valor-disponivel-antecipacao']"),
+            entry("Plano Flex contratado", "[data-testid='home-card-antecipacao-text-tipo-produto']")
+
 
 
 

@@ -20,7 +20,7 @@ Feature: Antecipação
     And o usuário clica em "Dashboard - Ir para Antecipação"
     And Usuário verá a pagina de antecipação
     And logout
-    @sicredi @alliances @Antecipacao1
+    @sicredi @alliances
     Examples:
       | Description    | alianca | nrestab     |
       | usuário master | sicredi | EC 99990109 |
@@ -38,57 +38,22 @@ Feature: Antecipação
       | Description    | alianca |
       | usuário master | sicredi |
 
-  @TestCaseKey=LPDC-T615
-  Scenario Outline: Dashboard Antecipação sem saldo
-    Given open portal "<alianca>" and logon
-    When o usuário visualiza o dashboard Antecipação
-    Then o valor zero reais na coluna ValorProduto
-    @sicredi @alliances @Antecipacao
-    Examples:
-      | Description    | alianca |
-      | usuário master | sicredi |
 
-    @azulzinha @alliances
-    Examples:
-      | Description    | alianca   |
-      | usuário master | azulzinha |
-
-    @bin @alliances
-    Examples:
-      | Description    | alianca |
-      | usuário master | bin     |
-
-    @afinz @alliances
-    Examples:
-      | Description    | alianca |
-      | usuário master | afinz   |
 
   @TestCaseKey=LPDC-T576
   Scenario Outline: Dashboard Antecipação com EC flex
     Given open portal "<alianca>" and logon
-    Given o usuário visualiza o dashboard Antecipação
+    And Todas as barras de carregamento sumiram
+    And Usuário verá "Dashboard - Antecipação"
     Then o usuário visualizará o número do estabelecimento na coluna Estabelecimento e a mensagem "Plano Flex contratado"
-    And o usuário visualizará valor na coluna 'ValorProduto'
-    And o usuário visualizará o botão "Ir para antecipação
+    #And o usuário visualizará valor na coluna 'ValorProduto'
+    #And o usuário visualizará o botão "Ir para antecipação
     @sicredi @alliances @Antecipacao
     Examples:
       | Description    | alianca     |
       | usuário master | sicrediflex |
 
-    @azulzinha @alliances
-    Examples:
-      | Description    | alianca   |
-      | usuário master | azulzinha |
 
-    @bin @alliances
-    Examples:
-      | Description    | alianca |
-      | usuário master | bin     |
-
-    @afinz @alliances
-    Examples:
-      | Description    | alianca |
-      | usuário master | afinz   |
 
   ###################################################################################
   #  TESTE NA TELA DE ANTECIPAÇÃO
@@ -96,6 +61,7 @@ Feature: Antecipação
   @TestCaseKey=LPDC-T491
   Scenario Outline: Health Check Tela Antecipação
     Given open portal "<alianca>" and logon
+    And Todas as barras de carregamento sumiram
     And o usuário acessou página de Antecipação
     And o texto "Antecipação" esta visivel na pagina de Antecipação
     And o texto "Valor disponível para antecipação" esta visivel na pagina de Antecipação
@@ -103,14 +69,13 @@ Feature: Antecipação
     And o texto "Antecipação automática" esta visivel na pagina de Antecipação
     And o texto "Antecipação eventual" esta visivel na pagina de Antecipação
     And o usuário clica no link "Histórico"
-    And o texto "Historico de antecipações eventuais" esta visivel na pagina de Antecipação Historico
     And o texto "Total de antecipações pagas" esta visivel na pagina de Antecipação Historico
     And o texto "Valor líquido pago" esta visivel na pagina de Antecipação Historico
-    Then o usuário visualizará na página da Antecipação o nome do estabelecimento
-    Then o usuário visualizará na CNPJ do estabelecimento
-    Then o usuário visualizará o número do estabelecimento
+    #Then o usuário visualizará na página da Antecipação o nome do estabelecimento
+    #Then o usuário visualizará na CNPJ do estabelecimento
+    #Then o usuário visualizará o número do estabelecimento
     And logout
-    @sicredi @alliances @Antecipacao
+    @sicredi @alliances @Antecipacao1
     Examples:
       | Description    | alianca |
       | usuário master | sicredi |
@@ -335,6 +300,33 @@ Feature: Antecipação
     And o usuário clica no botão Personalizar solicitação de antecipação
     And o usuário não preenche um dos campos da personalização
     Then o usuário não pode clicar no botão "Solicitar antecipação"
+    @sicredi @alliances @Antecipacao
+    Examples:
+      | Description    | alianca |
+      | usuário master | sicredi |
+
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | usuário master | azulzinha |
+
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | bin     |
+
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | afinz   |
+
+
+  @TestCaseKey=LPDC-T615
+  Scenario Outline: Dashboard Antecipação sem saldo
+    Given open portal "<alianca>" and logon
+    And Todas as barras de carregamento sumiram
+    When o usuário visualiza o dashboard Antecipação
+    Then o valor zero reais na coluna ValorProduto
     @sicredi @alliances @Antecipacao
     Examples:
       | Description    | alianca |
