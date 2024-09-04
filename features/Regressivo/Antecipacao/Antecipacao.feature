@@ -18,7 +18,7 @@ Feature: Antecipação
     #And a mensagem "Antecipação automática contratada" na coluna Valor/Produto
     And o valor que pode ser antecipado em "Dashboard - Valor Antecipação"
     And o usuário clica em "Dashboard - Ir para Antecipação"
-    And Usuário verá "Dashboard - Antecipação"
+    And Usuário verá a pagina de antecipação
     And logout
     @sicredi @alliances @Antecipacao1
     Examples:

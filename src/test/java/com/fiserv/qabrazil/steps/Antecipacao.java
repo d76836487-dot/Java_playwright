@@ -72,7 +72,7 @@ public class Antecipacao extends BaseSteps {
     @Given("o valor que pode ser antecipado em {pageField}")
     public void o_valor_que_pode_ser_antecipado_na_coluna_valor_produto(PageField pageField) {
 
-        String textFound = pageField.getAsText();
+        String textFound = pageField.firstOf().getAsText();
         if(textFound.contains("R$")){
             assertEquals("R$", "R$");
         }
@@ -87,7 +87,7 @@ public class Antecipacao extends BaseSteps {
     }
     @Given("o usuário clica em {pageField}")
     public void o_usuário_clica_no_dashboard_em_ir_para_antecipação(PageField pageField) {
-        page.locator("[data-testid=home-card-antecipacao-btn-antecipacao evt_clicou_home_logada_em_saldo_antecipacao]").click();
+        page.locator("[data-testid='menu-antecipacao']").click();
 
     }
     @Then("a pagina de antecipação estara disponivel")
