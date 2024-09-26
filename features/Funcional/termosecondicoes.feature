@@ -3,7 +3,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Funcional/Termos_de_uso
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=None
+@Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 
 Feature: Termos de uso
 
