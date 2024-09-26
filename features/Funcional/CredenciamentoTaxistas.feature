@@ -3,14 +3,14 @@
 @Zephyr:Folder=/Portal_do_Cliente/Funcional/Credenciamento_de_Taxistas
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Manual=Manual;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Automation=None;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 
 Feature: Credenciamento de Taxistas
 
  Scenario: CPF com Cnae de Taxista
-  Given usuário tenha um CPF com Cnae de Taxista
-  When ele acessar o link
-  Then deve entrar no fluxo de Preenchimento do Formulário
+   Given usuário tenha um CPF com Cnae de Taxista
+   When ele acessar o link
+   Then deve entrar no fluxo de Preenchimento do Formulário
 
  Scenario: Primeira Página do Formulário: Cenário Positivo
   Given Usuário com Cnae de Taxista esteja na tela para começar seu cadastro
