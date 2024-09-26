@@ -3,7 +3,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Funcional/Credenciamento_de_Taxistas
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Automation=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Confirmação;Automation=None
 
 Feature: Credenciamento de Taxistas
 

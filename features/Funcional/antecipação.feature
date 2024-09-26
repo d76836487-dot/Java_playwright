@@ -3,7 +3,8 @@
 @Zephyr:Folder=/Portal_do_Cliente/Funcional/Health_Check_Antecipação
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Manual=Manual;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=None
+
 Feature: Health Check Antecipação
 
   @TestCaseKey=LPDC-T577
