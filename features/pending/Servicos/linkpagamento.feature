@@ -3,7 +3,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Servicos/Link_de_Pagamento
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Pending=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Automation=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Link de Pagamento
 
   @TestCaseKey=LPDC-T498

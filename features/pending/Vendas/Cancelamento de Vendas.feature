@@ -3,7 +3,7 @@
 @Zephyr:Folder=/Portal_do_Cliente/Pending/Cancelamento_de_Vendas/Cancelamento_de_Vendas
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
-@Zephyr:CustomFields=Pending=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
+@Zephyr:CustomFields=Automation=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
 Feature: Cancelamento de Vendas
 
   #==========================================================================================================================================================
