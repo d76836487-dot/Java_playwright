@@ -4,7 +4,6 @@
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-
 Feature: Health Check Antecipação
 
   @TestCaseKey=LPDC-T577

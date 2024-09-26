@@ -4,233 +4,228 @@
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Automation=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
-
 Feature: Antecipação
 
-
-
   @TestCaseKey=LPDC-T650
-Scenario Outline: Tela Antecipação com documento unico
-Given open portal "<alianca>" and logon
-And o usuário acessou página de Antecipação
-When o usuário troca o estabelecimento selecionando qualquer EC
-Then o usuário não deve visualizar o botão "Trocar estabelecimento"
-@sicredi @alliances
-Examples:
-| Description    | alianca |
-| usuário master | sicredi |
+  Scenario Outline: Tela Antecipação com documento unico
+    Given open portal "<alianca>" and logon
+    And o usuário acessou página de Antecipação
+    When o usuário troca o estabelecimento selecionando qualquer EC
+    Then o usuário não deve visualizar o botão "Trocar estabelecimento"
+    @sicredi @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | sicredi |
 
-@azulzinha @alliances
-Examples:
-| Description    | alianca   |
-| usuário master | azulzinha |
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | usuário master | azulzinha |
 
-@bin @alliances
-Examples:
-| Description    | alianca |
-| usuário master | bin     |
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | bin     |
 
-@afinz @alliances
-Examples:
-| Description    | alianca |
-| usuário master | afinz   |
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | afinz   |
 
-@TestCaseKey=LPDC-T587
-Scenario Outline: Tela Antecipação com mais de um documento
-Given open portal "<alianca>" and logon
-Given o usuário visualiza o dashboard Antecipação
-And o usuario guarda o Valor disponível para antecipação
-When o usuário troca o estabelecimento
-Then o usuário deve visualizar um Valor disponível para antecipação diferente
-@sicredi @alliances
-Examples:
-| Description    | alianca |
-| usuário master | sicredi |
+  @TestCaseKey=LPDC-T587
+  Scenario Outline: Tela Antecipação com mais de um documento
+    Given open portal "<alianca>" and logon
+    Given o usuário visualiza o dashboard Antecipação
+    And o usuario guarda o Valor disponível para antecipação
+    When o usuário troca o estabelecimento
+    Then o usuário deve visualizar um Valor disponível para antecipação diferente
+    @sicredi @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | sicredi |
 
-@azulzinha @alliances
-Examples:
-| Description    | alianca   |
-| usuário master | azulzinha |
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | usuário master | azulzinha |
 
-@bin @alliances
-Examples:
-| Description    | alianca |
-| usuário master | bin     |
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | bin     |
 
-@afinz @alliances
-Examples:
-| Description    | alianca |
-| usuário master | afinz   |
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | afinz   |
 
-@TestCaseKey=LPDC-T649
-Scenario Outline: Tela Antecipação verificação de Mensagens Plano Flex
-Given open portal "<alianca>" and logon
-Given o usuário acessa a antecipação de um EC Flex pelo dashboard Antecipação
-Then o usuário deve visualizar o subtítulo "Plano Flex"
-And o usuário deve visualizar o texto "Você possui o plano de recebimento Flex, portanto irá receber suas vendas na modalidade débito em 1 dia útil e as vendas na modalidade crédito em <X> dias"
-Then o usuário deve visualizar o texto "Você possui o plano de recebimento de suas vendas garantido através do plano de recebimento Flex"
+  @TestCaseKey=LPDC-T649
+  Scenario Outline: Tela Antecipação verificação de Mensagens Plano Flex
+    Given open portal "<alianca>" and logon
+    Given o usuário acessa a antecipação de um EC Flex pelo dashboard Antecipação
+    Then o usuário deve visualizar o subtítulo "Plano Flex"
+    And o usuário deve visualizar o texto "Você possui o plano de recebimento Flex, portanto irá receber suas vendas na modalidade débito em 1 dia útil e as vendas na modalidade crédito em <X> dias"
+    Then o usuário deve visualizar o texto "Você possui o plano de recebimento de suas vendas garantido através do plano de recebimento Flex"
     #Obs.: O valor <X> depende do contrato de cada estabelecimento
-@sicredi @alliances
-Examples:
-| Description    | alianca |
-| usuário master | sicredi |
+    @sicredi @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | sicredi |
 
-@azulzinha @alliances
-Examples:
-| Description    | alianca   |
-| usuário master | azulzinha |
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | usuário master | azulzinha |
 
-@bin @alliances
-Examples:
-| Description    | alianca |
-| usuário master | bin     |
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | bin     |
 
-@afinz @alliances
-Examples:
-| Description    | alianca |
-| usuário master | afinz   |
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | afinz   |
 
-@TestCaseKey=LPDC-T654
-Scenario Outline: Tela Antecipação eventual cancelar
-Given open portal "<alianca>" and logon
-And o usuário possui saldo para antecipar eventualmente
-And o usuário deseja antecipar eventualmente
-And  usuário solicita a antecipação
-When o portal apresenta um modal solicitando a confirmação com a frase "Deseja confirmar a solicitação de antecipação?" e o usuário clica em voltar
-Then o usuário deve permanecer na pagina de antecipação e verificar o texto "Resumo da antecipação eventual
-@sicredi @alliances
-Examples:
-| Description    | alianca |
-| usuário master | sicredi |
+  @TestCaseKey=LPDC-T654
+  Scenario Outline: Tela Antecipação eventual cancelar
+    Given open portal "<alianca>" and logon
+    And o usuário possui saldo para antecipar eventualmente
+    And o usuário deseja antecipar eventualmente
+    And  usuário solicita a antecipação
+    When o portal apresenta um modal solicitando a confirmação com a frase "Deseja confirmar a solicitação de antecipação?" e o usuário clica em voltar
+    Then o usuário deve permanecer na pagina de antecipação e verificar o texto "Resumo da antecipação eventual
+    @sicredi @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | sicredi |
 
-@azulzinha @alliances
-Examples:
-| Description    | alianca   |
-| usuário master | azulzinha |
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | usuário master | azulzinha |
 
-@bin @alliances
-Examples:
-| Description    | alianca |
-| usuário master | bin     |
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | bin     |
 
-@afinz @alliances
-Examples:
-| Description    | alianca |
-| usuário master | afinz   |
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | afinz   |
 
-@TestCaseKey=LPDC-T644
-Scenario Outline: Tela Antecipação eventual Personalizada
-Given open portal "<alianca>" and logon
-Given o usuário deseja antecipar eventualmente
-And o usuário clica no botão Personalizar solicitação de antecipação
+  @TestCaseKey=LPDC-T644
+  Scenario Outline: Tela Antecipação eventual Personalizada
+    Given open portal "<alianca>" and logon
+    Given o usuário deseja antecipar eventualmente
+    And o usuário clica no botão Personalizar solicitação de antecipação
     #Then o usuário visualizará a caixa Personalizar solicitação de antecipação contendo: subcaixa "Composição dos valores a serem antecipados" (Bandeiras (Dropbox) e Produto (dropbox)), subcaixa "Configuração do período da antecipação" (Todo o período, Vencimento de (calendário) = dia da consulta, Até (calendário) = sem limite e subcaixa "Valor disponível para antecipar. Personalize o valor:" (Valor (textfield)) e uma mensagem "Valor disponível: R$" = valor disponível para antecipar E toda e qualquer personalização feita nesses campos deve refletir nos respectivos campos da seção "Resumo da antecipação eventual"
-When Seleciona Bandeira "<bandeira>" produtos "<produtos>" vencimento de hoje ate hoje  data corrente e valor "<valor>"
-@sicredi @alliances
-Examples:
-| Description    | alianca | bandeira   | produtos | valor |
-| usuário master | sicredi | MasterCard | todos    | 10,00 |
+    When Seleciona Bandeira "<bandeira>" produtos "<produtos>" vencimento de hoje ate hoje  data corrente e valor "<valor>"
+    @sicredi @alliances
+    Examples:
+      | Description    | alianca | bandeira   | produtos | valor |
+      | usuário master | sicredi | MasterCard | todos    | 10,00 |
 
-@azulzinha @alliances
-Examples:
-| Description    | alianca   |
-| usuário master | azulzinha |
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | usuário master | azulzinha |
 
-@bin @alliances
-Examples:
-| Description    | alianca |
-| usuário master | bin     |
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | bin     |
 
-@afinz @alliances
-Examples:
-| Description    | alianca |
-| usuário master | afinz   |
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | afinz   |
 
-@TestCaseKey=LPDC-T645
-Scenario Outline: Tela Antecipação eventual com saldo disponível efetivação
-Given open portal "<alianca>" and logon
-And o usuário possui saldo para antecipar eventualmente
-And o usuário deseja antecipar eventualmente
-And o usuário solicita a antecipação
-And o portal apresenta um modal solicitando a confirmação com a frase "Deseja confirmar a solicitação de antecipação? Deseja confirmar a solicitação de antecipação de R$ (VALOR)?" E o usuário não confirma a antecipação
-And o usuário gera o comprovante de antecipação
-Then o usuário deve visualizar um arquivo pdf contendo: logo da aliança, título: "Comprovante de solicitação de antecipação eventual", data e hora de emissão do PDF, número do estabelecimento comercial e informações gerais (valor bruto solicitado em reais, taxa, valor do desconto em reais, valor líquido a receber em reais, status = em andamento, bandeiras = todas as bandeiras, produto = todos, período = antecipar todo o período até o momento e canal de contratação = Portal do cliente)
+  @TestCaseKey=LPDC-T645
+  Scenario Outline: Tela Antecipação eventual com saldo disponível efetivação
+    Given open portal "<alianca>" and logon
+    And o usuário possui saldo para antecipar eventualmente
+    And o usuário deseja antecipar eventualmente
+    And o usuário solicita a antecipação
+    And o portal apresenta um modal solicitando a confirmação com a frase "Deseja confirmar a solicitação de antecipação? Deseja confirmar a solicitação de antecipação de R$ (VALOR)?" E o usuário não confirma a antecipação
+    And o usuário gera o comprovante de antecipação
+    Then o usuário deve visualizar um arquivo pdf contendo: logo da aliança, título: "Comprovante de solicitação de antecipação eventual", data e hora de emissão do PDF, número do estabelecimento comercial e informações gerais (valor bruto solicitado em reais, taxa, valor do desconto em reais, valor líquido a receber em reais, status = em andamento, bandeiras = todas as bandeiras, produto = todos, período = antecipar todo o período até o momento e canal de contratação = Portal do cliente)
     # Then o usuário deve visualizar a página anterior com a seleção feita
-@sicredi @alliances
-Examples:
-| Description    | alianca |
-| usuário master | sicredi |
+    @sicredi @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | sicredi |
 
-@azulzinha @alliances
-Examples:
-| Description    | alianca   |
-| usuário master | azulzinha |
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | usuário master | azulzinha |
 
-@bin @alliances
-Examples:
-| Description    | alianca |
-| usuário master | bin     |
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | bin     |
 
-@afinz @alliances
-Examples:
-| Description    | alianca |
-| usuário master | afinz   |
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | afinz   |
 
-@TestCaseKey=LPDC-T579
-Scenario Outline: Tela Antecipação de campos nulos
-Given open portal "<alianca>" and logon
-Given o usuário deseja antecipar eventualmente
-And o usuário clica no botão Personalizar solicitação de antecipação
-And o usuário não preenche um dos campos da personalização
-Then o usuário não pode clicar no botão "Solicitar antecipação"
-@sicredi @alliances
-Examples:
-| Description    | alianca |
-| usuário master | sicredi |
+  @TestCaseKey=LPDC-T579
+  Scenario Outline: Tela Antecipação de campos nulos
+    Given open portal "<alianca>" and logon
+    Given o usuário deseja antecipar eventualmente
+    And o usuário clica no botão Personalizar solicitação de antecipação
+    And o usuário não preenche um dos campos da personalização
+    Then o usuário não pode clicar no botão "Solicitar antecipação"
+    @sicredi @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | sicredi |
 
-@azulzinha @alliances
-Examples:
-| Description    | alianca   |
-| usuário master | azulzinha |
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | usuário master | azulzinha |
 
-@bin @alliances
-Examples:
-| Description    | alianca |
-| usuário master | bin     |
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | bin     |
 
-@afinz @alliances
-Examples:
-| Description    | alianca |
-| usuário master | afinz   |
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | afinz   |
 
+  @TestCaseKey=LPDC-T615
+  Scenario Outline: Dashboard Antecipação sem saldo
+    Given open portal "<alianca>" and logon
+    And Todas as barras de carregamento sumiram
+    When o usuário visualiza o dashboard Antecipação
+    Then o valor zero reais na coluna ValorProduto
+    @sicredi @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | sicredi |
 
-@TestCaseKey=LPDC-T615
-Scenario Outline: Dashboard Antecipação sem saldo
-Given open portal "<alianca>" and logon
-And Todas as barras de carregamento sumiram
-When o usuário visualiza o dashboard Antecipação
-Then o valor zero reais na coluna ValorProduto
-@sicredi @alliances
-Examples:
-| Description    | alianca |
-| usuário master | sicredi |
+    @azulzinha @alliances
+    Examples:
+      | Description    | alianca   |
+      | usuário master | azulzinha |
 
-@azulzinha @alliances
-Examples:
-| Description    | alianca   |
-| usuário master | azulzinha |
+    @bin @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | bin     |
 
-@bin @alliances
-Examples:
-| Description    | alianca |
-| usuário master | bin     |
+    @afinz @alliances
+    Examples:
+      | Description    | alianca |
+      | usuário master | afinz   |
 
-@afinz @alliances
-Examples:
-| Description    | alianca |
-| usuário master | afinz   |
-
-
-  #Este teste não eh elegivel de automção
+#Este teste não eh elegivel de automção
 #Scenario Outline: Abas Solicitar antecipação e Histórico na antecipação
 #Given open portal "<alianca>" and logon
 #Given o usuário acessa a antecipação de um EC padrão com saldo para antecipar pelo dashboard Antecipação
