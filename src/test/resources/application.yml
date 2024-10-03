@@ -111,6 +111,8 @@ user-profiles:
     serviceContract: "110"
     institution: "00000004"
     allianceName: SICREDI
+taxista:
+  url: https://azulzinha.qa.portaldocliente.fiserv.com/taxista/
 api:
   apiKey: "kaGC9uLpusCBi3BgR8QBAz35gJxIkEST"
   apiSecret: "sU7aBf8bHhQfoeQ8wILCkAjAa23tgJd7KAcUc79ueiN"
@@ -128,9 +130,9 @@ framework:
       slowMo: 300
       # timeout: 30000
       args:
-          - --window-size = '1920,1080'
-          - --start-maximized
-      #   - --ignore-certificate-errors
+          - --window-size=1920,1080
+          #- --start-maximized
+          #- --ignore-certificate-errors
       #   - --proxy-server=http://127.0.0.1:8080
       # chromiumSandbox: false
       # devtools: false
