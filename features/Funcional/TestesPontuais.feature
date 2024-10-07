@@ -19,3 +19,8 @@ Feature: Testes Pontuais
     When clicar em esqueci minha senha
     Then usuario visualizara o captcha
 
+  Scenario: Botões de Acesso Rápido dispostos 2 por linha em dispositivos móveis
+    Given usuario esta na página inicial da aplicação
+    And usando um dispositivo móvel
+    When verificar a disposição dos botões de acesso rápido
+    Then devera visualizar os botões de acesso rápido estão dispostos 2 por linha
