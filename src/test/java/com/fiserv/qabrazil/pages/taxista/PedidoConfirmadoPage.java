@@ -21,7 +21,9 @@ public class PedidoConfirmadoPage {
         this.title = page.locator("//*[@id='$b19']/div[contains(text(), 'Pedido confirmado!')]");
     }
 
-    public void verificarPedidoConfirmado() {
+    public void verificarPedidoConfirmado() throws InterruptedException {
+        Thread.sleep(3000);
+
         if (this.title.isVisible())
             assertTrue(true);
         else

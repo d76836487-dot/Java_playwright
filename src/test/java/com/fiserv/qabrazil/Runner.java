@@ -5,7 +5,6 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
      features = "classpath:com/fiserv/qabrazil/features/Regressivo"
-    //,tags = "@Taxista"
     //tags = "@alliances"
     //tags = "@sicredi"
     //tags = "@HealthCheck"

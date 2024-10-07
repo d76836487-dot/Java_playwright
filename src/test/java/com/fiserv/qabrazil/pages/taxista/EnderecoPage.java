@@ -116,6 +116,7 @@ public class EnderecoPage {
         this.preencherNumero(semNumero, numero);
         this.preencherComplemento(complemento);
         this.preencherPontoReferencia(pontoReferencia);
+
         Thread.sleep(3000);
         if (cep.isEmpty()) {
             this.preencherLogradouro(logradouro);
@@ -123,6 +124,7 @@ public class EnderecoPage {
             this.preencherCidade(cidade);
             this.selecionarEstado(estado);
         }
+
         this.alterarNegocio(alterarNegocio);
         this.alterarDadosPessoais(alterarDadosPessoais);
         this.clickProximo();

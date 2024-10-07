@@ -26,6 +26,7 @@ public class ContaRecebimentoPage {
     private Locator btnAlterarDadosPessoais;
     private Locator drillDownEndereco;
     private Locator cbConcordo;
+    private Locator cbDeclaro;
     private Locator btnProximo;
 
     @PostConstruct
@@ -42,6 +43,7 @@ public class ContaRecebimentoPage {
         this.btnAlterarDadosPessoais = page.locator("//*[@id='b14-b10-Content']/span[contains(text(), 'Alterar')]");
         this.drillDownEndereco = page.locator("//*[@id='b14-b11-TitleWrapper']");
         this.cbConcordo = page.locator("//*[@id='b13-Checkbox']");
+        this.cbDeclaro = page.locator("//*[@id='b13-Checkbox2']");
         this.btnProximo = page.locator("//*[contains(text(), 'Próximo')]");
     }
 
@@ -101,6 +103,10 @@ public class ContaRecebimentoPage {
         this.cbConcordo.click();
     }
 
+    public void clickDeclaro() {
+        this.cbDeclaro.click();
+    }
+
     public void clickProximo() {
         this.btnProximo.click();
     }
@@ -119,6 +125,7 @@ public class ContaRecebimentoPage {
         this.selecionarOperacao(operacao);
         this.preencherConta(conta);
         this.clickConcordo();
+        this.clickDeclaro();
         this.alterarNegocio(alterarNegocio);
         this.alterarDadosPessoais(alterarDadosPessoais);
         this.expandirEndereco(expandirEndereco);

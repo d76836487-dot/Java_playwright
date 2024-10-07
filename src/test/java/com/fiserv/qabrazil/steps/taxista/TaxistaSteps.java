@@ -125,7 +125,7 @@ public class TaxistaSteps {
     }
 
     @Then("é validado que o pedido foi realizado com sucesso")
-    public void e_validado_que_o_pedido_foi_realizado_com_sucesso() {
+    public void e_validado_que_o_pedido_foi_realizado_com_sucesso() throws InterruptedException {
         pedidoConfirmadoPage.verificarPedidoConfirmado();
     }
 }
