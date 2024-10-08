@@ -25,3 +25,4 @@ Feature: Testes Pontuais
     And usando um dispositivo móvel
     When verificar a disposição dos botões de acesso rápido
     Then devera visualizar os botões de acesso rápido estão dispostos 2 por linha
+
