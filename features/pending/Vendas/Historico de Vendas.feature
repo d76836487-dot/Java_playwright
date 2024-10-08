@@ -228,3 +228,10 @@ Feature: Historico de Vendas
     And clicar no Botão Aplicar
     Then será exibido vendas contendo Cód. referência do cartão preenchido.
 
+  Scenario: Visualizar os 4 últimos dígitos de um número de cartão criptografado no histórico de vendas
+    Given que o usuário tenha efetuado login no sistema com credenciais válidas
+    And esteja na página de "Histórico de Vendas"
+    When o usuário clicar em uma venda específica na lista de vendas
+    Then ele deverá ser direcionado para a página de detalhes dessa venda
+    And na seção de "Dados do Pagamento", o número do cartão deverá exibir apenas os últimos 4 dígitos
+    And os outros dígitos do número do cartão deverão estar ocultos ou mascarados, garantindo a criptografia e a segurança dos dados
