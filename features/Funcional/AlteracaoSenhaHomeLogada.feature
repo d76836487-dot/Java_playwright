@@ -163,7 +163,7 @@ Feature: Alteração de senha Home logada
     Then deve ser exibida a mensagem “As senhas não coincidem”
 
   @TestCaseKey=LPDC-T873
-  Scenario: Operador sem F acessando modal de alterar senha, todos os campos ficam desabilitados
+  Scenario: Operador com F acessando modal de alterar senha, todos os campos ficam desabilitados
     Given que o usuário esteja na tela Meu Perfil
     When clicar em Alterar senha
     Then todos os campos devem estar desabilitados
