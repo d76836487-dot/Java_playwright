@@ -20,7 +20,7 @@ Feature: Vendas Hoje
   Scenario: Validando Mensagem no rodapé
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
-    Then usuário visualizará a seguinte mensagem no rodapé “© [ano atual] Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados”
+    Then usuário visualizará a seguinte mensagem no rodapé: “© [ano atual] Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados”
 
   Scenario: Mensagem de resumo de vendas
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
@@ -92,7 +92,7 @@ Feature: Vendas Hoje
     Then usuário visualizará as vendas com todos os status
     And usuário visualizará o botão Filtro com cor da instituição
 
-  Scenario 14: Filtrar vendas hoje com status autorizado
+  Scenario: Filtrar vendas hoje com status autorizado
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
     And clica em Filtros
@@ -169,7 +169,7 @@ Feature: Vendas Hoje
     Then usuário visualizará o produto débito
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
-  Scenario 23: Limpar filtro de débito em Produtos
+  Scenario: Limpar filtro de débito em Produtos
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
     And clica em Filtros
