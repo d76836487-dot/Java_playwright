@@ -224,3 +224,4 @@ Feature: Credenciamento de Taxistas
     And o usuário clicar na aba “Endereço”
     When o usuário clicar em “Alterar”
     Then será exibida a tela “Endereço”
+

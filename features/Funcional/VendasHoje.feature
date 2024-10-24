@@ -6,37 +6,44 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: Vendas Hoje
 
+  @TestCaseKey=LPDC-T923
   Scenario: Acessar Vendas Hoje via menu lateral
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
     Then usuário será direcionado para a página de “Vendas Hoje”
 
+  @TestCaseKey=LPDC-T922
   Scenario: Acessar Vendas Hoje via dashboard Vendas
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário localiza o dashboard Vendas Hoje
     And usuário clica no link “Ver tudo”
     Then usuário será direcionado para a página de “Vendas Hoje”
 
+  @TestCaseKey=LPDC-T913
   Scenario: Validando Mensagem no rodapé
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
     Then usuário visualizará a seguinte mensagem no rodapé: “© [ano atual] Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados”
 
+  @TestCaseKey=LPDC-T911
   Scenario: Mensagem de resumo de vendas
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
     Then usuário visualizará a seguinte mensagem: “Visualize suas vendas realizadas no dia. Não achou a venda que estava procurando? Ela pode levar até 15 minutos para ser apresentada aqui. E lembre-se, essas vendas estão em processamento, vendas estornadas ou não efetivadas aparecem aqui até o final do dia”
 
+  @TestCaseKey=LPDC-T974
   Scenario: Visualização do campo “Resumo de vendas”
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
     Then usuário visualizará no campo “Resumo de vendas”: Total de vendas, Valor bruto das vendas autorizadas
 
+  @TestCaseKey=LPDC-T928
   Scenario: Visualização da tabela “Histórico de vendas”
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
     Then usuário visualizará por default dez colunas abaixo de Histórico de Vendas data da venda, código de autorização, comprovante de venda, produto, parcelas, bandeira, canal, terminal, valor bruto e status.
 
+  @TestCaseKey=LPDC-T955
   Scenario: Personalizar com até 10 colunas
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -46,6 +53,7 @@ Feature: Vendas Hoje
     And clicara em Aplicar
     And usuário verá as 10 colunas que selecionou abaixo de Histórico de Vendas
 
+  @TestCaseKey=LPDC-T932
   Scenario: Voltar a personalização para o padrão
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     And usuário já personalizou a visualização das Colunas no Vendas Hoje
@@ -53,12 +61,14 @@ Feature: Vendas Hoje
     And clica no Botão Voltar ao Padrão
     Then deverá voltar ao padrão de seleção das colunas
 
+  @TestCaseKey=LPDC-T939
   Scenario: Personalizar com mais de 10 colunas
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
     And usuário deseja personalizar a visualização das colunas com mais de 10 Opções
     Then usuário não conseguirá selecionar mais de 10 Opções
 
+  @TestCaseKey=LPDC-T929
   Scenario: Busca por Cod de autorização
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -67,6 +77,7 @@ Feature: Vendas Hoje
     And clica na lupa para buscar
     Then usuário visualizará os dados na tabela referente aquele Código de autorização
 
+  @TestCaseKey=LPDC-T954
   Scenario: Busca por autorização de venda hoje não existente
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -75,6 +86,7 @@ Feature: Vendas Hoje
     And clica na lupa para buscar
     Then usuário visualizará a seguinte mensagem na tela: “Nenhum resultado encontrado. Tente filtrar por outros períodos ou parâmetros”
 
+  @TestCaseKey=LPDC-T921
   Scenario: Busca por código de autorização com caracteres inválidos
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -83,6 +95,7 @@ Feature: Vendas Hoje
     And clica na lupa para buscar
     Then usuário visualizará a seguinte mensagem na tela: “Nenhum resultado encontrado. Tente filtrar por outros períodos ou parâmetros”
 
+  @TestCaseKey=LPDC-T969
   Scenario: Filtrar vendas hoje com todos os status
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -92,6 +105,7 @@ Feature: Vendas Hoje
     Then usuário visualizará as vendas com todos os status
     And usuário visualizará o botão Filtro com cor da instituição
 
+  @TestCaseKey=LPDC-T953
   Scenario: Filtrar vendas hoje com status autorizado
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -101,6 +115,7 @@ Feature: Vendas Hoje
     Then usuário visualizará apenas vendas com status autorizada
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T950
   Scenario: Limpar filtro com status de autorizado das vendas hoje
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -109,6 +124,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas sem restrição de status
 
+  @TestCaseKey=LPDC-T924
   Scenario: Filtrar vendas hoje com status Recusada
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -118,6 +134,7 @@ Feature: Vendas Hoje
     Then usuário visualizará apenas vendas com status Recusada
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T947
   Scenario: Limpar filtro de status de Recusada das vendas hoje
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -126,6 +143,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas sem restrição de status
 
+  @TestCaseKey=LPDC-T945
   Scenario: Filtrar vendas hoje com status estornado
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -135,6 +153,7 @@ Feature: Vendas Hoje
     Then usuário visualizará apenas vendas com status estornado
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T917
   Scenario: Limpar filtro de status de estornado das vendas hoje
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -143,6 +162,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas sem restrição de status
 
+  @TestCaseKey=LPDC-T920
   Scenario: Filtrar vendas hoje por todos os produtos
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -152,6 +172,7 @@ Feature: Vendas Hoje
     Then usuário visualizará todos os Produtos que estiverem ativos
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T973
   Scenario: Limpar filtro de todos os Produtos em vendas hoje
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -160,6 +181,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas sem restrição de Produtos
 
+  @TestCaseKey=LPDC-T914
   Scenario: Filtrar vendas hoje pelo produto débito
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -169,6 +191,7 @@ Feature: Vendas Hoje
     Then usuário visualizará o produto débito
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T927
   Scenario: Limpar filtro de débito em Produtos
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -177,6 +200,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas sem restrição de Produtos
 
+  @TestCaseKey=LPDC-T919
   Scenario: Filtrar vendas hoje pelo produto Crédito
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -186,6 +210,7 @@ Feature: Vendas Hoje
     Then usuário visualizará o produto Crédito a Vista e Crédito Parcelado
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T941
   Scenario: Limpar filtro de Crédito em Produtos
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -194,6 +219,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas sem restrição de Produtos
 
+  @TestCaseKey=LPDC-T935
   Scenario: Filtrar vendas hoje por todos os canais
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -203,6 +229,7 @@ Feature: Vendas Hoje
     Then usuário visualizará todos os canais
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T926
   Scenario: Filtrar vendas hoje pelo canal POS
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -212,6 +239,7 @@ Feature: Vendas Hoje
     Then usuário visualizará na coluna canal POS
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T951
   Scenario: Limpar filtro do canal POS em vendas hoje
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -220,6 +248,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas sem restrição de Canal POS
 
+  @TestCaseKey=LPDC-T966
   Scenario: Filtrar vendas hoje pelo e-commerce
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -229,6 +258,7 @@ Feature: Vendas Hoje
     Then usuário visualizará na coluna canal e-commerce
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T936
   Scenario: Limpar filtro do canal e-commerce em vendas hoje
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -237,6 +267,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas sem restrição de Canal e-commerce
 
+  @TestCaseKey=LPDC-T933
   Scenario: Filtrar vendas hoje pelo link de pagamento
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -246,6 +277,7 @@ Feature: Vendas Hoje
     Then usuário visualizará na coluna canal Link de Pagamento
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T912
   Scenario: Limpar filtro do canal link de pagamento das vendas hoje
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -254,6 +286,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas sem restrição de Canal Link de Pagamento
 
+  @TestCaseKey=LPDC-T943
   Scenario: Filtrar vendas hoje por todas as bandeiras
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -263,6 +296,7 @@ Feature: Vendas Hoje
     Then usuário devera visualizar todas as transações com as bandeiras que foram passadas as transações
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T938
   Scenario: Filtrar vendas hoje pela bandeira Elo
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -272,6 +306,7 @@ Feature: Vendas Hoje
     Then usuário devera visualizar todas as transações com a bandeira Elo
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T916
   Scenario: Limpar filtro bandeira Elo
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -280,6 +315,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas com todas as bandeiras
 
+  @TestCaseKey=LPDC-T940
   Scenario: Filtrar vendas hoje pela bandeira Master
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -289,6 +325,7 @@ Feature: Vendas Hoje
     Then usuário devera visualizar todas as transações com a bandeira Master
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T942
   Scenario: Limpar filtro bandeira Master
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -297,6 +334,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas com todas as bandeiras
 
+  @TestCaseKey=LPDC-T925
   Scenario: Filtrar vendas hoje pela bandeira Visa
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -306,6 +344,7 @@ Feature: Vendas Hoje
     Then usuário devera visualizar todas as transações com a bandeira Visa
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T952
   Scenario: Limpar filtro bandeira Visa
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -314,6 +353,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as vendas com todas as bandeiras
 
+  @TestCaseKey=LPDC-T918
   Scenario: Filtrar valores em Vendas Hoje
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -323,6 +363,7 @@ Feature: Vendas Hoje
     Then usuário devera visualizar todas as transações dentro do range de valor que ele selecionou
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T970
   Scenario: Limpar filtro Valores
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje”, pelo menu lateral esquerdo
@@ -331,6 +372,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as transações sem range de valor
 
+  @TestCaseKey=LPDC-T937
   Scenario: Filtrar por estabelecimento em vendas hoje
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje”, pelo menu lateral esquerdo And clica em Personalizar colunas
@@ -342,6 +384,7 @@ Feature: Vendas Hoje
     Then usuário devera visualizar todas as transações que foram feitas com aquele estabelecimento selecionado
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T915
   Scenario: Filtrar vendas hoje por terminal POS
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     And usuário possui mais de um terminal
@@ -352,6 +395,7 @@ Feature: Vendas Hoje
     Then usuário visualizará todas as transações com o Terminal POS
     And usuário visualizará o botão Filtro com a borda e escrita colorida de acordo com a instituição
 
+  @TestCaseKey=LPDC-T930
   Scenario: Limpar filtro Terminal
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -360,6 +404,7 @@ Feature: Vendas Hoje
     And clica em mostrar resultados
     Then usuário devera visualizar todas as transações com todos os terminais disponíveis
 
+  @TestCaseKey=LPDC-T971
   Scenario: Fazer download do arquivo CSV
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -368,6 +413,7 @@ Feature: Vendas Hoje
     And clica em Gerar arquivo
     Then usuário verá a seguinte mensagem: “Arquivo exportado com sucesso”
 
+  @TestCaseKey=LPDC-T946
   Scenario: Fazer download do arquivo Excel
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
@@ -375,3 +421,4 @@ Feature: Vendas Hoje
     And usuário seleciona o arquivo Excel
     And clica em Gerar arquivo
     Then usuário verá a seguinte mensagem: “Arquivo exportado com sucesso”
+
