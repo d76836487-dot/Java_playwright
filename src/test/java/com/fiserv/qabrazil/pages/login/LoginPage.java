@@ -235,10 +235,12 @@ public class LoginPage extends BasePage {
         System.out.println(Config.acessLogonCount);
         if (Ret.equals("")) {
             Config.errorLogonCount +=1;
+            /*
             FileWriter arq = new FileWriter("C:\\eveidencia\\error.txt");
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.printf("Resultado " + Config.errorLogonCount);
             arq.close();
+            */
             Assert.fail();
         }
 
@@ -279,10 +281,12 @@ Thread.sleep(3000);
         //Contador de Sucesso
         if(page.getByText("Acesso rápido").isVisible()){
             Config.sucessLogonCount +=1;
+            /*
             FileWriter arq = new FileWriter("C:\\eveidencia\\sucess.txt");
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.printf("Resultado " + Config.sucessLogonCount);
             arq.close();
+            */
         }
 
     }
@@ -300,5 +304,4 @@ Thread.sleep(3000);
         page.locator("id=b2-b2-Input_Password").type(arg1);
         page.locator("data-testid=entrar").click();
     }
-
 }

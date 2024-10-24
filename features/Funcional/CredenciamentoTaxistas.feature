@@ -1,7 +1,7 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Funcional/Credenciamento_de_Taxistas
-@Zephyr:Status=Draft
+@Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: Credenciamento de Taxistas
@@ -224,4 +224,3 @@ Feature: Credenciamento de Taxistas
     And o usuário clicar na aba “Endereço”
     When o usuário clicar em “Alterar”
     Then será exibida a tela “Endereço”
-

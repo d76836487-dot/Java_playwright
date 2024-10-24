@@ -1,7 +1,7 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Funcional/Alteração_de_senha_Home_logada
-@Zephyr:Status=Draft
+@Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: Alteração de senha Home logada
@@ -175,75 +175,69 @@ Feature: Alteração de senha Home logada
     Then todos os campos devem estar desabilitados
 
   @TestCaseKey=LPDC-T890
-  Scenario Outline: Usuario que esta no GA1 alterando a Senha
+  Scenario: Usuario que esta no GA1 alterando a Senha
     Given que o usuário do GA1 fizer o primeiro acesso no canal
     When clicar em  meu Perfil
     And alterar a Senha com todos os requisitos
     Then devera aparecer o Modal com a seguinte mensagem "Senha alterada com sucesso"
     And devera fazer um novo login no canal com os dados recem criados
-    Examples:
       | Perfis  |
       | master  |
       | sec op  |
       | sec con |
 
   @TestCaseKey=LPDC-T894
-  Scenario Outline: Usuario GA2 insere senha incorreta 1 vez
+  Scenario: Usuario GA2 insere senha incorreta 1 vez
     Given o usuário está no modal de alterar senha
     When o usuário insere a senha incorreta pela primeira vez
     Then o sistema exibe a mensagem "Senha incorreta. Você possui mais 4 tentativas antes de bloquear seu acesso"
-    Examples:
       | Perfis  |
       | master  |
       | sec op  |
       | sec con |
 
   @TestCaseKey=LPDC-T895
-  Scenario Outline: Usuario GA2 insere senha incorreta 2 vezes
+  Scenario: Usuario GA2 insere senha incorreta 2 vezes
     Given o usuário está no modal de alterar senha
     When o usuário insere a senha incorreta segunda vez
     Then o sistema exibe a mensagem "Senha incorreta. Você possui mais 3 tentativas antes de bloquear seu acesso"
-    Examples:
       | Perfis  |
       | master  |
       | sec op  |
       | sec con |
 
   @TestCaseKey=LPDC-T893
-  Scenario Outline: Usuario GA2 insere senha incorreta 3 vezes
+  Scenario: Usuario GA2 insere senha incorreta 3 vezes
     Given o usuário está no modal de alterar senha
     When o usuário insere a senha incorreta terceira vez
     Then o sistema exibe a mensagem "Senha incorreta. Você possui mais 2 tentativas antes de bloquear seu acesso"
-    Examples:
       | Perfis  |
       | master  |
       | sec op  |
       | sec con |
 
   @TestCaseKey=LPDC-T892
-  Scenario Outline: Usuario GA2 insere senha incorreta 4 vezes
+  Scenario: Usuario GA2 insere senha incorreta 4 vezes
     Given o usuário está no modal de alterar senha
     When o usuário insere a senha incorreta quarta vez
     Then o sistema exibe a mensagem "Senha incorreta. Você possui mais 1 tentativas antes de bloquear seu acesso"
-    Examples:
       | Perfis  |
       | master  |
       | sec op  |
       | sec con |
 
   @TestCaseKey=LPDC-T897
-  Scenario Outline: Usuário GA2 tenta fazer login novamente antes de 30 minutos
+  Scenario: Usuário GA2 tenta fazer login novamente antes de 30 minutos
     Given o usuário está no modal de alterar senha
     When o usuário tenta fazer login novamente antes de 30 minutos
     Then o sistema exibe a mensagem "Sua conta está temporariamente bloqueada devido a número de tentativas de acesso sem sucesso. Tente acessar o aplicativo novamente em 29:59 minutos."
-    Examples:
       | Perfis  |
       | master  |
       | sec op  |
       | sec con |
 
   @TestCaseKey=LPDC-T896
-  Scenario Outline: Usuário GA2 tenta reutilizar uma senha anterior ao alterar a senha
+  Scenario: Usuário GA2 tenta reutilizar uma senha anterior ao alterar a senha
     Given o usuário "XPTO" está logado no sistema
     And o usuário está modal de alteração de senha
     And as senhas anteriores do usuário são:
@@ -256,14 +250,13 @@ Feature: Alteração de senha Home logada
     And o usuário confirma "senha2" como a confirmação da nova senha
     And o usuário clica no botão "Alterar"
     Then o sistema exibe a mensagem "A nova senha não pode ser uma senha utilizada anteriormente."
-    Examples:
       | Perfis  |
       | master  |
       | sec op  |
       | sec con |
 
   @TestCaseKey=LPDC-T891
-  Scenario Outline: Usuário GA2 altera a senha com sucesso utilizando uma senha nova
+  Scenario: Usuário GA2 altera a senha com sucesso utilizando uma senha nova
     Given o usuário "XPTO" está logado no sistema
     And o usuário está no modal de alteração de senha
     And as senhas anteriores do usuário são:
@@ -276,9 +269,7 @@ Feature: Alteração de senha Home logada
     And o usuário confirma "senhaNova1" como a confirmação da nova senha
     And o usuário clica no botão "Alterar"
     Then o sistema exibe a mensagem "Senha alterada com sucesso."
-    Examples:
       | Perfis  |
       | master  |
       | sec op  |
       | sec con |
-
