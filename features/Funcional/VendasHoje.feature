@@ -422,3 +422,26 @@ Feature: Vendas Hoje
     And clica em Gerar arquivo
     Then usuário verá a seguinte mensagem: “Arquivo exportado com sucesso”
 
+  Scenario: Validando Nome do arquivo Excel de Vendas Hoje
+    Given Usuario fez o Download do arquivo Excel
+    When ele abrir o arquivo
+    Then o arquivo deve vir com o nome Relatorio_de_Vendas_Hoje_25-10-2024_1433.xlsx
+
+  Scenario: Validando Nome do arquivo CSV de Vendas Hoje
+    Given Usuario fez o Download do arquivo CSV
+    When ele abrir o arquivo
+    Then o arquivo deve vir com o nome Relatorio_de_Vendas_Hoje_25-10-2024_1433.csv
+
+  Scenario: Validando Colunas no arquivo Excel
+    Given Usuario fez o Download do arquivo Excel
+    When ele abrir o arquivo
+    Then o arquivo deve ter as seguintes colunas: Comprovante da venda, Produto	Parcelado, Bandeira, Canal, Terminal, Valor bruto, Status, Número do estabelecimento, Final do cartão e Cód. Ref. Cartão
+    And a soma da coluna Valor Bruto deve bater com a soma que esta no campo Valor Bruto na Tela Vendas Hoje
+    And o Total de Vendas na parte de cima do Arquivo deve bater com o Total de Vendas na Tela Vendas Hoje
+
+  Scenario: Validando Colunas no arquivo CSV
+    Given Usuario fez o Download do arquivo CSV
+    When ele abrir o arquivo
+    Then o arquivo deve ter as seguintes colunas: Data da venda, Cód. de autorização, Comprovante, Produto, Parcelado, Bandeira, Canal, Terminal, Valor bruto, Status, Número do Estabelecimento, Final do cartão e Cód. Ref. Cartão
+    And a soma da coluna Valor Bruto deve bater com a soma que esta no campo Valor Bruto na Tela Vendas Hoje
+    And o Total de Vendas na parte de cima do Arquivo deve bater com o Total de Vendas na Tela Vendas Hoje
