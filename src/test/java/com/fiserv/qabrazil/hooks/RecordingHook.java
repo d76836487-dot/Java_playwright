@@ -1,6 +1,8 @@
 package com.fiserv.qabrazil.hooks;
 
 import com.fiserv.qabrazil.components.FilesToAttachToScenario;
+import com.fiserv.qabrazil.pages.home.HomeCustomizeModal;
+import com.fiserv.qabrazil.util.Config;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.After;
@@ -21,8 +23,14 @@ public class RecordingHook {
     @Autowired
     private FilesToAttachToScenario filesToAttachToScenario;
 
-    @After("@playwright and not @ignore")
+@Autowired
+HomeCustomizeModal homeCustomizeModal;
+
+    @After()
     public void tearDown(Scenario scenario) {
+        if(Config.SessionLogado.equals("YES")){
+            homeCustomizeModal.logout();
+        }
         saveScreenshotAndUrl(scenario);
 //        saveVideo(scenario);
     }

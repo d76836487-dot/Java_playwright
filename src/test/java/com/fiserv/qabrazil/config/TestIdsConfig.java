@@ -11,6 +11,7 @@ import static java.util.Map.entry;
 
 public class TestIdsConfig {
     private static final Map<String, String> testIdMaps = Map.<String, String>ofEntries(
+
             entry("Filter - Accordion - Status (0)", "generic-filter-accordion-title-status"),
             entry("Filter - Accordion - Bandeiras (0)", "generic-filter-accordion-title-bandeira"),
             entry("Filter - Accordion - Produtos (0)", "generic-filter-accordion-title-produtos"),
@@ -221,13 +222,15 @@ public class TestIdsConfig {
             entry("Header - Ocultar Valores", "head-ocultar-valores"),
             entry("Header - Ajuda", "head-ajuda"),
             entry("Header - Notificações", "head-notificacoes"),
-            entry("Header - Trocar Estabelecimento", "head-trocar-estabelecimentos"),
+            entry("Header - Trocar Estabelecimento", "header-trocar-estabelecimento"),
+            entry("Head - Documento", "head-trocar-estabelecimentos"),
+
+            entry("Header - Meu Perfil", "evt_clicou_home_logada_meu_perfil"),
             entry("Header - Sair", "head-sair"),
             entry("Trocar Estabelecimento - Marcar como Padrão", "alterar-matriz-selecionar-padrao"),
             entry("Trocar Estabelecimento - Botão Acessar", "alterar-matriz-button-acessar"),
             
-            entry("Trocar Estabelecimento - Botão selecionar por Documento", "alterar-matriz-type-documento"),
-            entry("Trocar Estabelecimento - Botão selecionar por Estabelecimento", "alterar-matriz-type-estabelecimento"),
+
             entry("Trocar Estabelecimento - Buscar documento", "alterar-matriz-input-buscar"),
             entry("Trocar Estabelecimento - Limpar buscar documento", "alterar-matriz-close-input-search"),
             entry("Trocar Estabelecimento - Estabelecimento - Nome Estabelecimento", "alterar-matriz-nome-estabelecimento-\\d.*"),
@@ -236,6 +239,11 @@ public class TestIdsConfig {
             entry("Trocar Estabelecimento - Estabelecimento - Num Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-detalhe-\\d.*"),
             entry("Trocar Estabelecimento - Estabelecimento - Status Estabelecimento Detalhe", "alterar-matriz-documento-estabelecimento-status-\\d.*"),
             entry("Trocar Estabelecimento - Documento - Nome Estabelecimento", "alterar-matriz-text-documento-nome-fantasia-.*"),
+            entry("Trocar Estabelecimento - Botão selecionar por Documento", "alterar-matriz-type-documento"),
+            entry("Trocar Estabelecimento - Botão selecionar por Estabelecimento", "alterar-matriz-type-estabelecimento"),
+
+
+
 
             entry("Login - mensagem de erro", "login-usuario-incorreto"),
             entry("Login - Campo Token MFA", "login-codigos-token"),
@@ -255,7 +263,7 @@ public class TestIdsConfig {
             entry("Gestão de Acessos - Convidar novo usuário", "gestao-new-user"),
 
             entry("Agenda de Recebimentos por UR - Resumo - Valor Total líquido de URs", "total-liquido-ur"),
-            entry("Agenda de Recebimentos por UR - Resumo - Valor Total", "valor-total-ur"),
+            entry("Agenda de Recebimentos por UR - Resumo - Valor total", "valor-total-ur"),
             entry("Agenda de Recebimentos por UR - Resumo - Valor pago", "valor-pago-ur"),
             entry("Agenda de Recebimentos por UR - Resumo - Total bruto", "total-bruto-ur"),
             entry("Agenda de Recebimentos por UR - Resumo - Total taxa MDR", "total-taxa-mdr-ur"),
@@ -296,11 +304,18 @@ public class TestIdsConfig {
             entry("Detalhe da UR - Venda - Valor Bruto 0", "detalhe-ur-tab-vendas-valor-bruto-0"),
             entry("Detalhe da UR - Venda - Valor Bruto Parcela 0", "detalhe-ur-tab-vendas-valor-bruto-da-parcela-0"),
             entry("Detalhe da UR - Venda - Valor Líquido 0", "detalhe-ur-tab-vendas-valor-liquido-0"),
-            entry("Detalhe da UR - Venda - Valor Taxa 0", "detalhe-ur-tab-vendas-valor-taxa-0")
-    );
+            entry("Detalhe da UR - Venda - Valor Taxa 0", "detalhe-ur-tab-vendas-valor-taxa-0"),
+
+            entry("Menu Ajuda", "m-menu-ajuda")
+
+
+            );
 
 
     private static final Map<String, String> otherSelectors = Map.<String, String>ofEntries(
+            entry("Relatorio de Vendas", ".om-root-menu [data-testid=menu-vendas]"),
+
+
             entry("Loading Bars", ".ph-picture-small"),
             entry("Popup", ".popup-content"),
             entry("Menu Lateral - Vendas", ".om-root-menu [data-testid=menu-vendas]"),
@@ -374,13 +389,18 @@ public class TestIdsConfig {
             entry("Home - Resumo", "//span[contains(text(),'Visualize suas vendas realizadas no dia')]"),
             entry("Home - Agenda de recebimentos da semana - mensagem", "#CtnAgendaRecebimentosSemana > div > div > div:nth-child(2)"),
 
-            entry("Header - Trocar Estabelecimento - Span Texto", "//*[@data-testid='head-trocar-estabelecimentos']//span[contains(text(), 'Trocar estabelecimento')]"),
+            entry("Header - Trocar Estabelecimento - Span Texto", "//span[contains(text(), 'Trocar estabelecimento')]"),
 
             entry("Trocar Estabelecimento - Botão Todos Documentos", "//input[@value='Todos']"),
             entry("Trocar Estabelecimento - Botão Todos Documentos - Explicação", "//span[contains(text(),'Essa visão')]"),
             entry("Trocar Estabelecimento - Texto Explicativo", "//*[contains(text(),'Ao selecionar esse ')]"),
             entry("Trocar Estabelecimento - Nenhum resultado", "//*[@role='dialog']//*[contains(text(),'Nenhum resultado')]"),
             entry("Trocar Estabelecimento - Documento - Documento Estabelecimento", "//*[@role='radiogroup']//input"),
+            entry("Trocar Estabelecimento - Acessar", "//*[contains(text(),'Acessar')]]"),
+
+
+
+
 
             entry("Vendas Hoje - Botão Exportar", "//button//span[text()='Exportar']"),
             entry("Vendas Hoje - Exportar - Dropdown Tipo Arquivo - Gerar arquivo", "//button[text()='Gerar arquivo']"),
@@ -472,8 +492,29 @@ public class TestIdsConfig {
             entry("Detalhe da UR - Popup", "//div[contains(@class, 'popup-dialog')]"),
             entry("Detalhe da UR - Popup - Botão Fechar", "//span[contains(text(), 'Fechar')]"),
 
+            entry("Meu Perfil - Label Documento ou usuário", "//span[text()='Documento ou usuário']"),
+            entry("Meu Perfil - Label Endereço de e-mail", "//span[contains(text(),'Endereço de e-mail')]/../following-sibling::div"),
+            entry("Meu Perfil - Label Celular", "//span[text()='Celular']"),
+            entry("Meu Perfil - Label Configurações da conta", "//span[text()='Configurações da conta']"),
+            entry("Meu Perfil - Label Excluir acesso digital", "//span[text()='Excluir acesso digital']"),
+            entry("Excluir - Popup Excluir acesso digital", "//span[text()='Ao excluir seu acesso:']"),
+
             entry("Paginação - mostrar 50 itens", "//a[text()='50 Itens']"),
-            entry("Paginação - abrir opção de paginação", "//span[contains(text(),'Exibindo')][contains(text(),'itens')]")
+            entry("Paginação - abrir opção de paginação", "//span[contains(text(),'Exibindo')][contains(text(),'itens')]"),
+
+            //Cancelamento de Vendas
+            entry("Histórico de cancelamentos - Label Data do cancelamento", "//*[contains(text(),'Data do cancelamento')]"),
+            entry("Histórico de cancelamentos - Label Valor cancelado", "//span[text()='Valor cancelado']"),
+            entry("Dashboard - Antecipação", "[data-testid='card-home-text-antecipacao']"),
+            entry("Dashboard - Valor Antecipação", "[data-testid='home-card-antecipacao-text-valor']"),
+            entry("Dashboard - Ir para Antecipação", "[data-testid='menu-antecipacao']"),
+            entry("Valor disponível para antecipação", "[data-testid='valor-disponivel-antecipacao']"),
+            entry("Plano Flex contratado", "[data-testid='home-card-antecipacao-text-tipo-produto']")
+
+
+
+
+
     );
 
     public static String getTestId(String identifier) {

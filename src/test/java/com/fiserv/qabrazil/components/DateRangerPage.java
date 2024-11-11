@@ -66,7 +66,12 @@ public class DateRangerPage extends BasePage {
         setDateInCalendar(14, "Date ranger - Dia final Digitado");
         pageField.from("Date ranger - Aplicar").click();
     }
-
+    public void userSelectLast30Days() {
+        pageField.from("Date ranger - Image").click();
+        setDateInCalendar(1, "Date ranger - Dia inicial Digitado");
+        setDateInCalendar(30, "Date ranger - Dia final Digitado");
+        pageField.from("Date ranger - Aplicar").click();
+    }
     public void userSelectsNextThirdDays() {
         pageField.from("Date ranger - Image").click();
         setDateInCalendar(30, "Date ranger - Dia final Digitado");
@@ -82,6 +87,7 @@ public class DateRangerPage extends BasePage {
 
         waitCalendarClose(dateToType);
     }
+
 
     private void waitCalendarClose(String dateToType) {
         sleep(Duration.ofSeconds(2));

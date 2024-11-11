@@ -6,14 +6,25 @@ import com.fiserv.automation.mfa.MfaGenerator;
 import com.fiserv.automation.playwright.configuration.StorageState;
 import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
+import com.fiserv.qabrazil.interfaces.DriverFactory;
 import com.fiserv.qabrazil.pages.BasePage;
+import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
+import com.fiserv.qabrazil.steps.CommonsSteps;
+import com.fiserv.qabrazil.util.Config;
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.AriaRole;
+import io.cucumber.java.Scenario;
+import jakarta.validation.constraints.AssertTrue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.Assert;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -49,6 +60,16 @@ public class LoginPage extends BasePage {
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
 
+
+    @Autowired
+    private CommonsPage commonsPage;
+
+
+    public void openBrowser(String arg0){
+        page.navigate(arg0);
+        //DriverFactory.openBrowser(arg0);
+    }
+
     public boolean pageHasImageWith(String contract) {
         Pattern pattern = Pattern.compile(String.format(".*%s", contract));
         System.out.println(page.getByTestId("header-brand-img"));
@@ -59,31 +80,62 @@ public class LoginPage extends BasePage {
         return page.getByTestId("header-brand-img").isVisible();
     }
 
-    public void forceNewLogin() {
+    public void forceNewLogin() throws InterruptedException {
         storageState.clearState();
-        loginWithOneRetry();
+        loginWithOneRetry("");
     }
 
-    public synchronized void loginAndGetHomeReady() {
-        loginWithOneRetry();
+    public synchronized void loginAndGetHomeReady() throws InterruptedException {
+        //loginWithOneRetry("");
 
-        selectECOrDtcoPage.selectAllDocumentsIfAvailable();
-        startMonitoringRequests(page, contractConfig);
-        headerComponent.selectShowValuesButton(true);
+        //selectECOrDtcoPage.selectAllDocumentsIfAvailable();
+        //startMonitoringRequests(page, contractConfig);
+        //headerComponent.selectShowValuesButton(true);
+        //closeAllPopups();
+
+        loginHHomeReady();
+    }
+    public synchronized void loginHHomeReady() throws InterruptedException {
+
+        //loginWithOneRetry("");
+
+        selectECOrDtcoPage.checkModalAutomaticIsOpen();
+        //startMonitoringRequests(page, contractConfig);
+        //headerComponent.selectShowValuesButton(true);
         closeAllPopups();
     }
 
-    public synchronized void loginWithOneRetry() {
+    public synchronized void newLogin(String url, String user, String pwd) throws InterruptedException {
+        if(url.isEmpty() && user.isEmpty() && pwd.isEmpty()) {
+            loginWithOneRetry("");
+        }else {
+           login(url, user, pwd);
+        }
+        Thread.sleep(5000);
+        selectECOrDtcoPage.checkModalAutomaticIsOpen();
+        closeAllPopups();
+    }
+
+
+    public synchronized void loginWithOneRetry(String url) throws InterruptedException {
+        String URL="";
+
+        if(url.isEmpty()){
+         URL= contractConfig.getActiveUserProfile().url();
+        }else{
+            URL = url;
+        }
+
         if (storageState.stateIsReady() && apiUserDetailsService.tokenIsStillValid()) {
             navigateTo(storageState.getLoggedUrl());
         } else {
-            login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
+            login(URL, contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
         }
 
-        if (notLoggedAtAll()) {
+       /* if (notLoggedAtAll()) {
             log.info("Logging não funcionou. Reiniciando e tentando novamente");
             login(contractConfig.getActiveUserProfile().url(), contractConfig.getActiveUserProfile().user(), contractConfig.getActiveUserProfile().password());
-        }
+        }*/
     }
 
     private boolean notLoggedAtAll() {
@@ -92,7 +144,7 @@ public class LoginPage extends BasePage {
         return !waitUntilTrue(() -> page.getByTestId("head-sair").isVisible() || buttonSelectEstablishment.elementIsVisibleRightNow());
     }
 
-    public void loginAndStartMonitoringRequests(String url, String user, String pwd) {
+    public void loginAndStartMonitoringRequests(String url, String user, String pwd) throws InterruptedException {
         login(url, user, pwd);
         startMonitoringRequests(page, contractConfig);
     }
@@ -104,22 +156,33 @@ public class LoginPage extends BasePage {
         page.getByTestId("password").fill(pwd);
         page.getByTestId("entrar").click();
     }
-    public void login(String url, String user, String pwd) {
+    public void login(String url, String user, String pwd) throws InterruptedException {
         navigateTo(url);
         page.getByTestId("login").pressSequentially(user);
         page.getByTestId("password").fill(pwd);
         page.getByTestId("entrar").click();
 
-        if (hasMfa()) {
+        /*if (hasMfa()) {
             List<Locator> inputs = pageField.from("Login - Campo Token MFA").getLocator().locator("input").all();
             String token = mfaGenerator.getToken();
             for (int i = 0; i < token.length(); i++) {
                 inputs.get(i).pressSequentially("" + token.charAt(i));
             }
             pageField.from("Login - Botão Confirmar Token MFA").click();
-        }
+        }*/
 
-        storageState.clearState();
+      //  Thread.sleep(4000);
+
+
+
+       /* boolean gotSomething = waitUntilTrue(6, () ->
+                page.locator("//*[contains(text(), 'Não foi possível acessar o canal neste momento. Tente novamente mais tarde.')]").count() == 1);
+
+        if (!gotSomething) {
+            throw new RuntimeException("Ambiente offline");
+        }*/
+
+       storageState.clearState();
     }
 
     private boolean hasMfa() {
@@ -151,5 +214,94 @@ public class LoginPage extends BasePage {
     public void clickOnForgotMyPasswordButton() {
         page.getByText("Esqueci minha senha").click();
         page.waitForURL(Pattern.compile("^.*/EsqueceuSenha$"));
+    }
+
+    public void logonportal(String arg0, String arg1) throws InterruptedException, IOException {
+        Config.acessLogonCount =0;
+        String Ret ="";
+
+        page.locator("data-testid=login").type(arg0);
+        page.locator("data-testid=password").type(arg1);
+        page.locator("data-testid=entrar").click();
+
+        for (int i = 0; i < 1200; i++) {
+            Config.acessLogonCount +=1;
+             Ret = commonsPage.retryLogin();
+            if (Ret.equals("S")) {
+                break;
+            }
+        }
+
+        System.out.println(Config.acessLogonCount);
+        if (Ret.equals("")) {
+            Config.errorLogonCount +=1;
+            /*
+            FileWriter arq = new FileWriter("C:\\eveidencia\\error.txt");
+            PrintWriter gravarArq = new PrintWriter(arq);
+            gravarArq.printf("Resultado " + Config.errorLogonCount);
+            arq.close();
+            */
+            Assert.fail();
+        }
+
+        // - 2FA
+        if(Config.Totp.equals("YES")) {
+
+            page.locator("data-testid=login-nome-dispositivo-0").click();
+            /* page.navigate("https://totp.app/");*/
+
+
+            if (hasMfa()) {
+                List<Locator> inputs = pageField.from("Login - Campo Token MFA").getLocator().locator("input").all();
+                String token = mfaGenerator.getToken();
+                for (int i = 0; i < token.length(); i++) {
+                    inputs.get(i).pressSequentially("" + token.charAt(i));
+                }
+                pageField.from("Login - Botão Confirmar Token MFA").click();
+            }
+
+     boolean gotSomething = waitUntilTrue(6, () -> page.locator("//*[contains(text(), 'Não foi possível acessar o canal neste momento. Tente novamente mais tarde.')]").count() == 1);
+            if (gotSomething) {
+                throw new RuntimeException("Ambiente offline");
+            }
+        }
+
+
+
+Thread.sleep(3000);
+        if (Ret.equals("S")) {
+            for (int i = 0; i < 500; i++) {
+                if (page.getByText("Personalize sua visualização").isVisible()) {
+                    selectECOrDtcoPage.checkModalAutomaticIsOpen();
+                    break;
+                }
+            }
+        }
+
+        //Contador de Sucesso
+        if(page.getByText("Acesso rápido").isVisible()){
+            Config.sucessLogonCount +=1;
+            /*
+            FileWriter arq = new FileWriter("C:\\eveidencia\\sucess.txt");
+            PrintWriter gravarArq = new PrintWriter(arq);
+            gravarArq.printf("Resultado " + Config.sucessLogonCount);
+            arq.close();
+            */
+        }
+
+    }
+
+    public void usuárioClicaNoMenuAjuda() {
+        page.navigate(Config.url  + "/Ajuda");
+
+    }
+
+    public void logonportalEasy(String arg0, String arg1) throws InterruptedException, IOException {
+        Config.acessLogonCount = 0;
+        String Ret = "";
+
+        page.locator("id=b2-b2-b4-InputMask").type(arg0);
+        page.locator("id=b2-b2-Input_Password").type(arg1);
+        page.locator("data-testid=entrar").click();
     }
 }

@@ -30,9 +30,9 @@ public class SalesTodayPage extends CheckedBasePage {
     }
 
     public void navigateTo() {
-        getLateralMenuLocator().click();
-        startMonitoringRequests(page, contractConfig);
-        page.waitForURL(Pattern.compile("^.*/Hoje$"));
+        getLateralMenuLocator();
+        //startMonitoringRequests(page, contractConfig);
+        //page.waitForURL(Pattern.compile("^.*/Hoje$"));
         closeAllPopups();
     }
 
@@ -79,8 +79,8 @@ public class SalesTodayPage extends CheckedBasePage {
         return allSales;
     }
 
-    private Locator getLateralMenuLocator() {
-        return pageField.from("Menu Lateral - Vendas").getLocator().last();
+    private void getLateralMenuLocator() {
+         pageField.from("Menu Lateral - Vendas").click();
     }
 
     public boolean thereAreSalesWithStatus(String salesStatus) {

@@ -5,12 +5,20 @@ import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.home.HomeCustomizeModal;
 import com.fiserv.qabrazil.pages.home.HomePage;
 import com.fiserv.qabrazil.util.Currency;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 import io.cucumber.java.ParameterType;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.Assert;
 
+import java.time.LocalTime;
+
+import static com.fiserv.qabrazil.config.TestIdsConfig.getQuerySelector;
 import static com.fiserv.qabrazil.util.WaitUtil.waitUntilTrue;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
@@ -26,6 +34,10 @@ public class HomeSteps extends BaseSteps {
 
     @Autowired
     HomeCustomizeModal homeCustomizeModal;
+
+    @Autowired
+    Page page;
+
 
     @When("Usuário acessou o Home")
     @Given("que estou na tela “início” do Portal")
@@ -63,7 +75,7 @@ public class HomeSteps extends BaseSteps {
         commonsPage.clickButtonWithText(buttonText);
     }
 
-    @Then("Total de Recebimentos será igual ao recebimento de hoje + futuro previsto")
+    @Then("Calcula Card Recebimentos")
     public void totalReceivableMatches() {
         PageField todayReceivableId = pageField.from("Home - Card Recebimento - Recebimento Hoje");
         PageField foreseenReceivableId = pageField.from("Home - Card Recebimento - Recebimento Previsto");
@@ -109,5 +121,121 @@ public class HomeSteps extends BaseSteps {
         boolean zeroNotifications = pageField.from("Header - Notificações").getAsText().contains("0Notificações");
         System.out.printf("Notifications: %b - %s%n", zeroNotifications, pageField.from("Header - Notificações").getAsText());
         assumeThat(zeroNotifications).isFalse();
+    }
+
+    @And("{string} esta visivel no acesso rapido")
+    public void estaVisivelNoAcessoRapido(String arg0) {
+        homePage.cheTextElementOnage(arg0);
+    }
+
+    @And("{string} esta visivel na home")
+    public void estaVisivelNaHome(String arg0) {
+        homePage.cheTextElementOnage(arg0);
+    }
+
+    @Then("verifica mensagem em tela {string}")
+    public void verificaMensagemEmTela(String arg0) {
+        homePage.cheTextElementOnage(arg0);
+    }
+
+    @And("check screen text {string}")
+    public void checkScreenText(String arg0) {
+        homePage.cheTextElementOnage(arg0);
+    }
+
+    @And("Usuário clica em ver tudo no card {string}")
+    public void usuárioClicaEmVerTudoNoCard(String arg0) {
+        if(arg0.equals("Recebimentos")) {
+            homePage.usuárioClicaEmVerTudoNoCardRecebimento(arg0);
+        }
+
+        if(arg0.equals("Últimas vendas")) {
+            homePage.usuárioClicaEmVerTudoNoCardultimasVendas(arg0);
+        }
+        if(arg0.equals("Agenda de recebimentos da semana")) {
+            homePage.usuárioClicaEmVerTudoNoCarAgRecSem(arg0);
+        }
+
+
+
+
+    }
+
+    @And("aguarde o tempo de {string} minutos e mexa o mouse {string}")
+    public void waitingTime(String arg0,String arg1) throws InterruptedException {
+    int cont = 0;
+    int seg=0;
+    int minuto=0;
+        System.out.println("Teste de >>>> " + arg0 + " Minutos");
+        LocalTime myTime = LocalTime.now();
+
+        System.out.println("Contando o tempo  " + myTime);
+
+
+
+            for (int i = 0; i < 1000000; i++) {
+
+                cont += 1;
+
+                if (cont == 16500) {
+
+                    if(arg1.equals("S")) {
+                        System.out.println("Movimente o mouse....");
+                        pageField.anyOf(pageField.allWithPrefix("Menu Lateral - Recebimentos")).hoverOverFirst();
+                    }
+                    myTime = LocalTime.now();
+                    System.out.println("Registrando Tempo  " + myTime);
+                    minuto += 1;
+                    cont = 0;
+                    System.out.println("Aguarde para que a sesão caia >>> passou " + minuto + " minuto");
+                    if(arg1.equals("S")) {
+                        System.out.println("Movimente o mouse novamente ....");
+                        pageField.anyOf(pageField.allWithPrefix("Menu Lateral - Relatórios")).hoverOverFirst();
+                    }
+
+                }
+
+                //System.out.println("verificando se existe sessão ativa....");
+                String inputTextField = String.valueOf(page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Sessão Expirada")).isVisible());
+                if (inputTextField.isEmpty()) {
+                    Assert.assertEquals("A sessao caiu em menor tempo previsto", "", String.valueOf(inputTextField));
+                }
+
+                if( arg0.equals("5") && minuto==5){
+
+                    break;
+                }
+                if( arg0.equals("14") && minuto==14){
+                    break;
+                }
+
+                if( arg0.equals("16") && minuto==16){
+                    break;
+                }
+            }
+
+
+        }
+
+
+
+
+    @And("Check empty session")
+    public void checkEmptySession() {
+
+        commonsPage.clickOnMenu("Vendas","Relatório de vendas","");
+
+        pageField.anyOf(pageField.allWithPrefix("Menu Lateral - Recebimentos")).hoverOverFirst();
+
+        String inputTextField = String.valueOf(page.getByRole(AriaRole.HEADING, new Page.GetByRoleOptions().setName("Sessão Expirada")).isVisible());
+        if (inputTextField.isEmpty()) {
+            Assert.assertEquals("A sessao caiu em menor tempo previsto", "", String.valueOf(inputTextField));
+        }
+
+
+        String inputTextField2=page.locator("data-testid=vendas-hoje-card-total-vendas").textContent();
+      if (inputTextField2.equals("0")){
+            Assert.assertEquals("A sessao caiu antes do previsto",inputTextField,"R$ 0,00");
+        }
     }
 }

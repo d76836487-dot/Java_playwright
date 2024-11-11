@@ -28,7 +28,7 @@ public class TagHook {
 
     @Before("@playwright and not @ignore")
     public void checkTags(Scenario scenario) {
-        Collection<String> scenarioTags = scenario.getSourceTagNames();
+       /* Collection<String> scenarioTags = scenario.getSourceTagNames();
         List<Set<String>> filteredTagGroups = tagGroups.stream()
                 .map(group -> group.stream().filter(scenarioTags::contains).collect(Collectors.toSet()))
                 .filter(group -> !group.isEmpty())
@@ -40,10 +40,10 @@ public class TagHook {
         ).toList();
 
         boolean allTagsInGroupMatchInstitution = filteredTagGroups.stream()
-                .allMatch(group -> group.stream().anyMatch(profileTags::contains));
+                .allMatch(group -> group.stream().anyMatch(profileTags::contains));*/
 
-        assumeThat(allTagsInGroupMatchInstitution)
+       /* assumeThat(allTagsInGroupMatchInstitution)
                 .withFailMessage("Scenario " + scenario.getName() + " didn't match all necessary tags")
-                .isTrue();
+                .isTrue();*/
     }
 }

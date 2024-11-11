@@ -30,9 +30,10 @@ public class ContractConfig {
 
     public ProfileData getActiveUserProfile() {
 //
-//        activeProfiles = "sicredi";
+//        activeProfiles = "bin003";
+         activeProfiles = "sicredi";
 //
-        return userProfiles.computeIfAbsent(activeProfiles, profile -> {
+       /* return userProfiles.computeIfAbsent(activeProfiles, profile -> {
             if (profile.isEmpty()) {
                 throw new IllegalStateException("No profile specified by spring.profiles.active property");
             }
@@ -40,7 +41,8 @@ public class ContractConfig {
                 throw new IllegalStateException("Only one profile may be active at a time, but was: " + profile);
             }
             throw new IllegalStateException("No profile found with the following name: " + profile);
-        });
+        });*/
+        return null;
     }
 
     public record ProfileData(
@@ -60,6 +62,7 @@ public class ContractConfig {
 
         public boolean isMaster() {
             return clientTags.contains("@UsuárioComHierarquia");
+
         }
     }
 }

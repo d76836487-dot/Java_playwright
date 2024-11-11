@@ -26,4 +26,6 @@ public class ContractIdentity {
         assertTrue(String.format("Imagem da página deve conter: %s", contractConfig.getActiveUserProfile().identity()),
                 loginPage.pageHasImageWith(contractConfig.getActiveUserProfile().identity()));
     }
+
+
 }

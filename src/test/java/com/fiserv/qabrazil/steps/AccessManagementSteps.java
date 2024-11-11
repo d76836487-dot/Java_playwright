@@ -18,7 +18,7 @@ public class AccessManagementSteps extends BaseSteps {
     AccessManagementPage accessManagementPage;
 
     @Given("usuário Master está logado no Portal do Cliente")
-    public void masterIsLoggedIn() {
+    public void masterIsLoggedIn() throws InterruptedException {
         if (!loginPage.userIsLogged()) {
             loginPage.forceNewLogin();
             loginPage.userIsLogged();

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fiserv.automation.api.rest.BwaRest;
 import com.fiserv.qabrazil.config.ContractConfig;
+import com.fiserv.qabrazil.util.Config;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -43,10 +44,13 @@ public class BwaHeader {
                     payload = sink.readByteString().string(StandardCharsets.UTF_8);
                 }
             }
+
+
+
             Request.Builder requestBuilder = originalRequest.newBuilder()
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("ServiceContract", contractConfig.getActiveUserProfile().serviceContract())
-                    .addHeader("InstitutionCod", contractConfig.getActiveUserProfile().institution())
+                    .addHeader("ServiceContract", Config.serviceContract)
+                    .addHeader("InstitutionCod",Config.institution)
                     .addHeader("Client-Request-Id", hmac.getRequestId())
                     .addHeader("Api-Key", hmac.getApiKey())
                     .addHeader("Message-Signature", hmac.generateHMAC(getMsgToSign(timestamp, payload)))
@@ -54,6 +58,8 @@ public class BwaHeader {
                     .addHeader("ChannelClientId", hmac.getClientChannelId())
                     .addHeader("Authorization", "Bearer " + apiAccessToken)
                     .addHeader("auth", apiAccessToken);
+
+
 
             extraHeaderInfo.forEach(requestBuilder::addHeader);
 
@@ -65,7 +71,7 @@ public class BwaHeader {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(JacksonConverterFactory.create(new ObjectMapper()
                         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)))
-                .baseUrl(contractConfig.getActiveUserProfile().apiHost())
+                .baseUrl("https://cat.api.firstdata.com/bwa/")
                 .client(httpClient.build())
                 .build();
 

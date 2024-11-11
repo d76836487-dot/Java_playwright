@@ -5,6 +5,9 @@ import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.PageObject;
 import com.fiserv.qabrazil.util.UrlCheckers;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -29,6 +32,9 @@ public class CommonsSteps {
 
     @Autowired
     UrlCheckers urlCheckers;
+    @Autowired
+    Page page;
+
 
     private PageObject newTab;
 
@@ -45,9 +51,21 @@ public class CommonsSteps {
     }
 
     @Then("Usuário verá {pageField}")
-    public void userWillSee(PageField pageField) {
+    public void userWillSee(PageField pageField) throws InterruptedException {
+        Thread.sleep(3000);
         assertTrue("Campo %s não está visível como esperado".formatted(pageField.getDisplayName()),
                 pageField.elementIsVisibleRightNow());
+    }
+    @Then("Usuário verá a pagina de antecipação")
+    public void userWillSee() throws InterruptedException {
+
+        Locator locator = page.getByTestId("card-home-text-antecipacao");
+        PlaywrightAssertions.assertThat(locator).isVisible();
+        PlaywrightAssertions.assertThat(locator).isEnabled();
+
+        locator.click();
+
+
     }
 
     @Given("usuário clicou no {pageField}")
@@ -215,5 +233,10 @@ public class CommonsSteps {
 
             assertEquals(expectedColor, actualPrimaryColor);
         }
+    }
+
+    @When("click on menu {string} {string} {string}")
+    public void clickOnMenu(String arg0, String arg1, String arg2) {
+        commonsPage.clickOnMenu(arg0,arg1,arg2);
     }
 }

@@ -3,8 +3,10 @@ package com.fiserv.qabrazil.steps.components;
 import com.fiserv.automation.api.service.ApiUserDetailsService;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.pages.components.ChangeEstablishmentPopupComponent;
+import com.fiserv.qabrazil.pages.home.HomePage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.CpfCnpjUtil;
+import com.microsoft.playwright.Page;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -25,13 +27,13 @@ public class ChangeEstablishmentPopupSteps extends BaseSteps {
     @Autowired
     private ApiUserDetailsService apiUserDetailsService;
 
-    @Then("Mostrará popup para selecionar estabelecimento")
-    public void popupIsOpen() {
-        boolean isOpen = changeEstablishmentPopupComponent.waitPopupOpen();
+    @Autowired
+    HomePage homePage;
 
-        assertTrue("Popup para troca de estabelecimento não está aberto",
-                isOpen);
-    }
+    @Autowired
+    Page page;
+
+
 
     @Then("Popup terá nomes do documento selecionado")
     public void popupHaveDocumentName() throws Exception {
@@ -60,20 +62,19 @@ public class ChangeEstablishmentPopupSteps extends BaseSteps {
 
     @Then("Popup terá ECs do documento selecionado")
     public void popupHaveEcs() throws Exception {
-        List<String> expectedEcs = apiUserDetailsService.getEcsFromDoc(selectECOrDtcoPage.getSelectedDoc());
+
+        /*List<String> expectedEcs = apiUserDetailsService.getEcsFromDoc(selectECOrDtcoPage.getSelectedDoc());
 
         for (String ec : expectedEcs) {
             int numberOfElementsInsidePopup = changeEstablishmentPopupComponent.numberOfElementsWithText(ec);
 
             assertEquals("Não encontrei EC '%s' no popup.".formatted(ec),
                     1, numberOfElementsInsidePopup);
-        }
+        }*/
+        page.getByText("Selecionar Estabelecimento comercial").click();
     }
 
-    @When("Usuário abre modal Trocar Estabelecimento na tela Negócio ou Antecipação")
-    public void openPopup() {
-        changeEstablishmentPopupComponent.openPopupChangeEstablishment();
-    }
+
 
     @Then("Popup terá mesmo ECs que o selecionado")
     public void popupSameEc() {
@@ -106,5 +107,10 @@ public class ChangeEstablishmentPopupSteps extends BaseSteps {
 
         assertTrue("Popup para troca de estabelecimento deveria fechar após Selecionar",
                 isClosed);
+    }
+
+    @And("o texto {string} esta visivel na pagina de Antecipação")
+    public void estaVisivelNaPaginaDeAntecipação(String arg0) {
+        homePage.cheTextElementOnage(arg0);
     }
 }

@@ -16,6 +16,8 @@ public class HomePage extends CheckedBasePage {
         super(Pattern.compile("^.*/Home$"));
     }
 
+
+
     public void ensureWeAreAtHome() {
         ensureWeAreAtTheCorrectPage();
     }
@@ -30,5 +32,25 @@ public class HomePage extends CheckedBasePage {
         Locator btn = page.locator("//a[@href=\"/Hoje\"]/*/span");
         assertThat(btn).containsText("Ver tudo");
         btn.click();
+    }
+
+
+    public  void cheTextElementOnage(String arg0) {
+
+        page.locator("//span[contains(text().'"+arg0+"']");
+
+    }
+
+
+    public void usuárioClicaEmVerTudoNoCardRecebimento(String arg0) {
+        page.locator("xpath=/html/body/div[1]/div/div/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/div[1]/div[2]/div/div/div[6]/a/div").click();
+    }
+    public void usuárioClicaEmVerTudoNoCardultimasVendas(String arg0) {
+        page.locator("xpath=/html/body/div[1]/div/div/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/div[2]/div[2]/div/div/div[4]/a/div").click();
+    }
+
+    public void usuárioClicaEmVerTudoNoCarAgRecSem(String arg0) {
+        page.locator("xpath=/html/body/div[1]/div/div/div/div/div[1]/div/div[2]/div[2]/div[3]/div[2]/div/div[3]/div[1]/div[3]/div/div/div[4]/a/div").click();
+
     }
 }

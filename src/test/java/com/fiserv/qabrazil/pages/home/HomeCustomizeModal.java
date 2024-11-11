@@ -3,6 +3,9 @@ package com.fiserv.qabrazil.pages.home;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.PageField;
+import com.fiserv.qabrazil.util.Config;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.AriaRole;
 
 import java.util.Collections;
 import java.util.List;
@@ -47,5 +50,27 @@ public class HomeCustomizeModal extends BasePage {
         pageField.from("Home - personalizar - botão confirmar").click();
 
         return true;
+    }
+
+    public void logout() {
+
+
+        if(page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Excluir acesso digital")).isVisible()){
+            page.locator("//*[contains(text(), 'Cancelar')]").click();
+
+        }
+
+        page.getByTestId("head-sair").first().click();
+        //page.locator("data-testid=head-sair").click();
+
+        Config.SessionLogado = "";
+
+        if(page.getByText("Avaliação de satisfação").isVisible()) {
+
+            //page.getByText("Talvez depois").click();
+            page.locator("xapth=/html/body/div[3]/div/div/div/div/div/div[2]/a/img").click();
+
+
+        }
     }
 }

@@ -6,6 +6,7 @@ import com.fiserv.qabrazil.pages.sales.salesToday.SalesTodayExportPage;
 import com.fiserv.qabrazil.pages.sales.salesToday.SalesTodayPage;
 import com.fiserv.qabrazil.steps.home.BaseSteps;
 import com.fiserv.qabrazil.util.Currency;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -145,4 +146,6 @@ public class SalesTodaySteps extends BaseSteps {
             throw new RuntimeException("Formato desconhecido.");
         }
     }
+
+
 }
