@@ -33,7 +33,7 @@ Feature: Modal de Oferta
 
 
   Scenario Outline: Exibição de modal de Habilitação Conta Pix - Segundo acesso e usuario elegivel
-    Given que tenho EC <Hierarquia>
+    Given que tenho um EC <Hierarquia>
     And esteja cadastrado na Serpro <Serpro>
     And Possua CP (POS) ativo <POS>
     And visualizou o modal de habilitacao do Pix no primeiro acesso

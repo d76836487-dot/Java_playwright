@@ -8,7 +8,7 @@
 Feature: Contratacao Pix
 
   Scenario Outline: Modal Conta Pix - Botao "Conhecer mais" (usuario elegivel e sem Conta Pix)
-    Given que tenho EC <Hierarquia>
+    Given que tenho um EC <Hierarquia>
     And esteja cadastrado na Serpro <Serpro>
     And Possua CP (POS) ativo <POS>
     And nao possua Conta Pix

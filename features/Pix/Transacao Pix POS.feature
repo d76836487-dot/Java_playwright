@@ -8,7 +8,7 @@
 Feature: Transacao Pix POS
 
   Scenario Outline: Realizar transacao Pix via POS apos Contratacao do Pix
-    Given que tenho EC <Hierarquia>
+    Given que tenho um EC <Hierarquia>
     And esteja cadastrado na Serpro <Serpro>
     And Possua CP (POS) ativo <POS>
     And Pix Contratado com sucesso no Portal do Cliente

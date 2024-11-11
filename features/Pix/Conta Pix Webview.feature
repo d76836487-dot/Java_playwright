@@ -8,7 +8,7 @@
 Feature: Conta Pix Webview
 
   Scenario Outline: Menu Lateral - Botao "Conta Pix" (usuario elegivel e possui Conta Pix)
-    Given que tenho EC <Hierarquia>
+    Given que tenho um EC <Hierarquia>
     And esteja cadastrado na Serpro <Serpro>
     And Possua CP (POS) ativo <POS>
     And ja possua Conta Pix
