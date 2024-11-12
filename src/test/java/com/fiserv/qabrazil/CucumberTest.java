@@ -8,6 +8,4 @@ import io.cucumber.testng.CucumberOptions;
     ,tags = ("")
     ,dryRun = false
 )
-public class Runner extends AbstractTestNGCucumberTests{
-
-}
+public class CucumberTest extends AbstractTestNGCucumberTests {}
