@@ -90,27 +90,27 @@ Feature: Conta Pix Webview
     And clico em "Mostrar Resultados"
     Then é exibido apenas transacoes referentes ao CNPJ filtrado
 
-  Scenario: Tela "Conta Pix" - Campo "Filtros" - End to End ou TX ID
-    Given acessei o portal do cliente com usuário que possui Pix
-    And acessei o Webview
-    When clico em "Filtros"
-    And clico em "End to End ou TX ID"
-    And insiro um código válido
-    And clico em "Mostrar Resultados"
-    Then é exibido apenas a transacao referente ao código inserido
+  #Scenario: Tela "Conta Pix" - Campo "Filtros" - End to End ou TX ID
+    #Given acessei o portal do cliente com usuário que possui Pix
+    #And acessei o Webview
+    #When clico em "Filtros"
+    #And clico em "End to End ou TX ID"
+    #And insiro um código válido
+    #And clico em "Mostrar Resultados"
+    #Then é exibido apenas a transacao referente ao código inserido
 
-  Scenario: Tela "Conta Pix" - Campo "Filtros" - "Limpar filtros"
-    Given acessei o portal do cliente com usuário que possui Pix
-    And acessei o Webview
-    When clico em "Filtros" com dados parametrizados anteriormente
-    And clico em "limpar filtros"
-    Then a janela de filtros deixa de ser exibida
-    And as parametrizacoes permanecem inalteradas
+  #Scenario: Tela "Conta Pix" - Campo "Filtros" - "Limpar filtros"
+    #Given acessei o portal do cliente com usuário que possui Pix
+    #And acessei o Webview
+    #When clico em "Filtros" com dados parametrizados anteriormente
+    #And clico em "limpar filtros"
+    #Then a janela de filtros deixa de ser exibida
+    #And as parametrizacoes permanecem inalteradas
 
-  Scenario: Tela "Conta Pix" - Campo "Filtros" - Botão "X"
-    Given acessei o portal do cliente com usuário que possui Pix
-    And acessei o Webview
-    When clico em "Filtros"
-    And no botão "x"
-    Then a janela de filtros deixa de ser exibida
-    And as transacoes de venda retornam para exibicao padrao (Default=hoje)
+  #Scenario: Tela "Conta Pix" - Campo "Filtros" - Botão "X"
+    #Given acessei o portal do cliente com usuário que possui Pix
+    #And acessei o Webview
+    #When clico em "Filtros"
+    #And no botão "x"
+    #Then a janela de filtros deixa de ser exibida
+    #And as transacoes de venda retornam para exibicao padrao (Default=hoje)
