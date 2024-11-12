@@ -1,7 +1,7 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=LBIT
-@Zephyr:Folder=/Onix/Portal_do_Cliente/Contratacao_Pix
+@Zephyr:Folder=/Portal_do_Cliente/Pending/Onix/Contratacao_Pix
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo

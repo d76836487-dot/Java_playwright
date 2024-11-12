@@ -1,7 +1,7 @@
 #language:en
 @ignore
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Pending/Onix_Pix_Caixa/Pix_Transacao_POS
+@Zephyr:Folder=/Portal_do_Cliente/Pending/Pix/Pix_Transacao_POS
 @Zephyr:Status=Approved
 @Zephyr:Priority=Low
 @Zephyr:CustomFields=Automation=Pending;Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo
