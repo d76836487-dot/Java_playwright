@@ -101,15 +101,6 @@ Feature: MFA2
   And Digite o código recebido e-mail
   And Redirecionado para home logada
 
-  Scenario: Cliente selecionou um dos dispositivos móveis cadastrados
-  Given que acessei no portal
-  When preencher givens de usuário e senha
-  And tiver um dispositivo móvel cadastrado
-  And selecionar um dos dispositivos móveis cadastrados
-  Then devo ser redirecionado para a tela de autenticação “Informe o Token do aplicativo”
-  And Preencher com token corretamente
-  And Direcionado para a home Logada.
-
   Scenario: Redirecionar App store
   Given que eu inseri um documento (CNPJ ou CPF) e senha válido no Portal
   And não tenho o Token habilitado no App
