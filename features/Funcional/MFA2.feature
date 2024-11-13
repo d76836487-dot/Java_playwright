@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/MFA.2.0
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/MFA2
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: MFA.2.0
+Feature: MFA2
 
   Scenario: Cliente possui UM dispositivo móvel cadastrado
   Given que acessei no portal
