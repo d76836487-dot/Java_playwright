@@ -8,7 +8,7 @@
 Feature: Assistente Link Pagamento
 
 
-  Scenário 1: Usuário Master faz login com sucesso
+  Scenario: Usuário Master faz login com sucesso
 
   Given usuário está na página de Login
   And tenha Doc e Senha validas
@@ -18,7 +18,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 2: Página de Informações Básicas
+  Scenario: Página de Informações Básicas
 
   Given usuário está Logado no Portal do Cliente
   When acessar página de Gestão de Acessos no menu no lateral esquerdo
@@ -26,7 +26,7 @@ Feature: Assistente Link Pagamento
   Then devera abrir a página para preencher as informações básicas
 
 
-  Scenario 3: Criando Secundário “Assistente de link de pagamento"
+  Scenario: Criando Secundário “Assistente de link de pagamento"
 
 
     Given Usuário preenche os Campos necessários do usuário como nome, e-mail etc.
@@ -41,7 +41,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 4: Visualizando Secundário com o perfil "Assistente de link de pagamento"
+  Scenario: Visualizando Secundário com o perfil "Assistente de link de pagamento"
 
 
     Given usuário criou um usuário Assistente Link de Pagamento
@@ -51,7 +51,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 5: Primeiro Acesso Assistente Link de Pagamento
+  Scenario: Primeiro Acesso Assistente Link de Pagamento
 
 
     Given usuário recebeu o email com usuário Assistente link de pagamento
@@ -59,7 +59,7 @@ Feature: Assistente Link Pagamento
     Then terá acesso ao Portal do Cliente
 
 
-  Scenário 6: Fazendo Login com Assistente Link de pagamento
+  Scenario: Fazendo Login com Assistente Link de pagamento
 
 
     Given usuário fez o fluxo de Primeiro Acesso
@@ -67,7 +67,7 @@ Feature: Assistente Link Pagamento
     Then irá acessar Acesso rápido do Perfil Assistente Link de Pagamento
 
 
-  Scenário 7: Página Link de Pagamento
+  Scenario: Página Link de Pagamento
 
 
     Given usuário está na página Acesso rápido
@@ -75,7 +75,7 @@ Feature: Assistente Link Pagamento
     Then terá acesso a página de Criação de Link de Pagamento
 
 
-  Scenário 8: Página Link de Pagamento através da Aba Serviços
+  Scenario: Página Link de Pagamento através da Aba Serviços
 
 
     Given usuário esta na Pagina de Acesso rápido
@@ -85,7 +85,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 9: Consultar Links Sem ter nenhum Link Criado
+  Scenario: Consultar Links Sem ter nenhum Link Criado
 
 
     Given usuário está na Página de Link de Pagamento
@@ -95,7 +95,7 @@ Feature: Assistente Link Pagamento
     And o Botão Criar Link de pagamento
 
 
-  Scenário 10: Consultar Links Com Link já criado
+  Scenario: Consultar Links Com Link já criado
 
 
     Given usuário está na Página de Link de Pagamento
@@ -103,7 +103,7 @@ Feature: Assistente Link Pagamento
     Then verá os links que foram criados na aba Todos
 
 
-  Scenário 11: Acessando Com Ec sem Link de Pagamento
+  Scenario: Acessando Com Ec sem Link de Pagamento
 
 
     Given usuário está na página de Login
@@ -114,7 +114,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 12: Página de Informações Básicas Com Ec sem Link de Pagamento
+  Scenario: Página de Informações Básicas Com Ec sem Link de Pagamento
 
 
     Given usuário está Logado no Portal do Cliente
@@ -124,7 +124,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenario 13: Criando "Assistente de link de pagamento" Com Ec sem Link de Pagamento
+  Scenario: Criando "Assistente de link de pagamento" Com Ec sem Link de Pagamento
 
 
     Given Usuário preenche os Campos necessários do usuário como nome, e-mail etc.
@@ -138,7 +138,8 @@ Feature: Assistente Link Pagamento
     And Botão Entendi e X
 
 
-  Scenário 14: Primeiro Acesso Assistente Link de Pagamento Com EC sem Link de pagamento
+
+  Scenario: Primeiro Acesso Assistente Link de Pagamento Com EC sem Link de pagamento
 
 
     Given usuário recebeu o email com usuário Assistente link de pagamento
@@ -147,7 +148,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 15: Login Acesso Assistente Link de Pagamento Com EC sem Link de pagamento
+  Scenario: Login Acesso Assistente Link de Pagamento Com EC sem Link de pagamento
 
 
     Given usuário fez o fluxo de Primeiro Acesso
@@ -156,7 +157,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 16: Acesso pela Aba Serviços com EC sem Link habilitado
+  Scenario: Acesso pela Aba Serviços com EC sem Link habilitado
 
 
     Given usuário está em Acesso rápido
@@ -177,7 +178,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 17: Acesso a Página Link de Pagamento com EC sem Link habilitado
+  Scenario: Acesso a Página Link de Pagamento com EC sem Link habilitado
 
 
     Given usuário está em Acesso Rápido
@@ -196,7 +197,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 18: Perfil Assistente Link de Pagamento vê todos os Links criados anteriormente
+  Scenario: Perfil Assistente Link de Pagamento vê todos os Links criados anteriormente
 
 
     Given usuário está na Página de Link de Pagamento
@@ -206,7 +207,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 19: Perfil Assistente Link de Pagamento / Operador Com F
+  Scenario: Perfil Assistente Link de Pagamento / Operador Com F
 
 
     Given usuário com Perfil Operador Com F faz o Login com Usuário de Assistente Link de Pagamento
@@ -220,7 +221,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 20: Perfil Assistente Link de Pagamento / Operador Com F através do Menu lateral
+  Scenario: Perfil Assistente Link de Pagamento / Operador Com F através do Menu lateral
 
 
     Given usuário com Perfil Operador Com F faz o Login com Usuário de Assistente Link de Pagamento
@@ -232,7 +233,7 @@ Feature: Assistente Link Pagamento
 
 
 
-  Scenário 21: Perfil Assistente Link de Pagamento / Operador Sem F
+  Scenario: Perfil Assistente Link de Pagamento / Operador Sem F
 
     Given usuário com Perfil Operador Sem F faz o Login com Usuário de Assistente Link de Pagamento
     And Acessar a Home Logada > Acesso Rápido
@@ -243,7 +244,7 @@ Feature: Assistente Link Pagamento
     Then o botão "Gerar link de pagamento" deve ficar desabilitado
 
 
-  Scenário 22: Perfil Assistente Link de Pagamento / Operador Sem F através do Menu lateral
+  Scenario: Perfil Assistente Link de Pagamento / Operador Sem F através do Menu lateral
 
     Given usuário com Perfil Operador Sem F faz o Login com Usuário de Assistente Link de Pagamento
     And Acessa serviços > Link de pagamento pela lateral esquerda
