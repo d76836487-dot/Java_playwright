@@ -32,7 +32,7 @@ Feature: Debitos Ajustes
 
 
 
-  4.Cenário: Visualizando mensagem
+  Scenario: Visualizando mensagem
 
   Given usuário esteja Logado no Portal
   When estiver em Débitos e Aluguéis
@@ -40,7 +40,7 @@ Feature: Debitos Ajustes
 
 
 
-  5.Cenário: Tipo de Ajuste
+  Scenario: Tipo de Ajuste
 
   Given usuário esteja Logado no Portal
   When estiver em Débitos e Aluguéis
@@ -48,7 +48,7 @@ Feature: Debitos Ajustes
 
 
 
-  6.Cenário: Filtro Período
+  Scenario: Filtro Período
 
   Given usuário esteja Logado no Portal
   When estiver em Débitos e Aluguéis
@@ -56,7 +56,7 @@ Feature: Debitos Ajustes
 
 
 
-  7.Cenário: Filtro Período default último mês
+  Scenario: Filtro Período default último mês
 
   Given usuário esteja Logado no Portal
   When estiver em Débitos e Aluguéis
@@ -65,7 +65,7 @@ Feature: Debitos Ajustes
 
 
 
-  8.Cenário: Botão Exportar
+  Scenario: Botão Exportar
 
   Given usuário esteja Logado no Portal
   When estiver em Débitos e Aluguéis
@@ -73,7 +73,7 @@ Feature: Debitos Ajustes
 
 
 
-  9.Cenário: Arquivo exportado
+  Scenario: Arquivo exportado
 
   Given usuário esteja Logado no Portal
   When estiver em Débitos e Aluguéis
@@ -82,38 +82,35 @@ Feature: Debitos Ajustes
 
 
 
-  10.Cenário: Colunas
+  Scenario: Colunas
 
   Given usuário esteja Logado no Portal
   When estiver em Débitos e Aluguéis
-  Then usuário visualizara, os seguintes dados:
-  Data do ajuste, Valor do aluguel, Comprovante, Tecnologia, Estabelecimento, Data efetiva da cobrança e Status
+  Then usuário visualizara, os seguintes dados:Data do ajuste, Valor do aluguel, Comprovante, Tecnologia, Estabelecimento, Data efetiva da cobrança e Status
 
 
 
-  11.Cenário: Status Pendente
+  Scenario: Status Pendente
 
   Given usuário esteja em Débitos e Aluguéis
   When selecionar um mês que tenha aluguel pendente
   And clicar no Botão Aplicar
-  Then usuário visualizara, o histórico de aluguel contendo uma faixa vermelha com a seguinte mensagem:
-  Existem pagamentos de aluguel pendentes para esse período
+  Then usuário visualizara, o histórico de aluguel contendo uma faixa vermelha com a seguinte mensagem:Existem pagamentos de aluguel pendentes para esse período
   And a coluna status deve estar com status Pendente na cor amarela
 
 
 
-  12.Cenário: Status Debitado
+  Scenario: Status Debitado
 
   Given usuário esteja em Débitos e Aluguéis
   When selecionar um mês que não tenha aluguel pendente
   And clicar no Botão Aplicar
-  Then usuário visualizara, o histórico de aluguel contendo uma faixa Verde com a seguinte mensagem:
-  Todas as tarifas de aluguel foram pagas para esse período
+  Then usuário visualizara, o histórico de aluguel contendo uma faixa Verde com a seguinte mensagem:Todas as tarifas de aluguel foram pagas para esse período
   And a coluna status deve estar com status Debitado na cor verde
 
 
 
-  13.Cenário: Período futuro
+  Scenario: Período futuro
 
   Given usuário esteja em Débitos e Aluguéis
   When tentar selecionar um mês futuro ao mês atual
