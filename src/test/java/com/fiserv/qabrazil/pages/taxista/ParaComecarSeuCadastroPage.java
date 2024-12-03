@@ -7,8 +7,7 @@ import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
 public class ParaComecarSeuCadastroPage {
@@ -41,10 +40,7 @@ public class ParaComecarSeuCadastroPage {
     }
 
     public void verificarParaComecarSeuCadastro() {
-        if (this.title.isVisible())
-            assertTrue(true);
-        else
-            assertFalse(false);
+        assertThat(title).isVisible();
     }
 
     public void preencherNomeCompleto(String nomeCompleto) { this.txtNomeCompleto.fill(nomeCompleto); }

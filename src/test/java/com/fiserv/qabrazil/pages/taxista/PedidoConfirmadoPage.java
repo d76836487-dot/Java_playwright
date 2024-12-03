@@ -1,13 +1,16 @@
 package com.fiserv.qabrazil.pages.taxista;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.Config;
+import com.fiserv.qabrazil.util.WaitUtil;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import java.time.Duration;
+
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
 public class PedidoConfirmadoPage {
@@ -21,12 +24,9 @@ public class PedidoConfirmadoPage {
         this.title = page.locator("//*[@id='$b19']/div[contains(text(), 'Pedido confirmado!')]");
     }
 
-    public void verificarPedidoConfirmado() throws InterruptedException {
-        Thread.sleep(3000);
+    public void verificarPedidoConfirmado() {
+        WaitUtil.sleep(Duration.ofMillis(Config.WAIT_FOR_PAGE_UPDATE));
 
-        if (this.title.isVisible())
-            assertTrue(true);
-        else
-            assertFalse(false);
+        assertThat(title).isVisible();
     }
 }

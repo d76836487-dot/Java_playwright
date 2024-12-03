@@ -77,7 +77,7 @@ public class TaxistaSteps {
     ,String estado
     ,String pontoReferencia
     ,String alterarNegocio
-    ,String alterarDadosPessoais) throws InterruptedException {
+    ,String alterarDadosPessoais) {
         enderecoPage.preencherCamposEndereco(
          cep
         ,logradouro
@@ -125,7 +125,7 @@ public class TaxistaSteps {
     }
 
     @Then("é validado que o pedido foi realizado com sucesso")
-    public void e_validado_que_o_pedido_foi_realizado_com_sucesso() throws InterruptedException {
+    public void e_validado_que_o_pedido_foi_realizado_com_sucesso() {
         pedidoConfirmadoPage.verificarPedidoConfirmado();
     }
 }

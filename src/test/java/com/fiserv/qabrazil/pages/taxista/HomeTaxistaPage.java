@@ -7,8 +7,7 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
 public class HomeTaxistaPage {
@@ -27,10 +26,7 @@ public class HomeTaxistaPage {
     public void acessarHomeTaxista(String url) { page.navigate(url); }
 
     public void verificarHomeTaxista() {
-        if (this.title.isVisible())
-            assertTrue(true);
-        else
-            assertFalse(false);
+        assertThat(title).isVisible();
     }
 
     public void clickQueroMinhaAzulzinha() { this.btnQueroMinhaAzulzinha.click(); }

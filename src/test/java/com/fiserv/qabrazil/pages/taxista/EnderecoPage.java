@@ -1,13 +1,16 @@
 package com.fiserv.qabrazil.pages.taxista;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.Config;
+import com.fiserv.qabrazil.util.WaitUtil;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import java.time.Duration;
+
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
 public class EnderecoPage {
@@ -50,10 +53,7 @@ public class EnderecoPage {
     }
 
     public void verificarEndereco() {
-        if (this.title.isVisible())
-            assertTrue(true);
-        else
-            assertFalse(false);
+        assertThat(title).isVisible();
     }
 
     public void preencherCep(String cep) { this.txtCep.fill(cep); }
@@ -110,14 +110,14 @@ public class EnderecoPage {
     ,String estado
     ,String pontoReferencia
     ,String alterarNegocio
-    ,String alterarDadosPessoais) throws InterruptedException {
+    ,String alterarDadosPessoais) {
         this.verificarEndereco();
         this.preencherCep(cep);
         this.preencherNumero(semNumero, numero);
         this.preencherComplemento(complemento);
         this.preencherPontoReferencia(pontoReferencia);
 
-        Thread.sleep(3000);
+        WaitUtil.sleep(Duration.ofMillis(Config.WAIT_FOR_PAGE_UPDATE));
         if (cep.isEmpty()) {
             this.preencherLogradouro(logradouro);
             this.preencherBairro(bairro);

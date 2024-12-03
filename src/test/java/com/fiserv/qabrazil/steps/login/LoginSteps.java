@@ -1,14 +1,10 @@
 package com.fiserv.qabrazil.steps.login;
 
-
-
 import com.fiserv.qabrazil.config.ContractConfig;
 import com.fiserv.qabrazil.pages.BasePage;
+import com.fiserv.qabrazil.pages.home.HomePage;
 import com.fiserv.qabrazil.pages.login.LoginPage;
-
-
 import com.fiserv.qabrazil.util.Config;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,6 +22,8 @@ public class LoginSteps extends BasePage {
     @Autowired
     ContractConfig contractConfig;
 
+    @Autowired
+    HomePage homePage;
 
     @Given("open portal {string} and logon")
     public void openPortalAnd(String arg0) throws Throwable {
@@ -241,4 +239,12 @@ public class LoginSteps extends BasePage {
     public void usuárioClicaNoMenuAjuda() {
         loginPage.usuárioClicaNoMenuAjuda();
     }
+
+    // |INÍCIO| - Refatoração do Login
+    @Given("realizar login no portal {string}")
+    public void realizar_login_no_portal(String alianca) {
+        loginPage.acessarLoginPortal(alianca);
+        homePage.verificarHome();
+    }
+    // |FIM| - Refatoração do Login
 }

@@ -6,25 +6,23 @@ import com.fiserv.automation.mfa.MfaGenerator;
 import com.fiserv.automation.playwright.configuration.StorageState;
 import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
-import com.fiserv.qabrazil.interfaces.DriverFactory;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
-import com.fiserv.qabrazil.steps.CommonsSteps;
 import com.fiserv.qabrazil.util.Config;
-import com.microsoft.playwright.*;
-import com.microsoft.playwright.options.AriaRole;
-import io.cucumber.java.Scenario;
-import jakarta.validation.constraints.AssertTrue;
+import com.fiserv.qabrazil.util.DigitUtil;
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserContext;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -304,4 +302,71 @@ Thread.sleep(3000);
         page.locator("id=b2-b2-Input_Password").type(arg1);
         page.locator("data-testid=entrar").click();
     }
+
+    // |INÍCIO| - Refatoração do Login
+    @Autowired
+    private Page page;
+
+    private Locator title;
+    private Locator txtLogin;
+    private Locator txtPassword;
+    private Locator btnEntar;
+
+    @PostConstruct
+    private void loadLocators() {
+        this.title = page.locator("//*[text()='Acesse sua conta']");
+        this.txtLogin = page.locator("//*[@data-testid='login']");
+        this.txtPassword = page.locator("//*[@data-testid='password']");
+        this.btnEntar = page.locator("//*[@data-testid='entrar']");
+    }
+
+    public void acessarLoginPortal(String alianca) {
+        String url = "";
+        String user = "";
+        String pass = "";
+        switch (alianca) {
+            case "bin":
+                url = Config.bin_url;
+                user = Config.bin_user;
+                pass = Config.bin_pass;
+                break;
+            case "sicredi":
+                url = Config.sicredi_url;
+                user = Config.sicredi_user;
+                pass = Config.sicredi_pass;
+                break;
+            case "azulzinha":
+                url = Config.azulzinha_url;
+                user = Config.azulzinhaz_user;
+                pass = Config.azulzinha_pass;
+                break;
+            case "afinz":
+                url = Config.afinz_url;
+                user = Config.afinz_user;
+                pass = Config.afinzi_pass;
+                break;
+        }
+        Config.url = url;
+
+        page.navigate(url);
+        this.realizarLogin(user, pass);
+    }
+
+    public void verificarLogin() {
+        assertThat(title).isVisible();
+    }
+
+    public void preencherLogin(String login) { DigitUtil.pressDigit(page, this.txtLogin, login); }
+
+    public void preencherPassword(String password) { this.txtPassword.fill(password); }
+
+    public void clickEntrar() { this.btnEntar.click(); }
+
+    public void realizarLogin(String user, String pass) {
+        this.verificarLogin();
+        this.preencherLogin(user);
+        this.preencherPassword(pass);
+        this.clickEntrar();
+    }
+    // |FIM| - Refatoração do Login
 }

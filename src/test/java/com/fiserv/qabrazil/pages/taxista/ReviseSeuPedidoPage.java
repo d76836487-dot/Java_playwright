@@ -6,8 +6,7 @@ import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
 public class ReviseSeuPedidoPage {
@@ -32,10 +31,7 @@ public class ReviseSeuPedidoPage {
     }
 
     public void verificarReviseSeuPedido() {
-        if (this.title.isVisible())
-            assertTrue(true);
-        else
-            assertFalse(false);
+        assertThat(title).isVisible();
     }
 
     public void clickAlterarSobreVoce(String alterarSobreVoce) {

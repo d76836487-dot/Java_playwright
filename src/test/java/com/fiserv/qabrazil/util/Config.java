@@ -20,8 +20,8 @@ public class Config {
     public static final String afinzi_pass = "Fiserv@456";
 
     public static final String azulzinha_url = "https://azulzinha.qa.portaldocliente.fiserv.com";
-    public static final String azulzinhaz_user = "34763017020";
-    public static final String azulzinha_pass = "Fiserv@123";
+    public static final String azulzinhaz_user = "52690708000115";//34763017020
+    public static final String azulzinha_pass = "Fiserv@1020";//Fiserv@123
 
     public static final String bin_url = "https://bin.qa.portaldocliente.fiserv.com";
     public static final String bin_user = "71925286096";
@@ -42,4 +42,9 @@ public class Config {
     public static String SecretKey = "";
 
     public static Double valorAntecipacao = Double.valueOf("0");
+
+    // parametrização do tempo de aguardo
+    public static final int TIME_TO_WAIT_PAGE = 5000;
+    public static final int WAIT_FOR_PAGE_UPDATE = 2500;
+    public static int DELAY_IN_ACTION = 1000;
 }
