@@ -152,105 +152,105 @@ Feature: Vendas Hoje
     And valida que foi atribuido o valor <valor> do filtro <filtro>
     @bin
     Examples:
-      | alianca	| menu     | submenu           | filtro            | valor                     |
-      | "bin"	| "vendas" | "relatorioVendas" | "codAutorizacao"  | "primeiroRegistro"        |
-      | "bin"	| "vendas" | "relatorioVendas" | "codAutorizacao"  | "WWW333"                  |
-      | "bin"	| "vendas" | "relatorioVendas" | "status"          | "todos"                   |
-      | "bin"	| "vendas" | "relatorioVendas" | "status"          | "Autorizada"              |
-      | "bin"	| "vendas" | "relatorioVendas" | "status"          | "Recusada"                |
-      | "bin"	| "vendas" | "relatorioVendas" | "status"          | "Estornada"               |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "todos"                   |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Crédito"                 |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Crédito Internacional"   |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Débito"                  |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Débito Internacional"    |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Refeição"                |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Alimentação"             |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Premium"                 |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Cultura"                 |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Auto"                    |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Gift"                    |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Corporativo"             |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Benefícios"              |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Multiplo"                |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Flex"                    |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Natal"                   |
-      | "bin"	| "vendas" | "relatorioVendas" | "produtos"        | "Multibenefícios"         |
-      | "bin"	| "vendas" | "relatorioVendas" | "canal"           | "todos"                   |
-      | "bin"	| "vendas" | "relatorioVendas" | "canal"           | "selecionarPrimeiraOpcao" |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "todos"                   |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Mastercard"              |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Maestro"                 |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Cabal"                   |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Elo"                     |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Banese"                  |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Ticket"                  |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Alelo"                   |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Sorocred"                |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Amex"                    |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Hipercard"               |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Pluxee"                  |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "VR"                      |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Visa"                    |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Softnex"                 |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Redecompras"             |
-      | "bin"	| "vendas" | "relatorioVendas" | "bandeira"        | "Fepas"                   |
-      | "bin"	| "vendas" | "relatorioVendas" | "valores"         | "100;300"                 |
-      | "bin"	| "vendas" | "relatorioVendas" | "estabelecimento" | "todos"                   |
-      | "bin"	| "vendas" | "relatorioVendas" | "estabelecimento" | "selecionarPrimeiraOpcao" |
-      | "bin"	| "vendas" | "relatorioVendas" | "terminal"        | "todos"                   |
-      | "bin"	| "vendas" | "relatorioVendas" | "terminal"        | "selecionarPrimeiraOpcao" |
+      | alianca | menu     | submenu           | filtro            | valor                     |
+      | "bin"   | "vendas" | "relatorioVendas" | "codAutorizacao"  | "primeiroRegistro"        |
+      | "bin"   | "vendas" | "relatorioVendas" | "codAutorizacao"  | "WWW333"                  |
+      | "bin"   | "vendas" | "relatorioVendas" | "status"          | "todos"                   |
+      | "bin"   | "vendas" | "relatorioVendas" | "status"          | "Autorizada"              |
+      | "bin"   | "vendas" | "relatorioVendas" | "status"          | "Recusada"                |
+      | "bin"   | "vendas" | "relatorioVendas" | "status"          | "Estornada"               |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "todos"                   |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Crédito"                 |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Crédito Internacional"   |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Débito"                  |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Débito Internacional"    |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Refeição"                |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Alimentação"             |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Premium"                 |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Cultura"                 |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Auto"                    |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Gift"                    |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Corporativo"             |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Benefícios"              |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Multiplo"                |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Flex"                    |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Natal"                   |
+      | "bin"   | "vendas" | "relatorioVendas" | "produtos"        | "Multibenefícios"         |
+      | "bin"   | "vendas" | "relatorioVendas" | "canal"           | "todos"                   |
+      | "bin"   | "vendas" | "relatorioVendas" | "canal"           | "selecionarPrimeiraOpcao" |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "todos"                   |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Mastercard"              |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Maestro"                 |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Cabal"                   |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Elo"                     |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Banese"                  |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Ticket"                  |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Alelo"                   |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Sorocred"                |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Amex"                    |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Hipercard"               |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Pluxee"                  |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "VR"                      |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Visa"                    |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Softnex"                 |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Redecompras"             |
+      | "bin"   | "vendas" | "relatorioVendas" | "bandeira"        | "Fepas"                   |
+      | "bin"   | "vendas" | "relatorioVendas" | "valores"         | "100;300"                 |
+      | "bin"   | "vendas" | "relatorioVendas" | "estabelecimento" | "todos"                   |
+      | "bin"   | "vendas" | "relatorioVendas" | "estabelecimento" | "selecionarPrimeiraOpcao" |
+      | "bin"   | "vendas" | "relatorioVendas" | "terminal"        | "todos"                   |
+      | "bin"   | "vendas" | "relatorioVendas" | "terminal"        | "selecionarPrimeiraOpcao" |
 
     @sicredi
     Examples:
-      | alianca		| menu     | submenu           | filtro            | valor                     |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "codAutorizacao"  | "primeiroRegistro"        |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "codAutorizacao"  | "WWW333"                  |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "status"          | "todos"                   |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "status"          | "Autorizada"              |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "status"          | "Recusada"                |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "status"          | "Estornada"               |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "todos"                   |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Crédito"                 |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Crédito Internacional"   |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Débito"                  |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Débito Internacional"    |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Refeição"                |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Alimentação"             |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Premium"                 |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Cultura"                 |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Auto"                    |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Gift"                    |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Corporativo"             |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Benefícios"              |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Multiplo"                |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Flex"                    |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Natal"                   |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "produtos"        | "Multibenefícios"         |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "canal"           | "todos"                   |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "canal"           | "selecionarPrimeiraOpcao" |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "todos"                   |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Mastercard"              |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Maestro"                 |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Cabal"                   |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Elo"                     |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Banese"                  |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Ticket"                  |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Alelo"                   |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Sorocred"                |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Amex"                    |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Hipercard"               |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Pluxee"                  |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "VR"                      |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Visa"                    |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Softnex"                 |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Redecompras"             |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "bandeira"        | "Fepas"                   |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "valores"         | "100;300"                 |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "estabelecimento" | "todos"                   |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "estabelecimento" | "selecionarPrimeiraOpcao" |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "terminal"        | "todos"                   |
-      | "sicredi"	| "vendas" | "relatorioVendas" | "terminal"        | "selecionarPrimeiraOpcao" |
+      | alianca   | menu     | submenu           | filtro            | valor                     |
+      | "sicredi" | "vendas" | "relatorioVendas" | "codAutorizacao"  | "primeiroRegistro"        |
+      | "sicredi" | "vendas" | "relatorioVendas" | "codAutorizacao"  | "WWW333"                  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "status"          | "todos"                   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "status"          | "Autorizada"              |
+      | "sicredi" | "vendas" | "relatorioVendas" | "status"          | "Recusada"                |
+      | "sicredi" | "vendas" | "relatorioVendas" | "status"          | "Estornada"               |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "todos"                   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Crédito"                 |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Crédito Internacional"   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Débito"                  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Débito Internacional"    |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Refeição"                |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Alimentação"             |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Premium"                 |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Cultura"                 |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Auto"                    |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Gift"                    |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Corporativo"             |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Benefícios"              |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Multiplo"                |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Flex"                    |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Natal"                   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "produtos"        | "Multibenefícios"         |
+      | "sicredi" | "vendas" | "relatorioVendas" | "canal"           | "todos"                   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "canal"           | "selecionarPrimeiraOpcao" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "todos"                   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Mastercard"              |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Maestro"                 |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Cabal"                   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Elo"                     |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Banese"                  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Ticket"                  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Alelo"                   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Sorocred"                |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Amex"                    |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Hipercard"               |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Pluxee"                  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "VR"                      |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Visa"                    |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Softnex"                 |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Redecompras"             |
+      | "sicredi" | "vendas" | "relatorioVendas" | "bandeira"        | "Fepas"                   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "valores"         | "100;300"                 |
+      | "sicredi" | "vendas" | "relatorioVendas" | "estabelecimento" | "todos"                   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "estabelecimento" | "selecionarPrimeiraOpcao" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "terminal"        | "todos"                   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "terminal"        | "selecionarPrimeiraOpcao" |
 
     @azulzinha
     Examples:
@@ -305,55 +305,56 @@ Feature: Vendas Hoje
 
     @afinz
     Examples:
-      | alianca	| menu     | submenu           | filtro            | valor                     |
-      | "afinz"	| "vendas" | "relatorioVendas" | "codAutorizacao"  | "primeiroRegistro"        |
-      | "afinz"	| "vendas" | "relatorioVendas" | "codAutorizacao"  | "WWW333"                  |
-      | "afinz"	| "vendas" | "relatorioVendas" | "status"          | "todos"                   |
-      | "afinz"	| "vendas" | "relatorioVendas" | "status"          | "Autorizada"              |
-      | "afinz"	| "vendas" | "relatorioVendas" | "status"          | "Recusada"                |
-      | "afinz"	| "vendas" | "relatorioVendas" | "status"          | "Estornada"               |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "todos"                   |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Crédito"                 |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Crédito Internacional"   |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Débito"                  |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Débito Internacional"    |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Refeição"                |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Alimentação"             |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Premium"                 |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Cultura"                 |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Auto"                    |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Gift"                    |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Corporativo"             |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Benefícios"              |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Multiplo"                |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Flex"                    |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Natal"                   |
-      | "afinz"	| "vendas" | "relatorioVendas" | "produtos"        | "Multibenefícios"         |
-      | "afinz"	| "vendas" | "relatorioVendas" | "canal"           | "todos"                   |
-      | "afinz"	| "vendas" | "relatorioVendas" | "canal"           | "selecionarPrimeiraOpcao" |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "todos"                   |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Mastercard"              |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Maestro"                 |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Cabal"                   |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Elo"                     |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Banese"                  |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Ticket"                  |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Alelo"                   |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Sorocred"                |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Amex"                    |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Hipercard"               |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Pluxee"                  |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "VR"                      |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Visa"                    |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Softnex"                 |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Redecompras"             |
-      | "afinz"	| "vendas" | "relatorioVendas" | "bandeira"        | "Fepas"                   |
-      | "afinz"	| "vendas" | "relatorioVendas" | "valores"         | "100;300"                 |
-      | "afinz"	| "vendas" | "relatorioVendas" | "estabelecimento" | "todos"                   |
-      | "afinz"	| "vendas" | "relatorioVendas" | "estabelecimento" | "selecionarPrimeiraOpcao" |
-      | "afinz"	| "vendas" | "relatorioVendas" | "terminal"        | "todos"                   |
-      | "afinz"	| "vendas" | "relatorioVendas" | "terminal"        | "selecionarPrimeiraOpcao" |
+      | alianca | menu     | submenu           | filtro            | valor                     |
+      | "afinz" | "vendas" | "relatorioVendas" | "codAutorizacao"  | "primeiroRegistro"        |
+      | "afinz" | "vendas" | "relatorioVendas" | "codAutorizacao"  | "WWW333"                  |
+      | "afinz" | "vendas" | "relatorioVendas" | "status"          | "todos"                   |
+      | "afinz" | "vendas" | "relatorioVendas" | "status"          | "Autorizada"              |
+      | "afinz" | "vendas" | "relatorioVendas" | "status"          | "Recusada"                |
+      | "afinz" | "vendas" | "relatorioVendas" | "status"          | "Estornada"               |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "todos"                   |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Crédito"                 |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Crédito Internacional"   |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Débito"                  |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Débito Internacional"    |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Refeição"                |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Alimentação"             |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Premium"                 |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Cultura"                 |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Auto"                    |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Gift"                    |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Corporativo"             |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Benefícios"              |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Multiplo"                |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Flex"                    |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Natal"                   |
+      | "afinz" | "vendas" | "relatorioVendas" | "produtos"        | "Multibenefícios"         |
+      | "afinz" | "vendas" | "relatorioVendas" | "canal"           | "todos"                   |
+      | "afinz" | "vendas" | "relatorioVendas" | "canal"           | "selecionarPrimeiraOpcao" |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "todos"                   |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Mastercard"              |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Maestro"                 |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Cabal"                   |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Elo"                     |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Banese"                  |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Ticket"                  |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Alelo"                   |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Sorocred"                |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Amex"                    |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Hipercard"               |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Pluxee"                  |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "VR"                      |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Visa"                    |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Softnex"                 |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Redecompras"             |
+      | "afinz" | "vendas" | "relatorioVendas" | "bandeira"        | "Fepas"                   |
+      | "afinz" | "vendas" | "relatorioVendas" | "valores"         | "100;300"                 |
+      | "afinz" | "vendas" | "relatorioVendas" | "estabelecimento" | "todos"                   |
+      | "afinz" | "vendas" | "relatorioVendas" | "estabelecimento" | "selecionarPrimeiraOpcao" |
+      | "afinz" | "vendas" | "relatorioVendas" | "terminal"        | "todos"                   |
+      | "afinz" | "vendas" | "relatorioVendas" | "terminal"        | "selecionarPrimeiraOpcao" |
 
+  @TestCaseKey=LPDC-T1085
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Exportar - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -361,24 +362,25 @@ Feature: Vendas Hoje
     And valida o nome do arquivo <tipoArquivo> ao clicar em Exportar
     @bin
     Examples:
-      | alianca | menu     | submenu           | tipoArquivo  |
-      | "bin"   | "vendas" | "relatorioVendas" | "Excel"      |
-      | "bin"   | "vendas" | "relatorioVendas" | "CSV"        |
+      | alianca | menu     | submenu           | tipoArquivo |
+      | "bin"   | "vendas" | "relatorioVendas" | "Excel"     |
+      | "bin"   | "vendas" | "relatorioVendas" | "CSV"       |
 
     @sicredi
     Examples:
-      | alianca   | menu     | submenu           | tipoArquivo  |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Excel"      |
-      | "sicredi" | "vendas" | "relatorioVendas" | "CSV"        |
+      | alianca   | menu     | submenu           | tipoArquivo |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Excel"     |
+      | "sicredi" | "vendas" | "relatorioVendas" | "CSV"       |
 
     @azulzinha
     Examples:
-      | alianca     | menu     | submenu           | tipoArquivo  |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Excel"      |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "CSV"        |
+      | alianca     | menu     | submenu           | tipoArquivo |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Excel"     |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "CSV"       |
 
     @afinz
     Examples:
-      | alianca | menu     | submenu           | tipoArquivo  |
-      | "afinz" | "vendas" | "relatorioVendas" | "Excel"      |
-      | "afinz" | "vendas" | "relatorioVendas" | "CSV"        |
+      | alianca | menu     | submenu           | tipoArquivo |
+      | "afinz" | "vendas" | "relatorioVendas" | "Excel"     |
+      | "afinz" | "vendas" | "relatorioVendas" | "CSV"       |
+
