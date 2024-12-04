@@ -41,4 +41,9 @@ public class VendasHojeSteps {
     public void valida_que_foi_atribuido_o_valor_do_filtro(String valor, String filtro) {
         vendasHojePage.validarAtribuicaoFiltro(valor, filtro);
     }
+
+    @And("valida o nome do arquivo {string} ao clicar em Exportar")
+    public void valida_o_nome_do_arquivo_ao_clicar_em_Exportar(String tipoArquivo) {
+        vendasHojePage.validarNomeArquivo(tipoArquivo);
+    }
 }

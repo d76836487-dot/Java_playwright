@@ -3,6 +3,7 @@ package com.fiserv.qabrazil.pages.vendas.relatorioVendas.hoje;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.util.Config;
 import com.fiserv.qabrazil.util.WaitUtil;
+import com.microsoft.playwright.Download;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
@@ -10,8 +11,12 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.AssertJUnit.assertFalse;
 
 @ScenarioComponent
 public class VendasHojePage {
@@ -143,6 +148,14 @@ public class VendasHojePage {
     private Locator resultadoColunaFinalCartao;
     private Locator resultadoColunaCodReferenciaCartao;
 
+    // Exportar
+    private Locator titleExportar;
+    private Locator slcTipoArquivo;
+    private Locator optExcel;
+    private Locator optCsv;
+    private Locator btnCancelar;
+    private Locator btnGerarArquivo;
+
     @PostConstruct
     private void loadLocators() {
         // Vendas Hoje
@@ -269,6 +282,14 @@ public class VendasHojePage {
         this.resultadoColunaEsbalecimento = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-estabelecimento')]");
         this.resultadoColunaFinalCartao = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-final-cartao')]");
         this.resultadoColunaCodReferenciaCartao = page.locator("//*[text()='Cód. referência do cartão']/../../../../div/span");
+
+        // Exportar
+        this.titleExportar = page.locator("//*[text()='Escolha como deseja exportar o relatório']");
+        this.slcTipoArquivo = page.locator("//*[@data-testid='simple-dropdown-select--text-label']");
+        this.optExcel = page.locator("//*[@data-testid='simple-dropdown-select--item-excel']");
+        this.optCsv = page.locator("//*[@data-testid='simple-dropdown-select--item-csv']");
+        this.btnCancelar = page.locator("//*[text()='Cancelar']/..");
+        this.btnGerarArquivo = page.locator("//*[contains(text(), 'Gerar arquivo')]");
     }
 
     // Vendas Hoje
@@ -881,5 +902,58 @@ public class VendasHojePage {
                 }
                 break;
         }
+    }
+
+    // Exportar
+    public void verificarExportar() {
+        assertThat(titleExportar).isVisible();
+    }
+
+    public void selecionarTipoArquivo(String tipoArquivo) {
+        this.slcTipoArquivo.hover();
+
+        if (tipoArquivo.equalsIgnoreCase("Excel"))
+            this.optExcel.click();
+        else if (tipoArquivo.equalsIgnoreCase("CSV"))
+            this.optCsv.click();
+    }
+
+    public void clickCancelar() { this.btnCancelar.click(); }
+
+    public void validarNomeArquivo(String tipoArquivo) {
+        // realiza o exportar
+        this.btnExportar.scrollIntoViewIfNeeded();
+        this.clickExportar();
+        this.verificarExportar();
+        this.selecionarTipoArquivo(tipoArquivo);
+
+        // Atribui o prefixo do nome do arquivo
+        String nomeArquivo = "Relatorio_de_Vendas_Hoje_";
+
+        // Captura e formata a data atual
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-YYYY_");
+        String fullDate = now.format(format);
+
+        // Concatena o nome completo do arquivo
+        nomeArquivo = nomeArquivo.concat(fullDate);
+
+        String extensaoArquivo = "";
+        if (tipoArquivo.equalsIgnoreCase("Excel"))
+            extensaoArquivo = ".xlsx";
+        else if (tipoArquivo.equalsIgnoreCase("CSV"))
+            extensaoArquivo = ".csv";
+
+        // Aguardar download ao clicar no botão Exportar
+        Download download = page.waitForDownload(() -> {
+            this.btnGerarArquivo.click();
+        });
+
+        if (download.suggestedFilename().contains(nomeArquivo)
+            && download.suggestedFilename().contains(extensaoArquivo)
+        )
+            assertTrue(true);
+        else
+            assertFalse(false);
     }
 }
