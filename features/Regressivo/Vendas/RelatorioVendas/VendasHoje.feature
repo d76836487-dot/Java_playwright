@@ -6,6 +6,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 Feature: Vendas Hoje
 
+  @TestCaseKey=LPDC-T1087
   Scenario Outline: Acessar menu lateral - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -30,6 +31,7 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           |
       | "afinz" | "vendas" | "relatorioVendas" |
 
+  @TestCaseKey=LPDC-T1088
   Scenario Outline: Acessar Dashboard Vendas - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar dashboard <dashboard>
@@ -54,6 +56,7 @@ Feature: Vendas Hoje
       | alianca | dashboard |
       | "afinz" | "vendas"  |
 
+  @TestCaseKey=LPDC-T1070
   Scenario Outline: Verificar texto do rodape - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -79,6 +82,7 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           |
       | "afinz" | "vendas" | "relatorioVendas" |
 
+  @TestCaseKey=LPDC-T1066
   Scenario Outline: Visualizar campos do Resumo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -104,6 +108,7 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           | campo1            | campo2        |
       | "afinz" | "vendas" | "relatorioVendas" | "Total de vendas" | "Valor bruto" |
 
+  @TestCaseKey=LPDC-T1067
   Scenario Outline: Personalizar colunas - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -138,6 +143,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "dataVenda;codAutorizacao;comprovanteVenda;produto;parcelas;valorBruto;status;estabelecimento;finalCartao;codReferenciaCartao" |
       | "afinz" | "vendas" | "relatorioVendas" | "codAutorizacao;canal;estabelecimento;finalCartao;codReferenciaCartao"                                                         |
 
+  @TestCaseKey=LPDC-T1068
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -348,6 +354,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "terminal"        | "todos"                   |
       | "afinz" | "vendas" | "relatorioVendas" | "terminal"        | "selecionarPrimeiraOpcao" |
 
+  @TestCaseKey=LPDC-T1089
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -377,6 +384,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Excel"     |
       | "afinz" | "vendas" | "relatorioVendas" | "CSV"       |
 
+  @TestCaseKey=LPDC-T1086
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -405,3 +413,4 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           | tipoArquivo | colunas                                                                                                                                                                          |
       | "afinz" | "vendas" | "relatorioVendas" | "Excel"     | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
       | "afinz" | "vendas" | "relatorioVendas" | "CSV"       | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão"          |
+
