@@ -7,7 +7,7 @@
 Feature: Vendas Hoje
 
   @TestCaseKey=LPDC-T1069
-  Scenario Outline: Acessar Vendas Hoje - Menu lateral
+  Scenario Outline: Acessar menu lateral - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que o Vendas Hoje foi acessado com sucesso
@@ -32,7 +32,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" |
 
   @TestCaseKey=LPDC-T1071
-  Scenario Outline: Acessar Vendas Hoje - Dashboard Vendas
+  Scenario Outline: Acessar Dashboard Vendas - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar dashboard <dashboard>
     Then valida que o Vendas Hoje foi acessado com sucesso
@@ -355,11 +355,11 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "terminal"        | "selecionarPrimeiraOpcao" |
 
   @TestCaseKey=LPDC-T1085
-  Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Exportar - Vendas Hoje
+  Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que o Vendas Hoje foi acessado com sucesso
-    And valida o nome do arquivo <tipoArquivo> ao clicar em Exportar
+    And valida o nome do arquivo <tipoArquivo> gerado
     @bin
     Examples:
       | alianca | menu     | submenu           | tipoArquivo |
@@ -384,3 +384,31 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Excel"     |
       | "afinz" | "vendas" | "relatorioVendas" | "CSV"       |
 
+  Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que o Vendas Hoje foi acessado com sucesso
+    And valida as colunas <colunas> do arquivo <tipoArquivo> gerado
+    @bin
+    Examples:
+      | alianca | menu     | submenu           | tipoArquivo | colunas                                                                                                                                                                          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Excel"     | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+      | "bin"   | "vendas" | "relatorioVendas" | "CSV"       | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão"          |
+
+    @sicredi
+    Examples:
+      | alianca   | menu     | submenu           | tipoArquivo | colunas                                                                                                                                                                          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Excel"     | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "CSV"       | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão"          |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu     | submenu           | tipoArquivo | colunas                                                                                                                                                                          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Excel"     | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "CSV"       | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão"          |
+
+    @afinz
+    Examples:
+      | alianca | menu     | submenu           | tipoArquivo | colunas                                                                                                                                                                          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Excel"     | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+      | "afinz" | "vendas" | "relatorioVendas" | "CSV"       | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão"          |

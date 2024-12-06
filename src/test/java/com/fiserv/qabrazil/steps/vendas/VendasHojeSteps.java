@@ -5,6 +5,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.IOException;
+
 public class VendasHojeSteps {
     @Autowired
     VendasHojePage vendasHojePage;
@@ -42,8 +44,13 @@ public class VendasHojeSteps {
         vendasHojePage.validarAtribuicaoFiltro(valor, filtro);
     }
 
-    @And("valida o nome do arquivo {string} ao clicar em Exportar")
-    public void valida_o_nome_do_arquivo_ao_clicar_em_Exportar(String tipoArquivo) {
+    @And("valida o nome do arquivo {string} gerado")
+    public void valida_o_nome_do_arquivo_gerado(String tipoArquivo) {
         vendasHojePage.validarNomeArquivo(tipoArquivo);
+    }
+
+    @And("valida as colunas {string} do arquivo {string} gerado")
+    public void valida_as_colunas_do_arquivo_gerado(String colunas, String tipoArquivo) throws IOException {
+        vendasHojePage.validarColunasArquivo(colunas, tipoArquivo);
     }
 }

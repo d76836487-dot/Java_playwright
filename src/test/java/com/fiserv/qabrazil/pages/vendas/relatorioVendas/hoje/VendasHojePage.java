@@ -8,15 +8,29 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import jakarta.annotation.PostConstruct;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.testng.AssertJUnit.assertTrue;
 import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertTrue;
 
 @ScenarioComponent
 public class VendasHojePage {
@@ -152,7 +166,7 @@ public class VendasHojePage {
     private Locator titleExportar;
     private Locator slcTipoArquivo;
     private Locator optExcel;
-    private Locator optCsv;
+    private Locator optCSV;
     private Locator btnCancelar;
     private Locator btnGerarArquivo;
 
@@ -287,7 +301,7 @@ public class VendasHojePage {
         this.titleExportar = page.locator("//*[text()='Escolha como deseja exportar o relatório']");
         this.slcTipoArquivo = page.locator("//*[@data-testid='simple-dropdown-select--text-label']");
         this.optExcel = page.locator("//*[@data-testid='simple-dropdown-select--item-excel']");
-        this.optCsv = page.locator("//*[@data-testid='simple-dropdown-select--item-csv']");
+        this.optCSV = page.locator("//*[@data-testid='simple-dropdown-select--item-csv']");
         this.btnCancelar = page.locator("//*[text()='Cancelar']/..");
         this.btnGerarArquivo = page.locator("//*[contains(text(), 'Gerar arquivo')]");
     }
@@ -642,7 +656,7 @@ public class VendasHojePage {
     public void clickVoltarPadrao() { this.linkVoltarPadrao.click(); }
     public void clickAplicar() { this.btnAplicar.click(); }
 
-    public void selecionarColunaPersonalizacao(String coluna) {
+    private void selecionarColunaPersonalizacao(String coluna) {
         if (coluna.equalsIgnoreCase("dataVenda"))
             this.clickPersonalizarColunasDataVenda();
         else if (coluna.equalsIgnoreCase("codAutorizacao"))
@@ -671,7 +685,7 @@ public class VendasHojePage {
             this.clickPersonalizarColunasCodReferenciaCartao();
     }
 
-    public void atribuirFocoColunaPersonalizacao(String coluna) {
+    private void atribuirFocoColunaPersonalizacao(String coluna) {
         Locator campoFoco = page.locator("");
 
         if (coluna.equalsIgnoreCase("dataVenda"))
@@ -704,7 +718,7 @@ public class VendasHojePage {
         campoFoco.scrollIntoViewIfNeeded();
     }
 
-    public void voltarPadraoPersonalizarColunas() {
+    private void voltarPadraoPersonalizarColunas() {
         this.btnPersonalizarColunas.scrollIntoViewIfNeeded();
         this.clickPersonalizarColunas();
         this.verificarPersonalizarColunas();
@@ -714,7 +728,7 @@ public class VendasHojePage {
         WaitUtil.sleep(Duration.ofMillis(Config.DELAY_IN_ACTION));
     }
 
-    public void realizarTrocaPersonalizarColunas(String colunaRemover, String colunaAdicionar) {
+    private void realizarTrocaPersonalizarColunas(String colunaRemover, String colunaAdicionar) {
         // Atribuir foco na coluna escolhida
         this.atribuirFocoColunaPersonalizacao(colunaAdicionar);
 
@@ -881,7 +895,8 @@ public class VendasHojePage {
                 this.verificarPersonalizarColunas();
 
                 // Remove o Status e adiciona o Esbelecimento aplicando a personalização de colunas
-                this.realizarTrocaPersonalizarColunas("status", "estabelecimento");
+                String colunaRemover = "status", colunaAdicionar = "estabelecimento";
+                this.realizarTrocaPersonalizarColunas(colunaRemover, colunaAdicionar);
 
                 WaitUtil.sleep(Duration.ofMillis(Config.WAIT_FOR_PAGE_UPDATE));
                 this.resultadoColunas.scrollIntoViewIfNeeded();
@@ -909,13 +924,13 @@ public class VendasHojePage {
         assertThat(titleExportar).isVisible();
     }
 
-    public void selecionarTipoArquivo(String tipoArquivo) {
+    private void selecionarTipoArquivo(String tipoArquivo) {
         this.slcTipoArquivo.hover();
 
         if (tipoArquivo.equalsIgnoreCase("Excel"))
             this.optExcel.click();
         else if (tipoArquivo.equalsIgnoreCase("CSV"))
-            this.optCsv.click();
+            this.optCSV.click();
     }
 
     public void clickCancelar() { this.btnCancelar.click(); }
@@ -927,6 +942,20 @@ public class VendasHojePage {
         this.verificarExportar();
         this.selecionarTipoArquivo(tipoArquivo);
 
+        // Aguarda download ao clicar no botão Exportar
+        Download download = page.waitForDownload(() -> {
+            this.btnGerarArquivo.click();
+        });
+
+        if (validarNomeTipoArquivo(tipoArquivo, download))
+            assertTrue(true);
+        else
+            assertFalse(false);
+    }
+
+    private static boolean validarNomeTipoArquivo(String tipoArquivo, Download download) {
+        boolean retorno = false;
+
         // Atribui o prefixo do nome do arquivo
         String nomeArquivo = "Relatorio_de_Vendas_Hoje_";
 
@@ -937,23 +966,95 @@ public class VendasHojePage {
 
         // Concatena o nome completo do arquivo
         nomeArquivo = nomeArquivo.concat(fullDate);
+        String extensao = getExtensao(tipoArquivo);
 
-        String extensaoArquivo = "";
-        if (tipoArquivo.equalsIgnoreCase("Excel"))
-            extensaoArquivo = ".xlsx";
-        else if (tipoArquivo.equalsIgnoreCase("CSV"))
-            extensaoArquivo = ".csv";
+        if (download.suggestedFilename().contains(nomeArquivo)
+                && download.suggestedFilename().contains(extensao)
+        )
+            retorno = true;
 
-        // Aguardar download ao clicar no botão Exportar
+        return retorno;
+    }
+
+    public void validarColunasArquivo(String colunas, String tipoArquivo) throws IOException {
+        // Cria a lista de colunas do arquivo
+        List<String> listaColunas = List.of(colunas.split(";"));
+
+        // realiza o exportar
+        this.btnExportar.scrollIntoViewIfNeeded();
+        this.clickExportar();
+        this.verificarExportar();
+        this.selecionarTipoArquivo(tipoArquivo);
+
+        // Aguarda download ao clicar no botão Exportar
         Download download = page.waitForDownload(() -> {
             this.btnGerarArquivo.click();
         });
 
-        if (download.suggestedFilename().contains(nomeArquivo)
-            && download.suggestedFilename().contains(extensaoArquivo)
-        )
+        String extensao = getExtensao(tipoArquivo);
+        Path arquivoBaixado = download.path();
+        File copiaArquivoBaixado = copiarArquivoAtribuirExtensao(arquivoBaixado.toFile(), extensao);
+
+        if (validarColunasTipoArquivo(copiaArquivoBaixado, listaColunas))
             assertTrue(true);
         else
             assertFalse(false);
+    }
+
+    private static File copiarArquivoAtribuirExtensao(File arquivoBaixado, String extensao) throws IOException {
+        // Caminho original do arquivo
+        Path diretorio = arquivoBaixado.toPath();
+
+        // Atribui a extensão ao arquivo
+        String novoArquivo = diretorio.toFile().getName() + extensao;
+        Path novoDiretorio = diretorio.getParent().resolve(novoArquivo);
+
+        // Faz uma copia do arquivo
+        Files.copy(diretorio, novoDiretorio, StandardCopyOption.REPLACE_EXISTING);
+
+        return novoDiretorio.toFile();
+    }
+
+    private static boolean validarColunasTipoArquivo(File arquivo, List<String> listaColunas) throws IOException {
+        boolean retorno = false;
+
+        String nomeArquivo = arquivo.getName();
+
+        if (nomeArquivo.endsWith(".xlsx"))
+            retorno = validarColunasExcel(arquivo, listaColunas);
+        else if (nomeArquivo.endsWith(".csv"))
+            retorno = validarColunasCSV(arquivo, listaColunas);
+
+        return retorno;
+    }
+
+    private static boolean validarColunasExcel(File arquivo, List<String> listaColunas) throws IOException {
+        try (FileInputStream fis = new FileInputStream(arquivo); XSSFWorkbook workbook = new XSSFWorkbook(fis)) {
+
+            // Acessa a primeira aba (sheet)
+            Sheet sheet = workbook.getSheetAt(0);
+            Row primeiraLinha = sheet.getRow(16);
+
+            List<String> colunasArquivo = new ArrayList<>();
+            primeiraLinha.forEach(cell -> colunasArquivo.add(cell.getStringCellValue()));
+            return colunasArquivo.containsAll(listaColunas);
+        }
+    }
+
+    private static boolean validarColunasCSV(File arquivo, List<String> listaColunas) throws IOException {
+        try (CSVParser parser = new CSVParser(new FileReader(arquivo), CSVFormat.DEFAULT.withHeader())) {
+            List<String> colunasArquivo = new ArrayList<>(parser.getHeaderNames());
+            return colunasArquivo.containsAll(listaColunas);
+        }
+    }
+
+    private static String getExtensao(String tipoArquivo) {
+            String extensao = "";
+        if (tipoArquivo.equalsIgnoreCase("Excel"))
+            extensao = ".xlsx";
+        else if (tipoArquivo.equalsIgnoreCase("CSV"))
+            extensao = ".csv";
+
+        return extensao;
     }
 }
