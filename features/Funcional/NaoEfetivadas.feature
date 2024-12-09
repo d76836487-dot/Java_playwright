@@ -6,6 +6,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: Nao Efetivadas
 
+  @TestCaseKey=LPDC-T1116
   Scenario: Personalizar Colunas
     Given Usuário está Logado No Portal do Cliente
     When Usuário acessa a página Vendas > Nao Efetivadas
@@ -15,6 +16,7 @@ Feature: Nao Efetivadas
     And Seleciona "voltar ao padrão"
     And Visualiza as 10 colunas padrão novamente , Data da venda, cod.de autorização, Comprovante de venda,Produto, Parcelas, Bandeira, Canal, Terminal, Valor bruto, Status.
 
+  @TestCaseKey=LPDC-T1130
   Scenario: Busca pelo Codigo de autorização
     Given Usuário está na página Vendas > Nao Efetivadas
     When buscar pro codigo de autorização e clicar na lupa
@@ -22,6 +24,7 @@ Feature: Nao Efetivadas
     And seleciona o "x"
     And Limpa o codigo de autenticação e aparece todas vendas não efetivadas
 
+  @TestCaseKey=LPDC-T1115
   Scenario: Seleção do Periodos
     Given Usuário está na página Vendas > Nao Efetivadas
     When Periodo vem preenchido com "ontem" com vendas do dia de ontem
@@ -32,6 +35,7 @@ Feature: Nao Efetivadas
     Then Seleciona um periodo no calendario e Aplicar
     And Visualiza o Periodo com as datas selecionadas "dd/mm/aaaa" - "dd/mm/aaaa" e as Vendas nao Efetivadas do range selecionado
 
+  @TestCaseKey=LPDC-T1139
   Scenario: Exportar CSV
     Given Usuário está na página Vendas > Nao Efetivadas
     When Clicar em exportar
@@ -39,6 +43,7 @@ Feature: Nao Efetivadas
     Then Visualiza as colunas Data da venda,Cód. de autorização,Comprovante,Produto,Parcelado,Bandeira,Canal,Número Terminal,Valor bruto,Status,Número do estabelecimento,Final do cartão.
     And Visualiza os dados preenchidos em cada coluna
 
+  @TestCaseKey=LPDC-T1117
   Scenario: Exportar Excel
     Given Usuário está na página Vendas > Nao Efetivadas
     When Clicar em exportar
@@ -46,6 +51,7 @@ Feature: Nao Efetivadas
     Then Visualiza as colunas :Data da venda,Cód. de autorização,Comprovante,Produto,Parcelado,Bandeira,Canal,Número terminal,Valor bruto,Status,Número do estabelecimento,Final do cartão.
     And Visualiza os dados preenchidos em cada coluna
 
+  @TestCaseKey=LPDC-T1113
   Scenario: Aplicar e validar filtros
     Given Usuário está na página Vendas > Nao Efetivadas
     When Apertar o botão "Filtro"
@@ -53,3 +59,4 @@ Feature: Nao Efetivadas
     Then Visualiza os filtros aplicados corretamente.
     And Seleciona "Limpar filtros"
     And Filtros removidos e mostra todas vendas novamente
+
