@@ -37,7 +37,7 @@ Feature: Credenciamento Taxista V2
 
 
   #Sem CPF existente
-  Scenario: Acessando a Home
+  Scenario: Acessando a Home Sem CPF Existente
     Given usuário tenha CPF que não tenha sido credenciado
     When acessar o link:https://azulzinha.qa.portaldocliente.fiserv.com/taxista/home
     Then ele visualizara a Home
