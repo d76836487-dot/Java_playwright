@@ -37,11 +37,11 @@ public class VendasHojePage {
     @Autowired
     private Page page;
 
-    // Vendas Hoje
-    private Locator titleVendasHoje;
+    // Campos - Total/Valor
     private Locator totalVendas;
     private Locator valorBruto;
 
+    //
     private Locator txtCodAutorizacao;
     private Locator iconeLupa;
     private Locator btnFiltros;
@@ -172,8 +172,7 @@ public class VendasHojePage {
 
     @PostConstruct
     private void loadLocators() {
-        // Vendas Hoje
-        this.titleVendasHoje = page.locator("//*[contains(text(), 'Visualize suas vendas realizadas no dia')]");
+        // Campos - Total/Valor
         this.totalVendas = page.locator("//*[@data-testid='vendas-hoje-card-total-vendas']");
         this.valorBruto = page.locator("//*[@data-testid='vendas-hoje-card-vlr-bruto']");
 
@@ -306,19 +305,16 @@ public class VendasHojePage {
         this.btnGerarArquivo = page.locator("//*[contains(text(), 'Gerar arquivo')]");
     }
 
-    // Vendas Hoje
-    public void verificarVendasHoje() {
-        WaitUtil.sleep(Duration.ofMillis(Config.TIME_TO_WAIT_PAGE));
+    // Campos - Total/Valor
+    public void verificarCampos(String campos) {
+        String[] listaCampos = campos.split(";");
 
-        assertThat(titleVendasHoje).isVisible();
-    }
-
-    public void verificarTotalVendas() {
-        assertThat(totalVendas).isVisible();
-    }
-
-    public void verificarValorBruto() {
-        assertThat(valorBruto).isVisible();
+        for (String campo : listaCampos) {
+            if (campo.equalsIgnoreCase("Total de vendas"))
+                assertThat(totalVendas).isVisible();
+            if (campo.equalsIgnoreCase("Valor bruto"))
+                assertThat(valorBruto).isVisible();
+        }
     }
 
     public void preencherCodAutorizacao(String codAutorizacao) { this.txtCodAutorizacao.fill(codAutorizacao); }

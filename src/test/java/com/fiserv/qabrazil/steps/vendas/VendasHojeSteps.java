@@ -2,7 +2,6 @@ package com.fiserv.qabrazil.steps.vendas;
 
 import com.fiserv.qabrazil.pages.vendas.relatorioVendas.hoje.VendasHojePage;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -11,17 +10,9 @@ public class VendasHojeSteps {
     @Autowired
     VendasHojePage vendasHojePage;
 
-    @Then("valida que o Vendas Hoje foi acessado com sucesso")
-    public void valida_que_o_Vendas_Hoje_foi_acessado_com_sucesso() {
-        vendasHojePage.verificarVendasHoje();
-    }
-
-    @And("visualiza os campos {string} e {string}")
-    public void visualiza_os_campos(String campo1, String campo2) {
-        if (campo1.equalsIgnoreCase("Total de vendas"))
-            vendasHojePage.verificarTotalVendas();
-        if (campo2.equalsIgnoreCase("Valor bruto"))
-            vendasHojePage.verificarValorBruto();
+    @And("visualiza os campos {string}")
+    public void visualiza_os_campos(String campos) {
+        vendasHojePage.verificarCampos(campos);
     }
 
     @And("realiza a personalizacao das colunas {string}")
