@@ -8,21 +8,18 @@ Feature: Link Pagamento V3
 
 
   Scenario: Acessando Link de pagamento pelo Menu Lateral
-
     Given Usuario esteja logado no Portal
     When clicar em seviços ,Link de Pagamento pelo menu lateral esquerdo
     Then Tera acesso a tela de Link de pagamento
 
 
   Scenario: Botão Trocar Estabelecimento
-
     Given usuario esta na tela de Link de pagamento
     When selecionar o Botão trocar estabelecimento
     Then Visualizara apenas os ‘’ECs’’ que estiverem Link de pagamento habilitado
 
 
   Scenario: Cliente sem EC de Link de Pagamento
-
     Given usuario tenha um documento que não possue link de pagamento
     When Acessar a tela Link de pagamento
     Then Visualizara a seguinte mensagem:
@@ -32,7 +29,6 @@ Feature: Link Pagamento V3
 
 
   Scenario: Solicitando link pagamento unico 24X Parcelado Lojista
-
     Given usuário esta na Tela Link de Pagamento
     When clica no Botão Solicitar link de pagamento único
     And  Preencher: Descrição, valor, número de parcelas = 24X
@@ -43,7 +39,6 @@ Feature: Link Pagamento V3
 
 
   Scenario: Link pagamento unico 24X Parcelado Lojista Gerado
-
     Given usuário Clicou no Botão Gerar Link de pagamento
     When aparecera um Modal com o Link gerado e os Botões: Ver links ativos, Fechar, X
     And copiando o Link gerado aparecera uma frase acima: Texto copiado para área de transferência X
@@ -51,7 +46,6 @@ Feature: Link Pagamento V3
 
 
   Scenario: Link pagamento unico 24X Parcelado Lojista sem pagar
-
     Given usuário Clicou no Botão Gerar Link de pagamento
     When aparecera um Modal com o Link gerado e os Botões: Ver links ativos, Fechar, X
     And copiando o Link gerado , mas não efetua o Pagamento
@@ -59,7 +53,6 @@ Feature: Link Pagamento V3
 
 
   Scenario: Solicitando link pagamento unico 24X Parcelado emissor
-
     Given usuário esta na Tela Link de Pagamento
     When clica no Botão Solicitar link de pagamento único
     And  Preencher: Descrição, valor, número de parcelas = 24X
@@ -78,7 +71,6 @@ Feature: Link Pagamento V3
 
 
   Scenario: Link pagamento unico 24X Parcelado Emissor sem pagar
-
     Given usuário Clicou no Botão Gerar Link de pagamento
     When aparecera um Modal com o Link gerado e os Botões: Ver links ativos, Fechar, X
     And copiando o Link gerado , mas não efetua o Pagamento
@@ -86,7 +78,6 @@ Feature: Link Pagamento V3
 
 
   Scenario: Solicitando link pagamento unico 18X Parcelado Lojista
-
     Given usuário esta na Tela Link de Pagamento
     When clica no Botão Solicitar link de pagamento único
     And  Preencher: Descrição, valor, número de parcelas = 24X
@@ -97,7 +88,6 @@ Feature: Link Pagamento V3
 
 
   Scenario: Link pagamento unico 18X Parcelado Lojista Gerado
-
     Given usuário Clicou no Botão Gerar Link de pagamento
     When aparecera um Modal com o Link gerado e os Botões: Ver links ativos, Fechar, X
     And copiando o Link gerado aparecera uma frase acima: Texto copiado para área de transferência X
@@ -105,7 +95,6 @@ Feature: Link Pagamento V3
 
 
   Scenario: Link pagamento unico 18X Parcelado Lojista sem pagar
-
     Given usuário Clicou no Botão Gerar Link de pagamento
     When aparecera um Modal com o Link gerado e os Botões: Ver links ativos, Fechar, X
     And copiando o Link gerado , mas não efetua o Pagamento
@@ -113,7 +102,6 @@ Feature: Link Pagamento V3
 
 
   Scenario: Solicitando link pagamento unico 18X Parcelado emissor
-
     Given usuário esta na Tela Link de Pagamento
     When clica no Botão Solicitar link de pagamento único
     And  Preencher: Descrição, valor, número de parcelas = 24X
@@ -124,7 +112,6 @@ Feature: Link Pagamento V3
 
 
   Scenario: Link pagamento unico 18X Parcelado Emissor Gerado
-
     Given usuário Clicou no Botão Gerar Link de pagamento
     When aparecera um Modal com o Link gerado e os Botões: Ver links ativos, Fechar, X
     And copiando o Link gerado aparecera uma frase acima: Texto copiado para área de transferência X
@@ -132,7 +119,6 @@ Feature: Link Pagamento V3
 
 
   Scenario: Link pagamento unico 18X Parcelado Emissor sem pagar
-
     Given usuário Clicou no Botão Gerar Link de pagamento
     When aparecera um Modal com o Link gerado e os Botões: Ver links ativos, Fechar, X
     And copiando o Link gerado , mas não efetua o Pagamento
