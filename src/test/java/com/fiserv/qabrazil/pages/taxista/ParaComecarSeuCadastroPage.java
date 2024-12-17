@@ -1,7 +1,7 @@
 package com.fiserv.qabrazil.pages.taxista;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.util.DigitUtil;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
@@ -46,16 +46,16 @@ public class ParaComecarSeuCadastroPage {
     public void preencherNomeCompleto(String nomeCompleto) { this.txtNomeCompleto.fill(nomeCompleto); }
 
     public void preencherDataNascimento(String dataNascimento) {
-        DigitUtil.pressDigit(page, this.txtDataNascimento, dataNascimento);
+        GeneralUtils.pressDigit(page, this.txtDataNascimento, dataNascimento);
     }
 
     public void preencherCelular(String celular) {
-        DigitUtil.pressDigit(page, this.txtCelular, celular);
+        GeneralUtils.pressDigit(page, this.txtCelular, celular);
     }
 
     public void preencherEmail(String email) { this.txtEmail.fill(email); }
 
-    public void preencherCpf(String cpf) { DigitUtil.pressDigit(page, this.txtCpf, cpf); }
+    public void preencherCpf(String cpf) { GeneralUtils.pressDigit(page, this.txtCpf, cpf); }
 
     public void preencherNomeFantasia(String nomeFantasia) { this.txtNomeFantasia.fill(nomeFantasia); }
 

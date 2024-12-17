@@ -3,7 +3,9 @@ package com.fiserv.qabrazil.util;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class DigitUtil {
+import java.time.Duration;
+
+public class GeneralUtils {
     public static void pressDigit(Page page, Locator locator, String data) {
         locator.focus();
 
@@ -31,5 +33,17 @@ public class DigitUtil {
             else if (digit == '9')
                 page.keyboard().press("Digit9");
         }
+    }
+
+    public static Locator getLocatorByXpath(Page page, String xpath) {
+        return page.locator(xpath);
+    }
+
+    public static void waitForMillis(int millis) {
+        WaitUtil.sleep(Duration.ofMillis(millis));
+    }
+
+    public static void scrollToElement(Locator locator) {
+        locator.scrollIntoViewIfNeeded();
     }
 }

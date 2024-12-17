@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.pages.home;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.pages.CheckedBasePage;
+import com.fiserv.qabrazil.util.Config;
 import com.fiserv.qabrazil.util.WaitUtil;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -87,8 +88,7 @@ public class HomePage extends CheckedBasePage {
 
     public void verificarTextoRodape() {
         this.rodape.scrollIntoViewIfNeeded();
-
-        WaitUtil.sleep(Duration.ofMillis(2500));
+        WaitUtil.sleep(Duration.ofMillis(Config.WAIT_FOR_PAGE_UPDATE));
 
         LocalDate now = LocalDate.now();
         int year = now.getYear();

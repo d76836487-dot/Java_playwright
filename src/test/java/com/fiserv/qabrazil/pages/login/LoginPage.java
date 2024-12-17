@@ -11,7 +11,7 @@ import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
 import com.fiserv.qabrazil.pages.SelectECOrDtcoPage;
 import com.fiserv.qabrazil.util.Config;
-import com.fiserv.qabrazil.util.DigitUtil;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Locator;
@@ -356,7 +356,7 @@ Thread.sleep(3000);
         assertThat(title).isVisible();
     }
 
-    public void preencherLogin(String login) { DigitUtil.pressDigit(page, this.txtLogin, login); }
+    public void preencherLogin(String login) { GeneralUtils.pressDigit(page, this.txtLogin, login); }
 
     public void preencherPassword(String password) { this.txtPassword.fill(password); }
 

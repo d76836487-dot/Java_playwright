@@ -230,7 +230,7 @@ public class HomeSteps extends BaseSteps {
     }
 
     @And("verifica o texto do rodape")
-    public void verifica_o_texto_do_rodape() throws InterruptedException {
+    public void verifica_o_texto_do_rodape() {
         homePage.verificarTextoRodape();
     }
 }
