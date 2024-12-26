@@ -8,6 +8,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import jakarta.annotation.PostConstruct;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
@@ -48,16 +49,9 @@ public class VendasPage {
     private Locator cbkEsteMes;
     private Locator btnAplicarPeriodo;
 
-    // Componentes padrão - Vendas
-    private Locator txtCodAutorizacao;
-    private Locator iconeLupa;
-    private Locator btnFiltros;
-    private Locator btnPersonalizarColunas;
-    private Locator btnExportar;
-
     // Filtros
     private Locator titleFiltros;
-    private Locator iconeSair;
+    private Locator iconeSairFiltros;
     private Locator linkLimparFiltros;
     private Locator btnMostrarResultados;
 
@@ -65,57 +59,21 @@ public class VendasPage {
     private Locator linkStatus;
     private Locator ckbStatusSelecionarTudo;
     private Locator linkStatusLimparSelecoes;
-    private Locator ckbStatusAutorizada;
-    private Locator ckbStatusRecusada;
-    private Locator ckbStatusEstornada;
 
-    // Produtos
-    private Locator linkProdutos;
-    private Locator ckbProdutosSelecionarTudo;
-    private Locator linkProdutosLimparSelecoes;
-    private Locator ckbProdutosCredito;
-    private Locator ckbProdutosCreditoInternacional;
-    private Locator ckbProdutosDebito;
-    private Locator ckbProdutosDebitoInternacional;
-    private Locator ckbProdutosRefeicao;
-    private Locator ckbProdutosAlimentacao;
-    private Locator ckbProdutosPremium;
-    private Locator ckbProdutosCultura;
-    private Locator ckbProdutosAuto;
-    private Locator ckbProdutosGift;
-    private Locator ckbProdutosCorporativo;
-    private Locator ckbProdutosBeneficios;
-    private Locator ckbProdutosMultiplo;
-    private Locator ckbProdutosFlex;
-    private Locator ckbProdutosNatal;
-    private Locator ckbProdutosMultibeneficios;
+    // Produto
+    private Locator linkProduto;
+    private Locator ckbProdutoSelecionarTudo;
+    private Locator linkProdutoLimparSelecoes;
 
     // Canal
     private Locator linkCanal;
     private Locator ckbCanalSelecionarTudo;
     private Locator linkCanalLimparSelecoes;
-    private Locator ckbCanalPrimeiraOpcao;
 
     // Bandeira
     private Locator linkBandeira;
     private Locator ckbBandeiraSelecionarTudo;
     private Locator linkBandeiraLimparSelecoes;
-    private Locator linkBandeiraMastercard;
-    private Locator linkBandeiraMaestro;
-    private Locator linkBandeiraCabal;
-    private Locator linkBandeiraElo;
-    private Locator linkBandeiraBanese;
-    private Locator linkBandeiraTicket;
-    private Locator linkBandeiraAlelo;
-    private Locator linkBandeiraSorocred;
-    private Locator linkBandeiraAmex;
-    private Locator linkBandeiraHipercard;
-    private Locator linkBandeiraPluxee;
-    private Locator linkBandeiraVR;
-    private Locator linkBandeiraVisa;
-    private Locator linkBandeiraSoftnex;
-    private Locator linkBandeiraRedecompras;
-    private Locator linkBandeiraFepas;
 
     // Valores
     private Locator linkValores;
@@ -126,48 +84,16 @@ public class VendasPage {
     private Locator linkEstabelecimento;
     private Locator ckbEstabelecimentoSelecionarTudo;
     private Locator ckbEstabelecimentoLimparSelecoes;
-    private Locator ckbEstabelecimentoPrimeiraOpcao;
 
     // Terminal
     private Locator linkTerminal;
     private Locator cbkTerminalSelecionarTudo;
     private Locator linkTerminalLimparSelecoes;
-    private Locator cbkTerminalPrimeiraOpcao;
 
     // Personalizar Colunas
     private Locator titlePersonalizarColunas;
-    private Locator ckbDataVenda;
-    private Locator ckbCodAutorizacao;
-    private Locator ckbComprovanteVenda;
-    private Locator ckbProduto;
-    private Locator ckbParcelas;
-    private Locator ckbBandeira;
-    private Locator ckbCanal;
-    private Locator ckbTerminal;
-    private Locator ckbValorBruto;
-    private Locator ckbStatus;
-    private Locator ckbEstabelecimento;
-    private Locator ckbFinalCartao;
-    private Locator ckbCodReferenciaCartao;
     private Locator linkVoltarPadrao;
     private Locator btnAplicarPersonalizacao;
-
-    // Resultado coluna
-    private Locator resultadoColunas;
-    private Locator primeiroRegistroCodAutorizacao;
-    private Locator resultadoColunaDataVenda;
-    private Locator resultadoColunaCodAutorizacao;
-    private Locator resultadoColunaComprovanteVenda;
-    private Locator resultadoColunaProduto;
-    private Locator resultadoColunaParcelas;
-    private Locator resultadoColunaBandeira;
-    private Locator resultadoColunaCanal;
-    private Locator resultadoColunaTerminal;
-    private Locator resultadoColunaValor;
-    private Locator resultadoColunaStatus;
-    private Locator resultadoColunaEsbalecimento;
-    private Locator resultadoColunaFinalCartao;
-    private Locator resultadoColunaCodReferenciaCartao;
 
     // Gerar arquivo
     private Locator titleExportar;
@@ -203,16 +129,9 @@ public class VendasPage {
         this.cbkEsteMes = page.locator("//*[@data-testid='generic-calendar-pill-este-mês']");
         this.btnAplicarPeriodo = page.locator("//*[@data-testid='generic-calendar-button-aplicar']");
 
-        // Componentes padrão - Vendas
-        this.txtCodAutorizacao = page.locator("//*[@data-testid='vendas-hoje-input-cod-autorizacao']");
-        this.iconeLupa = page.locator("//*[@data-testid='vendas-hoje-link-search-cod-autorizacao']");
-        this.btnFiltros = page.locator("//*[@data-testid='vendas-hoje-link-filtrar']");
-        this.btnPersonalizarColunas = page.locator("//*[@data-testid='vendas-hoje-link-personalizar']");
-        this.btnExportar = page.locator("//*[@data-testid='exportar-hoje']");
-
         // Filtros
         this.titleFiltros = page.locator("//*[text()='Os itens selecionados serão aplicados na pesquisa.']");
-        this.iconeSair = page.locator("//*[@data-testid='generic-filter-link-sair']");
+        this.iconeSairFiltros = page.locator("//*[@data-testid='generic-filter-link-sair']");
         this.linkLimparFiltros = page.locator("//*[@data-testid='generic-filter-link-clean-all']");
         this.btnMostrarResultados = page.locator("//*[@data-testid='generic-filter-btn-resultados']");
 
@@ -220,57 +139,21 @@ public class VendasPage {
         this.linkStatus = page.locator("//*[@data-testid='generic-filter-accordion-title-status']");
         this.ckbStatusSelecionarTudo = page.locator("//*[@data-testid='generic-filter-check-all-status']");
         this.linkStatusLimparSelecoes = page.locator("//*[@data-testid='generic-filter-link-clean-status']");
-        this.ckbStatusAutorizada = page.locator("//*[@data-testid='generic-filter-check-status-Autorizada']");
-        this.ckbStatusRecusada = page.locator("//*[@data-testid='generic-filter-check-status-Recusada']");
-        this.ckbStatusEstornada = page.locator("//*[@data-testid='generic-filter-check-status-Estornada']");
 
         // Produtos
-        this.linkProdutos = page.locator("//*[@data-testid='generic-filter-accordion-title-produtos']");
-        this.ckbProdutosSelecionarTudo = page.locator("//*[@data-testid='generic-filter-check-all-produtos']");
-        this.linkProdutosLimparSelecoes = page.locator("//*[@data-testid='generic-filter-link-clean-produtos']");
-        this.ckbProdutosCredito = page.locator("//*[@data-testid='generic-filter-check-produto-Crédito']");
-        this.ckbProdutosCreditoInternacional = page.locator("//*[@data-testid='generic-filter-check-produto-Crédito-Internacional']");
-        this.ckbProdutosDebito = page.locator("//*[@data-testid='generic-filter-check-produto-Débito']");
-        this.ckbProdutosDebitoInternacional = page.locator("//*[@data-testid='generic-filter-check-produto-Débito-Internacional']");
-        this.ckbProdutosRefeicao = page.locator("//*[@data-testid='generic-filter-check-produto-Refeição']");
-        this.ckbProdutosAlimentacao = page.locator("//*[@data-testid='generic-filter-check-produto-Alimentação']");
-        this.ckbProdutosPremium = page.locator("//*[@data-testid='generic-filter-check-produto-Premium']");
-        this.ckbProdutosCultura = page.locator("//*[@data-testid='generic-filter-check-produto-Cultura']");
-        this.ckbProdutosAuto = page.locator("//*[@data-testid='generic-filter-check-produto-Auto']");
-        this.ckbProdutosGift = page.locator("//*[@data-testid='generic-filter-check-produto-Gift']");
-        this.ckbProdutosCorporativo = page.locator("//*[@data-testid='generic-filter-check-produto-Corporativo']");
-        this.ckbProdutosBeneficios = page.locator("//*[@data-testid='generic-filter-check-produto-Benefícios']");
-        this.ckbProdutosMultiplo = page.locator("//*[@data-testid='generic-filter-check-produto-Multiplo']");
-        this.ckbProdutosFlex = page.locator("//*[@data-testid='generic-filter-check-produto-Flex']");
-        this.ckbProdutosNatal = page.locator("//*[@data-testid='generic-filter-check-produto-Natal']");
-        this.ckbProdutosMultibeneficios = page.locator("//*[@data-testid='generic-filter-check-produto-Multibenefícios']");
+        this.linkProduto = page.locator("//*[@data-testid='generic-filter-accordion-title-produtos']");
+        this.ckbProdutoSelecionarTudo = page.locator("//*[@data-testid='generic-filter-check-all-produtos']");
+        this.linkProdutoLimparSelecoes = page.locator("//*[@data-testid='generic-filter-link-clean-produtos']");
 
         // Canal
         this.linkCanal = page.locator("//*[@data-testid='generic-filter-accordion-title-canal']");
         this.ckbCanalSelecionarTudo = page.locator("//*[@data-testid='generic-filter-check-all-canais']");
         this.linkCanalLimparSelecoes = page.locator("//*[@data-testid='generic-filter-link-clean-canais']");
-        this.ckbCanalPrimeiraOpcao = page.locator("(//*[contains(@data-testid, 'generic-filter-check-canal-')])[1]");
 
         // Bandeira
         this.linkBandeira = page.locator("//*[@data-testid='generic-filter-accordion-title-bandeira']");
         this.ckbBandeiraSelecionarTudo = page.locator("//*[@data-testid='generic-filter-check-all-bandeiras']");
         this.linkBandeiraLimparSelecoes = page.locator("//*[@data-testid='generic-filter-link-clean-bandeiras']");
-        this.linkBandeiraMastercard = page.locator("//*[@data-testid='generic-filter-div-bandeira-Mastercard']");
-        this.linkBandeiraMaestro = page.locator("//*[@data-testid='generic-filter-div-bandeira-Maestro']");
-        this.linkBandeiraCabal = page.locator("//*[@data-testid='generic-filter-div-bandeira-Cabal']");
-        this.linkBandeiraElo = page.locator("//*[@data-testid='generic-filter-div-bandeira-Elo']");
-        this.linkBandeiraBanese = page.locator("//*[@data-testid='generic-filter-div-bandeira-Banese']");
-        this.linkBandeiraTicket = page.locator("//*[@data-testid='generic-filter-div-bandeira-Ticket']");
-        this.linkBandeiraAlelo = page.locator("//*[@data-testid='generic-filter-div-bandeira-Alelo']");
-        this.linkBandeiraSorocred = page.locator("//*[@data-testid='generic-filter-div-bandeira-Sorocred']");
-        this.linkBandeiraAmex = page.locator("//*[@data-testid='generic-filter-div-bandeira-Amex']");
-        this.linkBandeiraHipercard = page.locator("//*[@data-testid='generic-filter-div-bandeira-Hipercard']");
-        this.linkBandeiraPluxee = page.locator("//*[@data-testid='generic-filter-div-bandeira-Pluxee']");
-        this.linkBandeiraVR = page.locator("//*[@data-testid='generic-filter-div-bandeira-VR']");
-        this.linkBandeiraVisa = page.locator("//*[@data-testid='generic-filter-div-bandeira-Visa']");
-        this.linkBandeiraSoftnex = page.locator("//*[@data-testid='generic-filter-div-bandeira-Softnex']");
-        this.linkBandeiraRedecompras = page.locator("//*[@data-testid='generic-filter-div-bandeira-Redecompras']");
-        this.linkBandeiraFepas = page.locator("//*[@data-testid='generic-filter-div-bandeira-Fepas']");
 
         // Valores
         this.linkValores = page.locator("//*[@data-testid='generic-filter-accordion-title-valores']");
@@ -281,48 +164,16 @@ public class VendasPage {
         this.linkEstabelecimento = page.locator("//*[@data-testid='generic-filter-accordion-title-estabelecimentos']");
         this.ckbEstabelecimentoSelecionarTudo = page.locator("//*[@data-testid='generic-filter-check-all-estabelecimentos']");
         this.ckbEstabelecimentoLimparSelecoes = page.locator("//*[@data-testid='generic-filter-link-clean-estabelecimentos']");
-        this.ckbEstabelecimentoPrimeiraOpcao = page.locator("(//*[contains(@data-testid, 'generic-filter-check-estabelecimento-')])[1]");
 
         // Terminal
         this.linkTerminal = page.locator("//*[@data-testid='generic-filter-accordion-title-terminais']");
         this.cbkTerminalSelecionarTudo = page.locator("//*[@data-testid='generic-filter-check-all-terminais']");
         this.linkTerminalLimparSelecoes = page.locator("//*[@data-testid='generic-filter-link-clean-terminais']");
-        this.cbkTerminalPrimeiraOpcao = page.locator("(//*[contains(@data-testid, 'generic-filter-check-terminal-')])[1]");
 
         // Personalizar Colunas
         this.titlePersonalizarColunas = page.locator("//*[contains(text(), 'Personalize a visualização das colunas')]");
-        this.ckbDataVenda = page.locator("//*[text()='Data da venda']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbCodAutorizacao = page.locator("//*[text()='Cód. de autorização']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbComprovanteVenda = page.locator("//*[text()='Comprovante de venda']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbProduto = page.locator("//*[text()='Produto']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbParcelas = page.locator("//*[text()='Parcelas']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbBandeira = page.locator("//*[text()='Bandeira']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbCanal = page.locator("//*[text()='Canal']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbTerminal = page.locator("//*[text()='Terminal']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbValorBruto = page.locator("//*[text()='Valor bruto']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbStatus = page.locator("//*[text()='Status']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbEstabelecimento = page.locator("//*[text()='Estabelecimento']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbFinalCartao = page.locator("//*[text()='Final do cartão']/preceding-sibling::*/input[@type='checkbox']");
-        this.ckbCodReferenciaCartao = page.locator("//*[text()='Cód. referência do cartão']/preceding-sibling::*/input[@type='checkbox']");
         this.linkVoltarPadrao = page.locator("//*[text()='Voltar ao padrão']");
-        this.btnAplicarPersonalizacao = page.locator("//*[text()='Aplicar']");
-
-        // Resultado coluna
-        this.resultadoColunas = page.locator("//*[@data-block='VendasHoje.HojeListaHistorico']");
-        this.primeiroRegistroCodAutorizacao = page.locator("(//*[contains(@data-testid, 'vendas-hoje-coluna-cod-autorizacao') and not(text()='-')])[1]");
-        this.resultadoColunaDataVenda = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-data-venda')]");
-        this.resultadoColunaCodAutorizacao = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-cod-autorizacao')]");
-        this.resultadoColunaComprovanteVenda = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-comprovante-venda')]");
-        this.resultadoColunaProduto = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-produto')]");
-        this.resultadoColunaParcelas = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-parcela')]");
-        this.resultadoColunaBandeira = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-bandeira')]");
-        this.resultadoColunaCanal = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-canal')]");
-        this.resultadoColunaTerminal = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-terminal')]");
-        this.resultadoColunaValor = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-vlr-bruto')]");
-        this.resultadoColunaStatus = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-status')]");
-        this.resultadoColunaEsbalecimento = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-estabelecimento')]");
-        this.resultadoColunaFinalCartao = page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-final-cartao')]");
-        this.resultadoColunaCodReferenciaCartao = page.locator("//*[text()='Cód. referência do cartão']/../../../../div/span");
+        this.btnAplicarPersonalizacao = page.locator("//span[text()='Aplicar']");
 
         // Gerar arquivo
         this.titleExportar = page.locator("//*[text()='Escolha como deseja exportar o relatório']");
@@ -341,7 +192,7 @@ public class VendasPage {
     private void clickAbaVoucher() { this.abaVoucher.click(); }
 
     // Títulos das abas do relatório
-    public void validarCarregamentoAbaRelatorio(String abaRelatorio) {
+    public void validarCarregamentoAbaRelatorio(@NotNull String abaRelatorio) {
         if (abaRelatorio.equalsIgnoreCase("Hoje")) {
             GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
             assertThat(titleHoje).isVisible();
@@ -364,6 +215,243 @@ public class VendasPage {
         }
     }
 
+    private Locator getLocatorFromReportTab(@NotNull String abaRelatorio, String campo) {
+        Locator element = page.locator("");
+
+        element = switch (abaRelatorio) {
+            case "Hoje" -> switch (campo) {
+                case "txtCodAutorizacao" ->
+                        page.locator("//*[@data-testid='vendas-hoje-input-cod-autorizacao']");
+                case "iconeLupa" ->
+                        page.locator("//*[@data-testid='vendas-hoje-link-search-cod-autorizacao']");
+                case "btnFiltros" ->
+                        page.locator("//*[@data-testid='vendas-hoje-link-filtrar']");
+                case "btnPersonalizarColunas" ->
+                        page.locator("//*[@data-testid='vendas-hoje-link-personalizar']");
+                case "btnExportar" ->
+                        page.locator("//*[@data-testid='exportar-hoje']");
+                case "resultadoColunas" ->
+                        page.locator("//*[@data-block='VendasHoje.HojeListaHistorico']");
+                case "primeiroRegistroCodAutorizacao" ->
+                        page.locator("(//div[span[text()='Cód. de autorização']]/following-sibling::div/span[not(text()='-')])[1]");
+                case "resultadoColunaDataVenda" ->
+                    page.locator("//*[@data-testid='vendas-hoje-coluna-data-venda']");
+                case "resultadoColunaCodAutorizacao" ->
+                        page.locator("//*[@data-testid='vendas-hoje-coluna-cod-autorizacao']");
+                case "resultadoColunaComprovanteVenda" ->
+                        page.locator("//*[@data-testid='vendas-hoje-coluna-comprovante-venda']");
+                case "resultadoColunaProduto" ->
+                        page.locator("//*[@data-testid='vendas-hoje-coluna-produto']");
+                case "resultadoColunaParcelas" ->
+                        page.locator("//*[@data-testid='vendas-hoje-coluna-parcela']");
+                case "resultadoColunaBandeira" ->
+                        page.locator("//*[@data-testid='vendas-hoje-coluna-bandeira']");
+                case "resultadoColunaCanal" ->
+                        page.locator("//*[@data-testid='vendas-hoje-coluna-canal']");
+                case "resultadoColunaTerminal" ->
+                        page.locator("//*[@data-testid='vendas-hoje-coluna-terminal']");
+                case "resultadoColunaValorBruto" ->
+                        page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-vlr-bruto')]");
+                case "resultadoColunaStatus" ->
+                        page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-status')]");
+                case "resultadoColunaEsbalecimento" ->
+                        page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-estabelecimento')]");
+                case "resultadoColunaFinalCartao" ->
+                        page.locator("//*[contains(@data-testid, 'vendas-hoje-coluna-final-cartao')]");
+                case "resultadoColunaCodReferenciaCartao" ->
+                        page.locator("//*[text()='Cód. referência do cartão']/../../../../div/span");
+                default -> element;
+            };
+
+            case "Histórico de vendas" -> switch (campo) {
+                case "txtCodAutorizacao" ->
+                        page.locator("//*[@id='b16-Input_CodigoAutorizacao2']");
+                case "iconeLupa" ->
+                        page.locator("//*[@data-testid='vendas-hoje-link-search-cod-autorizacao']");
+                case "btnFiltros" ->
+                        page.locator("//*[@data-testid='historico-vendas-container-filtros']");
+                case "btnPersonalizarColunas" ->
+                        page.locator("//*[@data-testid='historico-vendas-container-personalizar-colunas']");
+                case "btnExportar" ->
+                        page.locator("//*[@data-testid='exportar-historicovendas']");
+                case "resultadoColunas" ->
+                        page.locator("//*[@data-block='VendasHistoricoVendas.HistoricoVendasLista']");
+                case "primeiroRegistroCodAutorizacao" ->
+                        page.locator("(//div[span[text()='Cód. de autorização']]/following-sibling::div/span[not(text()='-')])[1]");
+                case "resultadoColunaDataVenda" ->
+                        page.locator("//*[@data-testid='historico-vendas-data-compra']");
+                case "resultadoColunaCodAutorizacao" ->
+                        page.locator("//*[@data-testid='historico-vendas-codigo-autorizacao']");
+                case "resultadoColunaComprovanteVenda" ->
+                        page.locator("//*[@data-testid='historico-vendas-comprovante']");
+                case "resultadoColunaProduto" ->
+                        page.locator("//*[@data-testid='historico-vendas-produto']");
+                case "resultadoColunaParcelas" ->
+                        page.locator("//*[@data-testid='historico-vendas-parcelas']");
+                case "resultadoColunaBandeira" ->
+                        page.locator("//*[@data-testid='historico-vendas-bandeira']");
+                case "resultadoColunaCanal" ->
+                        page.locator("//*[@data-testid='historico-vendas-canal']");
+                case "resultadoColunaTerminal" ->
+                        page.locator("//*[@data-testid='historico-vendas-terminal']");
+                case "resultadoColunaValorBruto" ->
+                        page.locator("//*[@data-testid='historico-vendas-valor-bruto' and not(contains(@class, 'header'))]");
+                case "resultadoColunaValorLiquido" ->
+                        page.locator("//*[@data-testid='historico-vendas-valor-liquido' and not(contains(@class, 'header'))]");
+                case "resultadoColunaValorTaxa" ->
+                        page.locator("//*[@data-testid='historico-vendas-valor-taxa']");
+                case "resultadoColunaValorOriginalVenda" ->
+                        page.locator("//*[@data-testid='historico-vendas-valor-original-venda']");
+                case "resultadoColunaStatus" ->
+                        page.locator("//*[@data-testid='historico-vendas-status']");
+                case "resultadoColunaEsbalecimento" ->
+                        page.locator("//*[@data-testid='historico-vendas-estabelecimento']");
+                case "resultadoColunaCodPedido" ->
+                        page.locator("//*[@data-testid='historico-vendas-codigo-pedido']");
+                case "resultadoColunaCodReferenciaCartao" ->
+                        page.locator("//*[@data-testid='historico-vendas-codigo-cartao']");
+                default -> element;
+            };
+
+            case "Não efetivadas" -> switch (campo) {
+                case "txtCodAutorizacao" ->
+                        page.locator("//*[@data-testid='nao-efetivadas-campo-busca']");
+                case "iconeLupa" ->
+                        page.locator("//i[contains(@class, 'nao_efetivadas_buscar_cod_autorizacao')]/..");
+                case "btnFiltros" ->
+                        page.locator("//*[@data-testid='nao-efetivadas-botao-filtros']");
+                case "btnPersonalizarColunas" ->
+                        page.locator("//*[@data-testid='nao-efetivadas-botao-personalizar-colunas']");
+                case "btnExportar" ->
+                        page.locator("//*[@data-testid='exportar-naoefetivadas']");
+                case "resultadoColunas" ->
+                        page.locator("//*[@data-block='VendasNaoEvetivadas.NaoEfetivadasVendas']");
+                case "primeiroRegistroCodAutorizacao" ->
+                        page.locator("(//div[span[text()='Cód. de autorização']]/following-sibling::div/span[not(@type='checkbox') and normalize-space(text()) != ''])[1]");
+                case "resultadoColunaDataVenda" ->
+                        page.locator("");
+                case "resultadoColunaCodAutorizacao" ->
+                        page.locator("");
+                case "resultadoColunaComprovanteVenda" ->
+                        page.locator("");
+                case "resultadoColunaProduto" ->
+                        page.locator("");
+                case "resultadoColunaParcelas" ->
+                        page.locator("");
+                case "resultadoColunaBandeira" ->
+                        page.locator("");
+                case "resultadoColunaCanal" ->
+                        page.locator("");
+                case "resultadoColunaTerminal" ->
+                        page.locator("");
+                case "resultadoColunaValorBruto" ->
+                        page.locator("");
+                case "resultadoColunaStatus" ->
+                        page.locator("");
+                case "resultadoColunaEsbalecimento" ->
+                        page.locator("");
+                case "resultadoColunaFinalCartao" ->
+                        page.locator("");
+                case "resultadoColunaCodReferenciaCartao" ->
+                        page.locator("");
+                default -> element;
+            };
+
+            case "Pré-autorizações" -> switch (campo) {
+                case "txtCodAutorizacao" ->
+                        page.locator("//*[@id='b20-Input_CodigoAutorizacao']");
+                case "iconeLupa" ->
+                        page.locator("//i[contains(@class, 'vendas_hoje_buscar_cod_autorizacao')]/..");
+                case "btnFiltros" ->
+                        page.locator("//div[text()='Filtros']");
+                case "btnPersonalizarColunas" ->
+                        page.locator("//div[text()='Personalizar colunas']");
+                case "btnExportar" ->
+                        page.locator("//*[@data-testid='exportar-preautorizacoes']");
+                case "resultadoColunas" ->
+                        page.locator("//*[@data-block='VendasPreAutorizacoes.PreAutorizacoesVendas']");
+                case "primeiroRegistroCodAutorizacao" ->
+                        page.locator("(//div[span[text()='Cód. de autorização']]/following-sibling::div/span[not(@type='checkbox') and normalize-space(text()) != ''])[1]");
+                case "resultadoColunaDataVenda" ->
+                        page.locator("");
+                case "resultadoColunaCodAutorizacao" ->
+                        page.locator("");
+                case "resultadoColunaComprovanteVenda" ->
+                        page.locator("");
+                case "resultadoColunaProduto" ->
+                        page.locator("");
+                case "resultadoColunaParcelas" ->
+                        page.locator("");
+                case "resultadoColunaBandeira" ->
+                        page.locator("");
+                case "resultadoColunaCanal" ->
+                        page.locator("");
+                case "resultadoColunaTerminal" ->
+                        page.locator("");
+                case "resultadoColunaValorAutorizado" ->
+                        page.locator("");
+                case "resultadoColunaValorConfirmado" ->
+                        page.locator("");
+                case "resultadoColunaStatus" ->
+                        page.locator("");
+                case "resultadoColunaEsbalecimento" ->
+                        page.locator("");
+                case "resultadoColunaFinalCartao" ->
+                        page.locator("");
+                case "resultadoColunaCodReferenciaCartao" ->
+                        page.locator("");
+                default -> element;
+            };
+
+            case "Voucher" -> switch (campo) {
+                case "txtCodAutorizacao" ->
+                        page.locator("//*[@data-testid='busca-cod-autorizacao']");
+                case "iconeLupa" ->
+                        page.locator("//i[contains(@class, 'vendas_voucher_buscar_cod_autorizacao')]/..");
+                case "btnFiltros" ->
+                        page.locator("//*[@data-testid='filtros']");
+                case "btnPersonalizarColunas" ->
+                        page.locator("//*[@data-testid='personalizar-colunas']");
+                case "btnExportar" ->
+                        page.locator("//*[@data-testid='exportar-voucher']");
+                case "resultadoColunas" ->
+                        page.locator("//*[@data-block='VendasVoucher.VoucherVendas']");
+                case "primeiroRegistroCodAutorizacao" ->
+                        page.locator("(//div[span[text()='Cód. de autorização']]/following-sibling::div/span[not(@type='checkbox') and normalize-space(text()) != ''])[1]");
+                case "resultadoColunaDataVenda" ->
+                        page.locator("");
+                case "resultadoColunaCodAutorizacao" ->
+                        page.locator("");
+                case "resultadoColunaComprovanteVenda" ->
+                        page.locator("");
+                case "resultadoColunaProduto" ->
+                        page.locator("");
+                case "resultadoColunaParcelas" ->
+                        page.locator("");
+                case "resultadoColunaBandeira" ->
+                        page.locator("");
+                case "resultadoColunaCanal" ->
+                        page.locator("");
+                case "resultadoColunaTerminal" ->
+                        page.locator("");
+                case "resultadoColunaValorBruto" ->
+                        page.locator("");
+                case "resultadoColunaStatus" ->
+                        page.locator("");
+                case "resultadoColunaEsbalecimento" ->
+                        page.locator("");
+                case "resultadoColunaFinalCartao" ->
+                        page.locator("");
+                case "resultadoColunaCodReferenciaCartao" ->
+                        page.locator("");
+                default -> element;
+            };
+            default -> element;
+        };
+
+        return element;
+    }
+
     // Período
     private void clickCalendario() { this.iconeCalendario.click(); }
     private void clickCalendarioHoje() { this.ckbHoje.click(); }
@@ -374,8 +462,8 @@ public class VendasPage {
     private void clickCalendarioEsteMes() { this.cbkEsteMes.click(); }
     private void clickAplicarPeriodo() { this.btnAplicarPeriodo.click(); }
 
-    public void selecionarPeriodo(String periodo) {
-        GeneralUtils.scrollToElement(this.iconeCalendario);
+    public void selecionarPeriodo(@NotNull String periodo) {
+        this.iconeCalendario.scrollIntoViewIfNeeded();
         this.clickCalendario();
 
         if (periodo.equalsIgnoreCase("Hoje"))
@@ -391,23 +479,33 @@ public class VendasPage {
         else if (periodo.equalsIgnoreCase("Este Mês"))
             this.clickCalendarioEsteMes();
 
-        GeneralUtils.scrollToElement(this.btnAplicarPeriodo);
+        this.btnAplicarPeriodo.scrollIntoViewIfNeeded();
         this.clickAplicarPeriodo();
     }
 
     // Componentes padrão - Vendas
-    private void preencherCodAutorizacao(String codAutorizacao) { this.txtCodAutorizacao.fill(codAutorizacao); }
-    private void clickLupa() { this.iconeLupa.click(); }
-    private void clickFiltros() { this.btnFiltros.click(); }
-    private void clickPersonalizarColunas() { this.btnPersonalizarColunas.click(); }
-    private void clickExportar() { this.btnExportar.click(); }
+    private void preencherCodAutorizacao(String abaRelatorio, String codAutorizacao) {
+        this.getLocatorFromReportTab(abaRelatorio, "txtCodAutorizacao").fill(codAutorizacao);
+    }
+    private void clickLupa(String abaRelatorio) {
+        this.getLocatorFromReportTab(abaRelatorio, "iconeLupa").click();
+    }
+    private void clickFiltros(String abaRelatorio) {
+        this.getLocatorFromReportTab(abaRelatorio, "btnFiltros").click();
+    }
+    private void clickPersonalizarColunas(String abaRelatorio) {
+        this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas").click();
+    }
+    private void clickExportar(String abaRelatorio) {
+        this.getLocatorFromReportTab(abaRelatorio, "btnExportar").click();
+    }
 
     // Filtros
     private void verificarFiltrosVendasHoje() {
         assertThat(titleFiltros).isVisible();
     }
 
-    public void clickSair() { this.iconeSair.click(); }
+    public void clickSair() { this.iconeSairFiltros.click(); }
     public void clickLimparFiltros() { this.linkLimparFiltros.click(); }
     public void clickMostrarResultados() { this.btnMostrarResultados.click(); }
 
@@ -415,57 +513,37 @@ public class VendasPage {
     public void clickFiltroStatus() { this.linkStatus.click(); }
     public void clickStatusSelecionarTudo() { this.ckbStatusSelecionarTudo.click(); }
     public void clickStatusLimparSelecoes() { this.linkStatusLimparSelecoes.click(); }
-    public void clickStatusAutorizada() { this.ckbStatusAutorizada.click(); }
-    public void clickStatusRecusada() { this.ckbStatusRecusada.click(); }
-    public void clickStatusEstornada() { this.ckbStatusEstornada.click(); }
+    public void clickStatus(@NotNull String valor) {
+        String complementoXpath = valor.replaceAll(" ", "-");
+        page.locator("//*[@data-testid='generic-filter-check-status-"+complementoXpath+"']").click();
+    }
 
-    // Produtos
-    public void clickFiltroProdutos() { this.linkProdutos.click(); }
-    public void clickProdutosSelecionarTudo() { this.ckbProdutosSelecionarTudo.click(); }
-    public void clickProdutosLimparSelecoes() { this.linkProdutosLimparSelecoes.click(); }
-    public void clickProdutosCredito() { this.ckbProdutosCredito.click(); }
-    public void clickProdutosCreditoInternacional() { this.ckbProdutosCreditoInternacional.click(); }
-    public void clickProdutosDebito() { this.ckbProdutosDebito.click(); }
-    public void clickProdutosDebitoInternacional() { this.ckbProdutosDebitoInternacional.click(); }
-    public void clickProdutosRefeicao() { this.ckbProdutosRefeicao.click(); }
-    public void clickProdutosAlimentacao() { this.ckbProdutosAlimentacao.click(); }
-    public void clickProdutosPremium() { this.ckbProdutosPremium.click(); }
-    public void clickProdutosCultura() { this.ckbProdutosCultura.click(); }
-    public void clickProdutosAuto() { this.ckbProdutosAuto.click(); }
-    public void clickProdutosGift() { this.ckbProdutosGift.click(); }
-    public void clickProdutosCorporativo() { this.ckbProdutosCorporativo.click(); }
-    public void clickProdutosBeneficios() { this.ckbProdutosBeneficios.click(); }
-    public void clickProdutosMultiplo() { this.ckbProdutosMultiplo.click(); }
-    public void clickProdutosFlex() { this.ckbProdutosFlex.click(); }
-    public void clickProdutosNatal() { this.ckbProdutosNatal.click(); }
-    public void clickProdutosMultibeneficios() { this.ckbProdutosMultibeneficios.click(); }
+    // Produto
+    public void clickFiltroProdutos() { this.linkProduto.click(); }
+    public void clickProdutosSelecionarTudo() { this.ckbProdutoSelecionarTudo.click(); }
+    public void clickProdutosLimparSelecoes() { this.linkProdutoLimparSelecoes.click(); }
+    public void clickProduto(@NotNull String valor) {
+        String complementoXpath = valor.replaceAll(" ", "-");
+        page.locator("//*[@data-testid='generic-filter-check-produto-"+complementoXpath+"']").click();
+    }
 
     // Canal
     public void clickFiltroCanal() { this.linkCanal.click(); }
     public void clickCanalSelecionarTudo() { this.ckbCanalSelecionarTudo.click(); }
     public void clickCanalLimparSelecoes() { this.linkCanalLimparSelecoes.click(); }
-    public void clickCanalPrimeiraOpcao() { this.ckbCanalPrimeiraOpcao.click(); }
+    public void clickCanal(@NotNull String valor) {
+        String complementoXpath = valor.replaceAll(" ", "-");
+        page.locator("//*[@data-testid='generic-filter-check-canal-"+complementoXpath+"']").click();
+    }
 
     // Bandeira
     public void clickFiltroBandeira() { this.linkBandeira.click(); }
     public void clickBandeiraSelecionarTudo() { this.ckbBandeiraSelecionarTudo.click(); }
     public void clickBandeiraLimparSelecoes() { this.linkBandeiraLimparSelecoes.click(); }
-    public void clickBandeiraMastercard() { this.linkBandeiraMastercard.click(); }
-    public void clickBandeiraMaestro() { this.linkBandeiraMaestro.click(); }
-    public void clickBandeiraCabal() { this.linkBandeiraCabal.click(); }
-    public void clickBandeiraElo() { this.linkBandeiraElo.click(); }
-    public void clickBandeiraBanese() { this.linkBandeiraBanese.click(); }
-    public void clickBandeiraTicket() { this.linkBandeiraTicket.click(); }
-    public void clickBandeiraAlelo() { this.linkBandeiraAlelo.click(); }
-    public void clickBandeiraSorocred() { this.linkBandeiraSorocred.click(); }
-    public void clickBandeiraAmex() { this.linkBandeiraAmex.click(); }
-    public void clickBandeiraHipercard() { this.linkBandeiraHipercard.click(); }
-    public void clickBandeiraPluxee() { this.linkBandeiraPluxee.click(); }
-    public void clickBandeiraVR() { this.linkBandeiraVR.click(); }
-    public void clickBandeiraVisa() { this.linkBandeiraVisa.click(); }
-    public void clickBandeiraSoftnex() { this.linkBandeiraSoftnex.click(); }
-    public void clickBandeiraRedecompras() { this.linkBandeiraRedecompras.click(); }
-    public void clickBandeiraFepas() { this.linkBandeiraFepas.click(); }
+    public void clickBandeira(@NotNull String valor) {
+        String complementoXpath = valor.replaceAll(" ", "-");
+        page.locator("//*[@data-testid='generic-filter-div-bandeira-"+complementoXpath+"']").click();
+    }
 
     // Valores
     public void clickFiltroValores() { this.linkValores.click(); }
@@ -476,34 +554,43 @@ public class VendasPage {
     public void clickFiltroEstabelecimento() { this.linkEstabelecimento.click(); }
     public void clickEstabelecimentoSelecionarTudo() { this.ckbEstabelecimentoSelecionarTudo.click(); }
     public void clickEstabelecimentoLimparSelecoes() { this.ckbEstabelecimentoLimparSelecoes.click(); }
-    public void clickEstabelecimentoPrimeiraOpcao() { this.ckbEstabelecimentoPrimeiraOpcao.click(); }
+    public void clickEstabelecimento(@NotNull String valor) {
+        String complementoXpath = valor.replaceAll(" ", "-");
+        page.locator("//*[@data-testid='generic-filter-check-estabelecimento-"+complementoXpath+"']").click();
+    }
 
     // Terminal
     public void clickFiltroTerminal() { this.linkTerminal.click(); }
     public void clickTerminalSelecionarTudo() { this.cbkTerminalSelecionarTudo.click(); }
     public void clickTerminalLimparSelecoes() { this.linkTerminalLimparSelecoes.click(); }
-    public void clickTerminalPrimeiraOpcao() { this.cbkTerminalPrimeiraOpcao.click(); }
+    public void clickTerminal(@NotNull String valor) {
+        String complementoXpath = valor.replaceAll(" ", "-");
+        page.locator("//*[@data-testid='generic-filter-check-terminal-"+complementoXpath+"']").click();
+    }
 
-    public void realizarFiltro(String filtro, String valor) {
+    public void realizarFiltro(@NotNull String filtro, String valor, String abaRelatorio) {
         GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
-        GeneralUtils.scrollToElement(this.btnFiltros);
+        this.getLocatorFromReportTab(abaRelatorio, "btnFiltros").scrollIntoViewIfNeeded();
 
-        if (!filtro.equalsIgnoreCase("codAutorizacao")) {
+        if (!filtro.equalsIgnoreCase("Cód. de autorização")) {
             this.verificarFiltrosVendasHoje();
-            this.clickFiltros();
+            this.clickFiltros(abaRelatorio);
         }
 
         // realiza o filtro pelo seu tipo (campo) e passa o valor desejado
         switch (filtro) {
-            case "codAutorizacao":
+            case "Cód. de autorização":
                 if (valor.equalsIgnoreCase("primeiroRegistro"))
-                    this.preencherCodAutorizacao(this.primeiroRegistroCodAutorizacao.textContent().trim());
+                    this.preencherCodAutorizacao(
+                             abaRelatorio
+                            ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodAutorizacao").textContent().trim()
+                    );
                 else
-                    this.preencherCodAutorizacao(valor);
+                    this.preencherCodAutorizacao(abaRelatorio, valor);
 
                 break;
 
-            case "status":
+            case "Status":
                 this.clickFiltroStatus();
                 switch (valor) {
                     case "todos":
@@ -512,19 +599,12 @@ public class VendasPage {
                     case "nenhum":
                         this.clickStatusLimparSelecoes();
                         break;
-                    case "Autorizada":
-                        this.clickStatusAutorizada();
-                        break;
-                    case "Recusada":
-                        this.clickStatusRecusada();
-                        break;
-                    case "Estornada":
-                        this.clickStatusEstornada();
-                        break;
+                    default:
+                        this.clickStatus(valor);
                 }
                 break;
 
-            case "produtos":
+            case "Produto":
                 this.clickFiltroProdutos();
                 switch (valor) {
                     case "todos":
@@ -533,58 +613,12 @@ public class VendasPage {
                     case "nenhum":
                         this.clickProdutosLimparSelecoes();
                         break;
-                    case "Crédito":
-                        this.clickProdutosCredito();
-                        break;
-                    case "Crédito Internacional":
-                        this.clickProdutosCreditoInternacional();
-                        break;
-                    case "Débito":
-                        this.clickProdutosDebito();
-                        break;
-                    case "Débito Internacional":
-                        this.clickProdutosDebitoInternacional();
-                        break;
-                    case "Refeição":
-                        this.clickProdutosRefeicao();
-                        break;
-                    case "Alimentação":
-                        this.clickProdutosAlimentacao();
-                        break;
-                    case "Premium":
-                        this.clickProdutosPremium();
-                        break;
-                    case "Cultura":
-                        this.clickProdutosCultura();
-                        break;
-                    case "Auto":
-                        this.clickProdutosAuto();
-                        break;
-                    case "Gift":
-                        this.clickProdutosGift();
-                        break;
-                    case "Corporativo":
-                        this.clickProdutosCorporativo();
-                        break;
-                    case "Benefícios":
-                        this.clickProdutosBeneficios();
-                        break;
-                    case "Multiplo":
-                        this.clickProdutosMultiplo();
-                        break;
-                    case "Flex":
-                        this.clickProdutosFlex();
-                        break;
-                    case "Natal":
-                        this.clickProdutosNatal();
-                        break;
-                    case "Multibenefícios":
-                        this.clickProdutosMultibeneficios();
-                        break;
+                    default:
+                        this.clickProduto(valor);
                 }
                 break;
 
-            case "canal":
+            case "Canal":
                 this.clickFiltroCanal();
                 switch (valor) {
                     case "todos":
@@ -593,13 +627,12 @@ public class VendasPage {
                     case "nenhum":
                         this.clickCanalLimparSelecoes();
                         break;
-                    case "selecionarPrimeiraOpcao":
-                        this.clickCanalPrimeiraOpcao();
-                        break;
+                    default:
+                        this.clickCanal(valor);
                 }
                 break;
 
-            case "bandeira":
+            case "Bandeira":
                 this.clickFiltroBandeira();
                 switch (valor) {
                     case "todos":
@@ -608,58 +641,12 @@ public class VendasPage {
                     case "nenhum":
                         this.clickBandeiraLimparSelecoes();
                         break;
-                    case "Mastercard":
-                        this.clickBandeiraMastercard();
-                        break;
-                    case "Maestro":
-                        this.clickBandeiraMaestro();
-                        break;
-                    case "Cabal":
-                        this.clickBandeiraCabal();
-                        break;
-                    case "Elo":
-                        this.clickBandeiraElo();
-                        break;
-                    case "Banese":
-                        this.clickBandeiraBanese();
-                        break;
-                    case "Ticket":
-                        this.clickBandeiraTicket();
-                        break;
-                    case "Alelo":
-                        this.clickBandeiraAlelo();
-                        break;
-                    case "Sorocred":
-                        this.clickBandeiraSorocred();
-                        break;
-                    case "Amex":
-                        this.clickBandeiraAmex();
-                        break;
-                    case "Hipercard":
-                        this.clickBandeiraHipercard();
-                        break;
-                    case "Pluxee":
-                        this.clickBandeiraPluxee();
-                        break;
-                    case "VR":
-                        this.clickBandeiraVR();
-                        break;
-                    case "Visa":
-                        this.clickBandeiraVisa();
-                        break;
-                    case "Softnex":
-                        this.clickBandeiraSoftnex();
-                        break;
-                    case "Redecompras":
-                        this.clickBandeiraRedecompras();
-                        break;
-                    case "Fepas":
-                        this.clickBandeiraFepas();
-                        break;
+                    default:
+                        this.clickBandeira(valor);
                 }
                 break;
 
-            case "valores":
+            case "Valores":
                 this.clickFiltroValores();
 
                 // valor De e Ate separados por ";"
@@ -669,7 +656,7 @@ public class VendasPage {
 
                 break;
 
-            case "estabelecimento":
+            case "Estabelecimento":
                 this.clickFiltroEstabelecimento();
                 switch (valor) {
                     case "todos":
@@ -678,13 +665,12 @@ public class VendasPage {
                     case "nenhum":
                         this.clickEstabelecimentoLimparSelecoes();
                         break;
-                    case "selecionarPrimeiraOpcao":
-                        this.clickEstabelecimentoPrimeiraOpcao();
-                        break;
+                    default:
+                        this.clickEstabelecimento(valor);
                 }
                 break;
 
-            case "terminal":
+            case "Terminal":
                 this.clickFiltroTerminal();
                 switch (valor) {
                     case "todos":
@@ -693,19 +679,18 @@ public class VendasPage {
                     case "nenhum":
                         this.clickTerminalLimparSelecoes();
                         break;
-                    case "selecionarPrimeiraOpcao":
-                        this.clickTerminalPrimeiraOpcao();
-                        break;
+                    default:
+                        this.clickTerminal(valor);
                 }
                 break;
 
         }
 
-        if (!filtro.equalsIgnoreCase("codAutorizacao")) {
-            GeneralUtils.scrollToElement(this.btnMostrarResultados);
+        if (!filtro.equalsIgnoreCase("Cód. de autorização")) {
+            this.btnMostrarResultados.scrollIntoViewIfNeeded();
             this.clickMostrarResultados();
         } else
-            this.clickLupa();
+            this.clickLupa(abaRelatorio);
 
         GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
     }
@@ -715,90 +700,40 @@ public class VendasPage {
         assertThat(titlePersonalizarColunas).isVisible();
     }
 
-    public void clickPersonalizarColunasDataVenda() { this.ckbDataVenda.click(); }
-    public void clickPersonalizarColunasCodAutorizacao() { this.ckbCodAutorizacao.click(); }
-    public void clickPersonalizarColunasComprovanteVenda() { this.ckbComprovanteVenda.click(); }
-    public void clickPersonalizarColunasProduto() { this.ckbProduto.click(); }
-    public void clickPersonalizarColunasParcelas() { this.ckbParcelas.click(); }
-    public void clickPersonalizarColunasBandeira() { this.ckbBandeira.click(); }
-    public void clickPersonalizarColunasCanal() { this.ckbCanal.click(); }
-    public void clickPersonalizarColunasTerminal() { this.ckbTerminal.click(); }
-    public void clickPersonalizarColunasValorBruto() { this.ckbValorBruto.click(); }
-    public void clickPersonalizarColunasStatus() { this.ckbStatus.click(); }
-    public void clickPersonalizarColunasEstabelecimento() { this.ckbEstabelecimento.click(); }
-    public void clickPersonalizarColunasFinalCartao() { this.ckbFinalCartao.click(); }
-    public void clickPersonalizarColunasCodReferenciaCartao() { this.ckbCodReferenciaCartao.click(); }
-    public void clickVoltarPadrao() { this.linkVoltarPadrao.click(); }
-    public void clickAplicar() { this.btnAplicarPersonalizacao.click(); }
-
     private void selecionarColunaPersonalizacao(String coluna) {
-        if (coluna.equalsIgnoreCase("dataVenda"))
-            this.clickPersonalizarColunasDataVenda();
-        else if (coluna.equalsIgnoreCase("codAutorizacao"))
-            this.clickPersonalizarColunasCodAutorizacao();
-        else if (coluna.equalsIgnoreCase("comprovanteVenda"))
-            this.clickPersonalizarColunasComprovanteVenda();
-        else if (coluna.equalsIgnoreCase("produto"))
-            this.clickPersonalizarColunasProduto();
-        else if (coluna.equalsIgnoreCase("parcelas"))
-            this.clickPersonalizarColunasParcelas();
-        else if (coluna.equalsIgnoreCase("bandeira"))
-            this.clickPersonalizarColunasBandeira();
-        else if (coluna.equalsIgnoreCase("canal"))
-            this.clickPersonalizarColunasCanal();
-        else if (coluna.equalsIgnoreCase("terminal"))
-            this.clickPersonalizarColunasTerminal();
-        else if (coluna.equalsIgnoreCase("valorBruto"))
-            this.clickPersonalizarColunasValorBruto();
-        else if (coluna.equalsIgnoreCase("status"))
-            this.clickPersonalizarColunasStatus();
-        else if (coluna.equalsIgnoreCase("estabelecimento"))
-            this.clickPersonalizarColunasEstabelecimento();
-        else if (coluna.equalsIgnoreCase("finalCartao"))
-            this.clickPersonalizarColunasFinalCartao();
-        else if (coluna.equalsIgnoreCase("codReferenciaCartao"))
-            this.clickPersonalizarColunasCodReferenciaCartao();
+        page.locator("//*[text()='"+coluna+"']/preceding-sibling::*/input[@type='checkbox']").click();
     }
 
     private void atribuirFocoColunaPersonalizacao(String coluna) {
-        Locator campoFoco = page.locator("");
-
-        if (coluna.equalsIgnoreCase("dataVenda"))
-            campoFoco = ckbDataVenda;
-        else if (coluna.equalsIgnoreCase("codAutorizacao"))
-            campoFoco = ckbCodAutorizacao;
-        else if (coluna.equalsIgnoreCase("comprovanteVenda"))
-            campoFoco = ckbComprovanteVenda;
-        else if (coluna.equalsIgnoreCase("produto"))
-            campoFoco = ckbProduto;
-        else if (coluna.equalsIgnoreCase("parcelas"))
-            campoFoco = ckbParcelas;
-        else if (coluna.equalsIgnoreCase("bandeira"))
-            campoFoco = ckbBandeira;
-        else if (coluna.equalsIgnoreCase("canal"))
-            campoFoco = ckbCanal;
-        else if (coluna.equalsIgnoreCase("terminal"))
-            campoFoco = ckbTerminal;
-        else if (coluna.equalsIgnoreCase("valorBruto"))
-            campoFoco = ckbValorBruto;
-        else if (coluna.equalsIgnoreCase("status"))
-            campoFoco = ckbStatus;
-        else if (coluna.equalsIgnoreCase("estabelecimento"))
-            campoFoco = ckbEstabelecimento;
-        else if (coluna.equalsIgnoreCase("finalCartao"))
-            campoFoco = ckbFinalCartao;
-        else if (coluna.equalsIgnoreCase("codReferenciaCartao"))
-            campoFoco = ckbCodReferenciaCartao;
-
-        GeneralUtils.scrollToElement(campoFoco);
+        Locator campoFoco = page.locator("//*[text()='"+coluna+"']/preceding-sibling::*/input[@type='checkbox']");
+        campoFoco.scrollIntoViewIfNeeded();
     }
 
-    private void voltarPadraoPersonalizarColunas() {
-        GeneralUtils.scrollToElement(this.btnPersonalizarColunas);
-        this.clickPersonalizarColunas();
+    private String[] atribuirListaInicialColunas(@NotNull String abaRelatorio) {
+        String[] listaInicialColunas = new String[0];
+        if (abaRelatorio.equalsIgnoreCase("Hoje"))
+            listaInicialColunas = "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Bandeira;Canal;Terminal;Valor bruto;Status".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas"))
+            listaInicialColunas = "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor bruto;Valor líquido;Status;Terminal".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Não efetivadas"))
+            listaInicialColunas = "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Bandeira;Canal;Terminal;Valor bruto;Status".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações"))
+            listaInicialColunas = "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante de venda".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Voucher"))
+            listaInicialColunas = "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Bandeira;Canal;Número do Terminal;Valor bruto;Status".split(";");
+
+        return listaInicialColunas;
+    }
+
+    public void clickVoltarPadrao() { this.linkVoltarPadrao.click(); }
+    public void clickAplicarPersonalizacao() { this.btnAplicarPersonalizacao.click(); }
+
+    private void voltarPadraoPersonalizarColunas(String abaRelatorio) {
+        this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas").scrollIntoViewIfNeeded();
+        this.clickPersonalizarColunas(abaRelatorio);
         this.verificarPersonalizarColunas();
 
-        GeneralUtils.scrollToElement(this.linkVoltarPadrao);
+        this.linkVoltarPadrao.scrollIntoViewIfNeeded();
         this.clickVoltarPadrao();
         GeneralUtils.waitForMillis(Config.DELAY_IN_ACTION);
     }
@@ -813,75 +748,80 @@ public class VendasPage {
         // Adicionar coluna
         this.selecionarColunaPersonalizacao(colunaAdicionar);
 
-        GeneralUtils.scrollToElement(this.btnAplicarPersonalizacao);
-        this.clickAplicar();
+        this.btnAplicarPersonalizacao.scrollIntoViewIfNeeded();
+        this.clickAplicarPersonalizacao();
     }
 
-    public void personalizarColunas(String colunas) {
+    public void personalizarColunas(String colunas, String abaRelatorio) {
         GeneralUtils.waitForMillis(Config.DELAY_IN_ACTION);
-        GeneralUtils.scrollToElement(this.btnPersonalizarColunas);
+        this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas").scrollIntoViewIfNeeded();
         // Acessa o Personalizar Colunas
-        this.clickPersonalizarColunas();
+        this.clickPersonalizarColunas(abaRelatorio);
         this.verificarPersonalizarColunas();
 
-        GeneralUtils.scrollToElement(this.ckbCodReferenciaCartao);
+        this.linkVoltarPadrao.scrollIntoViewIfNeeded();
         GeneralUtils.waitForMillis(Config.DELAY_IN_ACTION);
 
         // Limpar personalização inicial de colunas
-        this.clickPersonalizarColunasDataVenda();
-        this.clickPersonalizarColunasCodAutorizacao();
-        this.clickPersonalizarColunasComprovanteVenda();
-        this.clickPersonalizarColunasProduto();
-        this.clickPersonalizarColunasParcelas();
-        this.clickPersonalizarColunasBandeira();
-        this.clickPersonalizarColunasCanal();
-        this.clickPersonalizarColunasTerminal();
-        this.clickPersonalizarColunasValorBruto();
-        this.clickPersonalizarColunasStatus();
+        String[] listaInicialColunas = this.atribuirListaInicialColunas(abaRelatorio);
+        for (String coluna1 : listaInicialColunas)
+            this.selecionarColunaPersonalizacao(coluna1);
 
+        // Selecionar colunas enviadas por parâmetro
         String[] listaColunas = colunas.split(";");
+        for (String coluna2 : listaColunas)
+            this.selecionarColunaPersonalizacao(coluna2);
 
-        for (String coluna : listaColunas)
-            this.selecionarColunaPersonalizacao(coluna);
-
-        GeneralUtils.scrollToElement(this.btnAplicarPersonalizacao);
-        this.clickAplicar();
+        this.btnAplicarPersonalizacao.scrollIntoViewIfNeeded();
+        this.clickAplicarPersonalizacao();
     }
 
-    public void validarPersonalizacaoColunas(String colunas) {
-        GeneralUtils.scrollToElement(this.resultadoColunas);
+    public void validarPersonalizacaoColunas(@NotNull String colunas, String abaRelatorio) {
+        this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
         GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
 
         Locator colunaResultado = page.locator("");
         String[] listaColunas = colunas.split(";");
 
         for (String coluna : listaColunas) {
-            if (coluna.equalsIgnoreCase("dataVenda"))
-                colunaResultado = resultadoColunaDataVenda;
-            else if (coluna.equalsIgnoreCase("codAutorizacao"))
-                colunaResultado = resultadoColunaCodAutorizacao;
-            else if (coluna.equalsIgnoreCase("comprovanteVenda"))
-                colunaResultado = resultadoColunaComprovanteVenda;
-            else if (coluna.equalsIgnoreCase("produto"))
-                colunaResultado = resultadoColunaProduto;
-            else if (coluna.equalsIgnoreCase("parcelas"))
-                colunaResultado = resultadoColunaParcelas;
-            else if (coluna.equalsIgnoreCase("bandeira"))
-                colunaResultado = resultadoColunaBandeira;
-            else if (coluna.equalsIgnoreCase("canal"))
-                colunaResultado = resultadoColunaCanal;
-            else if (coluna.equalsIgnoreCase("terminal"))
-                colunaResultado = resultadoColunaTerminal;
-            else if (coluna.equalsIgnoreCase("valorBruto"))
-                colunaResultado = resultadoColunaValor;
-            else if (coluna.equalsIgnoreCase("status"))
-                colunaResultado = resultadoColunaStatus;
-            else if (coluna.equalsIgnoreCase("estabelecimento"))
-                colunaResultado = resultadoColunaEsbalecimento;
-            else if (coluna.equalsIgnoreCase("finalCartao"))
-                colunaResultado = resultadoColunaFinalCartao;
-            else if (coluna.equalsIgnoreCase("codReferenciaCartao"))
-                colunaResultado = resultadoColunaCodReferenciaCartao;
+            if (coluna.equalsIgnoreCase("Data da venda"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataVenda");
+            else if (coluna.equalsIgnoreCase("Cód. de autorização"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodAutorizacao");
+            else if (coluna.equalsIgnoreCase("Comprovante de venda"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaComprovanteVenda");
+            else if (coluna.equalsIgnoreCase("Produto"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaProduto");
+            else if (coluna.equalsIgnoreCase("Parcelas"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaParcelas");
+            else if (coluna.equalsIgnoreCase("Bandeira"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaBandeira");
+            else if (coluna.equalsIgnoreCase("Canal"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCanal");
+            else if (coluna.equalsIgnoreCase("Terminal"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTerminal");
+            else if (coluna.equalsIgnoreCase("Valor bruto"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBruto");
+            else if (coluna.equalsIgnoreCase("Valor Líquido"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorLiquido");
+            else if (coluna.equalsIgnoreCase("Valor da taxa"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorTaxa");
+            else if (coluna.equalsIgnoreCase("Valor original da venda"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorOriginalVenda");
+            else if (coluna.equalsIgnoreCase("Valor autorizado"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorAutorizado");
+            else if (coluna.equalsIgnoreCase("Valor Confirmado"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorConfirmado");
+            else if (coluna.equalsIgnoreCase("Status"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaStatus");
+            else if (coluna.equalsIgnoreCase("Estabelecimento"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaEsbalecimento");
+            else if (coluna.equalsIgnoreCase("Final do cartão"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaFinalCartao");
+            else if (coluna.equalsIgnoreCase("Cód. referência do cartão"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodReferenciaCartao");
+            else if (coluna.equalsIgnoreCase("Cód. do pedido"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodPedido");
 
             for (Locator row : colunaResultado.getByRole(AriaRole.LISTITEM).all()) {
                 if (!row.textContent().equalsIgnoreCase(""))
@@ -889,26 +829,30 @@ public class VendasPage {
             }
         }
 
-        this.voltarPadraoPersonalizarColunas();
+        this.voltarPadraoPersonalizarColunas(abaRelatorio);
     }
 
     // Resultado coluna
-    public void validarAtribuicaoFiltro(String valor, String filtro) {
-        GeneralUtils.scrollToElement(this.resultadoColunas);
+    public void validarAtribuicaoFiltro(String valor, @NotNull String filtro, String abaRelatorio) {
+        this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
         GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
 
         switch (filtro) {
-            case "codAutorizacao":
-                for (Locator row : resultadoColunaCodAutorizacao.getByRole(AriaRole.LISTITEM).all()) {
+            case "Cód. de autorização":
+                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodAutorizacao")
+                        .getByRole(AriaRole.LISTITEM).all()) {
                     if (valor.equalsIgnoreCase("primeiroRegistro"))
-                        assertThat(row).containsText(this.primeiroRegistroCodAutorizacao.textContent().trim());
+                        assertThat(row).containsText(
+                                this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodAutorizacao").textContent().trim()
+                        );
                     else
                         assertThat(row).containsText(valor);
                 }
                 break;
 
-            case "status":
-                for (Locator row : resultadoColunaStatus.getByRole(AriaRole.LISTITEM).all()) {
+            case "Status":
+                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaStatus")
+                        .getByRole(AriaRole.LISTITEM).all()) {
                     if (valor.equalsIgnoreCase("todos")) {
                         if (!row.textContent().equalsIgnoreCase(""))
                             assertThat(row).isVisible();
@@ -917,8 +861,9 @@ public class VendasPage {
                 }
                 break;
 
-            case "produtos":
-                for (Locator row : resultadoColunaProduto.getByRole(AriaRole.LISTITEM).all()) {
+            case "Produto":
+                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaProduto")
+                        .getByRole(AriaRole.LISTITEM).all()) {
                     if (valor.equalsIgnoreCase("todos")) {
                         if (!row.textContent().equalsIgnoreCase(""))
                             assertThat(row).isVisible();
@@ -927,15 +872,9 @@ public class VendasPage {
                 }
                 break;
 
-            case "canal":
-                for (Locator row : resultadoColunaCanal.getByRole(AriaRole.LISTITEM).all()) {
-                    if (!row.textContent().equalsIgnoreCase(""))
-                        assertThat(row).isVisible();
-                }
-                break;
-
-            case "bandeira":
-                for (Locator row : resultadoColunaBandeira.getByRole(AriaRole.LISTITEM).all()) {
+            case "Canal":
+                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCanal")
+                        .getByRole(AriaRole.LISTITEM).all()) {
                     if (valor.equalsIgnoreCase("todos")) {
                         if (!row.textContent().equalsIgnoreCase(""))
                             assertThat(row).isVisible();
@@ -944,50 +883,84 @@ public class VendasPage {
                 }
                 break;
 
-            case "valores":
-                for (Locator row : resultadoColunaValor.getByRole(AriaRole.LISTITEM).all()) {
-                    String valorBruto = row.textContent().trim();
-                    valorBruto = valorBruto.replaceAll(",", ".");
-                    valorBruto = valorBruto.replaceAll("R$ ", "");
-                    double valorBrutoReal = Double.parseDouble(valorBruto);
-
-                    // valor De e Ate separados por ";"
-                    String[] valores = valor.split(";");
-                    double valorDe = Double.parseDouble(valores[0]);
-                    double valorAte = Double.parseDouble(valores[1]);
-
-                    if ((valorBrutoReal >= valorDe) && (valorBrutoReal <= valorAte))
-                        assertThat(row).isVisible();
-                    else
-                        assertThat(row).not().isVisible();
+            case "Bandeira":
+                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaBandeira")
+                        .getByRole(AriaRole.LISTITEM).all()) {
+                    if (valor.equalsIgnoreCase("todos")) {
+                        if (!row.textContent().equalsIgnoreCase(""))
+                            assertThat(row).isVisible();
+                    } else
+                        assertThat(row).containsText(valor);
                 }
                 break;
 
-            case "estabelecimento":
+            case "Valores":
+                    String[] listaResultadoColunaValor = new String[0];
+                if (abaRelatorio.equalsIgnoreCase("Hoje"))
+                    listaResultadoColunaValor = "resultadoColunaValorBruto".split(";");
+                else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas"))
+                    listaResultadoColunaValor = "resultadoColunaValorBruto;resultadoColunaValorLiquido;resultadoColunaValorTaxa;resultadoColunaValorOriginalVenda".split(";");
+                else if (abaRelatorio.equalsIgnoreCase("Não efetivadas"))
+                    listaResultadoColunaValor = "resultadoColunaValorBruto".split(";");
+                else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações"))
+                    listaResultadoColunaValor = "resultadoColunaValorAutorizado;resultadoColunaValorConfirmado".split(";");
+                else if (abaRelatorio.equalsIgnoreCase("Voucher"))
+                    listaResultadoColunaValor = "resultadoColunaValorBruto".split(";");
+
+                for (String resultadoColunaValor : listaResultadoColunaValor) {
+                    for (Locator row : this.getLocatorFromReportTab(abaRelatorio, resultadoColunaValor)
+                            .getByRole(AriaRole.LISTITEM).all()) {
+                        String valorColuna = row.textContent().trim();
+                        valorColuna = valorColuna.replaceAll(",", ".");
+                        valorColuna = valorColuna.replaceAll("R$ ", "");
+                        double valorColunaReal = Double.parseDouble(valorColuna);
+
+                        // valor De e Ate separados por ";"
+                        String[] valores = valor.split(";");
+                        double valorDe = Double.parseDouble(valores[0]);
+                        double valorAte = Double.parseDouble(valores[1]);
+
+                        if ((valorColunaReal >= valorDe) && (valorColunaReal <= valorAte))
+                            assertThat(row).isVisible();
+                        else
+                            assertThat(row).not().isVisible();
+                    }
+                }
+                break;
+
+            case "Estabelecimento":
                 // Acessa o Personalizar Colunas
-                this.clickPersonalizarColunas();
+                this.clickPersonalizarColunas(abaRelatorio);
                 this.verificarPersonalizarColunas();
 
                 // Remove o Status e adiciona o Esbelecimento aplicando a personalização de colunas
-                String colunaRemover = "status", colunaAdicionar = "estabelecimento";
+                String colunaRemover = "Status", colunaAdicionar = "Estabelecimento";
                 this.realizarTrocaPersonalizarColunas(colunaRemover, colunaAdicionar);
 
                 GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
-                GeneralUtils.scrollToElement(this.resultadoColunas);
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
 
-                for (Locator row : resultadoColunaEsbalecimento.getByRole(AriaRole.LISTITEM).all()) {
-                    if (!row.textContent().equalsIgnoreCase(""))
-                        assertThat(row).isVisible();
+                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaEsbalecimento")
+                        .getByRole(AriaRole.LISTITEM).all()) {
+                    if (valor.equalsIgnoreCase("todos")) {
+                        if (!row.textContent().equalsIgnoreCase(""))
+                            assertThat(row).isVisible();
+                    } else
+                        assertThat(row).containsText(valor);
                 }
 
-                this.voltarPadraoPersonalizarColunas();
+                this.voltarPadraoPersonalizarColunas(abaRelatorio);
 
                 break;
 
-            case "terminal":
-                for (Locator row : resultadoColunaTerminal.getByRole(AriaRole.LISTITEM).all()) {
-                    if (!row.textContent().equalsIgnoreCase(""))
-                        assertThat(row).isVisible();
+            case "Terminal":
+                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTerminal")
+                        .getByRole(AriaRole.LISTITEM).all()) {
+                    if (valor.equalsIgnoreCase("todos")) {
+                        if (!row.textContent().equalsIgnoreCase(""))
+                            assertThat(row).isVisible();
+                    } else
+                        assertThat(row).containsText(valor);
                 }
                 break;
         }
@@ -998,7 +971,7 @@ public class VendasPage {
         assertThat(titleExportar).isVisible();
     }
 
-    private void selecionarTipoArquivo(String tipoArquivo) {
+    private void selecionarTipoArquivo(@NotNull String tipoArquivo) {
         this.slcTipoArquivo.hover();
 
         if (tipoArquivo.equalsIgnoreCase("Excel"))
@@ -1007,12 +980,12 @@ public class VendasPage {
             this.optCSV.click();
     }
 
-    public void clickCancelar() { this.btnCancelar.click(); }
+    private void clickCancelar() { this.btnCancelar.click(); }
 
-    public void validarNomeArquivo(String tipoArquivo) {
+    public void validarNomeArquivo(String tipoArquivo, String abaRelatorio) {
         // realiza o exportar
-        GeneralUtils.scrollToElement(this.btnExportar);
-        this.clickExportar();
+        this.getLocatorFromReportTab(abaRelatorio, "btnExportar").scrollIntoViewIfNeeded();
+        this.clickExportar(abaRelatorio);
         this.verificarExportar();
         this.selecionarTipoArquivo(tipoArquivo);
 
@@ -1027,13 +1000,13 @@ public class VendasPage {
             assertFalse(false);
     }
 
-    public void validarColunasArquivo(String colunas, String tipoArquivo) throws IOException {
+    public void validarColunasArquivo(@NotNull String colunas, String tipoArquivo, String abaRelatorio) throws IOException {
         // Cria a lista de colunas do arquivo
         List<String> listaColunas = List.of(colunas.split(";"));
 
         // realiza o exportar
-        GeneralUtils.scrollToElement(this.btnExportar);
-        this.clickExportar();
+        this.getLocatorFromReportTab(abaRelatorio, "btnExportar").scrollIntoViewIfNeeded();
+        this.clickExportar(abaRelatorio);
         this.verificarExportar();
         this.selecionarTipoArquivo(tipoArquivo);
 

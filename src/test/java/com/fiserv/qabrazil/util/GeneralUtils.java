@@ -35,15 +35,7 @@ public class GeneralUtils {
         }
     }
 
-    public static Locator getLocatorByXpath(Page page, String xpath) {
-        return page.locator(xpath);
-    }
-
     public static void waitForMillis(int millis) {
         WaitUtil.sleep(Duration.ofMillis(millis));
-    }
-
-    public static void scrollToElement(Locator locator) {
-        locator.scrollIntoViewIfNeeded();
     }
 }

@@ -109,367 +109,384 @@ Feature: Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    And realiza a personalizacao das colunas <colunas>
-    And valida que foi aplicado a personalizacao das colunas <colunas>
+    And realiza a personalizacao das colunas <colunas> - <abaRelatorio>
+    And valida que foi aplicado a personalizacao das colunas <colunas> - <abaRelatorio>
     @bin @personalizarColunas
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | colunas                                                                                                                        |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "dataVenda;produto;bandeira;valorBruto;status"                                                                                 |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "dataVenda;codAutorizacao;comprovanteVenda;produto;parcelas;valorBruto;status;estabelecimento;finalCartao;codReferenciaCartao" |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao;canal;estabelecimento;finalCartao;codReferenciaCartao"                                                         |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                 |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;codReferenciaCartao" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                         |
 
     @sicredi @personalizarColunas
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | colunas                                                                                                                        |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "dataVenda;produto;bandeira;valorBruto;status"                                                                                 |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "dataVenda;codAutorizacao;comprovanteVenda;produto;parcelas;valorBruto;status;estabelecimento;finalCartao;codReferenciaCartao" |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao;canal;estabelecimento;finalCartao;codReferenciaCartao"                                                         |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                 |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                         |
 
     @azulzinha @personalizarColunas
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | colunas                                                                                                                        |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "dataVenda;produto;bandeira;valorBruto;status"                                                                                 |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "dataVenda;codAutorizacao;comprovanteVenda;produto;parcelas;valorBruto;status;estabelecimento;finalCartao;codReferenciaCartao" |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao;canal;estabelecimento;finalCartao;codReferenciaCartao"                                                         |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                 |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                         |
 
     @afinz @personalizarColunas
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | colunas                                                                                                                        |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "dataVenda;produto;bandeira;valorBruto;status"                                                                                 |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "dataVenda;codAutorizacao;comprovanteVenda;produto;parcelas;valorBruto;status;estabelecimento;finalCartao;codReferenciaCartao" |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao;canal;estabelecimento;finalCartao;codReferenciaCartao"                                                         |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                 |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                         |
 
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    And aplicar o filtro <filtro> atribuindo o valor <valor>
-    And valida que foi atribuido o valor <valor> do filtro <filtro>
+    And aplicar o filtro <filtro> atribuindo o valor <valor> - <abaRelatorio>
+    And valida que foi atribuido o valor <valor> do filtro <filtro> - <abaRelatorio>
     @bin @filtro @codAutorizacao
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | filtro           | valor              |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao" | "primeiroRegistro" |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao" | "WWW333"           |
+      | alianca | menu     | submenu           | abaRelatorio | filtro                | valor              |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "primeiroRegistro" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "WWW333"           |
 
     @bin @filtro @status
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro   | valor        |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "todos"      |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Autorizada" |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Recusada"   |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Estornada"  |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "todos"      |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Autorizada" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Recusada"   |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Estornada"  |
 
-    @bin @filtro @produtos
+    @bin @filtro @produto
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | filtro     | valor                   |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "todos"                 |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Crédito"               |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Crédito Internacional" |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Débito"                |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Débito Internacional"  |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Refeição"              |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Alimentação"           |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Premium"               |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Cultura"               |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Auto"                  |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Gift"                  |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Corporativo"           |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Benefícios"            |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Multiplo"              |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Flex"                  |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Natal"                 |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Multibenefícios"       |
+      | alianca | menu     | submenu           | abaRelatorio | filtro    | valor                   |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "todos"                 |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito"               |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito Internacional" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito"                |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito Internacional"  |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Refeição"              |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Alimentação"           |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Premium"               |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Cultura"               |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Auto"                  |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Gift"                  |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Corporativo"           |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Benefícios"            |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multiplo"              |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Flex"                  |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Natal"                 |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multibenefícios"       |
 
     @bin @filtro @canal
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | filtro  | valor                     |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "canal" | "todos"                   |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "canal" | "selecionarPrimeiraOpcao" |
+      | alianca | menu     | submenu           | abaRelatorio | filtro  | valor       |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "todos"     |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "ECOMMERCE" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
+
 
     @bin @filtro @bandeira
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro     | valor         |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "todos"       |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Mastercard"  |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Maestro"     |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Cabal"       |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Elo"         |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Banese"      |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Ticket"      |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Alelo"       |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Sorocred"    |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Amex"        |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Hipercard"   |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Pluxee"      |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "VR"          |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Visa"        |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Softnex"     |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Redecompras" |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Fepas"       |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "todos"       |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Mastercard"  |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Maestro"     |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Cabal"       |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Elo"         |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Banese"      |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Ticket"      |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Alelo"       |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Sorocred"    |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Amex"        |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Hipercard"   |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Pluxee"      |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "VR"          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Visa"        |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Softnex"     |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Redecompras" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Fepas"       |
 
     @bin @filtro @valores
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro    | valor      |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "valores" | "100;300"  |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "valores" | "500;1000" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "100;300"  |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "500;1000" |
 
     @bin @filtro @estabelecimento
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | filtro            | valor                     |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "estabelecimento" | "todos"                   |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "estabelecimento" | "selecionarPrimeiraOpcao" |
+      | alianca | menu     | submenu           | abaRelatorio | filtro            | valor      |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "todos"    |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "91084373" |
 
     @bin @filtro @terminal
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | filtro     | valor                     |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "terminal" | "todos"                   |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "terminal" | "selecionarPrimeiraOpcao" |
+      | alianca | menu     | submenu           | abaRelatorio | filtro     | valor      |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "todos"    |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "LNK01D49" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
     @sicredi @filtro @codAutorizacao
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | filtro           | valor              |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao" | "primeiroRegistro" |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao" | "WWW333"           |
+      | alianca   | menu     | submenu           | abaRelatorio | filtro                | valor              |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "primeiroRegistro" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "WWW333"           |
 
     @sicredi @filtro @status
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | filtro   | valor        |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "todos"      |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Autorizada" |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Recusada"   |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Estornada"  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "todos"      |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Autorizada" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Recusada"   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Estornada"  |
 
-    @sicredi @filtro @produtos
+    @sicredi @filtro @produto
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | filtro     | valor                   |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "todos"                 |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Crédito"               |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Crédito Internacional" |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Débito"                |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Débito Internacional"  |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Refeição"              |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Alimentação"           |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Premium"               |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Cultura"               |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Auto"                  |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Gift"                  |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Corporativo"           |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Benefícios"            |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Multiplo"              |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Flex"                  |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Natal"                 |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Multibenefícios"       |
+      | alianca   | menu     | submenu           | abaRelatorio | filtro    | valor                   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "todos"                 |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito"               |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito Internacional" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito"                |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito Internacional"  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Refeição"              |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Alimentação"           |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Premium"               |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Cultura"               |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Auto"                  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Gift"                  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Corporativo"           |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Benefícios"            |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multiplo"              |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Flex"                  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Natal"                 |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multibenefícios"       |
 
     @sicredi @filtro @canal
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | filtro  | valor                     |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "canal" | "todos"                   |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "canal" | "selecionarPrimeiraOpcao" |
+      | alianca   | menu     | submenu           | abaRelatorio | filtro  | valor       |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "todos"     |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "ECOMMERCE" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
 
     @sicredi @filtro @bandeira
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | filtro     | valor         |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "todos"       |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Mastercard"  |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Maestro"     |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Cabal"       |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Elo"         |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Banese"      |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Ticket"      |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Alelo"       |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Sorocred"    |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Amex"        |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Hipercard"   |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Pluxee"      |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "VR"          |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Visa"        |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Softnex"     |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Redecompras" |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Fepas"       |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "todos"       |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Mastercard"  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Maestro"     |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Cabal"       |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Elo"         |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Banese"      |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Ticket"      |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Alelo"       |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Sorocred"    |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Amex"        |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Hipercard"   |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Pluxee"      |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "VR"          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Visa"        |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Softnex"     |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Redecompras" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Fepas"       |
 
     @sicredi @filtro @valores
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | filtro    | valor      |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "valores" | "100;300"  |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "valores" | "500;1000" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "100;300"  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "500;1000" |
 
     @sicredi @filtro @estabelecimento
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | filtro            | valor                     |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "estabelecimento" | "todos"                   |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "estabelecimento" | "selecionarPrimeiraOpcao" |
+      | alianca   | menu     | submenu           | abaRelatorio | filtro            | valor      |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "todos"    |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "91084373" |
 
     @sicredi @filtro @terminal
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | filtro     | valor                     |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "terminal" | "todos"                   |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "terminal" | "selecionarPrimeiraOpcao" |
+      | alianca   | menu     | submenu           | abaRelatorio | filtro     | valor      |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "todos"    |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "LNK01D49" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
     @azulzinha @filtro @codAutorizacao
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | filtro           | valor              |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao" | "primeiroRegistro" |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao" | "WWW333"           |
+      | alianca     | menu     | submenu           | abaRelatorio | filtro                | valor              |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "primeiroRegistro" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "WWW333"           |
 
     @azulzinha @filtro @status
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | filtro   | valor        |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "todos"      |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Autorizada" |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Recusada"   |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Estornada"  |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "todos"      |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Autorizada" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Recusada"   |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Estornada"  |
 
-    @azulzinha @filtro @produtos
+    @azulzinha @filtro @produto
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | filtro     | valor                   |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "todos"                 |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Crédito"               |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Crédito Internacional" |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Débito"                |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Débito Internacional"  |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Refeição"              |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Alimentação"           |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Premium"               |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Cultura"               |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Auto"                  |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Gift"                  |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Corporativo"           |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Benefícios"            |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Multiplo"              |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Flex"                  |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Natal"                 |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Multibenefícios"       |
+      | alianca     | menu     | submenu           | abaRelatorio | filtro    | valor                   |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "todos"                 |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito"               |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito Internacional" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito"                |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito Internacional"  |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Refeição"              |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Alimentação"           |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Premium"               |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Cultura"               |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Auto"                  |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Gift"                  |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Corporativo"           |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Benefícios"            |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multiplo"              |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Flex"                  |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Natal"                 |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multibenefícios"       |
 
     @azulzinha @filtro @canal
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | filtro  | valor                     |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "canal" | "todos"                   |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "canal" | "selecionarPrimeiraOpcao" |
+      | alianca     | menu     | submenu           | abaRelatorio | filtro  | valor       |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "todos"     |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "ECOMMERCE" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
 
     @azulzinha @filtro @bandeira
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | filtro     | valor         |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "todos"       |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Mastercard"  |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Maestro"     |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Cabal"       |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Elo"         |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Banese"      |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Ticket"      |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Alelo"       |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Sorocred"    |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Amex"        |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Hipercard"   |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Pluxee"      |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "VR"          |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Visa"        |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Softnex"     |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Redecompras" |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Fepas"       |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "todos"       |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Mastercard"  |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Maestro"     |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Cabal"       |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Elo"         |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Banese"      |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Ticket"      |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Alelo"       |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Sorocred"    |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Amex"        |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Hipercard"   |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Pluxee"      |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "VR"          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Visa"        |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Softnex"     |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Redecompras" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Fepas"       |
 
     @azulzinha @filtro @valores
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | filtro    | valor      |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "valores" | "100;300"  |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "valores" | "500;1000" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "100;300"  |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "500;1000" |
 
     @azulzinha @filtro @estabelecimento
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | filtro            | valor                     |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "estabelecimento" | "todos"                   |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "estabelecimento" | "selecionarPrimeiraOpcao" |
+      | alianca     | menu     | submenu           | abaRelatorio | filtro            | valor      |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "todos"    |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "91084373" |
 
     @azulzinha @filtro @terminal
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | filtro     | valor                     |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "terminal" | "todos"                   |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "terminal" | "selecionarPrimeiraOpcao" |
+      | alianca     | menu     | submenu           | abaRelatorio | filtro     | valor      |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "todos"    |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "LNK01D49" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
     @afinz @filtro @codAutorizacao
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | filtro           | valor              |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao" | "primeiroRegistro" |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "codAutorizacao" | "WWW333"           |
+      | alianca | menu     | submenu           | abaRelatorio | filtro                | valor              |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "primeiroRegistro" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "WWW333"           |
 
     @afinz @filtro @status
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro   | valor        |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "todos"      |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Autorizada" |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Recusada"   |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "status" | "Estornada"  |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "todos"      |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Autorizada" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Recusada"   |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Estornada"  |
 
-    @afinz @filtro @produtos
+    @afinz @filtro @produto
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | filtro     | valor                   |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "todos"                 |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Crédito"               |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Crédito Internacional" |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Débito"                |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Débito Internacional"  |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Refeição"              |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Alimentação"           |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Premium"               |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Cultura"               |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Auto"                  |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Gift"                  |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Corporativo"           |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Benefícios"            |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Multiplo"              |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Flex"                  |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Natal"                 |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "produtos" | "Multibenefícios"       |
+      | alianca | menu     | submenu           | abaRelatorio | filtro    | valor                   |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "todos"                 |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito"               |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito Internacional" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito"                |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito Internacional"  |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Refeição"              |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Alimentação"           |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Premium"               |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Cultura"               |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Auto"                  |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Gift"                  |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Corporativo"           |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Benefícios"            |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multiplo"              |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Flex"                  |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Natal"                 |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multibenefícios"       |
 
     @afinz @filtro @canal
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | filtro  | valor                     |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "canal" | "todos"                   |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "canal" | "selecionarPrimeiraOpcao" |
+      | alianca | menu     | submenu           | abaRelatorio | filtro  | valor       |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "todos"     |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "ECOMMERCE" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
 
     @afinz @filtro @bandeira
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro     | valor         |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "todos"       |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Mastercard"  |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Maestro"     |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Cabal"       |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Elo"         |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Banese"      |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Ticket"      |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Alelo"       |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Sorocred"    |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Amex"        |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Hipercard"   |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Pluxee"      |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "VR"          |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Visa"        |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Softnex"     |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Redecompras" |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "bandeira" | "Fepas"       |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "todos"       |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Mastercard"  |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Maestro"     |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Cabal"       |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Elo"         |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Banese"      |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Ticket"      |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Alelo"       |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Sorocred"    |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Amex"        |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Hipercard"   |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Pluxee"      |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "VR"          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Visa"        |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Softnex"     |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Redecompras" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Fepas"       |
 
     @afinz @filtro @valores
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro    | valor      |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "valores" | "100;300"  |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "valores" | "500;1000" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "100;300"  |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "500;1000" |
 
     @afinz @filtro @estabelecimento
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | filtro            | valor                     |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "estabelecimento" | "todos"                   |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "estabelecimento" | "selecionarPrimeiraOpcao" |
+      | alianca | menu     | submenu           | abaRelatorio | filtro            | valor      |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "todos"    |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "91084373" |
 
     @afinz @filtro @terminal
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | filtro     | valor                     |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "terminal" | "todos"                   |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "terminal" | "selecionarPrimeiraOpcao" |
+      | alianca | menu     | submenu           | abaRelatorio | filtro     | valor      |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "todos"    |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "LNK01D49" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    And valida o nome do arquivo <tipoArquivo> gerado
+    And valida o nome do arquivo <tipoArquivo> gerado - <abaRelatorio>
     @bin @gerarArquivo @excel
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo |
@@ -514,7 +531,7 @@ Feature: Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    And valida as colunas <colunas> do arquivo <tipoArquivo> gerado
+    And valida as colunas <colunas> do arquivo <tipoArquivo> gerado - <abaRelatorio>
     @bin @gerarArquivo @excel
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | colunas                                                                                                                                                                          |
