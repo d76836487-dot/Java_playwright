@@ -91,7 +91,7 @@ Feature: Termos de uso
     Then deve retornar para a tela de Termos e Condições
 
   @TestCaseKey=LPDC-T818
-  Scenario: Botão Baixar Documento
+  Scenario: Botão Baixar Documento - C/Conta Pix - Modal Termos de uso
     Given Usuário c/Conta Pix está no Modal Termos de uso de canais digitais
     When ele selecionar Botão Baixar Documento
     Then deve baixar PDF Com os termos
@@ -116,7 +116,7 @@ Feature: Termos de uso
     Then deve retornar para a tela de Termos e Condições
 
   @TestCaseKey=LPDC-T827
-  Scenario: Botão baixar Documento
+  Scenario: Botão baixar Documento - C/Conta Pix - Modal Contrato
     Given Usuário c/conta Pix está no Modal contrato conta Pix
     When ele selecionar Botão Baixar Documento
     Then deve baixar PDF Com os termos
@@ -141,7 +141,7 @@ Feature: Termos de uso
     Then deve retornar para a tela de Termos e Condições
 
   @TestCaseKey=LPDC-T822
-  Scenario: Botão Baixar Documento
+  Scenario: Botão Baixar Documento - S/Conta Pix - Modal Termos de uso
     Given Usuário s/conta Pix está no Modal Termo de uso de canais digitais
     When ele selecionar Botão Baixar Documento
     Then deve baixar PDF Com os termos
