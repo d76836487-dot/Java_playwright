@@ -23,19 +23,19 @@ Feature: Vendas Hoje
   Scenario: Validando Mensagem no rodapé
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
-    Then usuário visualizará a seguinte mensagem no rodapé: “© [ano atual] Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados”
+    Then usuário visualizará a seguinte mensagem no rodapé “© [ano atual] Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados”
 
   @TestCaseKey=LPDC-T911
   Scenario: Mensagem de resumo de vendas
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
-    Then usuário visualizará a seguinte mensagem: “Visualize suas vendas realizadas no dia. Não achou a venda que estava procurando? Ela pode levar até 15 minutos para ser apresentada aqui. E lembre-se, essas vendas estão em processamento, vendas estornadas ou não efetivadas aparecem aqui até o final do dia”
+    Then usuário visualizará a seguinte mensagem “Visualize suas vendas realizadas no dia. Não achou a venda que estava procurando? Ela pode levar até 15 minutos para ser apresentada aqui. E lembre-se, essas vendas estão em processamento, vendas estornadas ou não efetivadas aparecem aqui até o final do dia”
 
   @TestCaseKey=LPDC-T974
   Scenario: Visualização do campo “Resumo de vendas”
     Given usuário está logado no Portal do Cliente utilizando o CNPJ
     When usuário acessa a página de “Vendas” > “Relatório de Vendas” > “Hoje” ,pelo menu lateral esquerdo
-    Then usuário visualizará no campo “Resumo de vendas”: Total de vendas, Valor bruto das vendas autorizadas
+    Then usuário visualizará no campo “Resumo de vendas” Total de vendas, Valor bruto das vendas autorizadas
 
   @TestCaseKey=LPDC-T928
   Scenario: Visualização da tabela “Histórico de vendas”
@@ -84,7 +84,7 @@ Feature: Vendas Hoje
     And usuário seleciona Buscar por código de autorização
     And insere um Código Invalido
     And clica na lupa para buscar
-    Then usuário visualizará a seguinte mensagem na tela: “Nenhum resultado encontrado. Tente filtrar por outros períodos ou parâmetros”
+    Then usuário visualizará a seguinte mensagem na tela “Nenhum resultado encontrado. Tente filtrar por outros períodos ou parâmetros”
 
   @TestCaseKey=LPDC-T921
   Scenario: Busca por código de autorização com caracteres inválidos
@@ -93,7 +93,7 @@ Feature: Vendas Hoje
     And usuário seleciona Buscar por código de autorização
     And insere caracteres inválidos
     And clica na lupa para buscar
-    Then usuário visualizará a seguinte mensagem na tela: “Nenhum resultado encontrado. Tente filtrar por outros períodos ou parâmetros”
+    Then usuário visualizará a seguinte mensagem na tela “Nenhum resultado encontrado. Tente filtrar por outros períodos ou parâmetros”
 
   @TestCaseKey=LPDC-T969
   Scenario: Filtrar vendas hoje com todos os status
@@ -411,7 +411,7 @@ Feature: Vendas Hoje
     And usuário clica em Exportar
     And usuário seleciona o arquivo CSV
     And clica em Gerar arquivo
-    Then usuário verá a seguinte mensagem: “Arquivo exportado com sucesso”
+    Then usuário verá a seguinte mensagem “Arquivo exportado com sucesso”
 
   @TestCaseKey=LPDC-T946
   Scenario: Fazer download do arquivo Excel
@@ -420,7 +420,7 @@ Feature: Vendas Hoje
     And usuário clica em Exportar
     And usuário seleciona o arquivo Excel
     And clica em Gerar arquivo
-    Then usuário verá a seguinte mensagem: “Arquivo exportado com sucesso”
+    Then usuário verá a seguinte mensagem “Arquivo exportado com sucesso”
 
   @TestCaseKey=LPDC-T977
   Scenario: Validando Nome do arquivo Excel de Vendas Hoje
@@ -438,7 +438,7 @@ Feature: Vendas Hoje
   Scenario: Validando Colunas no arquivo Excel
     Given Usuario fez o Download do arquivo Excel
     When ele abrir o arquivo
-    Then o arquivo deve ter as seguintes colunas: Comprovante da venda, Produto    Parcelado, Bandeira, Canal, Terminal, Valor bruto, Status, Número do estabelecimento, Final do cartão e Cód. Ref. Cartão
+    Then o arquivo deve ter as seguintes colunas Comprovante da venda, Produto    Parcelado, Bandeira, Canal, Terminal, Valor bruto, Status, Número do estabelecimento, Final do cartão e Cód. Ref. Cartão
     And a soma da coluna Valor Bruto deve bater com a soma que esta no campo Valor Bruto na Tela Vendas Hoje
     And o Total de Vendas na parte de cima do Arquivo deve bater com o Total de Vendas na Tela Vendas Hoje
 
@@ -446,7 +446,7 @@ Feature: Vendas Hoje
   Scenario: Validando Colunas no arquivo CSV
     Given Usuario fez o Download do arquivo CSV
     When ele abrir o arquivo
-    Then o arquivo deve ter as seguintes colunas: Data da venda, Cód. de autorização, Comprovante, Produto, Parcelado, Bandeira, Canal, Terminal, Valor bruto, Status, Número do Estabelecimento, Final do cartão e Cód. Ref. Cartão
+    Then o arquivo deve ter as seguintes colunas Data da venda, Cód. de autorização, Comprovante, Produto, Parcelado, Bandeira, Canal, Terminal, Valor bruto, Status, Número do Estabelecimento, Final do cartão e Cód. Ref. Cartão
     And a soma da coluna Valor Bruto deve bater com a soma que esta no campo Valor Bruto na Tela Vendas Hoje
     And o Total de Vendas na parte de cima do Arquivo deve bater com o Total de Vendas na Tela Vendas Hoje
 

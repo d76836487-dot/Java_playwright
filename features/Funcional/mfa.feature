@@ -54,7 +54,6 @@ Feature: MFA
     Then vou visualizar a tela ‘Acesse o Token no aplicativo Máquina de cartões do Sicredi e informe o código de 6 dígitos abaixo:
     And ” e os Botões “Continuar”, “Não tenho esse token
 
-  #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
   @TestCaseKey=LPDC-T712
   Scenario: Cliente sem token habilitado Personalize sua Visualização
     Given insira um documento (CNPJ ou CPF) ou usuário e senha
@@ -201,7 +200,6 @@ Feature: MFA
     When realizar uma nova tentativa DENTRO DOS 30 MINUITOS DE BLOQUEIO
     Then o portal apresentará novamente a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
-  #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
   @TestCaseKey=LPDC-T709
   Scenario: Cliente com um dispositivo habilitado personalize sua Visualização.
     Given insira um documento (CNPJ ou CPF) ou usuário e senha
@@ -407,7 +405,6 @@ Feature: MFA
     When  realizar uma nova tentativa DENTRO DOS 30 MINUITOS DE BLOQUEIO
     Then  o portal apresentará novamente a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
-  #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
   @TestCaseKey=LPDC-T707
   Scenario: Cliente com token habilitado Personalize sua Visualização  aba documentos
     Given insira um documento (CNPJ ou CPF) ou usuário e senha
@@ -547,7 +544,6 @@ Feature: MFA
 
   @TestCaseKey=LPDC-T706
   Scenario: Cliente com mais de um dispositivo Personalize sua Visualização
-    #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
     Given insira um documento (CNPJ ou CPF) ou usuário e senha
     And clicar no botão entrar
     When  Visualiza a tela ‘Selecione o dispositivo que deseja informar o Token” com seus dispositivos cadastrados
@@ -666,7 +662,6 @@ Feature: MFA
     When realizar uma nova tentativa DENTRO DOS 30 MINUITOS DE BLOQUEIO
     Then o portal apresentará novamente a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
-  #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
   @TestCaseKey=LPDC-T732
   Scenario: Cliente com um dispositivo habilitado personalize sua visualização
     Given insira um documento (CNPJ ou CPF) ou usuário e senha
@@ -804,7 +799,6 @@ Feature: MFA
     When realizar uma nova tentativa DENTRO DOS 30 MINUITOS DE BLOQUEIO
     Then o portal apresentará novamente a mensagem “Número de tentativas excedido, tente novamente daqui 30 minutos.”
 
-  #para esse cenário a seguir (deve ser feito com um documento quAnd não     marcou a checkbox, definir como padrão)
   @TestCaseKey=LPDC-T727
   Scenario: Cliente com mais de um dispositivo habilitado personalize sua visualização
     Given insira um usuário e senha válido no Portal

@@ -31,18 +31,18 @@ Feature: Relatorio Recebimentos Futuros
     Then a mensagem "Relatório Solicitado com Sucesso!!" será exibida
 
   @TestCaseKey=LPDC-T980
-  Scenario: Validando Arquivo Excel
+  Scenario: Validando Arquivo Excel - Recebimentos Futuros
     Given que o Usuário Solicitou um Arquivo Excel
     When ele abrir o arquivo
-    Then deverá ver os seguintes campos:  Relatório de Recebimentos – Futuros, Periodo de Vendas, emitido em:, Estabelecimento Comercial: , Total de Vendas: , Valor liquido previsto:.
-    And as seguintes colunas: Data prevista de pagamento, Data de venda, Cód de autorização, Produto, Parcelas, Bandeira, Valor bruto, Valor bruto parcela, Valor da taxa, Valor líquido, Número do terminal, Canal, Cód do pedido, Número do estabelecimento, Número do cartão.
+    Then deverá ver os seguintes campos  Relatório de Recebimentos – Futuros, Periodo de Vendas, emitido em:, Estabelecimento Comercial: , Total de Vendas: , Valor liquido previsto:.
+    And as seguintes colunas Data prevista de pagamento, Data de venda, Cód de autorização, Produto, Parcelas, Bandeira, Valor bruto, Valor bruto parcela, Valor da taxa, Valor líquido, Número do terminal, Canal, Cód do pedido, Número do estabelecimento, Número do cartão.
 
   @TestCaseKey=LPDC-T976
-  Scenario: Validando Arquivo CSV
+  Scenario: Validando Arquivo CSV - Recebimentos Futuros
     Given que o Usuário Solicitou um Arquivo CSV
     When ele abrir o arquivo
-    Then deverá ver os seguintes campos:  Relatório de Recebimentos – Futuros, Periodo de Vendas, emitido em:, Estabelecimento Comercial: , Total de Vendas: , Valor liquido previsto:.
-    And as seguintes colunas: Data prevista de pagamento, Data de venda, Cód de autorização, Produto, Parcelas, Bandeira, Valor bruto, Valor bruto parcela, Valor da taxa, Valor líquido, Número do terminal, Canal, Cód do pedido, Número do estabelecimento, Número do cartão.
+    Then deverá ver os seguintes campos  Relatório de Recebimentos – Futuros, Periodo de Vendas, emitido em:, Estabelecimento Comercial: , Total de Vendas: , Valor liquido previsto:.
+    And as seguintes colunas Data prevista de pagamento, Data de venda, Cód de autorização, Produto, Parcelas, Bandeira, Valor bruto, Valor bruto parcela, Valor da taxa, Valor líquido, Número do terminal, Canal, Cód do pedido, Número do estabelecimento, Número do cartão.
 
   @TestCaseKey=LPDC-T982
   Scenario: Selecionando Pagamentos Futuros em Filtros

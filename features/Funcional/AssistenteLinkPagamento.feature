@@ -29,8 +29,6 @@ Feature: Assistente Link Pagamento
     And aceita os Termos e Condições
     And clica no botão Convidar
     Then aparecera um modal com a seguinte mensagem: Convite enviado com sucesso
-    #Enviamos um convite para o e-mail informado para o usuário completar seu acesso.
-    #Caso o usuário não tenha recebido o e-mail você pode solicitar o reenvio na página de convites pendente
     And Botão Entendi e X
 
   @TestCaseKey=LPDC-T1055
@@ -70,7 +68,6 @@ Feature: Assistente Link Pagamento
     Given usuário está na Página de Link de Pagamento
     When Selecionar a Aba Consultar Links
     Then terá acesso a página com a seguinte mensagem: Você ainda não tem criou nenhum link
-    #Você não possui nenhum link de pagamento ativo. Crie seu primeiro link de pagamento para vender ainda mais.
     And o Botão Criar Link de pagamento
 
   @TestCaseKey=LPDC-T1054
@@ -102,8 +99,6 @@ Feature: Assistente Link Pagamento
     And aceita os Termos e Condições
     And clica no botão Convidar
     Then aparecera um modal com a seguinte mensagem: Convite enviado com sucesso
-    # Enviamos um convite para o e-mail informado para o usuário completar seu acesso.
-    #Caso o usuário não tenha recebido o e-mail você pode solicitar o reenvio na página de convites pendente
     And Botão Entendi e X
 
   @TestCaseKey=LPDC-T1041
@@ -125,30 +120,12 @@ Feature: Assistente Link Pagamento
     When Clicar em Serviços > Link de Pagamento
     Then terá acesso a página de Link de pagamento com a seguinte mensagem: Comece a vender!
 
-  #Com o link de pagamento você consegue vender de qualquer lugar sem depender da maquininha! Entre em contato com a nossa equipe para saber mais e contratar o serviço.
-  #Capitais e Regiões Metropolitanas
-  #Segunda a Domingo das 08h00 às 22h00 (exceto feriados)
-  #Telefone
-  #3003 7828
-  #Outras Localidades
-  #Segunda a Domingo das 08h00 às 22h00 (exceto feriados)
-  #Telefone
-  #0800 728 7828
   @TestCaseKey=LPDC-T1056
   Scenario: Acesso a Página Link de Pagamento com EC sem Link habilitado
     Given usuário está em Acesso Rápido
     When Selecionar Link de Pagamento
     Then terá acesso a página de Link de pagamento com a seguinte mensagem: Comece a vender!
 
-  #Com o link de pagamento você consegue vender de qualquer lugar sem depender da maquininha! Entre em contato com a nossa equipe para saber mais e contratar o serviço.
-  #Capitais e Regiões Metropolitanas
-  #Segunda a Domingo das 08h00 às 22h00 (exceto feriados)
-  #Telefone
-  #3003 7828
-  #Outras Localidades
-  #Segunda a Domingo das 08h00 às 22h00 (exceto feriados)
-  #Telefone
-  #0800 728 7828
   @TestCaseKey=LPDC-T1045
   Scenario: Perfil Assistente Link de Pagamento vê todos os Links criados anteriormente
     Given usuário está na Página de Link de Pagamento

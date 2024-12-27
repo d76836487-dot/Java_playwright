@@ -36,7 +36,7 @@ Feature: Nao Efetivadas
     And Visualiza o Periodo com as datas selecionadas "dd/mm/aaaa" - "dd/mm/aaaa" e as Vendas nao Efetivadas do range selecionado
 
   @TestCaseKey=LPDC-T1139
-  Scenario: Exportar CSV
+  Scenario: Exportar CSV - Nao Efetivadas
     Given Usuário está na página Vendas > Nao Efetivadas
     When Clicar em exportar
     And baixa o Relatorio com nome no formato: Relatorio_de_Vendas_Nao_efetivadas _[dia-mes-ano_hora e minuto].csv
@@ -44,7 +44,7 @@ Feature: Nao Efetivadas
     And Visualiza os dados preenchidos em cada coluna
 
   @TestCaseKey=LPDC-T1117
-  Scenario: Exportar Excel
+  Scenario: Exportar Excel - Nao Efetivadas
     Given Usuário está na página Vendas > Nao Efetivadas
     When Clicar em exportar
     And baixa o Relatorio com nome no formato: Relatorio_de_Vendas_Nao_efetivadas _[dia-mes-ano_hora e minuto].csv

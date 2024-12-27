@@ -124,7 +124,6 @@ Feature: Health Check Antecipação
     And usuário seleciona o estabelecimento desejado
     Then usuário deve visualizar a página de antecipação com o estabelecimento escolhido
 
-  #Obs.: Testar com diferentes tipos de estabelecimentos
   @TestCaseKey=LPDC-T581
   Scenario: Fechar modal “Selecionar estabelecimento comercial” quando documento possuí outro estabelecimento
     Given usuário está logado no Merchant Portal
@@ -133,7 +132,6 @@ Feature: Health Check Antecipação
     And usuário deseja fechar o modal
     Then usuário deve visualizar a página de antecipação com o estabelecimento anterior
 
-  #Obs.: Testar com diferentes tipos de estabelecimentos
   @TestCaseKey=LPDC-T602
   Scenario: Mensagem título na página antecipação com plano Flex
     Given usuário está logado no Merchant Portal
@@ -141,7 +139,6 @@ Feature: Health Check Antecipação
     Then usuário deve visualizar o subtítulo “Plano Flex”
     And usuário deve visualizar o texto “Você possui o plano de recebimento Flex, portanto irá receber suas vendas na modalidade débito em 1 dia útil e as vendas na modalidade crédito em <X> dias”
 
-  #Obs.: O valor <X> depende do contrato de cada estabelecimento
   @TestCaseKey=LPDC-T628
   Scenario: Mensagem de texto na página antecipação com plano Flex
     Given usuário está logado no Merchant Portal
@@ -416,12 +413,6 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = <bandeira>, Produto = todos os produtos, canal de contratação = Portal do cliente, Período = antecipar todo o período até o momento
     And usuário visualizará a seguinte mensagem nos dados de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
-  #Exemplos:
-  #bandeira
-  #Elo
-  #Mastercard
-  #Visa
-  #Todas
   @TestCaseKey=LPDC-T624
   Scenario: Antecipar eventualmente com saldo disponível entre 12:16 e 18:45 personalizando por bandeira
     Given usuário está logado no Merchant Portal
@@ -434,7 +425,6 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = <bandeira>, Produto = todos os produtos, canal de contratação = Portal do cliente, Período = antecipar todo o período até o momento
     And usuário visualizará a seguinte mensagem nos dados de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
-  #Exemplos:   bandeira   Elo   Mastercard   Visa   Todas
   @TestCaseKey=LPDC-T595
   Scenario: Antecipar eventualmente com saldo disponível em dia não úteis personalizando por bandeira
     Given usuário está logado no Merchant Portal
@@ -447,7 +437,6 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = <bandeira>, Produto = todos os produtos, canal de contratação = Portal do cliente, Período = antecipar todo o período até o momento
     And usuário visualizará a seguinte mensagem nos dados de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
-  #Exemplos:   bandeira   Elo   Mastercard   Visa   Todas
   @TestCaseKey=LPDC-T593
   Scenario: Gerar comprovante de antecipação eventual com saldo disponível filtrando por bandeira
     Given usuário está logado no Merchant Portal
@@ -458,7 +447,6 @@ Feature: Health Check Antecipação
     And usuário gera o comprovante de antecipação
     Then usuário deve visualizar um arquivo pdf contendo: logo da aliança, título: “Comprovante de solicitação de antecipação eventual”, data e hora de emissão do PDF, número do estabelecimento comercial e informações gerais (valor bruto solicitado em reais, taxa, valor do desconto em reais, valor líquido a receber em reais, status = em andamento, bandeiras = <bandeira>, produto = todos, período = antecipar todo o período até o momento e canal de contratação = Portal do cliente)
 
-  #Exemplos:   bandeira   Elo   Mastercard   Visa   Todas
   @TestCaseKey=LPDC-T596
   Scenario: Antecipar eventualmente com saldo disponível entre 00:00 e 12:15 personalizando por produto
     Given usuário está logado no Merchant Portal
@@ -471,7 +459,6 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = todas as bandeiras, Produto = <produto>, canal de contratação = Portal do cliente, Período = antecipar todo o período até o momento
     And usuário visualizará a seguinte mensagem nos dados de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
-  # Exemplos:   Produto   Crédito a vista   Crédito parcelado   Todos
   @TestCaseKey=LPDC-T611
   Scenario: Antecipar eventualmente com saldo disponível entre 12:16 e 18:45 personalizando por produto
     Given usuário está logado no Merchant Portal
@@ -484,7 +471,6 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = todas as bandeiras, Produto = <produto>, canal de contratação = Portal do cliente, Período = antecipar todo o período até o momento
     And usuário visualizará a seguinte mensagem nos dados de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
-  # Exemplos:   Produto   Crédito a vista   Crédito parcelado   Todos
   @TestCaseKey=LPDC-T613
   Scenario: Antecipar eventualmente com saldo disponível em dia não úteis personalizando por produto
     Given usuário está logado no Merchant Portal
@@ -497,7 +483,6 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = todas as bandeiras, Produto = <produto>, canal de contratação = Portal do cliente, Período = antecipar todo o período até o momento
     And usuário visualizará a seguinte mensagem nos dados de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
-  #Exemplos:   Produto   Crédito a vista   Crédito parcelado   Todos
   @TestCaseKey=LPDC-T626
   Scenario: Gerar comprovante de antecipação eventual com saldo disponível filtrando por produto
     Given usuário está logado no Merchant Portal
@@ -508,7 +493,6 @@ Feature: Health Check Antecipação
     And usuário gera o comprovante de antecipação
     Then usuário deve visualizar um arquivo pdf contendo: logo da aliança, título: “Comprovante de solicitação de antecipação eventual”, data e hora de emissão do PDF, número do estabelecimento comercial e informações gerais (valor bruto solicitado em reais, taxa, valor do desconto em reais, valor líquido a receber em reais, status = em andamento, bandeiras = todas as bandeiras, produto = <produto>, período = antecipar todo o período até o momento e canal de contratação = Portal do cliente)
 
-  # Exemplos:   Produto  Crédito a vista   Crédito parcelado   Todos
   @TestCaseKey=LPDC-T612
   Scenario: Antecipar eventualmente com saldo disponível entre 00:00 e 12:15 personalizando período válido v1
     Given usuário está logado no Merchant Portal
@@ -521,7 +505,6 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = todas as bandeiras, Produto = todos os produtos, canal de contratação = Portal do cliente, Período = <DD/MM/AAAA – DD/MM/AAAA>
     And usuário visualizará a seguinte mensagem nos dados de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
-  # Exemplos:   Período   Vencimento de: Do dia corrente (dia da consulta) – 12/07/2023   Até: Sem limitação no calendário – 12/08/2023
   @TestCaseKey=LPDC-T641
   Scenario: Antecipar eventualmente com saldo disponível entre 12:16 e 18:45 personalizando por período válido
     Given usuário está logado no Merchant Portal
@@ -534,7 +517,6 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = todas as bandeiras, Produto = todos os produtos, canal de contratação = Portal do cliente, Período = <DD/MM/AAAA – DD/MM/AAAA>
     And usuário visualizará a seguinte mensagem nos dados de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
-  #Exemplos:   Período   Vencimento de: Do dia corrente (dia da consulta) – 12/07/2023   Até: Sem limitação no calendário – 12/08/2023
   @TestCaseKey=LPDC-T620
   Scenario: Antecipar eventualmente com saldo disponível entre 18:46 e 23:59 personalizando por período válido
     Given usuário está logado no Merchant Portal
@@ -547,7 +529,6 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = todas as bandeiras, Produto = todos os produtos, canal de contratação = Portal do cliente, Período = <DD/MM/AAAA – DD/MM/AAAA>
     And usuário visualizará a seguinte mensagem nos dados de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
-  # Exemplos:   Período   Vencimento de: Do dia corrente (dia da consulta) – 12/07/2023   Até: Sem limitação no calendário – 12/08/2023
   @TestCaseKey=LPDC-T605
   Scenario: Antecipar eventualmente com saldo disponível em dia não úteis personalizando por período válido
     Given usuário está logado no Merchant Portal
@@ -560,7 +541,6 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = todas as bandeiras, Produto = todos os produtos, canal de contratação = Portal do cliente, Período = <DD/MM/AAAA – DD/MM/AAAA>
     And usuário visualizará a seguinte mensagem nos dados de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
-  # Exemplos:   Período   Vencimento de: Do dia corrente (dia da consulta) – 12/07/2023   Até: Sem limitação no calendário – 12/08/2023
   @TestCaseKey=LPDC-T585
   Scenario: Gerar comprovante de antecipação eventual com saldo disponível filtrando por período válido
     Given usuário está logado no Merchant Portal
@@ -571,7 +551,6 @@ Feature: Health Check Antecipação
     And usuário gera o comprovante de antecipação
     Then usuário deve visualizar um arquivo pdf contendo: logo da aliança, título: “Comprovante de solicitação de antecipação eventual”, data e hora de emissão do PDF, número do estabelecimento comercial e informações gerais (valor bruto solicitado em reais, taxa, valor do desconto em reais, valor líquido a receber em reais, status = em andamento, bandeiras = todas as bandeiras, produto = todos os produtos, período = <DD/MM/AAAA – DD/MM/AAAA> e canal de contratação = Portal do cliente)
 
-  #Exemplos:   Período   Vencimento de: Do dia corrente (dia da consulta) – 12/07/2023   Até: Sem limitação no calendário – 12/08/2023
   @TestCaseKey=LPDC-T607
   Scenario: Nova simulação após antecipar eventualmente v1
     Given usuário está logado no Merchant Portal
@@ -623,9 +602,6 @@ Feature: Health Check Antecipação
     And usuário verá as informações gerais contendo: Valor bruto solicitado em reais, Taxa, Valor desconto em reais, Valor líquido a receber, status em andamento, bandeiras = Máster e Visa, Produto = Todos, canal de contratação = Portal do cliente, Período = Antecipar todo o período até o momento
     And usuário visualizará a seguinte mensagem nos Gives de pagamento: “Consulte seus domicílios bancários no menu Negócio” e um link para acessar menu Negócio
 
-  #======================================================================================================================
-  #  ANTECIPACAO V2 - Entrega que desliga o BW e a antecipação passa a ser no Portal - 20/08/2024 - Bressan
-  #======================================================================================================================
   @TestCaseKey=LPDC-T785
   Scenario: Antecipação V2 eventual com uma única Bandeira
     Given  usuário está logado no Portal do Cliente
@@ -709,14 +685,12 @@ Feature: Health Check Antecipação
 
   @TestCaseKey=LPDC-T782
   Scenario: Antecipação V2 Histórico Antecipação com Toggle desligado V2
-    #Premissa : (Inserir os passos de ligar e desligar o toggle)
     Given  usuário está na aba Antecipação
     When  usuário seleciona Histórico de Antecipações
     Then usuário acessara a aba histórico antecipação nativo via BW
 
   @TestCaseKey=LPDC-T775
   Scenario: Antecipação V2 Histórico Antecipação com Toggle ligado V2
-    # Premissa : (Inserir os passos de ligar e desligar o toggle)
     Given  usuário está na aba Antecipação
     When  usuário seleciona Histórico de Antecipações
     Then  usuário acessara a aba histórico antecipação com o filtro por período

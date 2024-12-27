@@ -53,7 +53,7 @@ Feature: SPLIT de Pagamento
     When O usuário abrir detalhe da venda
     And  ''exportar comprovante''
     And acessar relatório em PDF
-    Then O arquivo de PDF apresenta: No topo nome e número do estabelecimento AND em Informações gerais 'Data da venda , valor original da venda , valor bruto , canal , codigo de autorização, número do terminal, cod do pedido e comprovante da venda."
+    Then O arquivo de PDF apresenta No topo nome e número do estabelecimento AND em Informações gerais 'Data da venda , valor original da venda , valor bruto , canal , codigo de autorização, número do terminal, cod do pedido e comprovante da venda."
     And A informação "Valor original da venda" está presente no modal de detalhe da venda
 
   @TestCaseKey=LPDC-T1013
@@ -62,7 +62,7 @@ Feature: SPLIT de Pagamento
     When O usuário abrir detalhe da venda
     And  ''exportar comprovante''
     And acessar relatório em PDF
-    Then O arquivo de PDF segue como é atualmente e apresenta: No topo nome e número do estabelecimento AND em Informações gerais 'Data da venda, valor bruto , canal, codigo de autorização, número do terminal, cod do pedido e comprovante da venda."
+    Then O arquivo de PDF segue como é atualmente e apresenta No topo nome e número do estabelecimento AND em Informações gerais 'Data da venda, valor bruto , canal, codigo de autorização, número do terminal, cod do pedido e comprovante da venda."
     And A informação "Valor original da venda" NÃO está presente no detalhe da venda
 
   @TestCaseKey=LPDC-T1001
@@ -99,63 +99,63 @@ Feature: SPLIT de Pagamento
   Scenario: Recebimentos pagos exportar comprovante PDF - tipo SIMPLIFICADO
     Given O usuario está no menu Recebimento pagos
     When O usuario exportar arquivo SIMPLIFICADO na modalidade PDF
-    Then o pdf não deve conter alterações ,contém Informações gerais com as colunas: Dt. pagamento, bandeira, produto, banco, agencia, conta, tipo, EC, Cód Pagamento, V. pagamento e status.
+    Then o pdf não deve conter alterações ,contém Informações gerais com as colunas Dt. pagamento, bandeira, produto, banco, agencia, conta, tipo, EC, Cód Pagamento, V. pagamento e status.
 
   @TestCaseKey=LPDC-T1008
   Scenario: Recebimentos pagos exportar comprovante PDF - tipo DETALHADO
     Given O usuario está no menu Recebimento pagos
     When O usuario exportar arquivo DETALHADO na modalidade PDF
-    Then o pdf não deve conter alterações ,contém Informações gerais com as colunas: Dt. pagamento, Cod. pagamento, data venda, cod autorização, EC, bandeira, produto, parcelas, val bruto transação, val bruto parcela paga, valor taxa (MDR), valor liquido parcela/transação e numero cartão
+    Then o pdf não deve conter alterações ,contém Informações gerais com as colunas Dt. pagamento, Cod. pagamento, data venda, cod autorização, EC, bandeira, produto, parcelas, val bruto transação, val bruto parcela paga, valor taxa (MDR), valor liquido parcela/transação e numero cartão
 
   @TestCaseKey=LPDC-T1010
   Scenario: Recebimentos pagos exportar CSV - tipo DETALHADO
     Given o usuário está no menu Recebimento Pagos,
     When o usuário exportar arquivo DETALHADO na modalidade CSV
-    Then o CSV deve conter as colunas: Data de pagamento, Código de pagamento, Tipo de pagamento, Data da venda, Hora da venda, Número do estabelecimento, Nome do estabelecimento, Código de autorização, Comprovante da venda, Código do pedido, Canal, Número do terminal, Produto, Parcelas, Tipo de Cartão, Bandeira, Status da venda, Valor bruto da transação, Valor bruto da parcela paga, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Banco, Agência, Conta.
+    Then o CSV deve conter as colunas Data de pagamento, Código de pagamento, Tipo de pagamento, Data da venda, Hora da venda, Número do estabelecimento, Nome do estabelecimento, Código de autorização, Comprovante da venda, Código do pedido, Canal, Número do terminal, Produto, Parcelas, Tipo de Cartão, Bandeira, Status da venda, Valor bruto da transação, Valor bruto da parcela paga, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Banco, Agência, Conta.
 
   @TestCaseKey=LPDC-T999
   Scenario: Recebimentos pagos exportar Excel- tipo SIMPLIFICADO
     Given o usuário está no menu Recebimento Pagos,
     When o usuário exportar arquivo SIMPLIFICADO na modalidade Excel
-    Then o Excel NÃO deve conter nenhuma alteração, logo as colunas são: Data do pagamento, Bandeira, Produto, Banco, Agência, Conta, Tipo, EC, Cód. de pagamento, Valor pagamento, Status.
+    Then o Excel NÃO deve conter nenhuma alteração, logo as colunas são Data do pagamento, Bandeira, Produto, Banco, Agência, Conta, Tipo, EC, Cód. de pagamento, Valor pagamento, Status.
 
   @TestCaseKey=LPDC-T1004
   Scenario: Recebimentos pagos exportar Excel tipo DETALHADO
     Given o usuário está no menu Recebimento Pagos,
     When o usuário exportar arquivo DETALHADO na modalidade Excel
-    Then o CSV deve conter as colunas: Data de pagamento, Código de pagamento, Tipo de pagamento, Data da venda, Hora da venda, Número do estabelecimento, Nome do estabelecimento, Código de autorização, Comprovante da venda, Código do pedido, Canal, Número do terminal, Produto, Parcelas, Tipo de Cartão, Bandeira, Status da venda, Valor bruto da transação, Valor bruto da parcela paga, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Banco, Agência, Conta.
+    Then o CSV deve conter as colunas Data de pagamento, Código de pagamento, Tipo de pagamento, Data da venda, Hora da venda, Número do estabelecimento, Nome do estabelecimento, Código de autorização, Comprovante da venda, Código do pedido, Canal, Número do terminal, Produto, Parcelas, Tipo de Cartão, Bandeira, Status da venda, Valor bruto da transação, Valor bruto da parcela paga, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Banco, Agência, Conta.
 
   @TestCaseKey=LPDC-T998
   Scenario: Recebimentos pagos exportar CSV- tipo SIMPLIFICADO
     Given o usuário abrir Recebimento Pagos,
     When o usuário exportar comprovante em Histórico de pagamento,
-    Then o CSV NÃO deve conter nenhuma alteração, logo as colunas são: Data do pagamento, Bandeira, Produto, Banco, Agência, Conta, Tipo, EC, Cód. de pagamento, Valor pagamento, Status.
+    Then o CSV NÃO deve conter nenhuma alteração, logo as colunas são Data do pagamento, Bandeira, Produto, Banco, Agência, Conta, Tipo, EC, Cód. de pagamento, Valor pagamento, Status.
 
   @TestCaseKey=LPDC-T1016
   Scenario: Meus relatórios de vendas Excel VENDAS
     Given o usuário acessar o relatório,
     When selecionar o tipo de relatório "VENDAS", preencher Estabelecimento comercial, Período e o Formato "Excel",
     And abrir o arquivo
-    Then validar as colunas: Data da venda, Hora da venda, Código de autorização, Código do estabelecimento, Nome do estabelecimento, Comprovante de venda, Código do pedido, Canal, Número do Terminal, Produto, Parcelas, Tipo de cartão, Bandeira, Status, Valor original da venda, Valor bruto da transação, Valor bruto da parcela, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Cartão pré-pago, Data prevista de pagamento da venda, Status do pagamento da venda, Data efetiva do pagamento da venda, Código de pagamento, Cód. Ref. Cartão.
+    Then validar as colunas Data da venda, Hora da venda, Código de autorização, Código do estabelecimento, Nome do estabelecimento, Comprovante de venda, Código do pedido, Canal, Número do Terminal, Produto, Parcelas, Tipo de cartão, Bandeira, Status, Valor original da venda, Valor bruto da transação, Valor bruto da parcela, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Cartão pré-pago, Data prevista de pagamento da venda, Status do pagamento da venda, Data efetiva do pagamento da venda, Código de pagamento, Cód. Ref. Cartão.
 
   @TestCaseKey=LPDC-T1002
   Scenario: Meus relatórios de vendas Excel PAGAMENTO
     Given o usuário acessar o relatório,
     When selecionar o tipo de relatório "PAGAMENTO", preencher Estabelecimento comercial, Período e o Formato "Excel",
     And abrir o arquivo,
-    Then validar as colunas: Data de pagamento, Código de pagamento, Tipo de pagamento, Data da venda, Hora da venda, Número do estabelecimento, Nome do estabelecimento, Código de autorização, Comprovante da venda, Código do pedido, Canal, Número do terminal, Produto, Parcelas, Tipo de Cartão, Bandeira, Status da venda, Valor bruto da transação, Valor bruto da parcela paga, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Banco, Agência, Conta.
+    Then validar as colunas Data de pagamento, Código de pagamento, Tipo de pagamento, Data da venda, Hora da venda, Número do estabelecimento, Nome do estabelecimento, Código de autorização, Comprovante da venda, Código do pedido, Canal, Número do terminal, Produto, Parcelas, Tipo de Cartão, Bandeira, Status da venda, Valor bruto da transação, Valor bruto da parcela paga, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Banco, Agência, Conta.
 
   @TestCaseKey=LPDC-T1011
   Scenario: Meus relatórios de vendas CSV VENDAS
     Given o usuário acessar o relatório,
     When selecionar o tipo de relatório "VENDAS", preencher Estabelecimento comercial, Período e o Formato "CSV",
     And abrir o arquivo,
-    Then validar as colunas: Data da venda, Hora da venda, Código de autorização, Código do estabelecimento, Nome do estabelecimento, Comprovante de venda, Código do pedido, Canal, Número do Terminal, Produto, Parcelas, Tipo de cartão, Bandeira, Status, Valor original da venda, Valor bruto da transação, Valor bruto da parcela, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Cartão pré-pago, Data prevista de pagamento da venda, Status do pagamento da venda, Data efetiva do pagamento da venda, Código de pagamento, Cód. Ref. Cartão.
+    Then validar as colunas Data da venda, Hora da venda, Código de autorização, Código do estabelecimento, Nome do estabelecimento, Comprovante de venda, Código do pedido, Canal, Número do Terminal, Produto, Parcelas, Tipo de cartão, Bandeira, Status, Valor original da venda, Valor bruto da transação, Valor bruto da parcela, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Cartão pré-pago, Data prevista de pagamento da venda, Status do pagamento da venda, Data efetiva do pagamento da venda, Código de pagamento, Cód. Ref. Cartão.
 
   @TestCaseKey=LPDC-T997
   Scenario: Meus relatórios de vendas CSV PAGAMENTO
     Given o usuário acessar o relatório,
     When selecionar o tipo de relatório "PAGAMENTO", preencher Estabelecimento comercial, Período e o Formato "CSV",
     And abrir o arquivo,
-    Then validar as colunas: Data de pagamento, Código de pagamento, Tipo de pagamento, Data da venda, Hora da venda, Número do estabelecimento, Nome do estabelecimento, Código de autorização, Comprovante da venda, Código do pedido, Canal, Número do terminal, Produto, Parcelas, Tipo de Cartão, Bandeira, Status da venda, Valor bruto da transação, Valor bruto da parcela paga, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Banco, Agência, Conta.
+    Then validar as colunas Data de pagamento, Código de pagamento, Tipo de pagamento, Data da venda, Hora da venda, Número do estabelecimento, Nome do estabelecimento, Código de autorização, Comprovante da venda, Código do pedido, Canal, Número do terminal, Produto, Parcelas, Tipo de Cartão, Bandeira, Status da venda, Valor bruto da transação, Valor bruto da parcela paga, Valor da taxa (MDR), Valor líquido da parcela/transação, Número do cartão, Banco, Agência, Conta.
 

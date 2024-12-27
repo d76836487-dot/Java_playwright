@@ -67,7 +67,7 @@ Feature: Debitos Ajustes V2
   Scenario: Colunas
     Given usuário esteja Logado no Portal
     When estiver em Débitos e Aluguéis
-    Then usuário visualizara, os seguintes dados:Data do ajuste, Valor do aluguel, Comprovante, Tecnologia, Estabelecimento, Data efetiva da cobrança e Status
+    Then usuário visualizara, os seguintes dados Data do ajuste, Valor do aluguel, Comprovante, Tecnologia, Estabelecimento, Data efetiva da cobrança e Status
 
   @TestCaseKey=LPDC-T1077
   Scenario: Status Pendente

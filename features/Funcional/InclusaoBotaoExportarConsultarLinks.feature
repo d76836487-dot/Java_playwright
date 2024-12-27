@@ -29,7 +29,7 @@ Feature: Inclusao do Botao Exportar para aba Consultar links
     Then deverá baixar o arquivo CSV
     And acima da tela aparecera uma mensagem na cor verde dizendo Arquivo Exportado Com Sucesso, e Botão X, junto a mensagem
 
-  Scenario: Validando Arquivo CSV
+  Scenario: Validando Arquivo CSV - Consultar links
     Given usuário baixou o arquivo CSV
     When ele abrir o arquivo
     Then ele deve estar com o seguinte nome Relatorio_de_consulta_link_de_pagamento_DD-MM-AA_HHMM.
@@ -41,7 +41,7 @@ Feature: Inclusao do Botao Exportar para aba Consultar links
     Then deverá baixar o arquivo Excel
     And acima da tela aparecera uma mensagem na cor verde dizendo Arquivo Exportado Com Sucesso, e Botão X, junto a mensagem
 
-  Scenario: Validando Arquivo Excel
+  Scenario: Validando Arquivo Excel - Consultar links
     Given usuário baixou o arquivo Excel
     When ele abrir o arquivo
     Then ele deve estar com o seguinte nome Relatorio_de_consulta_link_de_pagamento_DD-MM-AA_HHMM.

@@ -57,7 +57,7 @@ Feature: Produtos ALELO Natal Cultura Multibeneficios Todos os Perfis
   @TestCaseKey=LPDC-T992
   Scenario: Exportar arquivo CSV do menu “Vendas Hoje”
     Given usuário esteja na aba Vendas Hoje
-    When selecionou em Filtros > Produtos algum dos Produtos: Natal, Multibenefícios, Cultura
+    When selecionou em Filtros > Produtos algum dos Produtos Natal, Multibenefícios, Cultura
     And clicou em Mostrar Resultados
     And clica em Exportar
     And seleciona o tipo de arquivo CSV
@@ -65,16 +65,16 @@ Feature: Produtos ALELO Natal Cultura Multibeneficios Todos os Perfis
     Then Arquivo será gerado com Sucesso
 
   @TestCaseKey=LPDC-T987
-  Scenario: Validando Arquivo CSV
+  Scenario: Validando Arquivo CSV - Produtos
     Given Usuário exportou um arquivo CSV
     When ele abrir o Arquivo em sua máquina
-    Then o arquivo deverá vir com as seguintes colunas: Data da venda, Cód de autorização, Comprovante, Produto, Parcelado, Bandeira, Canal, Terminal, Valor bruto, Status, Número do estabelecimento, Final do cartão, Cód Ref Cartão.
+    Then o arquivo deverá vir com as seguintes colunas Data da venda, Cód de autorização, Comprovante, Produto, Parcelado, Bandeira, Canal, Terminal, Valor bruto, Status, Número do estabelecimento, Final do cartão, Cód Ref Cartão.
     And coluna Produto deverá vir com o Produto selecionado no Grid
 
   @TestCaseKey=LPDC-T993
   Scenario: Exportar arquivo Excel do menu “Vendas Hoje”
     Given usuário esteja na aba Vendas Hoje
-    When selecionou em Filtros > Produtos algum dos Produtos: Natal, Multibenefícios, Cultura
+    When selecionou em Filtros > Produtos algum dos Produtos Natal, Multibenefícios, Cultura
     And clicou em Mostrar Resultados
     And clica em Exportar
     And seleciona o tipo de arquivo Excel
@@ -82,10 +82,10 @@ Feature: Produtos ALELO Natal Cultura Multibeneficios Todos os Perfis
     Then Arquivo será gerado com Sucesso
 
   @TestCaseKey=LPDC-T986
-  Scenario: Validando Arquivo Excel
+  Scenario: Validando Arquivo Excel - Produtos
     Given Usuário exportou um arquivo Excel
     When ele abrir o Arquivo em sua máquina
-    Then arquivo devera vir com o seguinte cabeçalho: Relatório de vendas, Período de Venda, Emitido em, Estabelecimento Comercial, Total de vendas, Valor Bruto, Valor não efetivadas
-    And com as seguintes colunas: Data da venda, Cód de autorização, Comprovante, Produto, Parcelado, Bandeira, Canal, Terminal, Valor bruto, Status, Número do estabelecimento, Final do cartão, Cód Ref. Cartão.
+    Then arquivo devera vir com o seguinte cabeçalho Relatório de vendas, Período de Venda, Emitido em, Estabelecimento Comercial, Total de vendas, Valor Bruto, Valor não efetivadas
+    And com as seguintes colunas Data da venda, Cód de autorização, Comprovante, Produto, Parcelado, Bandeira, Canal, Terminal, Valor bruto, Status, Número do estabelecimento, Final do cartão, Cód Ref. Cartão.
     And coluna Produto deverá vir com o Produto selecionado no Grid
 

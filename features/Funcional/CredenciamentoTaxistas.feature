@@ -13,14 +13,14 @@ Feature: Credenciamento de Taxistas
     Then deve entrar no fluxo de Preenchimento do Formulário
 
   @TestCaseKey=LPDC-T852
-  Scenario: Primeira Página do Formulário: Cenário Positivo
+  Scenario: Primeira Página do Formulário Cenário Positivo
     Given Usuário com Cnae de Taxista esteja na tela para começar seu cadastro
     When Usuário colocar nome Completo, Data de Nascimento, Celular para contato, e Email
-    And preencher os dados: Sobre seu negócio, CPF, Nome Fantasia, Faturamento anual, Ticket Médio
+    And preencher os dados Sobre seu negócio, CPF, Nome Fantasia, Faturamento anual, Ticket Médio
     Then o Botão Próximo ficara habilitado
 
   @TestCaseKey=LPDC-T859
-  Scenario: Primeira Página do Formulário: Cenário de erro dos dados Nome, data de nascimento e CPF
+  Scenario: Primeira Página do Formulário Cenário de erro dos dados Nome, data de nascimento e CPF
     Given Usuário com Cnae de Taxista esteja na tela para começar seu cadastro
     When Usuário preencher “sobre você” e “Sobre seu negócio”
     And Nome, data de nascimento e/ou CPF não darem “match”
@@ -28,7 +28,7 @@ Feature: Credenciamento de Taxistas
     Then apresentaremos um modal com a mensagem “Os dados CPF, nome ou data de nascimento estão inválidos.”.
 
   @TestCaseKey=LPDC-T858
-  Scenario: Primeira Página do Formulário: Cenário de erro validação da formatação do e-mail
+  Scenario: Primeira Página do Formulário Cenário de erro validação da formatação do e-mail
     Given Usuário com Cnae de Taxista esteja na tela para começar seu cadastro
     When Usuário preencher “sobre você” e “Sobre seu negócio”
     And coloca um e-mail sem a estrutura válida de e-mail
@@ -36,20 +36,20 @@ Feature: Credenciamento de Taxistas
     Then apresentaremos um modal com a mensagem “E-mail inválido”
 
   @TestCaseKey=LPDC-T863
-  Scenario: Primeira Página do Formulário: Cenário cliente clicou no botão “seja azulzinha”
+  Scenario: Primeira Página do Formulário Cenário cliente clicou no botão “seja azulzinha”
     Given Usuário (com ou sem CNAE taxista) esteja na tela para começar seu cadastro
     When Usuário clica no botão “seja azulzinha”
     Then devemos abrir a URL https://www.azulzinhadacaixa.com.br/peca-azulzinha na mesma aba de navegação
 
   @TestCaseKey=LPDC-T833
-  Scenario: Primeira Página do Formulário: Cenário validação do faturamento anual
+  Scenario: Primeira Página do Formulário Cenário validação do faturamento anual
     Given Usuário com Cnae de Taxista esteja na tela para começar seu cadastro
     When Usuário preencher um faturamento anual maior de R$ 120.000,00 no campo “faturamento anual”
     And clicou em “próximo”
     Then devemos apresentar a tela “Estamos sem ofertas para você” com o botão voltar
 
   @TestCaseKey=LPDC-T851
-  Scenario: Primeira Página do Formulário: Cenário validação do faturamento anual – botão voltar
+  Scenario: Primeira Página do Formulário Cenário validação do faturamento anual – botão voltar
     Given Usuário tenha preenchido faturamento anual maior que R$ 120.000,00
     When Usuário estiver na tela “Estamos sem ofertas para você”
     And clicar no botão “voltar”
@@ -59,7 +59,7 @@ Feature: Credenciamento de Taxistas
   Scenario: Com Oferta para Usuário com Cnae de Taxista
     Given Usuário preencheu a primeira fase do formulário
     When Usuário clicar no Botão Próximo
-    Then abrira a página de Produtos azulzinha com: azuzinha pro e azuzinha aproxima selecionados por default para o cliente
+    Then abrira a página de Produtos azulzinha com azuzinha pro e azuzinha aproxima selecionados por default para o cliente
     And menu na lateral direita com os dados de Negócio e Dados pessoais que foram preenchidos na tela anterior
 
   @TestCaseKey=LPDC-T846
@@ -192,17 +192,17 @@ Feature: Credenciamento de Taxistas
     Then habilitara a maquininha para transacionar
 
   @TestCaseKey=LPDC-T860
-  Scenario: Primeira Página do Formulário: Sobre Você Cenário Negativo
+  Scenario: Primeira Página do Formulário Sobre Você Cenário Negativo
     Given Usuário sem Cnae de Taxista esteja na tela para começar seu cadastro
     When Usuário colocar nome Completo,Data de Nascimento, Celular para contato, e Email
-    And preencher os dados: Sobre seu negócio, CPF, Nome Fantasia, Faturamento anual, Tcket Médio
+    And preencher os dados Sobre seu negócio, CPF, Nome Fantasia, Faturamento anual, Tcket Médio
     Then o Botão Próximo ficara habilitado
 
   @TestCaseKey=LPDC-T832
   Scenario: Sem Oferta para Usuário sem Cnae de Taxista
     Given Usuário preencheu a primeira fase do formulário
     When Usuário clicar no Botão Próximo
-    Then aparecera uma mensagem para ele: Estamos sem ofertas para você Agradecemos seu interesse em ter uma azuzinha! No momento estamos sem ofertas disponíveis para o seu perfil de negócio (só apresenta essa tela quando o faturamento preenchido for maior que 120.000,00 mil.)
+    Then aparecera uma mensagem para ele Estamos sem ofertas para você Agradecemos seu interesse em ter uma azuzinha! No momento estamos sem ofertas disponíveis para o seu perfil de negócio (só apresenta essa tela quando o faturamento preenchido for maior que 120.000,00 mil.)
 
   @TestCaseKey=LPDC-T841
   Scenario: Botão “Alterar” da Aba Negócio

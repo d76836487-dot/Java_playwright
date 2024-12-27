@@ -23,13 +23,13 @@ Feature: Historico De Vendas
   Scenario: Mensagem de Resumo
     Given usuário selecionou no menu lateral esquerdo, Vendas , Relatorio de Vendas
     When selecionar a página Histórico de Vendas
-    Then visualizará a seguinte mensagem: Visualize o histórico de todas as vendas, aprovadas nos últimos meses aplicando o filtro de data ao lado.E lembre-se, as vendas do dia são apresentadas no menu "Hoje".
+    Then visualizará a seguinte mensagem Visualize o histórico de todas as vendas, aprovadas nos últimos meses aplicando o filtro de data ao lado.E lembre-se, as vendas do dia são apresentadas no menu "Hoje".
 
   @TestCaseKey=LPDC-T1112
   Scenario: Visualização dos Campos
     Given usuário selecionou no menu lateral esquerdo, Vendas , Relatorio de Vendas
     When selecionar a página Histórico de Vendas
-    Then usuário visualizará os campos: Total de vendas, Valor Bruto, Valor líquido, Valor cancelado
+    Then usuário visualizará os campos Total de vendas, Valor Bruto, Valor líquido, Valor cancelado
 
   @TestCaseKey=LPDC-T1147
   Scenario: Visualização Período
@@ -82,9 +82,8 @@ Feature: Historico De Vendas
     Given usuario esta Histórico de Vendas
     When usuário seleciona um código invalido no campo Buscar por cód autorização
     And clica na lupa para buscar
-    Then usuario visualizará a seguinte mensagem:
+    Then usuario visualizará a seguinte mensagem
 
-  #“Nenhum resultado encontrado.Tente filtrar por outros períodos ou parâmetros”
   @TestCaseKey=LPDC-T1120
   Scenario: Status Aprovada
     Given usuário está em “Histórico de Vendas”
@@ -92,7 +91,7 @@ Feature: Historico De Vendas
     And seleciona Status aprovada
     And rola o Scroll para baixo
     And clica em mostrar Resultados
-    Then usuário visualizará todas as vendas com os status:Aprovada
+    Then usuário visualizará todas as vendas com os status Aprovada
     And botão Filtros na cor da instituição
     And  volta no filtro Status tirando a seleção Aprovada
     And clica no Botão mostrar Resultados
@@ -105,13 +104,12 @@ Feature: Historico De Vendas
     And seleciona Status Cancelada
     And rola o Scroll para baixo
     And clica em mostrar Resultados
-    Then usuário visualizará todas as vendas com os status:Cancelada
+    Then usuário visualizará todas as vendas com os status Cancelada
     And botão Filtros na cor da instituição
     And volta no filtro Status tirando a seleção Cancelada
     And clica no Botão mostrar Resultados
     Then usuário devera visualizar todas as vendas sem restrição de Produto
 
-  # Lembrando que Status de Cancelada só vai aparecer se fizer o cancelamento
   @TestCaseKey=LPDC-T1131
   Scenario: Status Cancelada parcial
     Given usuário está em “Histórico de Vendas”
@@ -119,13 +117,12 @@ Feature: Historico De Vendas
     And seleciona Status Cancelada parcial
     And rola o Scroll para baixo
     And clica em mostrar Resultados
-    Then usuário visualizará todas as vendas com os status:Cancelada parcial
+    Then usuário visualizará todas as vendas com os status Cancelada parcial
     And botão Filtros na cor da instituição
     And voltar no filtro Status e tirar a seleção Cancelada Parcial
     And clica em mostrar Resultados
     Then usuário devera visualizar todas as vendas sem restrição de Status
 
-  # Lembrando que Status de Cancelada parcial só vai aparecer se fizer o cancelamento
   @TestCaseKey=LPDC-T1146
   Scenario: Produto Débito
     Given usuário está em “Histórico de Vendas”
@@ -251,7 +248,7 @@ Feature: Historico De Vendas
     Then abre-se o Modal para selecionar o tipo do aqruivo
     And usuario selecionando Excel Simplificado
     And Clicando no Botão Gerar Relatorio
-    Then deve-se baixar o Arquivo na maquina com o seguinte nome: Relatorio_de_Vendas_Historico_de_Vendas_03-12-2024_1453.xlsx
+    Then deve-se baixar o Arquivo na maquina com o seguinte nome Relatorio_de_Vendas_Historico_de_Vendas_03-12-2024_1453.xlsx
 
   @TestCaseKey=LPDC-T1140
   Scenario: Download Excel Detalhado
@@ -260,7 +257,7 @@ Feature: Historico De Vendas
     Then abre-se o Modal para selecionar o tipo do aqruivo
     And usuario selecionando Excel Detalhado
     And Clicando no Botão Gerar Relatorio
-    Then deve-se baixar o Arquivo na maquina com o seguinte nome: Relatorio_de_Vendas_Historico_de_Vendas_03-12-2024_1453.xlsx
+    Then deve-se baixar o Arquivo na maquina com o seguinte nome Relatorio_de_Vendas_Historico_de_Vendas_03-12-2024_1453.xlsx
 
   @TestCaseKey=LPDC-T1141
   Scenario: Download CSV Simplificado
@@ -269,7 +266,7 @@ Feature: Historico De Vendas
     Then abre-se o Modal para selecionar o tipo do aqruivo
     And usuario selecionando CSV Simplificado
     And Clicando no Botão Gerar Relatorio
-    Then deve-se baixar o Arquivo na maquina com o seguinte nome:Relatorio_de_Vendas_Historico_de_Vendas_03-12-2024_1457.csv
+    Then deve-se baixar o Arquivo na maquina com o seguinte nome Relatorio_de_Vendas_Historico_de_Vendas_03-12-2024_1457.csv
 
   @TestCaseKey=LPDC-T1122
   Scenario: Download CSV Detalhado
@@ -278,7 +275,7 @@ Feature: Historico De Vendas
     Then abre-se o Modal para selecionar o tipo do aqruivo
     And usuario selecionando CSV Detalhado
     And Clicando no Botão Gerar Relatorio
-    Then deve-se baixar o Arquivo na maquina com o seguinte nome:Relatorio_de_Vendas_Historico_de_Vendas_03-12-2024_1457.csv
+    Then deve-se baixar o Arquivo na maquina com o seguinte nome Relatorio_de_Vendas_Historico_de_Vendas_03-12-2024_1457.csv
 
   @TestCaseKey=LPDC-T1128
   Scenario: Download Arquivo PDF
@@ -293,5 +290,5 @@ Feature: Historico De Vendas
   Scenario: Botão Mais Detalhes
     Given usuário está em “Histórico de Vendas”
     When clica em Mais detalhes ->
-    Then abre-se o Modal com as seguintes informações: detalhes das vendas , Total de vendas , Valor Bruto , Valor liquido
+    Then abre-se o Modal com as seguintes informações detalhes das vendas , Total de vendas , Valor Bruto , Valor liquido
 
