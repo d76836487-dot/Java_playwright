@@ -79,7 +79,7 @@ Feature: Termos de uso
     Then abrira um Modal contendo os termos
 
   @TestCaseKey=LPDC-T816
-  Scenario: Botão Fechar Modal
+  Scenario: Botão Fechar Modal - C/Conta Pix - Modal Termo de uso
     Given Usuário c/Conta Pix está no Modal Termo de uso de canais digitais
     When ele selecionar o Botão Fechar
     Then deve retornar para a tela de Termos e Condições
@@ -104,7 +104,7 @@ Feature: Termos de uso
     Then abrirá um Modal contendo os termos
 
   @TestCaseKey=LPDC-T829
-  Scenario: Botão Fechar Modal
+  Scenario: Botão Fechar Modal - C/Conta Pix - Modal Contrato
     Given Usuário c/conta Pix está no Modal contrato conta Pix
     When ele selecionar o Botão Fechar
     Then deve retornar para a tela de Termos e Condições
@@ -129,7 +129,7 @@ Feature: Termos de uso
     Then abrira um Modal contendo os termos
 
   @TestCaseKey=LPDC-T820
-  Scenario: Botão Fechar Modal
+  Scenario: Botão Fechar Modal - S/Conta Pix - Modal Termo de uso
     Given Usuário s/conta Pix está no Modal Termo de uso de canais digitais
     When ele selecionar o Botão Fechar
     Then deve retornar para a tela de Termos e Condições
