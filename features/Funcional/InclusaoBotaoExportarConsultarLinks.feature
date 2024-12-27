@@ -48,7 +48,6 @@ Feature: Inclusao do Botao Exportar para aba Consultar links
     And conterá as seguintes informações Relatório de Consulta Link de Pagamento, Período de Consulta DD/MM/AA à DD/MM/AA , Emitido em DD/MM/AA HHMMSS Estabelecimento comercial
     And abaixo as colunas Data de criação, Tipo, Descrição, Valor, Status
 
-# Estudar como vamos executar esse Cenário #
   Scenario: Erro ao tentar exportar arquivos
     Given usuário selecionou arquivo Excel ou CSV
     When clicar no botão Gerar arquivo
