@@ -85,7 +85,7 @@ Feature: Termos de uso
     Then deve retornar para a tela de Termos e Condições
 
   @TestCaseKey=LPDC-T814
-  Scenario: Botão X no Modal
+  Scenario: Botão X no Modal - C/Conta Pix - Modal Termo de uso
     Given Usuário c/Conta Pix está no Modal Termo de uso de canais digitais
     When ele selecionar o Botão X
     Then deve retornar para a tela de Termos e Condições
@@ -110,7 +110,7 @@ Feature: Termos de uso
     Then deve retornar para a tela de Termos e Condições
 
   @TestCaseKey=LPDC-T826
-  Scenario: Botão X no Modal
+  Scenario: Botão X no Modal - C/Conta Pix - Modal Contrato
     Given Usuário c/conta Pix está no Modal contrato conta Pix
     When ele selecionar o Botão X
     Then deve retornar para a tela de Termos e Condições
@@ -135,7 +135,7 @@ Feature: Termos de uso
     Then deve retornar para a tela de Termos e Condições
 
   @TestCaseKey=LPDC-T828
-  Scenario: Botão X no Modal
+  Scenario: Botão X no Modal - S/Conta Pix - Modal Termo de uso
     Given Usuário s/conta Pix está no Modal Termo de uso de canais digitais
     When ele selecionar o Botão X
     Then deve retornar para a tela de Termos e Condições

@@ -235,7 +235,7 @@ Feature: Historico De Vendas
     Then usuário devera visualizar todas as vendas sem restrição de Terminal
 
   @TestCaseKey=LPDC-T1121
-  Scenario: Botão X no Modal Filtros
+  Scenario: Botão X no Modal - Filtros - Historico de vendas
     Given usuário está em “Histórico de Vendas”
     When clica em Filtros
     Then abre-se o Modal Filtros

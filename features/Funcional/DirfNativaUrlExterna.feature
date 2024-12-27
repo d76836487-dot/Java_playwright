@@ -54,7 +54,7 @@ Feature: Dirf Nativa Url Externa
     Then usuário deve retornar para a página de Informe de Rendimentos com o ano que havia escolhido
 
   @TestCaseKey=LPDC-T1065
-  Scenario: Botão X no modal de Erro
+  Scenario: Botão X no modal de Erro - Dirf Nativa Url Externa
     Given usuário clica no Botão Buscar com dados inválidos
     When abrir o modal ocorreu um erro
     And clicar no Botão X
