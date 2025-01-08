@@ -1,10 +1,6 @@
 package com.fiserv.qabrazil.steps.vendas;
 
 import com.fiserv.qabrazil.pages.vendas.relatorioVendas.VendasPage;
-import com.fiserv.qabrazil.pages.vendas.relatorioVendas.HojePage;
-import com.fiserv.qabrazil.pages.vendas.relatorioVendas.HistoricoVendasPage;
-import com.fiserv.qabrazil.pages.vendas.relatorioVendas.NaoEfetivadasPage;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.jetbrains.annotations.NotNull;
@@ -16,15 +12,6 @@ public class VendasSteps {
     @Autowired
     VendasPage vendasPage;
 
-    @Autowired
-    HojePage hojePage;
-
-    @Autowired
-    HistoricoVendasPage historicoVendasPage;
-
-    @Autowired
-    NaoEfetivadasPage naoEfetivadasPage;
-
     @Then("valida que a aba {string} do relatorio foi acessada com sucesso")
     public void valida_que_a_aba_do_relatorio_foi_acessada_com_sucesso(String abaRelatorio) {
         vendasPage.validarCarregamentoAbaRelatorio(abaRelatorio);
@@ -32,12 +19,7 @@ public class VendasSteps {
 
     @And("visualiza os campos {string} - {string}")
     public void visualiza_os_campos(String campos, @NotNull String abaRelatorio) {
-        if (abaRelatorio.equalsIgnoreCase("Hoje"))
-            hojePage.verificarCampos(campos);
-        else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas"))
-            historicoVendasPage.verificarCampos(campos);
-        else if (abaRelatorio.equalsIgnoreCase("Não efetivadas"))
-            naoEfetivadasPage.verificarCampos(campos);
+        vendasPage.verificarCampos(campos, abaRelatorio);
     }
 
     @And("realiza a personalizacao das colunas {string} - {string}")
@@ -60,13 +42,13 @@ public class VendasSteps {
         vendasPage.validarAtribuicaoFiltro(valor, filtro, abaRelatorio);
     }
 
-    @And("valida o nome do arquivo {string} gerado - {string}")
-    public void valida_o_nome_do_arquivo_gerado(String tipoArquivo, String abaRelatorio) {
-        vendasPage.validarNomeArquivo(tipoArquivo, abaRelatorio);
+    @And("valida o nome do arquivo para o Tipo de arquivo {string} e Tipo de relatorio {string} gerado - {string}")
+    public void valida_o_nome_do_arquivo_para_o_Tipo_de_arquivo_e_Tipo_de_relatorio_gerado(String tipoArquivo, String tipoRelatorio, String abaRelatorio) {
+        vendasPage.validarNomeArquivo(tipoArquivo, tipoRelatorio, abaRelatorio);
     }
 
-    @And("valida as colunas {string} do arquivo {string} gerado - {string}")
-    public void valida_as_colunas_do_arquivo_gerado(String colunas, String tipoArquivo, String abaRelatorio) throws IOException {
-        vendasPage.validarColunasArquivo(colunas, tipoArquivo, abaRelatorio);
+    @And("valida as colunas {string} do arquivo para o Tipo de arquivo {string} e Tipo de relatorio {string} gerado - {string}")
+    public void valida_as_colunas_do_arquivo_para_o_Tipo_de_arquivo_e_Tipo_de_relatorio__gerado(String colunas, String tipoArquivo, String tipoRelatorio, String abaRelatorio) throws IOException {
+        vendasPage.validarColunasArquivo(colunas, tipoArquivo, tipoRelatorio, abaRelatorio);
     }
 }

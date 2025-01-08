@@ -7,7 +7,7 @@
 @VendasHoje
 Feature: Vendas Hoje
 
-  @TestCaseKey=LPDC-T1150
+  @TestCaseKey=LPDC-T1150 @navegacao
   Scenario Outline: Acessar Vendas Hoje via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -32,7 +32,7 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           | abaRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
 
-  @TestCaseKey=LPDC-T1149
+  @TestCaseKey=LPDC-T1149 @navegacao
   Scenario Outline: Acessar Vendas Hoje via Dashboard Vendas
     Given realizar login no portal <alianca>
     When acessar dashboard <dashboard>
@@ -57,7 +57,7 @@ Feature: Vendas Hoje
       | alianca | dashboard | abaRelatorio |
       | "afinz" | "vendas"  | "Hoje"       |
 
-  @TestCaseKey=LPDC-T1070
+  @TestCaseKey=LPDC-T1070 @navegacao
   Scenario Outline: Verificar texto do rodape - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -83,7 +83,7 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           | abaRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
 
-  @TestCaseKey=LPDC-T1148
+  @TestCaseKey=LPDC-T1148 @navegacao
   Scenario Outline: Visualizar campos de Total e Valor - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -109,55 +109,55 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           | abaRelatorio | campos                        |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Total de vendas;Valor bruto" |
 
-  @TestCaseKey=LPDC-T1067
+  @TestCaseKey=LPDC-T1067 @personalizarColunas
   Scenario Outline: Personalizar colunas - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And realiza a personalizacao das colunas <colunas> - <abaRelatorio>
     And valida que foi aplicado a personalizacao das colunas <colunas> - <abaRelatorio>
-    @bin @personalizarColunas
+    @bin
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | colunas                                                                                                                                          |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                              |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;codReferenciaCartao" |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                            |
+      | alianca | menu     | submenu           | abaRelatorio | colunas                                                                                                                                                |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
 
-    @sicredi @personalizarColunas
+    @sicredi
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | colunas                                                                                                                                                |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
 
-    @azulzinha @personalizarColunas
+    @azulzinha
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | colunas                                                                                                                                                |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
 
-    @afinz @personalizarColunas
+    @afinz
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | colunas                                                                                                                                                |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
 
-  @TestCaseKey=LPDC-T1068
+  @TestCaseKey=LPDC-T1068 @filtro
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And aplicar o filtro <filtro> atribuindo o valor <valor> - <abaRelatorio>
     And valida que foi atribuido o valor <valor> do filtro <filtro> - <abaRelatorio>
-    @bin @filtro @codAutorizacao
+    @bin @codAutorizacao
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro                | valor              |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "primeiroRegistro" |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "WWW333"           |
 
-    @bin @filtro @status
+    @bin @status
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro   | valor        |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "todos"      |
@@ -165,7 +165,7 @@ Feature: Vendas Hoje
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Recusada"   |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Estornada"  |
 
-    @bin @filtro @produto
+    @bin @produto
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro    | valor                   |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "todos"                 |
@@ -186,7 +186,7 @@ Feature: Vendas Hoje
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Natal"                 |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multibenefícios"       |
 
-    @bin @filtro @canal
+    @bin @canal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro  | valor       |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "todos"     |
@@ -194,7 +194,8 @@ Feature: Vendas Hoje
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
 
-    @bin @filtro @bandeira
+
+    @bin @bandeira
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro     | valor         |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "todos"       |
@@ -215,19 +216,19 @@ Feature: Vendas Hoje
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Redecompras" |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Fepas"       |
 
-    @bin @filtro @valores
+    @bin @valores
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro    | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "100;300"  |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "500;1000" |
 
-    @bin @filtro @estabelecimento
+    @bin @estabelecimento
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro            | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "todos"    |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "91084373" |
 
-    @bin @filtro @terminal
+    @bin @terminal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro     | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "todos"    |
@@ -235,13 +236,13 @@ Feature: Vendas Hoje
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
-    @sicredi @filtro @codAutorizacao
+    @sicredi @codAutorizacao
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | filtro                | valor              |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "primeiroRegistro" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "WWW333"           |
 
-    @sicredi @filtro @status
+    @sicredi @status
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | filtro   | valor        |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "todos"      |
@@ -249,7 +250,7 @@ Feature: Vendas Hoje
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Recusada"   |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Estornada"  |
 
-    @sicredi @filtro @produto
+    @sicredi @produto
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | filtro    | valor                   |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "todos"                 |
@@ -270,7 +271,7 @@ Feature: Vendas Hoje
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Natal"                 |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multibenefícios"       |
 
-    @sicredi @filtro @canal
+    @sicredi @canal
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | filtro  | valor       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "todos"     |
@@ -278,7 +279,7 @@ Feature: Vendas Hoje
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
 
-    @sicredi @filtro @bandeira
+    @sicredi @bandeira
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | filtro     | valor         |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "todos"       |
@@ -299,19 +300,19 @@ Feature: Vendas Hoje
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Redecompras" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Fepas"       |
 
-    @sicredi @filtro @valores
+    @sicredi @valores
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | filtro    | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "100;300"  |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "500;1000" |
 
-    @sicredi @filtro @estabelecimento
+    @sicredi @estabelecimento
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | filtro            | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "todos"    |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "91084373" |
 
-    @sicredi @filtro @terminal
+    @sicredi @terminal
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio | filtro     | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "todos"    |
@@ -319,13 +320,13 @@ Feature: Vendas Hoje
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
-    @azulzinha @filtro @codAutorizacao
+    @azulzinha @codAutorizacao
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | filtro                | valor              |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "primeiroRegistro" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "WWW333"           |
 
-    @azulzinha @filtro @status
+    @azulzinha @status
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | filtro   | valor        |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "todos"      |
@@ -333,7 +334,7 @@ Feature: Vendas Hoje
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Recusada"   |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Estornada"  |
 
-    @azulzinha @filtro @produto
+    @azulzinha @produto
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | filtro    | valor                   |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "todos"                 |
@@ -354,7 +355,7 @@ Feature: Vendas Hoje
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Natal"                 |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multibenefícios"       |
 
-    @azulzinha @filtro @canal
+    @azulzinha @canal
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | filtro  | valor       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "todos"     |
@@ -362,7 +363,7 @@ Feature: Vendas Hoje
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
 
-    @azulzinha @filtro @bandeira
+    @azulzinha @bandeira
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | filtro     | valor         |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "todos"       |
@@ -383,19 +384,19 @@ Feature: Vendas Hoje
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Redecompras" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Fepas"       |
 
-    @azulzinha @filtro @valores
+    @azulzinha @valores
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | filtro    | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "100;300"  |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "500;1000" |
 
-    @azulzinha @filtro @estabelecimento
+    @azulzinha @estabelecimento
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | filtro            | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "todos"    |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "91084373" |
 
-    @azulzinha @filtro @terminal
+    @azulzinha @terminal
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio | filtro     | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "todos"    |
@@ -403,13 +404,13 @@ Feature: Vendas Hoje
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
-    @afinz @filtro @codAutorizacao
+    @afinz @codAutorizacao
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro                | valor              |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "primeiroRegistro" |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "WWW333"           |
 
-    @afinz @filtro @status
+    @afinz @status
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro   | valor        |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "todos"      |
@@ -417,7 +418,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Recusada"   |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Estornada"  |
 
-    @afinz @filtro @produto
+    @afinz @produto
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro    | valor                   |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "todos"                 |
@@ -438,7 +439,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Natal"                 |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multibenefícios"       |
 
-    @afinz @filtro @canal
+    @afinz @canal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro  | valor       |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "todos"     |
@@ -446,7 +447,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
 
-    @afinz @filtro @bandeira
+    @afinz @bandeira
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro     | valor         |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "todos"       |
@@ -467,19 +468,19 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Redecompras" |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Fepas"       |
 
-    @afinz @filtro @valores
+    @afinz @valores
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro    | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "100;300"  |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "500;1000" |
 
-    @afinz @filtro @estabelecimento
+    @afinz @estabelecimento
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro            | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "todos"    |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "91084373" |
 
-    @afinz @filtro @terminal
+    @afinz @terminal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | filtro     | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "todos"    |
@@ -487,95 +488,94 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
-  @TestCaseKey=LPDC-T1089
+  @TestCaseKey=LPDC-T1089 @gerarArquivo
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    And valida o nome do arquivo <tipoArquivo> gerado - <abaRelatorio>
-    @bin @gerarArquivo @excel
+    And valida o nome do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
+    @bin @excel
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     |
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           |
 
-    @bin @gerarArquivo @csv
+    @bin @csv
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       |
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           |
 
-    @sicredi @gerarArquivo @excel
+    @sicredi @excel
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | tipoArquivo |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     |
+      | alianca   | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           |
 
-    @sicredi @gerarArquivo @csv
+    @sicredi @csv
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | tipoArquivo |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       |
+      | alianca   | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           |
 
-    @azulzinha @gerarArquivo @excel
+    @azulzinha @excel
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | tipoArquivo |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     |
+      | alianca     | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           |
 
-    @azulzinha @gerarArquivo @csv
+    @azulzinha @csv
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | tipoArquivo |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       |
+      | alianca     | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           |
 
-    @afinz @gerarArquivo @excel
+    @afinz @excel
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     |
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           |
 
-    @afinz @gerarArquivo @csv
+    @afinz @csv
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       |
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           |
 
-  @TestCaseKey=LPDC-T1086
+  @TestCaseKey=LPDC-T1086 @gerarArquivo
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    And valida as colunas <colunas> do arquivo <tipoArquivo> gerado - <abaRelatorio>
-    @bin @gerarArquivo @excel
+    And valida as colunas <colunas> do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
+    @bin @excel
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | colunas                                                                                                                                                                          |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
 
-    @bin @gerarArquivo @csv
+    @bin @csv
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | colunas                                                                                                                                                                 |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                 |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
 
-    @sicredi @gerarArquivo @excel
+    @sicredi @excel
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | tipoArquivo | colunas                                                                                                                                                                          |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+      | alianca   | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
 
-    @sicredi @gerarArquivo @csv
+    @sicredi @csv
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | tipoArquivo | colunas                                                                                                                                                                 |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+      | alianca   | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                 |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
 
-    @azulzinha @gerarArquivo @excel
+    @azulzinha @excel
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | tipoArquivo | colunas                                                                                                                                                                          |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+      | alianca     | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
 
-    @azulzinha @gerarArquivo @csv
+    @azulzinha @csv
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | tipoArquivo | colunas                                                                                                                                                                 |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+      | alianca     | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                 |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
 
-    @afinz @gerarArquivo @excel
+    @afinz @excel
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | colunas                                                                                                                                                                          |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
 
-    @afinz @gerarArquivo @csv
+    @afinz @csv
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | colunas                                                                                                                                                                 |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
-
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                 |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |

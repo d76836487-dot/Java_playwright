@@ -30,11 +30,8 @@ public class GeracaoArquivos {
         return extensao;
     }
 
-    public static boolean validarNomeTipoArquivo(String tipoArquivo, Download download) {
+    public static boolean validarNomeTipoArquivo(String tipoArquivo, String nomeArquivo, Download download) {
         boolean retorno = false;
-
-        // Atribui o prefixo do nome do arquivo
-        String nomeArquivo = "Relatorio_de_Vendas_Hoje_";
 
         // Captura e formata a data atual
         LocalDate now = LocalDate.now();
@@ -67,25 +64,25 @@ public class GeracaoArquivos {
         return novoDiretorio.toFile();
     }
 
-    public static boolean validarColunasTipoArquivo(File arquivo, List<String> listaColunas) throws IOException {
+    public static boolean validarColunasTipoArquivo(File arquivo, int linhaInicioExcel, List<String> listaColunas) throws IOException {
         boolean retorno = false;
 
         String nomeArquivo = arquivo.getName();
 
         if (nomeArquivo.endsWith(".xlsx"))
-            retorno = validarColunasExcel(arquivo, listaColunas);
+            retorno = validarColunasExcel(arquivo, linhaInicioExcel, listaColunas);
         else if (nomeArquivo.endsWith(".csv"))
             retorno = validarColunasCSV(arquivo, listaColunas);
 
         return retorno;
     }
 
-    private static boolean validarColunasExcel(File arquivo, List<String> listaColunas) throws IOException {
+    private static boolean validarColunasExcel(File arquivo, int linhaInicioExcel, List<String> listaColunas) throws IOException {
         try (FileInputStream fis = new FileInputStream(arquivo); XSSFWorkbook workbook = new XSSFWorkbook(fis)) {
 
             // Acessa a primeira aba (sheet)
             Sheet sheet = workbook.getSheetAt(0);
-            Row primeiraLinha = sheet.getRow(16);
+            Row primeiraLinha = sheet.getRow(linhaInicioExcel);
 
             List<String> colunasArquivo = new ArrayList<>();
             primeiraLinha.forEach(cell -> colunasArquivo.add(cell.getStringCellValue()));

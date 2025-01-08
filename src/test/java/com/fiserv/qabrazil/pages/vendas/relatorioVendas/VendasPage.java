@@ -100,8 +100,24 @@ public class VendasPage {
     private Locator slcTipoArquivo;
     private Locator optExcel;
     private Locator optCSV;
+    private Locator optPDF;
     private Locator btnCancelar;
     private Locator btnGerarArquivo;
+
+    @Autowired
+    HojePage hojePage;
+
+    @Autowired
+    HistoricoVendasPage historicoVendasPage;
+
+    @Autowired
+    NaoEfetivadasPage naoEfetivadasPage;
+
+    @Autowired
+    PreAutorizacoesPage preAutorizacoesPage;
+
+    @Autowired
+    VoucherPage voucherPage;
 
     @PostConstruct
     private void loadLocators() {
@@ -180,6 +196,7 @@ public class VendasPage {
         this.slcTipoArquivo = page.locator("//*[@data-testid='simple-dropdown-select--text-label']");
         this.optExcel = page.locator("//*[@data-testid='simple-dropdown-select--item-excel']");
         this.optCSV = page.locator("//*[@data-testid='simple-dropdown-select--item-csv']");
+        this.optPDF = page.locator("//*[@data-testid='simple-dropdown-select--item-pdf']");
         this.btnCancelar = page.locator("//*[text()='Cancelar']/..");
         this.btnGerarArquivo = page.locator("//*[contains(text(), 'Gerar arquivo')]");
     }
@@ -215,6 +232,20 @@ public class VendasPage {
         }
     }
 
+    // Visualiza lista de campos por aba
+    public void verificarCampos(String campos, @NotNull String abaRelatorio) {
+        if (abaRelatorio.equalsIgnoreCase("Hoje"))
+            hojePage.verificarCampos(campos);
+        else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas"))
+            historicoVendasPage.verificarCampos(campos);
+        else if (abaRelatorio.equalsIgnoreCase("Não efetivadas"))
+            naoEfetivadasPage.verificarCampos(campos);
+        else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações"))
+            preAutorizacoesPage.verificarCampos(campos);
+        else if (abaRelatorio.equalsIgnoreCase("Voucher"))
+            voucherPage.verificarCampos(campos);
+    }
+
     private Locator getLocatorFromReportTab(@NotNull String abaRelatorio, String campo) {
         Locator element = page.locator("");
 
@@ -233,7 +264,7 @@ public class VendasPage {
                 case "resultadoColunas" ->
                         page.locator("//*[@data-block='VendasHoje.HojeListaHistorico']");
                 case "primeiroRegistroCodAutorizacao" ->
-                        page.locator("(//div[span[text()='Cód. de autorização']]/following-sibling::div/span[not(text()='-')])[1]");
+                        page.locator("(//*[@data-testid='vendas-hoje-coluna-cod-autorizacao' and not(text()='-')])[1]");
                 case "resultadoColunaDataVenda" ->
                     page.locator("//*[@data-testid='vendas-hoje-coluna-data-venda']");
                 case "resultadoColunaCodAutorizacao" ->
@@ -265,7 +296,7 @@ public class VendasPage {
 
             case "Histórico de vendas" -> switch (campo) {
                 case "txtCodAutorizacao" ->
-                        page.locator("//*[@id='b16-Input_CodigoAutorizacao2']");
+                        page.locator("//*[contains(@id, 'Input_CodigoAutorizacao')]");
                 case "iconeLupa" ->
                         page.locator("//*[@data-testid='vendas-hoje-link-search-cod-autorizacao']");
                 case "btnFiltros" ->
@@ -277,7 +308,7 @@ public class VendasPage {
                 case "resultadoColunas" ->
                         page.locator("//*[@data-block='VendasHistoricoVendas.HistoricoVendasLista']");
                 case "primeiroRegistroCodAutorizacao" ->
-                        page.locator("(//div[span[text()='Cód. de autorização']]/following-sibling::div/span[not(text()='-')])[1]");
+                        page.locator("(//*[@data-testid='historico-vendas-codigo-autorizacao' and not(text()='-')])[1]");
                 case "resultadoColunaDataVenda" ->
                         page.locator("//*[@data-testid='historico-vendas-data-compra']");
                 case "resultadoColunaCodAutorizacao" ->
@@ -327,33 +358,31 @@ public class VendasPage {
                 case "resultadoColunas" ->
                         page.locator("//*[@data-block='VendasNaoEvetivadas.NaoEfetivadasVendas']");
                 case "primeiroRegistroCodAutorizacao" ->
-                        page.locator("(//div[span[text()='Cód. de autorização']]/following-sibling::div/span[not(@type='checkbox') and normalize-space(text()) != ''])[1]");
+                        page.locator("(//*[contains(@data-testid, 'nao-efetivadas-codautorizacao-') and normalize-space(text()) != ''])[1]");
                 case "resultadoColunaDataVenda" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-datavenda-')]");
                 case "resultadoColunaCodAutorizacao" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-codautorizacao-')]");
                 case "resultadoColunaComprovanteVenda" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-comprovante-')]");
                 case "resultadoColunaProduto" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-tipoautorizacao-')]");
                 case "resultadoColunaParcelas" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-parcelado-')]");
                 case "resultadoColunaBandeira" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-bandeira-')]");
                 case "resultadoColunaCanal" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-canal-')]");
                 case "resultadoColunaTerminal" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-terminal-')]");
                 case "resultadoColunaValorBruto" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-valorbruto-')]");
                 case "resultadoColunaStatus" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-status-')]");
                 case "resultadoColunaEsbalecimento" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-estabelecimento-')]");
                 case "resultadoColunaFinalCartao" ->
-                        page.locator("");
-                case "resultadoColunaCodReferenciaCartao" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'nao-efetivadas-finalcartao-')]");
                 default -> element;
             };
 
@@ -371,35 +400,35 @@ public class VendasPage {
                 case "resultadoColunas" ->
                         page.locator("//*[@data-block='VendasPreAutorizacoes.PreAutorizacoesVendas']");
                 case "primeiroRegistroCodAutorizacao" ->
-                        page.locator("(//div[span[text()='Cód. de autorização']]/following-sibling::div/span[not(@type='checkbox') and normalize-space(text()) != ''])[1]");
+                        page.locator("(//*[contains(@data-testid, 'vendas-preautorizacoes-codautorizacao-') and normalize-space(text()) != ''])[1]");
                 case "resultadoColunaDataVenda" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-datavenda-')]");
+                case "resultadoColunaDataAlvo" ->
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-dataalvo-')]");
                 case "resultadoColunaCodAutorizacao" ->
-                        page.locator("");
-                case "resultadoColunaComprovanteVenda" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-codautorizacao-')]");
                 case "resultadoColunaProduto" ->
-                        page.locator("");
-                case "resultadoColunaParcelas" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-produto-')]");
                 case "resultadoColunaBandeira" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-bandeira-')]");
                 case "resultadoColunaCanal" ->
-                        page.locator("");
-                case "resultadoColunaTerminal" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-canal-')]");
                 case "resultadoColunaValorAutorizado" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-valoraurotizado-')]");
                 case "resultadoColunaValorConfirmado" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-valorconfirmado-')]");
                 case "resultadoColunaStatus" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-status-')]");
+                case "resultadoColunaComprovanteVenda" ->
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-comprovante-')]");
+                case "resultadoColunaTerminal" ->
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-terminal-')]");
                 case "resultadoColunaEsbalecimento" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-estabelecimento-')]");
                 case "resultadoColunaFinalCartao" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-finalcartao-')]");
                 case "resultadoColunaCodReferenciaCartao" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-preautorizacoes-refcartao-')]");
                 default -> element;
             };
 
@@ -417,33 +446,31 @@ public class VendasPage {
                 case "resultadoColunas" ->
                         page.locator("//*[@data-block='VendasVoucher.VoucherVendas']");
                 case "primeiroRegistroCodAutorizacao" ->
-                        page.locator("(//div[span[text()='Cód. de autorização']]/following-sibling::div/span[not(@type='checkbox') and normalize-space(text()) != ''])[1]");
+                        page.locator("(//*[contains(@data-testid, 'vendas-voucher-codautorizacao-') and not(text()='-')])[1]");
                 case "resultadoColunaDataVenda" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-datavenda-')]");
                 case "resultadoColunaCodAutorizacao" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-codautorizacao-')]");
                 case "resultadoColunaComprovanteVenda" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-comprovante-')]");
                 case "resultadoColunaProduto" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-produto-')]");
                 case "resultadoColunaParcelas" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-parcelado-')]");
                 case "resultadoColunaBandeira" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-bandeira-')]");
                 case "resultadoColunaCanal" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-canal-')]");
                 case "resultadoColunaTerminal" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-terminal-')]");
                 case "resultadoColunaValorBruto" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-valorbruto-')]");
                 case "resultadoColunaStatus" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-status-')]");
                 case "resultadoColunaEsbalecimento" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-estabelecimento-')]");
                 case "resultadoColunaFinalCartao" ->
-                        page.locator("");
-                case "resultadoColunaCodReferenciaCartao" ->
-                        page.locator("");
+                        page.locator("//*[contains(@data-testid, 'vendas-voucher-finalcartao-')]");
                 default -> element;
             };
             default -> element;
@@ -478,9 +505,6 @@ public class VendasPage {
             this.clickCalendarioMesAtual();
         else if (periodo.equalsIgnoreCase("Este Mês"))
             this.clickCalendarioEsteMes();
-
-        this.btnAplicarPeriodo.scrollIntoViewIfNeeded();
-        this.clickAplicarPeriodo();
     }
 
     // Componentes padrão - Vendas
@@ -514,7 +538,7 @@ public class VendasPage {
     public void clickStatusSelecionarTudo() { this.ckbStatusSelecionarTudo.click(); }
     public void clickStatusLimparSelecoes() { this.linkStatusLimparSelecoes.click(); }
     public void clickStatus(@NotNull String valor) {
-        String complementoXpath = valor.replaceAll(" ", "-");
+        String complementoXpath = valor.replace(" ", "-");
         page.locator("//*[@data-testid='generic-filter-check-status-"+complementoXpath+"']").click();
     }
 
@@ -523,7 +547,7 @@ public class VendasPage {
     public void clickProdutosSelecionarTudo() { this.ckbProdutoSelecionarTudo.click(); }
     public void clickProdutosLimparSelecoes() { this.linkProdutoLimparSelecoes.click(); }
     public void clickProduto(@NotNull String valor) {
-        String complementoXpath = valor.replaceAll(" ", "-");
+        String complementoXpath = valor.replace(" ", "-");
         page.locator("//*[@data-testid='generic-filter-check-produto-"+complementoXpath+"']").click();
     }
 
@@ -532,7 +556,7 @@ public class VendasPage {
     public void clickCanalSelecionarTudo() { this.ckbCanalSelecionarTudo.click(); }
     public void clickCanalLimparSelecoes() { this.linkCanalLimparSelecoes.click(); }
     public void clickCanal(@NotNull String valor) {
-        String complementoXpath = valor.replaceAll(" ", "-");
+        String complementoXpath = valor.replace(" ", "-");
         page.locator("//*[@data-testid='generic-filter-check-canal-"+complementoXpath+"']").click();
     }
 
@@ -541,7 +565,7 @@ public class VendasPage {
     public void clickBandeiraSelecionarTudo() { this.ckbBandeiraSelecionarTudo.click(); }
     public void clickBandeiraLimparSelecoes() { this.linkBandeiraLimparSelecoes.click(); }
     public void clickBandeira(@NotNull String valor) {
-        String complementoXpath = valor.replaceAll(" ", "-");
+        String complementoXpath = valor.replace(" ", "-");
         page.locator("//*[@data-testid='generic-filter-div-bandeira-"+complementoXpath+"']").click();
     }
 
@@ -555,7 +579,7 @@ public class VendasPage {
     public void clickEstabelecimentoSelecionarTudo() { this.ckbEstabelecimentoSelecionarTudo.click(); }
     public void clickEstabelecimentoLimparSelecoes() { this.ckbEstabelecimentoLimparSelecoes.click(); }
     public void clickEstabelecimento(@NotNull String valor) {
-        String complementoXpath = valor.replaceAll(" ", "-");
+        String complementoXpath = valor.replace(" ", "-");
         page.locator("//*[@data-testid='generic-filter-check-estabelecimento-"+complementoXpath+"']").click();
     }
 
@@ -564,7 +588,7 @@ public class VendasPage {
     public void clickTerminalSelecionarTudo() { this.cbkTerminalSelecionarTudo.click(); }
     public void clickTerminalLimparSelecoes() { this.linkTerminalLimparSelecoes.click(); }
     public void clickTerminal(@NotNull String valor) {
-        String complementoXpath = valor.replaceAll(" ", "-");
+        String complementoXpath = valor.replace(" ", "-");
         page.locator("//*[@data-testid='generic-filter-check-terminal-"+complementoXpath+"']").click();
     }
 
@@ -786,23 +810,27 @@ public class VendasPage {
         for (String coluna : listaColunas) {
             if (coluna.equalsIgnoreCase("Data da venda"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataVenda");
+            if (coluna.equalsIgnoreCase("Data alvo"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataAlvo");
             else if (coluna.equalsIgnoreCase("Cód. de autorização"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodAutorizacao");
             else if (coluna.equalsIgnoreCase("Comprovante de venda"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaComprovanteVenda");
             else if (coluna.equalsIgnoreCase("Produto"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaProduto");
-            else if (coluna.equalsIgnoreCase("Parcelas"))
+            else if (coluna.equalsIgnoreCase("Parcelas")
+                    || coluna.equalsIgnoreCase("Parcelado"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaParcelas");
             else if (coluna.equalsIgnoreCase("Bandeira"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaBandeira");
             else if (coluna.equalsIgnoreCase("Canal"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCanal");
-            else if (coluna.equalsIgnoreCase("Terminal"))
+            else if (coluna.equalsIgnoreCase("Terminal")
+                    || coluna.equalsIgnoreCase("Número do Terminal"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTerminal");
             else if (coluna.equalsIgnoreCase("Valor bruto"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBruto");
-            else if (coluna.equalsIgnoreCase("Valor Líquido"))
+            else if (coluna.equalsIgnoreCase("Valor líquido"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorLiquido");
             else if (coluna.equalsIgnoreCase("Valor da taxa"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorTaxa");
@@ -810,11 +838,13 @@ public class VendasPage {
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorOriginalVenda");
             else if (coluna.equalsIgnoreCase("Valor autorizado"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorAutorizado");
-            else if (coluna.equalsIgnoreCase("Valor Confirmado"))
+            else if (coluna.equalsIgnoreCase("Valor confirmado"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorConfirmado");
             else if (coluna.equalsIgnoreCase("Status"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaStatus");
-            else if (coluna.equalsIgnoreCase("Estabelecimento"))
+            else if (coluna.equalsIgnoreCase("Estabelecimento")
+                    || coluna.equalsIgnoreCase("Estabelecimento comercial")
+                    || coluna.equalsIgnoreCase("Número do estabelecimento"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaEsbalecimento");
             else if (coluna.equalsIgnoreCase("Final do cartão"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaFinalCartao");
@@ -895,7 +925,28 @@ public class VendasPage {
                 break;
 
             case "Valores":
-                    String[] listaResultadoColunaValor = new String[0];
+                if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
+                    // Acessa o Personalizar Colunas
+                    this.clickPersonalizarColunas(abaRelatorio);
+                    this.verificarPersonalizarColunas();
+
+                    // Remove o Status e adiciona o Valor da taxa aplicando a personalização de colunas
+                    String colunaRemover1 = "Status", colunaAdicionar1 = "Valor da taxa";
+                    this.realizarTrocaPersonalizarColunas(colunaRemover1, colunaAdicionar1);
+
+                    // Acessa o Personalizar Colunas
+                    this.clickPersonalizarColunas(abaRelatorio);
+                    this.verificarPersonalizarColunas();
+
+                    // Remove o Terminal e adiciona o Valor original da venda aplicando a personalização de colunas
+                    String colunaRemover2 = "Terminal", colunaAdicionar2 = "Valor original da venda";
+                    this.realizarTrocaPersonalizarColunas(colunaRemover2, colunaAdicionar2);
+
+                    GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
+                }
+
+                String[] listaResultadoColunaValor = new String[0];
                 if (abaRelatorio.equalsIgnoreCase("Hoje"))
                     listaResultadoColunaValor = "resultadoColunaValorBruto".split(";");
                 else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas"))
@@ -910,9 +961,11 @@ public class VendasPage {
                 for (String resultadoColunaValor : listaResultadoColunaValor) {
                     for (Locator row : this.getLocatorFromReportTab(abaRelatorio, resultadoColunaValor)
                             .getByRole(AriaRole.LISTITEM).all()) {
-                        String valorColuna = row.textContent().trim();
-                        valorColuna = valorColuna.replaceAll(",", ".");
-                        valorColuna = valorColuna.replaceAll("R$ ", "");
+                        String valorColuna = row.textContent()
+                            .trim()
+                            .replace(".", "")
+                            .replace(",", ".")
+                            .replace("R$ ", "");
                         double valorColunaReal = Double.parseDouble(valorColuna);
 
                         // valor De e Ate separados por ";"
@@ -926,6 +979,10 @@ public class VendasPage {
                             assertThat(row).not().isVisible();
                     }
                 }
+
+                if (abaRelatorio.equalsIgnoreCase("Histórico de vendas"))
+                    this.voltarPadraoPersonalizarColunas(abaRelatorio);
+
                 break;
 
             case "Estabelecimento":
@@ -934,8 +991,15 @@ public class VendasPage {
                 this.verificarPersonalizarColunas();
 
                 // Remove o Status e adiciona o Esbelecimento aplicando a personalização de colunas
-                String colunaRemover = "Status", colunaAdicionar = "Estabelecimento";
-                this.realizarTrocaPersonalizarColunas(colunaRemover, colunaAdicionar);
+                    String colunaRemover1 = "Status", colunaAdicionar1 = "";
+                if (abaRelatorio.equalsIgnoreCase("Pré-autorizações"))
+                    colunaAdicionar1 = "Estabelecimento comercial";
+                else if (abaRelatorio.equalsIgnoreCase("Voucher"))
+                    colunaAdicionar1 = "Número do estabelecimento";
+                else
+                    colunaAdicionar1 = "Estabelecimento";
+
+                this.realizarTrocaPersonalizarColunas(colunaRemover1, colunaAdicionar1);
 
                 GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
                 this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
@@ -978,29 +1042,62 @@ public class VendasPage {
             this.optExcel.click();
         else if (tipoArquivo.equalsIgnoreCase("CSV"))
             this.optCSV.click();
+        else if (tipoArquivo.equalsIgnoreCase("PDF"))
+            this.optPDF.click();
     }
 
     private void clickCancelar() { this.btnCancelar.click(); }
 
-    public void validarNomeArquivo(String tipoArquivo, String abaRelatorio) {
+    private String atribuirPrefixoNomeArquivo(String abaRelatorio) {
+        return switch (abaRelatorio) {
+            case "Hoje" -> "Relatorio_de_Vendas_Hoje_";
+            case "Histórico de vendas" -> "Relatorio_de_Vendas_Historico_de_Vendas";
+            case "Não efetivadas" -> "Relatorio_de_Vendas_Nao_Efetivadas";
+            case "Pré-autorizações" -> "Relatorio_de_Vendas_Pre_Autorizadas";
+            case "Voucher" -> "Relatorio_de_Vendas_Voucher";
+            default -> "";
+        };
+    }
+
+    public void validarNomeArquivo(String tipoArquivo, String tipoRelatorio, String abaRelatorio) {
         // realiza o exportar
         this.getLocatorFromReportTab(abaRelatorio, "btnExportar").scrollIntoViewIfNeeded();
         this.clickExportar(abaRelatorio);
         this.verificarExportar();
         this.selecionarTipoArquivo(tipoArquivo);
 
+        if(abaRelatorio.equalsIgnoreCase("Histórico de vendas"))
+            historicoVendasPage.selecionarTipoRelatorio(tipoRelatorio);
+
         // Aguarda download ao clicar no botão Exportar
         Download download = page.waitForDownload(() -> {
             this.btnGerarArquivo.click();
         });
 
-        if (GeracaoArquivos.validarNomeTipoArquivo(tipoArquivo, download))
+        String nomeArquivo = this.atribuirPrefixoNomeArquivo(abaRelatorio);
+
+        if (GeracaoArquivos.validarNomeTipoArquivo(tipoArquivo, nomeArquivo, download))
             assertTrue(true);
         else
             assertFalse(false);
     }
 
-    public void validarColunasArquivo(@NotNull String colunas, String tipoArquivo, String abaRelatorio) throws IOException {
+    private int atribuirLinhaInicioExcel(String tipoRelatorio, String abaRelatorio) {
+        return switch (abaRelatorio) {
+            case "Hoje" -> 16;
+            case "Histórico de vendas" -> switch (tipoRelatorio) {
+                case "simplificado" -> 14;
+                case "detalhado" -> 4;
+                default -> 0;
+            };
+            case "Não efetivadas" -> 11;
+            case "Pré-autorizações" -> 12;
+            case "Voucher" -> 13;
+            default -> 0;
+        };
+    }
+
+    public void validarColunasArquivo(@NotNull String colunas, String tipoArquivo, String tipoRelatorio, String abaRelatorio) throws IOException {
         // Cria a lista de colunas do arquivo
         List<String> listaColunas = List.of(colunas.split(";"));
 
@@ -1018,8 +1115,9 @@ public class VendasPage {
         String extensao = GeracaoArquivos.getExtensao(tipoArquivo);
         Path arquivoBaixado = download.path();
         File copiaArquivoBaixado = GeracaoArquivos.copiarArquivoAtribuirExtensao(arquivoBaixado.toFile(), extensao);
+        int linhaInicioExcel = this.atribuirLinhaInicioExcel(tipoRelatorio, abaRelatorio);
 
-        if (GeracaoArquivos.validarColunasTipoArquivo(copiaArquivoBaixado, listaColunas))
+        if (GeracaoArquivos.validarColunasTipoArquivo(copiaArquivoBaixado, linhaInicioExcel, listaColunas))
             assertTrue(true);
         else
             assertFalse(false);
