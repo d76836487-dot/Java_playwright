@@ -8,6 +8,7 @@
 Feature: Pre autorizacoes
 
   @navegacao
+  @TestCaseKey=LPDC-T1223
   Scenario Outline: Acessar Pre autorizacoes via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -33,6 +34,7 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
 
   @navegacao
+  @TestCaseKey=LPDC-T1224
   Scenario Outline: Verificar texto do rodape - Pre autorizacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -59,6 +61,7 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
 
   @navegacao
+  @TestCaseKey=LPDC-T1219
   Scenario Outline: Visualizar campos de Total e Valor - Pre autorizacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -85,6 +88,7 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Total de vendas;Valor bruto autorizado;Valor bruto a confirmar" |
 
   @personalizarColunas
+  @TestCaseKey=LPDC-T1225
   Scenario Outline: Personalizar colunas - Pre autorizacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -120,6 +124,7 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data alvo;Produto;Canal;Valor confirmado;Comprovante de venda"                                                                                                     |
 
   @filtro
+  @TestCaseKey=LPDC-T1221
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Pre autorizacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -155,7 +160,6 @@ Feature: Pre autorizacoes
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "POS"       |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "TEF"       |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "ECOMMERCE" |
-
 
     @bin @bandeira
     Examples:
@@ -372,6 +376,7 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
 
   @gerarArquivo
+  @TestCaseKey=LPDC-T1222
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Pre autorizacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -418,6 +423,7 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
 
   @gerarArquivo
+  @TestCaseKey=LPDC-T1226
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Pre autorizacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -462,3 +468,4 @@ Feature: Pre autorizacoes
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
+

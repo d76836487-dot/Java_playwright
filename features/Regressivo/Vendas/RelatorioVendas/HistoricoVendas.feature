@@ -8,6 +8,7 @@
 Feature: Historico de vendas
 
   @navegacao
+  @TestCaseKey=LPDC-T1216
   Scenario Outline: Acessar Historico de vendas via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -33,6 +34,7 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
   @navegacao
+  @TestCaseKey=LPDC-T1218
   Scenario Outline: Verificar texto do rodape - Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -59,6 +61,7 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
   @navegacao
+  @TestCaseKey=LPDC-T1215
   Scenario Outline: Visualizar campos de Total e Valor - Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -85,6 +88,7 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Total de vendas;Valor bruto;Valor líquido;Valor cancelado" |
 
   @navegacao @maisDetalhes
+  @TestCaseKey=LPDC-T1217
   Scenario Outline: Verificar dados do link Mais detalhes - Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -111,6 +115,7 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
   @personalizarColunas
+  @TestCaseKey=LPDC-T1220
   Scenario Outline: Personalizar colunas - Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -146,6 +151,7 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização;Parcelas;Canal;Valor líquido;Terminal"                                                                                 |
 
   @filtro
+  @TestCaseKey=LPDC-T1208
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -273,12 +279,12 @@ Feature: Historico de vendas
 
     @sicredi @terminal
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio          | filtro     | valor   |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "todos" |
-      | "sicredi"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "LNK01D49" |
-      | "sicredi"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "PGW0D0D1" |
-      | "sicredi"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
-      | "sicredi"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
+      | alianca   | menu     | submenu           | abaRelatorio          | filtro     | valor      |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "todos"    |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "LNK01D49" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "PGW0D0D1" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
 
     @azulzinha @codAutorizacao
     Examples:
@@ -401,14 +407,15 @@ Feature: Historico de vendas
 
     @afinz @terminal
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio          | filtro     | valor   |
-      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "todos" |
-      | "afinz"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "LNK01D49" |
-      | "afinz"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "PGW0D0D1" |
-      | "afinz"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
-      | "afinz"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
+      | alianca | menu     | submenu           | abaRelatorio          | filtro     | valor      |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "todos"    |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "LNK01D49" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "PGW0D0D1" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
 
   @gerarArquivo
+  @TestCaseKey=LPDC-T1206
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -495,6 +502,7 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
 
   @gerarArquivo
+  @TestCaseKey=LPDC-T1227
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -579,3 +587,4 @@ Feature: Historico de vendas
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
+

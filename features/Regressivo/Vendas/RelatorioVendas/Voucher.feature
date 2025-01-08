@@ -8,6 +8,7 @@
 Feature: Voucher
 
   @navegacao
+  @TestCaseKey=LPDC-T1200
   Scenario Outline: Acessar Voucher via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -33,6 +34,7 @@ Feature: Voucher
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    |
 
   @navegacao
+  @TestCaseKey=LPDC-T1214
   Scenario Outline: Verificar texto do rodape - Voucher
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -59,6 +61,7 @@ Feature: Voucher
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    |
 
   @navegacao
+  @TestCaseKey=LPDC-T1207
   Scenario Outline: Visualizar campos de Total e Valor - Voucher
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -85,6 +88,7 @@ Feature: Voucher
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Total de vendas;Valor bruto" |
 
   @personalizarColunas
+  @TestCaseKey=LPDC-T1205
   Scenario Outline: Personalizar colunas - Voucher
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -120,6 +124,7 @@ Feature: Voucher
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização;Produto;Bandeira;Número do Terminal;Status"                                                                           |
 
   @filtro
+  @TestCaseKey=LPDC-T1209
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Voucher
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -359,6 +364,7 @@ Feature: Voucher
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "ECC05DE6" |
 
   @gerarArquivo
+  @TestCaseKey=LPDC-T1210
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Voucher
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -405,6 +411,7 @@ Feature: Voucher
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           |
 
   @gerarArquivo
+  @TestCaseKey=LPDC-T1203
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Voucher
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -449,3 +456,4 @@ Feature: Voucher
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                         |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelas;Bandeira;Canal;Número do terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+
