@@ -8,6 +8,7 @@
 Feature: Vendas Hoje
 
   @navegacao
+  @TestCaseKey=LPDC-T1228
   Scenario Outline: Acessar Vendas Hoje via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -33,6 +34,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
 
   @navegacao
+  @TestCaseKey=LPDC-T1230
   Scenario Outline: Acessar Vendas Hoje via Dashboard Vendas
     Given realizar login no portal <alianca>
     When acessar dashboard <dashboard>
@@ -58,6 +60,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas"  | "Hoje"       |
 
   @navegacao
+  @TestCaseKey=LPDC-T1229
   Scenario Outline: Verificar texto do rodape - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -84,6 +87,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
 
   @navegacao
+  @TestCaseKey=LPDC-T1232
   Scenario Outline: Visualizar campos de Total e Valor - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -110,6 +114,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Total de vendas;Valor bruto" |
 
   @personalizarColunas
+  @TestCaseKey=LPDC-T1233
   Scenario Outline: Personalizar colunas - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -145,6 +150,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
 
   @filtro
+  @TestCaseKey=LPDC-T1234
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -488,6 +494,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
   @gerarArquivo
+  @TestCaseKey=LPDC-T1231
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -534,6 +541,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           |
 
   @gerarArquivo
+  @TestCaseKey=LPDC-T1235
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
