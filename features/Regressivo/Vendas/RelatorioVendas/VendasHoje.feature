@@ -7,6 +7,7 @@
 @VendasHoje
 Feature: Vendas Hoje
 
+  @TestCaseKey=LPDC-T1150
   Scenario Outline: Acessar Vendas Hoje via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -31,6 +32,7 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           | abaRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
 
+  @TestCaseKey=LPDC-T1149
   Scenario Outline: Acessar Vendas Hoje via Dashboard Vendas
     Given realizar login no portal <alianca>
     When acessar dashboard <dashboard>
@@ -55,6 +57,7 @@ Feature: Vendas Hoje
       | alianca | dashboard | abaRelatorio |
       | "afinz" | "vendas"  | "Hoje"       |
 
+  @TestCaseKey=LPDC-T1070
   Scenario Outline: Verificar texto do rodape - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -80,6 +83,7 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           | abaRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
 
+  @TestCaseKey=LPDC-T1148
   Scenario Outline: Visualizar campos de Total e Valor - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -105,6 +109,7 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           | abaRelatorio | campos                        |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Total de vendas;Valor bruto" |
 
+  @TestCaseKey=LPDC-T1067
   Scenario Outline: Personalizar colunas - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -113,32 +118,33 @@ Feature: Vendas Hoje
     And valida que foi aplicado a personalizacao das colunas <colunas> - <abaRelatorio>
     @bin @personalizarColunas
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | colunas                                                                                                                        |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                 |
+      | alianca | menu     | submenu           | abaRelatorio | colunas                                                                                                                                          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                              |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;codReferenciaCartao" |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                         |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                            |
 
     @sicredi @personalizarColunas
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | colunas                                                                                                                        |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                 |
+      | alianca   | menu     | submenu           | abaRelatorio | colunas                                                                                                                                                |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                         |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
 
     @azulzinha @personalizarColunas
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | colunas                                                                                                                        |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                 |
+      | alianca     | menu     | submenu           | abaRelatorio | colunas                                                                                                                                                |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                         |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
 
     @afinz @personalizarColunas
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | colunas                                                                                                                        |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                 |
+      | alianca | menu     | submenu           | abaRelatorio | colunas                                                                                                                                                |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                         |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
 
+  @TestCaseKey=LPDC-T1068
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -187,7 +193,6 @@ Feature: Vendas Hoje
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "ECOMMERCE" |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
-
 
     @bin @filtro @bandeira
     Examples:
@@ -482,6 +487,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
+  @TestCaseKey=LPDC-T1089
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -527,6 +533,7 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       |
 
+  @TestCaseKey=LPDC-T1086
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -571,3 +578,4 @@ Feature: Vendas Hoje
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | colunas                                                                                                                                                                 |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+

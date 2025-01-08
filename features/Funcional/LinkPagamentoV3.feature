@@ -23,7 +23,7 @@ Feature: Link Pagamento V3
     Given usuario tenha um documento que não possue link de pagamento
     When Acessar a tela Link de pagamento
     Then Visualizara a seguinte mensagem:
-"""
+    """
 Comece a vender! com o link de pagamento você consegue vender de qualquer lugar sem depender da maquininha! Entre em contato com a nossa equipe para saber
 mais e contratar o serviço.Capitais e Regiões Metropolitanas segunda a domingo das 08h00 as 22h00 (exceto feriados) Telefone
 3003-7828 Demais Localidades segunda a domingo das 08h00 as 22h00 (execeto feriados) Telefone 0800 728 7828
