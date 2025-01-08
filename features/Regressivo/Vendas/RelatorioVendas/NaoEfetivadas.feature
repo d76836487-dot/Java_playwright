@@ -8,6 +8,7 @@
 Feature: Nao efetivadas
 
   @navegacao
+  @TestCaseKey=LPDC-T1212
   Scenario Outline: Acessar Nao efetivadas via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -33,6 +34,7 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" |
 
   @navegacao
+  @TestCaseKey=LPDC-T1199
   Scenario Outline: Verificar texto do rodape - Nao efetivadas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -59,6 +61,7 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" |
 
   @navegacao
+  @TestCaseKey=LPDC-T1201
   Scenario Outline: Visualizar campos de Total e Valor - Nao efetivadas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -85,6 +88,7 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Total de recusadas;Total de estornadas" |
 
   @personalizarColunas
+  @TestCaseKey=LPDC-T1213
   Scenario Outline: Personalizar colunas - Nao efetivadas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -120,6 +124,7 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização;Produto;Bandeira;Terminal;Status"                                                                 |
 
   @filtro
+  @TestCaseKey=LPDC-T1211
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Nao efetivadas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -156,7 +161,6 @@ Feature: Nao efetivadas
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "POS"       |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "TEF"       |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "ECOMMERCE" |
-
 
     @bin @bandeira
     Examples:
@@ -380,6 +384,7 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
 
   @gerarArquivo
+  @TestCaseKey=LPDC-T1202
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Nao efetivadas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -426,6 +431,7 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
 
   @gerarArquivo
+  @TestCaseKey=LPDC-T1204
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Nao efetivadas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -470,3 +476,4 @@ Feature: Nao efetivadas
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+

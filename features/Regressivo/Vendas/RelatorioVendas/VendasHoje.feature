@@ -8,6 +8,7 @@
 Feature: Vendas Hoje
 
   @navegacao @TestCaseKey=LPDC-T1150
+  @TestCaseKey=LPDC-T1150
   Scenario Outline: Acessar Vendas Hoje via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -33,6 +34,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
 
   @navegacao @TestCaseKey=LPDC-T1149
+  @TestCaseKey=LPDC-T1149
   Scenario Outline: Acessar Vendas Hoje via Dashboard Vendas
     Given realizar login no portal <alianca>
     When acessar dashboard <dashboard>
@@ -58,6 +60,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas"  | "Hoje"       |
 
   @navegacao @TestCaseKey=LPDC-T1070
+  @TestCaseKey=LPDC-T1070
   Scenario Outline: Verificar texto do rodape - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -84,6 +87,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
 
   @navegacao @TestCaseKey=LPDC-T1148
+  @TestCaseKey=LPDC-T1148
   Scenario Outline: Visualizar campos de Total e Valor - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -110,6 +114,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Total de vendas;Valor bruto" |
 
   @personalizarColunas @TestCaseKey=LPDC-T1067
+  @TestCaseKey=LPDC-T1067
   Scenario Outline: Personalizar colunas - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -145,6 +150,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
 
   @filtro @TestCaseKey=LPDC-T1068
+  @TestCaseKey=LPDC-T1068
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -193,7 +199,6 @@ Feature: Vendas Hoje
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "ECOMMERCE" |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
-
 
     @bin @bandeira
     Examples:
@@ -489,6 +494,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
   @gerarArquivo @TestCaseKey=LPDC-T1089
+  @TestCaseKey=LPDC-T1089
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -535,6 +541,7 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           |
 
   @gerarArquivo @TestCaseKey=LPDC-T1086
+  @TestCaseKey=LPDC-T1086
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -579,3 +586,4 @@ Feature: Vendas Hoje
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                 |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+
