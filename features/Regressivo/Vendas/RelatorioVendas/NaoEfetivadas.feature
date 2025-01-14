@@ -88,6 +88,7 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Total de recusadas;Total de estornadas" |
 
   @periodo
+  @TestCaseKey=LPDC-T1239
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Nao efetivadas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>

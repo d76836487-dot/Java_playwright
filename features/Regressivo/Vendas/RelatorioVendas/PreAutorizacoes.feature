@@ -88,6 +88,7 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Total de vendas;Valor bruto autorizado;Valor bruto a confirmar" |
 
   @periodo
+  @TestCaseKey=LPDC-T1238
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Pre autorizacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
