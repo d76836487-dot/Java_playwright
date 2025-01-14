@@ -88,6 +88,7 @@ Feature: Voucher
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Total de vendas;Valor bruto" |
 
   @periodo
+  @TestCaseKey=LPDC-T1236
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Voucher
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>

@@ -88,6 +88,7 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Total de vendas;Valor bruto;Valor líquido;Valor cancelado" |
 
   @periodo
+  @TestCaseKey=LPDC-T1237
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
