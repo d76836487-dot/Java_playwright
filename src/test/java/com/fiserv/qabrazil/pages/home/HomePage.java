@@ -3,6 +3,7 @@ package com.fiserv.qabrazil.pages.home;
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.pages.CheckedBasePage;
 import com.fiserv.qabrazil.util.Config;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.fiserv.qabrazil.util.WaitUtil;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -71,8 +72,7 @@ public class HomePage extends CheckedBasePage {
     }
 
     public void verificarHome() {
-        WaitUtil.sleep(Duration.ofMillis(5000));
-
+        GeneralUtils.waitForMillis(Config.TIME_TO_WAIT_PAGE);
         assertThat(title).isVisible();
     }
 

@@ -87,6 +87,49 @@ Feature: Pre autorizacoes
       | alianca | menu     | submenu           | abaRelatorio       | campos                                                           |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Total de vendas;Valor bruto autorizado;Valor bruto a confirmar" |
 
+  @periodo
+  Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Pre autorizacoes
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And aplica o periodo <periodo>
+    And valida o periodo <periodo> aplicado - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | periodo          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"           |
+      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14"     |
+      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"       |
+
+    @sicredi
+    Examples:
+      | alianca   | menu     | submenu           | abaRelatorio       | periodo          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"           |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14"     |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"       |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu     | submenu           | abaRelatorio       | periodo          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"           |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14"     |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"       |
+
+    @afinz
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | periodo          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"           |
+      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14"     |
+      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"       |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1225
   Scenario Outline: Personalizar colunas - Pre autorizacoes
@@ -375,7 +418,7 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "PGW0D0D1" |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
 
-  @gerarArquivo
+  @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1222
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Pre autorizacoes
     Given realizar login no portal <alianca>
@@ -422,7 +465,7 @@ Feature: Pre autorizacoes
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
 
-  @gerarArquivo
+  @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1226
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Pre autorizacoes
     Given realizar login no portal <alianca>

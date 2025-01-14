@@ -352,14 +352,9 @@ Thread.sleep(3000);
         this.realizarLogin(user, pass);
     }
 
-    public void verificarLogin() {
-        assertThat(title).isVisible();
-    }
-
+    public void verificarLogin() { assertThat(title).isVisible(); }
     public void preencherLogin(String login) { GeneralUtils.pressDigit(page, this.txtLogin, login); }
-
     public void preencherPassword(String password) { this.txtPassword.fill(password); }
-
     public void clickEntrar() { this.btnEntar.click(); }
 
     public void realizarLogin(String user, String pass) {

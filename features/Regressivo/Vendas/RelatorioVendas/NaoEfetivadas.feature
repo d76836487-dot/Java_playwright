@@ -87,6 +87,41 @@ Feature: Nao efetivadas
       | alianca | menu     | submenu           | abaRelatorio     | campos                                   |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Total de recusadas;Total de estornadas" |
 
+  @periodo
+  Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Nao efetivadas
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And aplica o periodo <periodo>
+    And valida o periodo <periodo> aplicado - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | periodo          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14"     |
+
+    @sicredi
+    Examples:
+      | alianca   | menu     | submenu           | abaRelatorio     | periodo          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14"     |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu     | submenu           | abaRelatorio     | periodo          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14"     |
+
+    @afinz
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | periodo          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14"     |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1213
   Scenario Outline: Personalizar colunas - Nao efetivadas
@@ -383,7 +418,7 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "PGW0D0D1" |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
 
-  @gerarArquivo
+  @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1202
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Nao efetivadas
     Given realizar login no portal <alianca>
@@ -430,7 +465,7 @@ Feature: Nao efetivadas
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
 
-  @gerarArquivo
+  @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1204
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Nao efetivadas
     Given realizar login no portal <alianca>

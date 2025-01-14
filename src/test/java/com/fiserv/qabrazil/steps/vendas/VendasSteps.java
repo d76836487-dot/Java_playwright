@@ -22,6 +22,16 @@ public class VendasSteps {
         vendasPage.verificarCampos(campos, abaRelatorio);
     }
 
+    @And("aplica o periodo {string}")
+    public void aplica_o_periodo(String periodo) {
+        vendasPage.aplicarPeriodo(periodo);
+    }
+
+    @And("valida o periodo {string} aplicado - {string}")
+    public void valida_o_periodo_aplicado(String periodo, String abaRelatorio) {
+        vendasPage.validarPeriodoAplicado(periodo, abaRelatorio);
+    }
+
     @And("realiza a personalizacao das colunas {string} - {string}")
     public void realiza_a_personalizacao_das_colunas(String colunas, String abaRelatorio) {
         vendasPage.personalizarColunas(colunas, abaRelatorio);

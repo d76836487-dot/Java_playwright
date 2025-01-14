@@ -87,6 +87,41 @@ Feature: Voucher
       | alianca | menu     | submenu           | abaRelatorio | campos                        |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Total de vendas;Valor bruto" |
 
+  @periodo
+  Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Voucher
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And aplica o periodo <periodo>
+    And valida o periodo <periodo> aplicado - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | periodo          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14"     |
+
+    @sicredi
+    Examples:
+      | alianca   | menu     | submenu           | abaRelatorio | periodo          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14"     |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu     | submenu           | abaRelatorio | periodo          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14"     |
+
+    @afinz
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | periodo          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14"     |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1205
   Scenario Outline: Personalizar colunas - Voucher
@@ -363,7 +398,7 @@ Feature: Voucher
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "PGW0D0D1" |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "ECC05DE6" |
 
-  @gerarArquivo
+  @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1210
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Voucher
     Given realizar login no portal <alianca>
@@ -410,7 +445,7 @@ Feature: Voucher
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           |
 
-  @gerarArquivo
+  @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1203
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Voucher
     Given realizar login no portal <alianca>

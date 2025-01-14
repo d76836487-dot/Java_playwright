@@ -5,13 +5,10 @@ import com.fiserv.qabrazil.util.Config;
 import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
 
 @ScenarioComponent
 public class HistoricoVendasPage {
@@ -35,9 +32,6 @@ public class HistoricoVendasPage {
     private Locator detalhesVendaTotalVendas;
     private Locator detalhesVendaValorBruto;
     private Locator detalhesVendaValorLiquido;
-    private Locator detalhesItemVendas;
-    private Locator detalhesItemValorBruto;
-    private Locator detalhesItemValorLiquido;
     private Locator btnFecharDetalhesVenda;
 
     @PostConstruct
@@ -59,9 +53,6 @@ public class HistoricoVendasPage {
         this.detalhesVendaTotalVendas = page.locator("//*[@data-testid='historico-mais-detalhes-total']");
         this.detalhesVendaValorBruto = page.locator("//*[@data-testid='historico-mais-detalhes-bruto']");
         this.detalhesVendaValorLiquido = page.locator("//*[@data-testid='historico-mais-detalhes-liquido']");
-        this.detalhesItemVendas = page.locator("//*[@data-testid='historico-detalhes-item-vendas']");
-        this.detalhesItemValorBruto = page.locator("//*[@data-testid='historico-detalhes-item-bruto']");
-        this.detalhesItemValorLiquido = page.locator("//*[@data-testid='historico-detalhes-item-liquido']");
         this.btnFecharDetalhesVenda = page.locator("//*[@data-testid='historico-detalhes-item-fechar']");
     }
 
@@ -94,15 +85,14 @@ public class HistoricoVendasPage {
         this.linkMaisDetalhes.scrollIntoViewIfNeeded();
         this.linkMaisDetalhes.click();
 
-        GeneralUtils.waitForMillis(Config.TIME_TO_WAIT_PAGE);
         GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
-        assertThat(titleMaisDetalhes).isVisible();
 
         // atribuicao Total de vendas
         int totalVendas = Integer.parseInt(this.detalhesVendaTotalVendas.textContent().trim());
         int valorSomaItemVendas = 0;
-        for (Locator row : this.detalhesItemVendas.getByRole(AriaRole.LISTITEM).all())
-            valorSomaItemVendas += Integer.parseInt(row.textContent().trim());
+        Locator detalhesItemVendas = page.locator("//*[@data-testid='historico-detalhes-item-vendas']");
+        for (int i = 0; i < detalhesItemVendas.count(); i++)
+            valorSomaItemVendas += Integer.parseInt(detalhesItemVendas.nth(i).textContent().trim());
 
         // atribuicao Valor bruto
         double valorBruto = Double.parseDouble(this.detalhesVendaValorBruto.textContent()
@@ -112,8 +102,9 @@ public class HistoricoVendasPage {
                 .replace("R$ ", "")
         );
         double valorSomaItemValorBruto = 0;
-        for (Locator row : this.detalhesItemValorBruto.getByRole(AriaRole.LISTITEM).all())
-            valorSomaItemValorBruto += Double.parseDouble(row.textContent()
+        Locator detalhesItemValorBruto = page.locator("//*[@data-testid='historico-detalhes-item-bruto']");
+        for (int i = 0; i < detalhesItemValorBruto.count(); i++)
+            valorSomaItemValorBruto += Double.parseDouble(detalhesItemValorBruto.nth(i).textContent()
                     .trim()
                     .replace(".", "")
                     .replace(",", ".")
@@ -128,8 +119,9 @@ public class HistoricoVendasPage {
                 .replace("R$ ", "")
         );
         double valorSomaItemValorLiquido = 0;
-        for (Locator row : this.detalhesItemValorLiquido.getByRole(AriaRole.LISTITEM).all())
-            valorSomaItemValorLiquido += Double.parseDouble(row.textContent()
+        Locator detalhesItemValorLiquido = page.locator("//*[@data-testid='historico-detalhes-item-liquido']");
+        for(int i = 0; i < detalhesItemValorLiquido.count(); i++)
+            valorSomaItemValorLiquido += Double.parseDouble(detalhesItemValorLiquido.nth(i).textContent()
                     .trim()
                     .replace(".", "")
                     .replace(",", ".")
@@ -142,9 +134,9 @@ public class HistoricoVendasPage {
             && (valorBruto == valorSomaItemValorBruto)
             && (valorLiquido == valorSomaItemValorLiquido)
         )
-            assertTrue(true);
+            assertThat(titleMaisDetalhes).isVisible();
         else
-            assertFalse(false);
+            assertThat(titleMaisDetalhes).not().isVisible();
 
         this.btnFecharDetalhesVenda.scrollIntoViewIfNeeded();
         GeneralUtils.waitForMillis(Config.DELAY_IN_ACTION);

@@ -6,7 +6,6 @@ import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Download;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
 import jakarta.annotation.PostConstruct;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertTrue;
 
 @ScenarioComponent
 public class VendasPage {
@@ -489,7 +488,8 @@ public class VendasPage {
     private void clickCalendarioEsteMes() { this.cbkEsteMes.click(); }
     private void clickAplicarPeriodo() { this.btnAplicarPeriodo.click(); }
 
-    public void selecionarPeriodo(@NotNull String periodo) {
+    public void aplicarPeriodo(@NotNull String periodo) {
+        GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
         this.iconeCalendario.scrollIntoViewIfNeeded();
         this.clickCalendario();
 
@@ -505,6 +505,80 @@ public class VendasPage {
             this.clickCalendarioMesAtual();
         else if (periodo.equalsIgnoreCase("Este Mês"))
             this.clickCalendarioEsteMes();
+    }
+
+    private boolean verificarDataPeriodo(String dataCompleta, String periodo) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        LocalDateTime data = LocalDateTime.parse(dataCompleta, formatter);
+        LocalDateTime agora = LocalDateTime.now();
+
+        return switch (periodo) {
+            case "Hoje" -> data.toLocalDate().isEqual(agora.toLocalDate());
+            case "Ontem" -> data.toLocalDate().isEqual(agora.minusDays(1).toLocalDate());
+            case "Últimos 7 Dias" -> !data.isBefore(agora.minusDays(7)) && data.isBefore(agora.plusDays(1));
+            case "Últimos 14 Dias" -> !data.isBefore(agora.minusDays(14)) && data.isBefore(agora.plusDays(1));
+            case "Este Mês", "Mês Atual" -> data.getYear() == agora.getYear() && data.getMonth() == agora.getMonth();
+            default -> false;
+        };
+    }
+
+    public void validarPeriodoAplicado(String periodo, String abaRelatorio) {
+        GeneralUtils.waitForMillis(Config.TIME_TO_WAIT_PAGE);
+        boolean flagMes = false;
+        boolean flagDiaSemana = false;
+
+        if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
+            if (periodo.equalsIgnoreCase("Últimos 7 Dias"))
+                flagDiaSemana = true;
+            else if (periodo.equalsIgnoreCase("Últimos 14 Dias"))
+                flagMes = true;
+            else if (periodo.equalsIgnoreCase("Mês Atual"))
+                flagDiaSemana = true;
+        } else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações")) {
+            if (periodo.equalsIgnoreCase("Últimos 7 Dias"))
+                flagDiaSemana = true;
+            else if (periodo.equalsIgnoreCase("Últimos 14 Dias"))
+                flagMes = true;
+            else if (periodo.equalsIgnoreCase("Este Mês"))
+                flagDiaSemana = true;
+        } else if (abaRelatorio.equalsIgnoreCase("Voucher")) {
+            if (periodo.equalsIgnoreCase("Ontem"))
+                flagMes = true;
+            else if (periodo.equalsIgnoreCase("Últimos 7 Dias"))
+                flagMes = true;
+            else if (periodo.equalsIgnoreCase("Últimos 14 Dias"))
+                flagMes = true;
+        }
+
+        if (flagMes) {
+            Locator expadirRegistroMes = page.locator("(//*[contains(@class, 'osui-accordion-item__icon')])[1]");
+            expadirRegistroMes.scrollIntoViewIfNeeded();
+            expadirRegistroMes.click();
+            GeneralUtils.waitForMillis(Config.DELAY_IN_ACTION);
+
+            Locator expadirRegistroDia = page.locator("(//*[contains(@class, 'osui-accordion-item__icon')])[3]");
+            expadirRegistroDia.scrollIntoViewIfNeeded();
+            expadirRegistroDia.click();
+            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+        }
+
+        if (flagDiaSemana) {
+            Locator expadirRegistroDia = page.locator("(//*[contains(@class, 'osui-accordion-item__icon')])[1]");
+            expadirRegistroDia.scrollIntoViewIfNeeded();
+            expadirRegistroDia.click();
+            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+        }
+
+        Locator resultadoColunaDataVenda = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataVenda");
+        String dataCompleta = "";
+        for (int i = 0; i < resultadoColunaDataVenda.count(); i++) {
+            resultadoColunaDataVenda.nth(i).scrollIntoViewIfNeeded();
+            dataCompleta = resultadoColunaDataVenda.nth(i).textContent().trim().replace(" às ", " ");
+            if (this.verificarDataPeriodo(dataCompleta, periodo))
+                assertThat(resultadoColunaDataVenda.nth(i)).isVisible();
+            else
+                assertThat(resultadoColunaDataVenda.nth(i)).not().isVisible();
+        }
     }
 
     // Componentes padrão - Vendas
@@ -853,10 +927,8 @@ public class VendasPage {
             else if (coluna.equalsIgnoreCase("Cód. do pedido"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodPedido");
 
-            for (Locator row : colunaResultado.getByRole(AriaRole.LISTITEM).all()) {
-                if (!row.textContent().equalsIgnoreCase(""))
-                    assertThat(row).isVisible();
-            }
+            for (int i = 0; i < colunaResultado.count(); i++)
+                assertThat(colunaResultado.nth(i)).isVisible();
         }
 
         this.voltarPadraoPersonalizarColunas(abaRelatorio);
@@ -869,59 +941,50 @@ public class VendasPage {
 
         switch (filtro) {
             case "Cód. de autorização":
-                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodAutorizacao")
-                        .getByRole(AriaRole.LISTITEM).all()) {
+                Locator resultadoColunaCodAutorizacao = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodAutorizacao");
+                for (int i = 0; i < resultadoColunaCodAutorizacao.count(); i++)
                     if (valor.equalsIgnoreCase("primeiroRegistro"))
-                        assertThat(row).containsText(
-                                this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodAutorizacao").textContent().trim()
+                        assertThat(resultadoColunaCodAutorizacao.nth(i)).containsText(
+                            this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodAutorizacao").textContent().trim()
                         );
                     else
-                        assertThat(row).containsText(valor);
-                }
+                        assertThat(resultadoColunaCodAutorizacao.nth(i)).containsText(valor);
                 break;
 
             case "Status":
-                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaStatus")
-                        .getByRole(AriaRole.LISTITEM).all()) {
-                    if (valor.equalsIgnoreCase("todos")) {
-                        if (!row.textContent().equalsIgnoreCase(""))
-                            assertThat(row).isVisible();
-                    } else
-                        assertThat(row).containsText(valor);
-                }
+                Locator resultadoColunaStatus = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaStatus");
+                for (int i = 0; i < resultadoColunaStatus.count(); i++)
+                    if (valor.equalsIgnoreCase("todos"))
+                        assertThat(resultadoColunaStatus.nth(i)).isVisible();
+                    else
+                        assertThat(resultadoColunaStatus.nth(i)).containsText(valor);
                 break;
 
             case "Produto":
-                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaProduto")
-                        .getByRole(AriaRole.LISTITEM).all()) {
-                    if (valor.equalsIgnoreCase("todos")) {
-                        if (!row.textContent().equalsIgnoreCase(""))
-                            assertThat(row).isVisible();
-                    } else
-                        assertThat(row).containsText(valor);
-                }
+                Locator resultadoColunaProduto = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaProduto");
+                for (int i = 0; i < resultadoColunaProduto.count(); i++)
+                    if (valor.equalsIgnoreCase("todos"))
+                        assertThat(resultadoColunaProduto.nth(i)).isVisible();
+                    else
+                        assertThat(resultadoColunaProduto.nth(i)).containsText(valor);
                 break;
 
             case "Canal":
-                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCanal")
-                        .getByRole(AriaRole.LISTITEM).all()) {
-                    if (valor.equalsIgnoreCase("todos")) {
-                        if (!row.textContent().equalsIgnoreCase(""))
-                            assertThat(row).isVisible();
-                    } else
-                        assertThat(row).containsText(valor);
-                }
+                Locator resultadoColunaCanal = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCanal");
+                for (int i = 0; i < resultadoColunaCanal.count(); i++)
+                    if (valor.equalsIgnoreCase("todos"))
+                        assertThat(resultadoColunaCanal.nth(i)).isVisible();
+                    else
+                        assertThat(resultadoColunaCanal.nth(i)).containsText(valor);
                 break;
 
             case "Bandeira":
-                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaBandeira")
-                        .getByRole(AriaRole.LISTITEM).all()) {
-                    if (valor.equalsIgnoreCase("todos")) {
-                        if (!row.textContent().equalsIgnoreCase(""))
-                            assertThat(row).isVisible();
-                    } else
-                        assertThat(row).containsText(valor);
-                }
+                Locator resultadoColunaBandeira = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaBandeira");
+                for (int i = 0; i < resultadoColunaBandeira.count(); i++)
+                    if (valor.equalsIgnoreCase("todos"))
+                        assertThat(resultadoColunaBandeira.nth(i)).isVisible();
+                    else
+                        assertThat(resultadoColunaBandeira.nth(i)).containsText(valor);
                 break;
 
             case "Valores":
@@ -930,17 +993,9 @@ public class VendasPage {
                     this.clickPersonalizarColunas(abaRelatorio);
                     this.verificarPersonalizarColunas();
 
-                    // Remove o Status e adiciona o Valor da taxa aplicando a personalização de colunas
-                    String colunaRemover1 = "Status", colunaAdicionar1 = "Valor da taxa";
-                    this.realizarTrocaPersonalizarColunas(colunaRemover1, colunaAdicionar1);
-
-                    // Acessa o Personalizar Colunas
-                    this.clickPersonalizarColunas(abaRelatorio);
-                    this.verificarPersonalizarColunas();
-
                     // Remove o Terminal e adiciona o Valor original da venda aplicando a personalização de colunas
-                    String colunaRemover2 = "Terminal", colunaAdicionar2 = "Valor original da venda";
-                    this.realizarTrocaPersonalizarColunas(colunaRemover2, colunaAdicionar2);
+                    String colunaRemover = "Terminal", colunaAdicionar = "Valor original da venda";
+                    this.realizarTrocaPersonalizarColunas(colunaRemover, colunaAdicionar);
 
                     GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
                     this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
@@ -950,7 +1005,7 @@ public class VendasPage {
                 if (abaRelatorio.equalsIgnoreCase("Hoje"))
                     listaResultadoColunaValor = "resultadoColunaValorBruto".split(";");
                 else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas"))
-                    listaResultadoColunaValor = "resultadoColunaValorBruto;resultadoColunaValorLiquido;resultadoColunaValorTaxa;resultadoColunaValorOriginalVenda".split(";");
+                    listaResultadoColunaValor = "resultadoColunaValorBruto;resultadoColunaValorLiquido;resultadoColunaValorOriginalVenda".split(";");
                 else if (abaRelatorio.equalsIgnoreCase("Não efetivadas"))
                     listaResultadoColunaValor = "resultadoColunaValorBruto".split(";");
                 else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações"))
@@ -959,13 +1014,14 @@ public class VendasPage {
                     listaResultadoColunaValor = "resultadoColunaValorBruto".split(";");
 
                 for (String resultadoColunaValor : listaResultadoColunaValor) {
-                    for (Locator row : this.getLocatorFromReportTab(abaRelatorio, resultadoColunaValor)
-                            .getByRole(AriaRole.LISTITEM).all()) {
-                        String valorColuna = row.textContent()
-                            .trim()
-                            .replace(".", "")
-                            .replace(",", ".")
-                            .replace("R$ ", "");
+
+                    Locator resultadoColunaValorAbaRelatorio = this.getLocatorFromReportTab(abaRelatorio, resultadoColunaValor);
+                    for (int i = 0; i < resultadoColunaValorAbaRelatorio.count(); i++) {
+                        String valorColuna = resultadoColunaValorAbaRelatorio.nth(i).textContent()
+                                .trim()
+                                .replace(".", "")
+                                .replace(",", ".")
+                                .replace("R$ ", "");
                         double valorColunaReal = Double.parseDouble(valorColuna);
 
                         // valor De e Ate separados por ";"
@@ -974,15 +1030,14 @@ public class VendasPage {
                         double valorAte = Double.parseDouble(valores[1]);
 
                         if ((valorColunaReal >= valorDe) && (valorColunaReal <= valorAte))
-                            assertThat(row).isVisible();
+                            assertThat(resultadoColunaValorAbaRelatorio.nth(i)).isVisible();
                         else
-                            assertThat(row).not().isVisible();
+                            assertThat(resultadoColunaValorAbaRelatorio.nth(i)).not().isVisible();
                     }
                 }
 
                 if (abaRelatorio.equalsIgnoreCase("Histórico de vendas"))
                     this.voltarPadraoPersonalizarColunas(abaRelatorio);
-
                 break;
 
             case "Estabelecimento":
@@ -991,41 +1046,36 @@ public class VendasPage {
                 this.verificarPersonalizarColunas();
 
                 // Remove o Status e adiciona o Esbelecimento aplicando a personalização de colunas
-                    String colunaRemover1 = "Status", colunaAdicionar1 = "";
+                    String colunaRemover = "Status", colunaAdicionar = "";
                 if (abaRelatorio.equalsIgnoreCase("Pré-autorizações"))
-                    colunaAdicionar1 = "Estabelecimento comercial";
+                    colunaAdicionar = "Estabelecimento comercial";
                 else if (abaRelatorio.equalsIgnoreCase("Voucher"))
-                    colunaAdicionar1 = "Número do estabelecimento";
+                    colunaAdicionar = "Número do estabelecimento";
                 else
-                    colunaAdicionar1 = "Estabelecimento";
+                    colunaAdicionar = "Estabelecimento";
 
-                this.realizarTrocaPersonalizarColunas(colunaRemover1, colunaAdicionar1);
+                this.realizarTrocaPersonalizarColunas(colunaRemover, colunaAdicionar);
 
                 GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
                 this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
 
-                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaEsbalecimento")
-                        .getByRole(AriaRole.LISTITEM).all()) {
-                    if (valor.equalsIgnoreCase("todos")) {
-                        if (!row.textContent().equalsIgnoreCase(""))
-                            assertThat(row).isVisible();
-                    } else
-                        assertThat(row).containsText(valor);
-                }
+                Locator resultadoColunaEsbalecimento = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaEsbalecimento");
+                for (int i = 0; i < resultadoColunaEsbalecimento.count(); i++)
+                    if (valor.equalsIgnoreCase("todos"))
+                        assertThat(resultadoColunaEsbalecimento.nth(i)).isVisible();
+                    else
+                        assertThat(resultadoColunaEsbalecimento.nth(i)).containsText(valor);
 
                 this.voltarPadraoPersonalizarColunas(abaRelatorio);
-
                 break;
 
             case "Terminal":
-                for (Locator row : this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTerminal")
-                        .getByRole(AriaRole.LISTITEM).all()) {
-                    if (valor.equalsIgnoreCase("todos")) {
-                        if (!row.textContent().equalsIgnoreCase(""))
-                            assertThat(row).isVisible();
-                    } else
-                        assertThat(row).containsText(valor);
-                }
+                Locator resultadoColunaTerminal = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTerminal");
+                for (int i = 0; i < resultadoColunaTerminal.count(); i++)
+                    if (valor.equalsIgnoreCase("todos"))
+                        assertThat(resultadoColunaTerminal.nth(i)).isVisible();
+                    else
+                        assertThat(resultadoColunaTerminal.nth(i)).containsText(valor);
                 break;
         }
     }
@@ -1051,10 +1101,10 @@ public class VendasPage {
     private String atribuirPrefixoNomeArquivo(String abaRelatorio) {
         return switch (abaRelatorio) {
             case "Hoje" -> "Relatorio_de_Vendas_Hoje_";
-            case "Histórico de vendas" -> "Relatorio_de_Vendas_Historico_de_Vendas";
-            case "Não efetivadas" -> "Relatorio_de_Vendas_Nao_Efetivadas";
-            case "Pré-autorizações" -> "Relatorio_de_Vendas_Pre_Autorizadas";
-            case "Voucher" -> "Relatorio_de_Vendas_Voucher";
+            case "Histórico de vendas" -> "Relatorio_de_Vendas_Historico_de_Vendas_";
+            case "Não efetivadas" -> "Relatorio_de_Vendas_Nao_Efetivadas_";
+            case "Pré-autorizações" -> "Relatorio_de_Vendas_Pre_Autorizadas_";
+            case "Voucher" -> "Relatorio_de_Vendas_Voucher_";
             default -> "";
         };
     }
@@ -1076,10 +1126,12 @@ public class VendasPage {
 
         String nomeArquivo = this.atribuirPrefixoNomeArquivo(abaRelatorio);
 
-        if (GeracaoArquivos.validarNomeTipoArquivo(tipoArquivo, nomeArquivo, download))
-            assertTrue(true);
-        else
-            assertFalse(false);
+        if (GeracaoArquivos.validarNomeTipoArquivo(tipoArquivo, nomeArquivo, download)) {
+            GeneralUtils.waitForMillis(Config.TIME_TO_WAIT_PAGE);
+            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            assertThat(this.getLocatorFromReportTab(abaRelatorio, "btnExportar")).isVisible();
+        } else
+            assertThat(this.getLocatorFromReportTab(abaRelatorio, "btnExportar")).not().isVisible();
     }
 
     private int atribuirLinhaInicioExcel(String tipoRelatorio, String abaRelatorio) {
@@ -1117,9 +1169,11 @@ public class VendasPage {
         File copiaArquivoBaixado = GeracaoArquivos.copiarArquivoAtribuirExtensao(arquivoBaixado.toFile(), extensao);
         int linhaInicioExcel = this.atribuirLinhaInicioExcel(tipoRelatorio, abaRelatorio);
 
-        if (GeracaoArquivos.validarColunasTipoArquivo(copiaArquivoBaixado, linhaInicioExcel, listaColunas))
-            assertTrue(true);
-        else
-            assertFalse(false);
+        if (GeracaoArquivos.validarColunasTipoArquivo(copiaArquivoBaixado, linhaInicioExcel, listaColunas)) {
+            GeneralUtils.waitForMillis(Config.TIME_TO_WAIT_PAGE);
+            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            assertThat(this.getLocatorFromReportTab(abaRelatorio, "btnExportar")).isVisible();
+        } else
+            assertThat(this.getLocatorFromReportTab(abaRelatorio, "btnExportar")).not().isVisible();
     }
 }

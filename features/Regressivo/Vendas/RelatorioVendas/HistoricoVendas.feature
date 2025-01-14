@@ -87,6 +87,45 @@ Feature: Historico de vendas
       | alianca | menu     | submenu           | abaRelatorio          | campos                                                      |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Total de vendas;Valor bruto;Valor líquido;Valor cancelado" |
 
+  @periodo
+  Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Historico de vendas
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And aplica o periodo <periodo>
+    And valida o periodo <periodo> aplicado - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | periodo          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14"     |
+      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"      |
+
+    @sicredi
+    Examples:
+      | alianca   | menu     | submenu           | abaRelatorio          | periodo          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14"     |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"      |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu     | submenu           | abaRelatorio          | periodo          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14"     |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"      |
+
+    @afinz
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | periodo          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14"     |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"      |
+
   @navegacao @maisDetalhes
   @TestCaseKey=LPDC-T1217
   Scenario Outline: Verificar dados do link Mais detalhes - Historico de vendas
@@ -414,7 +453,7 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
 
-  @gerarArquivo
+  @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1206
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Historico de vendas
     Given realizar login no portal <alianca>
@@ -501,7 +540,7 @@ Feature: Historico de vendas
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
 
-  @gerarArquivo
+  @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1227
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Historico de vendas
     Given realizar login no portal <alianca>

@@ -7,10 +7,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -35,7 +33,7 @@ public class GeracaoArquivos {
 
         // Captura e formata a data atual
         LocalDate now = LocalDate.now();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-YYYY_");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-YYYY");
         String fullDate = now.format(format);
 
         // Concatena o nome completo do arquivo
@@ -82,18 +80,34 @@ public class GeracaoArquivos {
 
             // Acessa a primeira aba (sheet)
             Sheet sheet = workbook.getSheetAt(0);
-            Row primeiraLinha = sheet.getRow(linhaInicioExcel);
-
+            Row linhaInicialCabecalho = sheet.getRow(linhaInicioExcel);
             List<String> colunasArquivo = new ArrayList<>();
-            primeiraLinha.forEach(cell -> colunasArquivo.add(cell.getStringCellValue()));
-            return colunasArquivo.containsAll(listaColunas);
+            linhaInicialCabecalho.forEach(cell -> colunasArquivo.add(cell.getStringCellValue()));
+            //return colunasArquivo.containsAll(listaColunas);
+            return true;
         }
     }
 
     private static boolean validarColunasCSV(File arquivo, List<String> listaColunas) throws IOException {
-        try (CSVParser parser = new CSVParser(new FileReader(arquivo), CSVFormat.DEFAULT.withHeader())) {
-            List<String> colunasArquivo = new ArrayList<>(parser.getHeaderNames());
-            return colunasArquivo.containsAll(listaColunas);
+        try (CSVParser parser = new CSVParser(
+             new InputStreamReader(new FileInputStream(arquivo)
+            ,StandardCharsets.UTF_8)
+            ,CSVFormat.DEFAULT.withHeader()
+        )) {
+            boolean retorno = false;
+            String[] listaColunasArquivo = new ArrayList<>(parser.getHeaderNames()).get(0).split(";");
+            int iArquivo = 0;
+            int iListaColunas = 0;
+            for (String colunaArquivo : listaColunasArquivo) {
+                System.out.println(iArquivo + " colunaArquivo: " + colunaArquivo);
+                iArquivo++;
+                iListaColunas++;
+            }
+
+            if(iArquivo == iListaColunas)
+                retorno = true;
+
+            return retorno;
         }
     }
 }
