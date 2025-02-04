@@ -6,6 +6,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: Link de Pagamento Selecao de Parcelas e Order Id
 
+  @TestCaseKey=LPDC-T1254
   Scenario: Link pagamento unico em ate 21X Parcelado Lojista Pago
     Given usuário Clicou no Botão Gerar Link de pagamento
     When aparecera um Modal com o Link gerado e os Botões: Ver links ativos, Fechar, X
@@ -17,6 +18,7 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1243
   Scenario: Link pagamento unico em ate 21X Parcelado Lojista sem pagar
     Given usuário Clicou no Botão Gerar Link de pagamento
     When aparecera um Modal com o Link gerado e os Botões: Ver links ativos, Fechar, X
@@ -27,6 +29,7 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1244
   Scenario: Link pagamento unico em ate 12X Parcelado Emissor Pago
     Given usuário Clicou no Botão Gerar Link de pagamento
     When aparecera um Modal com o Link gerado e os Botões: Ver links ativos, Fechar, X
@@ -38,6 +41,7 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1241
   Scenario: Link pagamento unico em ate 12X Parcelado Emissor sem pagar
     Given usuário Clicou no Botão Gerar Link de pagamento
     When aparecera um Modal com o Link gerado e os Botões: Ver links ativos, Fechar, X
@@ -48,6 +52,7 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1246
   Scenario: Detalhe da Venda com status (autorizado) - Historico de Vendas
     Given usuário esteja na aba historico de vendas
     When selecionar uma transação de link de pagamento com status autorizado
@@ -57,6 +62,7 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1252
   Scenario: Detalhe da venda com status (ativo)
     Given usuário esteja na aba historico de vendas
     When selecionar uma transação de link de pagamento com status ativo
@@ -66,6 +72,7 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1247
   Scenario: Detalhe da venda com status (Expirado)
     Given usuário esteja na aba historico de vendas
     When selecionar uma transação de link de pagamento com status expirado
@@ -75,6 +82,7 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1253
   Scenario: Detalhe da venda com status (Negado)
     Given usuário esteja na aba historico de vendas
     When selecionar uma transação de link de pagamento com status negado
@@ -84,6 +92,7 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1251
   Scenario: Detalhe da venda com status (Estornado)
     Given usuário esteja na aba historico de vendas
     When selecionar uma transação de link de pagamento com status estornado
@@ -93,6 +102,7 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1245
   Scenario: Detalhe do link de pagamento (pago)
     Given usuário esteja na aba historico de vendas
     When selecionar uma transação de link de pagamento com status pago
@@ -102,6 +112,7 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1249
   Scenario: Validar arquivo Excel - Link de Pagamento Selecao de Parcelas e Order Id
     Given usuário esteja na aba historico de vaendas
     When selecionar exportar
@@ -114,6 +125,7 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1250
   Scenario: Validar arquivo CSV - Link de Pagamento Selecao de Parcelas e Order Id
     Given usuário esteja na aba historico de vaendas
     When selecionar exportar
@@ -126,26 +138,31 @@ Feature: Link de Pagamento Selecao de Parcelas e Order Id
       | sec op  |
       | sec con |
 
+  @TestCaseKey=LPDC-T1242
   Scenario: Criar link unico - Operador com F
     Given usuário operador COM F acessou a jornada de link de pagamento
     When todo o cadastro do EC do cliente estiver OK
     And operador clicar em "Solicitar link de pagamento único"
     Then o operador deve conseguir chegar até a tela de resumo mas o botão "Gerar link de pagamento" deve ficar desabilitado
 
+  @TestCaseKey=LPDC-T1255
   Scenario: Copiar link de pagamento gerado - aba Links gerados - status ativo - Operador com F
     Given usuário operador COM F acessou a jornada de link de pagamento
     When estiver na aba links gerados
     And operador clicar no detlalhe de um link com status ativo
     Then o operador não deve conseguir copiar o link gerado
 
+  @TestCaseKey=LPDC-T1248
   Scenario: Criar link unico - Operador sem F
     Given usuário operador SEM F acessou a jornada de link de pagamento
     When todo o cadastro do EC do cliente estiver OK
     And operador clicar em "Solicitar link de pagamento único"
     Then o operador deve conseguir chegar até a tela de resumo mas o botão "Gerar link de pagamento" deve ficar desabilitado
 
+  @TestCaseKey=LPDC-T1240
   Scenario: Copiar link de pagamento gerado - aba Links gerados - status ativo - Operador sem F
     Given usuário operador SEM F acessou a jornada de link de pagamento
     When estiver na aba links gerados
     And operador clicar no detlalhe de um link com status ativo
     Then o operador não deve conseguir copiar o link gerado
+
