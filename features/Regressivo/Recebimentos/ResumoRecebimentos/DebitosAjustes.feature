@@ -8,6 +8,7 @@
 Feature: Debitos e ajustes
 
   @navegacao
+  @TestCaseKey=LPDC-T1266
   Scenario Outline: Acessar Debitos e ajustes via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -33,6 +34,7 @@ Feature: Debitos e ajustes
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
   @navegacao
+  @TestCaseKey=LPDC-T1275
   Scenario Outline: Verificar texto do rodape - Debitos e ajustes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -59,6 +61,7 @@ Feature: Debitos e ajustes
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
   @navegacao
+  @TestCaseKey=LPDC-T1272
   Scenario Outline: Visualizar campos de Total e Valor - Debitos e ajustes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -85,6 +88,7 @@ Feature: Debitos e ajustes
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
 
   @periodo
+  @TestCaseKey=LPDC-T1278
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Debitos e ajustes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -120,6 +124,7 @@ Feature: Debitos e ajustes
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M+1"   |
 
   @filtro
+  @TestCaseKey=LPDC-T1276
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Debitos e ajustes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -136,8 +141,8 @@ Feature: Debitos e ajustes
     @bin @valores
     Examples:
       | alianca | menu           | submenu              | abaRelatorio        | filtro    | valor     |
-      | "bin"      | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "10;50"   |
-      | "bin"      | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "-10;-50" |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "10;50"   |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "-10;-50" |
 
     @bin @estabelecimento
     Examples:
@@ -203,6 +208,7 @@ Feature: Debitos e ajustes
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "91913769" |
 
   @gerarArquivo @nomeArquivo
+  @TestCaseKey=LPDC-T1280
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Debitos e ajustes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -249,6 +255,7 @@ Feature: Debitos e ajustes
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           |
 
   @gerarArquivo @colunasArquivo
+  @TestCaseKey=LPDC-T1273
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Debitos e ajustes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
