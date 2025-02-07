@@ -1,0 +1,296 @@
+#language: en
+@Zephyr:ProjectKey=LPDC
+@Zephyr:Folder=/Portal_do_Cliente/Regressivo/Recebimentos/ResumoRecebimentos/Debitos_e_ajustes
+@Zephyr:Status=Approved
+@Zephyr:Priority=Normal
+@Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
+@DebitosAjustes
+Feature: Debitos e ajustes
+
+  @navegacao
+  Scenario Outline: Acessar Debitos e ajustes via menu lateral
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    @bin
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
+
+    @sicredi
+    Examples:
+      | alianca   | menu           | submenu              | abaRelatorio        |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu           | submenu              | abaRelatorio        |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
+
+    @afinz
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
+
+  @navegacao
+  Scenario Outline: Verificar texto do rodape - Debitos e ajustes
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And verifica o texto do rodape
+    @bin
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
+
+    @sicredi
+    Examples:
+      | alianca   | menu           | submenu              | abaRelatorio        |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu           | submenu              | abaRelatorio        |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
+
+    @afinz
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
+
+  @navegacao
+  Scenario Outline: Visualizar campos de Total e Valor - Debitos e ajustes
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And visualiza os campos <campos> - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | campos                                                       |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
+
+    @sicredi
+    Examples:
+      | alianca   | menu           | submenu              | abaRelatorio        | campos                                                       |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu           | submenu              | abaRelatorio        | campos                                                       |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
+
+    @afinz
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | campos                                                       |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
+
+  @periodo
+  Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Debitos e ajustes
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And aplica o periodo <periodo>
+    And valida o periodo <periodo> aplicado - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | periodo |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M-1"   |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M0"    |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M+1"   |
+
+    @sicredi
+    Examples:
+      | alianca   | menu           | submenu              | abaRelatorio        | periodo |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M-1"   |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M0"    |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M+1"   |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu           | submenu              | abaRelatorio        | periodo |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M-1"   |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M0"    |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M+1"   |
+
+    @afinz
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | periodo |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M-1"   |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M0"    |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M+1"   |
+
+  @filtro
+  Scenario Outline: Realizar filtro - <filtro>: <valor> - Debitos e ajustes
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And aplicar o filtro <filtro> atribuindo o valor <valor> - <abaRelatorio>
+    And valida que foi atribuido o valor <valor> do filtro <filtro> - <abaRelatorio>
+    @bin @status
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | filtro   | valor      |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "todos"    |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Pendente" |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Debitado" |
+
+    @bin @valores
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | filtro    | valor     |
+      | "bin"      | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "10;50"   |
+      | "bin"      | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "-10;-50" |
+
+    @bin @estabelecimento
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | filtro            | valor      |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "todos"    |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "91913769" |
+
+    @sicredi @status
+    Examples:
+      | alianca   | menu           | submenu              | abaRelatorio        | filtro   | valor      |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "todos"    |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Pendente" |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Debitado" |
+
+    @sicredi @valores
+    Examples:
+      | alianca   | menu           | submenu              | abaRelatorio        | filtro    | valor     |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "10;50"   |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "-10;-50" |
+
+    @sicredi @estabelecimento
+    Examples:
+      | alianca   | menu           | submenu              | abaRelatorio        | filtro            | valor      |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "todos"    |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "91913769" |
+
+    @azulzinha @status
+    Examples:
+      | alianca     | menu           | submenu              | abaRelatorio        | filtro   | valor      |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "todos"    |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Pendente" |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Debitado" |
+
+    @azulzinha @valores
+    Examples:
+      | alianca     | menu           | submenu              | abaRelatorio        | filtro    | valor     |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "10;50"   |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "-10;-50" |
+
+    @azulzinha @estabelecimento
+    Examples:
+      | alianca     | menu           | submenu              | abaRelatorio        | filtro            | valor      |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "todos"    |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "91913769" |
+
+    @afinz @status
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | filtro   | valor      |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "todos"    |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Pendente" |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Debitado" |
+
+    @afinz @valores
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | filtro    | valor     |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "10;50"   |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "-10;-50" |
+
+    @afinz @estabelecimento
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | filtro            | valor      |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "todos"    |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "91913769" |
+
+  @gerarArquivo @nomeArquivo
+  Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Debitos e ajustes
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And valida o nome do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
+    @bin @excel
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           |
+
+    @bin @csv
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           |
+
+    @sicredi @excel
+    Examples:
+      | alianca   | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           |
+
+    @sicredi @csv
+    Examples:
+      | alianca   | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           |
+
+    @azulzinha @excel
+    Examples:
+      | alianca     | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           |
+
+    @azulzinha @csv
+    Examples:
+      | alianca     | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           |
+
+    @afinz @excel
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           |
+
+    @afinz @csv
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           |
+
+  @gerarArquivo @colunasArquivo
+  Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Debitos e ajustes
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And valida as colunas <colunas> do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
+    @bin @excel
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+
+    @bin @csv
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+
+    @sicredi @excel
+    Examples:
+      | alianca   | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+
+    @sicredi @csv
+    Examples:
+      | alianca   | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+
+    @azulzinha @excel
+    Examples:
+      | alianca     | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+
+    @azulzinha @csv
+    Examples:
+      | alianca     | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+
+    @afinz @excel
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+
+    @afinz @csv
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+

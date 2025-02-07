@@ -27,19 +27,22 @@ public class RecordingHook {
 HomeCustomizeModal homeCustomizeModal;
 
     @After()
-    public void tearDown(Scenario scenario) {
+    public void tearDown(Scenario scenario) throws IOException {
         if(Config.SessionLogado.equals("YES")){
             homeCustomizeModal.logout();
         }
-        saveScreenshotAndUrl(scenario);
-//        saveVideo(scenario);
+        //saveScreenshotAndUrl(scenario);
+        //saveVideo(scenario);
     }
 
     private void saveScreenshotAndUrl(Scenario scenario) {
         for (Page page : context.pages()) {
             scenario.attach(page.url(), "text/plain", "Url");
-            scenario.attach(page.screenshot(new Page.ScreenshotOptions().setFullPage(true)),
-                    "image/png", "Screen Shot");
+            scenario.attach(page.screenshot(
+                 new Page.ScreenshotOptions().setFullPage(true))
+                ,"image/png"
+                , "Screen Shot"
+            );
             scenario.attach(page.content(), "text/html", "Content");
         }
 

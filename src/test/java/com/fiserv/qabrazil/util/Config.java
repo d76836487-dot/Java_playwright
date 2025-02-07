@@ -8,8 +8,8 @@ public class Config {
     public static final String error_pass = "Fiserv@123";
 
     public static final String sicredi_url = "https://sicredi.qa.portaldocliente.fiserv.com";
-    public static final String sicredi_user = "53362504060";
-    public static final String sicredi_pass = "Fiserv@457";
+    public static final String sicredi_user = "49949472000184";//53362504060
+    public static final String sicredi_pass = "Fiserv@123456";//Fiserv@457
 
     public static final String sicrediflex_url = "https://sicredi.qa.portaldocliente.fiserv.com";
     public static final String sicrediflex_user = "68992232000107";

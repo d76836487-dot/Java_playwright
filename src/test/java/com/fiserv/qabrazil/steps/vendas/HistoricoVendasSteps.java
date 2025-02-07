@@ -1,7 +1,6 @@
 package com.fiserv.qabrazil.steps.vendas;
 
 import com.fiserv.qabrazil.pages.vendas.relatorioVendas.HistoricoVendasPage;
-import com.fiserv.qabrazil.pages.vendas.relatorioVendas.VendasPage;
 import io.cucumber.java.en.And;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,6 +1,5 @@
 package com.fiserv.automation.playwright.configuration;
 
-
 import com.fiserv.automation.framework.annotations.ScenarioScope;
 import com.fiserv.automation.playwright.properties.LaunchOptionsProperties;
 import com.microsoft.playwright.Browser;
@@ -65,7 +64,7 @@ public class AuthenticatedPlaywrightConfiguration {
         if (storageState.stateIsReady()) {
             newContextOptions = newContextOptions.setStorageState(storageState.getStorageState());
         }
-        return browser.newContext(newContextOptions.setRecordVideoDir(Paths.get("target/temp/")));
+        return browser.newContext(/*newContextOptions.setRecordVideoDir(Paths.get("target/temp/"))*/);
     }
 
     @Bean

@@ -8,6 +8,7 @@ import com.fiserv.qabrazil.util.WaitUtil;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Duration;
@@ -61,13 +62,11 @@ public class HomePage extends CheckedBasePage {
     private Page page;
 
     private Locator title;
-    private Locator verTudoVendasHoje;
     private Locator rodape;
 
     @PostConstruct
     private void loadLocators() {
         this.title = page.locator("//*[text()='Acesso rápido']");
-        this.verTudoVendasHoje = page.locator("//*[@data-testid='home-card-vendas-hoje-link-ver-tudo']");
         this.rodape = page.locator("//*[@data-testid='footer-text']");
     }
 
@@ -76,14 +75,18 @@ public class HomePage extends CheckedBasePage {
         assertThat(title).isVisible();
     }
 
-    public void clickVerTudoVendasHoje() {
-        this.verTudoVendasHoje.scrollIntoViewIfNeeded();
-        this.verTudoVendasHoje.click();
-    }
+    public void acessarDashboard(@NotNull String dashboard) {
+        Locator verTudo = page.locator("");
 
-    public void acessarDashboard(String dashboard) {
         if (dashboard.equalsIgnoreCase("vendas"))
-            this.clickVerTudoVendasHoje();
+            verTudo = page.locator("//*[@data-testid='home-card-vendas-hoje-link-ver-tudo']");
+        else if (dashboard.equalsIgnoreCase("recebimentos"))
+            verTudo = page.locator("//*[@data-testid='home-card-recebimentos-link-ver-tudo']");
+        else if (dashboard.equalsIgnoreCase("agendaRecebimentosSemana"))
+            verTudo = page.locator("//*[@data-testid='home-card-recebimentos-semana-link-ver-tudo']");
+
+        verTudo.scrollIntoViewIfNeeded();
+        verTudo.click();
     }
 
     public void verificarTextoRodape() {

@@ -1,6 +1,6 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Regressivo/Credenciamento_de_Taxistas
+@Zephyr:Folder=/Portal_do_Cliente/Regressivo/Taxista/Credenciamento_de_Taxistas
 @Zephyr:Status=Approved
 @Zephyr:Priority=High
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated

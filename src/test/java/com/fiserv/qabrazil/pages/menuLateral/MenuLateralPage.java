@@ -14,18 +14,22 @@ public class MenuLateralPage {
     private Locator menuInicio;
     private Locator menuVendas;
     private Locator subMenuRelatorioVendas;
+    private Locator menuRecebimentos;
+    private Locator subMenuRecebimentosResumo;
 
     @PostConstruct
     private void loadLocators() {
         this.menuInicio = page.locator("//*[@data-testid='menu-home']");
         this.menuVendas = page.locator("//*[@data-testid='menu-vendas']");
         this.subMenuRelatorioVendas = page.locator("//*[@data-testid='menu-relatorio-vendas']");
+        this.menuRecebimentos = page.locator("//*[@data-testid='menu-recebimentos']");
+        this.subMenuRecebimentosResumo = page.locator("//*[@data-testid='menu-recebimentos-resumo']");
     }
 
-    private void verificarMenuSubmenuClick(Locator elemento) {
-        if (elemento.isVisible()) {
-            elemento.hover();
-            elemento.click();
+    private void verificarMenuSubmenuClick(Locator menuSubmenu) {
+        if (menuSubmenu.isVisible()) {
+            menuSubmenu.hover();
+            menuSubmenu.click();
         }
     }
 
@@ -37,6 +41,12 @@ public class MenuLateralPage {
 
             if (subMenu.equalsIgnoreCase("relatorioVendas")) {
                 this.verificarMenuSubmenuClick(this.subMenuRelatorioVendas);
+            }
+        } else if (menu.equalsIgnoreCase("recebimentos")) {
+            this.verificarMenuSubmenuClick(this.menuRecebimentos);
+
+            if (subMenu.equalsIgnoreCase("resumoRecebimentos")) {
+                this.verificarMenuSubmenuClick(this.subMenuRecebimentosResumo);
             }
         }
     }

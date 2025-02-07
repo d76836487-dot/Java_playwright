@@ -1,10 +1,12 @@
-package com.fiserv.qabrazil.pages.vendas.relatorioVendas;
+package com.fiserv.qabrazil.pages.componentes.relatorios;
 
 import com.microsoft.playwright.Download;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
@@ -33,7 +35,7 @@ public class GeracaoArquivos {
 
         // Captura e formata a data atual
         LocalDate now = LocalDate.now();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-YYYY");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String fullDate = now.format(format);
 
         // Concatena o nome completo do arquivo
@@ -62,50 +64,55 @@ public class GeracaoArquivos {
         return novoDiretorio.toFile();
     }
 
-    public static boolean validarColunasTipoArquivo(File arquivo, int linhaInicioExcel, List<String> listaColunas) throws IOException {
+    public static boolean validarColunasTipoArquivo(File arquivo, int linhaInicio, List<String> listaColunas) throws IOException {
         boolean retorno = false;
 
         String nomeArquivo = arquivo.getName();
 
         if (nomeArquivo.endsWith(".xlsx"))
-            retorno = validarColunasExcel(arquivo, linhaInicioExcel, listaColunas);
+            retorno = validarColunasExcel(arquivo, linhaInicio, listaColunas);
         else if (nomeArquivo.endsWith(".csv"))
             retorno = validarColunasCSV(arquivo, listaColunas);
 
         return retorno;
     }
 
-    private static boolean validarColunasExcel(File arquivo, int linhaInicioExcel, List<String> listaColunas) throws IOException {
-        try (FileInputStream fis = new FileInputStream(arquivo); XSSFWorkbook workbook = new XSSFWorkbook(fis)) {
-
-            // Acessa a primeira aba (sheet)
+    private static boolean validarColunasExcel(File arquivo, int linhaInicio, List<String> listaColunas) throws IOException {
+        try (FileInputStream fis = new FileInputStream(arquivo);
+             Workbook workbook = new XSSFWorkbook(fis)) {
             Sheet sheet = workbook.getSheetAt(0);
-            Row linhaInicialCabecalho = sheet.getRow(linhaInicioExcel);
+            Row row = sheet.getRow(linhaInicio);
+
             List<String> colunasArquivo = new ArrayList<>();
-            linhaInicialCabecalho.forEach(cell -> colunasArquivo.add(cell.getStringCellValue()));
-            //return colunasArquivo.containsAll(listaColunas);
-            return true;
+            for (Cell cell : row) {
+                colunasArquivo.add(cell.getStringCellValue());
+
+                // Se o tamanho da lista colunasArquivo é igual ao tamanho da lista listaColunas, interrompe o loop
+                if (colunasArquivo.size() == listaColunas.size())
+                    break;
+            }
+
+            return colunasArquivo.containsAll(listaColunas);
         }
     }
 
     private static boolean validarColunasCSV(File arquivo, List<String> listaColunas) throws IOException {
-        try (CSVParser parser = new CSVParser(
-             new InputStreamReader(new FileInputStream(arquivo)
-            ,StandardCharsets.UTF_8)
-            ,CSVFormat.DEFAULT.withHeader()
-        )) {
-            boolean retorno = false;
-            String[] listaColunasArquivo = new ArrayList<>(parser.getHeaderNames()).get(0).split(";");
-            int iArquivo = 0;
-            int iListaColunas = 0;
-            for (String colunaArquivo : listaColunasArquivo) {
-                System.out.println(iArquivo + " colunaArquivo: " + colunaArquivo);
-                iArquivo++;
-                iListaColunas++;
-            }
+        try (Reader reader = new InputStreamReader(new FileInputStream(arquivo), StandardCharsets.ISO_8859_1);
+             CSVParser csvParser = new CSVParser(
+                 reader
+                ,CSVFormat.DEFAULT.withFirstRecordAsHeader()
+             )) {
+            boolean retorno = true;
+            String[] listaColunasArquivo = new ArrayList<>(csvParser.getHeaderNames()).get(0).split(";");
+            int i = 0;
 
-            if(iArquivo == iListaColunas)
-                retorno = true;
+            for (String colunaArquivo : listaColunasArquivo) {
+                if (!colunaArquivo.equalsIgnoreCase(listaColunas.get(i))) {
+                    retorno = false;
+                    break;
+                }
+                i++;
+            }
 
             return retorno;
         }

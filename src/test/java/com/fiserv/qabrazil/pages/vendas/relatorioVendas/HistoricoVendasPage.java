@@ -7,6 +7,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.Assert;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -21,14 +22,8 @@ public class HistoricoVendasPage {
     private Locator valorLiquido;
     private Locator valorCancelado;
 
-    // Tipo de relatorio
-    private Locator relatorioSimplificado;
-    private Locator relatorioDetalhado;
-
     // Mais detalhes
     private Locator linkMaisDetalhes;
-    private Locator titleMaisDetalhes;
-    private Locator iconeSairMaisDetalhes;
     private Locator detalhesVendaTotalVendas;
     private Locator detalhesVendaValorBruto;
     private Locator detalhesVendaValorLiquido;
@@ -42,14 +37,8 @@ public class HistoricoVendasPage {
         this.valorLiquido = page.locator("(//*[@data-testid='historico-vendas-valor-liquido'])[1]");
         this.valorCancelado = page.locator("//*[@data-testid='historico-vendas-valor-cancelado']");
 
-        // Tipo de relatorio
-        this.relatorioSimplificado = page.locator("//*[contains(@id, '-RadioButton_Simplificado-input')]");
-        this.relatorioDetalhado = page.locator("//*[contains(@id, '-RadioButton_Detalhado-input')]");
-
         // Mais detalhes
         this.linkMaisDetalhes = page.locator("//*[contains(text(), 'Mais detalhes')]");
-        this.titleMaisDetalhes = page.locator("//*[text()='Detalhes de vendas']");
-        this.iconeSairMaisDetalhes = page.locator("//*[contains(@id, '-b14-Sair')]");
         this.detalhesVendaTotalVendas = page.locator("//*[@data-testid='historico-mais-detalhes-total']");
         this.detalhesVendaValorBruto = page.locator("//*[@data-testid='historico-mais-detalhes-bruto']");
         this.detalhesVendaValorLiquido = page.locator("//*[@data-testid='historico-mais-detalhes-liquido']");
@@ -70,14 +59,6 @@ public class HistoricoVendasPage {
             else if (campo.equalsIgnoreCase("Valor cancelado"))
                 assertThat(valorCancelado).isVisible();
         }
-    }
-
-    // Tipo de relatorio
-    public void selecionarTipoRelatorio(String tipoRelatorio) {
-        if (tipoRelatorio.equalsIgnoreCase("simplificado"))
-            this.relatorioSimplificado.check();
-        else if (tipoRelatorio.equalsIgnoreCase("detalhado"))
-            this.relatorioDetalhado.check();
     }
 
     // Mais detalhes
@@ -129,14 +110,12 @@ public class HistoricoVendasPage {
             );
 
         // verificacao Total de vendas, Valor bruto e Valor liquido
-        if (
+        boolean validacao = (
             (totalVendas == valorSomaItemVendas)
             && (valorBruto == valorSomaItemValorBruto)
             && (valorLiquido == valorSomaItemValorLiquido)
-        )
-            assertThat(titleMaisDetalhes).isVisible();
-        else
-            assertThat(titleMaisDetalhes).not().isVisible();
+        );
+        Assert.assertTrue(validacao);
 
         this.btnFecharDetalhesVenda.scrollIntoViewIfNeeded();
         GeneralUtils.waitForMillis(Config.DELAY_IN_ACTION);
