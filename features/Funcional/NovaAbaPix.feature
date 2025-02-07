@@ -145,8 +145,10 @@ Feature: Nova Aba Pix
     Then arquivo devera vir com o seguinte nome Relatorio_de_Vendas_Pix_DD-MM-AAAA_HHMM
     Then campos Data da venda, Cód de autorização, Valor bruto, Terminal, Número do estabelecimento, Status.
 
+  @TestCaseKey=LPDC-T1256
   Scenario: Usuario sem cadastrado da chave Pix
     Given Usuario Acessa Portal do Cliente com Documento e Senha que não contenha chave Pix
     When Selecionar pelo menu lateral esquerdo a aba Vendas > Relatorio de Vendas
     And Clicar na Aba Pix
     Then visualizara a seguinte mensagem Conecte sua chave Pix!
+
