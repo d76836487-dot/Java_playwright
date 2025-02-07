@@ -8,6 +8,7 @@
 Feature: Futuros
 
   @navegacao
+  @TestCaseKey=LPDC-T1264
   Scenario Outline: Acessar Futuros via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -33,6 +34,7 @@ Feature: Futuros
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
   @navegacao
+  @TestCaseKey=LPDC-T1260
   Scenario Outline: Verificar texto do rodape - Futuros
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -59,6 +61,7 @@ Feature: Futuros
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
   @navegacao
+  @TestCaseKey=LPDC-T1271
   Scenario Outline: Visualizar campos de Total e Valor - Futuros
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -85,6 +88,7 @@ Feature: Futuros
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Total de vendas;Total líquido previsto" |
 
   @periodo
+  @TestCaseKey=LPDC-T1259
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Futuros
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -132,6 +136,7 @@ Feature: Futuros
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Este Mês"            |
 
   @personalizarColunas
+  @TestCaseKey=LPDC-T1261
   Scenario Outline: Personalizar colunas - Futuros
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -167,6 +172,7 @@ Feature: Futuros
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Número do Terminal;Canal;Cód. do pedido;Número do estabelecimento" |
 
   @filtro
+  @TestCaseKey=LPDC-T1262
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Futuros
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -294,6 +300,7 @@ Feature: Futuros
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "91913769" |
 
   @gerarArquivo @nomeArquivo
+  @TestCaseKey=LPDC-T1257
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Futuros
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -340,6 +347,7 @@ Feature: Futuros
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           |
 
   @gerarArquivo @colunasArquivo
+  @TestCaseKey=LPDC-T1263
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Futuros
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>

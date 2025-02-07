@@ -8,6 +8,7 @@
 Feature: Pagos
 
   @navegacao
+  @TestCaseKey=LPDC-T1267
   Scenario Outline: Acessar Pagos via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -33,6 +34,7 @@ Feature: Pagos
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
   @navegacao
+  @TestCaseKey=LPDC-T1268
   Scenario Outline: Acessar Recebimentos via Dashboard Recebimentos
     Given realizar login no portal <alianca>
     When acessar dashboard <dashboard>
@@ -62,6 +64,7 @@ Feature: Pagos
       | "afinz" | "agendaRecebimentosSemana" | "Pagos"      |
 
   @navegacao
+  @TestCaseKey=LPDC-T1258
   Scenario Outline: Verificar texto do rodape - Pagos
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -88,6 +91,7 @@ Feature: Pagos
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
   @navegacao
+  @TestCaseKey=LPDC-T1269
   Scenario Outline: Visualizar campos de Total e Valor - Pagos
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -114,6 +118,7 @@ Feature: Pagos
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos"      | "Total recebido;Total agendado;Total cedido" |
 
   @periodo
+  @TestCaseKey=LPDC-T1277
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Pagos
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -177,6 +182,7 @@ Feature: Pagos
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Este Mês"    |
 
   @personalizarColunas
+  @TestCaseKey=LPDC-T1270
   Scenario Outline: Personalizar colunas - Pagos
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -234,12 +240,13 @@ Feature: Pagos
 
     @afinzCedidos @valoresCedidos
     Examples:
-      | alianca | menu           | submenu              | abaRelatorio            | colunas                                                                        |
+      | alianca        | menu           | submenu              | abaRelatorio            | colunas                                                                        |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto;Tipo;Código de pagamento;Status"                                      |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
   @filtro
+  @TestCaseKey=LPDC-T1265
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Pagos
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -591,8 +598,8 @@ Feature: Pagos
     @afinz @codPagamento @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro              | valor              |
-      | "afinz"      | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "primeiroRegistro" |
-      | "afinz"      | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "WWW333"           |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "primeiroRegistro" |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "WWW333"           |
 
     @afinz @status @meusDomicilios
     Examples:
@@ -703,6 +710,7 @@ Feature: Pagos
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
 
   @gerarArquivo @nomeArquivo
+  @TestCaseKey=LPDC-T1274
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Pagos
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -869,6 +877,7 @@ Feature: Pagos
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   |
 
   @gerarArquivo @colunasArquivo
+  @TestCaseKey=LPDC-T1279
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Pagos
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -1033,3 +1042,4 @@ Feature: Pagos
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
+
