@@ -7,7 +7,6 @@ import io.cucumber.testng.CucumberOptions;
     plugin = {
          "pretty"
         ,"json:target/cucumber/report.json"
-        //,"me.jvt.cucumber.report.PrettyReports:target/cucumber"
     }
     ,features = "classpath:com/fiserv/qabrazil/features/Regressivo"
     ,glue = {"com.fiserv"}

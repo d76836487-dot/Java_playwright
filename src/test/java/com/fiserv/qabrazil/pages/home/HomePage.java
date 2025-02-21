@@ -80,6 +80,8 @@ public class HomePage extends CheckedBasePage {
 
         if (dashboard.equalsIgnoreCase("vendas"))
             verTudo = page.locator("//*[@data-testid='home-card-vendas-hoje-link-ver-tudo']");
+        else if (dashboard.equalsIgnoreCase("ultimasVendas"))
+            verTudo = page.locator("//*[@data-testid='home-card-ultimas-vendas-hoje-link-ver-tudo']");
         else if (dashboard.equalsIgnoreCase("recebimentos"))
             verTudo = page.locator("//*[@data-testid='home-card-recebimentos-link-ver-tudo']");
         else if (dashboard.equalsIgnoreCase("agendaRecebimentosSemana"))

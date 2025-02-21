@@ -6,6 +6,7 @@ import com.fiserv.automation.mfa.MfaGenerator;
 import com.fiserv.automation.playwright.configuration.StorageState;
 import com.fiserv.qabrazil.components.HeaderComponent;
 import com.fiserv.qabrazil.config.ContractConfig;
+import com.fiserv.qabrazil.enums.PerfilAcessoEnum;
 import com.fiserv.qabrazil.pages.BasePage;
 import com.fiserv.qabrazil.pages.CommonsPage;
 import com.fiserv.qabrazil.pages.PageField;
@@ -324,26 +325,54 @@ Thread.sleep(3000);
         String url = "";
         String user = "";
         String pass = "";
+
         switch (alianca) {
             case "bin":
-                url = Config.bin_url;
-                user = Config.bin_user;
-                pass = Config.bin_pass;
+                url = PerfilAcessoEnum.BIN.getUrlPortal();
+                user = PerfilAcessoEnum.BIN.getUsuario();
+                pass = PerfilAcessoEnum.BIN.getSenha();
                 break;
+
             case "sicredi":
-                url = Config.sicredi_url;
-                user = Config.sicredi_user;
-                pass = Config.sicredi_pass;
+                url = PerfilAcessoEnum.SICREDI.getUrlPortal();
+                user = PerfilAcessoEnum.SICREDI.getUsuario();
+                pass = PerfilAcessoEnum.SICREDI.getSenha();
                 break;
+
             case "azulzinha":
-                url = Config.azulzinha_url;
-                user = Config.azulzinhaz_user;
-                pass = Config.azulzinha_pass;
+                url = PerfilAcessoEnum.AZULZINHA.getUrlPortal();
+                user = PerfilAcessoEnum.AZULZINHA.getUsuario();
+                pass = PerfilAcessoEnum.AZULZINHA.getSenha();
                 break;
+
             case "afinz":
-                url = Config.afinz_url;
-                user = Config.afinz_user;
-                pass = Config.afinzi_pass;
+                url = PerfilAcessoEnum.AFINZ.getUrlPortal();
+                user = PerfilAcessoEnum.AFINZ.getUsuario();
+                pass = PerfilAcessoEnum.AFINZ.getSenha();
+                break;
+
+            case "binCedidos":
+                url = PerfilAcessoEnum.BIN_CEDIDOS.getUrlPortal();
+                user = PerfilAcessoEnum.BIN_CEDIDOS.getUsuario();
+                pass = PerfilAcessoEnum.BIN_CEDIDOS.getSenha();
+                break;
+
+            case "sicrediCedidos":
+                url = PerfilAcessoEnum.SICREDI_CEDIDOS.getUrlPortal();
+                user = PerfilAcessoEnum.SICREDI_CEDIDOS.getUsuario();
+                pass = PerfilAcessoEnum.SICREDI_CEDIDOS.getSenha();
+                break;
+
+            case "azulzinhaCedidos":
+                url = PerfilAcessoEnum.AZULZINHA_CEDIDOS.getUrlPortal();
+                user = PerfilAcessoEnum.AZULZINHA_CEDIDOS.getUsuario();
+                pass = PerfilAcessoEnum.AZULZINHA_CEDIDOS.getSenha();
+                break;
+
+            case "afinzCedidos":
+                url = PerfilAcessoEnum.AFINZ_CEDIDOS.getUrlPortal();
+                user = PerfilAcessoEnum.AFINZ_CEDIDOS.getUsuario();
+                pass = PerfilAcessoEnum.AFINZ_CEDIDOS.getSenha();
                 break;
         }
         Config.url = url;

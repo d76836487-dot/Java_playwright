@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.pages.componentes.relatorios;
 
 import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.pages.antecipacao.RelatorioAntecipacoesPage;
 import com.fiserv.qabrazil.pages.vendas.relatorioVendas.*;
 import com.fiserv.qabrazil.pages.recebimentos.resumoRecebimentos.*;
 import com.fiserv.qabrazil.util.Config;
@@ -44,6 +45,11 @@ public class ComponentesRelatoriosPage {
     private Locator abaFuturos;
     private Locator abaDebitosAjustes;
 
+    // Botões abas de Antecipação
+    private Locator abaProduto;
+    private Locator abaHistorico;
+    private Locator abaRelatorioAntecipacoes;
+
     // Títulos das abas de Vendas
     private Locator titleHoje;
     private Locator titleHistoricoVendas;
@@ -57,6 +63,11 @@ public class ComponentesRelatoriosPage {
     private Locator titleValoresCedidos;
     private Locator titleFuturos;
     private Locator titleDebitosAjustes;
+
+    // Títulos das abas de Antecipação
+    private Locator titleProduto;
+    private Locator titleHistorico;
+    private Locator titleRelatorioAntecipacoes;
 
     // Período
     private Locator iconeCalendario;
@@ -104,6 +115,10 @@ public class ComponentesRelatoriosPage {
     @Autowired
     DebitosAjustesPage debitosAjustesPage;
 
+    // Antecipação
+    @Autowired
+    RelatorioAntecipacoesPage relatorioAntecipacoesPage;
+
     @PostConstruct
     private void loadLocators() {
         // Botões abas de Vendas
@@ -119,6 +134,11 @@ public class ComponentesRelatoriosPage {
         this.abaFuturos = page.locator("//*[@id='RecebimentosFuturos']/button");
         this.abaDebitosAjustes = page.locator("//*[@id='RecebimentoDebitos']/button");
 
+        // Botões abas de Antecipação
+        this.abaProduto = page.locator("//*[contains(@id, '-Title') and text()='Produto']");
+        this.abaHistorico = page.locator("//*[@data-testid='tab-historico-text']");
+        this.abaRelatorioAntecipacoes = page.locator("//*[text()='Relatório de antecipações']");
+
         // Títulos das abas de Vendas
         this.titleHoje = page.locator("//*[contains(text(), 'Visualize suas vendas realizadas no dia')]");
         this.titleHistoricoVendas = page.locator("//*[contains(text(), 'Visualize o histórico de todas as vendas')]");
@@ -132,6 +152,11 @@ public class ComponentesRelatoriosPage {
         this.titleValoresCedidos = page.locator("//*[contains(text(), 'contrato de cessão')]");
         this.titleFuturos = page.locator("//*[contains(text(), 'Consulte o saldo futuro de suas vendas a receber')]");
         this.titleDebitosAjustes = page.locator("//*[contains(text(), 'Filtre por tipo de ajuste e consulte as informações')]");
+
+        // Títulos das abas de Antecipação
+        this.titleProduto = page.locator("//*[contains(text(), 'para antecipação')]");
+        this.titleHistorico = page.locator("//*[text()='Historico']");
+        this.titleRelatorioAntecipacoes = page.locator("//*[text()='Relatorio de antecipação']");
 
         // Período
         this.iconeCalendario = page.locator("//*[@data-testid='calendar-trigger-icon']");
@@ -173,6 +198,11 @@ public class ComponentesRelatoriosPage {
     private void clickAbaFuturos() { this.abaFuturos.click(); }
     private void clickAbaDebitosAjustes() { this.abaDebitosAjustes.click(); }
 
+    // Botões abas de Antecipação
+    private void clickAbaProduto() { this.abaProduto.click(); }
+    private void clickAbaHistorico() { this.abaHistorico.click(); }
+    private void clickAbaRelatorioAntecipacoes() { this.abaRelatorioAntecipacoes.click(); }
+
     // Valida os títulos das abas
     public void validarCarregamentoAbaRelatorio(@NotNull String abaRelatorio) {
         // Vendas
@@ -208,11 +238,13 @@ public class ComponentesRelatoriosPage {
             assertThat(titlePagos).isVisible();
 
             if (abaRelatorio.equalsIgnoreCase("Pagos_Meus Domicílios")) {
+                subAbaMeusDomicilios.scrollIntoViewIfNeeded();
                 this.clickSubAbaMeusDomicilios();
                 GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
                 this.titleMeusDomicilios.scrollIntoViewIfNeeded();
                 assertThat(titleMeusDomicilios).isVisible();
             } else if (abaRelatorio.equalsIgnoreCase("Pagos_Valores Cedidos")) {
+                subAbaValoresCedidos.scrollIntoViewIfNeeded();
                 this.clickSubAbaValoresCedidos();
                 GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
                 this.titleValoresCedidos.scrollIntoViewIfNeeded();
@@ -226,6 +258,21 @@ public class ComponentesRelatoriosPage {
             this.clickAbaDebitosAjustes();
             GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
             assertThat(titleDebitosAjustes).isVisible();
+        }
+
+        // Antecipação
+        else if (abaRelatorio.equalsIgnoreCase("Produto")) {
+            this.clickAbaProduto();
+            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            assertThat(titleProduto).isVisible();
+        } else if (abaRelatorio.equalsIgnoreCase("Histórico")) {
+            this.clickAbaHistorico();
+            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            assertThat(titleHistorico).isVisible();
+        } else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações")) {
+            this.clickAbaRelatorioAntecipacoes();
+            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            assertThat(titleRelatorioAntecipacoes).isVisible();
         }
     }
 
@@ -250,6 +297,16 @@ public class ComponentesRelatoriosPage {
             futurosPage.verificarCampos(campos);
         else if (abaRelatorio.equalsIgnoreCase("Débitos e ajustes"))
             debitosAjustesPage.verificarCampos(campos);
+
+        // Antecipação
+        /*
+        else if (abaRelatorio.equalsIgnoreCase("Produto"))
+            .verificarCampos(campos);
+         else if (abaRelatorio.equalsIgnoreCase("Histórico"))
+            .verificarCampos(campos);
+         */
+        else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações"))
+            relatorioAntecipacoesPage.verificarCampos(campos);
     }
 
     private Locator getLocatorFromReportTab(@NotNull String abaRelatorio, String campo) {
@@ -584,6 +641,54 @@ public class ComponentesRelatoriosPage {
                 default -> element;
             };
 
+            // Antecipação
+            /*
+            case "Produto" -> switch (campo) {
+                case "" ->
+                    page.locator("");
+                default -> element;
+            };
+
+            case "Histórico" -> switch (campo) {
+                case "" ->
+                    page.locator("");
+                default -> element;
+            };
+            */
+            case "Relatório de antecipações" -> switch (campo) {
+                case "txtNumeroSimulacao" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-input-filter-simulacao']");
+                case "iconeLupa" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-icon-search']");
+                case "btnFiltros" ->
+                    page.locator("//*[@data-testid='relatorio-de-antecipacoes-filtros']");
+                case "btnExportar" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-button-exportar']");
+                case "resultadoColunas" ->
+                    page.locator("//*[@data-block='AntecipacaoRelatorio.AntecipacaoToggle']");
+                case "primeiroRegistroNumeroSimulacao" ->
+                    page.locator("(//*[@data-testid='relatorio-antecipacao-current-num-simulacao'])[1]");
+                case "resultadoColunaNumeroSimulacao" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-current-num-simulacao']");
+                case "resultadoColunaDataSolitacao" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-current-data']");
+                case "resultadoColunaDataPagamento" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-current-data-antecipacao']");
+                case "resultadoColunaValorBrutoVendas" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-current-valor-bruto']");
+                case "resultadoColunaValorDescontoMDR" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-current-desconto-mdr']");
+                case "resultadoColunaValorLiquidoVendas" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-current-valor-liquido']");
+                case "resultadoColunaValorDescontoAntecipacao" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-current-desconto-antecipacao']");
+                case "resultadoColunaValorPago" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-current-valor-antecipacao']");
+                case "resultadoColunaTipo" ->
+                    page.locator("//*[@data-testid='relatorio-antecipacao-current-tipo-antecipacao']");
+                default -> element;
+            };
+
             default -> element;
         };
 
@@ -668,6 +773,8 @@ public class ComponentesRelatoriosPage {
                 page.locator("//*[@data-testid='generic-calendar-pill-próximo-mês']");
             case "Até o fim do mês" ->
                 page.locator("//*[@data-testid='generic-calendar-pill-até-o-fim-do-mês']");
+            case "Mês Passado" ->
+                page.locator("//*[@data-testid='generic-calendar-pill-mês-passado']");
             default -> page.locator("");
         };
 
@@ -701,6 +808,9 @@ public class ComponentesRelatoriosPage {
         LocalDateTime quatorzeDiasAtras = LocalDateTime.now().minusDays(14);
         LocalDateTime umMesAtras = hoje.minusMonths(1).atStartOfDay();
         LocalDateTime doisMesesAtras = hoje.minusMonths(2).atStartOfDay();
+        LocalDateTime primeiroDiaMesPassado = hoje.minusMonths(1).withDayOfMonth(1).atStartOfDay();
+        LocalDateTime ultimoDiaMesPassado = hoje.minusMonths(1)
+        .withDayOfMonth(hoje.minusMonths(1).lengthOfMonth()).atTime(23, 59, 59);
 
         return switch (periodo) {
             case "Hoje" ->
@@ -734,6 +844,8 @@ public class ComponentesRelatoriosPage {
             case "M+1" ->
                 data.toLocalDate().getMonth().equals(hoje.getMonth())
                 && data.toLocalDate().getYear() == hoje.getYear();
+            case "Mês Passado" ->
+                !data.isBefore(primeiroDiaMesPassado) && !data.isAfter(ultimoDiaMesPassado);
             default -> false;
         };
     }
@@ -785,15 +897,40 @@ public class ComponentesRelatoriosPage {
             GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
         }
 
-        Locator resultadoColunaDataVenda = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataVenda");
+        Locator resultadoColunaData = page.locator("");
+        // Vendas
+        if (
+            abaRelatorio.equalsIgnoreCase("Hoje")
+            || abaRelatorio.equalsIgnoreCase("Histórico de vendas")
+            || abaRelatorio.equalsIgnoreCase("Não efetivadas")
+            || abaRelatorio.equalsIgnoreCase("Pré-autorizações")
+            || abaRelatorio.equalsIgnoreCase("Voucher")
+        )
+            resultadoColunaData = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataVenda");
+
+        // Recebimentos
+        else if (
+            abaRelatorio.equalsIgnoreCase("Pagos")
+            || abaRelatorio.equalsIgnoreCase("Futuros")
+            || abaRelatorio.equalsIgnoreCase("Débitos e ajustes")
+        )
+            resultadoColunaData = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaData");
+
+        // Antecipação
+        else if (
+            abaRelatorio.equalsIgnoreCase("Relatório de antecipações")
+        )
+            resultadoColunaData = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataSolitacao");
+
         String dataCompleta;
-        for (int i = 0; i < resultadoColunaDataVenda.count(); i++) {
-            resultadoColunaDataVenda.nth(i).scrollIntoViewIfNeeded();
-            dataCompleta = resultadoColunaDataVenda.nth(i).textContent().trim().replace(" às ", " ");
+        for (int i = 0; i < resultadoColunaData.count(); i++) {
+            resultadoColunaData.nth(i).scrollIntoViewIfNeeded();
+            // Realizar um tratamento para a Data da venda
+            dataCompleta = resultadoColunaData.nth(i).textContent().trim().replace(" às ", " ");
             if (verificarDataPeriodo(dataCompleta, periodo))
-                assertThat(resultadoColunaDataVenda.nth(i)).isVisible();
+                assertThat(resultadoColunaData.nth(i)).isVisible();
             else
-                assertThat(resultadoColunaDataVenda.nth(i)).not().isVisible();
+                assertThat(resultadoColunaData.nth(i)).not().isVisible();
         }
     }
 
@@ -815,7 +952,7 @@ public class ComponentesRelatoriosPage {
     }
 
     // Filtros
-    private void verificarFiltrosVendasHoje() {
+    private void verificarFiltros() {
         assertThat(titleFiltros).isVisible();
     }
 
@@ -876,7 +1013,6 @@ public class ComponentesRelatoriosPage {
                 case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-tipo-" + valor.replace(" ", "-") + "']");
                 default -> page.locator("//*[@data-testid='generic-filter-accordion-title-tipos']");
             };
-
             default -> page.locator("");
         };
 
@@ -887,11 +1023,13 @@ public class ComponentesRelatoriosPage {
         GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
         this.getLocatorFromReportTab(abaRelatorio, "btnFiltros").scrollIntoViewIfNeeded();
 
-        if (
+        boolean seBtnFitros =
             !filtro.equalsIgnoreCase("Cód. de autorização")
             && !filtro.equalsIgnoreCase("Cód. de pagamento")
-        ) {
-            this.verificarFiltrosVendasHoje();
+            && !filtro.equalsIgnoreCase("Número da simulação");
+
+        if (seBtnFitros) {
+            this.verificarFiltros();
             this.clickFiltros(abaRelatorio);
         }
 
@@ -900,9 +1038,9 @@ public class ComponentesRelatoriosPage {
             case "Cód. de autorização":
                 if (valor.equalsIgnoreCase("primeiroRegistro"))
                     this.preencherCampoPesquisa(
-                             abaRelatorio
-                            ,"txtCodAutorizacao"
-                            ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodAutorizacao").textContent().trim()
+                         abaRelatorio
+                        ,"txtCodAutorizacao"
+                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodAutorizacao").textContent().trim()
                     );
                 else
                     this.preencherCampoPesquisa(abaRelatorio, "txtCodAutorizacao", valor);
@@ -912,12 +1050,24 @@ public class ComponentesRelatoriosPage {
             case "Cód. de pagamento":
                 if (valor.equalsIgnoreCase("primeiroRegistro"))
                     this.preencherCampoPesquisa(
-                            abaRelatorio
-                            ,"txtCodPagamento"
-                            ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodPagamento").textContent().trim()
+                        abaRelatorio
+                        ,"txtCodPagamento"
+                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodPagamento").textContent().trim()
                     );
                 else
                     this.preencherCampoPesquisa(abaRelatorio, "txtCodPagamento", valor);
+
+                break;
+
+            case "Número da simulação":
+                if (valor.equalsIgnoreCase("primeiroRegistro"))
+                    this.preencherCampoPesquisa(
+                        abaRelatorio
+                        ,"txtNumeroSimulacao"
+                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroNumeroSimulacao").textContent().trim()
+                    );
+                else
+                    this.preencherCampoPesquisa(abaRelatorio, "txtNumeroSimulacao", valor);
 
                 break;
 
@@ -947,10 +1097,7 @@ public class ComponentesRelatoriosPage {
                 break;
         }
 
-        if (
-            !filtro.equalsIgnoreCase("Cód. de autorização")
-            && !filtro.equalsIgnoreCase("Cód. de pagamento")
-        ) {
+        if (seBtnFitros) {
             this.btnMostrarResultados.scrollIntoViewIfNeeded();
             this.clickMostrarResultados();
         } else
@@ -1062,12 +1209,22 @@ public class ComponentesRelatoriosPage {
         for (String coluna : listaColunas) {
             if (coluna.equalsIgnoreCase("Data da venda"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataVenda");
-            if (coluna.equalsIgnoreCase("Data alvo"))
+            else if (coluna.equalsIgnoreCase("Data alvo"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataAlvo");
+            else if (coluna.equalsIgnoreCase("Data do ajuste"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataAjuste");
+            else if (coluna.equalsIgnoreCase("Data efetiva da cobrança"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataEfetivaCobranca");
+            else if (coluna.equalsIgnoreCase("Data da solicitação"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataSolitacao");
+            else if (coluna.equalsIgnoreCase("Data do pagamento"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataPagamento");
             else if (coluna.equalsIgnoreCase("Cód. de autorização"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodAutorizacao");
             else if (coluna.equalsIgnoreCase("Cód. de pagamento"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodPagamento");
+            else if (coluna.equalsIgnoreCase("Número da simulação"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaNumeroSimulacao");
             else if (coluna.equalsIgnoreCase("Comprovante de venda"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaComprovanteVenda");
             else if (coluna.equalsIgnoreCase("Produto"))
@@ -1094,6 +1251,22 @@ public class ComponentesRelatoriosPage {
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorAutorizado");
             else if (coluna.equalsIgnoreCase("Valor confirmado"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorConfirmado");
+            else if (coluna.equalsIgnoreCase("Valor de pagamento"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorPagamento");
+            else if (coluna.equalsIgnoreCase("Valor bruto da parcela"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBrutoParcela");
+            else if (coluna.equalsIgnoreCase("Valor do aluguel"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorAluguel");
+            else if (coluna.equalsIgnoreCase("Valor bruto das vendas"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBrutoVendas");
+            else if (coluna.equalsIgnoreCase("Valor desconto MDR"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorDescontoMDR");
+            else if (coluna.equalsIgnoreCase("Valor Líquido das vendas"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorLiquidoVendas");
+            else if (coluna.equalsIgnoreCase("Valor desconto antecipação"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorDescontoAntecipacao");
+            else if (coluna.equalsIgnoreCase("Valor pago"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorPago");
             else if (coluna.equalsIgnoreCase("Status"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaStatus");
             else if (coluna.equalsIgnoreCase("Estabelecimento")
@@ -1106,6 +1279,18 @@ public class ComponentesRelatoriosPage {
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodReferenciaCartao");
             else if (coluna.equalsIgnoreCase("Cód. do pedido"))
                 colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodPedido");
+            else if (coluna.equalsIgnoreCase("Banco"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaBanco");
+            else if (coluna.equalsIgnoreCase("Tipo"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTipo");
+            else if (coluna.equalsIgnoreCase("EC"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaEC");
+            else if (coluna.equalsIgnoreCase("Código de pagamento"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodPagamento");
+            else if (coluna.equalsIgnoreCase("Comprovante"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaComprovante");
+            else if (coluna.equalsIgnoreCase("Tecnologia"))
+                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTecnologia");
 
             for (int i = 0; i < colunaResultado.count(); i++)
                 assertThat(colunaResultado.nth(i)).isVisible();
@@ -1166,6 +1351,17 @@ public class ComponentesRelatoriosPage {
                         );
                     else
                         assertThat(resultadoColunaCodPagamento.nth(i)).containsText(valor);
+                break;
+
+            case "Número da simulação":
+                Locator resultadoColunaNumeroSimulacao = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaNumeroSimulacao");
+                for (int i = 0; i < resultadoColunaNumeroSimulacao.count(); i++)
+                    if (valor.equalsIgnoreCase("primeiroRegistro"))
+                        assertThat(resultadoColunaNumeroSimulacao.nth(i)).containsText(
+                                this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroNumeroSimulacao").textContent().trim()
+                        );
+                    else
+                        assertThat(resultadoColunaNumeroSimulacao.nth(i)).containsText(valor);
                 break;
 
             case "Status":
@@ -1325,6 +1521,7 @@ public class ComponentesRelatoriosPage {
             abaRelatorio.equalsIgnoreCase("Histórico de vendas")
             || abaRelatorio.equalsIgnoreCase("Pagos_Meus Domicílios")
             || abaRelatorio.equalsIgnoreCase("Pagos_Valores Cedidos")
+            || abaRelatorio.equalsIgnoreCase("Relatório de antecipações")
         )
             if (tipoRelatorio.equalsIgnoreCase("simplificado"))
                 this.relatorioSimplificado.check();
@@ -1354,6 +1551,14 @@ public class ComponentesRelatoriosPage {
             };
             case "Futuros" -> "Relatorio_de_Recebimentos_Futuros_";
             case "Débitos e ajustes" -> "Relatorio_Aluguel_";
+
+            // Antecipação
+            case "Relatório de antecipações" -> switch (tipoRelatorio) {
+                case "simplificado" -> "Relatorio_simplificado_Antecipação_";
+                case "detalhado" -> "Relatorio_Detalhado_Antecipação_";
+                default -> "";
+            };
+
             default -> "";
         };
     }
@@ -1378,7 +1583,7 @@ public class ComponentesRelatoriosPage {
 
     private int atribuirLinhaInicio(String tipoRelatorio, String abaRelatorio) {
         return switch (abaRelatorio) {
-            // Vendas e Recebimentos
+            // Vendas, Recebimentos e Antecipação
             case "Hoje" -> 16;
             case "Histórico de vendas" -> switch (tipoRelatorio) {
                 case "simplificado" -> 14;
@@ -1391,6 +1596,11 @@ public class ComponentesRelatoriosPage {
             case "Pagos_Meus Domicílios", "Pagos_Valores Cedidos" -> switch (tipoRelatorio) {
                 case "simplificado" -> 13;
                 case "detalhado" -> 4;
+                default -> 0;
+            };
+            case "Relatório de antecipações" -> switch (tipoRelatorio) {
+                case "simplificado" -> 11;
+                case "detalhado" -> 10;
                 default -> 0;
             };
 

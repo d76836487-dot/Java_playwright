@@ -41,23 +41,27 @@ Feature: Vendas Hoje
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     @bin
     Examples:
-      | alianca | dashboard | abaRelatorio |
-      | "bin"   | "vendas"  | "Hoje"       |
+      | alianca | dashboard       | abaRelatorio |
+      | "bin"   | "vendas"        | "Hoje"       |
+      | "bin"   | "ultimasVendas" | "Hoje"       |
 
     @sicredi
     Examples:
-      | alianca   | dashboard | abaRelatorio |
-      | "sicredi" | "vendas"  | "Hoje"       |
+      | alianca   | dashboard       | abaRelatorio |
+      | "sicredi" | "vendas"        | "Hoje"       |
+      | "sicredi" | "ultimasVendas" | "Hoje"       |
 
     @azulzinha
     Examples:
-      | alianca     | dashboard | abaRelatorio |
-      | "azulzinha" | "vendas"  | "Hoje"       |
+      | alianca     | dashboard       | abaRelatorio |
+      | "azulzinha" | "vendas"        | "Hoje"       |
+      | "azulzinha" | "ultimasVendas" | "Hoje"       |
 
     @afinz
     Examples:
-      | alianca | dashboard | abaRelatorio |
-      | "afinz" | "vendas"  | "Hoje"       |
+      | alianca | dashboard       | abaRelatorio |
+      | "afinz" | "vendas"        | "Hoje"       |
+      | "afinz" | "ultimasVendas" | "Hoje"       |
 
   @navegacao
   @TestCaseKey=LPDC-T1229
