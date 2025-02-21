@@ -8,6 +8,7 @@
 Feature: Relatorio de antecipacoes
 
   @navegacao
+  @TestCaseKey=LPDC-T1286
   Scenario Outline: Acessar Relatorio de antecipacoes via menu lateral
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -33,6 +34,7 @@ Feature: Relatorio de antecipacoes
       | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" |
 
   @navegacao
+  @TestCaseKey=LPDC-T1281
   Scenario Outline: Verificar texto do rodape - Relatorio de antecipacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -59,6 +61,7 @@ Feature: Relatorio de antecipacoes
       | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" |
 
   @navegacao
+  @TestCaseKey=LPDC-T1287
   Scenario Outline: Visualizar campos de Total e Valor - Relatorio de antecipacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -85,6 +88,7 @@ Feature: Relatorio de antecipacoes
       | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Valor bruto das vendas;Valor líquido das vendas;Total de desconto valor líquido;Valor antecipado pago;Total de desconto valor antecipado pago" |
 
   @periodo
+  @TestCaseKey=LPDC-T1283
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Relatorio de antecipacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -124,6 +128,7 @@ Feature: Relatorio de antecipacoes
       | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Mês Passado"     |
 
   @filtro
+  @TestCaseKey=LPDC-T1284
   Scenario Outline: Realizar filtro - <filtro>: <valor> - Relatorio de antecipacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -227,6 +232,7 @@ Feature: Relatorio de antecipacoes
       | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Manual"     |
 
   @gerarArquivo @nomeArquivo
+  @TestCaseKey=LPDC-T1282
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Relatorio de antecipacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -259,8 +265,8 @@ Feature: Relatorio de antecipacoes
 
     @sicredi @excel @detalhado
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
-      | "sicredi" | "antecipacao" | "" | "Relatório de antecipações" | "Excel"     | "detalhado"   |
+      | alianca   | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
+      | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   |
 
     @sicredi @csv @simplificado
     Examples:
@@ -313,6 +319,7 @@ Feature: Relatorio de antecipacoes
       | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   |
 
   @gerarArquivo @colunasArquivo
+  @TestCaseKey=LPDC-T1285
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Relatorio de antecipacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
