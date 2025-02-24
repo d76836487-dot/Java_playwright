@@ -3,7 +3,7 @@ package com.fiserv.qabrazil.steps.componentes.relatorios;
 import com.fiserv.qabrazil.pages.componentes.relatorios.ComponentesRelatoriosPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package com.fiserv.qabrazil.pages.taxista;
 
-import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
@@ -31,7 +31,7 @@ public class HomeTaxistaPage {
 
     public void clickQueroMinhaAzulzinha() { this.btnQueroMinhaAzulzinha.click(); }
 
-    @Value("${taxista.url}")
+    @Value("${urls.taxista}")
     private String url;
 
     public void acessarCadastroCredenciamentoTaxista() {

@@ -1,50 +1,11 @@
 package com.fiserv.qabrazil.util;
 
 public class Config {
-    public static int errorLogonCount = 0;
-    public static int sucessLogonCount = 0;
-    public static int acessLogonCount = 0;
-    public static final String error_user = "81633816000210";
-    public static final String error_pass = "Fiserv@123";
-
-    public static final String sicredi_url = "https://sicredi.qa.portaldocliente.fiserv.com";
-    public static final String sicredi_user = "49949472000184";//53362504060
-    public static final String sicredi_pass = "Fiserv@123456";//Fiserv@457
-
-    public static final String sicrediflex_url = "https://sicredi.qa.portaldocliente.fiserv.com";
-    public static final String sicrediflex_user = "68992232000107";
-    public static final String sicrediflex_pass = "Senha123@";
-
-    public static final String afinz_url = "https://afinz.qa.portaldocliente.fiserv.com";
-    public static final String afinz_user = "72798336082";
-    public static final String afinzi_pass = "Fiserv@456";
-
-    public static final String azulzinha_url = "https://azulzinha.qa.portaldocliente.fiserv.com";
-    public static final String azulzinhaz_user = "52690708000115";//34763017020
-    public static final String azulzinha_pass = "Fiserv@1020";//Fiserv@123
-
-    public static final String bin_url = "https://bin.qa.portaldocliente.fiserv.com";
-    public static final String bin_user = "71925286096";
-    public static final String bin_pass = "Fiserv@456";
-
-    public static final String apiKey = "kaGC9uLpusCBi3BgR8QBAz35gJxIkEST";
-    public static final String apiSecret = "sU7aBf8bHhQfoeQ8wILCkAjAa23tgJd7KAcUc79ueiN";
-    public static final String requestId = "857fe690-2ae9-41a9-81a6-a1ceb0777a6d";
-    public static final String clientChannelId = "09b609197bb3eb06cd4c42af586c2825451cd2fc";
-
-    public static String serviceContract = "";
-    public static String institution = "";
-
-    public static String url = "";
-    public static String SessionLogado = "YES";
-
-    public static String Totp = "";
-    public static String SecretKey = "";
-
-    public static Double valorAntecipacao = Double.valueOf("0");
-
     // parametrização do tempo de aguardo
     public static final int TIME_TO_WAIT_PAGE = 5000;
     public static final int WAIT_FOR_PAGE_UPDATE = 2500;
-    public static int DELAY_IN_ACTION = 1000;
+    public static final int DELAY_IN_ACTION = 1000;
+
+    // tag do cucumber
+    public static final String TAG_CUCUMBER = "@RelatorioAntecipacoes and @navegacao and @sicredi";
 }

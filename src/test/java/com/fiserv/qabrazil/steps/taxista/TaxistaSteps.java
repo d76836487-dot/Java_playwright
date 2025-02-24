@@ -30,10 +30,6 @@ public class TaxistaSteps {
     @Autowired
     private PedidoConfirmadoPage pedidoConfirmadoPage;
 
-    public TaxistaSteps() {
-        Config.SessionLogado = "";
-    }
-
     @Given("que o usuário inicialize o cadastro de credenciamento de taxista")
     public void que_o_usuario_inicialize_o_cadastro_de_credenciamento_de_taxista() {
         homeTaxistaPage.acessarCadastroCredenciamentoTaxista();

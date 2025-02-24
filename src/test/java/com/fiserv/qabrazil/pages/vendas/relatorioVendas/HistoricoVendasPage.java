@@ -1,6 +1,6 @@
 package com.fiserv.qabrazil.pages.vendas.relatorioVendas;
 
-import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.util.Config;
 import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;

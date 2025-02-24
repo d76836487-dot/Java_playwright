@@ -1,0 +1,116 @@
+<ruleset xmlns="https://www.mojohaus.org/VERSIONS/RULE/2.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://www.mojohaus.org/VERSIONS/RULE/2.1.0 https://www.mojohaus.org/versions/versions-model/xsd/rule-2.1.0.xsd"
+         comparisonMethod="maven">
+    <rules>
+        <!--
+
+        Ignores based on a regex
+
+        <rule groupId="org.springframework.boot"
+              artifactId="spring-boot-starter-parent"
+              comparisonMethod="maven" >
+            <ignoreVersions>
+                <ignoreVersion type="regex">^3.*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+
+        ===============================================================
+
+        Ignores an exact match
+
+        <rule groupId="com.microsoft.playwright"
+              artifactId="playwright"
+              comparisonMethod="maven" >
+            <ignoreVersions>
+                <ignoreVersion>1.38.0</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+
+        -->
+        <rule groupId="com.fasterxml.jackson"
+              artifactId="jackson-bom"
+              comparisonMethod="maven" >
+            <ignoreVersions>
+                <ignoreVersion type="regex">[rR][cC]</ignoreVersion>
+                <ignoreVersion type="regex">[cC][rR]</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="org.hibernate"
+              artifactId="hibernate-core"
+              comparisonMethod="maven" >
+            <ignoreVersions>
+                <ignoreVersion type="regex">[rR][cC]</ignoreVersion>
+                <ignoreVersion type="regex">[cC][rR]</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="dom4j"
+              artifactId="dom4j"
+              comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion>20040902.021138</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="org.apache.maven.doxia"
+              artifactId="doxia-site-renderer"
+              comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">^2.*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="org.apache.maven.plugins"
+              artifactId="maven-install-plugin"
+              comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">^4.*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="org.apache.maven.plugins"
+              artifactId="maven-clean-plugin"
+              comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">^4.*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="org.apache.maven.plugins"
+              artifactId="maven-compiler-plugin"
+              comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">^4.*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="org.apache.maven.plugins"
+              artifactId="maven-resources-plugin"
+              comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">^4.*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="org.apache.maven.plugins"
+              artifactId="maven-deploy-plugin"
+              comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">^4.*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="org.apache.maven.plugins"
+              artifactId="maven-jar-plugin"
+              comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">^4.*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+        <rule groupId="org.apache.maven.plugins"
+              artifactId="maven-source-plugin"
+              comparisonMethod="maven">
+            <ignoreVersions>
+                <ignoreVersion type="regex">^4.*</ignoreVersion>
+            </ignoreVersions>
+        </rule>
+    </rules>
+    <ignoreVersions>
+        <ignoreVersion type="regex">.*[Aa]lpha.*</ignoreVersion>
+        <ignoreVersion type="regex">.*[Bb]eta.*</ignoreVersion>
+        <ignoreVersion type="regex">.*[Rr][Cc].*</ignoreVersion>
+        <ignoreVersion type="regex">.*[Cc][Rr].*</ignoreVersion>
+    </ignoreVersions>
+</ruleset>

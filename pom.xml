@@ -6,17 +6,23 @@
     <parent>
         <groupId>com.fiserv.qabrazil</groupId>
         <artifactId>framework-parent-cucumber</artifactId>
-        <version>2023-11-10-19-06-38289097</version>
+        <version>2024-08-15-20-48-99f0d053</version>
     </parent>
 
     <artifactId>portal-do-cliente</artifactId>
 
     <properties>
+        <!-- Plugins versions -->
+        <maven.versions.plugin.version>2.17.1</maven.versions.plugin.version>
+        <dom4j.version>2.1.4</dom4j.version>
+        <doxia.version>1.11.1</doxia.version>
+        <maven.dependency.plugin.version>3.7.1</maven.dependency.plugin.version>
+        <!-- Building configuration -->
+        <argLine>-Dfile.encoding=UTF-8</argLine>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <retrofit.version>2.9.0</retrofit.version>
     </properties>
 
     <dependencies>
@@ -24,96 +30,18 @@
             <groupId>com.fiserv.qabrazil</groupId>
             <artifactId>framework-playwright</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.14</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>retrofit</artifactId>
-            <version>${retrofit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.retrofit2</groupId>
-            <artifactId>converter-jackson</artifactId>
-            <version>${retrofit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>4.12.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.trivago.rta</groupId>
-            <artifactId>cluecumber-maven</artifactId>
-            <version>3.5.1</version>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>4.1.2</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-csv</artifactId>
             <version>1.8</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.dhatim</groupId>
-            <artifactId>fastexcel-reader</artifactId>
-            <version>0.17.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>5.9</version>
-        </dependency>
-
-        <dependency>
-            <groupId>de.taimos</groupId>
-            <artifactId>totp</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.16.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>3.5.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.xerial</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-            <version>3.43.2.0</version>
-            <type>pom</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.xmlunit</groupId>
-            <artifactId>xmlunit-core</artifactId>
-            <version>2.10.0</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -128,129 +56,60 @@
         </testResources>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.2.0</version>
-            </plugin>
-
-            <plugin>
-                <groupId>com.trivago.rta</groupId>
-                <artifactId>cluecumber-maven</artifactId>
-                <version>3.5.1</version>
-                <executions>
-                    <execution>
-                        <id>report</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>reporting</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${maven.versions.plugin.version}</version>
+                <!-- The following dependency of this plugin is ancient and its version 2 is under development.
+                     While they don't migrate to the new org.dom4j, we override it ourselves -->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-site-renderer</artifactId>
+                        <version>${doxia.version}</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>dom4j</groupId>
+                                <artifactId>dom4j</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.dom4j</groupId>
+                        <artifactId>dom4j</artifactId>
+                        <version>${dom4j.version}</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
-                    <sourceJsonReportDirectory>${project.build.directory}/cucumber</sourceJsonReportDirectory>
-                    <generatedHtmlReportDirectory>${project.build.directory}/generated-report
-                    </generatedHtmlReportDirectory>
+                    <dependencyExcludes></dependencyExcludes>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <rulesUri>file:///${session.executionRootDirectory}/rules.xml</rulesUri>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven.dependency.plugin.version}</version>
+                <!-- The following dependency of this plugin is ancient and its version 2 is under development.
+                     While they don't migrate to the new org.dom4j, we override it ourselves -->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-site-renderer</artifactId>
+                        <version>${doxia.version}</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>dom4j</groupId>
+                                <artifactId>dom4j</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.dom4j</groupId>
+                        <artifactId>dom4j</artifactId>
+                        <version>${dom4j.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>afinz</id>
-            <build>
-                <directory>output\afinz</directory>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M7</version>
-                        <configuration>
-                            <argLine>-Dspring.profiles.active=afinz</argLine>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>azulzinha</id>
-            <build>
-                <directory>output\azulzinha\target</directory>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M7</version>
-                        <configuration>
-                            <argLine>-Dspring.profiles.active=azulzinha</argLine>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>ota-azulzinha</id>
-            <build>
-                <directory>output\ota-azulzinha\target</directory>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M7</version>
-                        <configuration>
-                            <argLine>-Dspring.profiles.active=ota-azulzinha</argLine>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>bin</id>
-            <build>
-                <directory>output\bin\target</directory>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M7</version>
-                        <configuration>
-                            <argLine>-Dspring.profiles.active=bin</argLine>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>sicredi</id>
-            <build>
-                <directory>output\sicredi\target</directory>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M7</version>
-                        <configuration>
-                            <argLine>-Dspring.profiles.active=sicredi</argLine>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>oto-sicredi</id>
-            <build>
-                <directory>output\oto-sicredi\target</directory>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M7</version>
-                        <configuration>
-                            <argLine>-Dspring.profiles.active=oto-sicredi</argLine>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>

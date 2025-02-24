@@ -1,146 +1,35 @@
-user-profiles:
-  afinz:
-    url: https://afinz.qa.portaldocliente.fiserv.com
-    user: ${AFINZ_CONTRACT_USER}
-    password: ${AFINZ_CONTRACT_PASSWORD}
-    mfaSecretKey: ${AFINZ_MFA_SECRETKEY}
-    identity: afinz
-    primaryCssClass: cor-azul
-    institutionTags: '@pt-br,@afinz,@NaoPermiteAdiantamento,@NaoPermiteSolicitações'
-    clientTags: '@MDRFlex'
-    locale: pt-br
-    apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: "143"
-    institution: "00000010"
-    allianceName: AFINZ
-  ota-afinz:
-    url: https://afinz.hml.portaldocliente.fiserv.com
-    user: ${OTA_AFINZ_CONTRACT_USER}
-    password: ${OTA_AFINZ_CONTRACT_PASSWORD}
-    mfaSecretKey: ${OTA_AFINZ_MFA_SECRETKEY}
-    identity: afinz
-    primaryCssClass: cor-azul
-    institutionTags: '@pt-br,@afinz,@NaoPermiteAdiantamento,@NaoPermiteSolicitações'
-    clientTags: '@MDRFlex,@UsuárioComHierarquia'
-    locale: pt-br
-    apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: "143"
-    institution: "00000010"
-    allianceName: AFINZ
-  azulzinha:
-    url: https://azulzinha.hml.portaldocliente.fiserv.com
-    user: ${AZULZINHA_CONTRACT_USER}
-    password: ${AZULZINHA_CONTRACT_PASSWORD}
-    mfaSecretKey: ${AZULZINHA_MFA_SECRETKEY}
-    identity: azulzinha
-    primaryCssClass: cor-azulzinha
-    institutionTags: '@pt-br,@azulzinha,@NaoPermiteAdiantamento,@PermiteSolicitações'
-    clientTags: '@MDRPadrão'
-    locale: pt-br
-    apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: "149"
-    institution: "00000007"
-    allianceName: CAIXA
-  ota-azulzinha:
-    url: https://azulzinha.hml.portaldocliente.fiserv.com
-    user: ${OTA_AZULZINHA_CONTRACT_USER}
-    password: ${OTA_AZULZINHA_CONTRACT_PASSWORD}
-    mfaSecretKey: ${OTA_AZULZINHA_MFA_SECRETKEY}
-    identity: azulzinha
-    primaryCssClass: cor-azulzinha
-    institutionTags: '@pt-br,@azulzinha,@NaoPermiteAdiantamento,@PermiteSolicitações'
-    clientTags: '@MDRPadrão'
-    locale: pt-br
-    apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: "149"
-    institution: "00000007"
-    allianceName: CAIXA
-  bin003:
-    url: https://bin.qa.portaldocliente.fiserv.com
-    user: 37421677070
-    password: Fiserv@456
-    mfaSecretKey: ${BIN003_MFA_SECRETKEY}
-    identity: bin
-    primaryCssClass: cor-laranja
-    institutionTags: '@pt-br,@bin003,@PermiteAdiantamento,@PermiteSolicitações'
-    clientTags: '@MDRPadrão'
-    locale: pt-br
-    apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: "101"
-    institution: "00000003"
-    allianceName: BIN
-  bin007:
-    url: https://bin.hml.portaldocliente.fiserv.com
-    user: ${BIN007_CONTRACT_USER}
-    password: ${BIN007_CONTRACT_PASSWORD}
-    mfaSecretKey: ${BIN007_MFA_SECRETKEY}
-    identity: bin
-    primaryCssClass: cor-laranja
-    institutionTags: '@pt-br,@bin007,@PermiteAdiantamento,@PermiteSolicitações'
-    clientTags: '@MDRPadrão,@UsuárioComHierarquia'
-    locale: pt-br
-    apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: "125"
-    institution: "00000007"
-    allianceName: BIN
-  sicredi:
-    url: https://sicredi.hml.portaldocliente.fiserv.com
-    user: 53362504060
-    password: Fiserv@456
-    mfaSecretKey: ${SICREDI_MFA_SECRETKEY}
-    identity: sicredi
-    primaryCssClass: cor-verde
-    institutionTags: '@pt-br,@sicredi,@PermiteAdiantamento,@PermiteSolicitações'
-    clientTags: '@MDRPadrão'
-    locale: pt-br
-    apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: "110"
-    institution: "00000004"
-    allianceName: SICREDI
-  oto-sicredi:
-    url: https://sicredi.hml.portaldocliente.fiserv.com
-    user: ${OTO_SICREDI_CONTRACT_USER}
-    password: ${OTO_SICREDI_CONTRACT_PASSWORD}
-    mfaSecretKey: ${OTO_SICREDI_MFA_SECRETKEY}
-    identity: sicredi
-    primaryCssClass: cor-verde
-    institutionTags: '@pt-br,@sicredi,@PermiteAdiantamento,@PermiteSolicitações'
-    clientTags: '@MDRPadrão'
-    locale: pt-br
-    apiHost: https://cat.api.firstdata.com/bwa/
-    serviceContract: "110"
-    institution: "00000004"
-    allianceName: SICREDI
-taxista:
-  url: https://azulzinha.qa.portaldocliente.fiserv.com/taxista/
-api:
-  apiKey: "kaGC9uLpusCBi3BgR8QBAz35gJxIkEST"
-  apiSecret: "sU7aBf8bHhQfoeQ8wILCkAjAa23tgJd7KAcUc79ueiN"
-  requestId: "857fe690-2ae9-41a9-81a6-a1ceb0777a6d"
-  clientChannelId: "09b609197bb3eb06cd4c42af586c2825451cd2fc"
-
 urls:
-  gitlab: https://gitlab.onefiserv.net/
+  taxista: https://azulzinha.qa.portaldocliente.fiserv.com/taxista/
 framework:
+  logging:
+    enableExecutionTracing: true
   playwright:
+    browserType: chrome
+    context-options:
+      useScreenshot: false
+      useRecordVideo: false
+      useStorageState: false
+    cli-options:
+      useLocalPlaywrightInstallation: true
+      localPlaywrightInstallationPath: '${user.home}\.playwright'
+      useCustomNodeJs: true
+      customNodeJsPath: 'C:\Program Files\nodejs\node.exe'
+      skipBrowserDownload: false
     launch-options:
       # Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary"
-      channel: chrome
+      # channel: chrome
       headless: false
-      slowMo: 300
-      # timeout: 30000
       args:
-          - --window-size=1920,1080
-          #- --start-maximized
-          #- --ignore-certificate-errors
-      #   - --proxy-server=http://127.0.0.1:8080
+        - --ignore-certificate-errors
+      # executablePath: 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+      # slowMo: 100
+      # timeout: 30000
       # chromiumSandbox: false
       # devtools: false
       # downloadsPath: my/download/path
       # env:
       #   example-key1: example-value1
       #   example-key2: example-value2
-      # executablePath: my/executable/path
       # firefoxUserPrefs:
       #   example-key1: example-value1
       #   example-key2: example-value2

@@ -28,11 +28,6 @@ Feature: Relatorio de antecipacoes
       | alianca     | menu          | submenu | abaRelatorio                |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" |
 
-    @afinz
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" |
-
   @navegacao
   @TestCaseKey=LPDC-T1281
   Scenario Outline: Verificar texto do rodape - Relatorio de antecipacoes
@@ -55,11 +50,6 @@ Feature: Relatorio de antecipacoes
       | alianca     | menu          | submenu | abaRelatorio                |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" |
 
-    @afinz
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" |
-
   @navegacao
   @TestCaseKey=LPDC-T1287
   Scenario Outline: Visualizar campos de Total e Valor - Relatorio de antecipacoes
@@ -81,11 +71,6 @@ Feature: Relatorio de antecipacoes
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | campos                                                                                                                                          |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Valor bruto das vendas;Valor líquido das vendas;Total de desconto valor líquido;Valor antecipado pago;Total de desconto valor antecipado pago" |
-
-    @afinz
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | campos                                                                                                                                          |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Valor bruto das vendas;Valor líquido das vendas;Total de desconto valor líquido;Valor antecipado pago;Total de desconto valor antecipado pago" |
 
   @periodo
   @TestCaseKey=LPDC-T1283
@@ -118,14 +103,6 @@ Feature: Relatorio de antecipacoes
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 7 Dias"  |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 14 Dias" |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Mês Passado"     |
-
-    @afinz
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | periodo           |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Ontem"           |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 7 Dias"  |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 14 Dias" |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Mês Passado"     |
 
   @filtro
   @TestCaseKey=LPDC-T1284
@@ -207,30 +184,6 @@ Feature: Relatorio de antecipacoes
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Automática" |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Manual"     |
 
-    @afinz @numeroSimulacao
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | filtro                | valor              |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "primeiroRegistro" |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "WWW333"           |
-
-    @afinz @bandeira
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | filtro     | valor        |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "todos"      |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Visa"       |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Mastercard" |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Amex"       |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Cabal"      |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Elo"        |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Hipercard"  |
-
-    @afinz @tipos
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | filtro  | valor        |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "todos"      |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Automática" |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Manual"     |
-
   @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1282
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Relatorio de antecipacoes
@@ -298,26 +251,6 @@ Feature: Relatorio de antecipacoes
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   |
 
-    @afinz @excel @simplificado
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" |
-
-    @afinz @excel @detalhado
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   |
-
-    @afinz @csv @simplificado
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" |
-
-    @afinz @csv @detalhado
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   |
-
   @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1285
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Relatorio de antecipacoes
@@ -384,24 +317,3 @@ Feature: Relatorio de antecipacoes
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
-
-    @afinz @excel @simplificado
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
-
-    @afinz @excel @detalhado
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
-
-    @afinz @csv @simplificado
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
-
-    @afinz @csv @detalhado
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
-      | "afinz" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
-

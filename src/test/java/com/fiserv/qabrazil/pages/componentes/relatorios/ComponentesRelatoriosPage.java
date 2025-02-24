@@ -1,6 +1,6 @@
 package com.fiserv.qabrazil.pages.componentes.relatorios;
 
-import com.fiserv.automation.framework.annotations.ScenarioComponent;
+import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.pages.antecipacao.RelatorioAntecipacoesPage;
 import com.fiserv.qabrazil.pages.vendas.relatorioVendas.*;
 import com.fiserv.qabrazil.pages.recebimentos.resumoRecebimentos.*;
@@ -10,7 +10,7 @@ import com.microsoft.playwright.Download;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 

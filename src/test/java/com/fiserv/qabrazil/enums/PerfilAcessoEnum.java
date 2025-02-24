@@ -17,8 +17,8 @@ public enum PerfilAcessoEnum {
         "sicredi"
         ,setUrlPortal("sicredi")
         ,"master"
-        ,"49949472000184"
-        ,"Fiserv@123456"
+        ,"79750866000170"
+        ,"Fiserv@1234"
         ,"110"
         ,setInstituicao("4")
     )
@@ -26,8 +26,8 @@ public enum PerfilAcessoEnum {
         "azulzinha"
         ,setUrlPortal("azulzinha")
         ,"master"
-        ,"52690708000115"
-        ,"Fiserv@1020"
+        ,"31561999000171"
+        ,"Fiserv@0987"
         ,"149"
         ,setInstituicao("7")
     )
@@ -62,8 +62,8 @@ public enum PerfilAcessoEnum {
         "azulzinha"
         ,setUrlPortal("azulzinha")
         ,"cedidos"
-        ,"52690708000115"
-        ,"Fiserv@1020"
+        ,"31561999000171"
+        ,"Fiserv@0987"
         ,"149"
         ,setInstituicao("7")
     )
