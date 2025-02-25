@@ -55,47 +55,47 @@ Feature: SPLIT de Pagamento V2
   Scenario: O Franqueador Nao deve Visualizar Vendas hoje e ultimas vendas no dashboard
     Given Logar no portal com franqueador
     When Visualizar o Dashboard na home logada
-    Then Validar que o Vendas hoje e Ultimas vendas nao aparecem para o perfil do Franqueador.
+    Then Validar que o Vendas hoje e Ultimas vendas nao aparecem para o perfil do Franqueador
 
-  Scenario: O usuário franqueador Personalizar coluna
+  Scenario: O usuario franqueador Personalizar coluna
     Given Usuario franqueador deve esta em Historico de vendas
     When clicar em personalizar coluna
     Then deve aparecer a coluna Valor original da venda que apresentara o valor capturado pelo franqueado quando selecionada.
 
-  Scenario: exportar csv e excel Simplificado na aba Historico de vendas
+  Scenario: Exportar csv e excel Simplificado na aba Historico de vendas - Franqueador
     Given Usuario franqueador deve esta em Historico de vendas
     When quando clicar em exportar
-    And baixar o relatório simplificado
-    Then deve conter as seguintes colunas Valor royalties, Valor bruto parceiro, Valor liquido parceiro.
-      | Perfis              |
-      | Master              |
-      | Secundario operacao |
-      | Secundario consulta |
-      | Operador Com F      |
-      | Operador Sem F      |
+    And baixar o relatorio simplificado
+    Then deve conter as seguintes colunas Valor royalties, Valor bruto parceiro, Valor liquido parceiro
+      | Arquivo |
+      | CSV     |
+      | Excel   |
 
-  Scenario: exportar csv e excel Detalhado na aba Historico de vendas
+  Scenario: Exportar csv e excel Detalhado na aba Historico de vendas - Franqueador
     Given Usuario franqueador deve esta em Historico de vendas
     When quando clicar em exportar
     And baixar o relatório Detalhado
-    Then deve conter as seguintes colunas Valor royalties da transacao, Valor royalties da parcela, Valor bruto da transacao parceiro, Valor bruto da parcela parceiro e Valor liquido da parcela/transacao parceiro.
+    Then deve conter as seguintes colunas Valor royalties da transacao, Valor royalties da parcela, Valor bruto da transacao parceiro, Valor bruto da parcela parceiro e Valor liquido da parcela/transacao parceiro
+      | Arquivo |
+      | CSV     |
+      | Excel   |
 
   Scenario: Validar que Franqueado e Franqueador exiba Valor original da venda em detalhes da venda
     Given Usuario franqueador deve esta em historico de vendas
     When clicar em uma venda do historico de vendas
-    Then deve validar os campos: data da venda, codigo de autorizacao, VALOR ORIGINAL DA VENDA, valor bruto, canal, status, numero do terminal, numero do estabelecimento, cod.do pedido, comprovante de venda.
+    Then deve validar os campos: data da venda, codigo de autorizacao, VALOR ORIGINAL DA VENDA, valor bruto, canal, status, numero do terminal, numero do estabelecimento, cod.do pedido, comprovante de venda
 
   Scenario: Validar que Franqueado e Franqueador exiba Valor original da venda em PDF
     Given Usuario franqueador deve esta em historico de vendas
     When clicar em uma venda do historico de vendas
     And clicar em exportar comprovante
-    Then deve validar os campos: data da venda, codigo de autorizacao, VALOR ORIGINAL DA VENDA, valor bruto, canal, status, numero do terminal, numero do estabelecimento, cod.do pedido, comprovante de venda.
+    Then deve validar os campos: data da venda, codigo de autorizacao, VALOR ORIGINAL DA VENDA, valor bruto, canal, status, numero do terminal, numero do estabelecimento, cod.do pedido, comprovante de venda
 
   Scenario: Validar Excel e CSV Relatorio Detalhado Franqueador em Recebimento Pagos
     Given Usuario franqueador esteja na pagina de Recebimentos Pagos
     When clicar em exportar
     And baixar o arquivo Excel e Csv detalhado
-    Then Validar as colunas, Nome do estabelecimento, Valor original da venda, Valor original da parcela, Valor royalties da parcela, “Valor bruto da transacao parceiro”, “Valor bruto da parcela paga parceiro” e “Valor liquido da parcela/transacao parceiro”.
+    Then Validar as colunas, Nome do estabelecimento, Valor original da venda, Valor original da parcela, Valor royalties da parcela, “Valor bruto da transacao parceiro”, “Valor bruto da parcela paga parceiro” e “Valor liquido da parcela/transacao parceiro”
 
   Scenario: Validar que o Excel CSV e PDF simplificado sem alteracao
     Given Usuario Franqueador esteja na pagina recebimentos pagos
@@ -119,7 +119,7 @@ Feature: SPLIT de Pagamento V2
     And selecionar Tipo de Relatorio Pagamento, selecionar o Periodo, EC, Formato do arquivo
     And selecionar gerar relatorio
     Then abrir o arquivo e validar as colunas Valor original da venda, Valor original da parcela e Valor royalties da parcela, Valor bruto da transacao parceiro , Valor bruto da parcela paga parceiro , Valor líquido da parcela/transação parceiro
-    And validar a posicao dos campos Valor original da venda, Valor original da parcela e Valor royalties da parcela entre os campos Status da venda e Valor bruto da transacao parceiro.
+    And validar a posicao dos campos Valor original da venda, Valor original da parcela e Valor royalties da parcela entre os campos Status da venda e Valor bruto da transacao parceiro
       | Arquivo |
       | CSV     |
       | Excel   |
@@ -141,13 +141,13 @@ Feature: SPLIT de Pagamento V2
     When acesso a aba "HOJE" no menu de vendas
     Then devo ver as transacoes registradas para o dia atual
 
-  Scenario: O usuário franqueador Personalizar coluna
+  Scenario: O usuario franqueador Personalizar coluna
     Given Usuario franqueador deve esta em Historico de vendas
     When clicar em personalizar coluna
     Then deve aparecer a coluna Valor original da venda que apresentara o valor capturado pelo franqueado quando selecionada.
 
-  Scenario: exportar csv e excel Simplificado na aba Historico de vendas
-    Given Usuario franqueador deve esta em Historico de vendas
+  Scenario: Exportar csv e excel Simplificado na aba Historico de vendas - Franqueado
+    Given Usuario franqueado deve esta em Historico de vendas
     When quando clicar em exportar
     And baixar o relatorio simplificado
     Then deve conter as seguintes colunas Valor royalties, Valor bruto, Valor liquido, sem a palavra parceiro ao lado.
@@ -155,11 +155,14 @@ Feature: SPLIT de Pagamento V2
       | CSV     |
       | Excel   |
 
-  Scenario: exportar csv e excel Detalhado na aba Historico de vendas
+  Scenario: Exportar csv e excel Detalhado na aba Historico de vendas - Franqueado
     Given Usuario franqueado deve esta em Historico de vendas
     When quando clicar em exportar
     And baixar o relatorio Detalhado
     Then deve conter as seguintes colunas Valor royalties da transacao, Valor royalties da parcela, Valor bruto da transacao, Valor bruto da parcela e Valor liquido da parcela/transacao e nao deve ter o nome parceiro ao lado.
+      | Arquivo |
+      | CSV     |
+      | Excel   |
 
   Scenario: Validar Excel e CSV Relatorio Detalhado Franqueado em Recebimento Pagos
     Given Usuario franqueado esteja na pagina de Recebimentos Pagos
