@@ -46,7 +46,7 @@ public class ComponentesRelatoriosPage {
     private Locator abaDebitosAjustes;
 
     // Botões abas de Antecipação
-    private Locator abaProduto;
+    private Locator abaSolicitarAntecipacao;
     private Locator abaHistorico;
     private Locator abaRelatorioAntecipacoes;
 
@@ -65,7 +65,7 @@ public class ComponentesRelatoriosPage {
     private Locator titleDebitosAjustes;
 
     // Títulos das abas de Antecipação
-    private Locator titleProduto;
+    private Locator titleSolicitarAntecipacao;
     private Locator titleHistorico;
     private Locator titleRelatorioAntecipacoes;
 
@@ -135,7 +135,7 @@ public class ComponentesRelatoriosPage {
         this.abaDebitosAjustes = page.locator("//*[@id='RecebimentoDebitos']/button");
 
         // Botões abas de Antecipação
-        this.abaProduto = page.locator("//*[contains(@id, '-Title') and text()='Produto']");
+        this.abaSolicitarAntecipacao = page.locator("//*[text()='Solicitar antecipação']");
         this.abaHistorico = page.locator("//*[@data-testid='tab-historico-text']");
         this.abaRelatorioAntecipacoes = page.locator("//*[text()='Relatório de antecipações']");
 
@@ -154,7 +154,7 @@ public class ComponentesRelatoriosPage {
         this.titleDebitosAjustes = page.locator("//*[contains(text(), 'Filtre por tipo de ajuste e consulte as informações')]");
 
         // Títulos das abas de Antecipação
-        this.titleProduto = page.locator("//*[contains(text(), 'para antecipação')]");
+        this.titleSolicitarAntecipacao = page.locator("//*[contains(text(), 'para antecipação')]");
         this.titleHistorico = page.locator("//*[text()='Historico']");
         this.titleRelatorioAntecipacoes = page.locator("//*[text()='Relatorio de antecipação']");
 
@@ -199,7 +199,7 @@ public class ComponentesRelatoriosPage {
     private void clickAbaDebitosAjustes() { this.abaDebitosAjustes.click(); }
 
     // Botões abas de Antecipação
-    private void clickAbaProduto() { this.abaProduto.click(); }
+    private void clickAbaSolicitarAntecipacao() { this.abaSolicitarAntecipacao.click(); }
     private void clickAbaHistorico() { this.abaHistorico.click(); }
     private void clickAbaRelatorioAntecipacoes() { this.abaRelatorioAntecipacoes.click(); }
 
@@ -261,10 +261,10 @@ public class ComponentesRelatoriosPage {
         }
 
         // Antecipação
-        else if (abaRelatorio.equalsIgnoreCase("Produto")) {
-            this.clickAbaProduto();
+        else if (abaRelatorio.equalsIgnoreCase("Solicitar antecipação")) {
+            this.clickAbaSolicitarAntecipacao();
             GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
-            assertThat(titleProduto).isVisible();
+            assertThat(titleSolicitarAntecipacao).isVisible();
         } else if (abaRelatorio.equalsIgnoreCase("Histórico")) {
             this.clickAbaHistorico();
             GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
@@ -300,7 +300,7 @@ public class ComponentesRelatoriosPage {
 
         // Antecipação
         /*
-        else if (abaRelatorio.equalsIgnoreCase("Produto"))
+        else if (abaRelatorio.equalsIgnoreCase("Solicitar antecipação"))
             .verificarCampos(campos);
          else if (abaRelatorio.equalsIgnoreCase("Histórico"))
             .verificarCampos(campos);
@@ -643,7 +643,7 @@ public class ComponentesRelatoriosPage {
 
             // Antecipação
             /*
-            case "Produto" -> switch (campo) {
+            case "Solicitar antecipação" -> switch (campo) {
                 case "" ->
                     page.locator("");
                 default -> element;
