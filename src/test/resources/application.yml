@@ -6,7 +6,7 @@ framework:
   playwright:
     browserType: chrome
     context-options:
-      useScreenshot: false
+      useScreenshot: true
       useRecordVideo: false
       useStorageState: false
     cli-options:
