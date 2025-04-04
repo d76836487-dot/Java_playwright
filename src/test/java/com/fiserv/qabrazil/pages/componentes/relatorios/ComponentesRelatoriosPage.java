@@ -551,7 +551,7 @@ public class ComponentesRelatoriosPage {
                 case "btnExportar" ->
                     page.locator("//*[@data-testid='botao-exportar-recebimentos-pagos']");
                 case "resultadoColunas" ->
-                    page.locator("//*[contains(@data-block, 'RecebimentosPagos.RecebimentosPagos_')]");
+                    page.locator("//*[contains(@data-block, 'RecebimentosPagos')]");
                 case "primeiroRegistroCodPagamento" ->
                     page.locator("(//*[contains(@id, '-Cod_depagamento')])[1]");
                 case "resultadoColunaData" ->
@@ -1033,6 +1033,8 @@ public class ComponentesRelatoriosPage {
             this.clickFiltros(abaRelatorio);
         }
 
+        this.expandirPrimeiroRegistro(abaRelatorio);
+
         // realiza o filtro pelo seu tipo (campo) e passa o valor desejado
         switch (filtro) {
             case "Cód. de autorização":
@@ -1040,7 +1042,9 @@ public class ComponentesRelatoriosPage {
                     this.preencherCampoPesquisa(
                          abaRelatorio
                         ,"txtCodAutorizacao"
-                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodAutorizacao").textContent().trim()
+                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodAutorizacao").textContent()
+                        .replace("Cód. de autorização", "")
+                        .trim()
                     );
                 else
                     this.preencherCampoPesquisa(abaRelatorio, "txtCodAutorizacao", valor);
@@ -1052,7 +1056,9 @@ public class ComponentesRelatoriosPage {
                     this.preencherCampoPesquisa(
                         abaRelatorio
                         ,"txtCodPagamento"
-                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodPagamento").textContent().trim()
+                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodPagamento").textContent()
+                        .replace("Cód. de pagamento", "")
+                        .trim()
                     );
                 else
                     this.preencherCampoPesquisa(abaRelatorio, "txtCodPagamento", valor);
@@ -1064,7 +1070,9 @@ public class ComponentesRelatoriosPage {
                     this.preencherCampoPesquisa(
                         abaRelatorio
                         ,"txtNumeroSimulacao"
-                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroNumeroSimulacao").textContent().trim()
+                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroNumeroSimulacao").textContent()
+                        .replace("Número da simulação", "")
+                        .trim()
                     );
                 else
                     this.preencherCampoPesquisa(abaRelatorio, "txtNumeroSimulacao", valor);
@@ -1326,9 +1334,27 @@ public class ComponentesRelatoriosPage {
     }
 
     // Resultado coluna
+    private void expandirPrimeiroRegistro(String abaRelatorio) {
+        Locator primeiroRegistro = page.locator("");
+
+        if (
+                abaRelatorio.equalsIgnoreCase("Pagos")
+                        || abaRelatorio.equalsIgnoreCase("Pagos_Meus Domicílios")
+                        || abaRelatorio.equalsIgnoreCase("Pagos_Valores Cedidos")
+        )
+            primeiroRegistro = page.locator("(//*[contains(@class, 'osui-accordion-item__icon')])[1]");
+
+        GeneralUtils.waitForMillis(Config.TIME_TO_WAIT_PAGE);
+        primeiroRegistro.scrollIntoViewIfNeeded();
+        primeiroRegistro.click();
+        GeneralUtils.waitForMillis(Config.TIME_TO_WAIT_PAGE);
+    }
+
     public void validarAtribuicaoFiltro(String valor, @NotNull String filtro, String abaRelatorio) {
         this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
         GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+
+        this.expandirPrimeiroRegistro(abaRelatorio);
 
         switch (filtro) {
             case "Cód. de autorização":

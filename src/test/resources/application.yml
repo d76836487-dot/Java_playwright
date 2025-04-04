@@ -17,13 +17,14 @@ framework:
       skipBrowserDownload: false
     launch-options:
       # Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary"
-      # channel: chrome
+      channel: chrome
       headless: false
       args:
         - --ignore-certificate-errors
+        #- --start-maximized
       # executablePath: 'C:\Program Files\Google\Chrome\Application\chrome.exe'
-      # slowMo: 100
-      # timeout: 30000
+      slowMo: 175 #100
+      timeout: 30000
       # chromiumSandbox: false
       # devtools: false
       # downloadsPath: my/download/path

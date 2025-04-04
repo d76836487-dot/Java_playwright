@@ -7,5 +7,5 @@ public class Config {
     public static final int DELAY_IN_ACTION = 1000;
 
     // tag do cucumber
-    public static final String TAG_CUCUMBER = "@RelatorioAntecipacoes and @navegacao and @sicredi";
+    public static final String TAG_CUCUMBER = "@Pagos and @gerarArquivo and @sicredi";
 }
