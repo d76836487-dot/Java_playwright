@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.pages.login;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.enums.PerfilAcessoEnum;
+import com.fiserv.qabrazil.util.Config;
 import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -58,6 +59,12 @@ public class LoginPage {
                 pass = PerfilAcessoEnum.AFINZ.getSenha();
                 break;
 
+            case "claropay":
+                url = PerfilAcessoEnum.CLAROPAY.getUrlPortal();
+                user = PerfilAcessoEnum.CLAROPAY.getUsuario();
+                pass = PerfilAcessoEnum.CLAROPAY.getSenha();
+                break;
+
             case "binCedidos":
                 url = PerfilAcessoEnum.BIN_CEDIDOS.getUrlPortal();
                 user = PerfilAcessoEnum.BIN_CEDIDOS.getUsuario();
@@ -81,10 +88,18 @@ public class LoginPage {
                 user = PerfilAcessoEnum.AFINZ_CEDIDOS.getUsuario();
                 pass = PerfilAcessoEnum.AFINZ_CEDIDOS.getSenha();
                 break;
+
+            case "claropayCedidos":
+                url = PerfilAcessoEnum.CLAROPAY_CEDIDOS.getUrlPortal();
+                user = PerfilAcessoEnum.CLAROPAY_CEDIDOS.getUsuario();
+                pass = PerfilAcessoEnum.CLAROPAY_CEDIDOS.getSenha();
+                break;
         }
 
         page.navigate(url);
+        GeneralUtils.waitForLoad(page, true, true, true);
         this.realizarLogin(user, pass);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(15));
     }
 
     public void verificarLogin() { assertThat(title).isVisible(); }

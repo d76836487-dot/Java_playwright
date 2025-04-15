@@ -2,13 +2,11 @@ package com.fiserv.qabrazil.pages.taxista;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.util.Config;
-import com.fiserv.qabrazil.util.WaitUtil;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.time.Duration;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -117,7 +115,7 @@ public class EnderecoPage {
         this.preencherComplemento(complemento);
         this.preencherPontoReferencia(pontoReferencia);
 
-        WaitUtil.sleep(Duration.ofMillis(Config.WAIT_FOR_PAGE_UPDATE));
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(3));
         if (cep.isEmpty()) {
             this.preencherLogradouro(logradouro);
             this.preencherBairro(bairro);

@@ -66,7 +66,7 @@ public class HistoricoVendasPage {
         this.linkMaisDetalhes.scrollIntoViewIfNeeded();
         this.linkMaisDetalhes.click();
 
-        GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
 
         // atribuicao Total de vendas
         int totalVendas = Integer.parseInt(this.detalhesVendaTotalVendas.textContent().trim());
@@ -118,7 +118,7 @@ public class HistoricoVendasPage {
         Assert.assertTrue(validacao);
 
         this.btnFecharDetalhesVenda.scrollIntoViewIfNeeded();
-        GeneralUtils.waitForMillis(Config.DELAY_IN_ACTION);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(4));
         this.btnFecharDetalhesVenda.click();
     }
 }

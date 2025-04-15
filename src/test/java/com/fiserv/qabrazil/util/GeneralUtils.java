@@ -2,6 +2,7 @@ package com.fiserv.qabrazil.util;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.LoadState;
 
 import java.time.Duration;
 
@@ -33,6 +34,15 @@ public class GeneralUtils {
             else if (digit == '9')
                 page.keyboard().press("Digit9");
         }
+    }
+
+    public static void waitForLoad(Page page, boolean load, boolean domContentLoaded, boolean networkidle) {
+        if (load)
+            page.waitForLoadState(LoadState.LOAD);
+        if (domContentLoaded)
+            page.waitForLoadState(LoadState.DOMCONTENTLOADED);
+        if (networkidle)
+            page.waitForLoadState(LoadState.NETWORKIDLE);
     }
 
     public static void waitForMillis(int millis) {

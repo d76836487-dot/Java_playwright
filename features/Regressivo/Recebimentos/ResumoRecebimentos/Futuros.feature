@@ -8,32 +8,6 @@
 Feature: Futuros
 
   @navegacao
-  @TestCaseKey=LPDC-T1264
-  Scenario Outline: Acessar Futuros via menu lateral
-    Given realizar login no portal <alianca>
-    When acessar menu <menu> e submenu <submenu>
-    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    @bin
-    Examples:
-      | alianca | menu           | submenu              | abaRelatorio |
-      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
-
-    @sicredi
-    Examples:
-      | alianca   | menu           | submenu              | abaRelatorio |
-      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
-
-    @azulzinha
-    Examples:
-      | alianca     | menu           | submenu              | abaRelatorio |
-      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
-
-    @afinz
-    Examples:
-      | alianca | menu           | submenu              | abaRelatorio |
-      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
-
-  @navegacao
   @TestCaseKey=LPDC-T1260
   Scenario Outline: Verificar texto do rodape - Futuros
     Given realizar login no portal <alianca>
@@ -59,6 +33,11 @@ Feature: Futuros
     Examples:
       | alianca | menu           | submenu              | abaRelatorio |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
+
+    @claropay
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
   @navegacao
   @TestCaseKey=LPDC-T1271
@@ -86,6 +65,11 @@ Feature: Futuros
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | campos                                   |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Total de vendas;Total líquido previsto" |
+
+    @claropay
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio | campos                                   |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Total de vendas;Total líquido previsto" |
 
   @periodo
   @TestCaseKey=LPDC-T1259
@@ -135,6 +119,16 @@ Feature: Futuros
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Até o fim do mês"    |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Este Mês"            |
 
+    @claropay
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio | periodo               |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Amanhã"              |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Proxima Semana"      |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Até o fim de Semana" |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Próximo Mês"         |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Até o fim do mês"    |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Este Mês"            |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1261
   Scenario Outline: Personalizar colunas - Futuros
@@ -170,6 +164,13 @@ Feature: Futuros
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Data da venda;Produto;Bandeira;Valor bruto da parcela;Número do Terminal;Cód. do pedido"                                                   |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização;Parcelas;Valor bruto;Valor líquido;Canal;Número do estabelecimento"                                                    |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Número do Terminal;Canal;Cód. do pedido;Número do estabelecimento" |
+
+    @claropay
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio | colunas                                                                                                                                     |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Data da venda;Produto;Bandeira;Valor bruto da parcela;Número do Terminal;Cód. do pedido"                                                   |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização;Parcelas;Valor bruto;Valor líquido;Canal;Número do estabelecimento"                                                    |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Número do Terminal;Canal;Cód. do pedido;Número do estabelecimento" |
 
   @filtro
   @TestCaseKey=LPDC-T1262
@@ -299,6 +300,36 @@ Feature: Futuros
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "todos"    |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "91913769" |
 
+    @claropay @codAutorizacao
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio | filtro                | valor              |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "primeiroRegistro" |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "WWW333"           |
+
+    @claropay @produto
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio | filtro    | valor     |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "todos"   |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Débito"  |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Crédito" |
+
+    @claropay @bandeira
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio | filtro     | valor        |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "todos"      |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Visa"       |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Mastercard" |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Amex"       |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Cabal"      |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Elo"        |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Hipercard"  |
+
+    @claropay @estabelecimento
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio | filtro            | valor      |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "todos"    |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "91913769" |
+
   @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1257
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Futuros
@@ -345,6 +376,16 @@ Feature: Futuros
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           |
+
+    @claropay @excel
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           |
+
+    @claropay @csv
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           |
 
   @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1263
@@ -393,3 +434,12 @@ Feature: Futuros
       | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
 
+    @claropay @excel
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
+
+    @claropay @csv
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |

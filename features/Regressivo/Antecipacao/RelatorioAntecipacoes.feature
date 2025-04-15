@@ -8,27 +8,6 @@
 Feature: Relatorio de antecipacoes
 
   @navegacao
-  @TestCaseKey=LPDC-T1286
-  Scenario Outline: Acessar Relatorio de antecipacoes via menu lateral
-    Given realizar login no portal <alianca>
-    When acessar menu <menu> e submenu <submenu>
-    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    @bin
-    Examples:
-      | alianca | menu          | submenu | abaRelatorio                |
-      | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" |
-
-    @sicredi
-    Examples:
-      | alianca   | menu          | submenu | abaRelatorio                |
-      | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" |
-
-    @azulzinha
-    Examples:
-      | alianca     | menu          | submenu | abaRelatorio                |
-      | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" |
-
-  @navegacao
   @TestCaseKey=LPDC-T1281
   Scenario Outline: Verificar texto do rodape - Relatorio de antecipacoes
     Given realizar login no portal <alianca>
@@ -49,6 +28,11 @@ Feature: Relatorio de antecipacoes
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" |
+
+    @claropay
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" |
 
   @navegacao
   @TestCaseKey=LPDC-T1287
@@ -71,6 +55,11 @@ Feature: Relatorio de antecipacoes
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | campos                                                                                                                                          |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Valor bruto das vendas;Valor líquido das vendas;Total de desconto valor líquido;Valor antecipado pago;Total de desconto valor antecipado pago" |
+
+    @claropay
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | campos                                                                                                                                          |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Valor bruto das vendas;Valor líquido das vendas;Total de desconto valor líquido;Valor antecipado pago;Total de desconto valor antecipado pago" |
 
   @periodo
   @TestCaseKey=LPDC-T1283
@@ -103,6 +92,14 @@ Feature: Relatorio de antecipacoes
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 7 Dias"  |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 14 Dias" |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Mês Passado"     |
+
+    @claropay
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | periodo           |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Ontem"           |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 7 Dias"  |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 14 Dias" |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Mês Passado"     |
 
   @filtro
   @TestCaseKey=LPDC-T1284
@@ -184,6 +181,30 @@ Feature: Relatorio de antecipacoes
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Automática" |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Manual"     |
 
+    @claropay @numeroSimulacao
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | filtro                | valor              |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "primeiroRegistro" |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "WWW333"           |
+
+    @claropay @bandeira
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | filtro     | valor        |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "todos"      |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Visa"       |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Mastercard" |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Amex"       |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Cabal"      |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Elo"        |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Hipercard"  |
+
+    @claropay @tipos
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | filtro  | valor        |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "todos"      |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Automática" |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Manual"     |
+
   @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1282
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Relatorio de antecipacoes
@@ -250,6 +271,26 @@ Feature: Relatorio de antecipacoes
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   |
+
+    @claropay @excel @simplificado
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" |
+
+    @claropay @excel @detalhado
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   |
+
+    @claropay @csv @simplificado
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" |
+
+    @claropay @csv @detalhado
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   |
 
   @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1285
@@ -318,3 +359,22 @@ Feature: Relatorio de antecipacoes
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
 
+    @claropay @excel @simplificado
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
+
+    @claropay @excel @detalhado
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
+
+    @claropay @csv @simplificado
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
+
+    @claropay @csv @detalhado
+    Examples:
+      | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |

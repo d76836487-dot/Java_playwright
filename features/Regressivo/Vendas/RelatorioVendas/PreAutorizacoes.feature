@@ -8,32 +8,6 @@
 Feature: Pre autorizacoes
 
   @navegacao
-  @TestCaseKey=LPDC-T1223
-  Scenario Outline: Acessar Pre autorizacoes via menu lateral
-    Given realizar login no portal <alianca>
-    When acessar menu <menu> e submenu <submenu>
-    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    @bin
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio       |
-      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" |
-
-    @sicredi
-    Examples:
-      | alianca   | menu     | submenu           | abaRelatorio       |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
-
-    @azulzinha
-    Examples:
-      | alianca     | menu     | submenu           | abaRelatorio       |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
-
-    @afinz
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio       |
-      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
-
-  @navegacao
   @TestCaseKey=LPDC-T1224
   Scenario Outline: Verificar texto do rodape - Pre autorizacoes
     Given realizar login no portal <alianca>
@@ -59,6 +33,11 @@ Feature: Pre autorizacoes
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
 
   @navegacao
   @TestCaseKey=LPDC-T1219
@@ -86,6 +65,11 @@ Feature: Pre autorizacoes
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | campos                                                           |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Total de vendas;Valor bruto autorizado;Valor bruto a confirmar" |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | campos                                                           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Total de vendas;Valor bruto autorizado;Valor bruto a confirmar" |
 
   @periodo
   @TestCaseKey=LPDC-T1238
@@ -131,6 +115,15 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14"     |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"       |
 
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | periodo          |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"          |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14"     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"       |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1225
   Scenario Outline: Personalizar colunas - Pre autorizacoes
@@ -166,6 +159,13 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data da venda;Cód. de autorização;Bandeira;Valor autorizado;Status"                                                                                                |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data da venda;Data alvo;Produto;Bandeira;Valor autorizado;Valor confirmado;Número do Terminal;Estabelecimento comercial;Final do cartão;Cód. referência do cartão" |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data alvo;Produto;Canal;Valor confirmado;Comprovante de venda"                                                                                                     |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | colunas                                                                                                                                                             |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data da venda;Cód. de autorização;Bandeira;Valor autorizado;Status"                                                                                                |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data da venda;Data alvo;Produto;Bandeira;Valor autorizado;Valor confirmado;Número do Terminal;Estabelecimento comercial;Final do cartão;Cód. referência do cartão" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data alvo;Produto;Canal;Valor confirmado;Comprovante de venda"                                                                                                     |
 
   @filtro
   @TestCaseKey=LPDC-T1221
@@ -419,6 +419,67 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "PGW0D0D1" |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
 
+    @claropay @codAutorizacao
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | filtro                | valor              |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "primeiroRegistro" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "WWW333"           |
+
+    @claropay @status
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | filtro   | valor         |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "todos"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "A Confirmar" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Autorizada"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Expirada"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Estornada"   |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Recusada"    |
+
+    @claropay @produto
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | filtro    | valor     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "todos"   |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "Crédito" |
+
+    @claropay @canal
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | filtro  | valor       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "todos"     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "POS"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "TEF"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "ECOMMERCE" |
+
+    @claropay @bandeira
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | filtro     | valor        |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "todos"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Visa"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Mastercard" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Amex"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Cabal"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Elo"        |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Hipercard"  |
+
+    @claropay @valores
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | filtro    | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "100;300"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "500;1000" |
+
+    @claropay @estabelecimento
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | filtro            | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "todos"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "91084373" |
+
+    @claropay @terminal
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | filtro     | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "todos"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "LNK01D49" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "PGW0D0D1" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
+
   @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1222
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Pre autorizacoes
@@ -465,6 +526,16 @@ Feature: Pre autorizacoes
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
+
+    @claropay @excel
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           |
+
+    @claropay @csv
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
 
   @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1226
@@ -513,3 +584,12 @@ Feature: Pre autorizacoes
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
 
+    @claropay @excel
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
+
+    @claropay @csv
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |

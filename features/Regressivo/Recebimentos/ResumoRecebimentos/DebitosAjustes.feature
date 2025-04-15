@@ -8,32 +8,6 @@
 Feature: Debitos e ajustes
 
   @navegacao
-  @TestCaseKey=LPDC-T1266
-  Scenario Outline: Acessar Debitos e ajustes via menu lateral
-    Given realizar login no portal <alianca>
-    When acessar menu <menu> e submenu <submenu>
-    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    @bin
-    Examples:
-      | alianca | menu           | submenu              | abaRelatorio        |
-      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
-
-    @sicredi
-    Examples:
-      | alianca   | menu           | submenu              | abaRelatorio        |
-      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
-
-    @azulzinha
-    Examples:
-      | alianca     | menu           | submenu              | abaRelatorio        |
-      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
-
-    @afinz
-    Examples:
-      | alianca | menu           | submenu              | abaRelatorio        |
-      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
-
-  @navegacao
   @TestCaseKey=LPDC-T1275
   Scenario Outline: Verificar texto do rodape - Debitos e ajustes
     Given realizar login no portal <alianca>
@@ -59,6 +33,11 @@ Feature: Debitos e ajustes
     Examples:
       | alianca | menu           | submenu              | abaRelatorio        |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
+
+    @claropay
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio        |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
   @navegacao
   @TestCaseKey=LPDC-T1272
@@ -86,6 +65,11 @@ Feature: Debitos e ajustes
     Examples:
       | alianca | menu           | submenu              | abaRelatorio        | campos                                                       |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
+
+    @claropay
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio        | campos                                                       |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
 
   @periodo
   @TestCaseKey=LPDC-T1278
@@ -122,6 +106,13 @@ Feature: Debitos e ajustes
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M-1"   |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M0"    |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M+1"   |
+
+    @claropay
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio        | periodo |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M-1"   |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M0"    |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M+1"   |
 
   @filtro
   @TestCaseKey=LPDC-T1276
@@ -207,6 +198,25 @@ Feature: Debitos e ajustes
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "todos"    |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "91913769" |
 
+    @claropay @status
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio        | filtro   | valor      |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "todos"    |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Pendente" |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Debitado" |
+
+    @claropay @valores
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio        | filtro    | valor     |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "10;50"   |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "-10;-50" |
+
+    @claropay @estabelecimento
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio        | filtro            | valor      |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "todos"    |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "91913769" |
+
   @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1280
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Debitos e ajustes
@@ -253,6 +263,16 @@ Feature: Debitos e ajustes
     Examples:
       | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           |
+
+    @claropay @excel
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           |
+
+    @claropay @csv
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           |
 
   @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1273
@@ -301,3 +321,12 @@ Feature: Debitos e ajustes
       | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
 
+    @claropay @excel
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+
+    @claropay @csv
+    Examples:
+      | alianca    | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |

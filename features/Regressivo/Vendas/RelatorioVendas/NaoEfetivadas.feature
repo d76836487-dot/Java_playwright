@@ -8,32 +8,6 @@
 Feature: Nao efetivadas
 
   @navegacao
-  @TestCaseKey=LPDC-T1212
-  Scenario Outline: Acessar Nao efetivadas via menu lateral
-    Given realizar login no portal <alianca>
-    When acessar menu <menu> e submenu <submenu>
-    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    @bin
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio     |
-      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" |
-
-    @sicredi
-    Examples:
-      | alianca   | menu     | submenu           | abaRelatorio     |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" |
-
-    @azulzinha
-    Examples:
-      | alianca     | menu     | submenu           | abaRelatorio     |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" |
-
-    @afinz
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio     |
-      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" |
-
-  @navegacao
   @TestCaseKey=LPDC-T1199
   Scenario Outline: Verificar texto do rodape - Nao efetivadas
     Given realizar login no portal <alianca>
@@ -59,6 +33,11 @@ Feature: Nao efetivadas
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" |
 
   @navegacao
   @TestCaseKey=LPDC-T1201
@@ -86,6 +65,11 @@ Feature: Nao efetivadas
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | campos                                   |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Total de recusadas;Total de estornadas" |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | campos                                   |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Total de recusadas;Total de estornadas" |
 
   @periodo
   @TestCaseKey=LPDC-T1239
@@ -123,6 +107,13 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias" |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14"     |
 
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | periodo          |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"          |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14"     |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1213
   Scenario Outline: Personalizar colunas - Nao efetivadas
@@ -158,6 +149,13 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Data da venda;Comprovante de venda;Parcelas;Canal;Valor bruto"                                                        |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Data da venda;Cód. de autorização;Produto;Parcelas;Canal;Terminal;Valor bruto;Status;Estabelecimento;Final do cartão" |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização;Produto;Bandeira;Terminal;Status"                                                                 |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | colunas                                                                                                                |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Data da venda;Comprovante de venda;Parcelas;Canal;Valor bruto"                                                        |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Data da venda;Cód. de autorização;Produto;Parcelas;Canal;Terminal;Valor bruto;Status;Estabelecimento;Final do cartão" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização;Produto;Bandeira;Terminal;Status"                                                                 |
 
   @filtro
   @TestCaseKey=LPDC-T1211
@@ -419,6 +417,69 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "PGW0D0D1" |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
 
+    @claropay @codAutorizacao
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | filtro                | valor              |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "primeiroRegistro" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "WWW333"           |
+
+    @claropay @status
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | filtro   | valor       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "todos"     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Estornada" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Recusada"  |
+
+    @claropay @produto
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | filtro    | valor                       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "todos"                     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito"                   |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito Parcelado"         |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Débito"                    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito Parcelado Emissor" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crediário"                 |
+
+    @claropay @canal
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | filtro  | valor       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "todos"     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "POS"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "TEF"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "ECOMMERCE" |
+
+    @claropay @bandeira
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | filtro     | valor        |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "todos"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Visa"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Mastercard" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Amex"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Cabal"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Elo"        |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Hipercard"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Maestro"    |
+
+    @claropay @valores
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | filtro    | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "100;300"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "500;1000" |
+
+    @claropay @estabelecimento
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | filtro            | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "todos"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "91084373" |
+
+    @claropay @terminal
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | filtro     | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "todos"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "LNK01D49" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "PGW0D0D1" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
+
   @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1202
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Nao efetivadas
@@ -465,6 +526,16 @@ Feature: Nao efetivadas
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
+
+    @claropay @excel
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           |
+
+    @claropay @csv
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
 
   @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1204
@@ -513,3 +584,12 @@ Feature: Nao efetivadas
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
+    @claropay @excel
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+
+    @claropay @csv
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |

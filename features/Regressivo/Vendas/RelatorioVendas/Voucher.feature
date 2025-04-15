@@ -8,32 +8,6 @@
 Feature: Voucher
 
   @navegacao
-  @TestCaseKey=LPDC-T1200
-  Scenario Outline: Acessar Voucher via menu lateral
-    Given realizar login no portal <alianca>
-    When acessar menu <menu> e submenu <submenu>
-    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    @bin
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio |
-      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    |
-
-    @sicredi
-    Examples:
-      | alianca   | menu     | submenu           | abaRelatorio |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    |
-
-    @azulzinha
-    Examples:
-      | alianca     | menu     | submenu           | abaRelatorio |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    |
-
-    @afinz
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio |
-      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    |
-
-  @navegacao
   @TestCaseKey=LPDC-T1214
   Scenario Outline: Verificar texto do rodape - Voucher
     Given realizar login no portal <alianca>
@@ -59,6 +33,11 @@ Feature: Voucher
     Examples:
       | alianca | menu     | submenu           | abaRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    |
 
   @navegacao
   @TestCaseKey=LPDC-T1207
@@ -86,6 +65,11 @@ Feature: Voucher
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | campos                        |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Total de vendas;Valor bruto" |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | campos                        |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Total de vendas;Valor bruto" |
 
   @periodo
   @TestCaseKey=LPDC-T1236
@@ -123,6 +107,13 @@ Feature: Voucher
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias" |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14"     |
 
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | periodo          |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"          |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14"     |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1205
   Scenario Outline: Personalizar colunas - Voucher
@@ -158,6 +149,13 @@ Feature: Voucher
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Data da venda;Comprovante de venda;Parcelas;Canal;Valor bruto"                                                                            |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Data da venda;Cód. de autorização;Produto;Parcelas;Canal;Número do Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização;Produto;Bandeira;Número do Terminal;Status"                                                                           |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | colunas                                                                                                                                    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Data da venda;Comprovante de venda;Parcelas;Canal;Valor bruto"                                                                            |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Data da venda;Cód. de autorização;Produto;Parcelas;Canal;Número do Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização;Produto;Bandeira;Número do Terminal;Status"                                                                           |
 
   @filtro
   @TestCaseKey=LPDC-T1209
@@ -399,6 +397,64 @@ Feature: Voucher
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "PGW0D0D1" |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "ECC05DE6" |
 
+    @claropay @codAutorizacao
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro                | valor              |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização" | "primeiroRegistro" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização" | "WWW333"           |
+
+    @claropay @status
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro   | valor        |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "todos"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "Autorizada" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "Estornada"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "Recusada"   |
+
+    @claropay @canal
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro  | valor   |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Canal" | "todos" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Canal" | "POS"   |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Canal" | "TEF"   |
+
+    @claropay @bandeira
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro     | valor         |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "todos"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "CABAL"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "BANESE"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "TICKET"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "ALELO"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "SOROCRED"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "BANESTES"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "PLUXEE"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "VR"          |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "SOFTNEX"     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "REDECOMPRAS" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "FEPAS"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "SODEXO"      |
+
+    @claropay @valores
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro    | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Valores" | "100;300"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Valores" | "500;1000" |
+
+    @claropay @estabelecimento
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro            | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Estabelecimento" | "todos"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Estabelecimento" | "91084373" |
+
+    @claropay @terminal
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro     | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "todos"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "LNK01D49" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "PGW0D0D1" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "ECC05DE6" |
+
   @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1210
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Voucher
@@ -445,6 +501,16 @@ Feature: Voucher
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           |
+
+    @claropay @excel
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Excel"     | "N"           |
+
+    @claropay @csv
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           |
 
   @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1203
@@ -493,3 +559,12 @@ Feature: Voucher
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                         |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelas;Bandeira;Canal;Número do terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
+    @claropay @excel
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                         |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelas;Bandeira;Canal;Número do terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+
+    @claropay @csv
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                         |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelas;Bandeira;Canal;Número do terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |

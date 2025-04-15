@@ -10,8 +10,8 @@ public enum PerfilAcessoEnum {
         ,"master"
         ,"18711403829"
         ,"Fiserv@2025"
-        ,"101"
-        ,setInstituicao("3")
+        ,"125"
+        ,setInstituicao("7")
     )
     ,SICREDI(
         "sicredi"
@@ -40,14 +40,23 @@ public enum PerfilAcessoEnum {
         ,"143"
         ,setInstituicao("10")
     )
+    ,CLAROPAY(
+        "claropay"
+        ,setUrlPortal("claropay")
+        ,"master"
+        ,""
+        ,""
+        ,"239"
+        ,setInstituicao("7")
+    )
     ,BIN_CEDIDOS(
         "bin"
         ,setUrlPortal("bin")
         ,"cedidos"
         ,"18711403829"
         ,"Fiserv@2025"
-        ,"101"
-        ,setInstituicao("3")
+        ,"125"
+        ,setInstituicao("7")
     )
     ,SICREDI_CEDIDOS(
         "sicredi"
@@ -75,6 +84,15 @@ public enum PerfilAcessoEnum {
         ,"Fiserv@456"
         ,"143"
         ,setInstituicao("10")
+    )
+    ,CLAROPAY_CEDIDOS(
+        "claropay"
+        ,setUrlPortal("claropay")
+        ,"cedidos"
+        ,""
+        ,""
+        ,"239"
+        ,setInstituicao("7")
     );
 
     private final String alianca;

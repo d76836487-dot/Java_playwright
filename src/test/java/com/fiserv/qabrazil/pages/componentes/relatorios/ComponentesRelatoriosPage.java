@@ -207,23 +207,23 @@ public class ComponentesRelatoriosPage {
     public void validarCarregamentoAbaRelatorio(@NotNull String abaRelatorio) {
         // Vendas
         if (abaRelatorio.equalsIgnoreCase("Hoje")) {
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
             assertThat(titleHoje).isVisible();
         } else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
             this.clickAbaHistoricoVendas();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
             assertThat(titleHistoricoVendas).isVisible();
         } else if (abaRelatorio.equalsIgnoreCase("Não efetivadas")) {
             this.clickAbaNaoEfetivadas();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
             assertThat(titleNaoEfetivadas).isVisible();
         } else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações")) {
             this.clickAbaPreAutorizacoes();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
             assertThat(titlePreAutorizacoes).isVisible();
         } else if (abaRelatorio.equalsIgnoreCase("Voucher")) {
             this.clickAbaVoucher();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
             assertThat(titleVocher).isVisible();
         }
 
@@ -234,44 +234,44 @@ public class ComponentesRelatoriosPage {
             || abaRelatorio.equalsIgnoreCase("Pagos_Valores Cedidos")
         ) {
             this.clickAbaPagos();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
             assertThat(titlePagos).isVisible();
 
             if (abaRelatorio.equalsIgnoreCase("Pagos_Meus Domicílios")) {
                 subAbaMeusDomicilios.scrollIntoViewIfNeeded();
                 this.clickSubAbaMeusDomicilios();
-                GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+                GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
                 this.titleMeusDomicilios.scrollIntoViewIfNeeded();
                 assertThat(titleMeusDomicilios).isVisible();
             } else if (abaRelatorio.equalsIgnoreCase("Pagos_Valores Cedidos")) {
                 subAbaValoresCedidos.scrollIntoViewIfNeeded();
                 this.clickSubAbaValoresCedidos();
-                GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+                GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
                 this.titleValoresCedidos.scrollIntoViewIfNeeded();
                 assertThat(titleValoresCedidos).isVisible();
             }
         } else if (abaRelatorio.equalsIgnoreCase("Futuros")) {
             this.clickAbaFuturos();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
             assertThat(titleFuturos).isVisible();
         } else if (abaRelatorio.equalsIgnoreCase("Débitos e ajustes")) {
             this.clickAbaDebitosAjustes();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
             assertThat(titleDebitosAjustes).isVisible();
         }
 
         // Antecipação
         else if (abaRelatorio.equalsIgnoreCase("Solicitar antecipação")) {
             this.clickAbaSolicitarAntecipacao();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
             assertThat(titleSolicitarAntecipacao).isVisible();
         } else if (abaRelatorio.equalsIgnoreCase("Histórico")) {
             this.clickAbaHistorico();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
             assertThat(titleHistorico).isVisible();
         } else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações")) {
             this.clickAbaRelatorioAntecipacoes();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
             assertThat(titleRelatorioAntecipacoes).isVisible();
         }
     }
@@ -744,7 +744,7 @@ public class ComponentesRelatoriosPage {
     }
 
     public void aplicarPeriodo(@NotNull String periodo) {
-        GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
         this.iconeCalendario.scrollIntoViewIfNeeded();
         this.clickCalendario();
 
@@ -850,8 +850,9 @@ public class ComponentesRelatoriosPage {
         };
     }
 
+    // Expandir registro por abaRelatorio
     public void validarPeriodoAplicado(String periodo, String abaRelatorio) {
-        GeneralUtils.waitForMillis(Config.TIME_TO_WAIT_PAGE);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(10));
         boolean flagMes = false;
         boolean flagDiaSemana = false;
 
@@ -882,19 +883,19 @@ public class ComponentesRelatoriosPage {
             Locator expadirRegistroMes = page.locator("(//*[contains(@class, 'osui-accordion-item__icon')])[1]");
             expadirRegistroMes.scrollIntoViewIfNeeded();
             expadirRegistroMes.click();
-            GeneralUtils.waitForMillis(Config.DELAY_IN_ACTION);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(4));
 
             Locator expadirRegistroDia = page.locator("(//*[contains(@class, 'osui-accordion-item__icon')])[3]");
             expadirRegistroDia.scrollIntoViewIfNeeded();
             expadirRegistroDia.click();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
         }
 
         if (flagDiaSemana) {
             Locator expadirRegistroDia = page.locator("(//*[contains(@class, 'osui-accordion-item__icon')])[1]");
             expadirRegistroDia.scrollIntoViewIfNeeded();
             expadirRegistroDia.click();
-            GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
         }
 
         Locator resultadoColunaData = page.locator("");
@@ -1020,7 +1021,7 @@ public class ComponentesRelatoriosPage {
     }
 
     public void realizarFiltro(@NotNull String filtro, String valor, String abaRelatorio) {
-        GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
         this.getLocatorFromReportTab(abaRelatorio, "btnFiltros").scrollIntoViewIfNeeded();
 
         boolean seBtnFitros =
@@ -1111,7 +1112,7 @@ public class ComponentesRelatoriosPage {
         } else
             this.clickLupa(abaRelatorio);
 
-        GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
     }
 
     // Personalizar Colunas
@@ -1166,7 +1167,7 @@ public class ComponentesRelatoriosPage {
 
         this.linkVoltarPadrao.scrollIntoViewIfNeeded();
         this.clickVoltarPadrao();
-        GeneralUtils.waitForMillis(Config.DELAY_IN_ACTION);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
     }
 
     private void realizarTrocaPersonalizarColunas(String colunaRemover, String colunaAdicionar) {
@@ -1184,14 +1185,14 @@ public class ComponentesRelatoriosPage {
     }
 
     public void personalizarColunas(String colunas, String abaRelatorio) {
-        GeneralUtils.waitForMillis(Config.DELAY_IN_ACTION);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(4));
         this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas").scrollIntoViewIfNeeded();
         // Acessa o Personalizar Colunas
         this.clickPersonalizarColunas(abaRelatorio);
         this.verificarPersonalizarColunas();
 
         this.linkVoltarPadrao.scrollIntoViewIfNeeded();
-        GeneralUtils.waitForMillis(Config.DELAY_IN_ACTION);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(4));
 
         // Limpar personalização inicial de colunas
         String[] listaInicialColunas = this.atribuirListaInicialColunas(abaRelatorio);
@@ -1209,7 +1210,7 @@ public class ComponentesRelatoriosPage {
 
     public void validarPersonalizacaoColunas(@NotNull String colunas, String abaRelatorio) {
         this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
-        GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
 
         Locator colunaResultado = page.locator("");
         String[] listaColunas = colunas.split(";");
@@ -1335,24 +1336,29 @@ public class ComponentesRelatoriosPage {
 
     // Resultado coluna
     private void expandirPrimeiroRegistro(String abaRelatorio) {
+        boolean sePrimeiroRegistro = false;
         Locator primeiroRegistro = page.locator("");
 
         if (
-                abaRelatorio.equalsIgnoreCase("Pagos")
-                        || abaRelatorio.equalsIgnoreCase("Pagos_Meus Domicílios")
-                        || abaRelatorio.equalsIgnoreCase("Pagos_Valores Cedidos")
-        )
+            abaRelatorio.equalsIgnoreCase("Pagos")
+            || abaRelatorio.equalsIgnoreCase("Pagos_Meus Domicílios")
+            || abaRelatorio.equalsIgnoreCase("Pagos_Valores Cedidos")
+        ) {
+            sePrimeiroRegistro = true;
             primeiroRegistro = page.locator("(//*[contains(@class, 'osui-accordion-item__icon')])[1]");
+        }
 
-        GeneralUtils.waitForMillis(Config.TIME_TO_WAIT_PAGE);
-        primeiroRegistro.scrollIntoViewIfNeeded();
-        primeiroRegistro.click();
-        GeneralUtils.waitForMillis(Config.TIME_TO_WAIT_PAGE);
+        if (sePrimeiroRegistro) {
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(10));
+            primeiroRegistro.scrollIntoViewIfNeeded();
+            primeiroRegistro.click();
+            GeneralUtils.waitForMillis(Config.wait_for_seconds(10));
+        }
     }
 
     public void validarAtribuicaoFiltro(String valor, @NotNull String filtro, String abaRelatorio) {
         this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
-        GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
 
         this.expandirPrimeiroRegistro(abaRelatorio);
 
@@ -1436,7 +1442,7 @@ public class ComponentesRelatoriosPage {
                     String colunaRemover = "Terminal", colunaAdicionar = "Valor original da venda";
                     this.realizarTrocaPersonalizarColunas(colunaRemover, colunaAdicionar);
 
-                    GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+                    GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
                     this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
                 }
 
@@ -1486,7 +1492,7 @@ public class ComponentesRelatoriosPage {
 
                 this.realizarTrocaPersonalizarColunas(colunaRemover, colunaAdicionar);
 
-                GeneralUtils.waitForMillis(Config.WAIT_FOR_PAGE_UPDATE);
+                GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
                 this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
 
                 Locator resultadoColunaEsbalecimento = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaEsbalecimento");

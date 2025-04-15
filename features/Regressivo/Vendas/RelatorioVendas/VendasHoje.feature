@@ -8,62 +8,6 @@
 Feature: Vendas Hoje
 
   @navegacao
-  @TestCaseKey=LPDC-T1228
-  Scenario Outline: Acessar Vendas Hoje via menu lateral
-    Given realizar login no portal <alianca>
-    When acessar menu <menu> e submenu <submenu>
-    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    @bin
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       |
-
-    @sicredi
-    Examples:
-      | alianca   | menu     | submenu           | abaRelatorio |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       |
-
-    @azulzinha
-    Examples:
-      | alianca     | menu     | submenu           | abaRelatorio |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       |
-
-    @afinz
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
-
-  @navegacao
-  @TestCaseKey=LPDC-T1230
-  Scenario Outline: Acessar Vendas Hoje via Dashboard Vendas
-    Given realizar login no portal <alianca>
-    When acessar dashboard <dashboard>
-    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    @bin
-    Examples:
-      | alianca | dashboard       | abaRelatorio |
-      | "bin"   | "vendas"        | "Hoje"       |
-      | "bin"   | "ultimasVendas" | "Hoje"       |
-
-    @sicredi
-    Examples:
-      | alianca   | dashboard       | abaRelatorio |
-      | "sicredi" | "vendas"        | "Hoje"       |
-      | "sicredi" | "ultimasVendas" | "Hoje"       |
-
-    @azulzinha
-    Examples:
-      | alianca     | dashboard       | abaRelatorio |
-      | "azulzinha" | "vendas"        | "Hoje"       |
-      | "azulzinha" | "ultimasVendas" | "Hoje"       |
-
-    @afinz
-    Examples:
-      | alianca | dashboard       | abaRelatorio |
-      | "afinz" | "vendas"        | "Hoje"       |
-      | "afinz" | "ultimasVendas" | "Hoje"       |
-
-  @navegacao
   @TestCaseKey=LPDC-T1229
   Scenario Outline: Verificar texto do rodape - Vendas Hoje
     Given realizar login no portal <alianca>
@@ -89,6 +33,11 @@ Feature: Vendas Hoje
     Examples:
       | alianca | menu     | submenu           | abaRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       |
 
   @navegacao
   @TestCaseKey=LPDC-T1232
@@ -116,6 +65,11 @@ Feature: Vendas Hoje
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | campos                        |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Total de vendas;Valor bruto" |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | campos                        |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Total de vendas;Valor bruto" |
 
   @personalizarColunas
   @TestCaseKey=LPDC-T1233
@@ -152,6 +106,13 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | colunas                                                                                                                                                |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
 
   @filtro
   @TestCaseKey=LPDC-T1234
@@ -497,6 +458,90 @@ Feature: Vendas Hoje
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
+    @claropay @codAutorizacao
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro                | valor              |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "primeiroRegistro" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "WWW333"           |
+
+    @claropay @status
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro   | valor        |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "todos"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Autorizada" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Recusada"   |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Estornada"  |
+
+    @claropay @produto
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro    | valor                   |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "todos"                 |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito"               |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito Internacional" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito"                |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito Internacional"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Refeição"              |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Alimentação"           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Premium"               |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Cultura"               |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Auto"                  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Gift"                  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Corporativo"           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Benefícios"            |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multiplo"              |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Flex"                  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Natal"                 |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multibenefícios"       |
+
+    @claropay @canal
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro  | valor       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "todos"     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "ECOMMERCE" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
+
+    @claropay @bandeira
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro     | valor         |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "todos"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Mastercard"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Maestro"     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Cabal"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Elo"         |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Banese"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Ticket"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Alelo"       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Sorocred"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Amex"        |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Hipercard"   |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Pluxee"      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "VR"          |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Visa"        |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Softnex"     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Redecompras" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Fepas"       |
+
+    @claropay @valores
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro    | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "100;300"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "500;1000" |
+
+    @claropay @estabelecimento
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro            | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "todos"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "91084373" |
+
+    @claropay @terminal
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | filtro     | valor      |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "todos"    |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "LNK01D49" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
+
   @gerarArquivo @nomeArquivo
   @TestCaseKey=LPDC-T1231
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Vendas Hoje
@@ -543,6 +588,16 @@ Feature: Vendas Hoje
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           |
+
+    @claropay @excel
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           |
+
+    @claropay @csv
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           |
 
   @gerarArquivo @colunasArquivo
   @TestCaseKey=LPDC-T1235
@@ -591,3 +646,12 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                 |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
 
+    @claropay @excel
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+
+    @claropay @csv
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                 |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |

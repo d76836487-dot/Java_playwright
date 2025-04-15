@@ -3,14 +3,12 @@ package com.fiserv.qabrazil.pages.home;
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.util.Config;
 import com.fiserv.qabrazil.util.GeneralUtils;
-import com.fiserv.qabrazil.util.WaitUtil;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.Duration;
 import java.time.LocalDate;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -30,7 +28,7 @@ public class HomePage {
     }
 
     public void verificarHome() {
-        GeneralUtils.waitForMillis(Config.TIME_TO_WAIT_PAGE);
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(15));
         assertThat(title).isVisible();
     }
 
@@ -52,7 +50,7 @@ public class HomePage {
 
     public void verificarTextoRodape() {
         this.rodape.scrollIntoViewIfNeeded();
-        WaitUtil.sleep(Duration.ofMillis(Config.WAIT_FOR_PAGE_UPDATE));
+        GeneralUtils.waitForMillis(Config.wait_for_seconds(5));
 
         LocalDate now = LocalDate.now();
         int year = now.getYear();

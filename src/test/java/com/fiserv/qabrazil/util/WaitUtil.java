@@ -6,7 +6,6 @@ import java.time.Duration;
 import java.util.function.Supplier;
 
 public class WaitUtil {
-
     private static final ThreadLocal<Boolean> alreadyWaiting = ThreadLocal.withInitial(() -> false);
 
     public static void sleep(Duration duration) {
