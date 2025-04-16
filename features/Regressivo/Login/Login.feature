@@ -8,6 +8,7 @@
 Feature: Login
 
   @navegacao
+  @TestCaseKey=LPDC-T1328
   Scenario Outline: Realizar Login no portal <alianca> e acessar Menu Lateral via <menu>><submenu>
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -233,6 +234,7 @@ Feature: Login
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" |
 
   @navegacao
+  @TestCaseKey=LPDC-T1327
   Scenario Outline: Realizar Login no portal <alianca> e acessar Dashboard via <dashboard>
     Given realizar login no portal <alianca>
     When acessar dashboard <dashboard>
@@ -296,3 +298,4 @@ Feature: Login
       | alianca    | dashboard                  | abaRelatorio |
       | "claropay" | "recebimentos"             | "Pagos"      |
       | "claropay" | "agendaRecebimentosSemana" | "Pagos"      |
+
