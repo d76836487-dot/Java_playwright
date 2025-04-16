@@ -593,3 +593,4 @@ Feature: Pre autorizacoes
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
+
