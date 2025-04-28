@@ -1,8 +1,7 @@
 package com.fiserv.qabrazil.pages.vendas.relatorioVendas;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.util.Config;
-import com.fiserv.qabrazil.util.GeneralUtils;
+import com.fiserv.qabrazil.util.*;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
@@ -32,7 +31,7 @@ public class HistoricoVendasPage {
     @PostConstruct
     private void loadLocators() {
         // Campos - Total/Valor
-        this.totalVendas = page.locator("//*[@data-testid='historico-vendas-v2-total']");
+        this.totalVendas = page.locator("//*[@data-testid='historico-vendas-total']");
         this.valorBruto = page.locator("(//*[@data-testid='historico-vendas-valor-bruto'])[1]");
         this.valorLiquido = page.locator("(//*[@data-testid='historico-vendas-valor-liquido'])[1]");
         this.valorCancelado = page.locator("//*[@data-testid='historico-vendas-valor-cancelado']");
@@ -50,14 +49,19 @@ public class HistoricoVendasPage {
         String[] listaCampos = campos.split(";");
 
         for (String campo : listaCampos) {
-            if (campo.equalsIgnoreCase("Total de vendas"))
-                assertThat(totalVendas).isVisible();
-            else if (campo.equalsIgnoreCase("Valor bruto"))
-                assertThat(valorBruto).isVisible();
-            else if (campo.equalsIgnoreCase("Valor líquido"))
-                assertThat(valorLiquido).isVisible();
-            else if (campo.equalsIgnoreCase("Valor cancelado"))
-                assertThat(valorCancelado).isVisible();
+            if (campo.equalsIgnoreCase("Total de vendas")) {
+                GeneralUtils.waitIsVisibleForSeconds(totalVendas, Config.WAIT_LEVEL_1);
+                assertThat(totalVendas).not().isEmpty();
+            } else if (campo.equalsIgnoreCase("Valor bruto")) {
+                GeneralUtils.waitIsVisibleForSeconds(valorBruto, Config.WAIT_LEVEL_1);
+                assertThat(valorBruto).not().isEmpty();
+            } else if (campo.equalsIgnoreCase("Valor líquido")) {
+                GeneralUtils.waitIsVisibleForSeconds(valorLiquido, Config.WAIT_LEVEL_1);
+                assertThat(valorLiquido).not().isEmpty();
+            } else if (campo.equalsIgnoreCase("Valor cancelado")) {
+                GeneralUtils.waitIsVisibleForSeconds(valorCancelado, Config.WAIT_LEVEL_1);
+                assertThat(valorCancelado).not().isEmpty();
+            }
         }
     }
 
@@ -65,8 +69,7 @@ public class HistoricoVendasPage {
     public void verificarDadosMaisDetalhes() {
         this.linkMaisDetalhes.scrollIntoViewIfNeeded();
         this.linkMaisDetalhes.click();
-
-        GeneralUtils.waitForMillis(Config.wait_for_seconds(6));
+        GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_2);
 
         // atribuicao Total de vendas
         int totalVendas = Integer.parseInt(this.detalhesVendaTotalVendas.textContent().trim());
@@ -118,7 +121,7 @@ public class HistoricoVendasPage {
         Assert.assertTrue(validacao);
 
         this.btnFecharDetalhesVenda.scrollIntoViewIfNeeded();
-        GeneralUtils.waitForMillis(Config.wait_for_seconds(4));
+        GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_2);
         this.btnFecharDetalhesVenda.click();
     }
 }

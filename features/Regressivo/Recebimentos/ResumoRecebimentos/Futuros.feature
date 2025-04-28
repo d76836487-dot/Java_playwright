@@ -77,7 +77,7 @@ Feature: Futuros
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    And aplica o periodo <periodo>
+    And aplica o periodo <periodo> - <abaRelatorio>
     And valida o periodo <periodo> aplicado - <abaRelatorio>
     @bin
     Examples:

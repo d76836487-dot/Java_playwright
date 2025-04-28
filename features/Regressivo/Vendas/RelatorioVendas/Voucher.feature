@@ -77,42 +77,42 @@ Feature: Voucher
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    And aplica o periodo <periodo>
+    And aplica o periodo <periodo> - <abaRelatorio>
     And valida o periodo <periodo> aplicado - <abaRelatorio>
     @bin
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | periodo          |
-      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"          |
-      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias" |
-      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14"     |
+      | alianca | menu     | submenu           | abaRelatorio | periodo           |
+      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"           |
+      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias"  |
+      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14 Dias" |
 
     @sicredi
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | periodo          |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"          |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias" |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14"     |
+      | alianca   | menu     | submenu           | abaRelatorio | periodo           |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"           |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias"  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14 Dias" |
 
     @azulzinha
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | periodo          |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"          |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias" |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14"     |
+      | alianca     | menu     | submenu           | abaRelatorio | periodo           |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"           |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias"  |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14 Dias" |
 
     @afinz
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | periodo          |
-      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"          |
-      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias" |
-      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14"     |
+      | alianca | menu     | submenu           | abaRelatorio | periodo           |
+      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"           |
+      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias"  |
+      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14 Dias" |
 
     @claropay
     Examples:
-      | alianca    | menu     | submenu           | abaRelatorio | periodo          |
-      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"          |
-      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias" |
-      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14"     |
+      | alianca    | menu     | submenu           | abaRelatorio | periodo           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14 Dias" |
 
   @personalizarColunas
   @TestCaseKey=LPDC-T1205

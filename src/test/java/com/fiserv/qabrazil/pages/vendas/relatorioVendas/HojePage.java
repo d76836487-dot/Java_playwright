@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.pages.vendas.relatorioVendas;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.*;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
@@ -29,10 +30,13 @@ public class HojePage {
         String[] listaCampos = campos.split(";");
 
         for (String campo : listaCampos) {
-            if (campo.equalsIgnoreCase("Total de vendas"))
-                assertThat(totalVendas).isVisible();
-            if (campo.equalsIgnoreCase("Valor bruto"))
-                assertThat(valorBruto).isVisible();
+            if (campo.equalsIgnoreCase("Total de vendas")) {
+                GeneralUtils.waitIsVisibleForSeconds(totalVendas, Config.WAIT_LEVEL_1);
+                assertThat(totalVendas).not().isEmpty();
+            } else if (campo.equalsIgnoreCase("Valor bruto")) {
+                GeneralUtils.waitIsVisibleForSeconds(valorBruto, Config.WAIT_LEVEL_1);
+                assertThat(valorBruto).not().isEmpty();
+            }
         }
     }
 }

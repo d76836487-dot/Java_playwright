@@ -1,6 +1,6 @@
 package com.fiserv.qabrazil.steps.componentes.relatorios;
 
-import com.fiserv.qabrazil.pages.componentes.relatorios.ComponentesRelatoriosPage;
+import com.fiserv.qabrazil.pages.componentes.relatorios.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import jakarta.validation.constraints.NotNull;
@@ -22,9 +22,9 @@ public class ComponentesRelatoriosSteps {
         componentesRelatoriosPage.verificarCampos(campos, abaRelatorio);
     }
 
-    @And("aplica o periodo {string}")
-    public void aplica_o_periodo(String periodo) {
-        componentesRelatoriosPage.aplicarPeriodo(periodo);
+    @And("aplica o periodo {string} - {string}")
+    public void aplica_o_periodo(String periodo, String abaRelatorio) {
+        componentesRelatoriosPage.aplicarPeriodo(periodo, abaRelatorio);
     }
 
     @And("valida o periodo {string} aplicado - {string}")

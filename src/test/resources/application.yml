@@ -23,7 +23,7 @@ framework:
         - --ignore-certificate-errors
         #- --start-maximized
       # executablePath: 'C:\Program Files\Google\Chrome\Application\chrome.exe'
-      slowMo: 125 #100
+      slowMo: 115 #100
       timeout: 90000 #30000
       # chromiumSandbox: false
       # devtools: false

@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.pages.recebimentos.resumoRecebimentos;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.*;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
@@ -29,10 +30,13 @@ public class DebitosAjustesPage {
         String[] listaCampos = campos.split(";");
 
         for (String campo : listaCampos) {
-            if (campo.equalsIgnoreCase("Total de cobranças de aluguel"))
-                assertThat(totalCobrancasAluguel).isVisible();
-            if (campo.equalsIgnoreCase("Total de cobranças pendentes"))
-                assertThat(totalCobrancasPendentes).isVisible();
+            if (campo.equalsIgnoreCase("Total de cobranças de aluguel")) {
+                GeneralUtils.waitIsVisibleForSeconds(totalCobrancasAluguel, Config.WAIT_LEVEL_1);
+                assertThat(totalCobrancasAluguel).not().isEmpty();
+            } else if (campo.equalsIgnoreCase("Total de cobranças pendentes")) {
+                GeneralUtils.waitIsVisibleForSeconds(totalCobrancasPendentes, Config.WAIT_LEVEL_1);
+                assertThat(totalCobrancasPendentes).not().isEmpty();
+            }
         }
     }
 }

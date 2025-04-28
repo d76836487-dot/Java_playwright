@@ -77,42 +77,42 @@ Feature: Nao efetivadas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    And aplica o periodo <periodo>
+    And aplica o periodo <periodo> - <abaRelatorio>
     And valida o periodo <periodo> aplicado - <abaRelatorio>
     @bin
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio     | periodo          |
-      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"          |
-      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias" |
-      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14"     |
+      | alianca | menu     | submenu           | abaRelatorio     | periodo           |
+      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"           |
+      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias"  |
+      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14 Dias" |
 
     @sicredi
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio     | periodo          |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"          |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias" |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14"     |
+      | alianca   | menu     | submenu           | abaRelatorio     | periodo           |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"           |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias"  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14 Dias" |
 
     @azulzinha
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio     | periodo          |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"          |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias" |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14"     |
+      | alianca     | menu     | submenu           | abaRelatorio     | periodo           |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"           |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias"  |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14 Dias" |
 
     @afinz
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio     | periodo          |
-      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"          |
-      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias" |
-      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14"     |
+      | alianca | menu     | submenu           | abaRelatorio     | periodo           |
+      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"           |
+      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias"  |
+      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14 Dias" |
 
     @claropay
     Examples:
-      | alianca    | menu     | submenu           | abaRelatorio     | periodo          |
-      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"          |
-      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias" |
-      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14"     |
+      | alianca    | menu     | submenu           | abaRelatorio     | periodo           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14 Dias" |
 
   @personalizarColunas
   @TestCaseKey=LPDC-T1213

@@ -1,7 +1,6 @@
 package com.fiserv.qabrazil.steps.taxista;
 
 import com.fiserv.qabrazil.pages.taxista.*;
-import com.fiserv.qabrazil.util.Config;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.And;

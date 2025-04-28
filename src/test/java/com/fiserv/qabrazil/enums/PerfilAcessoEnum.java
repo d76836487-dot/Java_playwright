@@ -42,10 +42,10 @@ public enum PerfilAcessoEnum {
     )
     ,CLAROPAY(
         "claropay"
-        ,setUrlPortal("claropay")
+        ,setUrlPortal("portal239")
         ,"master"
-        ,""
-        ,""
+        ,"33414095000149"
+        ,"ClaroPay@123"
         ,"239"
         ,setInstituicao("7")
     )
@@ -87,10 +87,10 @@ public enum PerfilAcessoEnum {
     )
     ,CLAROPAY_CEDIDOS(
         "claropay"
-        ,setUrlPortal("claropay")
+        ,setUrlPortal("portal239")
         ,"cedidos"
-        ,""
-        ,""
+        ,"33414095000149"
+        ,"ClaroPay@123"
         ,"239"
         ,setInstituicao("7")
     );

@@ -1,6 +1,6 @@
 package com.fiserv.qabrazil.steps.home;
 
-import com.fiserv.qabrazil.pages.home.HomePage;
+import com.fiserv.qabrazil.pages.home.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;

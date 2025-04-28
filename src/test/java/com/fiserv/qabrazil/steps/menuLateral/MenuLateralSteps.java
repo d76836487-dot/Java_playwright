@@ -1,6 +1,6 @@
 package com.fiserv.qabrazil.steps.menuLateral;
 
-import com.fiserv.qabrazil.pages.menuLateral.MenuLateralPage;
+import com.fiserv.qabrazil.pages.menuLateral.*;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 

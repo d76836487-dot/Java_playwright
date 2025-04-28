@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.pages.vendas.relatorioVendas;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.*;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
@@ -29,10 +30,13 @@ public class NaoEfetivadasPage {
         String[] listaCampos = campos.split(";");
 
         for (String campo : listaCampos) {
-            if (campo.equalsIgnoreCase("Total de recusadas"))
-                assertThat(totalRecusadas).isVisible();
-            else if (campo.equalsIgnoreCase("Total de estornadas"))
-                assertThat(totalEstornadas).isVisible();
+            if (campo.equalsIgnoreCase("Total de recusadas")) {
+                GeneralUtils.waitIsVisibleForSeconds(totalRecusadas, Config.WAIT_LEVEL_1);
+                assertThat(totalRecusadas).not().isEmpty();
+            } else if (campo.equalsIgnoreCase("Total de estornadas")) {
+                GeneralUtils.waitIsVisibleForSeconds(totalEstornadas, Config.WAIT_LEVEL_1);
+                assertThat(totalEstornadas).not().isEmpty();
+            }
         }
     }
 }

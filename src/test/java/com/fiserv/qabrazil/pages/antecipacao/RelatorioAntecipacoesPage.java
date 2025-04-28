@@ -1,6 +1,7 @@
 package com.fiserv.qabrazil.pages.antecipacao;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.*;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
@@ -35,16 +36,22 @@ public class RelatorioAntecipacoesPage {
         String[] listaCampos = campos.split(";");
 
         for (String campo : listaCampos) {
-            if (campo.equalsIgnoreCase("Valor bruto das vendas"))
-                assertThat(valorBrutoVendas).isVisible();
-            if (campo.equalsIgnoreCase("Valor líquido das vendas"))
-                assertThat(valorLiquidoVendas).isVisible();
-            if (campo.equalsIgnoreCase("Total de desconto valor líquido"))
-                assertThat(totalDescontoValorLiquido).isVisible();
-            if (campo.equalsIgnoreCase("Valor antecipado pago"))
-                assertThat(valorAntecipadoPago).isVisible();
-            if (campo.equalsIgnoreCase("Total de desconto valor antecipado pago"))
-                assertThat(totalDescontoValorAntecipadoPago).isVisible();
+            if (campo.equalsIgnoreCase("Valor bruto das vendas")) {
+                GeneralUtils.waitIsVisibleForSeconds(valorBrutoVendas, Config.WAIT_LEVEL_1);
+                assertThat(valorBrutoVendas).not().isEmpty();
+            } else if (campo.equalsIgnoreCase("Valor líquido das vendas")) {
+                GeneralUtils.waitIsVisibleForSeconds(valorLiquidoVendas, Config.WAIT_LEVEL_1);
+                assertThat(valorLiquidoVendas).not().isEmpty();
+            } else if (campo.equalsIgnoreCase("Total de desconto valor líquido")) {
+                GeneralUtils.waitIsVisibleForSeconds(totalDescontoValorLiquido, Config.WAIT_LEVEL_1);
+                assertThat(totalDescontoValorLiquido).not().isEmpty();
+            } else if (campo.equalsIgnoreCase("Valor antecipado pago")) {
+                GeneralUtils.waitIsVisibleForSeconds(valorAntecipadoPago, Config.WAIT_LEVEL_1);
+                assertThat(valorAntecipadoPago).not().isEmpty();
+            } else if (campo.equalsIgnoreCase("Total de desconto valor antecipado pago")) {
+                GeneralUtils.waitIsVisibleForSeconds(totalDescontoValorAntecipadoPago, Config.WAIT_LEVEL_1);
+                assertThat(totalDescontoValorAntecipadoPago).not().isEmpty();
+            }
         }
     }
 }

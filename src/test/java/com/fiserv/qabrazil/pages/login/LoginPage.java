@@ -1,9 +1,8 @@
 package com.fiserv.qabrazil.pages.login;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.enums.PerfilAcessoEnum;
-import com.fiserv.qabrazil.util.Config;
-import com.fiserv.qabrazil.util.GeneralUtils;
+import com.fiserv.qabrazil.enums.*;
+import com.fiserv.qabrazil.util.*;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
@@ -99,7 +98,6 @@ public class LoginPage {
         page.navigate(url);
         GeneralUtils.waitForLoad(page, true, true, true);
         this.realizarLogin(user, pass);
-        GeneralUtils.waitForMillis(Config.wait_for_seconds(15));
     }
 
     public void verificarLogin() { assertThat(title).isVisible(); }

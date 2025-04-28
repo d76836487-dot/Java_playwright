@@ -1,8 +1,7 @@
 package com.fiserv.qabrazil.pages.home;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.util.Config;
-import com.fiserv.qabrazil.util.GeneralUtils;
+import com.fiserv.qabrazil.util.*;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
@@ -21,15 +20,31 @@ public class HomePage {
     private Locator title;
     private Locator rodape;
 
+    // Personalize sua visualização
+    private Locator titlePersonalizeVisualizacao;
+    private Locator btnEstabelecimento;
+    private Locator expandirEstabelecimento;
+    private Locator rbPrmeiroEstabelecimento;
+    private Locator cbDefinirPadrao;
+    private Locator btnAcessar;
+
     @PostConstruct
     private void loadLocators() {
         this.title = page.locator("//*[text()='Acesso rápido']");
         this.rodape = page.locator("//*[@data-testid='footer-text']");
+
+        // Personalize sua visualização
+        this.titlePersonalizeVisualizacao = page.locator("//*[@data-testid='trocar-estabelecimento-title']");
+        this.btnEstabelecimento = page.locator("//*[@data-testid='alterar-matriz-type-estabelecimento']");
+        this.expandirEstabelecimento = page.locator("//*[@class='osui-accordion-item__icon osui-accordion-item__icon--caret']");
+        this.rbPrmeiroEstabelecimento = page.locator("(//*[contains(@id, '-RadioButton_Estabelecimento-input')])[1]");
+        this.cbDefinirPadrao = page.locator("//*[@data-testid='alterar-matriz-checkbox-definir-padrão']");
+        this.btnAcessar = page.locator("//*[@data-testid='alterar-matriz-button-acessar']");
     }
 
     public void verificarHome() {
-        GeneralUtils.waitForMillis(Config.wait_for_seconds(15));
-        assertThat(title).isVisible();
+        this.isVisiblePersonalizarVisualizacao();
+        GeneralUtils.waitIsVisibleForSeconds(title, Config.WAIT_LEVEL_4);
     }
 
     public void acessarDashboard(@NotNull String dashboard) {
@@ -49,12 +64,23 @@ public class HomePage {
     }
 
     public void verificarTextoRodape() {
+        GeneralUtils.waitIsVisibleForSeconds(rodape, Config.WAIT_LEVEL_1);
         this.rodape.scrollIntoViewIfNeeded();
-        GeneralUtils.waitForMillis(Config.wait_for_seconds(5));
 
         LocalDate now = LocalDate.now();
         int year = now.getYear();
         String textoRodape = "© " + year + " Fiserv do Brasil Instituição de Pagamento Ltda. Todos os direitos reservados.";
         assertThat(rodape).containsText(textoRodape);
+    }
+
+    private void isVisiblePersonalizarVisualizacao() {
+        GeneralUtils.waitForSeconds(5);
+        if (this.titlePersonalizeVisualizacao.isVisible()) {
+            this.btnEstabelecimento.click();
+            this.expandirEstabelecimento.click();
+            this.rbPrmeiroEstabelecimento.check();
+            this.cbDefinirPadrao.check();
+            this.btnAcessar.click();
+        }
     }
 }

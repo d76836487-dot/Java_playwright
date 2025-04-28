@@ -77,47 +77,47 @@ Feature: Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    And aplica o periodo <periodo>
+    And aplica o periodo <periodo> - <abaRelatorio>
     And valida o periodo <periodo> aplicado - <abaRelatorio>
     @bin
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio          | periodo          |
-      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"          |
-      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias" |
-      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14"     |
-      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"      |
+      | alianca | menu     | submenu           | abaRelatorio          | periodo           |
+      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"           |
+      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias"  |
+      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14 Dias" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"       |
 
     @sicredi
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio          | periodo          |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"          |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias" |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14"     |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"      |
+      | alianca   | menu     | submenu           | abaRelatorio          | periodo           |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"           |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias"  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14 Dias" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"       |
 
     @azulzinha
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio          | periodo          |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"          |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias" |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14"     |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"      |
+      | alianca     | menu     | submenu           | abaRelatorio          | periodo           |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"           |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias"  |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14 Dias" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"       |
 
     @afinz
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio          | periodo          |
-      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"          |
-      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias" |
-      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14"     |
-      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"      |
+      | alianca | menu     | submenu           | abaRelatorio          | periodo           |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"           |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias"  |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14 Dias" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"       |
 
     @claropay
     Examples:
-      | alianca    | menu     | submenu           | abaRelatorio          | periodo          |
-      | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"          |
-      | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias" |
-      | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14"     |
-      | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"      |
+      | alianca    | menu     | submenu           | abaRelatorio          | periodo           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14 Dias" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"       |
 
   @navegacao @maisDetalhes
   @TestCaseKey=LPDC-T1217

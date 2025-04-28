@@ -77,52 +77,52 @@ Feature: Pre autorizacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    And aplica o periodo <periodo>
+    And aplica o periodo <periodo> - <abaRelatorio>
     And valida o periodo <periodo> aplicado - <abaRelatorio>
     @bin
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio       | periodo          |
-      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"           |
-      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"          |
-      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias" |
-      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14"     |
-      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"       |
+      | alianca | menu     | submenu           | abaRelatorio       | periodo           |
+      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"            |
+      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"           |
+      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias"  |
+      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14 Dias" |
+      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"        |
 
     @sicredi
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio       | periodo          |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"           |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"          |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias" |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14"     |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"       |
+      | alianca   | menu     | submenu           | abaRelatorio       | periodo           |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"            |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"           |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias"  |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14 Dias" |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"        |
 
     @azulzinha
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio       | periodo          |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"           |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"          |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias" |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14"     |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"       |
+      | alianca     | menu     | submenu           | abaRelatorio       | periodo           |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"            |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"           |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias"  |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14 Dias" |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"        |
 
     @afinz
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio       | periodo          |
-      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"           |
-      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"          |
-      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias" |
-      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14"     |
-      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"       |
+      | alianca | menu     | submenu           | abaRelatorio       | periodo           |
+      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"            |
+      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"           |
+      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias"  |
+      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14 Dias" |
+      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"        |
 
     @claropay
     Examples:
-      | alianca    | menu     | submenu           | abaRelatorio       | periodo          |
-      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"           |
-      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"          |
-      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias" |
-      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14"     |
-      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"       |
+      | alianca    | menu     | submenu           | abaRelatorio       | periodo           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"            |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"           |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias"  |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14 Dias" |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"        |
 
   @personalizarColunas
   @TestCaseKey=LPDC-T1225

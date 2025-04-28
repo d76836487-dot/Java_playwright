@@ -6,6 +6,8 @@ import com.microsoft.playwright.options.LoadState;
 
 import java.time.Duration;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 public class GeneralUtils {
     public static void pressDigit(Page page, Locator locator, String data) {
         locator.focus();
@@ -45,7 +47,26 @@ public class GeneralUtils {
             page.waitForLoadState(LoadState.NETWORKIDLE);
     }
 
-    public static void waitForMillis(int millis) {
-        WaitUtil.sleep(Duration.ofMillis(millis));
+    public static void waitForSeconds(int seconds) {
+        int i = seconds;
+
+        while (i > 0) {
+            WaitUtil.sleep(Duration.ofMillis(1000L));
+            i--;
+        }
+    }
+
+    public static void waitIsVisibleForSeconds(Locator locator, int seconds) {
+        int i = seconds;
+
+        while (i > 0) {
+            if (locator.isVisible()) {
+                assertThat(locator).isVisible();
+                i = 0;
+            } else {
+                WaitUtil.sleep(Duration.ofMillis(1000L));
+                i--;
+            }
+        }
     }
 }
