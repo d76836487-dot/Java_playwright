@@ -60,8 +60,8 @@ Feature: Login
 
     @bin @antecipacao @Historico
     Examples:
-      | alianca | menu          | submenu | abaRelatorio  |
-      | "bin"   | "antecipacao" | ""      | "Histórico"   |
+      | alianca | menu          | submenu | abaRelatorio |
+      | "bin"   | "antecipacao" | ""      | "Histórico"  |
 
     @bin @antecipacao @RelatorioAntecipacoes
     Examples:
@@ -115,8 +115,8 @@ Feature: Login
 
     @sicredi @antecipacao @Historico
     Examples:
-      | alianca   | menu          | submenu | abaRelatorio  |
-      | "sicredi" | "antecipacao" | ""      | "Histórico"   |
+      | alianca   | menu          | submenu | abaRelatorio |
+      | "sicredi" | "antecipacao" | ""      | "Histórico"  |
 
     @sicredi @antecipacao @RelatorioAntecipacoes
     Examples:
@@ -170,8 +170,8 @@ Feature: Login
 
     @azulzinha @antecipacao @Historico
     Examples:
-      | alianca     | menu          | submenu | abaRelatorio  |
-      | "azulzinha" | "antecipacao" | ""      | "Histórico"   |
+      | alianca     | menu          | submenu | abaRelatorio |
+      | "azulzinha" | "antecipacao" | ""      | "Histórico"  |
 
     @azulzinha @antecipacao @RelatorioAntecipacoes
     Examples:
@@ -338,3 +338,4 @@ Feature: Login
       | alianca    | dashboard                  | abaRelatorio |
       | "claropay" | "recebimentos"             | "Pagos"      |
       | "claropay" | "agendaRecebimentosSemana" | "Pagos"      |
+
