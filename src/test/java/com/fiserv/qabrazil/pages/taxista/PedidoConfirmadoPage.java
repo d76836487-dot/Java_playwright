@@ -1,16 +1,15 @@
 package com.fiserv.qabrazil.pages.taxista;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.util.*;
+import com.fiserv.qabrazil.util.Config;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 @ScenarioComponent
-public class PedidoConfirmadoPage {
+public class PedidoConfirmadoPage extends GeneralUtils {
     @Autowired
     private Page page;
 
@@ -22,7 +21,6 @@ public class PedidoConfirmadoPage {
     }
 
     public void verificarPedidoConfirmado() {
-        GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_1);
-        assertThat(title).isVisible();
+        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
     }
 }

@@ -1,15 +1,15 @@
 package com.fiserv.qabrazil.pages.taxista;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.Config;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 @ScenarioComponent
-public class ReviseSeuPedidoPage {
+public class ReviseSeuPedidoPage extends GeneralUtils {
     @Autowired
     private Page page;
 
@@ -30,42 +30,36 @@ public class ReviseSeuPedidoPage {
         this.btnConcluirPedido = page.locator("//*[contains(text(), 'Concluir pedido')]");
     }
 
-    public void verificarReviseSeuPedido() {
-        assertThat(title).isVisible();
-    }
-
-    public void clickAlterarSobreVoce(String alterarSobreVoce) {
+    private void clickAlterarSobreVoce(String alterarSobreVoce) {
         if (alterarSobreVoce.equals("S"))
-            this.linkAlterarSobreVoce.click();
+           click( this.linkAlterarSobreVoce);
     }
 
-    public void clickAlterarSobreSeuNegocio(String alterarSobreSeuNegocio) {
+    private void clickAlterarSobreSeuNegocio(String alterarSobreSeuNegocio) {
         if (alterarSobreSeuNegocio.equals("S"))
-            this.linkAlterarSobreSeuNegocio.click();
+            click(this.linkAlterarSobreSeuNegocio);
     }
 
-    public void clickAlterarEndereco(String alterarEndereco) {
+    private void clickAlterarEndereco(String alterarEndereco) {
         if (alterarEndereco.equals("S"))
-            this.linkAlterarEndereco.click();
+            click(this.linkAlterarEndereco);
     }
 
-    public void clickAlterarContaRecebimento(String alterarContaRecebimento) {
+    private void clickAlterarContaRecebimento(String alterarContaRecebimento) {
         if (alterarContaRecebimento.equals("S"))
-            this.linkAlterarContaRecebimento.click();
+           click(this.linkAlterarContaRecebimento);
     }
-
-    public void clickConcluirPedido() { this.btnConcluirPedido.click(); }
 
     public void conferirReviseSeuPedido(
      String alterarSobreVoce
     ,String alterarSobreSeuNegocio
     ,String alterarEndereco
     ,String alterarContaRecebimento) {
-        this.verificarReviseSeuPedido();
+        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
         this.clickAlterarSobreVoce(alterarSobreVoce);
         this.clickAlterarSobreSeuNegocio(alterarSobreSeuNegocio);
         this.clickAlterarEndereco(alterarEndereco);
         this.clickAlterarContaRecebimento(alterarContaRecebimento);
-        this.clickConcluirPedido();
+        click(this.btnConcluirPedido);
     }
 }

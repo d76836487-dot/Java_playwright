@@ -1,13 +1,14 @@
 package com.fiserv.qabrazil.pages.menuLateral;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @ScenarioComponent
-public class MenuLateralPage {
+public class MenuLateralPage extends GeneralUtils {
     @Autowired
     private Page page;
 

@@ -8,12 +8,10 @@ import java.time.Duration;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-public class GeneralUtils {
-    public static void pressDigit(Page page, Locator locator, String data) {
-        locator.focus();
-
-        for (int i = 0; i <= (data.length() - 1); i++) {
-            char digit = data.charAt(i);
+public class GeneralUtils extends WaitUtil {
+    private static void pressDigits(Page page, String digits) {
+        for (int i = 0; i <= (digits.length() - 1); i++) {
+            char digit = digits.charAt(i);
 
             if (digit == '0')
                 page.keyboard().press("Digit0");
@@ -51,7 +49,7 @@ public class GeneralUtils {
         int i = seconds;
 
         while (i > 0) {
-            WaitUtil.sleep(Duration.ofMillis(1000L));
+            sleep(Duration.ofMillis(1000L));
             i--;
         }
     }
@@ -62,11 +60,44 @@ public class GeneralUtils {
         while (i > 0) {
             if (locator.isVisible()) {
                 assertThat(locator).isVisible();
+                locator.scrollIntoViewIfNeeded();
                 i = 0;
             } else {
-                WaitUtil.sleep(Duration.ofMillis(1000L));
+                sleep(Duration.ofMillis(1000L));
                 i--;
             }
         }
+    }
+
+    public static void checkIfValueIsNotEmpty(Locator locator) {
+        waitIsVisibleForSeconds(locator, Config.WAIT_LEVEL_1);
+        assertThat(locator).not().isEmpty();
+    }
+
+    public static void click(Locator locator) {
+        locator.scrollIntoViewIfNeeded();
+        locator.click();
+    }
+
+    public static void fillValue(Locator locator, String value) {
+        locator.focus();
+        locator.clear();
+        locator.fill(value);
+    }
+
+    public static void fillDigits(Page page, Locator locator, String value) {
+        locator.focus();
+        locator.clear();
+        pressDigits(page, value);
+    }
+
+    public static double replaceMonetaryValue(String monetaryValue) {
+        return Double.parseDouble(
+            monetaryValue
+                .replace(" ", "")
+                .replace(".", "")
+                .replace(",", ".")
+                .replace("R$", "")
+        );
     }
 }

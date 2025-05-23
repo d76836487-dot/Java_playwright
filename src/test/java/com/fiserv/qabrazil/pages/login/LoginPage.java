@@ -1,17 +1,16 @@
 package com.fiserv.qabrazil.pages.login;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.enums.*;
-import com.fiserv.qabrazil.util.*;
+import com.fiserv.qabrazil.enums.PerfilAcessoEnum;
+import com.fiserv.qabrazil.util.Config;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 @ScenarioComponent
-public class LoginPage {
+public class LoginPage extends GeneralUtils {
     @Autowired
     private Page page;
 
@@ -96,14 +95,14 @@ public class LoginPage {
         }
 
         page.navigate(url);
-        GeneralUtils.waitForLoad(page, true, true, true);
+        waitForLoad(page, true, true, true);
         this.realizarLogin(user, pass);
     }
 
-    public void verificarLogin() { assertThat(title).isVisible(); }
-    public void preencherLogin(String login) { GeneralUtils.pressDigit(page, this.txtLogin, login); }
-    public void preencherPassword(String password) { this.txtPassword.fill(password); }
-    public void clickEntrar() { this.btnEntar.click(); }
+    public void verificarLogin() { waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1); }
+    public void preencherLogin(String login) { fillDigits(page, this.txtLogin, login); }
+    public void preencherPassword(String password) { fillValue(this.txtPassword, password); }
+    public void clickEntrar() { click(this.btnEntar); }
 
     public void realizarLogin(String user, String pass) {
         this.verificarLogin();

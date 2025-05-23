@@ -294,60 +294,60 @@ Feature: Pagos
 
     @binCedidos @codPagamento @valoresCedidos
     Examples:
-      | alianca       | menu           | submenu              | abaRelatorio            | filtro              | valor              |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "primeiroRegistro" |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "WWW333"           |
+      | alianca      | menu           | submenu              | abaRelatorio            | filtro              | valor              |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "primeiroRegistro" |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "WWW333"           |
 
-    @binCendidos @status @valoresCedidos
+    @binCedidos @status @valoresCedidos
     Examples:
-      | alianca       | menu           | submenu              | abaRelatorio            | filtro   | valor     |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "todos"   |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Enviado" |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Pago"    |
+      | alianca      | menu           | submenu              | abaRelatorio            | filtro   | valor     |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "todos"   |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Enviado" |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Pago"    |
 
-    @binCendidos @produto @valoresCedidos
+    @binCedidos @produto @valoresCedidos
     Examples:
-      | alianca       | menu           | submenu              | abaRelatorio            | filtro    | valor     |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "todos"   |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Crédito" |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Débito"  |
+      | alianca      | menu           | submenu              | abaRelatorio            | filtro    | valor     |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "todos"   |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Crédito" |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Débito"  |
 
-    @binCendidos @bandeira @valoresCedidos
+    @binCedidos @bandeira @valoresCedidos
     Examples:
-      | alianca       | menu           | submenu              | abaRelatorio            | filtro     | valor             |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "todos"           |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Visa"            |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Hipercard/Hiper" |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Mastercard"      |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "ELO Full"        |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Amex Full"       |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "CABAL"           |
+      | alianca      | menu           | submenu              | abaRelatorio            | filtro     | valor             |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "todos"           |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Visa"            |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Hipercard/Hiper" |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Mastercard"      |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "ELO Full"        |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Amex Full"       |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "CABAL"           |
 
-    @binCendidos @valores @valoresCedidos
+    @binCedidos @valores @valoresCedidos
     Examples:
-      | alianca       | menu           | submenu              | abaRelatorio            | filtro    | valor       |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "2000;3000" |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "5000;8000" |
+      | alianca      | menu           | submenu              | abaRelatorio            | filtro    | valor       |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "2000;3000" |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "5000;8000" |
 
-    @binCendidos @estabelecimento @valoresCedidos
+    @binCedidos @estabelecimento @valoresCedidos
     Examples:
-      | alianca       | menu           | submenu              | abaRelatorio            | filtro            | valor      |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "todos"    |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "99990095" |
+      | alianca      | menu           | submenu              | abaRelatorio            | filtro            | valor      |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "todos"    |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "99990095" |
 
-    @binCendidos @banco @valoresCedidos
+    @binCedidos @banco @valoresCedidos
     Examples:
-      | alianca       | menu           | submenu              | abaRelatorio            | filtro  | valor                      |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "todos"                    |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "341 - Itaú Unibanco S.A." |
+      | alianca      | menu           | submenu              | abaRelatorio            | filtro  | valor                      |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "todos"                    |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "341 - Itaú Unibanco S.A." |
 
-    @binCendidos @tipos @valoresCedidos
+    @binCedidos @tipos @valoresCedidos
     Examples:
-      | alianca       | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "todos"                  |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Liquidação de venda"    |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação automática" |
-      | "binCendidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
+      | alianca      | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "todos"                  |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Liquidação de venda"    |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação automática" |
+      | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
 
     @sicredi @codPagamento @meusDomicilios
     Examples:

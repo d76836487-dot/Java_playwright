@@ -1,16 +1,15 @@
 package com.fiserv.qabrazil.pages.taxista;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.util.*;
+import com.fiserv.qabrazil.util.Config;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 @ScenarioComponent
-public class ParaComecarSeuCadastroPage {
+public class ParaComecarSeuCadastroPage extends GeneralUtils {
     @Autowired
     private Page page;
 
@@ -39,32 +38,6 @@ public class ParaComecarSeuCadastroPage {
         this.btnProximo = page.locator("//*[contains(text(), 'Próximo')]");
     }
 
-    public void verificarParaComecarSeuCadastro() {
-        assertThat(title).isVisible();
-    }
-
-    public void preencherNomeCompleto(String nomeCompleto) { this.txtNomeCompleto.fill(nomeCompleto); }
-
-    public void preencherDataNascimento(String dataNascimento) {
-        GeneralUtils.pressDigit(page, this.txtDataNascimento, dataNascimento);
-    }
-
-    public void preencherCelular(String celular) {
-        GeneralUtils.pressDigit(page, this.txtCelular, celular);
-    }
-
-    public void preencherEmail(String email) { this.txtEmail.fill(email); }
-
-    public void preencherCpf(String cpf) { GeneralUtils.pressDigit(page, this.txtCpf, cpf); }
-
-    public void preencherNomeFantasia(String nomeFantasia) { this.txtNomeFantasia.fill(nomeFantasia); }
-
-    public void preencherFaturamentoAnual(String faturamentoAnual) { this.txtFaturamentoAnual.fill(faturamentoAnual); }
-
-    public void preencherTicketMedio(String ticketMedio) { this.txtTicketMedio.fill(ticketMedio); }
-
-    public void clickProximo() { this.btnProximo.click(); }
-
     public void preencherCamposParaComecarSeuCadastro(
      String nomeCompleto
     ,String dataNascimento
@@ -74,15 +47,15 @@ public class ParaComecarSeuCadastroPage {
     ,String nomeFantasia
     ,String faturamentoAnual
     ,String ticketMedio) {
-        this.verificarParaComecarSeuCadastro();
-        this.preencherNomeCompleto(nomeCompleto);
-        this.preencherDataNascimento(dataNascimento);
-        this.preencherCelular(celular);
-        this.preencherEmail(email);
-        this.preencherCpf(cpf);
-        this.preencherNomeFantasia(nomeFantasia);
-        this.preencherFaturamentoAnual(faturamentoAnual);
-        this.preencherTicketMedio(ticketMedio);
-        this.clickProximo();
+        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
+        fillValue(this.txtNomeCompleto, nomeCompleto);
+        fillDigits(page, this.txtDataNascimento, dataNascimento);
+        fillDigits(page, this.txtCelular, celular);
+        fillValue(this.txtEmail, email);
+        fillDigits(page, this.txtCpf, cpf);
+        fillValue(this.txtNomeFantasia, nomeFantasia);
+        fillValue(this.txtFaturamentoAnual, faturamentoAnual);
+        fillValue(this.txtTicketMedio, ticketMedio);
+        click(this.btnProximo);
     }
 }

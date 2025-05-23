@@ -1,16 +1,14 @@
 package com.fiserv.qabrazil.pages.vendas.relatorioVendas;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.util.*;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 @ScenarioComponent
-public class NaoEfetivadasPage {
+public class NaoEfetivadasPage extends GeneralUtils {
     @Autowired
     private Page page;
 
@@ -30,13 +28,10 @@ public class NaoEfetivadasPage {
         String[] listaCampos = campos.split(";");
 
         for (String campo : listaCampos) {
-            if (campo.equalsIgnoreCase("Total de recusadas")) {
-                GeneralUtils.waitIsVisibleForSeconds(totalRecusadas, Config.WAIT_LEVEL_1);
-                assertThat(totalRecusadas).not().isEmpty();
-            } else if (campo.equalsIgnoreCase("Total de estornadas")) {
-                GeneralUtils.waitIsVisibleForSeconds(totalEstornadas, Config.WAIT_LEVEL_1);
-                assertThat(totalEstornadas).not().isEmpty();
-            }
+            if (campo.equalsIgnoreCase("Total de recusadas"))
+                checkIfValueIsNotEmpty(this.totalRecusadas);
+            else if (campo.equalsIgnoreCase("Total de estornadas"))
+                checkIfValueIsNotEmpty(this.totalEstornadas);
         }
     }
 }

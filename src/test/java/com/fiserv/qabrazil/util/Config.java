@@ -8,5 +8,5 @@ public class Config {
     public static final int WAIT_LEVEL_4 = 30;
 
     // tag do cucumber
-    public static final String TAG_CUCUMBER = "(@Pagos or @Futuros or @DebitosAjustes or @RelatorioAntecipacoes) and (@claropay or @claropayCedidos)";
+    public static final String TAG_CUCUMBER = "@SolicitarAntecipacao and @eventual and @sicredi";
 }

@@ -1,17 +1,16 @@
 package com.fiserv.qabrazil.pages.vendas.relatorioVendas;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.util.*;
+import com.fiserv.qabrazil.util.Config;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 @ScenarioComponent
-public class HistoricoVendasPage {
+public class HistoricoVendasPage extends GeneralUtils {
     @Autowired
     private Page page;
 
@@ -49,27 +48,21 @@ public class HistoricoVendasPage {
         String[] listaCampos = campos.split(";");
 
         for (String campo : listaCampos) {
-            if (campo.equalsIgnoreCase("Total de vendas")) {
-                GeneralUtils.waitIsVisibleForSeconds(totalVendas, Config.WAIT_LEVEL_1);
-                assertThat(totalVendas).not().isEmpty();
-            } else if (campo.equalsIgnoreCase("Valor bruto")) {
-                GeneralUtils.waitIsVisibleForSeconds(valorBruto, Config.WAIT_LEVEL_1);
-                assertThat(valorBruto).not().isEmpty();
-            } else if (campo.equalsIgnoreCase("Valor líquido")) {
-                GeneralUtils.waitIsVisibleForSeconds(valorLiquido, Config.WAIT_LEVEL_1);
-                assertThat(valorLiquido).not().isEmpty();
-            } else if (campo.equalsIgnoreCase("Valor cancelado")) {
-                GeneralUtils.waitIsVisibleForSeconds(valorCancelado, Config.WAIT_LEVEL_1);
-                assertThat(valorCancelado).not().isEmpty();
-            }
+            if (campo.equalsIgnoreCase("Total de vendas"))
+                checkIfValueIsNotEmpty(this.totalVendas);
+            else if (campo.equalsIgnoreCase("Valor bruto"))
+                checkIfValueIsNotEmpty(this.valorBruto);
+            else if (campo.equalsIgnoreCase("Valor líquido"))
+                checkIfValueIsNotEmpty(this.valorLiquido);
+            else if (campo.equalsIgnoreCase("Valor cancelado"))
+                checkIfValueIsNotEmpty(this.valorCancelado);
         }
     }
 
     // Mais detalhes
     public void verificarDadosMaisDetalhes() {
-        this.linkMaisDetalhes.scrollIntoViewIfNeeded();
-        this.linkMaisDetalhes.click();
-        GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_2);
+        click(this.linkMaisDetalhes);
+        waitForSeconds(Config.WAIT_LEVEL_2);
 
         // atribuicao Total de vendas
         int totalVendas = Integer.parseInt(this.detalhesVendaTotalVendas.textContent().trim());
@@ -79,38 +72,18 @@ public class HistoricoVendasPage {
             valorSomaItemVendas += Integer.parseInt(detalhesItemVendas.nth(i).textContent().trim());
 
         // atribuicao Valor bruto
-        double valorBruto = Double.parseDouble(this.detalhesVendaValorBruto.textContent()
-                .trim()
-                .replace(".", "")
-                .replace(",", ".")
-                .replace("R$ ", "")
-        );
+        double valorBruto = replaceMonetaryValue(this.detalhesVendaValorBruto.textContent());
         double valorSomaItemValorBruto = 0;
         Locator detalhesItemValorBruto = page.locator("//*[@data-testid='historico-detalhes-item-bruto']");
         for (int i = 0; i < detalhesItemValorBruto.count(); i++)
-            valorSomaItemValorBruto += Double.parseDouble(detalhesItemValorBruto.nth(i).textContent()
-                    .trim()
-                    .replace(".", "")
-                    .replace(",", ".")
-                    .replace("R$ ", "")
-            );
+            valorSomaItemValorBruto += replaceMonetaryValue(detalhesItemValorBruto.nth(i).textContent());
 
         // atribuicao Valor liquido
-        double valorLiquido = Double.parseDouble(this.detalhesVendaValorLiquido.textContent()
-                .trim()
-                .replace(".", "")
-                .replace(",", ".")
-                .replace("R$ ", "")
-        );
+        double valorLiquido = replaceMonetaryValue(this.detalhesVendaValorLiquido.textContent());
         double valorSomaItemValorLiquido = 0;
         Locator detalhesItemValorLiquido = page.locator("//*[@data-testid='historico-detalhes-item-liquido']");
         for(int i = 0; i < detalhesItemValorLiquido.count(); i++)
-            valorSomaItemValorLiquido += Double.parseDouble(detalhesItemValorLiquido.nth(i).textContent()
-                    .trim()
-                    .replace(".", "")
-                    .replace(",", ".")
-                    .replace("R$ ", "")
-            );
+            valorSomaItemValorLiquido += replaceMonetaryValue(detalhesItemValorLiquido.nth(i).textContent());
 
         // verificacao Total de vendas, Valor bruto e Valor liquido
         boolean validacao = (
@@ -120,8 +93,7 @@ public class HistoricoVendasPage {
         );
         Assert.assertTrue(validacao);
 
-        this.btnFecharDetalhesVenda.scrollIntoViewIfNeeded();
-        GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_2);
-        this.btnFecharDetalhesVenda.click();
+        waitForSeconds(Config.WAIT_LEVEL_2);
+        click(this.btnFecharDetalhesVenda);
     }
 }

@@ -1,16 +1,14 @@
 package com.fiserv.qabrazil.pages.recebimentos.resumoRecebimentos;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.util.*;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 @ScenarioComponent
-public class FuturosPage {
+public class FuturosPage extends GeneralUtils {
     @Autowired
     private Page page;
 
@@ -30,13 +28,10 @@ public class FuturosPage {
         String[] listaCampos = campos.split(";");
 
         for (String campo : listaCampos) {
-            if (campo.equalsIgnoreCase("Total de vendas")) {
-                GeneralUtils.waitIsVisibleForSeconds(totalVendas, Config.WAIT_LEVEL_1);
-                assertThat(totalVendas).not().isEmpty();
-            } else if (campo.equalsIgnoreCase("Total líquido previsto")) {
-                GeneralUtils.waitIsVisibleForSeconds(totalLiquidoPrevisto, Config.WAIT_LEVEL_1);
-                assertThat(totalLiquidoPrevisto).not().isEmpty();
-            }
+            if (campo.equalsIgnoreCase("Total de vendas"))
+                checkIfValueIsNotEmpty(this.totalVendas);
+            else if (campo.equalsIgnoreCase("Total líquido previsto"))
+                checkIfValueIsNotEmpty(this.totalLiquidoPrevisto);
         }
     }
 }

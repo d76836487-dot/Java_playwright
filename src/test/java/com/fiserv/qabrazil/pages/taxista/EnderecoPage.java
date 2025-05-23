@@ -1,16 +1,15 @@
 package com.fiserv.qabrazil.pages.taxista;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.util.*;
+import com.fiserv.qabrazil.util.Config;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 @ScenarioComponent
-public class EnderecoPage {
+public class EnderecoPage extends GeneralUtils {
     @Autowired
     private Page page;
 
@@ -49,52 +48,37 @@ public class EnderecoPage {
         this.btnProximo = page.locator("//*[contains(text(), 'Próximo')]");
     }
 
-    public void verificarEndereco() {
-        assertThat(title).isVisible();
+    private void verificarEndereco() {
+        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
     }
 
-    public void preencherCep(String cep) { this.txtCep.fill(cep); }
-
-    public void preencherLogradouro(String logradouro) { this.txtLogradouro.fill(logradouro); }
-
-    public void preencherNumero(String semNumero, String numero) {
+    private void preencherNumero(String semNumero, String numero) {
         if (semNumero.equals("S")) {
-            this.cbSemNumero.click();
+            click(this.cbSemNumero);
         } else {
-            this.txtNumero.fill(numero);
+            fillValue(this.txtNumero, numero);
         }
     }
 
-    public void preencherComplemento(String complemento) { this.txtComplemento.fill(complemento); }
-
-    public void preencherBairro(String bairro) { this.txtBairro.fill(bairro); }
-
-    public void preencherCidade(String cidade) { this.txtCidade.fill(cidade); }
-
-    public void selecionarEstado(String estado) {
-        this.slcEstado.click();
-        Locator optEstado = page.locator("//*[@id='b10-$b16-dropdownContent']/*/span[contains(text(), '"+ estado +"')]");
-        optEstado.click();
-        this.title.click();
+    private void selecionarEstado(String estado) {
+        click(this.slcEstado);
+        click(page.locator("//*[@id='b10-$b16-dropdownContent']/*/span[contains(text(), '"+ estado +"')]"));
+        click(this.title);
     }
 
-    public void preencherPontoReferencia(String pontoReferencia) { this.txtPontoReferencia.fill(pontoReferencia); }
-
-    public void alterarNegocio(String alterarNegocio) {
+    private void alterarNegocio(String alterarNegocio) {
         if (alterarNegocio.equals("S")){
-            this.drillDownNegocio.click();
-            this.btnAlterarNegocio.click();
+            click(this.drillDownNegocio);
+            click(this.btnAlterarNegocio);
         }
     }
 
-    public void alterarDadosPessoais(String alterarDadosPessoais) {
+    private void alterarDadosPessoais(String alterarDadosPessoais) {
         if (alterarDadosPessoais.equals("S")) {
-            this.drillDownDadosPessoais.click();
-            this.btnAlterarDadosPessoais.click();
+            click(this.drillDownDadosPessoais);
+            click(this.btnAlterarDadosPessoais);
         }
     }
-
-    public void clickProximo() { this.btnProximo.click(); }
 
     public void preencherCamposEndereco(
      String cep
@@ -109,21 +93,21 @@ public class EnderecoPage {
     ,String alterarNegocio
     ,String alterarDadosPessoais) {
         this.verificarEndereco();
-        this.preencherCep(cep);
+        fillValue(this.txtCep, cep);
         this.preencherNumero(semNumero, numero);
-        this.preencherComplemento(complemento);
-        this.preencherPontoReferencia(pontoReferencia);
+        fillValue(this.txtComplemento, complemento);
+        fillValue(this.txtPontoReferencia, pontoReferencia);
 
         GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_1);
         if (cep.isEmpty()) {
-            this.preencherLogradouro(logradouro);
-            this.preencherBairro(bairro);
-            this.preencherCidade(cidade);
+            fillValue(this.txtLogradouro, logradouro);
+            fillValue(this.txtBairro, bairro);
+            fillValue(this.txtCidade, cidade);
             this.selecionarEstado(estado);
         }
 
         this.alterarNegocio(alterarNegocio);
         this.alterarDadosPessoais(alterarDadosPessoais);
-        this.clickProximo();
+        click(this.btnProximo);
     }
 }

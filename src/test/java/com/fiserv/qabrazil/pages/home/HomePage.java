@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
-public class HomePage {
+public class HomePage extends GeneralUtils {
     @Autowired
     private Page page;
 
@@ -44,7 +44,7 @@ public class HomePage {
 
     public void verificarHome() {
         this.isVisiblePersonalizarVisualizacao();
-        GeneralUtils.waitIsVisibleForSeconds(title, Config.WAIT_LEVEL_4);
+        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_4);
     }
 
     public void acessarDashboard(@NotNull String dashboard) {
@@ -59,13 +59,11 @@ public class HomePage {
         else if (dashboard.equalsIgnoreCase("agendaRecebimentosSemana"))
             verTudo = page.locator("//*[@data-testid='home-card-recebimentos-semana-link-ver-tudo']");
 
-        verTudo.scrollIntoViewIfNeeded();
-        verTudo.click();
+        click(verTudo);
     }
 
     public void verificarTextoRodape() {
-        GeneralUtils.waitIsVisibleForSeconds(rodape, Config.WAIT_LEVEL_1);
-        this.rodape.scrollIntoViewIfNeeded();
+        waitIsVisibleForSeconds(this.rodape, Config.WAIT_LEVEL_1);
 
         LocalDate now = LocalDate.now();
         int year = now.getYear();
@@ -74,7 +72,7 @@ public class HomePage {
     }
 
     private void isVisiblePersonalizarVisualizacao() {
-        GeneralUtils.waitForSeconds(5);
+        waitForSeconds(Config.WAIT_LEVEL_1);
         if (this.titlePersonalizeVisualizacao.isVisible()) {
             this.btnEstabelecimento.click();
             this.expandirEstabelecimento.click();

@@ -1,16 +1,14 @@
 package com.fiserv.qabrazil.pages.recebimentos.resumoRecebimentos;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.util.*;
+import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 @ScenarioComponent
-public class DebitosAjustesPage {
+public class DebitosAjustesPage extends GeneralUtils {
     @Autowired
     private Page page;
 
@@ -30,13 +28,10 @@ public class DebitosAjustesPage {
         String[] listaCampos = campos.split(";");
 
         for (String campo : listaCampos) {
-            if (campo.equalsIgnoreCase("Total de cobranças de aluguel")) {
-                GeneralUtils.waitIsVisibleForSeconds(totalCobrancasAluguel, Config.WAIT_LEVEL_1);
-                assertThat(totalCobrancasAluguel).not().isEmpty();
-            } else if (campo.equalsIgnoreCase("Total de cobranças pendentes")) {
-                GeneralUtils.waitIsVisibleForSeconds(totalCobrancasPendentes, Config.WAIT_LEVEL_1);
-                assertThat(totalCobrancasPendentes).not().isEmpty();
-            }
+            if (campo.equalsIgnoreCase("Total de cobranças de aluguel"))
+                checkIfValueIsNotEmpty(this.totalCobrancasAluguel);
+            else if (campo.equalsIgnoreCase("Total de cobranças pendentes"))
+                checkIfValueIsNotEmpty(this.totalCobrancasPendentes);
         }
     }
 }

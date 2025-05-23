@@ -27,7 +27,7 @@ import java.util.Locale;
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent
-public class ComponentesRelatoriosPage {
+public class ComponentesRelatoriosPage extends GeneralUtils {
     @Autowired
     private Page page;
 
@@ -64,7 +64,6 @@ public class ComponentesRelatoriosPage {
     private Locator titleDebitosAjustes;
 
     // Títulos das abas de Antecipação
-    private Locator titleSolicitarAntecipacao;
     private Locator titleHistorico;
     private Locator titleRelatorioAntecipacoes;
 
@@ -116,6 +115,10 @@ public class ComponentesRelatoriosPage {
 
     // Antecipação
     @Autowired
+    SolicitarAntecipacaoPage solicitarAntecipacaoPage;
+    @Autowired
+    HistoricoPage historicoPage;
+    @Autowired
     RelatorioAntecipacoesPage relatorioAntecipacoesPage;
 
     @PostConstruct
@@ -153,7 +156,6 @@ public class ComponentesRelatoriosPage {
         this.titleDebitosAjustes = page.locator("//*[contains(text(), 'Filtre por tipo de ajuste e consulte as informações')]");
 
         // Títulos das abas de Antecipação
-        this.titleSolicitarAntecipacao = page.locator("//*[contains(text(), 'para antecipação')]");
         this.titleHistorico = page.locator("//*[text()='Historico']");
         this.titleRelatorioAntecipacoes = page.locator("//*[text()='Relatorio de antecipação']");
 
@@ -184,41 +186,23 @@ public class ComponentesRelatoriosPage {
         this.btnGerarArquivo = page.locator("//*[contains(text(), 'Gerar arquivo')]");
     }
 
-    // Botões abas de Vendas
-    private void clickAbaHistoricoVendas() { this.abaHistoricoVendas.click(); }
-    private void clickAbaNaoEfetivadas() { this.abaNaoEfetivadas.click(); }
-    private void clickAbaPreAutorizacoes() { this.abaPreAutorizacoes.click(); }
-    private void clickAbaVoucher() { this.abaVoucher.click(); }
-
-    // Botões abas de Recebimentos
-    private void clickAbaPagos() { this.abaPagos.click(); }
-    private void clickSubAbaMeusDomicilios() { this.subAbaMeusDomicilios.click(); }
-    private void clickSubAbaValoresCedidos() { this.subAbaValoresCedidos.click(); }
-    private void clickAbaFuturos() { this.abaFuturos.click(); }
-    private void clickAbaDebitosAjustes() { this.abaDebitosAjustes.click(); }
-
-    // Botões abas de Antecipação
-    private void clickAbaSolicitarAntecipacao() { this.abaSolicitarAntecipacao.click(); }
-    private void clickAbaHistorico() { this.abaHistorico.click(); }
-    private void clickAbaRelatorioAntecipacoes() { this.abaRelatorioAntecipacoes.click(); }
-
     // Valida os títulos das abas
     public void validarCarregamentoAbaRelatorio(@NotNull String abaRelatorio) {
         // Vendas
         if (abaRelatorio.equalsIgnoreCase("Hoje"))
-            GeneralUtils.waitIsVisibleForSeconds(titleHoje, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(titleHoje, Config.WAIT_LEVEL_3);
         else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
-            this.clickAbaHistoricoVendas();
-            GeneralUtils.waitIsVisibleForSeconds(titleHistoricoVendas, Config.WAIT_LEVEL_3);
+            click(this.abaHistoricoVendas);
+            waitIsVisibleForSeconds(titleHistoricoVendas, Config.WAIT_LEVEL_3);
         } else if (abaRelatorio.equalsIgnoreCase("Não efetivadas")) {
-            this.clickAbaNaoEfetivadas();
-            GeneralUtils.waitIsVisibleForSeconds(titleNaoEfetivadas, Config.WAIT_LEVEL_3);
+            click(this.abaNaoEfetivadas);
+            waitIsVisibleForSeconds(titleNaoEfetivadas, Config.WAIT_LEVEL_3);
         } else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações")) {
-            this.clickAbaPreAutorizacoes();
-            GeneralUtils.waitIsVisibleForSeconds(titlePreAutorizacoes, Config.WAIT_LEVEL_3);
+            click(this.abaPreAutorizacoes);
+            waitIsVisibleForSeconds(titlePreAutorizacoes, Config.WAIT_LEVEL_3);
         } else if (abaRelatorio.equalsIgnoreCase("Voucher")) {
-            this.clickAbaVoucher();
-            GeneralUtils.waitIsVisibleForSeconds(titleVocher, Config.WAIT_LEVEL_3);
+            click(this.abaVoucher);
+            waitIsVisibleForSeconds(titleVocher, Config.WAIT_LEVEL_3);
         }
 
         // Recebimentos
@@ -227,38 +211,34 @@ public class ComponentesRelatoriosPage {
             || abaRelatorio.equalsIgnoreCase("Pagos_Meus Domicílios")
             || abaRelatorio.equalsIgnoreCase("Pagos_Valores Cedidos")
         ) {
-            this.clickAbaPagos();
-            GeneralUtils.waitIsVisibleForSeconds(titlePagos, Config.WAIT_LEVEL_3);
+            click(this.abaPagos);
+            waitIsVisibleForSeconds(titlePagos, Config.WAIT_LEVEL_3);
 
             if (abaRelatorio.equalsIgnoreCase("Pagos_Meus Domicílios")) {
-                subAbaMeusDomicilios.scrollIntoViewIfNeeded();
-                this.clickSubAbaMeusDomicilios();
-                GeneralUtils.waitIsVisibleForSeconds(titleMeusDomicilios, Config.WAIT_LEVEL_3);
-                this.titleMeusDomicilios.scrollIntoViewIfNeeded();
+                click(this.subAbaMeusDomicilios);
+                waitIsVisibleForSeconds(titleMeusDomicilios, Config.WAIT_LEVEL_3);
             } else if (abaRelatorio.equalsIgnoreCase("Pagos_Valores Cedidos")) {
-                subAbaValoresCedidos.scrollIntoViewIfNeeded();
-                this.clickSubAbaValoresCedidos();
-                GeneralUtils.waitIsVisibleForSeconds(titleValoresCedidos, Config.WAIT_LEVEL_3);
-                this.titleValoresCedidos.scrollIntoViewIfNeeded();
+                click(this.subAbaValoresCedidos);
+                waitIsVisibleForSeconds(titleValoresCedidos, Config.WAIT_LEVEL_3);
             }
         } else if (abaRelatorio.equalsIgnoreCase("Futuros")) {
-            this.clickAbaFuturos();
-            GeneralUtils.waitIsVisibleForSeconds(titleFuturos, Config.WAIT_LEVEL_3);
+            click(this.abaFuturos);
+            waitIsVisibleForSeconds(titleFuturos, Config.WAIT_LEVEL_3);
         } else if (abaRelatorio.equalsIgnoreCase("Débitos e ajustes")) {
-            this.clickAbaDebitosAjustes();
-            GeneralUtils.waitIsVisibleForSeconds(titleDebitosAjustes, Config.WAIT_LEVEL_3);
+            click(this.abaDebitosAjustes);
+            waitIsVisibleForSeconds(titleDebitosAjustes, Config.WAIT_LEVEL_3);
         }
 
         // Antecipação
         else if (abaRelatorio.equalsIgnoreCase("Solicitar antecipação")) {
-            this.clickAbaSolicitarAntecipacao();
-            GeneralUtils.waitIsVisibleForSeconds(titleSolicitarAntecipacao, Config.WAIT_LEVEL_3);
+            click(this.abaSolicitarAntecipacao);
+            solicitarAntecipacaoPage.waitForLoadSolicitarAntecipacao();
         } else if (abaRelatorio.equalsIgnoreCase("Histórico")) {
-            this.clickAbaHistorico();
-            GeneralUtils.waitIsVisibleForSeconds(titleHistorico, Config.WAIT_LEVEL_3);
+            click(this.abaHistorico);
+            waitIsVisibleForSeconds(titleHistorico, Config.WAIT_LEVEL_3);
         } else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações")) {
-            this.clickAbaRelatorioAntecipacoes();
-            GeneralUtils.waitIsVisibleForSeconds(titleRelatorioAntecipacoes, Config.WAIT_LEVEL_3);
+            click(this.abaRelatorioAntecipacoes);
+            waitIsVisibleForSeconds(titleRelatorioAntecipacoes, Config.WAIT_LEVEL_3);
         }
     }
 
@@ -285,12 +265,8 @@ public class ComponentesRelatoriosPage {
             debitosAjustesPage.verificarCampos(campos);
 
         // Antecipação
-        /*
-        else if (abaRelatorio.equalsIgnoreCase("Solicitar antecipação"))
-            .verificarCampos(campos);
-         else if (abaRelatorio.equalsIgnoreCase("Histórico"))
-            .verificarCampos(campos);
-         */
+        else if (abaRelatorio.equalsIgnoreCase("Histórico"))
+            historicoPage.verificarCampos(campos);
         else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações"))
             relatorioAntecipacoesPage.verificarCampos(campos);
     }
@@ -628,19 +604,20 @@ public class ComponentesRelatoriosPage {
             };
 
             // Antecipação
-            /*
-            case "Solicitar antecipação" -> switch (campo) {
-                case "" ->
-                    page.locator("");
+            case "Histórico" -> switch (campo) {
+                case "btnFiltros" ->
+                    page.locator("(//*[text()='Filtros'])[1]");
+                case "btnExportar" ->
+                    page.locator("//*[@data-testid='text-button-exportar']");
+                case "resultadoColunas" ->
+                    page.locator("//*[@data-block='Antecipacao.SolicitacoesAntecipacao']");
+                case "resultadoColunaStatus" ->
+                    page.locator("//div[contains(@id, '-Status')]/span/span");
+                case "resultadoColunaDataSolitacao" ->
+                    page.locator("//*[text()='Data da Solicitação:']/following-sibling::span");
                 default -> element;
             };
 
-            case "Histórico" -> switch (campo) {
-                case "" ->
-                    page.locator("");
-                default -> element;
-            };
-            */
             case "Relatório de antecipações" -> switch (campo) {
                 case "txtNumeroSimulacao" ->
                     page.locator("//*[@data-testid='relatorio-antecipacao-input-filter-simulacao']");
@@ -682,8 +659,6 @@ public class ComponentesRelatoriosPage {
     }
 
     // Período
-    private void clickCalendario() { this.iconeCalendario.click(); }
-
     private String obterNomeAbreviadoMes(LocalDate dataSelecionada) {
         TextStyle txtShort = TextStyle.SHORT;
         Locale localePtBr = new Locale("pt", "BR");
@@ -721,21 +696,20 @@ public class ComponentesRelatoriosPage {
             (mesAtual.equalsIgnoreCase("Jan") && periodo.equalsIgnoreCase("M-1"))
             || (mesAtual.equalsIgnoreCase("Dez") && periodo.equalsIgnoreCase("M+1"))
         )
-            prevNextMonth.click();
+            click(prevNextMonth);
 
         // seleciona o mês
-        page.locator("//*[text()='"+mesPeriodo+"']").click();
+        click(page.locator("//*[text()='"+mesPeriodo+"']"));
         // clica no botão Aplicar
-        page.locator("//*[@data-testid='button-apply-filter-month']").click();
+        click(page.locator("//*[@data-testid='button-apply-filter-month']"));
     }
 
     public void aplicarPeriodo(@NotNull String periodo, String abaRelatorio) {
-        GeneralUtils.waitIsVisibleForSeconds(
+        waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
             ,Config.WAIT_LEVEL_3
         );
-        this.iconeCalendario.scrollIntoViewIfNeeded();
-        this.clickCalendario();
+        click(this.iconeCalendario);
 
         Locator cbkPeriodo = switch (periodo) {
             case "Hoje" ->
@@ -775,7 +749,7 @@ public class ComponentesRelatoriosPage {
         else if (periodo.equalsIgnoreCase("M0"))
             System.out.println("Mês atual é default na aplicação do período do calendário");
         else
-            cbkPeriodo.click();
+            click(cbkPeriodo);
     }
 
     private static boolean verificarDataPeriodo(String dataCompleta, String periodo) {
@@ -847,26 +821,18 @@ public class ComponentesRelatoriosPage {
         Locator expandir2 = page.locator("(//*[contains(@class, 'osui-accordion-item__icon')])[3]");
 
         if (semExpandir.isVisible())
-            assertThat(semExpandir).isVisible();
+            waitIsVisibleForSeconds(semExpandir, Config.WAIT_LEVEL_1);
         else if (diaSemana.isVisible() || calendario.isVisible()) { // Expandir: dia da semana
-            GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_2);
-
-            expandir1.scrollIntoViewIfNeeded();
-            expandir1.click();
-
-            GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_2);
+            waitForSeconds(Config.WAIT_LEVEL_1);
+            click(expandir1);
+            waitForSeconds(Config.WAIT_LEVEL_1);
         } else if (expandir1.isVisible() || expandir2.isVisible()) { // Expandir: Mês e dia da semana
-            GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_2);
+            waitForSeconds(Config.WAIT_LEVEL_1);
+            click(expandir1);
 
-            expandir1.scrollIntoViewIfNeeded();
-            expandir1.click();
-
-            GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_2);
-
-            expandir2.scrollIntoViewIfNeeded();
-            expandir2.click();
-
-            GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_2);
+            waitForSeconds(Config.WAIT_LEVEL_1);
+            click(expandir2);
+            waitForSeconds(Config.WAIT_LEVEL_1);
         }
     }
 
@@ -894,7 +860,8 @@ public class ComponentesRelatoriosPage {
 
         // Antecipação
         else if (
-            abaRelatorio.equalsIgnoreCase("Relatório de antecipações")
+            abaRelatorio.equalsIgnoreCase("Histórico")
+            || abaRelatorio.equalsIgnoreCase("Relatório de antecipações")
         )
             resultadoColunaData = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataSolitacao");
 
@@ -910,93 +877,75 @@ public class ComponentesRelatoriosPage {
         }
     }
 
-    // Componentes padrão - Vendas
-    private void preencherCampoPesquisa(String abaRelatorio, String campo, String valor) {
-        this.getLocatorFromReportTab(abaRelatorio, campo).fill(valor);
-    }
-    private void clickLupa(String abaRelatorio) {
-        this.getLocatorFromReportTab(abaRelatorio, "iconeLupa").click();
-    }
-    private void clickFiltros(String abaRelatorio) {
-        this.getLocatorFromReportTab(abaRelatorio, "btnFiltros").click();
-    }
-    private void clickPersonalizarColunas(String abaRelatorio) {
-        this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas").click();
-    }
-    private void clickExportar(String abaRelatorio) {
-        this.getLocatorFromReportTab(abaRelatorio, "btnExportar").click();
-    }
+    private void clickItemFiltro(String abaRelatorio, String filtro, String valor, String funcao) {
+        if (!abaRelatorio.equalsIgnoreCase("Histórico")){
+            Locator itemFiltro = switch (filtro) {
+                case "Status" -> switch (funcao) {
+                    case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-status']");
+                    case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-status']");
+                    case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-status-" + valor.replace(" ", "-") + "']");
+                    default -> page.locator("//*[@data-testid='generic-filter-accordion-title-status']");
+                };
+                case "Produto" -> switch (funcao) {
+                    case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-produtos']");
+                    case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-produtos']");
+                    case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-produto-" + valor.replace(" ", "-") + "']");
+                    default -> page.locator("//*[@data-testid='generic-filter-accordion-title-produtos']");
+                };
+                case "Canal" -> switch (funcao) {
+                    case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-canais']");
+                    case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-canais']");
+                    case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-canal-" + valor.replace(" ", "-") + "']");
+                    default -> page.locator("//*[@data-testid='generic-filter-accordion-title-canal']");
+                };
+                case "Bandeira" -> switch (funcao) {
+                    case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-bandeiras']");
+                    case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-bandeiras']");
+                    case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-div-bandeira-" + valor.replace(" ", "-") + "']");
+                    default -> page.locator("//*[@data-testid='generic-filter-accordion-title-bandeira']");
+                };
+                case "Estabelecimento" -> switch (funcao) {
+                    case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-estabelecimentos']");
+                    case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-estabelecimentos']");
+                    case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-estabelecimento-" + valor.replace(" ", "-") + "']");
+                    default -> page.locator("//*[@data-testid='generic-filter-accordion-title-estabelecimentos']");
+                };
+                case "Terminal" -> switch (funcao) {
+                    case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-terminais']");
+                    case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-terminais']");
+                    case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-terminal-" + valor.replace(" ", "-") + "']");
+                    default -> page.locator("//*[@data-testid='generic-filter-accordion-title-terminais']");
+                };
+                case "Banco" -> switch (funcao) {
+                    case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-bancos']");
+                    case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-bancos']");
+                    case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-banco-" + valor.replace(" ", "-") + "']");
+                    default -> page.locator("//*[@data-testid='generic-filter-accordion-title-bancos']");
+                };
+                case "Tipos" -> switch (funcao) {
+                    case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-tipos']");
+                    case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-tipos']");
+                    case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-tipo-" + valor.replace(" ", "-") + "']");
+                    default -> page.locator("//*[@data-testid='generic-filter-accordion-title-tipos']");
+                };
+                default -> page.locator("");
+            };
 
-    // Filtros
-    private void verificarFiltros() {
-        assertThat(titleFiltros).isVisible();
-    }
+            itemFiltro.click();
+        } else {
+            Locator itemFiltro = switch (funcao) {
+                case "selecionarTudo" -> page.locator("//*[contains(@id, '-CheckboxTodos')]");
+                case "limparTudo" -> page.locator("(//*[text()='Limpar seleções'])[1]");
+                case "selecionarItem" -> page.locator("//*[text()='"+ valor +"']/preceding-sibling::*/input[contains(@id, '-CheckboxStatus')]");
+                default -> page.locator("");
+            };
 
-    private void clickMostrarResultados() { this.btnMostrarResultados.click(); }
-
-    // Valores
-    private void clickFiltroValores() { this.linkValores.click(); }
-    private void preencherValoresDe(String valoresDe) { this.txtValoresDe.fill(valoresDe); }
-    private void preencherValoresAte(String valoresAte) { this.txtValoresAte.fill(valoresAte); }
-
-    private void clickItemFiltro(String filtro, String valor, String funcao) {
-        Locator itemFiltro = switch (filtro) {
-            case "Status" -> switch (funcao) {
-                case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-status']");
-                case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-status']");
-                case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-status-" + valor.replace(" ", "-") + "']");
-                default -> page.locator("//*[@data-testid='generic-filter-accordion-title-status']");
-            };
-            case "Produto" -> switch (funcao) {
-                case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-produtos']");
-                case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-produtos']");
-                case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-produto-" + valor.replace(" ", "-") + "']");
-                default -> page.locator("//*[@data-testid='generic-filter-accordion-title-produtos']");
-            };
-            case "Canal" -> switch (funcao) {
-                case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-canais']");
-                case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-canais']");
-                case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-canal-" + valor.replace(" ", "-") + "']");
-                default -> page.locator("//*[@data-testid='generic-filter-accordion-title-canal']");
-            };
-            case "Bandeira" -> switch (funcao) {
-                case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-bandeiras']");
-                case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-bandeiras']");
-                case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-div-bandeira-" + valor.replace(" ", "-") + "']");
-                default -> page.locator("//*[@data-testid='generic-filter-accordion-title-bandeira']");
-            };
-            case "Estabelecimento" -> switch (funcao) {
-                case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-estabelecimentos']");
-                case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-estabelecimentos']");
-                case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-estabelecimento-" + valor.replace(" ", "-") + "']");
-                default -> page.locator("//*[@data-testid='generic-filter-accordion-title-estabelecimentos']");
-            };
-            case "Terminal" -> switch (funcao) {
-                case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-terminais']");
-                case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-terminais']");
-                case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-terminal-" + valor.replace(" ", "-") + "']");
-                default -> page.locator("//*[@data-testid='generic-filter-accordion-title-terminais']");
-            };
-            case "Banco" -> switch (funcao) {
-                case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-bancos']");
-                case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-bancos']");
-                case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-banco-" + valor.replace(" ", "-") + "']");
-                default -> page.locator("//*[@data-testid='generic-filter-accordion-title-bancos']");
-            };
-            case "Tipos" -> switch (funcao) {
-                case "selecionarTudo" -> page.locator("//*[@data-testid='generic-filter-check-all-tipos']");
-                case "limparTudo" -> page.locator("//*[@data-testid='generic-filter-link-clean-tipos']");
-                case "selecionarItem" -> page.locator("//*[@data-testid='generic-filter-check-tipo-" + valor.replace(" ", "-") + "']");
-                default -> page.locator("//*[@data-testid='generic-filter-accordion-title-tipos']");
-            };
-            default -> page.locator("");
-        };
-
-        itemFiltro.click();
+            itemFiltro.click();
+        }
     }
 
     public void realizarFiltro(@NotNull String filtro, String valor, String abaRelatorio) {
-        GeneralUtils.waitIsVisibleForSeconds(
+        waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
             ,Config.WAIT_LEVEL_3
         );
@@ -1008,8 +957,8 @@ public class ComponentesRelatoriosPage {
             && !filtro.equalsIgnoreCase("Número da simulação");
 
         if (seBtnFitros) {
-            this.verificarFiltros();
-            this.clickFiltros(abaRelatorio);
+            waitIsVisibleForSeconds(this.titleFiltros, Config.WAIT_LEVEL_1);
+            click(this.getLocatorFromReportTab(abaRelatorio, "btnFiltros"));
         }
 
         this.expandirSePrimeiroRegistro();
@@ -1018,93 +967,113 @@ public class ComponentesRelatoriosPage {
         switch (filtro) {
             case "Cód. de autorização":
                 if (valor.equalsIgnoreCase("primeiroRegistro"))
-                    this.preencherCampoPesquisa(
-                         abaRelatorio
-                        ,"txtCodAutorizacao"
-                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodAutorizacao").textContent()
-                        .replace("Cód. de autorização", "")
-                        .trim()
+                    fillValue(
+                        this.getLocatorFromReportTab(
+                             abaRelatorio
+                            , "txtCodAutorizacao"
+                        )
+                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodAutorizacao")
+                            .textContent()
+                            .replace("Cód. de autorização", "")
+                            .trim()
                     );
                 else
-                    this.preencherCampoPesquisa(abaRelatorio, "txtCodAutorizacao", valor);
+                    fillValue(
+                        this.getLocatorFromReportTab(
+                                 abaRelatorio
+                                , "txtCodAutorizacao"
+                        )
+                        ,valor
+                    );
 
                 break;
 
             case "Cód. de pagamento":
                 if (valor.equalsIgnoreCase("primeiroRegistro"))
-                    this.preencherCampoPesquisa(
-                        abaRelatorio
-                        ,"txtCodPagamento"
-                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodPagamento").textContent()
-                        .replace("Cód. de pagamento", "")
-                        .trim()
+                    fillValue(
+                        this.getLocatorFromReportTab(
+                                 abaRelatorio
+                                , "txtCodPagamento"
+                        )
+                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroCodPagamento")
+                            .textContent()
+                            .replace("Cód. de pagamento", "")
+                            .trim()
                     );
                 else
-                    this.preencherCampoPesquisa(abaRelatorio, "txtCodPagamento", valor);
+                    fillValue(
+                        this.getLocatorFromReportTab(
+                             abaRelatorio
+                            , "txtCodPagamento"
+                        )
+                        ,valor
+                    );
 
                 break;
 
             case "Número da simulação":
                 if (valor.equalsIgnoreCase("primeiroRegistro"))
-                    this.preencherCampoPesquisa(
-                        abaRelatorio
-                        ,"txtNumeroSimulacao"
-                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroNumeroSimulacao").textContent()
-                        .replace("Número da simulação", "")
-                        .trim()
+                    fillValue(
+                        this.getLocatorFromReportTab(
+                             abaRelatorio
+                            , "txtNumeroSimulacao"
+                        )
+                        ,this.getLocatorFromReportTab(abaRelatorio, "primeiroRegistroNumeroSimulacao")
+                            .textContent()
+                            .replace("Número da simulação", "")
+                            .trim()
                     );
                 else
-                    this.preencherCampoPesquisa(abaRelatorio, "txtNumeroSimulacao", valor);
+                    fillValue(
+                        this.getLocatorFromReportTab(
+                             abaRelatorio
+                            , "txtNumeroSimulacao"
+                        )
+                        ,valor
+                    );
 
                 break;
 
             case "Valores":
-                this.clickFiltroValores();
+                click(this.linkValores);
 
                 // valor De e Ate separados por ";"
                 String[] valores = valor.split(";");
-                this.preencherValoresDe(valores[0]);
-                this.preencherValoresAte(valores[1]);
+                fillValue(this.txtValoresDe, valores[0]);
+                fillValue(this.txtValoresAte, valores[1]);
 
                 break;
 
             case "Status", "Produto", "Canal", "Bandeira", "Estabelecimento", "Terminal", "Banco", "Tipos":
-                this.clickItemFiltro(filtro, "", "");
+                if (!abaRelatorio.equalsIgnoreCase("Histórico"))
+                    this.clickItemFiltro(abaRelatorio, filtro, "", "");
+
                 switch (valor) {
                     case "todos":
-                        this.clickItemFiltro(filtro, "", "selecionarTudo");
+                        this.clickItemFiltro(abaRelatorio, filtro, "", "selecionarTudo");
                         break;
                     case "nenhum":
-                        this.clickItemFiltro(filtro, "", "limparTudo");
+                        this.clickItemFiltro(abaRelatorio, filtro, "", "limparTudo");
                         break;
                     default:
-                        this.clickItemFiltro(filtro, valor, "selecionarItem");
+                        this.clickItemFiltro(abaRelatorio, filtro, valor, "selecionarItem");
                 }
 
                 break;
         }
 
-        if (seBtnFitros) {
-            this.btnMostrarResultados.scrollIntoViewIfNeeded();
-            this.clickMostrarResultados();
-        } else
-            this.clickLupa(abaRelatorio);
+        if (seBtnFitros)
+            click(this.btnMostrarResultados);
+        else
+            click(this.getLocatorFromReportTab(abaRelatorio, "iconeLupa"));
 
-        GeneralUtils.waitIsVisibleForSeconds(
+        waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
             ,Config.WAIT_LEVEL_3
         );
     }
 
     // Personalizar Colunas
-    public void verificarPersonalizarColunas() {
-        assertThat(titlePersonalizarColunas).isVisible();
-    }
-
-    private void selecionarColunaPersonalizacao(String coluna) {
-        page.locator("//*[text()='"+coluna+"']/preceding-sibling::*/input[@type='checkbox']").click();
-    }
-
     private void atribuirFocoColunaPersonalizacao(String coluna) {
         Locator campoFoco = page.locator("//*[text()='"+coluna+"']/preceding-sibling::*/input[@type='checkbox']");
         campoFoco.scrollIntoViewIfNeeded();
@@ -1133,23 +1102,18 @@ public class ComponentesRelatoriosPage {
         else if (abaRelatorio.equalsIgnoreCase("Futuros"))
             listaInicialColunas = "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto da parcela;Valor líquido;Número do Terminal;Canal".split(";");
 
-        // Débitos e ajustes não tem Personalizar colunas
+        // Débitos e ajustes, Histórico e Realatório de antecipações não tem Personalizar colunas
 
         return listaInicialColunas;
     }
 
-    public void clickVoltarPadrao() { this.linkVoltarPadrao.click(); }
-    public void clickAplicarPersonalizacao() { this.btnAplicarPersonalizacao.click(); }
-
     private void voltarPadraoPersonalizarColunas(String abaRelatorio) {
-        this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas").scrollIntoViewIfNeeded();
-        this.clickPersonalizarColunas(abaRelatorio);
-        this.verificarPersonalizarColunas();
+        click(this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas"));
+        waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_LEVEL_1);
 
-        this.linkVoltarPadrao.scrollIntoViewIfNeeded();
-        this.clickVoltarPadrao();
+        click(this.linkVoltarPadrao);
 
-        GeneralUtils.waitIsVisibleForSeconds(
+        waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
             ,Config.WAIT_LEVEL_3
         );
@@ -1160,27 +1124,25 @@ public class ComponentesRelatoriosPage {
         this.atribuirFocoColunaPersonalizacao(colunaAdicionar);
 
         // Remover coluna
-        this.selecionarColunaPersonalizacao(colunaRemover);
+        click(page.locator("//*[text()='"+colunaRemover+"']/preceding-sibling::*/input[@type='checkbox']"));
 
         // Adicionar coluna
-        this.selecionarColunaPersonalizacao(colunaAdicionar);
+        click(page.locator("//*[text()='"+colunaAdicionar+"']/preceding-sibling::*/input[@type='checkbox']"));
 
-        this.btnAplicarPersonalizacao.scrollIntoViewIfNeeded();
-        this.clickAplicarPersonalizacao();
+        click(this.btnAplicarPersonalizacao);
     }
 
     public void personalizarColunas(String colunas, String abaRelatorio) {
-        GeneralUtils.waitIsVisibleForSeconds(
+        waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
             ,Config.WAIT_LEVEL_3
         );
-        this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas").scrollIntoViewIfNeeded();
         // Acessa o Personalizar Colunas
-        this.clickPersonalizarColunas(abaRelatorio);
-        this.verificarPersonalizarColunas();
+        click(this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas"));
+        waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_LEVEL_1);
 
         this.linkVoltarPadrao.scrollIntoViewIfNeeded();
-        GeneralUtils.waitIsVisibleForSeconds(
+        waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
             ,Config.WAIT_LEVEL_3
         );
@@ -1188,19 +1150,18 @@ public class ComponentesRelatoriosPage {
         // Limpar personalização inicial de colunas
         String[] listaInicialColunas = this.atribuirListaInicialColunas(abaRelatorio);
         for (String coluna1 : listaInicialColunas)
-            this.selecionarColunaPersonalizacao(coluna1);
+            click(page.locator("//*[text()='"+coluna1+"']/preceding-sibling::*/input[@type='checkbox']"));
 
         // Selecionar colunas enviadas por parâmetro
         String[] listaColunas = colunas.split(";");
         for (String coluna2 : listaColunas)
-            this.selecionarColunaPersonalizacao(coluna2);
+            click(page.locator("//*[text()='"+coluna2+"']/preceding-sibling::*/input[@type='checkbox']"));
 
-        this.btnAplicarPersonalizacao.scrollIntoViewIfNeeded();
-        this.clickAplicarPersonalizacao();
+        click(this.btnAplicarPersonalizacao);
     }
 
     public void validarPersonalizacaoColunas(@NotNull String colunas, String abaRelatorio) {
-        GeneralUtils.waitIsVisibleForSeconds(
+        waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
             ,Config.WAIT_LEVEL_3
         );
@@ -1330,7 +1291,7 @@ public class ComponentesRelatoriosPage {
 
     // Resultado coluna
     public void validarAtribuicaoFiltro(String valor, @NotNull String filtro, String abaRelatorio) {
-        GeneralUtils.waitIsVisibleForSeconds(
+        waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
             ,Config.WAIT_LEVEL_3
         );
@@ -1411,14 +1372,14 @@ public class ComponentesRelatoriosPage {
             case "Valores":
                 if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
                     // Acessa o Personalizar Colunas
-                    this.clickPersonalizarColunas(abaRelatorio);
-                    this.verificarPersonalizarColunas();
+                    click(this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas"));
+                    waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_LEVEL_1);
 
                     // Remove o Terminal e adiciona o Valor original da venda aplicando a personalização de colunas
                     String colunaRemover = "Terminal", colunaAdicionar = "Valor original da venda";
                     this.realizarTrocaPersonalizarColunas(colunaRemover, colunaAdicionar);
 
-                    GeneralUtils.waitIsVisibleForSeconds(
+                    waitIsVisibleForSeconds(
                          this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
                         ,Config.WAIT_LEVEL_3
                     );
@@ -1431,12 +1392,9 @@ public class ComponentesRelatoriosPage {
                     Locator resultadoColunaValorAbaRelatorio = this.getLocatorFromReportTab(abaRelatorio, resultadoColunaValor);
 
                     for (int i = 0; i < resultadoColunaValorAbaRelatorio.count(); i++) {
-                        String valorColuna = resultadoColunaValorAbaRelatorio.nth(i).textContent()
-                                .replace(" ", "")
-                                .replace(".", "")
-                                .replace(",", ".")
-                                .replace("R$", "");
-                        double valorColunaReal = Double.parseDouble(valorColuna);
+                        double valorColunaReal = replaceMonetaryValue(
+                            resultadoColunaValorAbaRelatorio.nth(i).textContent()
+                        );
 
                         // valor De e Ate separados por ";"
                         String[] valores = valor.split(";");
@@ -1457,8 +1415,8 @@ public class ComponentesRelatoriosPage {
 
             case "Estabelecimento":
                 // Acessa o Personalizar Colunas
-                this.clickPersonalizarColunas(abaRelatorio);
-                this.verificarPersonalizarColunas();
+                click(this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas"));
+                waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_LEVEL_1);
 
                 // Remove o Status e adiciona o Esbelecimento aplicando a personalização de colunas
                     String colunaRemover = "Status", colunaAdicionar;
@@ -1471,7 +1429,7 @@ public class ComponentesRelatoriosPage {
 
                 this.realizarTrocaPersonalizarColunas(colunaRemover, colunaAdicionar);
 
-                GeneralUtils.waitIsVisibleForSeconds(
+                waitIsVisibleForSeconds(
                      this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
                     ,Config.WAIT_LEVEL_3
                 );
@@ -1517,17 +1475,20 @@ public class ComponentesRelatoriosPage {
     }
 
     // Gerar arquivo
-    public void verificarExportar() {
-        assertThat(titleExportar).isVisible();
-    }
+    private void selecionarTipoArquivo(@NotNull String tipoArquivo, String abaRelatorio) {
+        if (!abaRelatorio.equalsIgnoreCase("Histórico")) {
+            this.slcTipoArquivo.hover();
 
-    private void selecionarTipoArquivo(@NotNull String tipoArquivo) {
-        this.slcTipoArquivo.hover();
-
-        if (tipoArquivo.equalsIgnoreCase("Excel"))
-            this.optExcel.click();
-        else if (tipoArquivo.equalsIgnoreCase("CSV"))
-            this.optCSV.click();
+            if (tipoArquivo.equalsIgnoreCase("Excel"))
+                click(this.optExcel);
+            else if (tipoArquivo.equalsIgnoreCase("CSV"))
+                click(this.optCSV);
+        } else {
+            if (tipoArquivo.equalsIgnoreCase("Excel"))
+                click(page.locator("//*[@data-testid='text-option-excel-export']"));
+            else if (tipoArquivo.equalsIgnoreCase("CSV"))
+                click(page.locator("//a[text()='CSV']"));
+        }
     }
 
     private void selecionarTipoRelatorio(String tipoRelatorio, String abaRelatorio) {
@@ -1567,6 +1528,7 @@ public class ComponentesRelatoriosPage {
             case "Débitos e ajustes" -> "Relatorio_Aluguel_";
 
             // Antecipação
+            case "Histórico" -> "Relatório_de_histórico_antecipação_";
             case "Relatório de antecipações" -> switch (tipoRelatorio) {
                 case "simplificado" -> "Relatorio_simplificado_Antecipação_";
                 case "detalhado" -> "Relatorio_Detalhado_Antecipação_";
@@ -1579,15 +1541,14 @@ public class ComponentesRelatoriosPage {
 
     public void validarNomeArquivo(String tipoArquivo, String tipoRelatorio, String abaRelatorio) {
         // realiza o exportar
-        this.getLocatorFromReportTab(abaRelatorio, "btnExportar").scrollIntoViewIfNeeded();
-        this.clickExportar(abaRelatorio);
-        this.verificarExportar();
-        this.selecionarTipoArquivo(tipoArquivo);
+        click(this.getLocatorFromReportTab(abaRelatorio, "btnExportar"));
+        waitIsVisibleForSeconds(this.titleExportar, Config.WAIT_LEVEL_1);
+        this.selecionarTipoArquivo(tipoArquivo, abaRelatorio);
 
         this.selecionarTipoRelatorio(tipoRelatorio, abaRelatorio);
 
         // Aguarda download ao clicar no botão Exportar
-        Download download = page.waitForDownload(() -> this.btnGerarArquivo.click());
+        Download download = page.waitForDownload(() -> click(this.btnGerarArquivo));
 
         String nomeArquivo = this.atribuirPrefixoNomeArquivo(tipoRelatorio, abaRelatorio);
 
@@ -1606,7 +1567,7 @@ public class ComponentesRelatoriosPage {
             };
             case "Não efetivadas", "Débitos e ajustes" -> 11;
             case "Pré-autorizações" -> 12;
-            case "Voucher", "Futuros" -> 13;
+            case "Voucher", "Futuros", "Histórico" -> 13;
             case "Pagos_Meus Domicílios", "Pagos_Valores Cedidos" -> switch (tipoRelatorio) {
                 case "simplificado" -> 13;
                 case "detalhado" -> 4;
@@ -1627,10 +1588,9 @@ public class ComponentesRelatoriosPage {
         List<String> listaColunas = List.of(colunas.split(";"));
 
         // realiza o exportar
-        this.getLocatorFromReportTab(abaRelatorio, "btnExportar").scrollIntoViewIfNeeded();
-        this.clickExportar(abaRelatorio);
-        this.verificarExportar();
-        this.selecionarTipoArquivo(tipoArquivo);
+        click(this.getLocatorFromReportTab(abaRelatorio, "btnExportar"));
+        waitIsVisibleForSeconds(this.titleExportar, Config.WAIT_LEVEL_1);
+        this.selecionarTipoArquivo(tipoArquivo, abaRelatorio);
 
         this.selecionarTipoRelatorio(tipoRelatorio, abaRelatorio);
 
