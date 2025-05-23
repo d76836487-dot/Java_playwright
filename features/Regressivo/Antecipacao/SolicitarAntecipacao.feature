@@ -8,6 +8,7 @@
 Feature: Solicitar Antecipacao
 
   @automatica
+  @TestCaseKey=LPDC-T1335
   Scenario Outline: Solicitar antecipacao - Automatica
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -23,9 +24,9 @@ Feature: Solicitar Antecipacao
 
     @sicredi
     Examples:
-      | alianca   | menu          | submenu | abaRelatorio            | bandeiras                              | produtos | frequencia | diaRecebimento |
-      | "sicredi" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard;Visa;Amex;Cabal;Hiper;ELO" | "Todos"  | "Diária"   | "Diário"       |
-      | "sicredi" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard"                           | "Crédito à vista" | "Semanal"  | "Sexta-feira"  |
+      | alianca   | menu          | submenu | abaRelatorio            | bandeiras                              | produtos            | frequencia  | diaRecebimento |
+      | "sicredi" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard;Visa;Amex;Cabal;Hiper;ELO" | "Todos"             | "Diária"    | "Diário"       |
+      | "sicredi" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard"                           | "Crédito à vista"   | "Semanal"   | "Sexta-feira"  |
       | "sicredi" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa"                                 | "Crédito Parcelado" | "Quinzenal" | "16-30"        |
       | "sicredi" | "antecipacao" | ""      | "Solicitar antecipação" | "Amex;Cabal;Hiper;ELO"                 | "Todos"             | "Mensal"    | "31"           |
 
@@ -46,6 +47,7 @@ Feature: Solicitar Antecipacao
       | "claropay" | "antecipacao" | ""      | "Solicitar antecipação" | "Amex;Cabal;Hiper;ELO"                 | "Todos"             | "Mensal"    | "31"           |
 
   @eventual
+  @TestCaseKey=LPDC-T1332
   Scenario Outline: Solicitar antecipacao - Eventual
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -82,3 +84,4 @@ Feature: Solicitar Antecipacao
       | "claropay" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa;ELO"                             | "Crédito à vista"   | "N"         | "D0"            | "D+2"  | "1000" | "maximo"     |
       | "claropay" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard"                           | "Crédito Parcelado" | "N"         | "D+1"           | "D+4"  | "800"  | "maximo"     |
       | "claropay" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa"                                 | "Todos"             | "S"         | ""              | ""     | "1500" | "minimo"     |
+
