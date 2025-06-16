@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Credenciamento_de_Taxistas
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Taxista/CredenciamentoTaxistas
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Credenciamento de Taxistas
+Feature: CredenciamentoTaxistas
 
   @TestCaseKey=LPDC-T849
   Scenario: CPF com Cnae de Taxista

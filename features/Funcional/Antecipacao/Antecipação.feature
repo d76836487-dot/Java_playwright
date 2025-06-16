@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Health_Check_Antecipação
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Antecipacao/Antecipação
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Health Check Antecipação
+Feature: Antecipação
 
   @TestCaseKey=LPDC-T577
   Scenario: Health Check

@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Alteração_de_senha_Home_logada
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/HomeLogada/AlteraçãoSenhaHomeLogada
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Alteração de senha Home logada
+Feature: AlteraçãoSenhaHomeLogada
 
   @TestCaseKey=LPDC-T880
   Scenario: Login no Portal após alterar senha

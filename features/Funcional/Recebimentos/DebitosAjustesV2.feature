@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Debitos_Ajustes_V2
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Recebimentos/DebitosAjustesV2
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Debitos Ajustes V2
+Feature: DebitosAjustesV2
 
   @TestCaseKey=LPDC-T1076
   Scenario: Acessando as abas Pagos,Futuros,Debitos e Alugueis

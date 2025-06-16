@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Nova_Aba_Pix
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/NovaAbaPix
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Nova Aba Pix
+Feature: NovaAbaPix
 
   @TestCaseKey=LPDC-T1181
   Scenario: Acessando a Aba Pix

@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Nao_Efetivadas
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/NaoEfetivadas
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Nao Efetivadas
+Feature: NaoEfetivadas
 
   @TestCaseKey=LPDC-T1116
   Scenario: Personalizar Colunas

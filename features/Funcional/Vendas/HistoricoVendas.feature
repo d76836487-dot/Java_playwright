@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Historico_De_Vendas
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/HistoricoDeVendas
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Historico De Vendas
+Feature: HistoricoDeVendas
 
   @TestCaseKey=LPDC-T1118
   Scenario: Acessando Aba Histórico de Vendas

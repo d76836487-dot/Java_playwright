@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/SPLIT_de_Pagamento
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/SplitPagamentos/SplitDePagamento
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: SPLIT de Pagamento
+Feature: SplitDePagamento
 
   @TestCaseKey=LPDC-T1000
   Scenario: Adicionar opção "Valor original da venda" no grid personalizável

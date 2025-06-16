@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Credenciamento_Taxista_V2
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Taxista/CredenciamentoTaxistaV2
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Credenciamento Taxista V2
+Feature: CredenciamentoTaxistaV2
 
   @TestCaseKey=LPDC-T1110
   Scenario: Acessando a Home

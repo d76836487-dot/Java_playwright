@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Dirf_Nativa_Home_Logada
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/HomeLogada/DirfNativaHomeLogada
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Dirf Nativa Home Logada
+Feature: DirfNativaHomeLogada
 
   @TestCaseKey=LPDC-T907
   Scenario: Acessar o menu Informe de Rendimento a partir do acesso rápido da home logada (personalizada)

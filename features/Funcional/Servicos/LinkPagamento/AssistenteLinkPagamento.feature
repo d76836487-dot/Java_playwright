@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Assistente_Link_Pagamento
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Servicos/AssistenteLinkPagamento/AssistenteLinkPagamento
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Assistente Link Pagamento
+Feature: AssistenteLinkPagamento
 
   @TestCaseKey=LPDC-T1038
   Scenario: Usuário Master faz login com sucesso

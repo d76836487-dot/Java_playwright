@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Produtos_ALELO_Natal_Cultura_Multibeneficios_Todos_os_Perfis
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/ProdutosAlelo
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Produtos ALELO Natal Cultura Multibeneficios Todos os Perfis
+Feature: ProdutosAlelo
 
   @TestCaseKey=LPDC-T989
   Scenario: Consultar filtro de produto Natal

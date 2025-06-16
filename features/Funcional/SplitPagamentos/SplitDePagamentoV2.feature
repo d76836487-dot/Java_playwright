@@ -1,10 +1,9 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/SPLIT_de_Pagamento_V2
-@Zephyr:Status=Approved
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/SplitPagamentos/SplitDePagamentoV2
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: SPLIT de Pagamento V2
+Feature: SplitDePagamentoV2
 
   @TestCaseKey=LPDC-T1288
   Scenario: O Franqueador nao deve ver vendas no menu HOJE

@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas_Hoje
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/VendasHoje
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Vendas Hoje
+Feature: VendasHoje
 
   @TestCaseKey=LPDC-T923
   Scenario: Acessar Vendas Hoje via menu lateral

@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Inclusao_do_Botao_Exportar_para_aba_Consultar_links
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Servicos/LinkPagamento/InclusaoDoBotaoExportarConsultarLinks
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Inclusao do Botao Exportar para aba Consultar links
+Feature: InclusaoDoBotaoExportarConsultarLinks
 
   @TestCaseKey=LPDC-T1168
   Scenario: Login EC Link de Pagamento / Com Links já criado

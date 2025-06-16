@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Simulador_de_Venda
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Servicos/SimuladorVendas/Simulador
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Simulador de Venda
+Feature: Simulador
 
   @TestCaseKey=LPDC-T1320
   Scenario: Acesso a nova aba Simulador de Vendas pelo menu Lateral

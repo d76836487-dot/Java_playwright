@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Dirf_Nativa_Url_Externa
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/HomeNaoLogada/DirfNativaUrlExterna
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Dirf Nativa Url Externa
+Feature: DirfNativaUrlExterna
 
   @TestCaseKey=LPDC-T1063
   Scenario: Acessar Informe de Rendimento a partir da URL

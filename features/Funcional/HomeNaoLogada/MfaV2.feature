@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/MFA2
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/HomeNaoLogada/MfaV2
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: MFA2
+Feature: MfaV2
 
   @TestCaseKey=LPDC-T1025
   Scenario: Cliente possui UM dispositivo móvel cadastrado

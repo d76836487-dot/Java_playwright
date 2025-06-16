@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/MFA
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/HomeNaoLogada/MfaV1
 @Zephyr:Status=Draft
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: MFA
+Feature: MfaV1
 
   @TestCaseKey=LPDC-T774
   Scenario: Criar usuário secundário a partir de um Cliente com token habilitado com mais de um device

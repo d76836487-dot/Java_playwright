@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Link_de_Pagamento_Selecao_de_Parcelas_e_Order_Id
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Servicos/LinkPagamento/LinkDePagamentoSelecaoDeParcelasOrderId
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Link de Pagamento Selecao de Parcelas e Order Id
+Feature: LinkDePagamentoSelecaoDeParcelasOrderId
 
   @TestCaseKey=LPDC-T1254
   Scenario: Link pagamento unico em ate 21X Parcelado Lojista Pago

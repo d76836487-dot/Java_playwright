@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Link_Pagamento_V3
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Servicos/LinkPagamento/LinkPagamentoV3
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Link Pagamento V3
+Feature: LinkPagamentoV3
 
   @TestCaseKey=LPDC-T1096
   Scenario: Acessando Link de pagamento pelo Menu Lateral

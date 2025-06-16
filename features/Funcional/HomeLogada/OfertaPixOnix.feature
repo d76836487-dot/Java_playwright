@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/HomeLogada/Oferta_Pix_Onix
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/HomeLogada/OfertaPixOnix
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Oferta Pix Onix
+Feature: OfertaPixOnix
 
   @TestCaseKey=LPDC-T1340
   Scenario: Clientes Com interesse no Pix

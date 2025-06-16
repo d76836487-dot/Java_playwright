@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Relatorio_Recebimentos_Futuros
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Recebimentos/RelatorioRecebimentosFuturos
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Relatorio Recebimentos Futuros
+Feature: RelatorioRecebimentosFuturos
 
   @TestCaseKey=LPDC-T981
   Scenario: Geração de Relatório em Excel de Pagamentos Futuros
