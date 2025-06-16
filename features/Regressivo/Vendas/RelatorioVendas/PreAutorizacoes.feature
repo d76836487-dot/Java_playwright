@@ -175,13 +175,15 @@ Feature: Pre autorizacoes
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And aplicar o filtro <filtro> atribuindo o valor <valor> - <abaRelatorio>
     And valida que foi atribuido o valor <valor> do filtro <filtro> - <abaRelatorio>
-    @bin @codAutorizacao
+    @bin
+    @codAutorizacao
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro                | valor              |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "primeiroRegistro" |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "WWW333"           |
 
-    @bin @status
+    @bin
+    @status
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro   | valor         |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "todos"       |
@@ -191,13 +193,15 @@ Feature: Pre autorizacoes
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Estornada"   |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Recusada"    |
 
-    @bin @produto
+    @bin
+    @produto
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro    | valor     |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "todos"   |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "Crédito" |
 
-    @bin @canal
+    @bin
+    @canal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro  | valor       |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "todos"     |
@@ -205,7 +209,8 @@ Feature: Pre autorizacoes
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "TEF"       |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "ECOMMERCE" |
 
-    @bin @bandeira
+    @bin
+    @bandeira
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro     | valor        |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "todos"      |
@@ -216,19 +221,22 @@ Feature: Pre autorizacoes
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Elo"        |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Hipercard"  |
 
-    @bin @valores
+    @bin
+    @valores
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro    | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "100;300"  |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "500;1000" |
 
-    @bin @estabelecimento
+    @bin
+    @estabelecimento
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro            | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "todos"    |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "91084373" |
 
-    @bin @terminal
+    @bin
+    @terminal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro     | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "todos"    |
@@ -236,13 +244,15 @@ Feature: Pre autorizacoes
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "PGW0D0D1" |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
 
-    @sicredi @codAutorizacao
+    @sicredi
+    @codAutorizacao
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | filtro                | valor              |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "primeiroRegistro" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "WWW333"           |
 
-    @sicredi @status
+    @sicredi
+    @status
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | filtro   | valor         |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "todos"       |
@@ -252,13 +262,15 @@ Feature: Pre autorizacoes
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Estornada"   |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Recusada"    |
 
-    @sicredi @produto
+    @sicredi
+    @produto
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | filtro    | valor     |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "todos"   |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "Crédito" |
 
-    @sicredi @canal
+    @sicredi
+    @canal
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | filtro  | valor       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "todos"     |
@@ -266,7 +278,8 @@ Feature: Pre autorizacoes
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "TEF"       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "ECOMMERCE" |
 
-    @sicredi @bandeira
+    @sicredi
+    @bandeira
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | filtro     | valor        |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "todos"      |
@@ -277,19 +290,22 @@ Feature: Pre autorizacoes
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Elo"        |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Hipercard"  |
 
-    @sicredi @valores
+    @sicredi
+    @valores
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | filtro    | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "100;300"  |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "500;1000" |
 
-    @sicredi @estabelecimento
+    @sicredi
+    @estabelecimento
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | filtro            | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "todos"    |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "91084373" |
 
-    @sicredi @terminal
+    @sicredi
+    @terminal
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | filtro     | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "todos"    |
@@ -297,13 +313,15 @@ Feature: Pre autorizacoes
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "PGW0D0D1" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
 
-    @azulzinha @codAutorizacao
+    @azulzinha
+    @codAutorizacao
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | filtro                | valor              |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "primeiroRegistro" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "WWW333"           |
 
-    @azulzinha @status
+    @azulzinha
+    @status
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | filtro   | valor         |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "todos"       |
@@ -313,13 +331,15 @@ Feature: Pre autorizacoes
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Estornada"   |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Recusada"    |
 
-    @azulzinha @produto
+    @azulzinha
+    @produto
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | filtro    | valor     |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "todos"   |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "Crédito" |
 
-    @azulzinha @canal
+    @azulzinha
+    @canal
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | filtro  | valor       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "todos"     |
@@ -327,7 +347,8 @@ Feature: Pre autorizacoes
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "TEF"       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "ECOMMERCE" |
 
-    @azulzinha @bandeira
+    @azulzinha
+    @bandeira
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | filtro     | valor        |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "todos"      |
@@ -338,19 +359,22 @@ Feature: Pre autorizacoes
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Elo"        |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Hipercard"  |
 
-    @azulzinha @valores
+    @azulzinha
+    @valores
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | filtro    | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "100;300"  |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "500;1000" |
 
-    @azulzinha @estabelecimento
+    @azulzinha
+    @estabelecimento
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | filtro            | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "todos"    |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "91084373" |
 
-    @azulzinha @terminal
+    @azulzinha
+    @terminal
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | filtro     | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "todos"    |
@@ -358,13 +382,15 @@ Feature: Pre autorizacoes
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "PGW0D0D1" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
 
-    @afinz @codAutorizacao
+    @afinz
+    @codAutorizacao
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro                | valor              |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "primeiroRegistro" |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "WWW333"           |
 
-    @afinz @status
+    @afinz
+    @status
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro   | valor         |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "todos"       |
@@ -374,13 +400,15 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Estornada"   |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Recusada"    |
 
-    @afinz @produto
+    @afinz
+    @produto
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro    | valor     |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "todos"   |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "Crédito" |
 
-    @afinz @canal
+    @afinz
+    @canal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro  | valor       |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "todos"     |
@@ -388,7 +416,8 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "TEF"       |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "ECOMMERCE" |
 
-    @afinz @bandeira
+    @afinz
+    @bandeira
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro     | valor        |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "todos"      |
@@ -399,19 +428,22 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Elo"        |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Hipercard"  |
 
-    @afinz @valores
+    @afinz
+    @valores
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro    | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "100;300"  |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "500;1000" |
 
-    @afinz @estabelecimento
+    @afinz
+    @estabelecimento
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro            | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "todos"    |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "91084373" |
 
-    @afinz @terminal
+    @afinz
+    @terminal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | filtro     | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "todos"    |
@@ -419,13 +451,15 @@ Feature: Pre autorizacoes
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "PGW0D0D1" |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
 
-    @claropay @codAutorizacao
+    @claropay
+    @codAutorizacao
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | filtro                | valor              |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "primeiroRegistro" |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "WWW333"           |
 
-    @claropay @status
+    @claropay
+    @status
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | filtro   | valor         |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "todos"       |
@@ -435,13 +469,15 @@ Feature: Pre autorizacoes
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Estornada"   |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Recusada"    |
 
-    @claropay @produto
+    @claropay
+    @produto
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | filtro    | valor     |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "todos"   |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "Crédito" |
 
-    @claropay @canal
+    @claropay
+    @canal
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | filtro  | valor       |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "todos"     |
@@ -449,7 +485,8 @@ Feature: Pre autorizacoes
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "TEF"       |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "ECOMMERCE" |
 
-    @claropay @bandeira
+    @claropay
+    @bandeira
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | filtro     | valor        |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "todos"      |
@@ -460,19 +497,22 @@ Feature: Pre autorizacoes
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Elo"        |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Hipercard"  |
 
-    @claropay @valores
+    @claropay
+    @valores
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | filtro    | valor      |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "100;300"  |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "500;1000" |
 
-    @claropay @estabelecimento
+    @claropay
+    @estabelecimento
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | filtro            | valor      |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "todos"    |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "91084373" |
 
-    @claropay @terminal
+    @claropay
+    @terminal
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | filtro     | valor      |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "todos"    |
@@ -480,116 +520,138 @@ Feature: Pre autorizacoes
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "PGW0D0D1" |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
 
-  @gerarArquivo @nomeArquivo
+  @gerarArquivo
+  @nomeArquivo
   @TestCaseKey=LPDC-T1222
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Pre autorizacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida o nome do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel
+    @bin
+    @excel
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           |
 
-    @bin @csv
+    @bin
+    @csv
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
 
-    @sicredi @excel
+    @sicredi
+    @excel
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           |
 
-    @sicredi @csv
+    @sicredi
+    @csv
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
 
-    @azulzinha @excel
+    @azulzinha
+    @excel
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           |
 
-    @azulzinha @csv
+    @azulzinha
+    @csv
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
 
-    @afinz @excel
+    @afinz
+    @excel
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           |
 
-    @afinz @csv
+    @afinz
+    @csv
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
 
-    @claropay @excel
+    @claropay
+    @excel
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           |
 
-    @claropay @csv
+    @claropay
+    @csv
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
 
-  @gerarArquivo @colunasArquivo
+  @gerarArquivo
+  @colunasArquivo
   @TestCaseKey=LPDC-T1226
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Pre autorizacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida as colunas <colunas> do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel
+    @bin
+    @excel
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
 
-    @bin @csv
+    @bin
+    @csv
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
 
-    @sicredi @excel
+    @sicredi
+    @excel
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
 
-    @sicredi @csv
+    @sicredi
+    @csv
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
 
-    @azulzinha @excel
+    @azulzinha
+    @excel
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
 
-    @azulzinha @csv
+    @azulzinha
+    @csv
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
 
-    @afinz @excel
+    @afinz
+    @excel
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
 
-    @afinz @csv
+    @afinz
+    @csv
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
 
-    @claropay @excel
+    @claropay
+    @excel
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
 
-    @claropay @csv
+    @claropay
+    @csv
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |

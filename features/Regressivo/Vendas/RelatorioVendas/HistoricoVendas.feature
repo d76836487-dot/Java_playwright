@@ -119,7 +119,8 @@ Feature: Historico de vendas
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14 Dias" |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"       |
 
-  @navegacao @maisDetalhes
+  @navegacao
+  @maisDetalhes
   @TestCaseKey=LPDC-T1217
   Scenario Outline: Verificar dados do link Mais detalhes - Historico de vendas
     Given realizar login no portal <alianca>
@@ -202,13 +203,15 @@ Feature: Historico de vendas
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And aplicar o filtro <filtro> atribuindo o valor <valor> - <abaRelatorio>
     And valida que foi atribuido o valor <valor> do filtro <filtro> - <abaRelatorio>
-    @bin @codAutorizacao
+    @bin
+    @codAutorizacao
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro                | valor              |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "primeiroRegistro" |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "WWW333"           |
 
-    @bin @status
+    @bin
+    @status
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro   | valor               |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "todos"             |
@@ -216,7 +219,8 @@ Feature: Historico de vendas
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada"         |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada parcial" |
 
-    @bin @produto
+    @bin
+    @produto
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro    | valor               |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "todos"             |
@@ -226,7 +230,8 @@ Feature: Historico de vendas
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Parcelado Lojista" |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Crediário"         |
 
-    @bin @canal
+    @bin
+    @canal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro  | valor               |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "todos"             |
@@ -234,7 +239,8 @@ Feature: Historico de vendas
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "POS Wifi GPRS"     |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "Ecommerce TEF"     |
 
-    @bin @bandeira
+    @bin
+    @bandeira
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro     | valor        |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "todos"      |
@@ -245,19 +251,22 @@ Feature: Historico de vendas
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Elo"        |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Hipercard"  |
 
-    @bin @valores
+    @bin
+    @valores
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro    | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "100;300"  |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "500;1000" |
 
-    @bin @estabelecimento
+    @bin
+    @estabelecimento
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro            | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "todos"    |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "91084373" |
 
-    @bin @terminal
+    @bin
+    @terminal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro     | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "todos"    |
@@ -266,13 +275,15 @@ Feature: Historico de vendas
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
 
-    @sicredi @codAutorizacao
+    @sicredi
+    @codAutorizacao
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | filtro                | valor              |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "primeiroRegistro" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "WWW333"           |
 
-    @sicredi @status
+    @sicredi
+    @status
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | filtro   | valor               |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "todos"             |
@@ -280,7 +291,8 @@ Feature: Historico de vendas
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada"         |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada parcial" |
 
-    @sicredi @produto
+    @sicredi
+    @produto
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | filtro    | valor               |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "todos"             |
@@ -290,7 +302,8 @@ Feature: Historico de vendas
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Parcelado Lojista" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Crediário"         |
 
-    @sicredi @canal
+    @sicredi
+    @canal
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | filtro  | valor               |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "todos"             |
@@ -298,7 +311,8 @@ Feature: Historico de vendas
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "POS Wifi GPRS"     |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "Ecommerce TEF"     |
 
-    @sicredi @bandeira
+    @sicredi
+    @bandeira
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | filtro     | valor        |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "todos"      |
@@ -309,19 +323,22 @@ Feature: Historico de vendas
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Elo"        |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Hipercard"  |
 
-    @sicredi @valores
+    @sicredi
+    @valores
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | filtro    | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "100;300"  |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "500;1000" |
 
-    @sicredi @estabelecimento
+    @sicredi
+    @estabelecimento
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | filtro            | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "todos"    |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "91084373" |
 
-    @sicredi @terminal
+    @sicredi
+    @terminal
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | filtro     | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "todos"    |
@@ -330,13 +347,15 @@ Feature: Historico de vendas
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
 
-    @azulzinha @codAutorizacao
+    @azulzinha
+    @codAutorizacao
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | filtro                | valor              |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "primeiroRegistro" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "WWW333"           |
 
-    @azulzinha @status
+    @azulzinha
+    @status
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | filtro   | valor               |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "todos"             |
@@ -344,7 +363,8 @@ Feature: Historico de vendas
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada"         |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada parcial" |
 
-    @azulzinha @produto
+    @azulzinha
+    @produto
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | filtro    | valor               |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "todos"             |
@@ -354,7 +374,8 @@ Feature: Historico de vendas
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Parcelado Lojista" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Crediário"         |
 
-    @azulzinha @canal
+    @azulzinha
+    @canal
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | filtro  | valor               |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "todos"             |
@@ -362,7 +383,8 @@ Feature: Historico de vendas
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "POS Wifi GPRS"     |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "Ecommerce TEF"     |
 
-    @azulzinha @bandeira
+    @azulzinha
+    @bandeira
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | filtro     | valor        |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "todos"      |
@@ -373,19 +395,22 @@ Feature: Historico de vendas
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Elo"        |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Hipercard"  |
 
-    @azulzinha @valores
+    @azulzinha
+    @valores
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | filtro    | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "100;300"  |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "500;1000" |
 
-    @azulzinha @estabelecimento
+    @azulzinha
+    @estabelecimento
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | filtro            | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "todos"    |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "91084373" |
 
-    @azulzinha @terminal
+    @azulzinha
+    @terminal
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | filtro     | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "todos"    |
@@ -394,13 +419,15 @@ Feature: Historico de vendas
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
 
-    @afinz @codAutorizacao
+    @afinz
+    @codAutorizacao
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro                | valor              |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "primeiroRegistro" |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "WWW333"           |
 
-    @afinz @status
+    @afinz
+    @status
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro   | valor               |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "todos"             |
@@ -408,7 +435,8 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada"         |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada parcial" |
 
-    @afinz @produto
+    @afinz
+    @produto
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro    | valor               |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "todos"             |
@@ -418,7 +446,8 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Parcelado Lojista" |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Crediário"         |
 
-    @afinz @canal
+    @afinz
+    @canal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro  | valor               |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "todos"             |
@@ -426,7 +455,8 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "POS Wifi GPRS"     |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "Ecommerce TEF"     |
 
-    @afinz @bandeira
+    @afinz
+    @bandeira
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro     | valor        |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "todos"      |
@@ -437,19 +467,22 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Elo"        |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Hipercard"  |
 
-    @afinz @valores
+    @afinz
+    @valores
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro    | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "100;300"  |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "500;1000" |
 
-    @afinz @estabelecimento
+    @afinz
+    @estabelecimento
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro            | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "todos"    |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "91084373" |
 
-    @afinz @terminal
+    @afinz
+    @terminal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | filtro     | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "todos"    |
@@ -458,13 +491,15 @@ Feature: Historico de vendas
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
 
-    @claropay @codAutorizacao
+    @claropay
+    @codAutorizacao
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | filtro                | valor              |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "primeiroRegistro" |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "WWW333"           |
 
-    @claropay @status
+    @claropay
+    @status
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | filtro   | valor               |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "todos"             |
@@ -472,7 +507,8 @@ Feature: Historico de vendas
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada"         |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada parcial" |
 
-    @claropay @produto
+    @claropay
+    @produto
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | filtro    | valor               |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "todos"             |
@@ -482,7 +518,8 @@ Feature: Historico de vendas
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Parcelado Lojista" |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Crediário"         |
 
-    @claropay @canal
+    @claropay
+    @canal
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | filtro  | valor               |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "todos"             |
@@ -490,7 +527,8 @@ Feature: Historico de vendas
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "POS Wifi GPRS"     |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "Ecommerce TEF"     |
 
-    @claropay @bandeira
+    @claropay
+    @bandeira
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | filtro     | valor        |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "todos"      |
@@ -501,19 +539,22 @@ Feature: Historico de vendas
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Elo"        |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Hipercard"  |
 
-    @claropay @valores
+    @claropay
+    @valores
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | filtro    | valor      |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "100;300"  |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "500;1000" |
 
-    @claropay @estabelecimento
+    @claropay
+    @estabelecimento
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | filtro            | valor      |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "todos"    |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "91084373" |
 
-    @claropay @terminal
+    @claropay
+    @terminal
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | filtro     | valor      |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "todos"    |
@@ -522,216 +563,298 @@ Feature: Historico de vendas
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
 
-  @gerarArquivo @nomeArquivo
+  @gerarArquivo
+  @nomeArquivo
   @TestCaseKey=LPDC-T1206
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida o nome do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel @simplificado
+    @bin
+    @excel
+    @simplificado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" |
 
-    @bin @excel @detalhado
+    @bin
+    @excel
+    @detalhado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   |
 
-    @bin @csv @simplificado
+    @bin
+    @csv
+    @simplificado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" |
 
-    @bin @csv @detalhado
+    @bin
+    @csv
+    @detalhado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
 
-    @sicredi @excel @simplificado
+    @sicredi
+    @excel
+    @simplificado
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" |
 
-    @sicredi @excel @detalhado
+    @sicredi
+    @excel
+    @detalhado
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   |
 
-    @sicredi @csv @simplificado
+    @sicredi
+    @csv
+    @simplificado
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" |
 
-    @sicredi @csv @detalhado
+    @sicredi
+    @csv
+    @detalhado
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
 
-    @azulzinha @excel @simplificado
+    @azulzinha
+    @excel
+    @simplificado
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" |
 
-    @azulzinha @excel @detalhado
+    @azulzinha
+    @excel
+    @detalhado
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   |
 
-    @azulzinha @csv @simplificado
+    @azulzinha
+    @csv
+    @simplificado
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" |
 
-    @azulzinha @csv @detalhado
+    @azulzinha
+    @csv
+    @detalhado
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
 
-    @afinz @excel @simplificado
+    @afinz
+    @excel
+    @simplificado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" |
 
-    @afinz @excel @detalhado
+    @afinz
+    @excel
+    @detalhado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   |
 
-    @afinz @csv @simplificado
+    @afinz
+    @csv
+    @simplificado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" |
 
-    @afinz @csv @detalhado
+    @afinz
+    @csv
+    @detalhado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
 
-    @claropay @excel @simplificado
+    @claropay
+    @excel
+    @simplificado
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" |
 
-    @claropay @excel @detalhado
+    @claropay
+    @excel
+    @detalhado
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   |
 
-    @claropay @csv @simplificado
+    @claropay
+    @csv
+    @simplificado
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" |
 
-    @claropay @csv @detalhado
+    @claropay
+    @csv
+    @detalhado
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
 
-  @gerarArquivo @colunasArquivo
+  @gerarArquivo
+  @colunasArquivo
   @TestCaseKey=LPDC-T1227
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida as colunas <colunas> do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel @simplificado
+    @bin
+    @excel
+    @simplificado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                               |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Número do cartão;Cód. Ref. Cartão" |
 
-    @bin @excel @detalhado
+    @bin
+    @excel
+    @detalhado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor Original da Venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @bin @csv @simplificado
+    @bin
+    @csv
+    @simplificado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                         |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Num cartão;Cód. Ref. Cartão" |
 
-    @bin @csv @detalhado
+    @bin
+    @csv
+    @detalhado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @sicredi @excel @simplificado
+    @sicredi
+    @excel
+    @simplificado
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                               |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Número do cartão;Cód. Ref. Cartão" |
 
-    @sicredi @excel @detalhado
+    @sicredi
+    @excel
+    @detalhado
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor Original da Venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @sicredi @csv @simplificado
+    @sicredi
+    @csv
+    @simplificado
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                         |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Num cartão;Cód. Ref. Cartão" |
 
-    @sicredi @csv @detalhado
+    @sicredi
+    @csv
+    @detalhado
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @azulzinha @excel @simplificado
+    @azulzinha
+    @excel
+    @simplificado
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                               |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Número do cartão;Cód. Ref. Cartão" |
 
-    @azulzinha @excel @detalhado
+    @azulzinha
+    @excel
+    @detalhado
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor Original da Venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @azulzinha @csv @simplificado
+    @azulzinha
+    @csv
+    @simplificado
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                         |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Num cartão;Cód. Ref. Cartão" |
 
-    @azulzinha @csv @detalhado
+    @azulzinha
+    @csv
+    @detalhado
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @afinz @excel @simplificado
+    @afinz
+    @excel
+    @simplificado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                               |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Número do cartão;Cód. Ref. Cartão" |
 
-    @afinz @excel @detalhado
+    @afinz
+    @excel
+    @detalhado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor Original da Venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @afinz @csv @simplificado
+    @afinz
+    @csv
+    @simplificado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                         |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Num cartão;Cód. Ref. Cartão" |
 
-    @afinz @csv @detalhado
+    @afinz
+    @csv
+    @detalhado
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @claropay @excel @simplificado
+    @claropay
+    @excel
+    @simplificado
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                               |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Número do cartão;Cód. Ref. Cartão" |
 
-    @claropay @excel @detalhado
+    @claropay
+    @excel
+    @detalhado
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor Original da Venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @claropay @csv @simplificado
+    @claropay
+    @csv
+    @simplificado
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                         |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Num cartão;Cód. Ref. Cartão" |
 
-    @claropay @csv @detalhado
+    @claropay
+    @csv
+    @detalhado
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |

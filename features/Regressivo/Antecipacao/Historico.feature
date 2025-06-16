@@ -97,7 +97,8 @@ Feature: Historico
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And aplicar o filtro <filtro> atribuindo o valor <valor> - <abaRelatorio>
     And valida que foi atribuido o valor <valor> do filtro <filtro> - <abaRelatorio>
-    @bin @status
+    @bin
+    @status
     Examples:
       | alianca | menu          | submenu | abaRelatorio | filtro   | valor              |
       | "bin"   | "antecipacao" | ""      | "Histórico"  | "Status" | "todos"            |
@@ -107,7 +108,8 @@ Feature: Historico
       | "bin"   | "antecipacao" | ""      | "Histórico"  | "Status" | "Não Efetuada"     |
       | "bin"   | "antecipacao" | ""      | "Histórico"  | "Status" | "Pago"             |
 
-    @sicredi @status
+    @sicredi
+    @status
     Examples:
       | alianca   | menu          | submenu | abaRelatorio | filtro   | valor              |
       | "sicredi" | "antecipacao" | ""      | "Histórico"  | "Status" | "todos"            |
@@ -117,7 +119,8 @@ Feature: Historico
       | "sicredi" | "antecipacao" | ""      | "Histórico"  | "Status" | "Não Efetuada"     |
       | "sicredi" | "antecipacao" | ""      | "Histórico"  | "Status" | "Pago"             |
 
-    @azulzinha @status
+    @azulzinha
+    @status
     Examples:
       | alianca     | menu          | submenu | abaRelatorio | filtro   | valor              |
       | "azulzinha" | "antecipacao" | ""      | "Histórico"  | "Status" | "todos"            |
@@ -127,7 +130,8 @@ Feature: Historico
       | "azulzinha" | "antecipacao" | ""      | "Histórico"  | "Status" | "Não Efetuada"     |
       | "azulzinha" | "antecipacao" | ""      | "Histórico"  | "Status" | "Pago"             |
 
-    @claropay @status
+    @claropay
+    @status
     Examples:
       | alianca    | menu          | submenu | abaRelatorio | filtro   | valor              |
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "Status" | "todos"            |
@@ -137,96 +141,114 @@ Feature: Historico
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "Status" | "Não Efetuada"     |
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "Status" | "Pago"             |
 
-  @gerarArquivo @nomeArquivo
+  @gerarArquivo
+  @nomeArquivo
   @TestCaseKey=LPDC-T1334
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Historico
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida o nome do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel
+    @bin
+    @excel
     Examples:
       | alianca | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "bin"   | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           |
 
-    @bin @csv
+    @bin
+    @csv
     Examples:
       | alianca | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "bin"   | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           |
 
-    @sicredi @excel
+    @sicredi
+    @excel
     Examples:
       | alianca   | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "sicredi" | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           |
 
-    @sicredi @csv
+    @sicredi
+    @csv
     Examples:
       | alianca   | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "sicredi" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           |
 
-    @azulzinha @excel
+    @azulzinha
+    @excel
     Examples:
       | alianca     | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           |
 
-    @azulzinha @csv
+    @azulzinha
+    @csv
     Examples:
       | alianca     | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           |
 
-    @claropay @excel
+    @claropay
+    @excel
     Examples:
       | alianca    | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           |
 
-    @claropay @csv
+    @claropay
+    @csv
     Examples:
       | alianca    | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           |
 
-  @gerarArquivo @colunasArquivo
+  @gerarArquivo
+  @colunasArquivo
   @TestCaseKey=LPDC-T1336
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Historico
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida as colunas <colunas> do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel
+    @bin
+    @excel
     Examples:
       | alianca | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
       | "bin"   | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
 
-    @bin @csv
+    @bin
+    @csv
     Examples:
       | alianca | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
       | "bin"   | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
 
-    @sicredi @excel
+    @sicredi
+    @excel
     Examples:
       | alianca   | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
       | "sicredi" | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
 
-    @sicredi @csv
+    @sicredi
+    @csv
     Examples:
       | alianca   | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
       | "sicredi" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
 
-    @azulzinha @excel
+    @azulzinha
+    @excel
     Examples:
       | alianca     | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
       | "azulzinha" | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
 
-    @azulzinha @csv
+    @azulzinha
+    @csv
     Examples:
       | alianca     | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
       | "azulzinha" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
 
-    @claropay @excel
+    @claropay
+    @excel
     Examples:
       | alianca    | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
 
-    @claropay @csv
+    @claropay
+    @csv
     Examples:
       | alianca    | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
