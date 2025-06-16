@@ -13,262 +13,366 @@ Feature: Login
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    @bin @vendas @Hoje
+    @bin
+    @vendas
+    @Hoje
     Examples:
       | alianca | menu     | submenu           | abaRelatorio |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       |
 
-    @bin @vendas @HistoricoVendas
+    @bin
+    @vendas
+    @HistoricoVendas
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          |
       | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
-    @bin @vendas @NaoEfetivadas
+    @bin
+    @vendas
+    @NaoEfetivadas
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" |
 
-    @bin @vendas @PreAutorizacoes
+    @bin
+    @vendas
+    @PreAutorizacoes
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       |
       | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" |
 
-    @bin @vendas @Voucher
+    @bin
+    @vendas
+    @Voucher
     Examples:
       | alianca | menu     | submenu           | abaRelatorio |
       | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    |
 
-    @bin @recebimentos @Pagos
+    @bin
+    @recebimentos
+    @Pagos
     Examples:
       | alianca | menu           | submenu              | abaRelatorio |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
-    @bin @recebimentos @Futuros
+    @bin
+    @recebimentos
+    @Futuros
     Examples:
       | alianca | menu           | submenu              | abaRelatorio |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
-    @bin @recebimentos @DebitosAjustes
+    @bin
+    @recebimentos
+    @DebitosAjustes
     Examples:
       | alianca | menu           | submenu              | abaRelatorio        |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
-    @bin @antecipacao @SolicitarAntecipacao
+    @bin
+    @antecipacao
+    @SolicitarAntecipacao
     Examples:
       | alianca | menu          | submenu | abaRelatorio            |
       | "bin"   | "antecipacao" | ""      | "Solicitar antecipação" |
 
-    @bin @antecipacao @Historico
+    @bin
+    @antecipacao
+    @Historico
     Examples:
       | alianca | menu          | submenu | abaRelatorio |
       | "bin"   | "antecipacao" | ""      | "Histórico"  |
 
-    @bin @antecipacao @RelatorioAntecipacoes
+    @bin
+    @antecipacao
+    @RelatorioAntecipacoes
     Examples:
       | alianca | menu          | submenu | abaRelatorio                |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" |
 
-    @sicredi @vendas @Hoje
+    @sicredi
+    @vendas
+    @Hoje
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio |
       | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       |
 
-    @sicredi @vendas @HistoricoVendas
+    @sicredi
+    @vendas
+    @HistoricoVendas
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
-    @sicredi @vendas @NaoEfetivadas
+    @sicredi
+    @vendas
+    @NaoEfetivadas
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" |
 
-    @sicredi @vendas @PreAutorizacoes
+    @sicredi
+    @vendas
+    @PreAutorizacoes
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
 
-    @sicredi @vendas @Voucher
+    @sicredi
+    @vendas
+    @Voucher
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio |
       | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    |
 
-    @sicredi @recebimentos @Pagos
+    @sicredi
+    @recebimentos
+    @Pagos
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
-    @sicredi @recebimentos @Futuros
+    @sicredi
+    @recebimentos
+    @Futuros
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
-    @sicredi @recebimentos @DebitosAjustes
+    @sicredi
+    @recebimentos
+    @DebitosAjustes
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio        |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
-    @sicredi @antecipacao @SolicitarAntecipacao
+    @sicredi
+    @antecipacao
+    @SolicitarAntecipacao
     Examples:
       | alianca   | menu          | submenu | abaRelatorio            |
       | "sicredi" | "antecipacao" | ""      | "Solicitar antecipação" |
 
-    @sicredi @antecipacao @Historico
+    @sicredi
+    @antecipacao
+    @Historico
     Examples:
       | alianca   | menu          | submenu | abaRelatorio |
       | "sicredi" | "antecipacao" | ""      | "Histórico"  |
 
-    @sicredi @antecipacao @RelatorioAntecipacoes
+    @sicredi
+    @antecipacao
+    @RelatorioAntecipacoes
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" |
 
-    @azulzinha @vendas @Hoje
+    @azulzinha
+    @vendas
+    @Hoje
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       |
 
-    @azulzinha @vendas @HistoricoVendas
+    @azulzinha
+    @vendas
+    @HistoricoVendas
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio          |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
-    @azulzinha @vendas @NaoEfetivadas
+    @azulzinha
+    @vendas
+    @NaoEfetivadas
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" |
 
-    @azulzinha @vendas @PreAutorizacoes
+    @azulzinha
+    @vendas
+    @PreAutorizacoes
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
 
-    @azulzinha @vendas @Voucher
+    @azulzinha
+    @vendas
+    @Voucher
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    |
 
-    @azulzinha @recebimentos @Pagos
+    @azulzinha
+    @recebimentos
+    @Pagos
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
-    @azulzinha @recebimentos @Futuros
+    @azulzinha
+    @recebimentos
+    @Futuros
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
-    @azulzinha @recebimentos @DebitosAjustes
+    @azulzinha
+    @recebimentos
+    @DebitosAjustes
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio        |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
-    @azulzinha @antecipacao @SolicitarAntecipacao
+    @azulzinha
+    @antecipacao
+    @SolicitarAntecipacao
     Examples:
       | alianca     | menu          | submenu | abaRelatorio            |
       | "azulzinha" | "antecipacao" | ""      | "Solicitar antecipação" |
 
-    @azulzinha @antecipacao @Historico
+    @azulzinha
+    @antecipacao
+    @Historico
     Examples:
       | alianca     | menu          | submenu | abaRelatorio |
       | "azulzinha" | "antecipacao" | ""      | "Histórico"  |
 
-    @azulzinha @antecipacao @RelatorioAntecipacoes
+    @azulzinha
+    @antecipacao
+    @RelatorioAntecipacoes
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" |
 
-    @afinz @vendas @Hoje
+    @afinz
+    @vendas
+    @Hoje
     Examples:
       | alianca | menu     | submenu           | abaRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
 
-    @afinz @vendas @HistoricoVendas
+    @afinz
+    @vendas
+    @HistoricoVendas
     Examples:
       | alianca | menu     | submenu           | abaRelatorio          |
       | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
-    @afinz @vendas @NaoEfetivadas
+    @afinz
+    @vendas
+    @NaoEfetivadas
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" |
 
-    @afinz @vendas @PreAutorizacoes
+    @afinz
+    @vendas
+    @PreAutorizacoes
     Examples:
       | alianca | menu     | submenu           | abaRelatorio       |
       | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
 
-    @afinz @vendas @Voucher
+    @afinz
+    @vendas
+    @Voucher
     Examples:
       | alianca | menu     | submenu           | abaRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    |
 
-    @afinz @recebimentos @Pagos
+    @afinz
+    @recebimentos
+    @Pagos
     Examples:
       | alianca | menu           | submenu              | abaRelatorio |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
-    @afinz @recebimentos @Futuros
+    @afinz
+    @recebimentos
+    @Futuros
     Examples:
       | alianca | menu           | submenu              | abaRelatorio |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
-    @afinz @recebimentos @DebitosAjustes
+    @afinz
+    @recebimentos
+    @DebitosAjustes
     Examples:
       | alianca | menu           | submenu              | abaRelatorio        |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
-    @claropay @vendas @Hoje
+    @claropay
+    @vendas
+    @Hoje
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       |
 
-    @claropay @vendas @HistoricoVendas
+    @claropay
+    @vendas
+    @HistoricoVendas
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
-    @claropay @vendas @NaoEfetivadas
+    @claropay
+    @vendas
+    @NaoEfetivadas
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" |
 
-    @claropay @vendas @PreAutorizacoes
+    @claropay
+    @vendas
+    @PreAutorizacoes
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
 
-    @claropay @vendas @Voucher
+    @claropay
+    @vendas
+    @Voucher
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    |
 
-    @claropay @recebimentos @Pagos
+    @claropay
+    @recebimentos
+    @Pagos
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
-    @claropay @recebimentos @Futuros
+    @claropay
+    @recebimentos
+    @Futuros
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
-    @claropay @recebimentos @DebitosAjustes
+    @claropay
+    @recebimentos
+    @DebitosAjustes
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio        |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
-    @claropay @antecipacao @SolicitarAntecipacao
+    @claropay
+    @antecipacao
+    @SolicitarAntecipacao
     Examples:
       | alianca    | menu          | submenu | abaRelatorio            |
       | "claropay" | "antecipacao" | ""      | "Solicitar antecipação" |
 
-    @claropay @antecipacao @Historico
+    @claropay
+    @antecipacao
+    @Historico
     Examples:
       | alianca    | menu          | submenu | abaRelatorio |
       | "claropay" | "antecipacao" | ""      | "Histórico"  |
 
-    @claropay @antecipacao @RelatorioAntecipacoes
+    @claropay
+    @antecipacao
+    @RelatorioAntecipacoes
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" |
@@ -279,61 +383,81 @@ Feature: Login
     Given realizar login no portal <alianca>
     When acessar dashboard <dashboard>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
-    @bin @vendas @Hoje
+    @bin
+    @vendas
+    @Hoje
     Examples:
       | alianca | dashboard       | abaRelatorio |
       | "bin"   | "vendas"        | "Hoje"       |
       | "bin"   | "ultimasVendas" | "Hoje"       |
 
-    @bin @recebimentos @Pagos
+    @bin
+    @recebimentos
+    @Pagos
     Examples:
       | alianca | dashboard                  | abaRelatorio |
       | "bin"   | "recebimentos"             | "Pagos"      |
       | "bin"   | "agendaRecebimentosSemana" | "Pagos"      |
 
-    @sicredi @vendas @Hoje
+    @sicredi
+    @vendas
+    @Hoje
     Examples:
       | alianca   | dashboard       | abaRelatorio |
       | "sicredi" | "vendas"        | "Hoje"       |
       | "sicredi" | "ultimasVendas" | "Hoje"       |
 
-    @sicredi @recebimentos @Pagos
+    @sicredi
+    @recebimentos
+    @Pagos
     Examples:
       | alianca   | dashboard                  | abaRelatorio |
       | "sicredi" | "recebimentos"             | "Pagos"      |
       | "sicredi" | "agendaRecebimentosSemana" | "Pagos"      |
 
-    @azulzinha @vendas @Hoje
+    @azulzinha
+    @vendas
+    @Hoje
     Examples:
       | alianca     | dashboard       | abaRelatorio |
       | "azulzinha" | "vendas"        | "Hoje"       |
       | "azulzinha" | "ultimasVendas" | "Hoje"       |
 
-    @azulzinha @recebimentos @Pagos
+    @azulzinha
+    @recebimentos
+    @Pagos
     Examples:
       | alianca     | dashboard                  | abaRelatorio |
       | "azulzinha" | "recebimentos"             | "Pagos"      |
       | "azulzinha" | "agendaRecebimentosSemana" | "Pagos"      |
 
-    @afinz @vendas @Hoje
+    @afinz
+    @vendas
+    @Hoje
     Examples:
       | alianca | dashboard       | abaRelatorio |
       | "afinz" | "vendas"        | "Hoje"       |
       | "afinz" | "ultimasVendas" | "Hoje"       |
 
-    @afinz @recebimentos @Pagos
+    @afinz
+    @recebimentos
+    @Pagos
     Examples:
       | alianca | dashboard                  | abaRelatorio |
       | "afinz" | "recebimentos"             | "Pagos"      |
       | "afinz" | "agendaRecebimentosSemana" | "Pagos"      |
 
-    @claropay @vendas @Hoje
+    @claropay
+    @vendas
+    @Hoje
     Examples:
       | alianca    | dashboard       | abaRelatorio |
       | "claropay" | "vendas"        | "Hoje"       |
       | "claropay" | "ultimasVendas" | "Hoje"       |
 
-    @claropay @recebimentos @Pagos
+    @claropay
+    @recebimentos
+    @Pagos
     Examples:
       | alianca    | dashboard                  | abaRelatorio |
       | "claropay" | "recebimentos"             | "Pagos"      |

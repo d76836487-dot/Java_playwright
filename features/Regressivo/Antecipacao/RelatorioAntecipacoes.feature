@@ -109,13 +109,15 @@ Feature: Relatorio de antecipacoes
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And aplicar o filtro <filtro> atribuindo o valor <valor> - <abaRelatorio>
     And valida que foi atribuido o valor <valor> do filtro <filtro> - <abaRelatorio>
-    @bin @numeroSimulacao
+    @bin
+    @numeroSimulacao
     Examples:
       | alianca | menu          | submenu | abaRelatorio                | filtro                | valor              |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "primeiroRegistro" |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "WWW333"           |
 
-    @bin @bandeira
+    @bin
+    @bandeira
     Examples:
       | alianca | menu          | submenu | abaRelatorio                | filtro     | valor        |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "todos"      |
@@ -126,20 +128,23 @@ Feature: Relatorio de antecipacoes
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Elo"        |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Hipercard"  |
 
-    @bin @tipos
+    @bin
+    @tipos
     Examples:
       | alianca | menu          | submenu | abaRelatorio                | filtro  | valor        |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "todos"      |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Automática" |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Manual"     |
 
-    @sicredi @numeroSimulacao
+    @sicredi
+    @numeroSimulacao
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                | filtro                | valor              |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "primeiroRegistro" |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "WWW333"           |
 
-    @sicredi @bandeira
+    @sicredi
+    @bandeira
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                | filtro     | valor        |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "todos"      |
@@ -150,20 +155,23 @@ Feature: Relatorio de antecipacoes
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Elo"        |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Hipercard"  |
 
-    @sicredi @tipos
+    @sicredi
+    @tipos
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                | filtro  | valor        |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "todos"      |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Automática" |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Manual"     |
 
-    @azulzinha @numeroSimulacao
+    @azulzinha
+    @numeroSimulacao
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | filtro                | valor              |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "primeiroRegistro" |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "WWW333"           |
 
-    @azulzinha @bandeira
+    @azulzinha
+    @bandeira
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | filtro     | valor        |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "todos"      |
@@ -174,20 +182,23 @@ Feature: Relatorio de antecipacoes
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Elo"        |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Hipercard"  |
 
-    @azulzinha @tipos
+    @azulzinha
+    @tipos
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | filtro  | valor        |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "todos"      |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Automática" |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Manual"     |
 
-    @claropay @numeroSimulacao
+    @claropay
+    @numeroSimulacao
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                | filtro                | valor              |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "primeiroRegistro" |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "WWW333"           |
 
-    @claropay @bandeira
+    @claropay
+    @bandeira
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                | filtro     | valor        |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "todos"      |
@@ -198,183 +209,250 @@ Feature: Relatorio de antecipacoes
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Elo"        |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Hipercard"  |
 
-    @claropay @tipos
+    @claropay
+    @tipos
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                | filtro  | valor        |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "todos"      |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Automática" |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Manual"     |
 
-  @gerarArquivo @nomeArquivo
+  @gerarArquivo
+  @nomeArquivo
   @TestCaseKey=LPDC-T1282
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Relatorio de antecipacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida o nome do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel @simplificado
+    @bin
+    @excel
+    @simplificado
     Examples:
       | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" |
 
-    @bin @excel @detalhado
+    @bin
+    @excel
+    @detalhado
     Examples:
       | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   |
 
-    @bin @csv @simplificado
+    @bin
+    @csv
+    @simplificado
     Examples:
       | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" |
 
-    @bin @csv @detalhado
+    @bin
+    @csv
+    @detalhado
     Examples:
       | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   |
 
-    @sicredi @excel @simplificado
+    @sicredi
+    @excel
+    @simplificado
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" |
 
-    @sicredi @excel @detalhado
+    @sicredi
+    @excel
+    @detalhado
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   |
 
-    @sicredi @csv @simplificado
+    @sicredi
+    @csv
+    @simplificado
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" |
 
-    @sicredi @csv @detalhado
+    @sicredi
+    @csv
+    @detalhado
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   |
 
-    @azulzinha @excel @simplificado
+    @azulzinha
+    @excel
+    @simplificado
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" |
 
-    @azulzinha @excel @detalhado
+    @azulzinha
+    @excel
+    @detalhado
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   |
 
-    @azulzinha @csv @simplificado
+    @azulzinha
+    @csv
+    @simplificado
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" |
 
-    @azulzinha @csv @detalhado
+    @azulzinha
+    @csv
+    @detalhado
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   |
 
-    @claropay @excel @simplificado
+    @claropay
+    @excel
+    @simplificado
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" |
 
-    @claropay @excel @detalhado
+    @claropay
+    @excel
+    @detalhado
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   |
 
-    @claropay @csv @simplificado
+    @claropay
+    @csv
+    @simplificado
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" |
 
-    @claropay @csv @detalhado
+    @claropay
+    @csv
+    @detalhado
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   |
 
-  @gerarArquivo @colunasArquivo
+  @gerarArquivo
+  @colunasArquivo
   @TestCaseKey=LPDC-T1285
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Relatorio de antecipacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida as colunas <colunas> do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel @simplificado
+    @bin
+    @excel
+    @simplificado
     Examples:
       | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
 
-    @bin @excel @detalhado
+    @bin
+    @excel
+    @detalhado
     Examples:
       | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
 
-    @bin @csv @simplificado
+    @bin
+    @csv
+    @simplificado
     Examples:
       | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
 
-    @bin @csv @detalhado
+    @bin
+    @csv
+    @detalhado
     Examples:
       | alianca | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
       | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
 
-    @sicredi @excel @simplificado
+    @sicredi
+    @excel
+    @simplificado
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
 
-    @sicredi @excel @detalhado
+    @sicredi
+    @excel
+    @detalhado
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
 
-    @sicredi @csv @simplificado
+    @sicredi
+    @csv
+    @simplificado
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
 
-    @sicredi @csv @detalhado
+    @sicredi
+    @csv
+    @detalhado
     Examples:
       | alianca   | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
       | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
 
-    @azulzinha @excel @simplificado
+    @azulzinha
+    @excel
+    @simplificado
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
 
-    @azulzinha @excel @detalhado
+    @azulzinha
+    @excel
+    @detalhado
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
 
-    @azulzinha @csv @simplificado
+    @azulzinha
+    @csv
+    @simplificado
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
 
-    @azulzinha @csv @detalhado
+    @azulzinha
+    @csv
+    @detalhado
     Examples:
       | alianca     | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
       | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
 
-    @claropay @excel @simplificado
+    @claropay
+    @excel
+    @simplificado
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
 
-    @claropay @excel @detalhado
+    @claropay
+    @excel
+    @detalhado
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
 
-    @claropay @csv @simplificado
+    @claropay
+    @csv
+    @simplificado
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
 
-    @claropay @csv @detalhado
+    @claropay
+    @csv
+    @detalhado
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |

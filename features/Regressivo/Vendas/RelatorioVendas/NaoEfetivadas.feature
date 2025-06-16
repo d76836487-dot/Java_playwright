@@ -165,20 +165,23 @@ Feature: Nao efetivadas
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And aplicar o filtro <filtro> atribuindo o valor <valor> - <abaRelatorio>
     And valida que foi atribuido o valor <valor> do filtro <filtro> - <abaRelatorio>
-    @bin @codAutorizacao
+    @bin
+    @codAutorizacao
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro                | valor              |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "primeiroRegistro" |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "WWW333"           |
 
-    @bin @status
+    @bin
+    @status
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro   | valor       |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "todos"     |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Estornada" |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Recusada"  |
 
-    @bin @produto
+    @bin
+    @produto
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro    | valor                       |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "todos"                     |
@@ -188,7 +191,8 @@ Feature: Nao efetivadas
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito Parcelado Emissor" |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crediário"                 |
 
-    @bin @canal
+    @bin
+    @canal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro  | valor       |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "todos"     |
@@ -196,7 +200,8 @@ Feature: Nao efetivadas
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "TEF"       |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "ECOMMERCE" |
 
-    @bin @bandeira
+    @bin
+    @bandeira
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro     | valor        |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "todos"      |
@@ -208,19 +213,22 @@ Feature: Nao efetivadas
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Hipercard"  |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Maestro"    |
 
-    @bin @valores
+    @bin
+    @valores
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro    | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "100;300"  |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "500;1000" |
 
-    @bin @estabelecimento
+    @bin
+    @estabelecimento
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro            | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "todos"    |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "91084373" |
 
-    @bin @terminal
+    @bin
+    @terminal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro     | valor      |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "todos"    |
@@ -228,20 +236,23 @@ Feature: Nao efetivadas
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "PGW0D0D1" |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
 
-    @sicredi @codAutorizacao
+    @sicredi
+    @codAutorizacao
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | filtro                | valor              |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "primeiroRegistro" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "WWW333"           |
 
-    @sicredi @status
+    @sicredi
+    @status
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | filtro   | valor       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "todos"     |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Estornada" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Recusada"  |
 
-    @sicredi @produto
+    @sicredi
+    @produto
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | filtro    | valor                       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "todos"                     |
@@ -251,7 +262,8 @@ Feature: Nao efetivadas
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito Parcelado Emissor" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crediário"                 |
 
-    @sicredi @canal
+    @sicredi
+    @canal
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | filtro  | valor       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "todos"     |
@@ -259,7 +271,8 @@ Feature: Nao efetivadas
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "TEF"       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "ECOMMERCE" |
 
-    @sicredi @bandeira
+    @sicredi
+    @bandeira
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | filtro     | valor        |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "todos"      |
@@ -271,19 +284,22 @@ Feature: Nao efetivadas
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Hipercard"  |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Maestro"    |
 
-    @sicredi @valores
+    @sicredi
+    @valores
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | filtro    | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "100;300"  |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "500;1000" |
 
-    @sicredi @estabelecimento
+    @sicredi
+    @estabelecimento
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | filtro            | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "todos"    |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "91084373" |
 
-    @sicredi @terminal
+    @sicredi
+    @terminal
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | filtro     | valor      |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "todos"    |
@@ -291,20 +307,23 @@ Feature: Nao efetivadas
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "PGW0D0D1" |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
 
-    @azulzinha @codAutorizacao
+    @azulzinha
+    @codAutorizacao
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | filtro                | valor              |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "primeiroRegistro" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "WWW333"           |
 
-    @azulzinha @status
+    @azulzinha
+    @status
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | filtro   | valor       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "todos"     |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Estornada" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Recusada"  |
 
-    @azulzinha @produto
+    @azulzinha
+    @produto
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | filtro    | valor                       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "todos"                     |
@@ -314,7 +333,8 @@ Feature: Nao efetivadas
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito Parcelado Emissor" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crediário"                 |
 
-    @azulzinha @canal
+    @azulzinha
+    @canal
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | filtro  | valor       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "todos"     |
@@ -322,7 +342,8 @@ Feature: Nao efetivadas
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "TEF"       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "ECOMMERCE" |
 
-    @azulzinha @bandeira
+    @azulzinha
+    @bandeira
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | filtro     | valor        |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "todos"      |
@@ -334,19 +355,22 @@ Feature: Nao efetivadas
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Hipercard"  |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Maestro"    |
 
-    @azulzinha @valores
+    @azulzinha
+    @valores
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | filtro    | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "100;300"  |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "500;1000" |
 
-    @azulzinha @estabelecimento
+    @azulzinha
+    @estabelecimento
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | filtro            | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "todos"    |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "91084373" |
 
-    @azulzinha @terminal
+    @azulzinha
+    @terminal
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | filtro     | valor      |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "todos"    |
@@ -354,20 +378,23 @@ Feature: Nao efetivadas
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "PGW0D0D1" |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
 
-    @afinz @codAutorizacao
+    @afinz
+    @codAutorizacao
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro                | valor              |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "primeiroRegistro" |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "WWW333"           |
 
-    @afinz @status
+    @afinz
+    @status
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro   | valor       |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "todos"     |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Estornada" |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Recusada"  |
 
-    @afinz @produto
+    @afinz
+    @produto
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro    | valor                       |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "todos"                     |
@@ -377,7 +404,8 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito Parcelado Emissor" |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crediário"                 |
 
-    @afinz @canal
+    @afinz
+    @canal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro  | valor       |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "todos"     |
@@ -385,7 +413,8 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "TEF"       |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "ECOMMERCE" |
 
-    @afinz @bandeira
+    @afinz
+    @bandeira
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro     | valor        |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "todos"      |
@@ -397,19 +426,22 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Hipercard"  |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Maestro"    |
 
-    @afinz @valores
+    @afinz
+    @valores
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro    | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "100;300"  |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "500;1000" |
 
-    @afinz @estabelecimento
+    @afinz
+    @estabelecimento
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro            | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "todos"    |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "91084373" |
 
-    @afinz @terminal
+    @afinz
+    @terminal
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | filtro     | valor      |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "todos"    |
@@ -417,20 +449,23 @@ Feature: Nao efetivadas
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "PGW0D0D1" |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
 
-    @claropay @codAutorizacao
+    @claropay
+    @codAutorizacao
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | filtro                | valor              |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "primeiroRegistro" |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "WWW333"           |
 
-    @claropay @status
+    @claropay
+    @status
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | filtro   | valor       |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "todos"     |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Estornada" |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Recusada"  |
 
-    @claropay @produto
+    @claropay
+    @produto
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | filtro    | valor                       |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "todos"                     |
@@ -440,7 +475,8 @@ Feature: Nao efetivadas
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito Parcelado Emissor" |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crediário"                 |
 
-    @claropay @canal
+    @claropay
+    @canal
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | filtro  | valor       |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "todos"     |
@@ -448,7 +484,8 @@ Feature: Nao efetivadas
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "TEF"       |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "ECOMMERCE" |
 
-    @claropay @bandeira
+    @claropay
+    @bandeira
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | filtro     | valor        |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "todos"      |
@@ -460,19 +497,22 @@ Feature: Nao efetivadas
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Hipercard"  |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Maestro"    |
 
-    @claropay @valores
+    @claropay
+    @valores
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | filtro    | valor      |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "100;300"  |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "500;1000" |
 
-    @claropay @estabelecimento
+    @claropay
+    @estabelecimento
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | filtro            | valor      |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "todos"    |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "91084373" |
 
-    @claropay @terminal
+    @claropay
+    @terminal
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | filtro     | valor      |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "todos"    |
@@ -480,116 +520,138 @@ Feature: Nao efetivadas
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "PGW0D0D1" |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
 
-  @gerarArquivo @nomeArquivo
+  @gerarArquivo
+  @nomeArquivo
   @TestCaseKey=LPDC-T1202
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Nao efetivadas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida o nome do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel
+    @bin
+    @excel
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           |
 
-    @bin @csv
+    @bin
+    @csv
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
 
-    @sicredi @excel
+    @sicredi
+    @excel
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           |
 
-    @sicredi @csv
+    @sicredi
+    @csv
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
 
-    @azulzinha @excel
+    @azulzinha
+    @excel
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           |
 
-    @azulzinha @csv
+    @azulzinha
+    @csv
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
 
-    @afinz @excel
+    @afinz
+    @excel
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           |
 
-    @afinz @csv
+    @afinz
+    @csv
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
 
-    @claropay @excel
+    @claropay
+    @excel
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           |
 
-    @claropay @csv
+    @claropay
+    @csv
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
 
-  @gerarArquivo @colunasArquivo
+  @gerarArquivo
+  @colunasArquivo
   @TestCaseKey=LPDC-T1204
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Nao efetivadas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida as colunas <colunas> do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel
+    @bin
+    @excel
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
-    @bin @csv
+    @bin
+    @csv
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
-    @sicredi @excel
+    @sicredi
+    @excel
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
-    @sicredi @csv
+    @sicredi
+    @csv
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
-    @azulzinha @excel
+    @azulzinha
+    @excel
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
-    @azulzinha @csv
+    @azulzinha
+    @csv
     Examples:
       | alianca     | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
-    @afinz @excel
+    @afinz
+    @excel
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
-    @afinz @csv
+    @afinz
+    @csv
     Examples:
       | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
-    @claropay @excel
+    @claropay
+    @excel
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
-    @claropay @csv
+    @claropay
+    @csv
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |

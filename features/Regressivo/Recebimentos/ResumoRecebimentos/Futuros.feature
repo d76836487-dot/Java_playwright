@@ -180,20 +180,23 @@ Feature: Futuros
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And aplicar o filtro <filtro> atribuindo o valor <valor> - <abaRelatorio>
     And valida que foi atribuido o valor <valor> do filtro <filtro> - <abaRelatorio>
-    @bin @codAutorizacao
+    @bin
+    @codAutorizacao
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | filtro                | valor              |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "primeiroRegistro" |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "WWW333"           |
 
-    @bin @produto
+    @bin
+    @produto
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | filtro    | valor     |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "todos"   |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Débito"  |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Crédito" |
 
-    @bin @bandeira
+    @bin
+    @bandeira
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | filtro     | valor        |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "todos"      |
@@ -204,26 +207,30 @@ Feature: Futuros
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Elo"        |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Hipercard"  |
 
-    @bin @estabelecimento
+    @bin
+    @estabelecimento
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | filtro            | valor      |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "todos"    |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "91913769" |
 
-    @sicredi @codAutorizacao
+    @sicredi
+    @codAutorizacao
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio | filtro                | valor              |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "primeiroRegistro" |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "WWW333"           |
 
-    @sicredi @produto
+    @sicredi
+    @produto
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio | filtro    | valor     |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "todos"   |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Débito"  |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Crédito" |
 
-    @sicredi @bandeira
+    @sicredi
+    @bandeira
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio | filtro     | valor        |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "todos"      |
@@ -234,26 +241,30 @@ Feature: Futuros
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Elo"        |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Hipercard"  |
 
-    @sicredi @estabelecimento
+    @sicredi
+    @estabelecimento
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio | filtro            | valor      |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "todos"    |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "91913769" |
 
-    @azulzinha @codAutorizacao
+    @azulzinha
+    @codAutorizacao
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio | filtro                | valor              |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "primeiroRegistro" |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "WWW333"           |
 
-    @azulzinha @produto
+    @azulzinha
+    @produto
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio | filtro    | valor     |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "todos"   |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Débito"  |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Crédito" |
 
-    @azulzinha @bandeira
+    @azulzinha
+    @bandeira
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio | filtro     | valor        |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "todos"      |
@@ -264,26 +275,30 @@ Feature: Futuros
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Elo"        |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Hipercard"  |
 
-    @azulzinha @estabelecimento
+    @azulzinha
+    @estabelecimento
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio | filtro            | valor      |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "todos"    |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "91913769" |
 
-    @afinz @codAutorizacao
+    @afinz
+    @codAutorizacao
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | filtro                | valor              |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "primeiroRegistro" |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "WWW333"           |
 
-    @afinz @produto
+    @afinz
+    @produto
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | filtro    | valor     |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "todos"   |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Débito"  |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Crédito" |
 
-    @afinz @bandeira
+    @afinz
+    @bandeira
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | filtro     | valor        |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "todos"      |
@@ -294,26 +309,30 @@ Feature: Futuros
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Elo"        |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Hipercard"  |
 
-    @afinz @estabelecimento
+    @afinz
+    @estabelecimento
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | filtro            | valor      |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "todos"    |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "91913769" |
 
-    @claropay @codAutorizacao
+    @claropay
+    @codAutorizacao
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio | filtro                | valor              |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "primeiroRegistro" |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "WWW333"           |
 
-    @claropay @produto
+    @claropay
+    @produto
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio | filtro    | valor     |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "todos"   |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Débito"  |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Crédito" |
 
-    @claropay @bandeira
+    @claropay
+    @bandeira
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio | filtro     | valor        |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "todos"      |
@@ -324,122 +343,145 @@ Feature: Futuros
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Elo"        |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Hipercard"  |
 
-    @claropay @estabelecimento
+    @claropay
+    @estabelecimento
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio | filtro            | valor      |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "todos"    |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "91913769" |
 
-  @gerarArquivo @nomeArquivo
+  @gerarArquivo
+  @nomeArquivo
   @TestCaseKey=LPDC-T1257
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Futuros
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida o nome do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel
+    @bin
+    @excel
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           |
 
-    @bin @csv
+    @bin
+    @csv
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           |
 
-    @sicredi @excel
+    @sicredi
+    @excel
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           |
 
-    @sicredi @csv
+    @sicredi
+    @csv
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           |
 
-    @azulzinha @excel
+    @azulzinha
+    @excel
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           |
 
-    @azulzinha @csv
+    @azulzinha
+    @csv
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           |
 
-    @afinz @excel
+    @afinz
+    @excel
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           |
 
-    @afinz @csv
+    @afinz
+    @csv
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           |
 
-    @claropay @excel
+    @claropay
+    @excel
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           |
 
-    @claropay @csv
+    @claropay
+    @csv
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           |
 
-  @gerarArquivo @colunasArquivo
+  @gerarArquivo
+  @colunasArquivo
   @TestCaseKey=LPDC-T1263
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Futuros
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida as colunas <colunas> do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel
+    @bin
+    @excel
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
 
-    @bin @csv
+    @bin
+    @csv
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
 
-    @sicredi @excel
+    @sicredi
+    @excel
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
 
-    @sicredi @csv
+    @sicredi
+    @csv
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
 
-    @azulzinha @excel
+    @azulzinha
+    @excel
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
 
-    @azulzinha @csv
+    @azulzinha
+    @csv
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
 
-    @afinz @excel
+    @afinz
+    @excel
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
 
-    @afinz @csv
+    @afinz
+    @csv
     Examples:
       | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
 
-    @claropay @excel
+    @claropay
+    @excel
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
 
-    @claropay @csv
+    @claropay
+    @csv
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
