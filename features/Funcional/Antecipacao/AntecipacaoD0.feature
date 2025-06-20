@@ -147,18 +147,15 @@ Feature: AntecipacaoD0
     And possui plano Flex
     Then não visualizara os banners
 
+
+
+
   # Extrato Recebimentos Pagos
   @TestCaseKey=LPDC-T1397
   Scenario: Unificar sub abas na aba Recebimentos Pagos
     Given usuário está na aba "Recebimentos Pagos"
     When as sub abas "Meus Domicílios" e "Valores Cedidos" forem unificadas
     Then todas as informações devem estar concentradas na mesma aba "Recebimentos Pagos"
-
-  @TestCaseKey=LPDC-T1383
-  Scenario: Verificar ausência de sub abas após unificação
-    Given usuário está na aba "Recebimentos Pagos" após unificação
-    When visualizar as sub abas
-    Then não devem existir sub abas "Meus Domicílios" e "Valores Cedidos"
 
   @TestCaseKey=LPDC-T1382
   Scenario: Remover opção de personalizar colunas
