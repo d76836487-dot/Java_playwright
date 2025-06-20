@@ -147,9 +147,6 @@ Feature: AntecipacaoD0
     And possui plano Flex
     Then não visualizara os banners
 
-
-
-
   # Extrato Recebimentos Pagos
   @TestCaseKey=LPDC-T1397
   Scenario: Unificar sub abas na aba Recebimentos Pagos
