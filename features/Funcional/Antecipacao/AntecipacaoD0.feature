@@ -129,17 +129,32 @@ Feature: AntecipacaoD0
       | 415    | Essencial - Recebimento quinzenal |
       | 720    | Essencial - Recebimento mensal    |
 
+
+Scenario: Cliente elegível com contratacao D1 migra para plano D0
+  Given cliente é elegível e possui o serviço de antecipação D1 contratado
+  And possui saldo de antecipação
+  When acessar a tela de migração de plano
+  Then deve ser exibida a tela de migração de plano sem a opção de saldo disponível
+  And deve existir a opção de confirmar a contratação
+  When cliente clicar na confirmação
+  Then canal deve exibir apenas o plano escolhido (D0) e o botão [Contratar]
+  Then cliente clicar no botão [Contratar]
+  Then deve ser direcionado para a tela de "Obrigada"
+
+
   @TestCaseKey=LPDC-T1381
   Scenario: Usuário tenta contratar antecipação fora do deadline
     Given o usuário está logado no Portal do cliente após 30/06
     When tenta contratar antecipação D0 ou D1
     Then a contratação não é permitida e uma mensagem de erro é exibida
 
+
   @TestCaseKey=LPDC-T1364
   Scenario: Usuário não elegível não vê os banners de antecipação
     Given o usuário está logado no Portal do cliente
     And não é elegível para antecipação D0 ou D1
     Then os banners dos novos planos de recebimento não é exibido
+
 
   @TestCaseKey=LPDC-T1380
   Scenario: Usuário Possui plano Flex
