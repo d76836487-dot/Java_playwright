@@ -129,7 +129,7 @@ Feature: AntecipacaoD0
       | 415    | Essencial - Recebimento quinzenal |
       | 720    | Essencial - Recebimento mensal    |
 
-
+  @TestCaseKey=LPDC-T1406
   Scenario: Cliente sem contratação e sem saldo vê ofertas de planos D0 e D1
     Given cliente não possui contratação de antecipação
     And não possui saldo de antecipação
@@ -144,7 +144,7 @@ Feature: AntecipacaoD0
     When cliente selecionar um plano e clicar no botão para a contratação do plano selecionado
     Then deve ser direcionado para a tela de "Obrigada"
 
-
+  @TestCaseKey=LPDC-T1405
   Scenario: Cliente elegível sem contratação de D0 e D1 e com saldo disponível
     Given cliente é elegível e não possui contratação de antecipação D0 e D1
     And possui saldo de antecipação disponível
@@ -156,7 +156,6 @@ Feature: AntecipacaoD0
     And deve exibir o botão [Contratar]
     When cliente clicar no botão [Contratar]
     Then deve ser direcionado para a tela de "Obrigada"
-
 
   @TestCaseKey=LPDC-T1404
   Scenario: Cliente elegível com contratacao D1 migra para plano D0
