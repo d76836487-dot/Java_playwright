@@ -129,6 +129,35 @@ Feature: AntecipacaoD0
       | 415    | Essencial - Recebimento quinzenal |
       | 720    | Essencial - Recebimento mensal    |
 
+
+  Scenario: Cliente sem contratação e sem saldo vê ofertas de planos D0 e D1
+    Given cliente não possui contratação de antecipação
+    And não possui saldo de antecipação
+    When logar no Portal do cliente
+    Then deve visualizar as ofertas dos planos D0 e D1
+    When clicar em uma das ofertas
+    Then deve ser direcionado para a tela de onboarding
+    And deve exibir o botão [Avançar]
+    When clicar no botão [Avançar]
+    Then deve entrar na tela de Planos
+    And deve ter a opção de visualizar [Vendas pagas no mesmo dia] ou [em 1 dia útil]
+    When cliente selecionar um plano e clicar no botão para a contratação do plano selecionado
+    Then deve ser direcionado para a tela de "Obrigada"
+
+
+  Scenario: Cliente elegível sem contratação de D0 e D1 e com saldo disponível
+    Given cliente é elegível e não possui contratação de antecipação D0 e D1
+    And possui saldo de antecipação disponível
+    When acessar a tela de opções de plano
+    Then deve ser exibida a opção de saldo disponível
+    And a opção de confirmar a contratação com as opções [Mesmo dia] e [em 1 dia útil]
+    When clicar na confirmação da contratação
+    Then canal deve exibir o saldo disponível para o plano escolhido
+    And deve exibir o botão [Contratar]
+    When cliente clicar no botão [Contratar]
+    Then deve ser direcionado para a tela de "Obrigada"
+
+
   @TestCaseKey=LPDC-T1404
   Scenario: Cliente elegível com contratacao D1 migra para plano D0
     Given cliente é elegível e possui o serviço de antecipação D1 contratado
