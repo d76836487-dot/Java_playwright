@@ -79,70 +79,80 @@ Feature: Pagos
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And aplica o periodo <periodo> - <abaRelatorio>
     And valida o periodo <periodo> aplicado - <abaRelatorio>
-    @bin @meusDomicilios
+    @bin
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | periodo       |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Hoje"        |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Essa Semana" |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Este Mês"    |
 
-    @bin @valoresCedidos
+    @bin
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | periodo       |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Hoje"        |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Essa Semana" |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Este Mês"    |
 
-    @sicredi @meusDomicilios
+    @sicredi
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | periodo       |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Hoje"        |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Essa Semana" |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Este Mês"    |
 
-    @sicredi @valoresCedidos
+    @sicredi
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | periodo       |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Hoje"        |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Essa Semana" |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Este Mês"    |
 
-    @azulzinha @meusDomicilios
+    @azulzinha
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | periodo       |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Hoje"        |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Essa Semana" |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Este Mês"    |
 
-    @azulzinha @valoresCedidos
+    @azulzinha
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | periodo       |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Hoje"        |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Essa Semana" |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Este Mês"    |
 
-    @afinz @meusDomicilios
+    @afinz
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | periodo       |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Hoje"        |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Essa Semana" |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Este Mês"    |
 
-    @afinz @valoresCedidos
+    @afinz
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | periodo       |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Hoje"        |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Essa Semana" |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Este Mês"    |
 
-    @claropay @meusDomicilios
+    @claropay
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | periodo       |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Hoje"        |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Essa Semana" |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Este Mês"    |
 
-    @claropay @valoresCedidos
+    @claropay
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | periodo       |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Hoje"        |
@@ -157,70 +167,80 @@ Feature: Pagos
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And realiza a personalizacao das colunas <colunas> - <abaRelatorio>
     And valida que foi aplicado a personalizacao das colunas <colunas> - <abaRelatorio>
-    @bin @meusDomicilios
+    @bin
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | colunas                                                                        |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto;Tipo;Código de pagamento;Status"                                      |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
-    @bin @valoresCedidos
+    @bin
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | colunas                                                                        |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto;Tipo;Código de pagamento;Status"                                      |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
-    @sicredi @meusDomicilios
+    @sicredi
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | colunas                                                                        |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto;Tipo;Código de pagamento;Status"                                      |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
-    @sicredi @valoresCedidos
+    @sicredi
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | colunas                                                                        |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto;Tipo;Código de pagamento;Status"                                      |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
-    @azulzinha @meusDomicilios
+    @azulzinha
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | colunas                                                                        |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto;Tipo;Código de pagamento;Status"                                      |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
-    @azulzinha @valoresCedidos
+    @azulzinha
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | colunas                                                                        |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto;Tipo;Código de pagamento;Status"                                      |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
-    @afinz @meusDomicilios
+    @afinz
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | colunas                                                                        |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto;Tipo;Código de pagamento;Status"                                      |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
-    @afinz @valoresCedidos
+    @afinz
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | colunas                                                                        |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto;Tipo;Código de pagamento;Status"                                      |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
-    @claropay @meusDomicilios
+    @claropay
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | colunas                                                                        |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto;Tipo;Código de pagamento;Status"                                      |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
-    @claropay @valoresCedidos
+    @claropay
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | colunas                                                                        |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
@@ -235,27 +255,35 @@ Feature: Pagos
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And aplicar o filtro <filtro> atribuindo o valor <valor> - <abaRelatorio>
     And valida que foi atribuido o valor <valor> do filtro <filtro> - <abaRelatorio>
-    @bin @codPagamento @meusDomicilios
+    @bin
+    @codPagamento
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro              | valor              |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "primeiroRegistro" |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "WWW333"           |
 
-    @bin @status @meusDomicilios
+    @bin
+    @status
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro   | valor     |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "todos"   |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "Enviado" |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "Pago"    |
 
-    @bin @produto @meusDomicilios
+    @bin
+    @produto
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro    | valor     |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "todos"   |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "Crédito" |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "Débito"  |
 
-    @bin @bandeira @meusDomicilios
+    @bin
+    @bandeira
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro     | valor             |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "todos"           |
@@ -266,25 +294,33 @@ Feature: Pagos
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "Amex Full"       |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "CABAL"           |
 
-    @bin @valores @meusDomicilios
+    @bin
+    @valores
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro    | valor       |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Valores" | "2000;3000" |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Valores" | "5000;8000" |
 
-    @bin @estabelecimento @meusDomicilios
+    @bin
+    @estabelecimento
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro            | valor      |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Estabelecimento" | "todos"    |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Estabelecimento" | "91913769" |
 
-    @bin @banco @meusDomicilios
+    @bin
+    @banco
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Banco" | "todos"                  |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Banco" | "077 - Banco Inter S.A." |
 
-    @bin @tipos @meusDomicilios
+    @bin
+    @tipos
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "todos"                  |
@@ -292,27 +328,35 @@ Feature: Pagos
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "Antecipação automática" |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "Antecipação manual"     |
 
-    @bin @codPagamento @valoresCedidos
+    @bin
+    @codPagamento
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | filtro              | valor              |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "primeiroRegistro" |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "WWW333"           |
 
-    @bin @status @valoresCedidos
+    @bin
+    @status
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | filtro   | valor     |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "todos"   |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Enviado" |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Pago"    |
 
-    @bin @produto @valoresCedidos
+    @bin
+    @produto
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | filtro    | valor     |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "todos"   |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Crédito" |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Débito"  |
 
-    @bin @bandeira @valoresCedidos
+    @bin
+    @bandeira
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | filtro     | valor             |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "todos"           |
@@ -323,25 +367,33 @@ Feature: Pagos
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Amex Full"       |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "CABAL"           |
 
-    @bin @valores @valoresCedidos
+    @bin
+    @valores
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | filtro    | valor       |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "2000;3000" |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "5000;8000" |
 
-    @bin @estabelecimento @valoresCedidos
+    @bin
+    @estabelecimento
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | filtro            | valor      |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "todos"    |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "99990095" |
 
-    @bin @banco @valoresCedidos
+    @bin
+    @banco
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | filtro  | valor                      |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "todos"                    |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "341 - Itaú Unibanco S.A." |
 
-    @bin @tipos @valoresCedidos
+    @bin
+    @tipos
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "todos"                  |
@@ -349,27 +401,35 @@ Feature: Pagos
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação automática" |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
 
-    @sicredi @codPagamento @meusDomicilios
+    @sicredi
+    @codPagamento
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | filtro              | valor              |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "primeiroRegistro" |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "WWW333"           |
 
-    @sicredi @status @meusDomicilios
+    @sicredi
+    @status
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | filtro   | valor     |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "todos"   |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "Enviado" |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "Pago"    |
 
-    @sicredi @produto @meusDomicilios
+    @sicredi
+    @produto
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | filtro    | valor     |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "todos"   |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "Crédito" |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "Débito"  |
 
-    @sicredi @bandeira @meusDomicilios
+    @sicredi
+    @bandeira
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | filtro     | valor             |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "todos"           |
@@ -380,25 +440,33 @@ Feature: Pagos
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "Amex Full"       |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "CABAL"           |
 
-    @sicredi @valores @meusDomicilios
+    @sicredi
+    @valores
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | filtro    | valor       |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Valores" | "2000;3000" |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Valores" | "5000;8000" |
 
-    @sicredi @estabelecimento @meusDomicilios
+    @sicredi
+    @estabelecimento
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | filtro            | valor      |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Estabelecimento" | "todos"    |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Estabelecimento" | "91913769" |
 
-    @sicredi @banco @meusDomicilios
+    @sicredi
+    @banco
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Banco" | "todos"                  |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Banco" | "077 - Banco Inter S.A." |
 
-    @sicredi @tipos @meusDomicilios
+    @sicredi
+    @tipos
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "todos"                  |
@@ -406,27 +474,35 @@ Feature: Pagos
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "Antecipação automática" |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "Antecipação manual"     |
 
-    @sicredi @codPagamento @valoresCedidos
+    @sicredi
+    @codPagamento
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | filtro              | valor              |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "primeiroRegistro" |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "WWW333"           |
 
-    @sicredi @status @valoresCedidos
+    @sicredi
+    @status
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | filtro   | valor     |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "todos"   |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Enviado" |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Pago"    |
 
-    @sicredi @produto @valoresCedidos
+    @sicredi
+    @produto
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | filtro    | valor     |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "todos"   |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Crédito" |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Débito"  |
 
-    @sicredi @bandeira @valoresCedidos
+    @sicredi
+    @bandeira
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | filtro     | valor             |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "todos"           |
@@ -437,25 +513,33 @@ Feature: Pagos
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Amex Full"       |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "CABAL"           |
 
-    @sicredi @valores @valoresCedidos
+    @sicredi
+    @valores
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | filtro    | valor       |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "2000;3000" |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "5000;8000" |
 
-    @sicredi @estabelecimento @valoresCedidos
+    @sicredi
+    @estabelecimento
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | filtro            | valor      |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "todos"    |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "99990095" |
 
-    @sicredi @banco @valoresCedidos
+    @sicredi
+    @banco
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | filtro  | valor                      |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "todos"                    |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "341 - Itaú Unibanco S.A." |
 
-    @sicredi @tipos @valoresCedidos
+    @sicredi
+    @tipos
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "todos"                  |
@@ -463,27 +547,35 @@ Feature: Pagos
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação automática" |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
 
-    @azulzinha @codPagamento @meusDomicilios
+    @azulzinha
+    @codPagamento
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | filtro              | valor              |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "primeiroRegistro" |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "WWW333"           |
 
-    @azulzinha @status @meusDomicilios
+    @azulzinha
+    @status
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | filtro   | valor     |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "todos"   |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "Enviado" |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "Pago"    |
 
-    @azulzinha @produto @meusDomicilios
+    @azulzinha
+    @produto
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | filtro    | valor     |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "todos"   |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "Crédito" |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "Débito"  |
 
-    @azulzinha @bandeira @meusDomicilios
+    @azulzinha
+    @bandeira
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | filtro     | valor             |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "todos"           |
@@ -494,25 +586,33 @@ Feature: Pagos
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "Amex Full"       |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "CABAL"           |
 
-    @azulzinha @valores @meusDomicilios
+    @azulzinha
+    @valores
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | filtro    | valor       |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Valores" | "2000;3000" |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Valores" | "5000;8000" |
 
-    @azulzinha @estabelecimento @meusDomicilios
+    @azulzinha
+    @estabelecimento
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | filtro            | valor      |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Estabelecimento" | "todos"    |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Estabelecimento" | "91913769" |
 
-    @azulzinha @banco @meusDomicilios
+    @azulzinha
+    @banco
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Banco" | "todos"                  |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Banco" | "077 - Banco Inter S.A." |
 
-    @azulzinha @tipos @meusDomicilios
+    @azulzinha
+    @tipos
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "todos"                  |
@@ -520,27 +620,35 @@ Feature: Pagos
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "Antecipação automática" |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "Antecipação manual"     |
 
-    @azulzinha @codPagamento @valoresCedidos
+    @azulzinha
+    @codPagamento
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | filtro              | valor              |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "primeiroRegistro" |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "WWW333"           |
 
-    @azulzinha @status @valoresCedidos
+    @azulzinha
+    @status
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | filtro   | valor     |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "todos"   |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Enviado" |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Pago"    |
 
-    @azulzinha @produto @valoresCedidos
+    @azulzinha
+    @produto
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | filtro    | valor     |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "todos"   |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Crédito" |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Débito"  |
 
-    @azulzinha @bandeira @valoresCedidos
+    @azulzinha
+    @bandeira
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | filtro     | valor             |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "todos"           |
@@ -551,25 +659,33 @@ Feature: Pagos
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Amex Full"       |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "CABAL"           |
 
-    @azulzinha @valores @valoresCedidos
+    @azulzinha
+    @valores
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | filtro    | valor       |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "2000;3000" |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "5000;8000" |
 
-    @azulzinha @estabelecimento @valoresCedidos
+    @azulzinha
+    @estabelecimento
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | filtro            | valor      |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "todos"    |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "99990095" |
 
-    @azulzinha @banco @valoresCedidos
+    @azulzinha
+    @banco
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | filtro  | valor                      |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "todos"                    |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "341 - Itaú Unibanco S.A." |
 
-    @azulzinha @tipos @valoresCedidos
+    @azulzinha
+    @tipos
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "todos"                  |
@@ -577,27 +693,35 @@ Feature: Pagos
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação automática" |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
 
-    @afinz @codPagamento @meusDomicilios
+    @afinz
+    @codPagamento
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro              | valor              |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "primeiroRegistro" |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "WWW333"           |
 
-    @afinz @status @meusDomicilios
+    @afinz
+    @status
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro   | valor     |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "todos"   |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "Enviado" |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "Pago"    |
 
-    @afinz @produto @meusDomicilios
+    @afinz
+    @produto
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro    | valor     |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "todos"   |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "Crédito" |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "Débito"  |
 
-    @afinz @bandeira @meusDomicilios
+    @afinz
+    @bandeira
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro     | valor             |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "todos"           |
@@ -608,25 +732,33 @@ Feature: Pagos
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "Amex Full"       |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "CABAL"           |
 
-    @afinz @valores @meusDomicilios
+    @afinz
+    @valores
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro    | valor       |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Valores" | "2000;3000" |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Valores" | "5000;8000" |
 
-    @afinz @estabelecimento @meusDomicilios
+    @afinz
+    @estabelecimento
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro            | valor      |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Estabelecimento" | "todos"    |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Estabelecimento" | "91913769" |
 
-    @afinz @banco @meusDomicilios
+    @afinz
+    @banco
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Banco" | "todos"                  |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Banco" | "077 - Banco Inter S.A." |
 
-    @afinz @tipos @meusDomicilios
+    @afinz
+    @tipos
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "todos"                  |
@@ -634,27 +766,35 @@ Feature: Pagos
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "Antecipação automática" |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "Antecipação manual"     |
 
-    @afinz @codPagamento @valoresCedidos
+    @afinz
+    @codPagamento
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | filtro              | valor              |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "primeiroRegistro" |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "WWW333"           |
 
-    @afinz @status @valoresCedidos
+    @afinz
+    @status
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | filtro   | valor     |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "todos"   |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Enviado" |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Pago"    |
 
-    @afinz @produto @valoresCedidos
+    @afinz
+    @produto
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | filtro    | valor     |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "todos"   |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Crédito" |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Débito"  |
 
-    @afinz @bandeira @valoresCedidos
+    @afinz
+    @bandeira
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | filtro     | valor             |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "todos"           |
@@ -665,25 +805,33 @@ Feature: Pagos
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Amex Full"       |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "CABAL"           |
 
-    @afinz @valores @valoresCedidos
+    @afinz
+    @valores
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | filtro    | valor       |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "2000;3000" |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "5000;8000" |
 
-    @afinz @estabelecimento @valoresCedidos
+    @afinz
+    @estabelecimento
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | filtro            | valor      |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "todos"    |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "99990095" |
 
-    @afinz @banco @valoresCedidos
+    @afinz
+    @banco
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | filtro  | valor                      |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "todos"                    |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "341 - Itaú Unibanco S.A." |
 
-    @afinz @tipos @valoresCedidos
+    @afinz
+    @tipos
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "todos"                  |
@@ -691,27 +839,35 @@ Feature: Pagos
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação automática" |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
 
-    @claropay @codPagamento @meusDomicilios
+    @claropay
+    @codPagamento
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | filtro              | valor              |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "primeiroRegistro" |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Cód. de pagamento" | "WWW333"           |
 
-    @claropay @status @meusDomicilios
+    @claropay
+    @status
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | filtro   | valor     |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "todos"   |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "Enviado" |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Status" | "Pago"    |
 
-    @claropay @produto @meusDomicilios
+    @claropay
+    @produto
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | filtro    | valor     |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "todos"   |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "Crédito" |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Produto" | "Débito"  |
 
-    @claropay @bandeira @meusDomicilios
+    @claropay
+    @bandeira
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | filtro     | valor             |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "todos"           |
@@ -722,25 +878,33 @@ Feature: Pagos
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "Amex Full"       |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Bandeira" | "CABAL"           |
 
-    @claropay @valores @meusDomicilios
+    @claropay
+    @valores
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | filtro    | valor       |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Valores" | "2000;3000" |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Valores" | "5000;8000" |
 
-    @claropay @estabelecimento @meusDomicilios
+    @claropay
+    @estabelecimento
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | filtro            | valor      |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Estabelecimento" | "todos"    |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Estabelecimento" | "91913769" |
 
-    @claropay @banco @meusDomicilios
+    @claropay
+    @banco
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Banco" | "todos"                  |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Banco" | "077 - Banco Inter S.A." |
 
-    @claropay @tipos @meusDomicilios
+    @claropay
+    @tipos
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "todos"                  |
@@ -748,27 +912,35 @@ Feature: Pagos
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "Antecipação automática" |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Tipos" | "Antecipação manual"     |
 
-    @claropay @codPagamento @valoresCedidos
+    @claropay
+    @codPagamento
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | filtro              | valor              |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "primeiroRegistro" |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "WWW333"           |
 
-    @claropay @status @valoresCedidos
+    @claropay
+    @status
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | filtro   | valor     |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "todos"   |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Enviado" |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Pago"    |
 
-    @claropay @produto @valoresCedidos
+    @claropay
+    @produto
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | filtro    | valor     |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "todos"   |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Crédito" |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Débito"  |
 
-    @claropay @bandeira @valoresCedidos
+    @claropay
+    @bandeira
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | filtro     | valor             |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "todos"           |
@@ -779,25 +951,33 @@ Feature: Pagos
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Amex Full"       |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "CABAL"           |
 
-    @claropay @valores @valoresCedidos
+    @claropay
+    @valores
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | filtro    | valor       |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "2000;3000" |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "5000;8000" |
 
-    @claropay @estabelecimento @valoresCedidos
+    @claropay
+    @estabelecimento
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | filtro            | valor      |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "todos"    |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "99990095" |
 
-    @claropay @banco @valoresCedidos
+    @claropay
+    @banco
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | filtro  | valor                      |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "todos"                    |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "341 - Itaú Unibanco S.A." |
 
-    @claropay @tipos @valoresCedidos
+    @claropay
+    @tipos
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "todos"                  |
@@ -805,416 +985,658 @@ Feature: Pagos
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação automática" |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
 
-  @gerarArquivo @nomeArquivo
+  @gerarArquivo
+  @nomeArquivo
   @TestCaseKey=LPDC-T1274
   Scenario Outline: Validar nome do arquivo: <tipoArquivo> - Gerar arquivo - Pagos
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida o nome do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel @simplificado @meusDomicilios
+    @bin
+    @excel
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" |
 
-    @bin @excel @detalhado @meusDomicilios
+    @bin
+    @excel
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   |
 
-    @bin @csv @simplificado @meusDomicilios
+    @bin
+    @csv
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" |
 
-    @bin @csv @detalhado @meusDomicilios
+    @bin
+    @csv
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   |
 
-    @bin @excel @simplificado @valoresCedidos
+    @bin
+    @excel
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" |
 
-    @bin @excel @detalhado @valoresCedidos
+    @bin
+    @excel
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   |
 
-    @bin @csv @simplificado @valoresCedidos
+    @bin
+    @csv
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" |
 
-    @bin @csv @detalhado @valoresCedidos
+    @bin
+    @csv
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   |
 
-    @sicredi @excel @simplificado @meusDomicilios
+    @sicredi
+    @excel
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" |
 
-    @sicredi @excel @detalhado @meusDomicilios
+    @sicredi
+    @excel
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   |
 
-    @sicredi @csv @simplificado @meusDomicilios
+    @sicredi
+    @csv
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" |
 
-    @sicredi @csv @detalhado @meusDomicilios
+    @sicredi
+    @csv
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   |
 
-    @sicredi @excel @simplificado @valoresCedidos
+    @sicredi
+    @excel
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" |
 
-    @sicredi @excel @detalhado @valoresCedidos
+    @sicredi
+    @excel
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   |
 
-    @sicredi @csv @simplificado @valoresCedidos
+    @sicredi
+    @csv
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" |
 
-    @sicredi @csv @detalhado @valoresCedidos
+    @sicredi
+    @csv
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   |
 
-    @azulzinha @excel @simplificado @meusDomicilios
+    @azulzinha
+    @excel
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" |
 
-    @azulzinha @excel @detalhado @meusDomicilios
+    @azulzinha
+    @excel
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   |
 
-    @azulzinha @csv @simplificado @meusDomicilios
+    @azulzinha
+    @csv
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" |
 
-    @azulzinha @csv @detalhado @meusDomicilios
+    @azulzinha
+    @csv
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   |
 
-    @azulzinha @excel @simplificado @valoresCedidos
+    @azulzinha
+    @excel
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" |
 
-    @azulzinha @excel @detalhado @valoresCedidos
+    @azulzinha
+    @excel
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   |
 
-    @azulzinha @csv @simplificado @valoresCedidos
+    @azulzinha
+    @csv
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" |
 
-    @azulzinha @csv @detalhado @valoresCedidos
+    @azulzinha
+    @csv
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   |
 
-    @afinz @excel @simplificado @meusDomicilios
+    @afinz
+    @excel
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" |
 
-    @afinz @excel @detalhado @meusDomicilios
+    @afinz
+    @excel
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   |
 
-    @afinz @csv @simplificado @meusDomicilios
+    @afinz
+    @csv
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" |
 
-    @afinz @csv @detalhado @meusDomicilios
+    @afinz
+    @csv
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   |
 
-    @afinz @excel @simplificado @valoresCedidos
+    @afinz
+    @excel
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" |
 
-    @afinz @excel @detalhado @valoresCedidos
+    @afinz
+    @excel
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   |
 
-    @afinz @csv @simplificado @valoresCedidos
+    @afinz
+    @csv
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" |
 
-    @afinz @csv @detalhado @valoresCedidos
+    @afinz
+    @csv
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   |
 
-    @claropay @excel @simplificado @meusDomicilios
+    @claropay
+    @excel
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" |
 
-    @claropay @excel @detalhado @meusDomicilios
+    @claropay
+    @excel
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   |
 
-    @claropay @csv @simplificado @meusDomicilios
+    @claropay
+    @csv
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" |
 
-    @claropay @csv @detalhado @meusDomicilios
+    @claropay
+    @csv
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   |
 
-    @claropay @excel @simplificado @valoresCedidos
+    @claropay
+    @excel
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" |
 
-    @claropay @excel @detalhado @valoresCedidos
+    @claropay
+    @excel
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   |
 
-    @claropay @csv @simplificado @valoresCedidos
+    @claropay
+    @csv
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" |
 
-    @claropay @csv @detalhado @valoresCedidos
+    @claropay
+    @csv
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   |
 
-  @gerarArquivo @colunasArquivo
+  @gerarArquivo
+  @colunasArquivo
   @TestCaseKey=LPDC-T1279
   Scenario Outline: Validar colunas do arquivo: <tipoArquivo> - Gerar arquivo - Pagos
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
     Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
     And valida as colunas <colunas> do arquivo para o Tipo de arquivo <tipoArquivo> e Tipo de relatorio <tipoRelatorio> gerado - <abaRelatorio>
-    @bin @excel @simplificado @meusDomicilios
+    @bin
+    @excel
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @bin @excel @detalhado @meusDomicilios
+    @bin
+    @excel
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @bin @csv @simplificado @meusDomicilios
+    @bin
+    @csv
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                      |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
-    @bin @csv @detalhado @meusDomicilios
+    @bin
+    @csv
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @bin @excel @simplificado @valoresCedidos
+    @bin
+    @excel
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                  |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @bin @excel @detalhado @valoresCedidos
+    @bin
+    @excel
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @bin @csv @simplificado @valoresCedidos
+    @bin
+    @csv
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                     |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
-    @bin @csv @detalhado @valoresCedidos
+    @bin
+    @csv
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca      | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "binCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @sicredi @excel @simplificado @meusDomicilios
+    @sicredi
+    @excel
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @sicredi @excel @detalhado @meusDomicilios
+    @sicredi
+    @excel
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @sicredi @csv @simplificado @meusDomicilios
+    @sicredi
+    @csv
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                      |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
-    @sicredi @csv @detalhado @meusDomicilios
+    @sicredi
+    @csv
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @sicredi @excel @simplificado @valoresCedidos
+    @sicredi
+    @excel
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                  |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @sicredi @excel @detalhado @valoresCedidos
+    @sicredi
+    @excel
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @sicredi @csv @simplificado @valoresCedidos
+    @sicredi
+    @csv
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                     |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
-    @sicredi @csv @detalhado @valoresCedidos
+    @sicredi
+    @csv
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca          | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "sicrediCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @azulzinha @excel @simplificado @meusDomicilios
+    @azulzinha
+    @excel
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @azulzinha @excel @detalhado @meusDomicilios
+    @azulzinha
+    @excel
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @azulzinha @csv @simplificado @meusDomicilios
+    @azulzinha
+    @csv
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                      |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
-    @azulzinha @csv @detalhado @meusDomicilios
+    @azulzinha
+    @csv
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca     | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @azulzinha @excel @simplificado @valoresCedidos
+    @azulzinha
+    @excel
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                  |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @azulzinha @excel @detalhado @valoresCedidos
+    @azulzinha
+    @excel
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @azulzinha @csv @simplificado @valoresCedidos
+    @azulzinha
+    @csv
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                     |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
-    @azulzinha @csv @detalhado @valoresCedidos
+    @azulzinha
+    @csv
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca            | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "azulzinhaCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @afinz @excel @simplificado @meusDomicilios
+    @afinz
+    @excel
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @afinz @excel @detalhado @meusDomicilios
+    @afinz
+    @excel
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @afinz @csv @simplificado @meusDomicilios
+    @afinz
+    @csv
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                      |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
-    @afinz @csv @detalhado @meusDomicilios
+    @afinz
+    @csv
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @afinz @excel @simplificado @valoresCedidos
+    @afinz
+    @excel
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                  |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @afinz @excel @detalhado @valoresCedidos
+    @afinz
+    @excel
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @afinz @csv @simplificado @valoresCedidos
+    @afinz
+    @csv
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                     |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
-    @afinz @csv @detalhado @valoresCedidos
+    @afinz
+    @csv
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "afinzCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @claropay @excel @simplificado @meusDomicilios
+    @claropay
+    @excel
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @claropay @excel @detalhado @meusDomicilios
+    @claropay
+    @excel
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @claropay @csv @simplificado @meusDomicilios
+    @claropay
+    @csv
+    @simplificado
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                      |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
-    @claropay @csv @detalhado @meusDomicilios
+    @claropay
+    @csv
+    @detalhado
+    @meusDomicilios
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @claropay @excel @simplificado @valoresCedidos
+    @claropay
+    @excel
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                  |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @claropay @excel @detalhado @valoresCedidos
+    @claropay
+    @excel
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
-    @claropay @csv @simplificado @valoresCedidos
+    @claropay
+    @csv
+    @simplificado
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                     |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
-    @claropay @csv @detalhado @valoresCedidos
+    @claropay
+    @csv
+    @detalhado
+    @valoresCedidos
     Examples:
       | alianca           | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | "claropayCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
