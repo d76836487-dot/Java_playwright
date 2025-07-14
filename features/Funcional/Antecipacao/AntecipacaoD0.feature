@@ -129,6 +129,46 @@ Feature: AntecipacaoD0
       | 415    | Essencial - Recebimento quinzenal |
       | 720    | Essencial - Recebimento mensal    |
 
+  @TestCaseKey=LPDC-T1406
+  Scenario: Cliente sem contratação e sem saldo vê ofertas de planos D0 e D1
+    Given cliente não possui contratação de antecipação
+    And não possui saldo de antecipação
+    When logar no Portal do cliente
+    Then deve visualizar as ofertas dos planos D0 e D1
+    When clicar em uma das ofertas
+    Then deve ser direcionado para a tela de onboarding
+    And deve exibir o botão [Avançar]
+    When clicar no botão [Avançar]
+    Then deve entrar na tela de Planos
+    And deve ter a opção de visualizar [Vendas pagas no mesmo dia] ou [em 1 dia útil]
+    When cliente selecionar um plano e clicar no botão para a contratação do plano selecionado
+    Then deve ser direcionado para a tela de "Obrigada"
+
+  @TestCaseKey=LPDC-T1405
+  Scenario: Cliente elegível sem contratação de D0 e D1 e com saldo disponível
+    Given cliente é elegível e não possui contratação de antecipação D0 e D1
+    And possui saldo de antecipação disponível
+    When acessar a tela de opções de plano
+    Then deve ser exibida a opção de saldo disponível
+    And a opção de confirmar a contratação com as opções [Mesmo dia] e [em 1 dia útil]
+    When clicar na confirmação da contratação
+    Then canal deve exibir o saldo disponível para o plano escolhido
+    And deve exibir o botão [Contratar]
+    When cliente clicar no botão [Contratar]
+    Then deve ser direcionado para a tela de "Obrigada"
+
+  @TestCaseKey=LPDC-T1404
+  Scenario: Cliente elegível com contratacao D1 migra para plano D0
+    Given cliente é elegível e possui o serviço de antecipação D1 contratado
+    And possui saldo de antecipação
+    When acessar a tela de migração de plano
+    Then deve ser exibida a tela de migração de plano sem a opção de saldo disponível
+    And deve existir a opção de confirmar a contratação
+    When cliente clicar na confirmação
+    Then canal deve exibir apenas o plano escolhido (D0) e o botão [Contratar]
+    Then cliente clicar no botão [Contratar]
+    Then deve ser direcionado para a tela de "Obrigada"
+
   @TestCaseKey=LPDC-T1381
   Scenario: Usuário tenta contratar antecipação fora do deadline
     Given o usuário está logado no Portal do cliente após 30/06
@@ -153,12 +193,6 @@ Feature: AntecipacaoD0
     Given usuário está na aba "Recebimentos Pagos"
     When as sub abas "Meus Domicílios" e "Valores Cedidos" forem unificadas
     Then todas as informações devem estar concentradas na mesma aba "Recebimentos Pagos"
-
-  @TestCaseKey=LPDC-T1383
-  Scenario: Verificar ausência de sub abas após unificação
-    Given usuário está na aba "Recebimentos Pagos" após unificação
-    When visualizar as sub abas
-    Then não devem existir sub abas "Meus Domicílios" e "Valores Cedidos"
 
   @TestCaseKey=LPDC-T1382
   Scenario: Remover opção de personalizar colunas
