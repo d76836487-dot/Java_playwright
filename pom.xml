@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.fiserv.qabrazil</groupId>
         <artifactId>framework-parent-cucumber</artifactId>
-        <version>2024-08-15-20-48-99f0d053</version>
+        <version>2025-07-04-20-45-5cb75dfb</version>
     </parent>
 
     <artifactId>portal-do-cliente</artifactId>
@@ -29,6 +29,10 @@
         <dependency>
             <groupId>com.fiserv.qabrazil</groupId>
             <artifactId>framework-playwright</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fiserv.qabrazil</groupId>
+            <artifactId>zephyr-cucumber-plugin</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
         <dependency>
