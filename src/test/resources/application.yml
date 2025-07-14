@@ -10,9 +10,9 @@ framework:
       useRecordVideo: false
       useStorageState: false
     cli-options:
-      useLocalPlaywrightInstallation: true
+      useLocalPlaywrightInstallation: false
       localPlaywrightInstallationPath: '${user.home}\.playwright'
-      useCustomNodeJs: true
+      useCustomNodeJs: false
       customNodeJsPath: 'C:\Program Files\nodejs\node.exe'
       skipBrowserDownload: false
     launch-options:
