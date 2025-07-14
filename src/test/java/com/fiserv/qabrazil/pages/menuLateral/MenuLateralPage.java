@@ -7,6 +7,8 @@ import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 @ScenarioComponent
 public class MenuLateralPage extends GeneralUtils {
     @Autowired
@@ -33,6 +35,7 @@ public class MenuLateralPage extends GeneralUtils {
         if (menuSubmenu.isVisible()) {
             menuSubmenu.hover();
             menuSubmenu.click();
+            assertThat(menuSubmenu).isVisible();
         }
     }
 

@@ -13,10 +13,64 @@ public enum PerfilAcessoEnum {
         ,"125"
         ,setInstituicao("7")
     )
+    ,BIN_CEDIDOS(
+        "bin"
+        ,setUrlPortal("bin")
+        ,"cedidos"
+        ,"18711403829"
+        ,"Bin@12345678"
+        ,"125"
+        ,setInstituicao("7")
+    )
+    ,BIN_FRANQUEADOR(
+        "bin"
+        ,setUrlPortal("bin")
+        ,"franqueador"
+        ,"75213076000102"
+        ,"Fiserv@123"
+        ,"125"
+        ,setInstituicao("7")
+    )
+    ,BIN_FRANQUEADO(
+        "bin"
+        ,setUrlPortal("bin")
+        ,"franqueado"
+        ,"72646119000147"
+        ,"Fiserv@123"
+        ,"125"
+        ,setInstituicao("7")
+    )
     ,SICREDI(
         "sicredi"
         ,setUrlPortal("sicredi")
         ,"master"
+        ,"79750866000170"
+        ,"Fiserv@1234"
+        ,"110"
+        ,setInstituicao("4")
+    )
+    ,SICREDI_CEDIDOS(
+        "sicredi"
+        ,setUrlPortal("sicredi")
+        ,"cedidos"
+        ,"79750866000170"
+        ,"Fiserv@1234"
+        ,"110"
+        ,setInstituicao("4")
+    )
+    ,SICREDI_FRANQUEADOR(
+        "sicredi"
+        ,setUrlPortal("sicredi")
+        ,"franqueador"
+        ,"72513134000117"
+        ,"Fiserv@12345"
+        ,"110"
+        ,setInstituicao("4")
+    )
+    ,SICREDI_FRANQUEADO(
+        "sicredi"
+        ,setUrlPortal("sicredi")
+        ,"franqueado"
         ,"79750866000170"
         ,"Fiserv@1234"
         ,"110"
@@ -31,10 +85,64 @@ public enum PerfilAcessoEnum {
         ,"149"
         ,setInstituicao("7")
     )
+    ,AZULZINHA_CEDIDOS(
+        "azulzinha"
+        ,setUrlPortal("azulzinha")
+        ,"cedidos"
+        ,"31561999000171"
+        ,"Fiserv@0987"
+        ,"149"
+        ,setInstituicao("7")
+    )
+    ,AZULZINHA_FRANQUEADOR(
+        "azulzinha"
+        ,setUrlPortal("azulzinha")
+        ,"franqueador"
+        ,"31561999000171"
+        ,"Fiserv@0987"
+        ,"149"
+        ,setInstituicao("7")
+    )
+    ,AZULZINHA_FRANQUEADO(
+        "azulzinha"
+        ,setUrlPortal("azulzinha")
+        ,"franqueado"
+        ,"31561999000171"
+        ,"Fiserv@0987"
+        ,"149"
+        ,setInstituicao("7")
+    )
     ,AFINZ(
         "afinz"
         ,setUrlPortal("afinz")
         ,"master"
+        ,"72798336082"
+        ,"Fiserv@456"
+        ,"143"
+        ,setInstituicao("10")
+    )
+    ,AFINZ_CEDIDOS(
+        "afinz"
+        ,setUrlPortal("afinz")
+        ,"cedidos"
+        ,"72798336082"
+        ,"Fiserv@456"
+        ,"143"
+        ,setInstituicao("10")
+    )
+    ,AFINZ_FRANQUEADOR(
+        "afinz"
+        ,setUrlPortal("afinz")
+        ,"franqueador"
+        ,"72798336082"
+        ,"Fiserv@456"
+        ,"143"
+        ,setInstituicao("10")
+    )
+    ,AFINZ_FRANQUEADO(
+        "afinz"
+        ,setUrlPortal("afinz")
+        ,"franqueado"
         ,"72798336082"
         ,"Fiserv@456"
         ,"143"
@@ -49,46 +157,27 @@ public enum PerfilAcessoEnum {
         ,"239"
         ,setInstituicao("7")
     )
-    ,BIN_CEDIDOS(
-        "bin"
-        ,setUrlPortal("bin")
-        ,"cedidos"
-        ,"18711403829"
-        ,"Bin@12345678"
-        ,"125"
-        ,setInstituicao("7")
-    )
-    ,SICREDI_CEDIDOS(
-        "sicredi"
-        ,setUrlPortal("sicredi")
-        ,"cedidos"
-        ,"79750866000170"
-        ,"Fiserv@1234"
-        ,"110"
-        ,setInstituicao("4")
-    )
-    ,AZULZINHA_CEDIDOS(
-        "azulzinha"
-        ,setUrlPortal("azulzinha")
-        ,"cedidos"
-        ,"31561999000171"
-        ,"Fiserv@0987"
-        ,"149"
-        ,setInstituicao("7")
-    )
-    ,AFINZ_CEDIDOS(
-        "afinz"
-        ,setUrlPortal("afinz")
-        ,"cedidos"
-        ,"72798336082"
-        ,"Fiserv@456"
-        ,"143"
-        ,setInstituicao("10")
-    )
     ,CLAROPAY_CEDIDOS(
         "claropay"
         ,setUrlPortal("portal239")
         ,"cedidos"
+        ,"33414095000149"
+        ,"ClaroPay@123"
+        ,"239"
+        ,setInstituicao("7")
+    )
+    ,CLAROPAY_FRANQUEADOR(
+        "claropay"
+        ,setUrlPortal("portal239")
+        ,"franqueador"
+        ,"33414095000149"
+        ,"ClaroPay@123"
+        ,"239"
+        ,setInstituicao("7")
+    ),CLAROPAY_FRANQUEADO(
+        "claropay"
+        ,setUrlPortal("portal239")
+        ,"franqueado"
         ,"33414095000149"
         ,"ClaroPay@123"
         ,"239"

@@ -42,8 +42,9 @@ public class GeracaoArquivos {
         nomeArquivo = nomeArquivo.concat(fullDate);
         String extensao = getExtensao(tipoArquivo);
 
-        if (download.suggestedFilename().contains(nomeArquivo)
-                && download.suggestedFilename().contains(extensao)
+        if (
+            download.suggestedFilename().contains(nomeArquivo)
+            && download.suggestedFilename().contains(extensao)
         )
             retorno = true;
 
@@ -64,20 +65,20 @@ public class GeracaoArquivos {
         return novoDiretorio.toFile();
     }
 
-    public static boolean validarColunasTipoArquivo(File arquivo, int linhaInicio, List<String> listaColunas) throws IOException {
+    public static boolean validarCabecalhoTipoArquivo(File arquivo, int linhaInicio, List<String> listaColunas) throws IOException {
         boolean retorno = false;
 
         String nomeArquivo = arquivo.getName();
 
         if (nomeArquivo.endsWith(".xlsx"))
-            retorno = validarColunasExcel(arquivo, linhaInicio, listaColunas);
+            retorno = validarCabecalhoExcel(arquivo, linhaInicio, listaColunas);
         else if (nomeArquivo.endsWith(".csv"))
-            retorno = validarColunasCSV(arquivo, listaColunas);
+            retorno = validarCabecalhoCSV(arquivo, listaColunas);
 
         return retorno;
     }
 
-    private static boolean validarColunasExcel(File arquivo, int linhaInicio, List<String> listaColunas) throws IOException {
+    private static boolean validarCabecalhoExcel(File arquivo, int linhaInicio, List<String> listaColunas) throws IOException {
         try (FileInputStream fis = new FileInputStream(arquivo);
              Workbook workbook = new XSSFWorkbook(fis)) {
             Sheet sheet = workbook.getSheetAt(0);
@@ -96,7 +97,7 @@ public class GeracaoArquivos {
         }
     }
 
-    private static boolean validarColunasCSV(File arquivo, List<String> listaColunas) throws IOException {
+    private static boolean validarCabecalhoCSV(File arquivo, List<String> listaColunas) throws IOException {
         try (Reader reader = new InputStreamReader(new FileInputStream(arquivo), StandardCharsets.ISO_8859_1);
              CSVParser csvParser = new CSVParser(
                  reader
@@ -116,5 +117,26 @@ public class GeracaoArquivos {
 
             return retorno;
         }
+    }
+
+    public static boolean validarColunasTipoArquivo(File arquivo, int linhaInicio, String colunas) throws IOException {
+        boolean retorno = false;
+
+        String nomeArquivo = arquivo.getName();
+
+        if (nomeArquivo.endsWith(".xlsx"))
+            retorno = validarColunasExcel(arquivo, linhaInicio, colunas);
+        else if (nomeArquivo.endsWith(".csv"))
+            retorno = validarColunasCSV(arquivo, colunas);
+
+        return retorno;
+    }
+
+    private static boolean validarColunasExcel(File arquivo, int linhaInicio, String colunas) throws IOException {
+        return false;
+    }
+
+    private static boolean validarColunasCSV(File arquivo, String colunas) throws IOException {
+        return false;
     }
 }

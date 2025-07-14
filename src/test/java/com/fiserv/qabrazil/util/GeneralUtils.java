@@ -1,5 +1,6 @@
 package com.fiserv.qabrazil.util;
 
+import com.fiserv.qabrazil.enums.PerfilAcessoEnum;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.LoadState;
@@ -69,6 +70,17 @@ public class GeneralUtils extends WaitUtil {
         }
     }
 
+    public static void waitIsNotVisibleForSeconds(Locator locator, int seconds) {
+        int i = seconds;
+
+        while (i > 0) {
+            sleep(Duration.ofMillis(1000L));
+            i--;
+        }
+
+        assertThat(locator).not().isVisible();
+    }
+
     public static void checkIfValueIsNotEmpty(Locator locator) {
         waitIsVisibleForSeconds(locator, Config.WAIT_LEVEL_1);
         assertThat(locator).not().isEmpty();
@@ -99,5 +111,39 @@ public class GeneralUtils extends WaitUtil {
                 .replace(",", ".")
                 .replace("R$", "")
         );
+    }
+
+    public static int getIntLocator(Locator locator) {
+        return Integer.parseInt(locator.textContent().trim());
+    }
+
+    public static double getDoubleLocator(Locator locator) {
+        return replaceMonetaryValue(locator.textContent());
+    }
+
+    public static PerfilAcessoEnum getPerfilAcesso(String alianca) {
+        return switch (alianca) {
+            case "bin" -> PerfilAcessoEnum.BIN;
+            case "binCedidos" -> PerfilAcessoEnum.BIN_CEDIDOS;
+            case "binFranqueador" -> PerfilAcessoEnum.BIN_FRANQUEADOR;
+            case "binFranqueado" -> PerfilAcessoEnum.BIN_FRANQUEADO;
+            case "sicredi" -> PerfilAcessoEnum.SICREDI;
+            case "sicrediCedidos" -> PerfilAcessoEnum.SICREDI_CEDIDOS;
+            case "sicrediFranqueador" -> PerfilAcessoEnum.SICREDI_FRANQUEADOR;
+            case "sicrediFranqueado" -> PerfilAcessoEnum.SICREDI_FRANQUEADO;
+            case "azulzinha" -> PerfilAcessoEnum.AZULZINHA;
+            case "azulzinhaCedidos" -> PerfilAcessoEnum.AZULZINHA_CEDIDOS;
+            case "azulzinhaFranqueador" -> PerfilAcessoEnum.AZULZINHA_FRANQUEADOR;
+            case "azulzinhaFranqueado" -> PerfilAcessoEnum.AZULZINHA_FRANQUEADO;
+            case "afinz" -> PerfilAcessoEnum.AFINZ;
+            case "afinzCedidos" -> PerfilAcessoEnum.AFINZ_CEDIDOS;
+            case "afinzFranqueador" -> PerfilAcessoEnum.AFINZ_FRANQUEADOR;
+            case "afinzFranqueado" -> PerfilAcessoEnum.AFINZ_FRANQUEADO;
+            case "claropay" -> PerfilAcessoEnum.CLAROPAY;
+            case "claropayCedidos" -> PerfilAcessoEnum.CLAROPAY_CEDIDOS;
+            case "claropayFranqueador" -> PerfilAcessoEnum.CLAROPAY_FRANQUEADOR;
+            case "claropayFranqueado" -> PerfilAcessoEnum.CLAROPAY_FRANQUEADO;
+            default -> PerfilAcessoEnum.BIN;
+        };
     }
 }

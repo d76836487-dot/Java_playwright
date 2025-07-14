@@ -71,6 +71,37 @@ Feature: Historico de vendas
       | alianca    | menu     | submenu           | abaRelatorio          | campos                                                      |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Total de vendas;Valor bruto;Valor líquido;Valor cancelado" |
 
+  @totalizadores
+  Scenario Outline: Validar totalizadores - Historico de vendas
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And valida os totalizadores - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          |
+      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+
+    @sicredi
+    Examples:
+      | alianca   | menu     | submenu           | abaRelatorio          |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu     | submenu           | abaRelatorio          |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+
+    @afinz
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio          |
+      | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+
   @periodo
   @TestCaseKey=LPDC-T1237
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Historico de vendas

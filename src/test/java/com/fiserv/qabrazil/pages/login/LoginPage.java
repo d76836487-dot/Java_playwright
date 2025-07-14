@@ -1,7 +1,6 @@
 package com.fiserv.qabrazil.pages.login;
 
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
-import com.fiserv.qabrazil.enums.PerfilAcessoEnum;
 import com.fiserv.qabrazil.util.Config;
 import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
@@ -28,71 +27,9 @@ public class LoginPage extends GeneralUtils {
     }
 
     public void acessarLoginPortal(String alianca) {
-        String url = "";
-        String user = "";
-        String pass = "";
-
-        switch (alianca) {
-            case "bin":
-                url = PerfilAcessoEnum.BIN.getUrlPortal();
-                user = PerfilAcessoEnum.BIN.getUsuario();
-                pass = PerfilAcessoEnum.BIN.getSenha();
-                break;
-
-            case "sicredi":
-                url = PerfilAcessoEnum.SICREDI.getUrlPortal();
-                user = PerfilAcessoEnum.SICREDI.getUsuario();
-                pass = PerfilAcessoEnum.SICREDI.getSenha();
-                break;
-
-            case "azulzinha":
-                url = PerfilAcessoEnum.AZULZINHA.getUrlPortal();
-                user = PerfilAcessoEnum.AZULZINHA.getUsuario();
-                pass = PerfilAcessoEnum.AZULZINHA.getSenha();
-                break;
-
-            case "afinz":
-                url = PerfilAcessoEnum.AFINZ.getUrlPortal();
-                user = PerfilAcessoEnum.AFINZ.getUsuario();
-                pass = PerfilAcessoEnum.AFINZ.getSenha();
-                break;
-
-            case "claropay":
-                url = PerfilAcessoEnum.CLAROPAY.getUrlPortal();
-                user = PerfilAcessoEnum.CLAROPAY.getUsuario();
-                pass = PerfilAcessoEnum.CLAROPAY.getSenha();
-                break;
-
-            case "binCedidos":
-                url = PerfilAcessoEnum.BIN_CEDIDOS.getUrlPortal();
-                user = PerfilAcessoEnum.BIN_CEDIDOS.getUsuario();
-                pass = PerfilAcessoEnum.BIN_CEDIDOS.getSenha();
-                break;
-
-            case "sicrediCedidos":
-                url = PerfilAcessoEnum.SICREDI_CEDIDOS.getUrlPortal();
-                user = PerfilAcessoEnum.SICREDI_CEDIDOS.getUsuario();
-                pass = PerfilAcessoEnum.SICREDI_CEDIDOS.getSenha();
-                break;
-
-            case "azulzinhaCedidos":
-                url = PerfilAcessoEnum.AZULZINHA_CEDIDOS.getUrlPortal();
-                user = PerfilAcessoEnum.AZULZINHA_CEDIDOS.getUsuario();
-                pass = PerfilAcessoEnum.AZULZINHA_CEDIDOS.getSenha();
-                break;
-
-            case "afinzCedidos":
-                url = PerfilAcessoEnum.AFINZ_CEDIDOS.getUrlPortal();
-                user = PerfilAcessoEnum.AFINZ_CEDIDOS.getUsuario();
-                pass = PerfilAcessoEnum.AFINZ_CEDIDOS.getSenha();
-                break;
-
-            case "claropayCedidos":
-                url = PerfilAcessoEnum.CLAROPAY_CEDIDOS.getUrlPortal();
-                user = PerfilAcessoEnum.CLAROPAY_CEDIDOS.getUsuario();
-                pass = PerfilAcessoEnum.CLAROPAY_CEDIDOS.getSenha();
-                break;
-        }
+        String url = getPerfilAcesso(alianca).getUrlPortal();
+        String user = getPerfilAcesso(alianca).getUsuario();
+        String pass = getPerfilAcesso(alianca).getSenha();
 
         page.navigate(url);
         waitForLoad(page, true, true, true);

@@ -388,7 +388,7 @@ Feature: Login
     @Hoje
     Examples:
       | alianca | dashboard       | abaRelatorio |
-      | "bin"   | "vendas"        | "Hoje"       |
+      | "bin"   | "vendasHoje"    | "Hoje"       |
       | "bin"   | "ultimasVendas" | "Hoje"       |
 
     @bin
@@ -404,7 +404,7 @@ Feature: Login
     @Hoje
     Examples:
       | alianca   | dashboard       | abaRelatorio |
-      | "sicredi" | "vendas"        | "Hoje"       |
+      | "sicredi" | "vendasHoje"    | "Hoje"       |
       | "sicredi" | "ultimasVendas" | "Hoje"       |
 
     @sicredi
@@ -420,7 +420,7 @@ Feature: Login
     @Hoje
     Examples:
       | alianca     | dashboard       | abaRelatorio |
-      | "azulzinha" | "vendas"        | "Hoje"       |
+      | "azulzinha" | "vendasHoje"        | "Hoje"       |
       | "azulzinha" | "ultimasVendas" | "Hoje"       |
 
     @azulzinha
@@ -436,7 +436,7 @@ Feature: Login
     @Hoje
     Examples:
       | alianca | dashboard       | abaRelatorio |
-      | "afinz" | "vendas"        | "Hoje"       |
+      | "afinz" | "vendasHoje"    | "Hoje"       |
       | "afinz" | "ultimasVendas" | "Hoje"       |
 
     @afinz
@@ -452,7 +452,7 @@ Feature: Login
     @Hoje
     Examples:
       | alianca    | dashboard       | abaRelatorio |
-      | "claropay" | "vendas"        | "Hoje"       |
+      | "claropay" | "vendasHoje"    | "Hoje"       |
       | "claropay" | "ultimasVendas" | "Hoje"       |
 
     @claropay

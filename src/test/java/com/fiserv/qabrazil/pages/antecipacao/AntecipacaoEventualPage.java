@@ -135,8 +135,8 @@ public class AntecipacaoEventualPage extends GeneralUtils {
             double valorReceber = replaceMonetaryValue(this.valorReceber.textContent());
 
             boolean verificacao = (
-                    (valorDisponivelPersonalizado == valorSolicitado)
-                            && ((valorSolicitado - valorDescontado) == valorReceber)
+                (valorDisponivelPersonalizado == valorSolicitado)
+                && ((valorSolicitado - valorDescontado) == valorReceber)
             );
             Assert.assertTrue(verificacao);
         } else if (validacao == 2) {
@@ -144,7 +144,7 @@ public class AntecipacaoEventualPage extends GeneralUtils {
             double valorSolicitacaoAntecipacao = replaceMonetaryValue(this.valorSolicitacaoAntecipacao.textContent());
 
             boolean verificacao = (
-                    (valorDisponivelPersonalizado == valorSolicitacaoAntecipacao)
+                valorDisponivelPersonalizado == valorSolicitacaoAntecipacao
             );
             Assert.assertTrue(verificacao);
         }

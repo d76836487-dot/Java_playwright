@@ -34,4 +34,8 @@ public class HojePage extends GeneralUtils {
                 checkIfValueIsNotEmpty(this.valorBruto);
         }
     }
+
+    public int getTotalVendas() { return getIntLocator(this.totalVendas); }
+
+    public double getValorBruto() { return getDoubleLocator(this.valorBruto); }
 }

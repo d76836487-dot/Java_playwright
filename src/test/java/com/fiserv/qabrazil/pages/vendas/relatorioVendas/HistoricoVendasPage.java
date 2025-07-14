@@ -59,6 +59,12 @@ public class HistoricoVendasPage extends GeneralUtils {
         }
     }
 
+    public int getTotalVendas() { return getIntLocator(this.totalVendas); }
+
+    public double getValorBruto() { return getDoubleLocator(this.valorBruto); }
+
+    public double getValorLiquido() { return getDoubleLocator(this.valorLiquido); }
+
     // Mais detalhes
     public void verificarDadosMaisDetalhes() {
         click(this.linkMaisDetalhes);

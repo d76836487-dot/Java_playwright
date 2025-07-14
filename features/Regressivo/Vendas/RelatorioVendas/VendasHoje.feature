@@ -71,6 +71,37 @@ Feature: Vendas Hoje
       | alianca    | menu     | submenu           | abaRelatorio | campos                        |
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Total de vendas;Valor bruto" |
 
+  @totalizadores
+  Scenario Outline: Validar totalizadores - Vendas Hoje
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And valida os totalizadores - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio |
+      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       |
+
+    @sicredi
+    Examples:
+      | alianca   | menu     | submenu           | abaRelatorio |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu     | submenu           | abaRelatorio |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       |
+
+    @afinz
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio |
+      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1233
   Scenario Outline: Personalizar colunas - Vendas Hoje

@@ -17,9 +17,19 @@ public class ComponentesRelatoriosSteps {
         componentesRelatoriosPage.validarCarregamentoAbaRelatorio(abaRelatorio);
     }
 
+    @And("valida que {string} as transacoes")
+    public void valida_que_as_transacoes(String apresentacao) {
+        componentesRelatoriosPage.validarApresentacaoTransacoes(apresentacao);
+    }
+
     @And("visualiza os campos {string} - {string}")
     public void visualiza_os_campos(String campos, @NotNull String abaRelatorio) {
         componentesRelatoriosPage.verificarCampos(campos, abaRelatorio);
+    }
+
+    @And("valida os totalizadores - {string}")
+    public void valida_os_totalizadores(@NotNull String abaRelatorio) throws IOException {
+        componentesRelatoriosPage.validarTotalizadores(abaRelatorio);
     }
 
     @And("aplica o periodo {string} - {string}")
@@ -30,6 +40,11 @@ public class ComponentesRelatoriosSteps {
     @And("valida o periodo {string} aplicado - {string}")
     public void valida_o_periodo_aplicado(String periodo, String abaRelatorio) {
         componentesRelatoriosPage.validarPeriodoAplicado(periodo, abaRelatorio);
+    }
+
+    @And("que no Personalizar colunas nao apresenta as colunas {string} - {string}")
+    public void que_no_Personalizar_colunas_nao_apresenta_as_colunas(String colunas, String abaRelatorio) {
+        componentesRelatoriosPage.isViewColunasPersonalizar(colunas, abaRelatorio);
     }
 
     @And("realiza a personalizacao das colunas {string} - {string}")
@@ -59,6 +74,6 @@ public class ComponentesRelatoriosSteps {
 
     @And("valida as colunas {string} do arquivo para o Tipo de arquivo {string} e Tipo de relatorio {string} gerado - {string}")
     public void valida_as_colunas_do_arquivo_para_o_Tipo_de_arquivo_e_Tipo_de_relatorio__gerado(String colunas, String tipoArquivo, String tipoRelatorio, String abaRelatorio) throws IOException {
-        componentesRelatoriosPage.validarColunasArquivo(colunas, tipoArquivo, tipoRelatorio, abaRelatorio);
+        componentesRelatoriosPage.validarCabecalhoArquivo(colunas, tipoArquivo, tipoRelatorio, abaRelatorio);
     }
 }

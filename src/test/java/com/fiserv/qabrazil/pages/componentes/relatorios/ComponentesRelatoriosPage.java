@@ -84,6 +84,9 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
     private Locator linkVoltarPadrao;
     private Locator btnAplicarPersonalizacao;
 
+    // Registros
+    private Locator nenhumResultadoEncontrado;
+
     // Gerar arquivo
     private Locator titleExportar;
     private Locator slcTipoArquivo;
@@ -175,6 +178,9 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
         this.titlePersonalizarColunas = page.locator("//*[contains(text(), 'Personalize a visualização das colunas')]");
         this.linkVoltarPadrao = page.locator("//*[text()='Voltar ao padrão']");
         this.btnAplicarPersonalizacao = page.locator("//span[text()='Aplicar']");
+
+        // Registros
+        this.nenhumResultadoEncontrado = page.locator("//*[contains(text(), 'Nenhum resultado encontrado')]");
 
         // Gerar arquivo
         this.titleExportar = page.locator("//*[text()='Escolha como deseja exportar o relatório']");
@@ -269,6 +275,122 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
             historicoPage.verificarCampos(campos);
         else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações"))
             relatorioAntecipacoesPage.verificarCampos(campos);
+    }
+
+    private boolean verificarTotalizadoresAba(String abaRelatorio) {
+        Locator btnNext = page.locator("//*[@class='border-size-none pagination-button']/*[contains(@class, 'right')]");
+        Locator lastPageNumber = page.locator("//*[contains(@class, 'pagination-button')]/span").last();
+        boolean verificacaoTotalizadoresAba = false;
+
+        // Totalizadores
+        int total01 = 0;
+        int countTotal01 = 0;
+        double valor01 = 0;
+        double countValor01 = 0;
+        double valor02 = 0;
+        double countValor02 = 0;
+
+        // Vendas
+        if (abaRelatorio.equalsIgnoreCase("Hoje")) {
+            total01 = hojePage.getTotalVendas();
+            valor01 = hojePage.getValorBruto();
+        } else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
+            total01 = historicoVendasPage.getTotalVendas();
+            valor01 = historicoVendasPage.getValorBruto();
+            valor02 = historicoVendasPage.getValorLiquido();
+        }
+
+        int sizePagination = getIntLocator(lastPageNumber);
+        for (int i = 0; i < sizePagination; i++) {
+            waitForSeconds(Config.WAIT_LEVEL_1);
+
+            // Vendas
+            if (abaRelatorio.equalsIgnoreCase("Hoje")) {
+                Locator resultadoColunaValorBruto =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBruto");
+
+                for (int j = 0; j < resultadoColunaValorBruto.count(); j++) {
+                    resultadoColunaValorBruto.nth(j).scrollIntoViewIfNeeded();
+                    countTotal01++;
+                    countValor01 += getDoubleLocator(resultadoColunaValorBruto.nth(j));
+                }
+
+                verificacaoTotalizadoresAba = (
+                    total01 == countTotal01
+                    && valor01 == countValor01
+                );
+            } else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
+                Locator resultadoColunaValorBruto =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBruto");
+
+                Locator resultadoColunaValorLiquido =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorLiquido");
+
+                for (int j = 0; j < resultadoColunaValorBruto.count(); j++) {
+                    resultadoColunaValorBruto.nth(j).scrollIntoViewIfNeeded();
+                    countTotal01++;
+                    countValor01 += getDoubleLocator(resultadoColunaValorBruto.nth(j));
+                    countValor02 += getDoubleLocator(resultadoColunaValorLiquido.nth(j));
+                }
+
+                verificacaoTotalizadoresAba = (
+                    total01 == countTotal01
+                    && valor01 == countValor01
+                    && valor02 == countValor02
+                );
+            }
+
+            if ((i + 1) != sizePagination)
+                click(btnNext);
+        }
+
+        return verificacaoTotalizadoresAba;
+    }
+
+    private void verificarTotalizadoresArquivo(String abaRelatorio) throws IOException {
+        boolean verificacaoTotalizadoresArquivo;
+
+        String[] listaTipoArquivo = "Excel;CSV".split(";");
+        String[] listaTipoRelatorio = new String[0];
+        String colunas = "";
+
+        // Vendas
+        if (abaRelatorio.equalsIgnoreCase("Hoje")) {
+            listaTipoRelatorio = "N".split(";");
+            colunas = "A13_Total de vendas: ;A14_Valor bruto: ;A15_Valor não efetivadas: |I18_Valor bruto|I2_Valor bruto";
+        } else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
+            listaTipoRelatorio = "simplificado;detalhado".split(";");
+            colunas = "";
+        }
+
+        for (String tipoArquivo : listaTipoArquivo) {
+            for (String tipoRelatorio : listaTipoRelatorio) {
+                // realiza o exportar
+                click(this.getLocatorFromReportTab(abaRelatorio, "btnExportar"));
+                waitIsVisibleForSeconds(this.titleExportar, Config.WAIT_LEVEL_1);
+                this.selecionarTipoArquivo(tipoArquivo, abaRelatorio);
+
+                this.selecionarTipoRelatorio(tipoRelatorio, abaRelatorio);
+
+                // Aguarda download ao clicar no botão Exportar
+                Download download = page.waitForDownload(() -> this.btnGerarArquivo.click());
+
+                String extensao = GeracaoArquivos.getExtensao(tipoArquivo);
+                Path arquivoBaixado = download.path();
+                File copiaArquivoBaixado = GeracaoArquivos.copiarArquivoAtribuirExtensao(arquivoBaixado.toFile(), extensao);
+                int linhaInicio = this.atribuirLinhaInicio(tipoRelatorio, abaRelatorio);
+
+                verificacaoTotalizadoresArquivo = GeracaoArquivos.validarColunasTipoArquivo(copiaArquivoBaixado, linhaInicio, colunas);
+                Assert.assertTrue(verificacaoTotalizadoresArquivo);
+            }
+        }
+    }
+
+    public void validarTotalizadores(@NotNull String abaRelatorio) throws IOException {
+        boolean verificacaoTotalizadoresAba = this.verificarTotalizadoresAba(abaRelatorio);
+        this.verificarTotalizadoresArquivo(abaRelatorio);
+
+        Assert.assertTrue(verificacaoTotalizadoresAba);
     }
 
     private Locator getLocatorFromReportTab(@NotNull String abaRelatorio, String campo) {
@@ -1132,6 +1254,27 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
         click(this.btnAplicarPersonalizacao);
     }
 
+    public void isViewColunasPersonalizar(String colunas, String abaRelatorio) {
+        waitIsVisibleForSeconds(
+             this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
+            ,Config.WAIT_LEVEL_3
+        );
+        // Acessa o Personalizar Colunas
+        click(this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas"));
+        waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_LEVEL_1);
+
+        this.linkVoltarPadrao.scrollIntoViewIfNeeded();
+        waitIsVisibleForSeconds(
+             this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
+            ,Config.WAIT_LEVEL_3
+        );
+
+        // Validar que as colunas não estão visíveis
+        String[] listaColunas = colunas.split(";");
+        for (String coluna : listaColunas)
+            assertThat(page.locator("//*[text()='"+coluna+"']/preceding-sibling::*/input[@type='checkbox']")).not().isVisible();
+    }
+
     public void personalizarColunas(String colunas, String abaRelatorio) {
         waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
@@ -1167,100 +1310,101 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
         );
         this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
 
-        Locator colunaResultado = page.locator("");
         String[] listaColunas = colunas.split(";");
-
         for (String coluna : listaColunas) {
-            if (coluna.equalsIgnoreCase("Data da venda"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataVenda");
-            else if (coluna.equalsIgnoreCase("Data alvo"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataAlvo");
-            else if (coluna.equalsIgnoreCase("Data do ajuste"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataAjuste");
-            else if (coluna.equalsIgnoreCase("Data efetiva da cobrança"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataEfetivaCobranca");
-            else if (coluna.equalsIgnoreCase("Data da solicitação"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataSolitacao");
-            else if (coluna.equalsIgnoreCase("Data do pagamento"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataPagamento");
-            else if (coluna.equalsIgnoreCase("Cód. de autorização"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodAutorizacao");
-            else if (coluna.equalsIgnoreCase("Cód. de pagamento"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodPagamento");
-            else if (coluna.equalsIgnoreCase("Número da simulação"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaNumeroSimulacao");
-            else if (coluna.equalsIgnoreCase("Comprovante de venda"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaComprovanteVenda");
-            else if (coluna.equalsIgnoreCase("Produto"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaProduto");
-            else if (coluna.equalsIgnoreCase("Parcelas")
-                    || coluna.equalsIgnoreCase("Parcelado"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaParcelas");
-            else if (coluna.equalsIgnoreCase("Bandeira"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaBandeira");
-            else if (coluna.equalsIgnoreCase("Canal"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCanal");
-            else if (coluna.equalsIgnoreCase("Terminal")
-                    || coluna.equalsIgnoreCase("Número do Terminal"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTerminal");
-            else if (coluna.equalsIgnoreCase("Valor bruto"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBruto");
-            else if (coluna.equalsIgnoreCase("Valor líquido"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorLiquido");
-            else if (coluna.equalsIgnoreCase("Valor da taxa"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorTaxa");
-            else if (coluna.equalsIgnoreCase("Valor original da venda"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorOriginalVenda");
-            else if (coluna.equalsIgnoreCase("Valor autorizado"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorAutorizado");
-            else if (coluna.equalsIgnoreCase("Valor confirmado"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorConfirmado");
-            else if (coluna.equalsIgnoreCase("Valor de pagamento"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorPagamento");
-            else if (coluna.equalsIgnoreCase("Valor bruto da parcela"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBrutoParcela");
-            else if (coluna.equalsIgnoreCase("Valor do aluguel"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorAluguel");
-            else if (coluna.equalsIgnoreCase("Valor bruto das vendas"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBrutoVendas");
-            else if (coluna.equalsIgnoreCase("Valor desconto MDR"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorDescontoMDR");
-            else if (coluna.equalsIgnoreCase("Valor Líquido das vendas"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorLiquidoVendas");
-            else if (coluna.equalsIgnoreCase("Valor desconto antecipação"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorDescontoAntecipacao");
-            else if (coluna.equalsIgnoreCase("Valor pago"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorPago");
-            else if (coluna.equalsIgnoreCase("Status"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaStatus");
-            else if (coluna.equalsIgnoreCase("Estabelecimento")
-                    || coluna.equalsIgnoreCase("Estabelecimento comercial")
-                    || coluna.equalsIgnoreCase("Número do estabelecimento"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaEsbalecimento");
-            else if (coluna.equalsIgnoreCase("Final do cartão"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaFinalCartao");
-            else if (coluna.equalsIgnoreCase("Cód. referência do cartão"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodReferenciaCartao");
-            else if (coluna.equalsIgnoreCase("Cód. do pedido"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodPedido");
-            else if (coluna.equalsIgnoreCase("Banco"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaBanco");
-            else if (coluna.equalsIgnoreCase("Tipo"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTipo");
-            else if (coluna.equalsIgnoreCase("EC"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaEC");
-            else if (coluna.equalsIgnoreCase("Código de pagamento"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodPagamento");
-            else if (coluna.equalsIgnoreCase("Comprovante"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaComprovante");
-            else if (coluna.equalsIgnoreCase("Tecnologia"))
-                colunaResultado = this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTecnologia");
+            Locator colunaResultado = this.getColunaResultado(coluna, abaRelatorio);
 
             for (int i = 0; i < colunaResultado.count(); i++)
                 assertThat(colunaResultado.nth(i)).isVisible();
         }
 
         this.voltarPadraoPersonalizarColunas(abaRelatorio);
+    }
+
+    private Locator getColunaResultado(String coluna, String abaRelatorio) {
+        return switch (coluna) {
+            case "Data da venda" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataVenda");
+            case "Data alvo" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataAlvo");
+            case "Data do ajuste" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataAjuste");
+            case "Data efetiva da cobrança" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataEfetivaCobranca");
+            case "Data da solicitação" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataSolitacao");
+            case "Data do pagamento" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaDataPagamento");
+            case "Cód. de autorização" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodAutorizacao");
+            case "Cód. de pagamento" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodPagamento");
+            case "Número da simulação" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaNumeroSimulacao");
+            case "Comprovante de venda" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaComprovanteVenda");
+            case "Produto" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaProduto");
+            case "Parcelas", "Parcelado" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaParcelas");
+            case "Bandeira" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaBandeira");
+            case "Canal" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCanal");
+            case "Terminal", "Número do Terminal" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTerminal");
+            case "Valor bruto" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBruto");
+            case "Valor líquido" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorLiquido");
+            case "Valor da taxa" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorTaxa");
+            case "Valor original da venda" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorOriginalVenda");
+            case "Valor autorizado" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorAutorizado");
+            case "Valor confirmado" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorConfirmado");
+            case "Valor de pagamento" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorPagamento");
+            case "Valor bruto da parcela" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBrutoParcela");
+            case "Valor do aluguel" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorAluguel");
+            case "Valor bruto das vendas" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBrutoVendas");
+            case "Valor desconto MDR" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorDescontoMDR");
+            case "Valor Líquido das vendas" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorLiquidoVendas");
+            case "Valor desconto antecipação" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorDescontoAntecipacao");
+            case "Valor pago" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorPago");
+            case "Status" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaStatus");
+            case "Estabelecimento", "Estabelecimento comercial", "Número do estabelecimento" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaEsbalecimento");
+            case "Final do cartão" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaFinalCartao");
+            case "Cód. referência do cartão" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodReferenciaCartao");
+            case "Cód. do pedido" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodPedido");
+            case "Banco" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaBanco");
+            case "Tipo" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTipo");
+            case "EC" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaEC");
+            case "Código de pagamento" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaCodPagamento");
+            case "Comprovante" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaComprovante");
+            case "Tecnologia" ->
+                this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTecnologia");
+            default -> page.locator("");
+        };
     }
 
     private String[] atribuirResultadoColunaValor(@NotNull String abaRelatorio) {
@@ -1474,6 +1618,14 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
         }
     }
 
+    // Registros
+    public void validarApresentacaoTransacoes(String apresentacao) {
+        if (apresentacao.equalsIgnoreCase("apresenta"))
+            waitIsNotVisibleForSeconds(this.nenhumResultadoEncontrado, Config.WAIT_LEVEL_3);
+        else if (apresentacao.equalsIgnoreCase("não apresenta"))
+            waitIsVisibleForSeconds(this.nenhumResultadoEncontrado, Config.WAIT_LEVEL_3);
+    }
+
     // Gerar arquivo
     private void selecionarTipoArquivo(@NotNull String tipoArquivo, String abaRelatorio) {
         if (!abaRelatorio.equalsIgnoreCase("Histórico")) {
@@ -1583,7 +1735,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
         };
     }
 
-    public void validarColunasArquivo(@NotNull String colunas, String tipoArquivo, String tipoRelatorio, String abaRelatorio) throws IOException {
+    public void validarCabecalhoArquivo(@NotNull String colunas, String tipoArquivo, String tipoRelatorio, String abaRelatorio) throws IOException {
         // Cria a lista de colunas do arquivo
         List<String> listaColunas = List.of(colunas.split(";"));
 
@@ -1602,7 +1754,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
         File copiaArquivoBaixado = GeracaoArquivos.copiarArquivoAtribuirExtensao(arquivoBaixado.toFile(), extensao);
         int linhaInicio = this.atribuirLinhaInicio(tipoRelatorio, abaRelatorio);
 
-        boolean validacao = GeracaoArquivos.validarColunasTipoArquivo(copiaArquivoBaixado, linhaInicio, listaColunas);
+        boolean validacao = GeracaoArquivos.validarCabecalhoTipoArquivo(copiaArquivoBaixado, linhaInicio, listaColunas);
         Assert.assertTrue(validacao);
     }
 }
