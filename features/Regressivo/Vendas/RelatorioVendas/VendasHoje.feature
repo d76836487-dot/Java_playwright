@@ -72,6 +72,7 @@ Feature: Vendas Hoje
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Total de vendas;Valor bruto" |
 
   @totalizadores
+  @TestCaseKey=LPDC-T1413
   Scenario Outline: Validar totalizadores - Vendas Hoje
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>

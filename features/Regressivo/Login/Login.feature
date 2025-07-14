@@ -420,7 +420,7 @@ Feature: Login
     @Hoje
     Examples:
       | alianca     | dashboard       | abaRelatorio |
-      | "azulzinha" | "vendasHoje"        | "Hoje"       |
+      | "azulzinha" | "vendasHoje"    | "Hoje"       |
       | "azulzinha" | "ultimasVendas" | "Hoje"       |
 
     @azulzinha

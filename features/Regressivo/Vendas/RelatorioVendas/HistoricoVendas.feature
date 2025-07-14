@@ -72,6 +72,7 @@ Feature: Historico de vendas
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Total de vendas;Valor bruto;Valor líquido;Valor cancelado" |
 
   @totalizadores
+  @TestCaseKey=LPDC-T1407
   Scenario Outline: Validar totalizadores - Historico de vendas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
