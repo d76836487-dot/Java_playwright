@@ -277,7 +277,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
             relatorioAntecipacoesPage.verificarCampos(campos);
     }
 
-    private boolean verificarTotalizadoresAba(String abaRelatorio) {
+    private void verificarTotalizadoresAba(String abaRelatorio) {
         Locator btnNext = page.locator("//*[@class='border-size-none pagination-button']/*[contains(@class, 'right')]");
         Locator lastPageNumber = page.locator("//*[contains(@class, 'pagination-button')]/span").last();
         boolean verificacaoTotalizadoresAba = false;
@@ -344,7 +344,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
                 click(btnNext);
         }
 
-        return verificacaoTotalizadoresAba;
+        Assert.assertTrue(verificacaoTotalizadoresAba);
     }
 
     private void verificarTotalizadoresArquivo(String abaRelatorio) throws IOException {
@@ -352,16 +352,12 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
 
         String[] listaTipoArquivo = "Excel;CSV".split(";");
         String[] listaTipoRelatorio = new String[0];
-        String colunas = "";
 
         // Vendas
-        if (abaRelatorio.equalsIgnoreCase("Hoje")) {
+        if (abaRelatorio.equalsIgnoreCase("Hoje"))
             listaTipoRelatorio = "N".split(";");
-            colunas = "A13_Total de vendas: ;A14_Valor bruto: ;A15_Valor não efetivadas: |I18_Valor bruto|I2_Valor bruto";
-        } else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
+        else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas"))
             listaTipoRelatorio = "simplificado;detalhado".split(";");
-            colunas = "";
-        }
 
         for (String tipoArquivo : listaTipoArquivo) {
             for (String tipoRelatorio : listaTipoRelatorio) {
@@ -378,19 +374,16 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
                 String extensao = GeracaoArquivos.getExtensao(tipoArquivo);
                 Path arquivoBaixado = download.path();
                 File copiaArquivoBaixado = GeracaoArquivos.copiarArquivoAtribuirExtensao(arquivoBaixado.toFile(), extensao);
-                int linhaInicio = this.atribuirLinhaInicio(tipoRelatorio, abaRelatorio);
 
-                verificacaoTotalizadoresArquivo = GeracaoArquivos.validarColunasTipoArquivo(copiaArquivoBaixado, linhaInicio, colunas);
+                verificacaoTotalizadoresArquivo = GeracaoArquivos.validarColunasTipoArquivo(abaRelatorio, tipoRelatorio, copiaArquivoBaixado);
                 Assert.assertTrue(verificacaoTotalizadoresArquivo);
             }
         }
     }
 
     public void validarTotalizadores(@NotNull String abaRelatorio) throws IOException {
-        boolean verificacaoTotalizadoresAba = this.verificarTotalizadoresAba(abaRelatorio);
+        this.verificarTotalizadoresAba(abaRelatorio);
         this.verificarTotalizadoresArquivo(abaRelatorio);
-
-        Assert.assertTrue(verificacaoTotalizadoresAba);
     }
 
     private Locator getLocatorFromReportTab(@NotNull String abaRelatorio, String campo) {

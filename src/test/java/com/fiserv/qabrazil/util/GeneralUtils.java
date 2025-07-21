@@ -121,6 +121,10 @@ public class GeneralUtils extends WaitUtil {
         return replaceMonetaryValue(locator.textContent());
     }
 
+    public static int convertToInt(String value) { return Integer.parseInt(value.trim()); }
+
+    public static double convertToDouble(String value) { return replaceMonetaryValue(value); }
+
     public static PerfilAcessoEnum getPerfilAcesso(String alianca) {
         return switch (alianca) {
             case "bin" -> PerfilAcessoEnum.BIN;

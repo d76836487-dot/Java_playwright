@@ -9,7 +9,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("bin")
         ,"master"
         ,"18711403829"
-        ,"Bin@12345678"
+        ,"Fiserv@123456"
         ,"125"
         ,setInstituicao("7")
     )
@@ -18,7 +18,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("bin")
         ,"cedidos"
         ,"18711403829"
-        ,"Bin@12345678"
+        ,"Fiserv@123456"
         ,"125"
         ,setInstituicao("7")
     )
