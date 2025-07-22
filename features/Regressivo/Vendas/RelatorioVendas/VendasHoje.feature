@@ -749,3 +749,4 @@ Feature: Vendas Hoje
     Examples:
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                 |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+
