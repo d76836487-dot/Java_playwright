@@ -321,92 +321,92 @@ Feature: Split de pagamentos
     @bin
     @master
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | visivel            |
-      | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "não está visível" |
+      | alianca | menu     | submenu           | abaRelatorio           | visivel            |
+      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "não está visível" |
 
     @bin
     @franqueador
     Examples:
-      | alianca          | menu     | submenu           | abaRelatorio | visivel        |
-      | "binFranqueador" | "vendas" | "relatorioVendas" | "Hoje"       | "está visível" |
+      | alianca          | menu     | submenu           | abaRelatorio          | visivel        |
+      | "binFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
     @bin
     @franqueado
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio | visivel        |
-      | "binFranqueado" | "vendas" | "relatorioVendas" | "Hoje"       | "está visível" |
+      | alianca         | menu     | submenu           | abaRelatorio           | visivel        |
+      | "binFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "está visível" |
 
     @sicredi
     @master
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio | visivel            |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Hoje"       | "não está visível" |
+      | alianca   | menu     | submenu           | abaRelatorio           | visivel            |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "não está visível" |
 
     @sicredi
     @franqueador
     Examples:
-      | alianca              | menu     | submenu           | abaRelatorio | visivel        |
-      | "sicrediFranqueador" | "vendas" | "relatorioVendas" | "Hoje"       | "está visível" |
+      | alianca              | menu     | submenu           | abaRelatorio          | visivel        |
+      | "sicrediFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
     @sicredi
     @franqueado
     Examples:
-      | alianca             | menu     | submenu           | abaRelatorio | visivel        |
-      | "sicrediFranqueado" | "vendas" | "relatorioVendas" | "Hoje"       | "está visível" |
+      | alianca             | menu     | submenu           | abaRelatorio           | visivel        |
+      | "sicrediFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "está visível" |
 
     @azulzinha
     @master
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio | visivel            |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Hoje"       | "não está visível" |
+      | alianca     | menu     | submenu           | abaRelatorio           | visivel            |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "não está visível" |
 
     @azulzinha
     @franqueador
     Examples:
-      | alianca                | menu     | submenu           | abaRelatorio | visivel        |
-      | "azulzinhaFranqueador" | "vendas" | "relatorioVendas" | "Hoje"       | "está visível" |
+      | alianca                | menu     | submenu           | abaRelatorio          | visivel        |
+      | "azulzinhaFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
     @azulzinha
     @franqueado
     Examples:
-      | alianca               | menu     | submenu           | abaRelatorio | visivel        |
-      | "azulzinhaFranqueado" | "vendas" | "relatorioVendas" | "Hoje"       | "está visível" |
+      | alianca               | menu     | submenu           | abaRelatorio           | visivel        |
+      | "azulzinhaFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "está visível" |
 
     @afinz
     @master
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio | visivel            |
-      | "afinz" | "vendas" | "relatorioVendas" | "Hoje"       | "não está visível" |
+      | alianca | menu     | submenu           | abaRelatorio           | visivel            |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "não está visível" |
 
     @afinz
     @franqueador
     Examples:
-      | alianca            | menu     | submenu           | abaRelatorio | visivel        |
-      | "afinzFranqueador" | "vendas" | "relatorioVendas" | "Hoje"       | "está visível" |
+      | alianca            | menu     | submenu           | abaRelatorio          | visivel        |
+      | "afinzFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
     @afinz
     @franqueado
     Examples:
-      | alianca           | menu     | submenu           | abaRelatorio | visivel        |
-      | "afinzFranqueado" | "vendas" | "relatorioVendas" | "Hoje"       | "está visível" |
+      | alianca           | menu     | submenu           | abaRelatorio           | visivel        |
+      | "afinzFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "está visível" |
 
     @claropay
     @master
     Examples:
-      | alianca    | menu     | submenu           | abaRelatorio | visivel            |
-      | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "não está visível" |
+      | alianca    | menu     | submenu           | abaRelatorio          | visivel            |
+      | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "não está visível" |
 
     @claropay
     @franqueador
     Examples:
-      | alianca               | menu     | submenu           | abaRelatorio | visivel        |
-      | "claropayFranqueador" | "vendas" | "relatorioVendas" | "Hoje"       | "está visível" |
+      | alianca               | menu     | submenu           | abaRelatorio           | visivel        |
+      | "claropayFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "está visível" |
 
     @claropay
     @franqueado
     Examples:
-      | alianca              | menu     | submenu           | abaRelatorio | visivel        |
-      | "claropayFranqueado" | "vendas" | "relatorioVendas" | "Hoje"       | "está visível" |
+      | alianca              | menu     | submenu           | abaRelatorio          | visivel        |
+      | "claropayFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
   @gerarArquivo
   @colunasArquivo
