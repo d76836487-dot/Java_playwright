@@ -22,7 +22,6 @@ public class GeneralUtils extends WaitUtil {
 
         while (i > 0) {
             if (locator.isVisible()) {
-                assertThat(locator).isVisible();
                 locator.scrollIntoViewIfNeeded();
                 i = 0;
             } else {
@@ -30,6 +29,8 @@ public class GeneralUtils extends WaitUtil {
                 i--;
             }
         }
+
+        assertThat(locator).isVisible();
     }
 
     public static void waitIsNotVisibleForSeconds(Locator locator, int seconds) {
@@ -44,7 +45,18 @@ public class GeneralUtils extends WaitUtil {
     }
 
     public static void checkIfValueIsNotEmpty(Locator locator) {
-        waitIsVisibleForSeconds(locator, Config.WAIT_LEVEL_1);
+        int i = Config.WAIT_LEVEL_1;
+
+        while (i > 0) {
+            if (locator.isVisible()) {
+                locator.scrollIntoViewIfNeeded();
+                i = 0;
+            } else {
+                sleep(Duration.ofMillis(1000L));
+                i--;
+            }
+        }
+
         assertThat(locator).not().isEmpty();
     }
 
