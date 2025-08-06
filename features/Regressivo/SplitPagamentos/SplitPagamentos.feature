@@ -321,8 +321,8 @@ Feature: Split de pagamentos
     @bin
     @master
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio           | visivel            |
-      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "não está visível" |
+      | alianca | menu     | submenu           | abaRelatorio          | visivel            |
+      | "bin"   | "vendas" | "relatorioVendas" | "Histórico de vendas" | "não está visível" |
 
     @bin
     @franqueador
@@ -333,14 +333,14 @@ Feature: Split de pagamentos
     @bin
     @franqueado
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio           | visivel        |
-      | "binFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "está visível" |
+      | alianca         | menu     | submenu           | abaRelatorio          | visivel        |
+      | "binFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
     @sicredi
     @master
     Examples:
-      | alianca   | menu     | submenu           | abaRelatorio           | visivel            |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "não está visível" |
+      | alianca   | menu     | submenu           | abaRelatorio          | visivel            |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "não está visível" |
 
     @sicredi
     @franqueador
@@ -351,14 +351,14 @@ Feature: Split de pagamentos
     @sicredi
     @franqueado
     Examples:
-      | alianca             | menu     | submenu           | abaRelatorio           | visivel        |
-      | "sicrediFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "está visível" |
+      | alianca             | menu     | submenu           | abaRelatorio          | visivel        |
+      | "sicrediFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
     @azulzinha
     @master
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio           | visivel            |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "não está visível" |
+      | alianca     | menu     | submenu           | abaRelatorio          | visivel            |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "não está visível" |
 
     @azulzinha
     @franqueador
@@ -369,14 +369,14 @@ Feature: Split de pagamentos
     @azulzinha
     @franqueado
     Examples:
-      | alianca               | menu     | submenu           | abaRelatorio           | visivel        |
-      | "azulzinhaFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "está visível" |
+      | alianca               | menu     | submenu           | abaRelatorio          | visivel        |
+      | "azulzinhaFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
     @afinz
     @master
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio           | visivel            |
-      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "não está visível" |
+      | alianca | menu     | submenu           | abaRelatorio          | visivel            |
+      | "afinz" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "não está visível" |
 
     @afinz
     @franqueador
@@ -387,8 +387,8 @@ Feature: Split de pagamentos
     @afinz
     @franqueado
     Examples:
-      | alianca           | menu     | submenu           | abaRelatorio           | visivel        |
-      | "afinzFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "está visível" |
+      | alianca           | menu     | submenu           | abaRelatorio          | visivel        |
+      | "afinzFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
     @claropay
     @master
@@ -399,8 +399,8 @@ Feature: Split de pagamentos
     @claropay
     @franqueador
     Examples:
-      | alianca               | menu     | submenu           | abaRelatorio           | visivel        |
-      | "claropayFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas"  | "está visível" |
+      | alianca               | menu     | submenu           | abaRelatorio          | visivel        |
+      | "claropayFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
     @claropay
     @franqueado
