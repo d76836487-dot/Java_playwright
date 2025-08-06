@@ -463,76 +463,78 @@ Feature: Login
       | "claropay" | "recebimentos"             | "Pagos"      |
       | "claropay" | "agendaRecebimentosSemana" | "Pagos"      |
 
-    @ga
-    @mfa
-    @master
-    Scenario Outline: Validar login com MFA ativo - Usuario Master - <alianca>
-      Given realizar login no portal com MFA ativo <alianca>
-      When enviar o codigo do <fluxo> via <receberPor>
-      Then valida que a home do portal foi carregada com sucesso
-      @bin
-      @email
-      Examples:
-        | alianca | fluxo | receberPor |
-        | "bin"   | "MFA" | "E-mail"   |
+  @ga
+  @mfa
+  @master
+  @TestCaseKey=LPDC-T1429
+  Scenario Outline: Validar login com MFA ativo - Usuario Master - <alianca>
+    Given realizar login no portal com MFA ativo <alianca>
+    When enviar o codigo do <fluxo> via <receberPor>
+    Then valida que a home do portal foi carregada com sucesso
+    @bin
+    @email
+    Examples:
+      | alianca | fluxo | receberPor |
+      | "bin"   | "MFA" | "E-mail"   |
 
-      @bin
-      @sms
-      Examples:
-        | alianca | fluxo | receberPor |
-        | "bin"   | "MFA" | "SMS"      |
+    @bin
+    @sms
+    Examples:
+      | alianca | fluxo | receberPor |
+      | "bin"   | "MFA" | "SMS"      |
 
-      @sicredi
-      @email
-      Examples:
-        | alianca   | fluxo | receberPor |
-        | "sicredi" | "MFA" | "E-mail"   |
+    @sicredi
+    @email
+    Examples:
+      | alianca   | fluxo | receberPor |
+      | "sicredi" | "MFA" | "E-mail"   |
 
-      @sicredi
-      @sms
-      Examples:
-        | alianca   | fluxo | receberPor |
-        | "sicredi" | "MFA" | "SMS"      |
+    @sicredi
+    @sms
+    Examples:
+      | alianca   | fluxo | receberPor |
+      | "sicredi" | "MFA" | "SMS"      |
 
-      @azulzinha
-      @email
-      Examples:
-        | alianca     | fluxo | receberPor |
-        | "azulzinha" | "MFA" | "E-mail"   |
+    @azulzinha
+    @email
+    Examples:
+      | alianca     | fluxo | receberPor |
+      | "azulzinha" | "MFA" | "E-mail"   |
 
-      @azulzinha
-      @sms
-      Examples:
-        | alianca     | fluxo | receberPor |
-        | "azulzinha" | "MFA" | "SMS"      |
+    @azulzinha
+    @sms
+    Examples:
+      | alianca     | fluxo | receberPor |
+      | "azulzinha" | "MFA" | "SMS"      |
 
-      @afinz
-      @email
-      Examples:
-        | alianca | fluxo | receberPor |
-        | "afinz" | "MFA" | "E-mail"   |
+    @afinz
+    @email
+    Examples:
+      | alianca | fluxo | receberPor |
+      | "afinz" | "MFA" | "E-mail"   |
 
-      @afinz
-      @sms
-      Examples:
-        | alianca | fluxo | receberPor |
-        | "afinz" | "MFA" | "SMS"      |
+    @afinz
+    @sms
+    Examples:
+      | alianca | fluxo | receberPor |
+      | "afinz" | "MFA" | "SMS"      |
 
-      @claropay
-      @email
-      Examples:
-        | alianca    | fluxo | receberPor |
-        | "claropay" | "MFA" | "E-mail"   |
+    @claropay
+    @email
+    Examples:
+      | alianca    | fluxo | receberPor |
+      | "claropay" | "MFA" | "E-mail"   |
 
-      @claropay
-      @sms
-      Examples:
-        | alianca    | fluxo | receberPor |
-        | "claropay" | "MFA" | "SMS"      |
+    @claropay
+    @sms
+    Examples:
+      | alianca    | fluxo | receberPor |
+      | "claropay" | "MFA" | "SMS"      |
 
   @ga
   @mfa
   @secundario
+  @TestCaseKey=LPDC-T1427
   Scenario Outline: Validar login com MFA ativo - Usuario Secundario - <alianca>
     Given realizar login no portal com MFA ativo <alianca>
     When enviar o codigo do <fluxo> via <receberPor>
@@ -596,3 +598,4 @@ Feature: Login
     Examples:
       | alianca              | fluxo | receberPor |
       | "claropaySecundario" | "MFA" | "SMS"      |
+
