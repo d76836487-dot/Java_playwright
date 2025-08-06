@@ -56,7 +56,7 @@ public class EnderecoPage extends GeneralUtils {
         if (semNumero.equals("S")) {
             click(this.cbSemNumero);
         } else {
-            fillValue(this.txtNumero, numero);
+            pressValue(this.txtNumero, numero);
         }
     }
 
@@ -93,16 +93,16 @@ public class EnderecoPage extends GeneralUtils {
     ,String alterarNegocio
     ,String alterarDadosPessoais) {
         this.verificarEndereco();
-        fillValue(this.txtCep, cep);
+        pressValue(this.txtCep, cep);
         this.preencherNumero(semNumero, numero);
-        fillValue(this.txtComplemento, complemento);
-        fillValue(this.txtPontoReferencia, pontoReferencia);
+        pressValue(this.txtComplemento, complemento);
+        pressValue(this.txtPontoReferencia, pontoReferencia);
 
         GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_1);
         if (cep.isEmpty()) {
-            fillValue(this.txtLogradouro, logradouro);
-            fillValue(this.txtBairro, bairro);
-            fillValue(this.txtCidade, cidade);
+            pressValue(this.txtLogradouro, logradouro);
+            pressValue(this.txtBairro, bairro);
+            pressValue(this.txtCidade, cidade);
             this.selecionarEstado(estado);
         }
 

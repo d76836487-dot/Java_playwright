@@ -13,6 +13,15 @@ public enum PerfilAcessoEnum {
         ,"125"
         ,setInstituicao("7")
     )
+    ,BIN_SECUNDARIO(
+        "bin"
+        ,setUrlPortal("bin")
+        ,"secundario"
+        ,"max@afinz"
+        ,"Fiserv@123456"
+        ,"125"
+        ,setInstituicao("7")
+    )
     ,BIN_CEDIDOS(
         "bin"
         ,setUrlPortal("bin")
@@ -26,8 +35,8 @@ public enum PerfilAcessoEnum {
         "bin"
         ,setUrlPortal("bin")
         ,"franqueador"
-        ,"75213076000102"
-        ,"Fiserv@123"
+        ,"19078280000189"
+        ,"Fiserv@12345"
         ,"125"
         ,setInstituicao("7")
     )
@@ -35,8 +44,8 @@ public enum PerfilAcessoEnum {
         "bin"
         ,setUrlPortal("bin")
         ,"franqueado"
-        ,"72646119000147"
-        ,"Fiserv@123"
+        ,"45524517000118"
+        ,"Fiserv@12345"
         ,"125"
         ,setInstituicao("7")
     )
@@ -46,6 +55,15 @@ public enum PerfilAcessoEnum {
         ,"master"
         ,"79750866000170"
         ,"Fiserv@1234"
+        ,"110"
+        ,setInstituicao("4")
+    )
+    ,SICREDI_SECUNDARIO(
+        "sicredi"
+        ,setUrlPortal("sicredi")
+        ,"secundario"
+        ,"max@afinz"
+        ,"Fiserv@123456"
         ,"110"
         ,setInstituicao("4")
     )
@@ -85,6 +103,15 @@ public enum PerfilAcessoEnum {
         ,"149"
         ,setInstituicao("7")
     )
+    ,AZULZINHA_SECUNDARIO(
+        "azulzinha"
+        ,setUrlPortal("azulzinha")
+        ,"secundario"
+        ,"max@afinz"
+        ,"Fiserv@123456"
+        ,"149"
+        ,setInstituicao("7")
+    )
     ,AZULZINHA_CEDIDOS(
         "azulzinha"
         ,setUrlPortal("azulzinha")
@@ -116,8 +143,17 @@ public enum PerfilAcessoEnum {
         "afinz"
         ,setUrlPortal("afinz")
         ,"master"
-        ,"72798336082"
-        ,"Fiserv@456"
+        ,"58530339000180"
+        ,"Afinz@123456"
+        ,"143"
+        ,setInstituicao("10")
+    )
+    ,AFINZ_SECUNDARIO(
+        "afinz"
+        ,setUrlPortal("afinz")
+        ,"secundario"
+        ,"max@afinz"
+        ,"Fiserv@123456"
         ,"143"
         ,setInstituicao("10")
     )
@@ -125,8 +161,8 @@ public enum PerfilAcessoEnum {
         "afinz"
         ,setUrlPortal("afinz")
         ,"cedidos"
-        ,"72798336082"
-        ,"Fiserv@456"
+        ,"58530339000180"
+        ,"Afinz@123456"
         ,"143"
         ,setInstituicao("10")
     )
@@ -134,8 +170,8 @@ public enum PerfilAcessoEnum {
         "afinz"
         ,setUrlPortal("afinz")
         ,"franqueador"
-        ,"72798336082"
-        ,"Fiserv@456"
+        ,"58530339000180"
+        ,"Afinz@123456"
         ,"143"
         ,setInstituicao("10")
     )
@@ -143,8 +179,8 @@ public enum PerfilAcessoEnum {
         "afinz"
         ,setUrlPortal("afinz")
         ,"franqueado"
-        ,"72798336082"
-        ,"Fiserv@456"
+        ,"58530339000180"
+        ,"Afinz@123456"
         ,"143"
         ,setInstituicao("10")
     )
@@ -154,6 +190,15 @@ public enum PerfilAcessoEnum {
         ,"master"
         ,"33414095000149"
         ,"ClaroPay@123"
+        ,"239"
+        ,setInstituicao("7")
+    )
+    ,CLAROPAY_SECUNDARIO(
+        "claropay"
+        ,setUrlPortal("portal239")
+        ,"secundario"
+        ,"max@afinz"
+        ,"Fiserv@123456"
         ,"239"
         ,setInstituicao("7")
     )

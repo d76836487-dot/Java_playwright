@@ -463,3 +463,136 @@ Feature: Login
       | "claropay" | "recebimentos"             | "Pagos"      |
       | "claropay" | "agendaRecebimentosSemana" | "Pagos"      |
 
+    @ga
+    @mfa
+    @master
+    Scenario Outline: Validar login com MFA ativo - Usuario Master - <alianca>
+      Given realizar login no portal com MFA ativo <alianca>
+      When enviar o codigo do <fluxo> via <receberPor>
+      Then valida que a home do portal foi carregada com sucesso
+      @bin
+      @email
+      Examples:
+        | alianca | fluxo | receberPor |
+        | "bin"   | "MFA" | "E-mail"   |
+
+      @bin
+      @sms
+      Examples:
+        | alianca | fluxo | receberPor |
+        | "bin"   | "MFA" | "SMS"      |
+
+      @sicredi
+      @email
+      Examples:
+        | alianca   | fluxo | receberPor |
+        | "sicredi" | "MFA" | "E-mail"   |
+
+      @sicredi
+      @sms
+      Examples:
+        | alianca   | fluxo | receberPor |
+        | "sicredi" | "MFA" | "SMS"      |
+
+      @azulzinha
+      @email
+      Examples:
+        | alianca     | fluxo | receberPor |
+        | "azulzinha" | "MFA" | "E-mail"   |
+
+      @azulzinha
+      @sms
+      Examples:
+        | alianca     | fluxo | receberPor |
+        | "azulzinha" | "MFA" | "SMS"      |
+
+      @afinz
+      @email
+      Examples:
+        | alianca | fluxo | receberPor |
+        | "afinz" | "MFA" | "E-mail"   |
+
+      @afinz
+      @sms
+      Examples:
+        | alianca | fluxo | receberPor |
+        | "afinz" | "MFA" | "SMS"      |
+
+      @claropay
+      @email
+      Examples:
+        | alianca    | fluxo | receberPor |
+        | "claropay" | "MFA" | "E-mail"   |
+
+      @claropay
+      @sms
+      Examples:
+        | alianca    | fluxo | receberPor |
+        | "claropay" | "MFA" | "SMS"      |
+
+  @ga
+  @mfa
+  @secundario
+  Scenario Outline: Validar login com MFA ativo - Usuario Secundario - <alianca>
+    Given realizar login no portal com MFA ativo <alianca>
+    When enviar o codigo do <fluxo> via <receberPor>
+    Then valida que a home do portal foi carregada com sucesso
+    @bin
+    @email
+    Examples:
+      | alianca         | fluxo | receberPor |
+      | "binSecundario" | "MFA" | "E-mail"   |
+
+    @bin
+    @sms
+    Examples:
+      | alianca         | fluxo | receberPor |
+      | "binSecundario" | "MFA" | "SMS"      |
+
+    @sicredi
+    @email
+    Examples:
+      | alianca             | fluxo | receberPor |
+      | "sicrediSecundario" | "MFA" | "E-mail"   |
+
+    @sicredi
+    @sms
+    Examples:
+      | alianca             | fluxo | receberPor |
+      | "sicrediSecundario" | "MFA" | "SMS"      |
+
+    @azulzinha
+    @email
+    Examples:
+      | alianca               | fluxo | receberPor |
+      | "azulzinhaSecundario" | "MFA" | "E-mail"   |
+
+    @azulzinha
+    @sms
+    Examples:
+      | alianca               | fluxo | receberPor |
+      | "azulzinhaSecundario" | "MFA" | "SMS"      |
+
+    @afinz
+    @email
+    Examples:
+      | alianca           | fluxo | receberPor |
+      | "afinzSecundario" | "MFA" | "E-mail"   |
+
+    @afinz
+    @sms
+    Examples:
+      | alianca           | fluxo | receberPor |
+      | "afinzSecundario" | "MFA" | "SMS"      |
+
+    @claropay
+    @email
+    Examples:
+      | alianca              | fluxo | receberPor |
+      | "claropaySecundario" | "MFA" | "E-mail"   |
+
+    @claropay
+    @sms
+    Examples:
+      | alianca              | fluxo | receberPor |
+      | "claropaySecundario" | "MFA" | "SMS"      |

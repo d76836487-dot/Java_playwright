@@ -71,6 +71,37 @@ Feature: Pre autorizacoes
       | alianca    | menu     | submenu           | abaRelatorio       | campos                                                           |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Total de vendas;Valor bruto autorizado;Valor bruto a confirmar" |
 
+  @totalizadores
+  Scenario Outline: Validar totalizadores - Pre autorizacoes
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And valida os totalizadores - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       |
+      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" |
+
+    @sicredi
+    Examples:
+      | alianca   | menu     | submenu           | abaRelatorio       |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu     | submenu           | abaRelatorio       |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
+
+    @afinz
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       |
+      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio       |
+      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
+
   @periodo
   @TestCaseKey=LPDC-T1238
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Pre autorizacoes

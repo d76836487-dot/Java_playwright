@@ -71,6 +71,37 @@ Feature: Nao efetivadas
       | alianca    | menu     | submenu           | abaRelatorio     | campos                                   |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Total de recusadas;Total de estornadas" |
 
+  @totalizadores
+  Scenario Outline: Validar totalizadores - Nao efetivadas
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And valida os totalizadores - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     |
+      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" |
+
+    @sicredi
+    Examples:
+      | alianca   | menu     | submenu           | abaRelatorio     |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu     | submenu           | abaRelatorio     |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" |
+
+    @afinz
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     |
+      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio     |
+      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" |
+
   @periodo
   @TestCaseKey=LPDC-T1239
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Nao efetivadas

@@ -48,14 +48,14 @@ public class ParaComecarSeuCadastroPage extends GeneralUtils {
     ,String faturamentoAnual
     ,String ticketMedio) {
         waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
-        fillValue(this.txtNomeCompleto, nomeCompleto);
-        fillDigits(page, this.txtDataNascimento, dataNascimento);
-        fillDigits(page, this.txtCelular, celular);
-        fillValue(this.txtEmail, email);
-        fillDigits(page, this.txtCpf, cpf);
-        fillValue(this.txtNomeFantasia, nomeFantasia);
-        fillValue(this.txtFaturamentoAnual, faturamentoAnual);
-        fillValue(this.txtTicketMedio, ticketMedio);
+        pressValue(this.txtNomeCompleto, nomeCompleto);
+        pressValue(this.txtDataNascimento, dataNascimento);
+        pressValue(this.txtCelular, celular);
+        pressValue(this.txtEmail, email);
+        pressValue(this.txtCpf, cpf);
+        pressValue(this.txtNomeFantasia, nomeFantasia);
+        pressValue(this.txtFaturamentoAnual, faturamentoAnual);
+        pressValue(this.txtTicketMedio, ticketMedio);
         click(this.btnProximo);
     }
 }

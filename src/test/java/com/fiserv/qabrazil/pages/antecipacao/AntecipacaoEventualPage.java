@@ -168,7 +168,7 @@ public class AntecipacaoEventualPage extends GeneralUtils {
         solicitarAntecipacaoPage.selectBandeiras(bandeiras);
         solicitarAntecipacaoPage.selectProdutos(produtos);
         this.checkTodoPeriodo(todoPeriodo, diaVencimentoDe, diaAte);
-        fillDigits(page, this.txtValor, valor);
+        pressValue(this.txtValor, valor);
         this.clickValorMinimoMaximo(minimoMaximo);
 
         this.validarValoresAntecipacaoEventual(1);

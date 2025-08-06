@@ -71,6 +71,37 @@ Feature: Voucher
       | alianca    | menu     | submenu           | abaRelatorio | campos                        |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Total de vendas;Valor bruto" |
 
+  @totalizadores
+  Scenario Outline: Validar totalizadores - Voucher
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And valida os totalizadores - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio |
+      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    |
+
+    @sicredi
+    Examples:
+      | alianca   | menu     | submenu           | abaRelatorio |
+      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu     | submenu           | abaRelatorio |
+      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    |
+
+    @afinz
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio |
+      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    |
+
+    @claropay
+    Examples:
+      | alianca    | menu     | submenu           | abaRelatorio |
+      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    |
+
   @periodo
   @TestCaseKey=LPDC-T1236
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Voucher

@@ -95,9 +95,9 @@ public class ContaRecebimentoPage extends GeneralUtils {
     ,String expandirEndereco) {
         this.verificarContaRecebimento();
         this.selecionarTipoConta(tipoConta);
-        fillValue(this.txtAgencia, agencia);
+        pressValue(this.txtAgencia, agencia);
         this.selecionarOperacao(operacao);
-        fillValue(this.txtConta, conta);
+        pressValue(this.txtConta, conta);
         click(this.cbConcordo);
         click(this.cbDeclaro);
         this.alterarNegocio(alterarNegocio);

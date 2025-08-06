@@ -1082,7 +1082,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
         switch (filtro) {
             case "Cód. de autorização":
                 if (valor.equalsIgnoreCase("primeiroRegistro"))
-                    fillValue(
+                    pressValue(
                         this.getLocatorFromReportTab(
                              abaRelatorio
                             , "txtCodAutorizacao"
@@ -1093,7 +1093,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
                             .trim()
                     );
                 else
-                    fillValue(
+                    pressValue(
                         this.getLocatorFromReportTab(
                                  abaRelatorio
                                 , "txtCodAutorizacao"
@@ -1105,7 +1105,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
 
             case "Cód. de pagamento":
                 if (valor.equalsIgnoreCase("primeiroRegistro"))
-                    fillValue(
+                    pressValue(
                         this.getLocatorFromReportTab(
                                  abaRelatorio
                                 , "txtCodPagamento"
@@ -1116,7 +1116,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
                             .trim()
                     );
                 else
-                    fillValue(
+                    pressValue(
                         this.getLocatorFromReportTab(
                              abaRelatorio
                             , "txtCodPagamento"
@@ -1128,7 +1128,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
 
             case "Número da simulação":
                 if (valor.equalsIgnoreCase("primeiroRegistro"))
-                    fillValue(
+                    pressValue(
                         this.getLocatorFromReportTab(
                              abaRelatorio
                             , "txtNumeroSimulacao"
@@ -1139,7 +1139,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
                             .trim()
                     );
                 else
-                    fillValue(
+                    pressValue(
                         this.getLocatorFromReportTab(
                              abaRelatorio
                             , "txtNumeroSimulacao"
@@ -1154,8 +1154,8 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
 
                 // valor De e Ate separados por ";"
                 String[] valores = valor.split(";");
-                fillValue(this.txtValoresDe, valores[0]);
-                fillValue(this.txtValoresAte, valores[1]);
+                pressValue(this.txtValoresDe, valores[0]);
+                pressValue(this.txtValoresAte, valores[1]);
 
                 break;
 

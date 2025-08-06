@@ -14,6 +14,8 @@ public class HistoricoVendasPage extends GeneralUtils {
     @Autowired
     private Page page;
 
+    private Locator primeiroRegistro;
+
     // Campos - Total/Valor
     private Locator totalVendas;
     private Locator valorBruto;
@@ -27,8 +29,13 @@ public class HistoricoVendasPage extends GeneralUtils {
     private Locator detalhesVendaValorLiquido;
     private Locator btnFecharDetalhesVenda;
 
+    // Detalhes da venda
+    private Locator valorOriginalVenda;
+
     @PostConstruct
     private void loadLocators() {
+        this.primeiroRegistro = page.locator("(//*[@data-testid='historico-vendas-detalhes'])[1]");
+
         // Campos - Total/Valor
         this.totalVendas = page.locator("//*[@data-testid='historico-vendas-total']");
         this.valorBruto = page.locator("(//*[@data-testid='historico-vendas-valor-bruto'])[1]");
@@ -41,6 +48,9 @@ public class HistoricoVendasPage extends GeneralUtils {
         this.detalhesVendaValorBruto = page.locator("//*[@data-testid='historico-mais-detalhes-bruto']");
         this.detalhesVendaValorLiquido = page.locator("//*[@data-testid='historico-mais-detalhes-liquido']");
         this.btnFecharDetalhesVenda = page.locator("//*[@data-testid='historico-detalhes-item-fechar']");
+
+        // Detalhes da venda
+        this.valorOriginalVenda = page.locator("//*[@data-testid='detalhes-venda-valor-original']");
     }
 
     // Campos - Total/Valor
@@ -57,6 +67,16 @@ public class HistoricoVendasPage extends GeneralUtils {
             else if (campo.equalsIgnoreCase("Valor cancelado"))
                 checkIfValueIsNotEmpty(this.valorCancelado);
         }
+    }
+
+    public void verificarValorOriginalVenda(String visivel) {
+        waitForSeconds(Config.WAIT_LEVEL_1);
+        click(this.primeiroRegistro);
+
+        if (visivel.equalsIgnoreCase("está visível"))
+            waitIsVisibleForSeconds(this.valorOriginalVenda, Config.WAIT_LEVEL_1);
+        else if (visivel.equalsIgnoreCase("não está visível"))
+            waitIsNotVisibleForSeconds(this.valorOriginalVenda, Config.WAIT_LEVEL_1);
     }
 
     public int getTotalVendas() { return getIntLocator(this.totalVendas); }

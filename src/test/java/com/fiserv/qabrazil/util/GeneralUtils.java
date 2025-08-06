@@ -2,50 +2,12 @@ package com.fiserv.qabrazil.util;
 
 import com.fiserv.qabrazil.enums.PerfilAcessoEnum;
 import com.microsoft.playwright.Locator;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.LoadState;
 
 import java.time.Duration;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class GeneralUtils extends WaitUtil {
-    private static void pressDigits(Page page, String digits) {
-        for (int i = 0; i <= (digits.length() - 1); i++) {
-            char digit = digits.charAt(i);
-
-            if (digit == '0')
-                page.keyboard().press("Digit0");
-            else if (digit == '1')
-                page.keyboard().press("Digit1");
-            else if (digit == '2')
-                page.keyboard().press("Digit2");
-            else if (digit == '3')
-                page.keyboard().press("Digit3");
-            else if (digit == '4')
-                page.keyboard().press("Digit4");
-            else if (digit == '5')
-                page.keyboard().press("Digit5");
-            else if (digit == '6')
-                page.keyboard().press("Digit6");
-            else if (digit == '7')
-                page.keyboard().press("Digit7");
-            else if (digit == '8')
-                page.keyboard().press("Digit8");
-            else if (digit == '9')
-                page.keyboard().press("Digit9");
-        }
-    }
-
-    public static void waitForLoad(Page page, boolean load, boolean domContentLoaded, boolean networkidle) {
-        if (load)
-            page.waitForLoadState(LoadState.LOAD);
-        if (domContentLoaded)
-            page.waitForLoadState(LoadState.DOMCONTENTLOADED);
-        if (networkidle)
-            page.waitForLoadState(LoadState.NETWORKIDLE);
-    }
-
     public static void waitForSeconds(int seconds) {
         int i = seconds;
 
@@ -91,16 +53,10 @@ public class GeneralUtils extends WaitUtil {
         locator.click();
     }
 
-    public static void fillValue(Locator locator, String value) {
+    public static void pressValue(Locator locator, String value) {
         locator.focus();
         locator.clear();
-        locator.fill(value);
-    }
-
-    public static void fillDigits(Page page, Locator locator, String value) {
-        locator.focus();
-        locator.clear();
-        pressDigits(page, value);
+        locator.pressSequentially(value);
     }
 
     public static double replaceMonetaryValue(String monetaryValue) {
@@ -128,22 +84,27 @@ public class GeneralUtils extends WaitUtil {
     public static PerfilAcessoEnum getPerfilAcesso(String alianca) {
         return switch (alianca) {
             case "bin" -> PerfilAcessoEnum.BIN;
+            case "binSecundario" -> PerfilAcessoEnum.BIN_SECUNDARIO;
             case "binCedidos" -> PerfilAcessoEnum.BIN_CEDIDOS;
             case "binFranqueador" -> PerfilAcessoEnum.BIN_FRANQUEADOR;
             case "binFranqueado" -> PerfilAcessoEnum.BIN_FRANQUEADO;
             case "sicredi" -> PerfilAcessoEnum.SICREDI;
+            case "sicrediSecundario" -> PerfilAcessoEnum.SICREDI_SECUNDARIO;
             case "sicrediCedidos" -> PerfilAcessoEnum.SICREDI_CEDIDOS;
             case "sicrediFranqueador" -> PerfilAcessoEnum.SICREDI_FRANQUEADOR;
             case "sicrediFranqueado" -> PerfilAcessoEnum.SICREDI_FRANQUEADO;
             case "azulzinha" -> PerfilAcessoEnum.AZULZINHA;
+            case "azulzinhaSecundario" -> PerfilAcessoEnum.AZULZINHA_SECUNDARIO;
             case "azulzinhaCedidos" -> PerfilAcessoEnum.AZULZINHA_CEDIDOS;
             case "azulzinhaFranqueador" -> PerfilAcessoEnum.AZULZINHA_FRANQUEADOR;
             case "azulzinhaFranqueado" -> PerfilAcessoEnum.AZULZINHA_FRANQUEADO;
             case "afinz" -> PerfilAcessoEnum.AFINZ;
+            case "afinzSecundario" -> PerfilAcessoEnum.AFINZ_SECUNDARIO;
             case "afinzCedidos" -> PerfilAcessoEnum.AFINZ_CEDIDOS;
             case "afinzFranqueador" -> PerfilAcessoEnum.AFINZ_FRANQUEADOR;
             case "afinzFranqueado" -> PerfilAcessoEnum.AFINZ_FRANQUEADO;
             case "claropay" -> PerfilAcessoEnum.CLAROPAY;
+            case "claropaySecundario" -> PerfilAcessoEnum.CLAROPAY_SECUNDARIO;
             case "claropayCedidos" -> PerfilAcessoEnum.CLAROPAY_CEDIDOS;
             case "claropayFranqueador" -> PerfilAcessoEnum.CLAROPAY_FRANQUEADOR;
             case "claropayFranqueado" -> PerfilAcessoEnum.CLAROPAY_FRANQUEADO;

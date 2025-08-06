@@ -8,5 +8,5 @@ public class Config {
     public static final int WAIT_LEVEL_4 = 30;
 
     // tag do cucumber
-    public static final String TAG_CUCUMBER = "@Hoje and @totalizadores and @bin";
+    public static final String TAG_CUCUMBER = "@splitPagamentos and @detalhesVenda and @bin and @franqueador";
 }

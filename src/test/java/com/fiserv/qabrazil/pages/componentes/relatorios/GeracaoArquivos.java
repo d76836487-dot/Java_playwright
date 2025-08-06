@@ -4,6 +4,7 @@ import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Download;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -100,10 +101,10 @@ public class GeracaoArquivos {
 
     private static boolean validarCabecalhoCSV(File arquivo, List<String> listaColunas) throws IOException {
         try (Reader reader = new InputStreamReader(new FileInputStream(arquivo), StandardCharsets.ISO_8859_1);
-         CSVParser csvParser = new CSVParser(
+        CSVParser csvParser = new CSVParser(
              reader
             ,CSVFormat.DEFAULT.withFirstRecordAsHeader()
-         )) {
+        )) {
             boolean retorno = true;
             String[] listaColunasArquivo = new ArrayList<>(csvParser.getHeaderNames()).get(0).split(";");
             int i = 0;
@@ -288,10 +289,49 @@ public class GeracaoArquivos {
     }
 
     private static boolean validarColunasCSV(String abaRelatorio, String tipoRelatorio, File arquivo) throws IOException {
-        // Vendas
-        // Hoje
-        //  = "I1_Valor bruto".split(";");
+        boolean verificacaoTotalizadoresArquivo = false;
 
-        return false;
+        // Totalizadores
+        double valor01 = 0;
+        int countValor01 = 0;
+
+        String[] cellList = new String[0];
+        // Vendas
+        if (abaRelatorio.equalsIgnoreCase("Hoje"))
+            cellList = "I2".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
+            if (tipoRelatorio.equalsIgnoreCase("simplificado"))
+                cellList = "".split(";");
+            else if (tipoRelatorio.equalsIgnoreCase("detalhado"))
+                cellList = "".split(";");
+        }
+
+        try (Reader reader = new InputStreamReader(new FileInputStream(arquivo), StandardCharsets.ISO_8859_1);
+        CSVParser csvParser = new CSVParser(
+             reader
+            ,CSVFormat.DEFAULT.withFirstRecordAsHeader()
+        )) {
+            List<CSVRecord> records = csvParser.getRecords();
+
+            for (String cell : cellList) {
+                int columnIndex = cell.charAt(0) - 'A';
+                int startingLine = GeneralUtils.convertToInt(cell.substring(1)) - 1;
+
+                for (int i = startingLine; i < records.size(); i++) {
+                    CSVRecord record = records.get(i);
+
+                    String cellValue = record.get(columnIndex);
+
+                    if (!cellValue.isEmpty()) {
+                        countValor01++;
+                        valor01 += GeneralUtils.convertToDouble(cellValue);
+                    }
+                }
+
+                verificacaoTotalizadoresArquivo = (valor01 > 0 && countValor01 > 0);
+            }
+        }
+
+        return verificacaoTotalizadoresArquivo;
     }
 }
