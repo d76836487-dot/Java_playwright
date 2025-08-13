@@ -34,4 +34,8 @@ public class FuturosPage extends GeneralUtils {
                 checkIfValueIsNotEmpty(this.totalLiquidoPrevisto);
         }
     }
+
+    public int getTotalVendas() { return getIntLocator(this.totalVendas); }
+
+    public double getTotalLiquidoPrevisto() { return getDoubleLocator(this.totalLiquidoPrevisto); }
 }

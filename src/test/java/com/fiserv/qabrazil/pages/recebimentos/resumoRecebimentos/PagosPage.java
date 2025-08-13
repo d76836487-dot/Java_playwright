@@ -38,4 +38,10 @@ public class PagosPage extends GeneralUtils {
                 checkIfValueIsNotEmpty(this.totalCedido);
         }
     }
+
+    public double getTotalRecebido() { return getDoubleLocator(this.totalRecebido); }
+
+    public double getTotalAgendado() { return getDoubleLocator(this.totalAgendado); }
+
+    public double getTotalCedido() { return getDoubleLocator(this.totalCedido); }
 }

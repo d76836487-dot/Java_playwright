@@ -85,6 +85,8 @@ public class HistoricoVendasPage extends GeneralUtils {
 
     public double getValorLiquido() { return getDoubleLocator(this.valorLiquido); }
 
+    public double getValorCancelado() { return getDoubleLocator(this.valorCancelado); }
+
     // Mais detalhes
     public void verificarDadosMaisDetalhes() {
         click(this.linkMaisDetalhes);

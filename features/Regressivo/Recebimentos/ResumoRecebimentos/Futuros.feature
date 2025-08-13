@@ -71,6 +71,37 @@ Feature: Futuros
       | alianca    | menu           | submenu              | abaRelatorio | campos                                   |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Total de vendas;Total líquido previsto" |
 
+  @totalizadores
+  Scenario Outline: Validar totalizadores - Futuros
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And valida os totalizadores - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu            | submenu               | abaRelatorio  |
+      | "bin"   | "recebimentos"  | "resumoRecebimentos"  | "Futuros"     |
+
+    @sicredi
+    Examples:
+      | alianca   | menu            | submenu               | abaRelatorio  |
+      | "sicredi" | "recebimentos"  | "resumoRecebimentos"  | "Futuros"     |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu            | submenu               | abaRelatorio  |
+      | "azulzinha" | "recebimentos"  | "resumoRecebimentos"  | "Futuros"     |
+
+    @afinz
+    Examples:
+      | alianca | menu            | submenu               | abaRelatorio  |
+      | "afinz" | "recebimentos"  | "resumoRecebimentos"  | "Futuros"     |
+
+    @claropay
+    Examples:
+      | alianca    | menu           | submenu               | abaRelatorio  |
+      | "claropay" | "recebimentos" | "resumoRecebimentos"  | "Futuros"     |
+
   @periodo
   @TestCaseKey=LPDC-T1259
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Futuros

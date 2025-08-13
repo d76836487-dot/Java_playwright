@@ -34,4 +34,8 @@ public class NaoEfetivadasPage extends GeneralUtils {
                 checkIfValueIsNotEmpty(this.totalEstornadas);
         }
     }
+
+    public int getTotalRecusadas() { return getIntLocator(this.totalRecusadas); }
+
+    public int getTotalEstornadas() { return getIntLocator(this.totalEstornadas); }
 }

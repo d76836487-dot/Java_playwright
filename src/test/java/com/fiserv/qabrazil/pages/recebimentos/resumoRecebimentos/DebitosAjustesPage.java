@@ -34,4 +34,8 @@ public class DebitosAjustesPage extends GeneralUtils {
                 checkIfValueIsNotEmpty(this.totalCobrancasPendentes);
         }
     }
+
+    public double getTotalCobrancasAluguel() { return getDoubleLocator(this.totalCobrancasAluguel); }
+
+    public double getTotalCobrancasPendentes() { return getDoubleLocator(this.totalCobrancasPendentes); }
 }

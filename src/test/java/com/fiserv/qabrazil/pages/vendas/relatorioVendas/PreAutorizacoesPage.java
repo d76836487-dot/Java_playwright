@@ -38,4 +38,10 @@ public class PreAutorizacoesPage extends GeneralUtils {
                 checkIfValueIsNotEmpty(this.valorBrutoConfirmar);
         }
     }
+
+    public int getTotalVendas() { return getIntLocator(this.totalVendas); }
+
+    public double getValorBrutoAutorizado() { return getDoubleLocator(this.valorBrutoAutorizado); }
+
+    public double getValorBrutoConfirmar() { return getDoubleLocator(this.valorBrutoConfirmar); }
 }

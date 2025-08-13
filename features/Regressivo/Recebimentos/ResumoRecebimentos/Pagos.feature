@@ -71,6 +71,37 @@ Feature: Pagos
       | alianca    | menu           | submenu              | abaRelatorio | campos                                       |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos"      | "Total recebido;Total agendado;Total cedido" |
 
+  @totalizadores
+  Scenario Outline: Validar totalizadores - Pagos
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And valida os totalizadores - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu            | submenu               | abaRelatorio  |
+      | "bin"   | "recebimentos"  | "resumoRecebimentos"  | "Pagos"       |
+
+    @sicredi
+    Examples:
+      | alianca   | menu            | submenu               | abaRelatorio  |
+      | "sicredi" | "recebimentos"  | "resumoRecebimentos"  | "Pagos"       |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu            | submenu               | abaRelatorio  |
+      | "azulzinha" | "recebimentos"  | "resumoRecebimentos"  | "Pagos"       |
+
+    @afinz
+    Examples:
+      | alianca | menu            | submenu               | abaRelatorio  |
+      | "afinz" | "recebimentos"  | "resumoRecebimentos"  | "Pagos"       |
+
+    @claropay
+    Examples:
+      | alianca    | menu           | submenu               | abaRelatorio  |
+      | "claropay" | "recebimentos" | "resumoRecebimentos"  | "Pagos"       |
+
   @periodo
   @TestCaseKey=LPDC-T1277
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Pagos

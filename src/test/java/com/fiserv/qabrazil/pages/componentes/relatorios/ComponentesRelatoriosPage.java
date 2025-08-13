@@ -285,10 +285,14 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
         // Totalizadores
         int total01 = 0;
         int countTotal01 = 0;
+        int total02 = 0;
+        int countTotal02 = 0;
         double valor01 = 0;
         double countValor01 = 0;
         double valor02 = 0;
         double countValor02 = 0;
+        double valor03 = 0;
+        double countValor03 = 0;
 
         // Vendas
         if (abaRelatorio.equalsIgnoreCase("Hoje")) {
@@ -298,6 +302,30 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
             total01 = historicoVendasPage.getTotalVendas();
             valor01 = historicoVendasPage.getValorBruto();
             valor02 = historicoVendasPage.getValorLiquido();
+            valor03 = historicoVendasPage.getValorCancelado();
+        } else if (abaRelatorio.equalsIgnoreCase("Não efetivadas")) {
+            total01 = naoEfetivadasPage.getTotalRecusadas();
+            total02 = naoEfetivadasPage.getTotalEstornadas();
+        } else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações")) {
+            total01 = preAutorizacoesPage.getTotalVendas();
+            valor01 = preAutorizacoesPage.getValorBrutoAutorizado();
+            valor02 = preAutorizacoesPage.getValorBrutoConfirmar();
+        } else if (abaRelatorio.equalsIgnoreCase("Voucher")) {
+            total01 = voucherPage.getTotalVendas();
+            valor01 = voucherPage.getValorBruto();
+        }
+
+        // Recebimentos
+        else if (abaRelatorio.equalsIgnoreCase("Pagos")) {
+            valor01 = pagosPage.getTotalRecebido();
+            valor02 = pagosPage.getTotalAgendado();
+            valor03 = pagosPage.getTotalCedido();
+        } else if (abaRelatorio.equalsIgnoreCase("Futuros")) {
+            total01 = futurosPage.getTotalVendas();
+            valor01 = futurosPage.getTotalLiquidoPrevisto();
+        } else if (abaRelatorio.equalsIgnoreCase("Débitos e ajustes")) {
+            valor01 = debitosAjustesPage.getTotalCobrancasAluguel();
+            valor02 = debitosAjustesPage.getTotalCobrancasPendentes();
         }
 
         int sizePagination = getIntLocator(lastPageNumber);
@@ -338,6 +366,112 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
                     && valor01 == countValor01
                     && valor02 == countValor02
                 );
+            } else if (abaRelatorio.equalsIgnoreCase("Não efetivadas")) {
+                Locator resultadoColunaStatus =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaStatus");
+
+                for (int j = 0; j < resultadoColunaStatus.count(); j++) {
+                    resultadoColunaStatus.nth(j).scrollIntoViewIfNeeded();
+
+                    if (getStringLocator(resultadoColunaStatus.nth(j)).equalsIgnoreCase("Recusada"))
+                        countTotal01++;
+                    else if (getStringLocator(resultadoColunaStatus.nth(j)).equalsIgnoreCase("Estornada"))
+                        countTotal02++;
+                }
+
+                verificacaoTotalizadoresAba = (
+                    total01 == countTotal01
+                    && total02 == countTotal02
+                );
+            } else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações")) {
+                Locator resultadoColunaValorAutorizado =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorAutorizado");
+
+                Locator resultadoColunaValorConfirmado =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorConfirmado");
+
+                for (int j = 0; j < resultadoColunaValorAutorizado.count(); j++) {
+                    resultadoColunaValorAutorizado.nth(j).scrollIntoViewIfNeeded();
+                    countTotal01++;
+                    countValor01 += getDoubleLocator(resultadoColunaValorAutorizado.nth(j));
+                    countValor02 += getDoubleLocator(resultadoColunaValorConfirmado.nth(j));
+                }
+
+                verificacaoTotalizadoresAba = (
+                    total01 == countTotal01
+                    && valor01 == countValor01
+                    && valor02 == countValor02
+                );
+            } else if (abaRelatorio.equalsIgnoreCase("Voucher")) {
+                Locator resultadoColunaValorBruto =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBruto");
+
+                for (int j = 0; j < resultadoColunaValorBruto.count(); j++) {
+                    resultadoColunaValorBruto.nth(j).scrollIntoViewIfNeeded();
+                    countTotal01++;
+                    countValor01 += getDoubleLocator(resultadoColunaValorBruto.nth(j));
+                }
+
+                verificacaoTotalizadoresAba = (
+                    total01 == countTotal01
+                    && valor01 == countValor01
+                );
+            }
+
+            // Recebimentos
+            else if (abaRelatorio.equalsIgnoreCase("Pagos")) {
+                Locator resultadoColunaTotalRecebido =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTotalRecebido");
+
+                Locator resultadoColunaTotalAgendado =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTotalAgendado");
+
+                Locator resultadoColunaTotalCedido =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTotalCedido");
+
+                for (int j = 0; j < resultadoColunaTotalRecebido.count(); j++) {
+                    resultadoColunaTotalRecebido.nth(j).scrollIntoViewIfNeeded();
+                    countValor01 += getDoubleLocator(resultadoColunaTotalRecebido.nth(j));
+                }
+
+                // pula o primeiro registro
+                for (int k = 1; k < resultadoColunaTotalAgendado.count(); k++) {
+                    resultadoColunaTotalAgendado.nth(k).scrollIntoViewIfNeeded();
+                    countValor02 += getDoubleLocator(resultadoColunaTotalAgendado.nth(k));
+                    countValor03 += getDoubleLocator(resultadoColunaTotalCedido.nth(k));
+                }
+
+                verificacaoTotalizadoresAba = (
+                    valor01 == countValor01
+                    && valor02 == countValor02
+                    && valor03 == countValor03
+                );
+            } else if (abaRelatorio.equalsIgnoreCase("Futuros")) {
+                Locator resultadoColunaValorLiquido =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorLiquido");
+
+                for (int j = 0; j < resultadoColunaValorLiquido.count(); j++) {
+                    resultadoColunaValorLiquido.nth(j).scrollIntoViewIfNeeded();
+                    countTotal01++;
+                    countValor01 += getDoubleLocator(resultadoColunaValorLiquido.nth(j));
+                }
+
+                verificacaoTotalizadoresAba = (
+                    total01 == countTotal01
+                    && valor01 == countValor01
+                );
+            } else if (abaRelatorio.equalsIgnoreCase("Débitos e ajustes")) {
+                Locator resultadoColunaValorAluguel =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorAluguel");
+
+                for (int j = 0; j < resultadoColunaValorAluguel.count(); j++) {
+                    resultadoColunaValorAluguel.nth(j).scrollIntoViewIfNeeded();
+                    countValor02 += getDoubleLocator(resultadoColunaValorAluguel.nth(j));
+                }
+
+                verificacaoTotalizadoresAba = (
+                    valor02 == countValor02
+                );
             }
 
             if ((i + 1) != sizePagination)
@@ -358,6 +492,20 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
             listaTipoRelatorio = "N".split(";");
         else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas"))
             listaTipoRelatorio = "simplificado;detalhado".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Não efetivadas"))
+            listaTipoRelatorio = "N".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações"))
+            listaTipoRelatorio = "N".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Voucher"))
+            listaTipoRelatorio = "N".split(";");
+
+        // Recebimentos
+        else if (abaRelatorio.equalsIgnoreCase("Pagos"))
+            listaTipoRelatorio = "simplificado;detalhado".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Futuros"))
+            listaTipoRelatorio = "N".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Débitos e ajustes"))
+            listaTipoRelatorio = "N".split(";");
 
         for (String tipoArquivo : listaTipoArquivo) {
             for (String tipoRelatorio : listaTipoRelatorio) {
@@ -649,6 +797,12 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
                     page.locator("//*[contains(@id, '-Valordopagamento')]");
                 case "resultadoColunaStatus" ->
                     page.locator("//*[contains(@id, '-Status')]");
+                case "resultadoColunaTotalRecebido" ->
+                    page.locator("//*[contains(@id, '-TotalRecebido')]/div/span[contains(text(), 'R$ ')]");
+                case "resultadoColunaTotalAgendado" ->
+                    page.locator("//*[contains(@id, '-TotalAgendado')]/div/span[contains(text(), 'R$ ')]");
+                case "resultadoColunaTotalCedido" ->
+                    page.locator("//*[contains(@id, '-TotalCedido')]/div/span[contains(text(), 'R$ ')]");
                 default -> element;
             };
 

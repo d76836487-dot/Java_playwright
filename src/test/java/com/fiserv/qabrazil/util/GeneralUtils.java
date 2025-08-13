@@ -61,14 +61,18 @@ public class GeneralUtils extends WaitUtil {
     }
 
     public static void click(Locator locator) {
-        locator.scrollIntoViewIfNeeded();
-        locator.click();
+        if (locator.isVisible()) {
+            locator.scrollIntoViewIfNeeded();
+            locator.click();
+        }
     }
 
     public static void pressValue(Locator locator, String value) {
-        locator.focus();
-        locator.clear();
-        locator.pressSequentially(value);
+        if (locator.isVisible()) {
+            locator.focus();
+            locator.clear();
+            locator.pressSequentially(value);
+        }
     }
 
     public static double replaceMonetaryValue(String monetaryValue) {
@@ -87,6 +91,10 @@ public class GeneralUtils extends WaitUtil {
 
     public static double getDoubleLocator(Locator locator) {
         return replaceMonetaryValue(locator.textContent());
+    }
+
+    public static String getStringLocator(Locator locator) {
+        return locator.textContent().trim();
     }
 
     public static int convertToInt(String value) { return Integer.parseInt(value.trim()); }

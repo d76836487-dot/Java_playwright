@@ -71,6 +71,37 @@ Feature: Debitos e ajustes
       | alianca    | menu           | submenu              | abaRelatorio        | campos                                                       |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
 
+  @totalizadores
+  Scenario Outline: Validar totalizadores - Debitos e ajustes
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And valida os totalizadores - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu            | submenu               | abaRelatorio        |
+      | "bin"   | "recebimentos"  | "resumoRecebimentos"  | "Débitos e ajustes" |
+
+    @sicredi
+    Examples:
+      | alianca   | menu            | submenu               | abaRelatorio        |
+      | "sicredi" | "recebimentos"  | "resumoRecebimentos"  | "Débitos e ajustes" |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu            | submenu               | abaRelatorio        |
+      | "azulzinha" | "recebimentos"  | "resumoRecebimentos"  | "Débitos e ajustes" |
+
+    @afinz
+    Examples:
+      | alianca | menu            | submenu               | abaRelatorio        |
+      | "afinz" | "recebimentos"  | "resumoRecebimentos"  | "Débitos e ajustes" |
+
+    @claropay
+    Examples:
+      | alianca    | menu           | submenu               | abaRelatorio        |
+      | "claropay" | "recebimentos" | "resumoRecebimentos"  | "Débitos e ajustes" |
+
   @periodo
   @TestCaseKey=LPDC-T1278
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Debitos e ajustes
