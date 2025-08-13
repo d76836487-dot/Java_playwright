@@ -72,6 +72,7 @@ Feature: Debitos e ajustes
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
 
   @totalizadores
+  @TestCaseKey=LPDC-T1452
   Scenario Outline: Validar totalizadores - Debitos e ajustes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -79,28 +80,28 @@ Feature: Debitos e ajustes
     And valida os totalizadores - <abaRelatorio>
     @bin
     Examples:
-      | alianca | menu            | submenu               | abaRelatorio        |
-      | "bin"   | "recebimentos"  | "resumoRecebimentos"  | "Débitos e ajustes" |
+      | alianca | menu           | submenu              | abaRelatorio        |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
     @sicredi
     Examples:
-      | alianca   | menu            | submenu               | abaRelatorio        |
-      | "sicredi" | "recebimentos"  | "resumoRecebimentos"  | "Débitos e ajustes" |
+      | alianca   | menu           | submenu              | abaRelatorio        |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
     @azulzinha
     Examples:
-      | alianca     | menu            | submenu               | abaRelatorio        |
-      | "azulzinha" | "recebimentos"  | "resumoRecebimentos"  | "Débitos e ajustes" |
+      | alianca     | menu           | submenu              | abaRelatorio        |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
     @afinz
     Examples:
-      | alianca | menu            | submenu               | abaRelatorio        |
-      | "afinz" | "recebimentos"  | "resumoRecebimentos"  | "Débitos e ajustes" |
+      | alianca | menu           | submenu              | abaRelatorio        |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
     @claropay
     Examples:
-      | alianca    | menu           | submenu               | abaRelatorio        |
-      | "claropay" | "recebimentos" | "resumoRecebimentos"  | "Débitos e ajustes" |
+      | alianca    | menu           | submenu              | abaRelatorio        |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
   @periodo
   @TestCaseKey=LPDC-T1278

@@ -72,6 +72,7 @@ Feature: Nao efetivadas
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Total de recusadas;Total de estornadas" |
 
   @totalizadores
+  @TestCaseKey=LPDC-T1433
   Scenario Outline: Validar totalizadores - Nao efetivadas
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -686,3 +687,4 @@ Feature: Nao efetivadas
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+
