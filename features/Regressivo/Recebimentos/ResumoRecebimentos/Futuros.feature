@@ -72,6 +72,7 @@ Feature: Futuros
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Total de vendas;Total líquido previsto" |
 
   @totalizadores
+  @TestCaseKey=LPDC-T1451
   Scenario Outline: Validar totalizadores - Futuros
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -79,28 +80,28 @@ Feature: Futuros
     And valida os totalizadores - <abaRelatorio>
     @bin
     Examples:
-      | alianca | menu            | submenu               | abaRelatorio  |
-      | "bin"   | "recebimentos"  | "resumoRecebimentos"  | "Futuros"     |
+      | alianca | menu           | submenu              | abaRelatorio |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
     @sicredi
     Examples:
-      | alianca   | menu            | submenu               | abaRelatorio  |
-      | "sicredi" | "recebimentos"  | "resumoRecebimentos"  | "Futuros"     |
+      | alianca   | menu           | submenu              | abaRelatorio |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
     @azulzinha
     Examples:
-      | alianca     | menu            | submenu               | abaRelatorio  |
-      | "azulzinha" | "recebimentos"  | "resumoRecebimentos"  | "Futuros"     |
+      | alianca     | menu           | submenu              | abaRelatorio |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
     @afinz
     Examples:
-      | alianca | menu            | submenu               | abaRelatorio  |
-      | "afinz" | "recebimentos"  | "resumoRecebimentos"  | "Futuros"     |
+      | alianca | menu           | submenu              | abaRelatorio |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
     @claropay
     Examples:
-      | alianca    | menu           | submenu               | abaRelatorio  |
-      | "claropay" | "recebimentos" | "resumoRecebimentos"  | "Futuros"     |
+      | alianca    | menu           | submenu              | abaRelatorio |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
   @periodo
   @TestCaseKey=LPDC-T1259

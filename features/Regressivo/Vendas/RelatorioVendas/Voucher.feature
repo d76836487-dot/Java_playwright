@@ -72,6 +72,7 @@ Feature: Voucher
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Total de vendas;Valor bruto" |
 
   @totalizadores
+  @TestCaseKey=LPDC-T1431
   Scenario Outline: Validar totalizadores - Voucher
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -656,3 +657,4 @@ Feature: Voucher
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                         |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelas;Bandeira;Canal;Número do terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+

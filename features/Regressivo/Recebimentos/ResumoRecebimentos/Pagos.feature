@@ -72,6 +72,7 @@ Feature: Pagos
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos"      | "Total recebido;Total agendado;Total cedido" |
 
   @totalizadores
+  @TestCaseKey=LPDC-T1450
   Scenario Outline: Validar totalizadores - Pagos
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -79,28 +80,28 @@ Feature: Pagos
     And valida os totalizadores - <abaRelatorio>
     @bin
     Examples:
-      | alianca | menu            | submenu               | abaRelatorio  |
-      | "bin"   | "recebimentos"  | "resumoRecebimentos"  | "Pagos"       |
+      | alianca | menu           | submenu              | abaRelatorio |
+      | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
     @sicredi
     Examples:
-      | alianca   | menu            | submenu               | abaRelatorio  |
-      | "sicredi" | "recebimentos"  | "resumoRecebimentos"  | "Pagos"       |
+      | alianca   | menu           | submenu              | abaRelatorio |
+      | "sicredi" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
     @azulzinha
     Examples:
-      | alianca     | menu            | submenu               | abaRelatorio  |
-      | "azulzinha" | "recebimentos"  | "resumoRecebimentos"  | "Pagos"       |
+      | alianca     | menu           | submenu              | abaRelatorio |
+      | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
     @afinz
     Examples:
-      | alianca | menu            | submenu               | abaRelatorio  |
-      | "afinz" | "recebimentos"  | "resumoRecebimentos"  | "Pagos"       |
+      | alianca | menu           | submenu              | abaRelatorio |
+      | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
     @claropay
     Examples:
-      | alianca    | menu           | submenu               | abaRelatorio  |
-      | "claropay" | "recebimentos" | "resumoRecebimentos"  | "Pagos"       |
+      | alianca    | menu           | submenu              | abaRelatorio |
+      | "claropay" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
   @periodo
   @TestCaseKey=LPDC-T1277
