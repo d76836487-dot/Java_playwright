@@ -49,7 +49,7 @@ public class EnderecoPage extends GeneralUtils {
     }
 
     private void verificarEndereco() {
-        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS);
     }
 
     private void preencherNumero(String semNumero, String numero) {
@@ -98,7 +98,7 @@ public class EnderecoPage extends GeneralUtils {
         pressValue(this.txtComplemento, complemento);
         pressValue(this.txtPontoReferencia, pontoReferencia);
 
-        GeneralUtils.waitForSeconds(Config.WAIT_LEVEL_1);
+        GeneralUtils.waitForSeconds(Config.WAIT_5_SECONDS);
         if (cep.isEmpty()) {
             pressValue(this.txtLogradouro, logradouro);
             pressValue(this.txtBairro, bairro);

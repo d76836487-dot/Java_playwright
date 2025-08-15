@@ -55,7 +55,7 @@ public class ReviseSeuPedidoPage extends GeneralUtils {
     ,String alterarSobreSeuNegocio
     ,String alterarEndereco
     ,String alterarContaRecebimento) {
-        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS);
         this.clickAlterarSobreVoce(alterarSobreVoce);
         this.clickAlterarSobreSeuNegocio(alterarSobreSeuNegocio);
         this.clickAlterarEndereco(alterarEndereco);

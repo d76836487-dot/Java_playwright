@@ -70,13 +70,13 @@ public class HistoricoVendasPage extends GeneralUtils {
     }
 
     public void verificarValorOriginalVenda(String visivel) {
-        waitForSeconds(Config.WAIT_LEVEL_1);
+        waitForSeconds(Config.WAIT_5_SECONDS);
         click(this.primeiroRegistro);
 
         if (visivel.equalsIgnoreCase("está visível"))
-            waitIsVisibleForSeconds(this.valorOriginalVenda, Config.WAIT_LEVEL_1);
+            waitIsVisibleForSeconds(this.valorOriginalVenda, Config.WAIT_5_SECONDS);
         else if (visivel.equalsIgnoreCase("não está visível"))
-            waitIsNotVisibleForSeconds(this.valorOriginalVenda, Config.WAIT_LEVEL_1);
+            waitIsNotVisibleForSeconds(this.valorOriginalVenda, Config.WAIT_5_SECONDS);
     }
 
     public int getTotalVendas() { return getIntLocator(this.totalVendas); }
@@ -90,7 +90,7 @@ public class HistoricoVendasPage extends GeneralUtils {
     // Mais detalhes
     public void verificarDadosMaisDetalhes() {
         click(this.linkMaisDetalhes);
-        waitForSeconds(Config.WAIT_LEVEL_2);
+        waitForSeconds(Config.WAIT_10_SECONDS);
 
         // atribuicao Total de vendas
         int totalVendas = Integer.parseInt(this.detalhesVendaTotalVendas.textContent().trim());
@@ -121,7 +121,7 @@ public class HistoricoVendasPage extends GeneralUtils {
         );
         Assert.assertTrue(validacao);
 
-        waitForSeconds(Config.WAIT_LEVEL_2);
+        waitForSeconds(Config.WAIT_10_SECONDS);
         click(this.btnFecharDetalhesVenda);
     }
 }

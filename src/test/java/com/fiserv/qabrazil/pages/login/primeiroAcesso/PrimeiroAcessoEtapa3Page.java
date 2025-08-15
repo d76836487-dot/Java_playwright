@@ -28,7 +28,7 @@ public class PrimeiroAcessoEtapa3Page extends GeneralUtils {
         this.btnConfirmar = page.locator("//*[text()='Confirmar']");
     }
 
-    private void verificarPrimeiroAcessoEtapa3() { waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1); }
+    private void verificarPrimeiroAcessoEtapa3() { waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS); }
     private void preencherSenha(String senha) { pressValue(this.txtSenha, senha); }
     private void preencherConfirmarSenha(String confirmarSenha) { pressValue(this.txtConfirmarSenha, confirmarSenha); }
     private void clickTermosCondicoes() { click(this.cbkTermosECondicoes); }

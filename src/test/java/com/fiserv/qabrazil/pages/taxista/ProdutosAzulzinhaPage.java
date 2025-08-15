@@ -46,7 +46,7 @@ public class ProdutosAzulzinhaPage extends GeneralUtils {
     }
 
     public void selecionarCamposProdutosAzulzinha(String produtosAzulzinha) {
-        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS);
         this.selecionarProdutosAzulzinha(produtosAzulzinha);
         click(this.linkTaxas);
         click(this.linkAzulzinhaPro);

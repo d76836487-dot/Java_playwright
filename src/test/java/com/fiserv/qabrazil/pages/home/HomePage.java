@@ -56,7 +56,7 @@ public class HomePage extends GeneralUtils {
 
     public void verificarHome() {
         this.isVisiblePersonalizarVisualizacao();
-        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_4);
+        waitIsVisibleForSeconds(this.title, Config.WAIT_30_SECONDS);
     }
 
     public void acessarDashboard(@NotNull String dashboard) {
@@ -75,7 +75,7 @@ public class HomePage extends GeneralUtils {
     }
 
     public void verificarTextoRodape() {
-        waitIsVisibleForSeconds(this.rodape, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.rodape, Config.WAIT_5_SECONDS);
 
         LocalDate now = LocalDate.now();
         int year = now.getYear();
@@ -84,7 +84,7 @@ public class HomePage extends GeneralUtils {
     }
 
     private void isVisiblePersonalizarVisualizacao() {
-        waitForSeconds(Config.WAIT_LEVEL_1);
+        waitForSeconds(Config.WAIT_5_SECONDS);
         if (this.titlePersonalizeVisualizacao.isVisible()) {
             this.btnEstabelecimento.click();
             this.expandirEstabelecimento.click();
@@ -97,15 +97,15 @@ public class HomePage extends GeneralUtils {
     public void isVisibleDashboard(String dashboard, String visivel) {
         if (dashboard.equalsIgnoreCase("vendasHoje")) {
             if (visivel.equalsIgnoreCase("está visível")) {
-                waitIsVisibleForSeconds(this.vendasHoje, Config.WAIT_LEVEL_3);
+                waitIsVisibleForSeconds(this.vendasHoje, Config.WAIT_20_SECONDS);
             } else if (visivel.equalsIgnoreCase("não está visível")) {
-                waitIsNotVisibleForSeconds(this.vendasHoje, Config.WAIT_LEVEL_3);
+                waitIsNotVisibleForSeconds(this.vendasHoje, Config.WAIT_20_SECONDS);
             }
         } else if (dashboard.equalsIgnoreCase("ultimasVendas")) {
             if (visivel.equalsIgnoreCase("está visível")) {
-                waitIsVisibleForSeconds(this.ultimasVendas, Config.WAIT_LEVEL_3);
+                waitIsVisibleForSeconds(this.ultimasVendas, Config.WAIT_20_SECONDS);
             } else if (visivel.equalsIgnoreCase("não está visível")) {
-                waitIsNotVisibleForSeconds(this.ultimasVendas, Config.WAIT_LEVEL_3);
+                waitIsNotVisibleForSeconds(this.ultimasVendas, Config.WAIT_20_SECONDS);
             }
         }
     }

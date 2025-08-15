@@ -28,7 +28,7 @@ public class EsqueciMinhaSenhaEtapa1Page extends GeneralUtils {
         this.btnContinuar = page.locator("//*[text()='Continuar']");
     }
 
-    private void verificarEsqueciMinhaSenhaEtapa1() { waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1); }
+    private void verificarEsqueciMinhaSenhaEtapa1() { waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS); }
     private void preencherUsuario(String usuario) { pressValue(this.txtUsuario, usuario); }
     private void clickContinuar() { click(this.btnContinuar); }
 

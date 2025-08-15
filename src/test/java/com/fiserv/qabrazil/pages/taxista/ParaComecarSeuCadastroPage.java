@@ -47,7 +47,7 @@ public class ParaComecarSeuCadastroPage extends GeneralUtils {
     ,String nomeFantasia
     ,String faturamentoAnual
     ,String ticketMedio) {
-        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS);
         pressValue(this.txtNomeCompleto, nomeCompleto);
         pressValue(this.txtDataNascimento, dataNascimento);
         pressValue(this.txtCelular, celular);

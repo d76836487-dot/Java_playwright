@@ -20,5 +20,5 @@ public class SenhaCadastradaComSucessoPage extends GeneralUtils {
         this.title = page.locator("//*[text()='Senha cadastrada com sucesso']");
     }
 
-    public void verificarSenhaCastradaComSucesso() { waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1); }
+    public void verificarSenhaCastradaComSucesso() { waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS); }
 }

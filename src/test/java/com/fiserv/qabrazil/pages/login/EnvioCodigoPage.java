@@ -30,7 +30,7 @@ public class EnvioCodigoPage extends GeneralUtils {
         this.btnConfirmar = page.locator("//*[(text()='Confirmar')]");
     }
 
-    private void verificarEnvioCodigo() { waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1); }
+    private void verificarEnvioCodigo() { waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS); }
     private void clickReceberPorEmail() { click(this.optReceberPorEmail); }
     private void clickReceberPorSMS() { click(this.optReceberPorSMS); }
     private void clickConfirmar() { click(this.btnConfirmar); }

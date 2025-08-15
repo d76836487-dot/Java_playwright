@@ -30,7 +30,7 @@ public class LoginPage extends GeneralUtils {
         this.btnPrimeiroAcesso = page.locator("//*[text()='Primeiro acesso']");
     }
 
-    public void verificarLogin() { waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1); }
+    public void verificarLogin() { waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS); }
 
     public void acessarPortal(String alianca) {
         String url = getPerfilAcesso(alianca).getUrlPortal();

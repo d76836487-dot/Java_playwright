@@ -21,6 +21,6 @@ public class PedidoConfirmadoPage extends GeneralUtils {
     }
 
     public void verificarPedidoConfirmado() {
-        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS);
     }
 }

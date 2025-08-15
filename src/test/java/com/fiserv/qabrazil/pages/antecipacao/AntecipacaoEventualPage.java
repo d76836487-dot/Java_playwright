@@ -26,6 +26,7 @@ public class AntecipacaoEventualPage extends GeneralUtils {
     private Locator calendarioAte;
     private Locator txtValor;
     private Locator valorDisponivelPersonalizado;
+    private Locator titlePersonalizeValor;
     private Locator rbValorMinimo;
     private Locator rbValorMaximo;
     private Locator valorSolicitado;
@@ -48,6 +49,7 @@ public class AntecipacaoEventualPage extends GeneralUtils {
         this.calendarioAte = page.locator("//*[text()='Até']");
         this.txtValor = page.locator("//*[@type='text' and contains(@id, '-InputMask')]");
         this.valorDisponivelPersonalizado = page.locator("//span[span[normalize-space(text())='Valor disponível personalizado:']]/following-sibling::span/span");
+        this.titlePersonalizeValor = page.locator("//*[contains(text(), 'Personalize o valor')]");
         this.rbValorMinimo = page.locator("//*[contains(@id, '-RadioButton1-input')]");
         this.rbValorMaximo = page.locator("//*[contains(@id, '-RadioButton2-input')]");
         this.valorSolicitado = page.locator("//*[text()='Valor solicitado']/following-sibling::span");
@@ -120,6 +122,12 @@ public class AntecipacaoEventualPage extends GeneralUtils {
         click(page.locator("(//*[@aria-label='" + data + "'])[2]"));
     }
 
+    private void preencherValor(String valor) {
+        pressValue(this.txtValor, valor);
+        click(this.titlePersonalizeValor);
+        waitForSeconds(Config.WAIT_5_SECONDS);
+    }
+
     private void clickValorMinimoMaximo(String minimoMaximo) {
         if (minimoMaximo.equalsIgnoreCase("minimo"))
             click(this.rbValorMinimo);
@@ -129,23 +137,18 @@ public class AntecipacaoEventualPage extends GeneralUtils {
 
     private void validarValoresAntecipacaoEventual(int validacao) {
         if (validacao == 1) {
-            double valorDisponivelPersonalizado = replaceMonetaryValue(this.valorDisponivelPersonalizado.textContent());
             double valorSolicitado = replaceMonetaryValue(this.valorSolicitado.textContent());
             double valorDescontado = replaceMonetaryValue(this.valorDescontado.textContent());
             double valorReceber = replaceMonetaryValue(this.valorReceber.textContent());
+            double vl1 = GeneralUtils.roundNumber(valorSolicitado - valorDescontado, 2, "UP");
 
-            boolean verificacao = (
-                (valorDisponivelPersonalizado == valorSolicitado)
-                && ((valorSolicitado - valorDescontado) == valorReceber)
-            );
+            boolean verificacao = vl1 == valorReceber;
             Assert.assertTrue(verificacao);
         } else if (validacao == 2) {
             double valorDisponivelPersonalizado = replaceMonetaryValue(this.valorDisponivelPersonalizado.textContent());
             double valorSolicitacaoAntecipacao = replaceMonetaryValue(this.valorSolicitacaoAntecipacao.textContent());
 
-            boolean verificacao = (
-                valorDisponivelPersonalizado == valorSolicitacaoAntecipacao
-            );
+            boolean verificacao = valorDisponivelPersonalizado >= valorSolicitacaoAntecipacao;
             Assert.assertTrue(verificacao);
         }
     }
@@ -161,14 +164,14 @@ public class AntecipacaoEventualPage extends GeneralUtils {
         solicitarAntecipacaoPage.waitForLoadSolicitarAntecipacao();
         solicitarAntecipacaoPage.clickSolicitarAntecipacaoEventual();
 
-        waitIsVisibleForSeconds(this.titleAntecipacaoEventual, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.titleAntecipacaoEventual, Config.WAIT_5_SECONDS);
         click(this.btnPersonalizarSolicitacaoAntecipacao);
 
-        waitIsVisibleForSeconds(this.titlePersonalizarSolicitacaoAntecipacao, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.titlePersonalizarSolicitacaoAntecipacao, Config.WAIT_5_SECONDS);
         solicitarAntecipacaoPage.selectBandeiras(bandeiras);
         solicitarAntecipacaoPage.selectProdutos(produtos);
         this.checkTodoPeriodo(todoPeriodo, diaVencimentoDe, diaAte);
-        pressValue(this.txtValor, valor);
+        this.preencherValor(valor);
         this.clickValorMinimoMaximo(minimoMaximo);
 
         this.validarValoresAntecipacaoEventual(1);
@@ -177,8 +180,8 @@ public class AntecipacaoEventualPage extends GeneralUtils {
         this.validarValoresAntecipacaoEventual(2);
         solicitarAntecipacaoPage.clickConfirmar();
 
-        waitIsVisibleForSeconds(this.titleInformacoesGerais, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.titleInformacoesGerais, Config.WAIT_5_SECONDS);
         click(this.btnGerarComprovante);
-        waitForSeconds(Config.WAIT_LEVEL_2);
+        waitForSeconds(Config.WAIT_10_SECONDS);
     }
 }

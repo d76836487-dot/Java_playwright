@@ -92,8 +92,7 @@ public class AntecipacaoAutomaticaPage extends GeneralUtils {
         solicitarAntecipacaoPage.waitForLoadSolicitarAntecipacao();
         solicitarAntecipacaoPage.clickSolicitarAntecipacaoAutomatica();
 
-        waitIsVisibleForSeconds(this.titleAntecipacaoAutomatica, Config.WAIT_LEVEL_1);
-        waitForSeconds(Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.titleAntecipacaoAutomatica, Config.WAIT_5_SECONDS);
 
         solicitarAntecipacaoPage.selectBandeiras(bandeiras);
         solicitarAntecipacaoPage.selectProdutos(produtos);
@@ -104,7 +103,7 @@ public class AntecipacaoAutomaticaPage extends GeneralUtils {
         solicitarAntecipacaoPage.waitForLoadingConfirmarSolicitacao();
         solicitarAntecipacaoPage.clickConfirmar();
 
-        waitIsVisibleForSeconds(this.titleDadosContratacao, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.titleDadosContratacao, Config.WAIT_10_SECONDS);
         this.validarDataContratacao();
     }
 }

@@ -37,16 +37,13 @@ public class SolicitarAntecipacaoPage extends GeneralUtils {
     }
 
     public void waitForLoadSolicitarAntecipacao() {
-        waitIsVisibleForSeconds(this.titleSolicitarAntecipacao, Config.WAIT_LEVEL_1);
+        waitForSeconds(Config.WAIT_10_SECONDS);
+        waitIsVisibleForSeconds(this.titleSolicitarAntecipacao, Config.WAIT_5_SECONDS);
     }
 
-    public void clickSolicitarAntecipacaoAutomatica() {
-        click(this.btnSolicitarAtencipacaoAutomatica);
-    }
+    public void clickSolicitarAntecipacaoAutomatica() { click(this.btnSolicitarAtencipacaoAutomatica); }
 
-    public void clickSolicitarAntecipacaoEventual() {
-        click(this.btnSolicitarAtencipacaoEventual);
-    }
+    public void clickSolicitarAntecipacaoEventual() { click(this.btnSolicitarAtencipacaoEventual); }
 
     // Campos em comum
     private void clearBandeiras() {
@@ -74,18 +71,14 @@ public class SolicitarAntecipacaoPage extends GeneralUtils {
     public void selectProdutos(String produto) {
         click(page.locator("//*[text()='Produtos']"));
         // Todos;Crédito à vista;Crédito Parcelado
-        click(page.locator("//span[text()='" + produto + "']"));
+        click(page.locator("(//span[text()='" + produto + "'])[1]"));
     }
 
-    public void clickSolicitarAntecipacao() {
-        click(this.btnSolicitarAntecipacao);
-    }
+    public void clickSolicitarAntecipacao() { click(this.btnSolicitarAntecipacao); }
 
     public void waitForLoadingConfirmarSolicitacao() {
-        waitIsVisibleForSeconds(this.titleConfirmarSolicitacao, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.titleConfirmarSolicitacao, Config.WAIT_5_SECONDS);
     }
 
-    public void clickConfirmar() {
-        click(this.btnConfirmar);
-    }
+    public void clickConfirmar() { click(this.btnConfirmar); }
 }

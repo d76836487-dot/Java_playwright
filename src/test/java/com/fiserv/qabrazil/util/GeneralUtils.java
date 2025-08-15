@@ -3,6 +3,8 @@ package com.fiserv.qabrazil.util;
 import com.fiserv.qabrazil.enums.PerfilAcessoEnum;
 import com.microsoft.playwright.Locator;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Duration;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -45,7 +47,7 @@ public class GeneralUtils extends WaitUtil {
     }
 
     public static void checkIfValueIsNotEmpty(Locator locator) {
-        int i = Config.WAIT_LEVEL_1;
+        int i = Config.WAIT_5_SECONDS;
 
         while (i > 0) {
             if (locator.isVisible()) {
@@ -100,6 +102,12 @@ public class GeneralUtils extends WaitUtil {
     public static int convertToInt(String value) { return Integer.parseInt(value.trim()); }
 
     public static double convertToDouble(String value) { return replaceMonetaryValue(value); }
+
+    public static double roundNumber(double number, int scale, String upDown) {
+        BigDecimal bigDecimal = new BigDecimal(number);
+        RoundingMode roundingMode = upDown.equalsIgnoreCase("UP") ? RoundingMode.UP : RoundingMode.DOWN;
+        return bigDecimal.setScale(scale, roundingMode).doubleValue();
+    }
 
     public static PerfilAcessoEnum getPerfilAcesso(String alianca) {
         return switch (alianca) {

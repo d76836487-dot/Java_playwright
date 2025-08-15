@@ -28,7 +28,7 @@ public class HomeTaxistaPage extends GeneralUtils {
 
     public void acessarCadastroCredenciamentoTaxista() {
         page.navigate(this.url);
-        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS);
         click(this.btnQueroMinhaAzulzinha);
     }
 }

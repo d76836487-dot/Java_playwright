@@ -53,8 +53,8 @@ public enum PerfilAcessoEnum {
         "sicredi"
         ,setUrlPortal("sicredi")
         ,"master"
-        ,"79750866000170"
-        ,"Fiserv@1234"
+        ,"34795239860"
+        ,"Sicredi@951208"
         ,"110"
         ,setInstituicao("4")
     )

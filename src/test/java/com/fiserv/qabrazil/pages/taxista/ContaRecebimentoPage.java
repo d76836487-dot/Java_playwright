@@ -45,7 +45,7 @@ public class ContaRecebimentoPage extends GeneralUtils {
     }
 
     private void verificarContaRecebimento() {
-        waitIsVisibleForSeconds(this.title, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS);
     }
 
     private void selecionarTipoConta(String tipoConta) {

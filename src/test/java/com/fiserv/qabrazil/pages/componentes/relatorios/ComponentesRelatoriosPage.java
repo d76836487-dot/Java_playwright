@@ -196,19 +196,19 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
     public void validarCarregamentoAbaRelatorio(@NotNull String abaRelatorio) {
         // Vendas
         if (abaRelatorio.equalsIgnoreCase("Hoje"))
-            waitIsVisibleForSeconds(titleHoje, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(titleHoje, Config.WAIT_20_SECONDS);
         else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
             click(this.abaHistoricoVendas);
-            waitIsVisibleForSeconds(titleHistoricoVendas, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(titleHistoricoVendas, Config.WAIT_20_SECONDS);
         } else if (abaRelatorio.equalsIgnoreCase("Não efetivadas")) {
             click(this.abaNaoEfetivadas);
-            waitIsVisibleForSeconds(titleNaoEfetivadas, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(titleNaoEfetivadas, Config.WAIT_20_SECONDS);
         } else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações")) {
             click(this.abaPreAutorizacoes);
-            waitIsVisibleForSeconds(titlePreAutorizacoes, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(titlePreAutorizacoes, Config.WAIT_20_SECONDS);
         } else if (abaRelatorio.equalsIgnoreCase("Voucher")) {
             click(this.abaVoucher);
-            waitIsVisibleForSeconds(titleVocher, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(titleVocher, Config.WAIT_20_SECONDS);
         }
 
         // Recebimentos
@@ -218,21 +218,21 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
             || abaRelatorio.equalsIgnoreCase("Pagos_Valores Cedidos")
         ) {
             click(this.abaPagos);
-            waitIsVisibleForSeconds(titlePagos, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(titlePagos, Config.WAIT_20_SECONDS);
 
             if (abaRelatorio.equalsIgnoreCase("Pagos_Meus Domicílios")) {
                 click(this.subAbaMeusDomicilios);
-                waitIsVisibleForSeconds(titleMeusDomicilios, Config.WAIT_LEVEL_3);
+                waitIsVisibleForSeconds(titleMeusDomicilios, Config.WAIT_20_SECONDS);
             } else if (abaRelatorio.equalsIgnoreCase("Pagos_Valores Cedidos")) {
                 click(this.subAbaValoresCedidos);
-                waitIsVisibleForSeconds(titleValoresCedidos, Config.WAIT_LEVEL_3);
+                waitIsVisibleForSeconds(titleValoresCedidos, Config.WAIT_20_SECONDS);
             }
         } else if (abaRelatorio.equalsIgnoreCase("Futuros")) {
             click(this.abaFuturos);
-            waitIsVisibleForSeconds(titleFuturos, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(titleFuturos, Config.WAIT_20_SECONDS);
         } else if (abaRelatorio.equalsIgnoreCase("Débitos e ajustes")) {
             click(this.abaDebitosAjustes);
-            waitIsVisibleForSeconds(titleDebitosAjustes, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(titleDebitosAjustes, Config.WAIT_20_SECONDS);
         }
 
         // Antecipação
@@ -241,10 +241,10 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
             solicitarAntecipacaoPage.waitForLoadSolicitarAntecipacao();
         } else if (abaRelatorio.equalsIgnoreCase("Histórico")) {
             click(this.abaHistorico);
-            waitIsVisibleForSeconds(titleHistorico, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(titleHistorico, Config.WAIT_20_SECONDS);
         } else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações")) {
             click(this.abaRelatorioAntecipacoes);
-            waitIsVisibleForSeconds(titleRelatorioAntecipacoes, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(titleRelatorioAntecipacoes, Config.WAIT_20_SECONDS);
         }
     }
 
@@ -330,7 +330,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
 
         int sizePagination = getIntLocator(lastPageNumber);
         for (int i = 0; i < sizePagination; i++) {
-            waitForSeconds(Config.WAIT_LEVEL_1);
+            waitForSeconds(Config.WAIT_5_SECONDS);
 
             // Vendas
             if (abaRelatorio.equalsIgnoreCase("Hoje")) {
@@ -511,7 +511,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
             for (String tipoRelatorio : listaTipoRelatorio) {
                 // realiza o exportar
                 click(this.getLocatorFromReportTab(abaRelatorio, "btnExportar"));
-                waitIsVisibleForSeconds(this.titleExportar, Config.WAIT_LEVEL_1);
+                waitIsVisibleForSeconds(this.titleExportar, Config.WAIT_5_SECONDS);
                 this.selecionarTipoArquivo(tipoArquivo, abaRelatorio);
 
                 this.selecionarTipoRelatorio(tipoRelatorio, abaRelatorio);
@@ -976,7 +976,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
     public void aplicarPeriodo(@NotNull String periodo, String abaRelatorio) {
         waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-            ,Config.WAIT_LEVEL_3
+            ,Config.WAIT_20_SECONDS
         );
         click(this.iconeCalendario);
 
@@ -1090,18 +1090,18 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
         Locator expandir2 = page.locator("(//*[contains(@class, 'osui-accordion-item__icon')])[3]");
 
         if (semExpandir.isVisible())
-            waitIsVisibleForSeconds(semExpandir, Config.WAIT_LEVEL_1);
+            waitIsVisibleForSeconds(semExpandir, Config.WAIT_5_SECONDS);
         else if (diaSemana.isVisible() || calendario.isVisible()) { // Expandir: dia da semana
-            waitForSeconds(Config.WAIT_LEVEL_1);
+            waitForSeconds(Config.WAIT_5_SECONDS);
             click(expandir1);
-            waitForSeconds(Config.WAIT_LEVEL_1);
+            waitForSeconds(Config.WAIT_5_SECONDS);
         } else if (expandir1.isVisible() || expandir2.isVisible()) { // Expandir: Mês e dia da semana
-            waitForSeconds(Config.WAIT_LEVEL_1);
+            waitForSeconds(Config.WAIT_5_SECONDS);
             click(expandir1);
 
-            waitForSeconds(Config.WAIT_LEVEL_1);
+            waitForSeconds(Config.WAIT_5_SECONDS);
             click(expandir2);
-            waitForSeconds(Config.WAIT_LEVEL_1);
+            waitForSeconds(Config.WAIT_5_SECONDS);
         }
     }
 
@@ -1216,7 +1216,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
     public void realizarFiltro(@NotNull String filtro, String valor, String abaRelatorio) {
         waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-            ,Config.WAIT_LEVEL_3
+            ,Config.WAIT_20_SECONDS
         );
         this.getLocatorFromReportTab(abaRelatorio, "btnFiltros").scrollIntoViewIfNeeded();
 
@@ -1226,7 +1226,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
             && !filtro.equalsIgnoreCase("Número da simulação");
 
         if (seBtnFitros) {
-            waitIsVisibleForSeconds(this.titleFiltros, Config.WAIT_LEVEL_1);
+            waitIsVisibleForSeconds(this.titleFiltros, Config.WAIT_5_SECONDS);
             click(this.getLocatorFromReportTab(abaRelatorio, "btnFiltros"));
         }
 
@@ -1338,7 +1338,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
 
         waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-            ,Config.WAIT_LEVEL_3
+            ,Config.WAIT_20_SECONDS
         );
     }
 
@@ -1378,13 +1378,13 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
 
     private void voltarPadraoPersonalizarColunas(String abaRelatorio) {
         click(this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas"));
-        waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_5_SECONDS);
 
         click(this.linkVoltarPadrao);
 
         waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-            ,Config.WAIT_LEVEL_3
+            ,Config.WAIT_20_SECONDS
         );
     }
 
@@ -1404,16 +1404,16 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
     public void isViewColunasPersonalizar(String colunas, String abaRelatorio) {
         waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-            ,Config.WAIT_LEVEL_3
+            ,Config.WAIT_20_SECONDS
         );
         // Acessa o Personalizar Colunas
         click(this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas"));
-        waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_5_SECONDS);
 
         this.linkVoltarPadrao.scrollIntoViewIfNeeded();
         waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-            ,Config.WAIT_LEVEL_3
+            ,Config.WAIT_20_SECONDS
         );
 
         // Validar que as colunas não estão visíveis
@@ -1425,16 +1425,16 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
     public void personalizarColunas(String colunas, String abaRelatorio) {
         waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-            ,Config.WAIT_LEVEL_3
+            ,Config.WAIT_20_SECONDS
         );
         // Acessa o Personalizar Colunas
         click(this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas"));
-        waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_5_SECONDS);
 
         this.linkVoltarPadrao.scrollIntoViewIfNeeded();
         waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-            ,Config.WAIT_LEVEL_3
+            ,Config.WAIT_20_SECONDS
         );
 
         // Limpar personalização inicial de colunas
@@ -1453,7 +1453,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
     public void validarPersonalizacaoColunas(@NotNull String colunas, String abaRelatorio) {
         waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-            ,Config.WAIT_LEVEL_3
+            ,Config.WAIT_20_SECONDS
         );
         this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
 
@@ -1584,7 +1584,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
     public void validarAtribuicaoFiltro(String valor, @NotNull String filtro, String abaRelatorio) {
         waitIsVisibleForSeconds(
              this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-            ,Config.WAIT_LEVEL_3
+            ,Config.WAIT_20_SECONDS
         );
         this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
 
@@ -1664,7 +1664,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
                 if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
                     // Acessa o Personalizar Colunas
                     click(this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas"));
-                    waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_LEVEL_1);
+                    waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_5_SECONDS);
 
                     // Remove o Terminal e adiciona o Valor original da venda aplicando a personalização de colunas
                     String colunaRemover = "Terminal", colunaAdicionar = "Valor original da venda";
@@ -1672,7 +1672,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
 
                     waitIsVisibleForSeconds(
                          this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-                        ,Config.WAIT_LEVEL_3
+                        ,Config.WAIT_20_SECONDS
                     );
                     this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
                 }
@@ -1707,7 +1707,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
             case "Estabelecimento":
                 // Acessa o Personalizar Colunas
                 click(this.getLocatorFromReportTab(abaRelatorio, "btnPersonalizarColunas"));
-                waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_LEVEL_1);
+                waitIsVisibleForSeconds(this.titlePersonalizarColunas, Config.WAIT_5_SECONDS);
 
                 // Remove o Status e adiciona o Esbelecimento aplicando a personalização de colunas
                     String colunaRemover = "Status", colunaAdicionar;
@@ -1722,7 +1722,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
 
                 waitIsVisibleForSeconds(
                      this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas")
-                    ,Config.WAIT_LEVEL_3
+                    ,Config.WAIT_20_SECONDS
                 );
                 this.getLocatorFromReportTab(abaRelatorio, "resultadoColunas").scrollIntoViewIfNeeded();
 
@@ -1768,9 +1768,9 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
     // Registros
     public void validarApresentacaoTransacoes(String apresentacao) {
         if (apresentacao.equalsIgnoreCase("apresenta"))
-            waitIsNotVisibleForSeconds(this.nenhumResultadoEncontrado, Config.WAIT_LEVEL_3);
+            waitIsNotVisibleForSeconds(this.nenhumResultadoEncontrado, Config.WAIT_20_SECONDS);
         else if (apresentacao.equalsIgnoreCase("não apresenta"))
-            waitIsVisibleForSeconds(this.nenhumResultadoEncontrado, Config.WAIT_LEVEL_3);
+            waitIsVisibleForSeconds(this.nenhumResultadoEncontrado, Config.WAIT_20_SECONDS);
     }
 
     // Gerar arquivo
@@ -1841,7 +1841,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
     public void validarNomeArquivo(String tipoArquivo, String tipoRelatorio, String abaRelatorio) {
         // realiza o exportar
         click(this.getLocatorFromReportTab(abaRelatorio, "btnExportar"));
-        waitIsVisibleForSeconds(this.titleExportar, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.titleExportar, Config.WAIT_5_SECONDS);
         this.selecionarTipoArquivo(tipoArquivo, abaRelatorio);
 
         this.selecionarTipoRelatorio(tipoRelatorio, abaRelatorio);
@@ -1888,7 +1888,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
 
         // realiza o exportar
         click(this.getLocatorFromReportTab(abaRelatorio, "btnExportar"));
-        waitIsVisibleForSeconds(this.titleExportar, Config.WAIT_LEVEL_1);
+        waitIsVisibleForSeconds(this.titleExportar, Config.WAIT_5_SECONDS);
         this.selecionarTipoArquivo(tipoArquivo, abaRelatorio);
 
         this.selecionarTipoRelatorio(tipoRelatorio, abaRelatorio);
