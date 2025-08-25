@@ -62,6 +62,7 @@ Feature: Relatorio de antecipacoes
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Valor bruto das vendas;Valor líquido das vendas;Total de desconto valor líquido;Valor antecipado pago;Total de desconto valor antecipado pago" |
 
   @totalizadores
+  @TestCaseKey=LPDC-T1472
   Scenario Outline: Validar totalizadores - Relatorio de antecipacoes
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -84,8 +85,8 @@ Feature: Relatorio de antecipacoes
 
     @claropay
     Examples:
-      | alianca    | menu           | submenu | abaRelatorio                |
-      | "claropay" | "antecipacao"  | ""      | "Relatório de antecipações" |
+      | alianca    | menu          | submenu | abaRelatorio                |
+      | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" |
 
   @periodo
   @TestCaseKey=LPDC-T1283
