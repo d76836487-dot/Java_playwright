@@ -18,50 +18,50 @@ Feature: Primeiro acesso
     @bin
     @email
     Examples:
-      | alianca | fluxo             | usuario          | receberPor | senha           |
-      | "bin"   | "Primeiro acesso" | "71633816000827" | "E-mail"   | "Fiserv@12345"  |
+      | alianca | fluxo             | usuario          | receberPor | senha          |
+      | "bin"   | "Primeiro acesso" | "71633816000827" | "E-mail"   | "Fiserv@12345" |
 
     @bin
     @sms
     Examples:
-      | alianca | fluxo             | usuario          | receberPor | senha           |
-      | "bin"   | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345"  |
+      | alianca | fluxo             | usuario          | receberPor | senha          |
+      | "bin"   | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
 
     @sicredi
     @email
     Examples:
-      | alianca   | fluxo             | usuario          | receberPor | senha           |
-      | "sicredi" | "Primeiro acesso" | "75211485000161" | "E-mail"   | "Fiserv@12345"  |
+      | alianca   | fluxo             | usuario          | receberPor | senha          |
+      | "sicredi" | "Primeiro acesso" | "75211485000161" | "E-mail"   | "Fiserv@12345" |
 
     @sicredi
     @sms
     Examples:
-      | alianca   | fluxo             | usuario          | receberPor | senha           |
-      | "sicredi" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345"  |
+      | alianca   | fluxo             | usuario          | receberPor | senha          |
+      | "sicredi" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
 
     @azulzinha
     @email
     Examples:
-      | alianca     | fluxo             | usuario          | receberPor | senha           |
-      | "azulzinha" | "Primeiro acesso" | "75211485000161" | "E-mail"   | "Fiserv@12345"  |
+      | alianca     | fluxo             | usuario          | receberPor | senha          |
+      | "azulzinha" | "Primeiro acesso" | "75211485000161" | "E-mail"   | "Fiserv@12345" |
 
     @azulzinha
     @sms
     Examples:
-      | alianca     | fluxo             | usuario          | receberPor | senha           |
-      | "azulzinha" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345"  |
+      | alianca     | fluxo             | usuario          | receberPor | senha          |
+      | "azulzinha" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
 
     @afinz
     @email
     Examples:
-      | alianca | fluxo             | usuario          | receberPor | senha           |
-      | "afinz" | "Primeiro acesso" | "75211485000161" | "E-mail"   | "Fiserv@12345"  |
+      | alianca | fluxo             | usuario          | receberPor | senha          |
+      | "afinz" | "Primeiro acesso" | "75211485000161" | "E-mail"   | "Fiserv@12345" |
 
     @afinz
     @sms
     Examples:
-      | alianca | fluxo             | usuario          | receberPor | senha           |
-      | "afinz" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345"  |
+      | alianca | fluxo             | usuario          | receberPor | senha          |
+      | "afinz" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
 
     @claropay
     @email
@@ -74,3 +74,4 @@ Feature: Primeiro acesso
     Examples:
       | alianca    | fluxo             | usuario          | receberPor | senha          |
       | "claropay" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
+

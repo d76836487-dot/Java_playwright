@@ -62,6 +62,7 @@ Feature: Historico
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "Total de antecipações pagas;Valor líquido pago" |
 
   @totalizadores
+  @TestCaseKey=LPDC-T1471
   Scenario Outline: Validar totalizadores - Historico
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -69,23 +70,23 @@ Feature: Historico
     And valida os totalizadores - <abaRelatorio>
     @bin
     Examples:
-      | alianca | menu          | submenu | abaRelatorio  |
-      | "bin"   | "antecipacao" | ""      | "Histórico"   |
+      | alianca | menu          | submenu | abaRelatorio |
+      | "bin"   | "antecipacao" | ""      | "Histórico"  |
 
     @sicredi
     Examples:
-      | alianca   | menu          | submenu | abaRelatorio  |
-      | "sicredi" | "antecipacao" | ""      | "Histórico"   |
+      | alianca   | menu          | submenu | abaRelatorio |
+      | "sicredi" | "antecipacao" | ""      | "Histórico"  |
 
     @azulzinha
     Examples:
-      | alianca     | menu          | submenu | abaRelatorio  |
-      | "azulzinha" | "antecipacao" | ""      | "Histórico"   |
+      | alianca     | menu          | submenu | abaRelatorio |
+      | "azulzinha" | "antecipacao" | ""      | "Histórico"  |
 
     @claropay
     Examples:
-      | alianca    | menu           | submenu | abaRelatorio  |
-      | "claropay" | "antecipacao"  | ""      | "Histórico"   |
+      | alianca    | menu          | submenu | abaRelatorio |
+      | "claropay" | "antecipacao" | ""      | "Histórico"  |
 
   @periodo
   @TestCaseKey=LPDC-T1330
