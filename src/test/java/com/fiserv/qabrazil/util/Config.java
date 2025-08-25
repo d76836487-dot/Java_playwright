@@ -11,5 +11,5 @@ public class Config {
     public static final int WAIT_90_SECONDS = 90;
 
     // tag do cucumber
-    public static final String TAG_CUCUMBER = "@navegacao";
+    public static final String TAG_CUCUMBER = "@PrimeiroAcesso and @ga and @bin and @email";
 }

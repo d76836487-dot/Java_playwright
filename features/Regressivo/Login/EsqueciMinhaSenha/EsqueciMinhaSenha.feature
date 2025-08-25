@@ -8,6 +8,7 @@
 Feature: Esqueci minha senha
 
   @ga
+  @TestCaseKey=LPDC-T1426
   Scenario Outline: Validar Esqueci minha senha - <alianca>
     Given que foi acessado o portal <alianca>
     And realiza a etapa 1 do <fluxo> - <usuario>
@@ -18,7 +19,7 @@ Feature: Esqueci minha senha
     @email
     Examples:
       | alianca | fluxo                 | usuario          | receberPor | senha           |
-      | "bin"   | "Esqueci minha senha" | "75213076000102" | "E-mail"   | "Fiserv@123456" |
+      | "bin"   | "Esqueci minha senha" | "71633816000827" | "E-mail"   | "Fiserv@123456" |
 
     @bin
     @sms

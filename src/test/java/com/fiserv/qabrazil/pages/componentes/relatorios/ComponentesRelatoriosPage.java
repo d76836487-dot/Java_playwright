@@ -293,6 +293,10 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
         double countValor02 = 0;
         double valor03 = 0;
         double countValor03 = 0;
+        double valor04 = 0;
+        double countValor04 = 0;
+        double valor05 = 0;
+        double countValor05 = 0;
 
         // Vendas
         if (abaRelatorio.equalsIgnoreCase("Hoje")) {
@@ -326,6 +330,18 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
         } else if (abaRelatorio.equalsIgnoreCase("Débitos e ajustes")) {
             valor01 = debitosAjustesPage.getTotalCobrancasAluguel();
             valor02 = debitosAjustesPage.getTotalCobrancasPendentes();
+        }
+
+        // Antecipação
+        else if (abaRelatorio.equalsIgnoreCase("Histórico")) {
+            total01 = historicoPage.getTotalAntecipacoesPagas();
+            valor01 = historicoPage.getValorLiquidoPago();
+        } else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações")) {
+            valor01 = relatorioAntecipacoesPage.getValorBrutoVendas();
+            valor02 = relatorioAntecipacoesPage.getValorLiquidoVendas();
+            valor03 = relatorioAntecipacoesPage.getTotalDescontoValorLiquido();
+            valor04 = relatorioAntecipacoesPage.getValorAntecipadoPago();
+            valor05 = relatorioAntecipacoesPage.getTotalDescontoValorAntecipadoPago();
         }
 
         int sizePagination = getIntLocator(lastPageNumber);
@@ -471,6 +487,55 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
 
                 verificacaoTotalizadoresAba = (
                     valor02 == countValor02
+                );
+            }
+
+            // Antecipação
+            else if (abaRelatorio.equalsIgnoreCase("Histórico")) {
+                Locator resultadoColunaValorLiquidoAprovado =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorLiquidoAprovado");
+
+                for (int j = 0; j < resultadoColunaValorLiquidoAprovado.count(); j++) {
+                    resultadoColunaValorLiquidoAprovado.nth(j).scrollIntoViewIfNeeded();
+                    countTotal01++;
+                    countValor01 += getDoubleLocator(resultadoColunaValorLiquidoAprovado.nth(j));
+                }
+
+                verificacaoTotalizadoresAba = (
+                    total01 == countTotal01
+                    && valor01 == countValor01
+                );
+            } else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações")) {
+                Locator resultadoColunaValorBrutoVendas =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorBrutoVendas");
+
+                Locator resultadoColunaValorLiquidoVendas =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorLiquidoVendas");
+
+                Locator resultadoColunaValorDescontoMDR =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorDescontoMDR");
+
+                Locator resultadoColunaValorPago =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorPago");
+
+                Locator resultadoColunaValorDescontoAntecipacao =
+                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaValorDescontoAntecipacao");
+
+                for (int j = 0; j < resultadoColunaValorBrutoVendas.count(); j++) {
+                    resultadoColunaValorBrutoVendas.nth(j).scrollIntoViewIfNeeded();
+                    countValor01 += getDoubleLocator(resultadoColunaValorBrutoVendas.nth(j));
+                    countValor02 += getDoubleLocator(resultadoColunaValorLiquidoVendas.nth(j));
+                    countValor03 += getDoubleLocator(resultadoColunaValorDescontoMDR.nth(j));
+                    countValor04 += getDoubleLocator(resultadoColunaValorPago.nth(j));
+                    countValor05 += getDoubleLocator(resultadoColunaValorDescontoAntecipacao.nth(j));
+                }
+
+                verificacaoTotalizadoresAba = (
+                    valor01 == countValor01
+                    && valor02 == countValor02
+                    && valor03 == countValor03
+                    && valor04 == countValor04
+                    && valor05 == countValor05
                 );
             }
 
@@ -884,6 +949,12 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
                     page.locator("//div[contains(@id, '-Status')]/span/span");
                 case "resultadoColunaDataSolitacao" ->
                     page.locator("//*[text()='Data da Solicitação:']/following-sibling::span");
+                case "resultadoColunaValorBrutoSolicitado" ->
+                    page.locator("//*[text()='Valor bruto solicitado:']/following-sibling::span");
+                case "resultadoColunaValorLiquidoSolicitado" ->
+                    page.locator("//*[text()='Valor líquido solicitado:']/following-sibling::span");
+                case "resultadoColunaValorLiquidoAprovado" ->
+                    page.locator("//*[text()='Valor líquido aprovado:']/following-sibling::span");
                 default -> element;
             };
 
@@ -930,7 +1001,7 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
     // Período
     private String obterNomeAbreviadoMes(LocalDate dataSelecionada) {
         TextStyle txtShort = TextStyle.SHORT;
-        Locale localePtBr = new Locale("pt", "BR");
+        Locale localePtBr = Locale.forLanguageTag("pt-BR");
 
         // Obtém o nome abreviado do mês em português com a primeira letra maiúscula
         return dataSelecionada.getMonth()

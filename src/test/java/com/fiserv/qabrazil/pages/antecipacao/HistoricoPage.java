@@ -34,4 +34,8 @@ public class HistoricoPage extends GeneralUtils {
                 checkIfValueIsNotEmpty(this.valorLiquidoPago);
         }
     }
+
+    public int getTotalAntecipacoesPagas() { return getIntLocator(this.totalAntecipacoesPagas); }
+
+    public double getValorLiquidoPago() { return getDoubleLocator(this.valorLiquidoPago); }
 }

@@ -91,7 +91,7 @@ public class AntecipacaoEventualPage extends GeneralUtils {
 
     private String formatarData(LocalDate data) {
         TextStyle txtShort = TextStyle.FULL;
-        Locale localePtBr = new Locale("pt", "BR");
+        Locale localePtBr = Locale.forLanguageTag("pt-BR");
 
         // Fevereiro 25, 2025
         String mes = data.getMonth()

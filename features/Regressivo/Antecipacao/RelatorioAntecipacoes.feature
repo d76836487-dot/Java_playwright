@@ -61,6 +61,32 @@ Feature: Relatorio de antecipacoes
       | alianca    | menu          | submenu | abaRelatorio                | campos                                                                                                                                          |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Valor bruto das vendas;Valor líquido das vendas;Total de desconto valor líquido;Valor antecipado pago;Total de desconto valor antecipado pago" |
 
+  @totalizadores
+  Scenario Outline: Validar totalizadores - Relatorio de antecipacoes
+    Given realizar login no portal <alianca>
+    When acessar menu <menu> e submenu <submenu>
+    Then valida que a aba <abaRelatorio> do relatorio foi acessada com sucesso
+    And valida os totalizadores - <abaRelatorio>
+    @bin
+    Examples:
+      | alianca | menu          | submenu | abaRelatorio                |
+      | "bin"   | "antecipacao" | ""      | "Relatório de antecipações" |
+
+    @sicredi
+    Examples:
+      | alianca   | menu          | submenu | abaRelatorio                |
+      | "sicredi" | "antecipacao" | ""      | "Relatório de antecipações" |
+
+    @azulzinha
+    Examples:
+      | alianca     | menu          | submenu | abaRelatorio                |
+      | "azulzinha" | "antecipacao" | ""      | "Relatório de antecipações" |
+
+    @claropay
+    Examples:
+      | alianca    | menu           | submenu | abaRelatorio                |
+      | "claropay" | "antecipacao"  | ""      | "Relatório de antecipações" |
+
   @periodo
   @TestCaseKey=LPDC-T1283
   Scenario Outline: Validar Periodo <periodo> aplicado no calendario - Relatorio de antecipacoes

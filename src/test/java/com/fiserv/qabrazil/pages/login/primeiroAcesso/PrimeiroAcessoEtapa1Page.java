@@ -28,7 +28,10 @@ public class PrimeiroAcessoEtapa1Page extends GeneralUtils {
         this.btnContinuar = page.locator("//*[text()='Continuar']");
     }
 
-    private void verificarPrimeiroAcessoEtapa1() { waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS); }
+    private void verificarPrimeiroAcessoEtapa1() {
+        waitForSeconds(Config.WAIT_5_SECONDS);
+        waitIsVisibleForSeconds(this.title, Config.WAIT_5_SECONDS);
+    }
     private void preencherUsuario(String usuario) { pressValue(this.txtUsuario, usuario); }
     private void clickContinuar() { click(this.btnContinuar); }
 

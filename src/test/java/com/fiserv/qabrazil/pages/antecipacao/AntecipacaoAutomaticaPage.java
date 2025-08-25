@@ -74,7 +74,7 @@ public class AntecipacaoAutomaticaPage extends GeneralUtils {
 
     private void validarDataContratacao() {
         Date currentDate = new Date();
-        Locale localePtBr = new Locale("pt", "BR");
+        Locale localePtBr = Locale.forLanguageTag("pt-BR");
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", localePtBr);
 
         String currentDateFormatted = formatter.format(currentDate);

@@ -46,4 +46,14 @@ public class RelatorioAntecipacoesPage extends GeneralUtils {
                 checkIfValueIsNotEmpty(this.totalDescontoValorAntecipadoPago);
         }
     }
+
+    public double getValorBrutoVendas() { return getDoubleLocator(this.valorBrutoVendas); }
+
+    public double getValorLiquidoVendas() { return getDoubleLocator(this.valorLiquidoVendas); }
+
+    public double getTotalDescontoValorLiquido() { return getDoubleLocator(this.totalDescontoValorLiquido); }
+
+    public double getValorAntecipadoPago() { return getDoubleLocator(this.valorAntecipadoPago); }
+
+    public double getTotalDescontoValorAntecipadoPago() { return getDoubleLocator(this.totalDescontoValorAntecipadoPago); }
 }
