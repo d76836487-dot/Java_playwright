@@ -188,6 +188,7 @@ public class GeracaoArquivos {
         double valor06 = 0;
         double countValor06 = 0;
 
+        // XLSX = Célula -1 -> Ex.: A2 = A1
         // Vendas
         if (abaRelatorio.equalsIgnoreCase("Hoje"))
             cellList = "A12_Total de vendas: ;A13_Valor bruto: ;A14_Valor não efetivadas: ;I17_Valor bruto".split(";");
@@ -213,6 +214,16 @@ public class GeracaoArquivos {
             cellList = "A9_Total de vendas: ;A10_Valor líquido previsto: ;G14_Valor bruto;H14_Valor bruto parcela;J14_Valor líquido".split(";");
         else if (abaRelatorio.equalsIgnoreCase("Débitos e ajustes"))
             cellList = "B12_Valor do aluguel".split(";");
+
+        // Antecipação
+        else if (abaRelatorio.equalsIgnoreCase("Histórico"))
+            cellList = "A10_Total de antecipações pagas: ;A11_Valor líquido pago: ;C14_Valor bruto solicitado;D14_Valor do desconto;E14_Valor líquido solicitado;F14_Valor líquido aprovado".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações")) {
+            if (tipoRelatorio.equalsIgnoreCase("simplificado"))
+                cellList = "B4_Valor bruto das vendas;B5_Total de desconto das vendas;B6_Valor líquido das vendas;B7_Total de desconto antecipação;B8_Valor antecipado pago;D12_Valor bruto das vendas;E12_Valor desconto MDR;F12_Valor líquido das vendas;G12_Valor desconto antecipação;H12_Valor pago".split(";");
+            else if (tipoRelatorio.equalsIgnoreCase("detalhado"))
+                cellList = "B4_Valor bruto das vendas;B5_Total de desconto das vendas;B6_Valor líquido das vendas;B7_Total de desconto antecipação;B8_Valor antecipado pago;G11_Valor bruto das vendas;H11_Valor desconto MDR;I11_Valor líquido das vendas;J11_Valor desconto antecipação;K11_Valor pago".split(";");
+        }
 
         try (FileInputStream fis = new FileInputStream(arquivo);
         Workbook workbook = new XSSFWorkbook(fis)) {
@@ -337,6 +348,8 @@ public class GeracaoArquivos {
         int countValor01 = 0;
 
         String[] cellList = new String[0];
+
+        // CSV = Célula exata -> Ex.: A2 = A2
         // Vendas
         if (abaRelatorio.equalsIgnoreCase("Hoje"))
             cellList = "I2_Valor bruto".split(";");
@@ -352,7 +365,7 @@ public class GeracaoArquivos {
         else if (abaRelatorio.equalsIgnoreCase("Voucher"))
             cellList = "I2_Valor bruto".split(";");
 
-            // Recebimentos
+        // Recebimentos
         else if (abaRelatorio.equalsIgnoreCase("Pagos")) {
             if (tipoRelatorio.equalsIgnoreCase("simplificado"))
                 cellList = "J2_Valor do pagamento".split(";");
@@ -362,6 +375,16 @@ public class GeracaoArquivos {
             cellList = "G2_Valor bruto;H2_Valor bruto parcela;I2_Valor da taxa;J2_Valor líquido".split(";");
         else if (abaRelatorio.equalsIgnoreCase("Débitos e ajustes"))
             cellList = "B2_Valor do aluguel".split(";");
+
+        // Antecipação
+        else if (abaRelatorio.equalsIgnoreCase("Histórico"))
+            cellList = "C2_Valor bruto solicitado;D2_Valor do desconto;E2_Valor líquido solicitado;F2_Valor líquido aprovado".split(";");
+        else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações")) {
+            if (tipoRelatorio.equalsIgnoreCase("simplificado"))
+                cellList = "D2_Valor bruto das vendas;E2_Valor desconto MDR;F2_Valor líquido das vendas;G2_Valor desconto antecipação;H2_Valor pago".split(";");
+            else if (tipoRelatorio.equalsIgnoreCase("detalhado"))
+                cellList = "G2_Valor bruto das vendas;H2_Valor desconto MDR;I2_Valor líquido das vendas;J2_Valor desconto antecipação;K2_Valor pago".split(";");
+        }
 
         try (Reader reader = new InputStreamReader(new FileInputStream(arquivo), StandardCharsets.ISO_8859_1);
         CSVParser csvParser = new CSVParser(

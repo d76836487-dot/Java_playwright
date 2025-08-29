@@ -25,7 +25,7 @@ Feature: Esqueci minha senha
     @sms
     Examples:
       | alianca | fluxo                 | usuario          | receberPor | senha           |
-      | "bin"   | "Esqueci minha senha" | "75213076000102" | "SMS"      | "Fiserv@123456" |
+      | "bin"   | "Esqueci minha senha" | "71633816000828" | "SMS"      | "Fiserv@123456" |
 
     @sicredi
     @email

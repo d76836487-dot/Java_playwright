@@ -25,7 +25,7 @@ Feature: Primeiro acesso
     @sms
     Examples:
       | alianca | fluxo             | usuario          | receberPor | senha          |
-      | "bin"   | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
+      | "bin"   | "Primeiro acesso" | "71633816000828" | "SMS"      | "Fiserv@12345" |
 
     @sicredi
     @email
