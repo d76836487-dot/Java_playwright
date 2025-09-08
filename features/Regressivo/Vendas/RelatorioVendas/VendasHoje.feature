@@ -4,6 +4,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
+@Vendas
 @Hoje
 Feature: Vendas Hoje
 
@@ -39,6 +40,16 @@ Feature: Vendas Hoje
       | alianca    | menu     | submenu           | abaRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       |
+
   @navegacao
   @TestCaseKey=LPDC-T1232
   Scenario Outline: Visualizar campos de Total e Valor - Vendas Hoje
@@ -71,6 +82,16 @@ Feature: Vendas Hoje
       | alianca    | menu     | submenu           | abaRelatorio | campos                        |
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Total de vendas;Valor bruto" |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | campos                        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Total de vendas;Valor bruto" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | campos                        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Total de vendas;Valor bruto" |
+
   @totalizadores
   @TestCaseKey=LPDC-T1413
   Scenario Outline: Validar totalizadores - Vendas Hoje
@@ -102,6 +123,16 @@ Feature: Vendas Hoje
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       |
+
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       |
 
   @personalizarColunas
   @TestCaseKey=LPDC-T1233
@@ -145,6 +176,20 @@ Feature: Vendas Hoje
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
+
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | colunas                                                                                                                                                |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | colunas                                                                                                                                                |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                                    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Data da venda;Cód. de autorização;Comprovante de venda;Produto;Parcelas;Valor bruto;Status;Estabelecimento;Final do cartão;Cód. referência do cartão" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização;Canal;Estabelecimento;Final do cartão;Cód. referência do cartão"                                                                  |
 
   @filtro
   @TestCaseKey=LPDC-T1234
@@ -614,6 +659,190 @@ Feature: Vendas Hoje
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
 
+    @banqi
+    @codAutorizacao
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro                | valor              |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "primeiroRegistro" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "WWW333"           |
+
+    @banqi
+    @status
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro   | valor        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "todos"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Autorizada" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Recusada"   |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Estornada"  |
+
+    @banqi
+    @produto
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro    | valor                   |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "todos"                 |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito"               |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito Internacional" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito"                |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito Internacional"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Refeição"              |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Alimentação"           |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Premium"               |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Cultura"               |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Auto"                  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Gift"                  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Corporativo"           |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Benefícios"            |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multiplo"              |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Flex"                  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Natal"                 |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multibenefícios"       |
+
+    @banqi
+    @canal
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro  | valor       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "todos"     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "ECOMMERCE" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
+
+    @banqi
+    @bandeira
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro     | valor         |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "todos"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Mastercard"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Maestro"     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Cabal"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Elo"         |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Banese"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Ticket"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Alelo"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Sorocred"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Amex"        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Hipercard"   |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Pluxee"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "VR"          |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Visa"        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Softnex"     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Redecompras" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Fepas"       |
+
+    @banqi
+    @valores
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro    | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "100;300"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "500;1000" |
+
+    @banqi
+    @estabelecimento
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro            | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "todos"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "91084373" |
+
+    @banqi
+    @terminal
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro     | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "todos"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "LNK01D49" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
+
+    @corujacapital
+    @codAutorizacao
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro                | valor              |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "primeiroRegistro" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Cód. de autorização" | "WWW333"           |
+
+    @corujacapital
+    @status
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro   | valor        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "todos"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Autorizada" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Recusada"   |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Status" | "Estornada"  |
+
+    @corujacapital
+    @produto
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro    | valor                   |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "todos"                 |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito"               |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Crédito Internacional" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito"                |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Débito Internacional"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Refeição"              |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Alimentação"           |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Premium"               |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Cultura"               |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Auto"                  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Gift"                  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Corporativo"           |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Benefícios"            |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multiplo"              |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Flex"                  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Natal"                 |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Produto" | "Multibenefícios"       |
+
+    @corujacapital
+    @canal
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro  | valor       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "todos"     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "ECOMMERCE" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "POS"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Canal" | "TEF"       |
+
+    @corujacapital
+    @bandeira
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro     | valor         |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "todos"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Mastercard"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Maestro"     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Cabal"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Elo"         |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Banese"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Ticket"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Alelo"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Sorocred"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Amex"        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Hipercard"   |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Pluxee"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "VR"          |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Visa"        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Softnex"     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Redecompras" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Bandeira" | "Fepas"       |
+
+    @corujacapital
+    @valores
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro    | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "100;300"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Valores" | "500;1000" |
+
+    @corujacapital
+    @estabelecimento
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro            | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "todos"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Estabelecimento" | "91084373" |
+
+    @corujacapital
+    @terminal
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro     | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "todos"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "LNK01D49" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "PGW0D0D1" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Terminal" | "ECC05DE6" |
+
   @gerarArquivo
   @nomeArquivo
   @TestCaseKey=LPDC-T1231
@@ -681,6 +910,30 @@ Feature: Vendas Hoje
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           |
+
+    @banqi
+    @excel
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           |
+
+    @banqi
+    @csv
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           |
+
+    @corujacapital
+    @excel
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           |
+
+    @corujacapital
+    @csv
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           |
 
   @gerarArquivo
   @colunasArquivo
@@ -750,3 +1003,26 @@ Feature: Vendas Hoje
       | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                 |
       | "bin"   | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
 
+    @banqi
+    @excel
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                          |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+
+    @banqi
+    @csv
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                 |
+      | "banqi" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+
+    @corujacapital
+    @excel
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                          |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante da venda;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |
+
+    @corujacapital
+    @csv
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                 |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão" |

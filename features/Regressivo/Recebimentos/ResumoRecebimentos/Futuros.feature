@@ -4,6 +4,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
+@Recebimentos
 @Futuros
 Feature: Futuros
 
@@ -39,6 +40,16 @@ Feature: Futuros
       | alianca    | menu           | submenu              | abaRelatorio |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
+    @banqi
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
+
   @navegacao
   @TestCaseKey=LPDC-T1271
   Scenario Outline: Visualizar campos de Total e Valor - Futuros
@@ -71,6 +82,16 @@ Feature: Futuros
       | alianca    | menu           | submenu              | abaRelatorio | campos                                   |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Total de vendas;Total líquido previsto" |
 
+    @banqi
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio | campos                                   |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Total de vendas;Total líquido previsto" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio | campos                                   |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Total de vendas;Total líquido previsto" |
+
   @totalizadores
   @TestCaseKey=LPDC-T1451
   Scenario Outline: Validar totalizadores - Futuros
@@ -102,6 +123,16 @@ Feature: Futuros
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
+
+    @banqi
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
   @periodo
   @TestCaseKey=LPDC-T1259
@@ -161,6 +192,26 @@ Feature: Futuros
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Até o fim do mês"    |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Este Mês"            |
 
+    @banqi
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio | periodo               |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Amanhã"              |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Proxima Semana"      |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Até o fim de Semana" |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Próximo Mês"         |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Até o fim do mês"    |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Este Mês"            |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio | periodo               |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Amanhã"              |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Proxima Semana"      |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Até o fim de Semana" |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Próximo Mês"         |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Até o fim do mês"    |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Este Mês"            |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1261
   Scenario Outline: Personalizar colunas - Futuros
@@ -203,6 +254,20 @@ Feature: Futuros
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Data da venda;Produto;Bandeira;Valor bruto da parcela;Número do Terminal;Cód. do pedido"                                                   |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização;Parcelas;Valor bruto;Valor líquido;Canal;Número do estabelecimento"                                                    |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Número do Terminal;Canal;Cód. do pedido;Número do estabelecimento" |
+
+    @banqi
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio | colunas                                                                                                                                     |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Data da venda;Produto;Bandeira;Valor bruto da parcela;Número do Terminal;Cód. do pedido"                                                   |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização;Parcelas;Valor bruto;Valor líquido;Canal;Número do estabelecimento"                                                    |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Número do Terminal;Canal;Cód. do pedido;Número do estabelecimento" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio | colunas                                                                                                                                     |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Data da venda;Produto;Bandeira;Valor bruto da parcela;Número do Terminal;Cód. do pedido"                                                   |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização;Parcelas;Valor bruto;Valor líquido;Canal;Número do estabelecimento"                                                    |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Número do Terminal;Canal;Cód. do pedido;Número do estabelecimento" |
 
   @filtro
   @TestCaseKey=LPDC-T1262
@@ -382,6 +447,74 @@ Feature: Futuros
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "todos"    |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "91913769" |
 
+    @banqi
+    @codAutorizacao
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio | filtro                | valor              |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "primeiroRegistro" |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "WWW333"           |
+
+    @banqi
+    @produto
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio | filtro    | valor     |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "todos"   |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Débito"  |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Crédito" |
+
+    @banqi
+    @bandeira
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio | filtro     | valor        |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "todos"      |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Visa"       |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Mastercard" |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Amex"       |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Cabal"      |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Elo"        |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Hipercard"  |
+
+    @banqi
+    @estabelecimento
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio | filtro            | valor      |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "todos"    |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "91913769" |
+
+    @corujacapital
+    @codAutorizacao
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio | filtro                | valor              |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "primeiroRegistro" |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Cód. de autorização" | "WWW333"           |
+
+    @corujacapital
+    @produto
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio | filtro    | valor     |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "todos"   |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Débito"  |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Produto" | "Crédito" |
+
+    @corujacapital
+    @bandeira
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio | filtro     | valor        |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "todos"      |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Visa"       |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Mastercard" |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Amex"       |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Cabal"      |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Elo"        |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Bandeira" | "Hipercard"  |
+
+    @corujacapital
+    @estabelecimento
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio | filtro            | valor      |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "todos"    |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Estabelecimento" | "91913769" |
+
   @gerarArquivo
   @nomeArquivo
   @TestCaseKey=LPDC-T1257
@@ -449,6 +582,30 @@ Feature: Futuros
     Examples:
       | alianca    | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           |
+
+    @banqi
+    @excel
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           |
+
+    @banqi
+    @csv
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           |
+
+    @corujacapital
+    @excel
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           |
+
+    @corujacapital
+    @csv
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           |
 
   @gerarArquivo
   @colunasArquivo
@@ -518,3 +675,26 @@ Feature: Futuros
       | alianca    | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
       | "claropay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
 
+    @banqi
+    @excel
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
+
+    @banqi
+    @csv
+    Examples:
+      | alianca | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
+      | "banqi" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
+
+    @corujacapital
+    @excel
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "Excel"     | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |
+
+    @corujacapital
+    @csv
+    Examples:
+      | alianca         | menu           | submenu              | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                 |
+      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    | "CSV"       | "N"           | "Data prevista de pagamento;Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Valor bruto;Valor bruto parcela;Valor da taxa;Valor líquido;Número do terminal;Canal;Cód. do pedido;Número do estabelecimento;Número do cartão" |

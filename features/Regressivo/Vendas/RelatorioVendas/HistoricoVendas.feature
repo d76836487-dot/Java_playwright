@@ -4,6 +4,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
+@Vendas
 @HistoricoVendas
 Feature: Historico de vendas
 
@@ -39,6 +40,16 @@ Feature: Historico de vendas
       | alianca    | menu     | submenu           | abaRelatorio          |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+
   @navegacao
   @TestCaseKey=LPDC-T1215
   Scenario Outline: Visualizar campos de Total e Valor - Historico de vendas
@@ -71,6 +82,16 @@ Feature: Historico de vendas
       | alianca    | menu     | submenu           | abaRelatorio          | campos                                                      |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Total de vendas;Valor bruto;Valor líquido;Valor cancelado" |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | campos                                                      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Total de vendas;Valor bruto;Valor líquido;Valor cancelado" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | campos                                                      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Total de vendas;Valor bruto;Valor líquido;Valor cancelado" |
+
   @totalizadores
   @TestCaseKey=LPDC-T1407
   Scenario Outline: Validar totalizadores - Historico de vendas
@@ -102,6 +123,16 @@ Feature: Historico de vendas
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
   @periodo
   @TestCaseKey=LPDC-T1237
@@ -151,6 +182,22 @@ Feature: Historico de vendas
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14 Dias" |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"       |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | periodo           |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"           |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14 Dias" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"       |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | periodo           |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Ontem"           |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 7 Dias"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14 Dias" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"       |
+
   @navegacao
   @maisDetalhes
   @TestCaseKey=LPDC-T1217
@@ -183,6 +230,16 @@ Feature: Historico de vendas
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
   @personalizarColunas
   @TestCaseKey=LPDC-T1220
@@ -226,6 +283,20 @@ Feature: Historico de vendas
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                         |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Data da venda;Cód. de autorização;Parcelas;Bandeira;Valor bruto;Valor líquido;Terminal;Comprovante de venda;Valor da taxa;Estabelecimento" |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização;Parcelas;Canal;Valor líquido;Terminal"                                                                                 |
+
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | colunas                                                                                                                                     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                         |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Data da venda;Cód. de autorização;Parcelas;Bandeira;Valor bruto;Valor líquido;Terminal;Comprovante de venda;Valor da taxa;Estabelecimento" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização;Parcelas;Canal;Valor líquido;Terminal"                                                                                 |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | colunas                                                                                                                                     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Data da venda;Produto;Bandeira;Valor bruto;Status"                                                                                         |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Data da venda;Cód. de autorização;Parcelas;Bandeira;Valor bruto;Valor líquido;Terminal;Comprovante de venda;Valor da taxa;Estabelecimento" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização;Parcelas;Canal;Valor líquido;Terminal"                                                                                 |
 
   @filtro
   @TestCaseKey=LPDC-T1208
@@ -595,6 +666,150 @@ Feature: Historico de vendas
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
 
+    @banqi
+    @codAutorizacao
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | filtro                | valor              |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "primeiroRegistro" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "WWW333"           |
+
+    @banqi
+    @status
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | filtro   | valor               |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "todos"             |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Aprovada"          |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada"         |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada parcial" |
+
+    @banqi
+    @produto
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | filtro    | valor               |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "todos"             |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Débito"            |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Crédito à vista"   |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Parcelado Emissor" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Parcelado Lojista" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Crediário"         |
+
+    @banqi
+    @canal
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | filtro  | valor               |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "todos"             |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "Link de Pagamento" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "POS Wifi GPRS"     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "Ecommerce TEF"     |
+
+    @banqi
+    @bandeira
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | filtro     | valor        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "todos"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Visa"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Mastercard" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Amex"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Cabal"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Elo"        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Hipercard"  |
+
+    @banqi
+    @valores
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | filtro    | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "100;300"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "500;1000" |
+
+    @banqi
+    @estabelecimento
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | filtro            | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "todos"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "91084373" |
+
+    @banqi
+    @terminal
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | filtro     | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "todos"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "LNK01D49" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "PGW0D0D1" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
+
+    @corujacapital
+    @codAutorizacao
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | filtro                | valor              |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "primeiroRegistro" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Cód. de autorização" | "WWW333"           |
+
+    @corujacapital
+    @status
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | filtro   | valor               |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "todos"             |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Aprovada"          |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada"         |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Status" | "Cancelada parcial" |
+
+    @corujacapital
+    @produto
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | filtro    | valor               |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "todos"             |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Débito"            |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Crédito à vista"   |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Parcelado Emissor" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Parcelado Lojista" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Produto" | "Crediário"         |
+
+    @corujacapital
+    @canal
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | filtro  | valor               |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "todos"             |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "Link de Pagamento" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "POS Wifi GPRS"     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Canal" | "Ecommerce TEF"     |
+
+    @corujacapital
+    @bandeira
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | filtro     | valor        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "todos"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Visa"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Mastercard" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Amex"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Cabal"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Elo"        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Bandeira" | "Hipercard"  |
+
+    @corujacapital
+    @valores
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | filtro    | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "100;300"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valores" | "500;1000" |
+
+    @corujacapital
+    @estabelecimento
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | filtro            | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "todos"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Estabelecimento" | "91084373" |
+
+    @corujacapital
+    @terminal
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | filtro     | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "todos"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "LNK01D49" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "PGW0D0D1" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "ECC05DE6" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Terminal" | "00062723" |
+
   @gerarArquivo
   @nomeArquivo
   @TestCaseKey=LPDC-T1206
@@ -742,6 +957,62 @@ Feature: Historico de vendas
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
+
+    @banqi
+    @excel
+    @simplificado
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" |
+
+    @banqi
+    @excel
+    @detalhado
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   |
+
+    @banqi
+    @csv
+    @simplificado
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" |
+
+    @banqi
+    @csv
+    @detalhado
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
+
+    @corujacapital
+    @excel
+    @simplificado
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" |
+
+    @corujacapital
+    @excel
+    @detalhado
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   |
+
+    @corujacapital
+    @csv
+    @simplificado
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" |
+
+    @corujacapital
+    @csv
+    @detalhado
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
 
   @gerarArquivo
   @colunasArquivo
@@ -891,3 +1162,58 @@ Feature: Historico de vendas
       | alianca    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
+    @banqi
+    @excel
+    @simplificado
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                               |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Número do cartão;Cód. Ref. Cartão" |
+
+    @banqi
+    @excel
+    @detalhado
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor Original da Venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
+
+    @banqi
+    @csv
+    @simplificado
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                         |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Num cartão;Cód. Ref. Cartão" |
+
+    @banqi
+    @csv
+    @detalhado
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
+
+    @corujacapital
+    @excel
+    @simplificado
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                               |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Número do cartão;Cód. Ref. Cartão" |
+
+    @corujacapital
+    @excel
+    @detalhado
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor Original da Venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
+
+    @corujacapital
+    @csv
+    @simplificado
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                         |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Num cartão;Cód. Ref. Cartão" |
+
+    @corujacapital
+    @csv
+    @detalhado
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |

@@ -136,6 +136,16 @@ public class GeneralUtils extends WaitUtil {
             case "claropayCedidos" -> PerfilAcessoEnum.CLAROPAY_CEDIDOS;
             case "claropayFranqueador" -> PerfilAcessoEnum.CLAROPAY_FRANQUEADOR;
             case "claropayFranqueado" -> PerfilAcessoEnum.CLAROPAY_FRANQUEADO;
+            case "banqi" -> PerfilAcessoEnum.BANQI;
+            case "banqiSecundario" -> PerfilAcessoEnum.BANQI_SECUNDARIO;
+            case "banqiCedidos" -> PerfilAcessoEnum.BANQI_CEDIDOS;
+            case "banqiFranqueador" -> PerfilAcessoEnum.BANQI_FRANQUEADOR;
+            case "banqiFranqueado" -> PerfilAcessoEnum.BANQI_FRANQUEADO;
+            case "corujacapital" -> PerfilAcessoEnum.CORUJACAPITAL;
+            case "corujacapitalSecundario" -> PerfilAcessoEnum.CORUJACAPITAL_SECUNDARIO;
+            case "corujacapitalCedidos" -> PerfilAcessoEnum.CORUJACAPITAL_CEDIDOS;
+            case "corujacapitalFranqueador" -> PerfilAcessoEnum.CORUJACAPITAL_FRANQUEADOR;
+            case "corujacapitalFranqueado" -> PerfilAcessoEnum.CORUJACAPITAL_FRANQUEADO;
             default -> PerfilAcessoEnum.BIN;
         };
     }

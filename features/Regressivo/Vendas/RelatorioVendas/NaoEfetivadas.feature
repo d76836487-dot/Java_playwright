@@ -4,6 +4,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
+@Vendas
 @NaoEfetivadas
 Feature: Nao efetivadas
 
@@ -39,6 +40,16 @@ Feature: Nao efetivadas
       | alianca    | menu     | submenu           | abaRelatorio     |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" |
+
   @navegacao
   @TestCaseKey=LPDC-T1201
   Scenario Outline: Visualizar campos de Total e Valor - Nao efetivadas
@@ -71,6 +82,16 @@ Feature: Nao efetivadas
       | alianca    | menu     | submenu           | abaRelatorio     | campos                                   |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Total de recusadas;Total de estornadas" |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | campos                                   |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Total de recusadas;Total de estornadas" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | campos                                   |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Total de recusadas;Total de estornadas" |
+
   @totalizadores
   @TestCaseKey=LPDC-T1433
   Scenario Outline: Validar totalizadores - Nao efetivadas
@@ -102,6 +123,16 @@ Feature: Nao efetivadas
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" |
+
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" |
 
   @periodo
   @TestCaseKey=LPDC-T1239
@@ -146,6 +177,20 @@ Feature: Nao efetivadas
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias"  |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14 Dias" |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | periodo           |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"           |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14 Dias" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | periodo           |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Ontem"           |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 7 Dias"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Últimos 14 Dias" |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1213
   Scenario Outline: Personalizar colunas - Nao efetivadas
@@ -188,6 +233,20 @@ Feature: Nao efetivadas
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Data da venda;Comprovante de venda;Parcelas;Canal;Valor bruto"                                                        |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Data da venda;Cód. de autorização;Produto;Parcelas;Canal;Terminal;Valor bruto;Status;Estabelecimento;Final do cartão" |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização;Produto;Bandeira;Terminal;Status"                                                                 |
+
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | colunas                                                                                                                |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Data da venda;Comprovante de venda;Parcelas;Canal;Valor bruto"                                                        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Data da venda;Cód. de autorização;Produto;Parcelas;Canal;Terminal;Valor bruto;Status;Estabelecimento;Final do cartão" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização;Produto;Bandeira;Terminal;Status"                                                                 |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | colunas                                                                                                                |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Data da venda;Comprovante de venda;Parcelas;Canal;Valor bruto"                                                        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Data da venda;Cód. de autorização;Produto;Parcelas;Canal;Terminal;Valor bruto;Status;Estabelecimento;Final do cartão" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização;Produto;Bandeira;Terminal;Status"                                                                 |
 
   @filtro
   @TestCaseKey=LPDC-T1211
@@ -552,6 +611,148 @@ Feature: Nao efetivadas
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "PGW0D0D1" |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
 
+    @banqi
+    @codAutorizacao
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | filtro                | valor              |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "primeiroRegistro" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "WWW333"           |
+
+    @banqi
+    @status
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | filtro   | valor       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "todos"     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Estornada" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Recusada"  |
+
+    @banqi
+    @produto
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | filtro    | valor                       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "todos"                     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito"                   |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito Parcelado"         |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Débito"                    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito Parcelado Emissor" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crediário"                 |
+
+    @banqi
+    @canal
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | filtro  | valor       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "todos"     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "POS"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "TEF"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "ECOMMERCE" |
+
+    @banqi
+    @bandeira
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | filtro     | valor        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "todos"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Visa"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Mastercard" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Amex"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Cabal"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Elo"        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Hipercard"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Maestro"    |
+
+    @banqi
+    @valores
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | filtro    | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "100;300"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "500;1000" |
+
+    @banqi
+    @estabelecimento
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | filtro            | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "todos"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "91084373" |
+
+    @banqi
+    @terminal
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | filtro     | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "todos"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "LNK01D49" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "PGW0D0D1" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
+
+    @corujacapital
+    @codAutorizacao
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | filtro                | valor              |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "primeiroRegistro" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Cód. de autorização" | "WWW333"           |
+
+    @corujacapital
+    @status
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | filtro   | valor       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "todos"     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Estornada" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Status" | "Recusada"  |
+
+    @corujacapital
+    @produto
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | filtro    | valor                       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "todos"                     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito"                   |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito Parcelado"         |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Débito"                    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crédito Parcelado Emissor" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Produto" | "Crediário"                 |
+
+    @corujacapital
+    @canal
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | filtro  | valor       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "todos"     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "POS"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "TEF"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Canal" | "ECOMMERCE" |
+
+    @corujacapital
+    @bandeira
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | filtro     | valor        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "todos"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Visa"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Mastercard" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Amex"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Cabal"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Elo"        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Hipercard"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Bandeira" | "Maestro"    |
+
+    @corujacapital
+    @valores
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | filtro    | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "100;300"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Valores" | "500;1000" |
+
+    @corujacapital
+    @estabelecimento
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | filtro            | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "todos"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Estabelecimento" | "91084373" |
+
+    @corujacapital
+    @terminal
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | filtro     | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "todos"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "LNK01D49" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "PGW0D0D1" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Terminal" | "ECC05DE6" |
+
   @gerarArquivo
   @nomeArquivo
   @TestCaseKey=LPDC-T1202
@@ -619,6 +820,30 @@ Feature: Nao efetivadas
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
+
+    @banqi
+    @excel
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           |
+
+    @banqi
+    @csv
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
+
+    @corujacapital
+    @excel
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           |
+
+    @corujacapital
+    @csv
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           |
 
   @gerarArquivo
   @colunasArquivo
@@ -688,3 +913,26 @@ Feature: Nao efetivadas
       | alianca    | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
       | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
+    @banqi
+    @excel
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+
+    @banqi
+    @csv
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+
+    @corujacapital
+    @excel
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+
+    @corujacapital
+    @csv
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio     | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelado;Bandeira;Canal;Número Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |

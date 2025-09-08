@@ -4,6 +4,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
+@Vendas
 @Voucher
 Feature: Voucher
 
@@ -39,6 +40,16 @@ Feature: Voucher
       | alianca    | menu     | submenu           | abaRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    |
+
   @navegacao
   @TestCaseKey=LPDC-T1207
   Scenario Outline: Visualizar campos de Total e Valor - Voucher
@@ -71,6 +82,16 @@ Feature: Voucher
       | alianca    | menu     | submenu           | abaRelatorio | campos                        |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Total de vendas;Valor bruto" |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | campos                        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Total de vendas;Valor bruto" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | campos                        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Total de vendas;Valor bruto" |
+
   @totalizadores
   @TestCaseKey=LPDC-T1431
   Scenario Outline: Validar totalizadores - Voucher
@@ -102,6 +123,16 @@ Feature: Voucher
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    |
+
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    |
 
   @periodo
   @TestCaseKey=LPDC-T1236
@@ -146,6 +177,20 @@ Feature: Voucher
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias"  |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14 Dias" |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | periodo           |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"           |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14 Dias" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | periodo           |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Ontem"           |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 7 Dias"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Últimos 14 Dias" |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1205
   Scenario Outline: Personalizar colunas - Voucher
@@ -188,6 +233,20 @@ Feature: Voucher
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Data da venda;Comprovante de venda;Parcelas;Canal;Valor bruto"                                                                            |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Data da venda;Cód. de autorização;Produto;Parcelas;Canal;Número do Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização;Produto;Bandeira;Número do Terminal;Status"                                                                           |
+
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | colunas                                                                                                                                    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Data da venda;Comprovante de venda;Parcelas;Canal;Valor bruto"                                                                            |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Data da venda;Cód. de autorização;Produto;Parcelas;Canal;Número do Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização;Produto;Bandeira;Número do Terminal;Status"                                                                           |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | colunas                                                                                                                                    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Data da venda;Comprovante de venda;Parcelas;Canal;Valor bruto"                                                                            |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Data da venda;Cód. de autorização;Produto;Parcelas;Canal;Número do Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização;Produto;Bandeira;Número do Terminal;Status"                                                                           |
 
   @filtro
   @TestCaseKey=LPDC-T1209
@@ -522,6 +581,136 @@ Feature: Voucher
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "PGW0D0D1" |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "ECC05DE6" |
 
+    @banqi
+    @codAutorizacao
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro                | valor              |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização" | "primeiroRegistro" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização" | "WWW333"           |
+
+    @banqi
+    @status
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro   | valor        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "todos"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "Autorizada" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "Estornada"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "Recusada"   |
+
+    @banqi
+    @canal
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro  | valor   |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Canal" | "todos" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Canal" | "POS"   |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Canal" | "TEF"   |
+
+    @banqi
+    @bandeira
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro     | valor         |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "todos"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "CABAL"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "BANESE"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "TICKET"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "ALELO"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "SOROCRED"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "BANESTES"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "PLUXEE"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "VR"          |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "SOFTNEX"     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "REDECOMPRAS" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "FEPAS"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "SODEXO"      |
+
+    @banqi
+    @valores
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro    | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Valores" | "100;300"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Valores" | "500;1000" |
+
+    @banqi
+    @estabelecimento
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro            | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Estabelecimento" | "todos"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Estabelecimento" | "91084373" |
+
+    @banqi
+    @terminal
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | filtro     | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "todos"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "LNK01D49" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "PGW0D0D1" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "ECC05DE6" |
+
+    @corujacapital
+    @codAutorizacao
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro                | valor              |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização" | "primeiroRegistro" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Cód. de autorização" | "WWW333"           |
+
+    @corujacapital
+    @status
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro   | valor        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "todos"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "Autorizada" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "Estornada"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Status" | "Recusada"   |
+
+    @corujacapital
+    @canal
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro  | valor   |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Canal" | "todos" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Canal" | "POS"   |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Canal" | "TEF"   |
+
+    @corujacapital
+    @bandeira
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro     | valor         |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "todos"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "CABAL"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "BANESE"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "TICKET"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "ALELO"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "SOROCRED"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "BANESTES"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "PLUXEE"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "VR"          |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "SOFTNEX"     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "REDECOMPRAS" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "FEPAS"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Bandeira" | "SODEXO"      |
+
+    @corujacapital
+    @valores
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro    | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Valores" | "100;300"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Valores" | "500;1000" |
+
+    @corujacapital
+    @estabelecimento
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro            | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Estabelecimento" | "todos"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Estabelecimento" | "91084373" |
+
+    @corujacapital
+    @terminal
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | filtro     | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "todos"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "LNK01D49" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "PGW0D0D1" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Terminal" | "ECC05DE6" |
+
   @gerarArquivo
   @nomeArquivo
   @TestCaseKey=LPDC-T1210
@@ -589,6 +778,30 @@ Feature: Voucher
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           |
+
+    @banqi
+    @excel
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Excel"     | "N"           |
+
+    @banqi
+    @csv
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           |
+
+    @corujacapital
+    @excel
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Excel"     | "N"           |
+
+    @corujacapital
+    @csv
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           |
 
   @gerarArquivo
   @colunasArquivo
@@ -658,3 +871,26 @@ Feature: Voucher
       | alianca    | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                         |
       | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelas;Bandeira;Canal;Número do terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
 
+    @banqi
+    @excel
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                         |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelas;Bandeira;Canal;Número do terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+
+    @banqi
+    @csv
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                         |
+      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelas;Bandeira;Canal;Número do terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+
+    @corujacapital
+    @excel
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                         |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "Excel"     | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelas;Bandeira;Canal;Número do terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+
+    @corujacapital
+    @csv
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                         |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelas;Bandeira;Canal;Número do terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |

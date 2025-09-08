@@ -4,6 +4,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
+@Login
 @EsqueciMinhaSenha
 Feature: Esqueci minha senha
 
@@ -75,3 +76,26 @@ Feature: Esqueci minha senha
       | alianca    | fluxo                 | usuario          | receberPor | senha           |
       | "claropay" | "Esqueci minha senha" | "75213076000102" | "SMS"      | "Fiserv@123456" |
 
+    @banqi
+    @email
+    Examples:
+      | alianca | fluxo                 | usuario          | receberPor | senha           |
+      | "banqi" | "Esqueci minha senha" | "75213076000102" | "E-mail"   | "Fiserv@123456" |
+
+    @banqi
+    @sms
+    Examples:
+      | alianca | fluxo                 | usuario          | receberPor | senha           |
+      | "banqi" | "Esqueci minha senha" | "75213076000102" | "SMS"      | "Fiserv@123456" |
+
+    @corujacapital
+    @email
+    Examples:
+      | alianca         | fluxo                 | usuario          | receberPor | senha           |
+      | "corujacapital" | "Esqueci minha senha" | "75213076000102" | "E-mail"   | "Fiserv@123456" |
+
+    @corujacapital
+    @sms
+    Examples:
+      | alianca         | fluxo                 | usuario          | receberPor | senha           |
+      | "corujacapital" | "Esqueci minha senha" | "75213076000102" | "SMS"      | "Fiserv@123456" |

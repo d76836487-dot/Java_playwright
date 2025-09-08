@@ -4,6 +4,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
+@Vendas
 @PreAutorizacoes
 Feature: Pre autorizacoes
 
@@ -39,6 +40,16 @@ Feature: Pre autorizacoes
       | alianca    | menu     | submenu           | abaRelatorio       |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
+
   @navegacao
   @TestCaseKey=LPDC-T1219
   Scenario Outline: Visualizar campos de Total e Valor - Pre autorizacoes
@@ -71,6 +82,16 @@ Feature: Pre autorizacoes
       | alianca    | menu     | submenu           | abaRelatorio       | campos                                                           |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Total de vendas;Valor bruto autorizado;Valor bruto a confirmar" |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | campos                                                           |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Total de vendas;Valor bruto autorizado;Valor bruto a confirmar" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | campos                                                           |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Total de vendas;Valor bruto autorizado;Valor bruto a confirmar" |
+
   @totalizadores
   @TestCaseKey=LPDC-T1430
   Scenario Outline: Validar totalizadores - Pre autorizacoes
@@ -102,6 +123,16 @@ Feature: Pre autorizacoes
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
+
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
 
   @periodo
   @TestCaseKey=LPDC-T1238
@@ -156,6 +187,24 @@ Feature: Pre autorizacoes
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14 Dias" |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"        |
 
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | periodo           |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"            |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"           |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14 Dias" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"        |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | periodo           |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Hoje"            |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Ontem"           |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 7 Dias"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Últimos 14 Dias" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Este Mês"        |
+
   @personalizarColunas
   @TestCaseKey=LPDC-T1225
   Scenario Outline: Personalizar colunas - Pre autorizacoes
@@ -198,6 +247,20 @@ Feature: Pre autorizacoes
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data da venda;Cód. de autorização;Bandeira;Valor autorizado;Status"                                                                                                |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data da venda;Data alvo;Produto;Bandeira;Valor autorizado;Valor confirmado;Número do Terminal;Estabelecimento comercial;Final do cartão;Cód. referência do cartão" |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data alvo;Produto;Canal;Valor confirmado;Comprovante de venda"                                                                                                     |
+
+    @banqi
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | colunas                                                                                                                                                             |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data da venda;Cód. de autorização;Bandeira;Valor autorizado;Status"                                                                                                |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data da venda;Data alvo;Produto;Bandeira;Valor autorizado;Valor confirmado;Número do Terminal;Estabelecimento comercial;Final do cartão;Cód. referência do cartão" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data alvo;Produto;Canal;Valor confirmado;Comprovante de venda"                                                                                                     |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | colunas                                                                                                                                                             |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data da venda;Cód. de autorização;Bandeira;Valor autorizado;Status"                                                                                                |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data da venda;Data alvo;Produto;Bandeira;Valor autorizado;Valor confirmado;Número do Terminal;Estabelecimento comercial;Final do cartão;Cód. referência do cartão" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Data alvo;Produto;Canal;Valor confirmado;Comprovante de venda"                                                                                                     |
 
   @filtro
   @TestCaseKey=LPDC-T1221
@@ -552,6 +615,144 @@ Feature: Pre autorizacoes
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "PGW0D0D1" |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
 
+    @banqi
+    @codAutorizacao
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | filtro                | valor              |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "primeiroRegistro" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "WWW333"           |
+
+    @banqi
+    @status
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | filtro   | valor         |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "todos"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "A Confirmar" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Autorizada"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Expirada"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Estornada"   |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Recusada"    |
+
+    @banqi
+    @produto
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | filtro    | valor     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "todos"   |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "Crédito" |
+
+    @banqi
+    @canal
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | filtro  | valor       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "todos"     |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "POS"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "TEF"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "ECOMMERCE" |
+
+    @banqi
+    @bandeira
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | filtro     | valor        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "todos"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Visa"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Mastercard" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Amex"       |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Cabal"      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Elo"        |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Hipercard"  |
+
+    @banqi
+    @valores
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | filtro    | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "100;300"  |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "500;1000" |
+
+    @banqi
+    @estabelecimento
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | filtro            | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "todos"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "91084373" |
+
+    @banqi
+    @terminal
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | filtro     | valor      |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "todos"    |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "LNK01D49" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "PGW0D0D1" |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
+
+    @corujacapital
+    @codAutorizacao
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | filtro                | valor              |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "primeiroRegistro" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Cód. de autorização" | "WWW333"           |
+
+    @corujacapital
+    @status
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | filtro   | valor         |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "todos"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "A Confirmar" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Autorizada"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Expirada"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Estornada"   |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Status" | "Recusada"    |
+
+    @corujacapital
+    @produto
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | filtro    | valor     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "todos"   |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Produto" | "Crédito" |
+
+    @corujacapital
+    @canal
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | filtro  | valor       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "todos"     |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "POS"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "TEF"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Canal" | "ECOMMERCE" |
+
+    @corujacapital
+    @bandeira
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | filtro     | valor        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "todos"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Visa"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Mastercard" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Amex"       |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Cabal"      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Elo"        |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Bandeira" | "Hipercard"  |
+
+    @corujacapital
+    @valores
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | filtro    | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "100;300"  |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Valores" | "500;1000" |
+
+    @corujacapital
+    @estabelecimento
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | filtro            | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "todos"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Estabelecimento" | "91084373" |
+
+    @corujacapital
+    @terminal
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | filtro     | valor      |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "todos"    |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "LNK01D49" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "PGW0D0D1" |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Terminal" | "ECC05DE6" |
+
   @gerarArquivo
   @nomeArquivo
   @TestCaseKey=LPDC-T1222
@@ -619,6 +820,30 @@ Feature: Pre autorizacoes
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
+
+    @banqi
+    @excel
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           |
+
+    @banqi
+    @csv
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
+
+    @corujacapital
+    @excel
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           |
+
+    @corujacapital
+    @csv
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           |
 
   @gerarArquivo
   @colunasArquivo
@@ -688,3 +913,26 @@ Feature: Pre autorizacoes
       | alianca    | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
       | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
 
+    @banqi
+    @excel
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
+
+    @banqi
+    @csv
+    Examples:
+      | alianca | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
+      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
+
+    @corujacapital
+    @excel
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "Excel"     | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |
+
+    @corujacapital
+    @csv
+    Examples:
+      | alianca         | menu     | submenu           | abaRelatorio       | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                          |
+      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" | "CSV"       | "N"           | "Data da venda;Data alvo;Cód. de autorização;Produto;Bandeira;Canal;Valor autorizado;Valor confirmado;Status;Comprovante da venda;Número do terminal;Estabelecimento comercial;Final do cartão;Cód. Ref. Cartão" |

@@ -4,6 +4,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
+@Antecipacao
 @RelatorioAntecipacoes
 Feature: Relatorio de antecipacoes
 
@@ -34,6 +35,11 @@ Feature: Relatorio de antecipacoes
       | alianca    | menu          | submenu | abaRelatorio                |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" |
 
+    @corujacapital
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" |
+
   @navegacao
   @TestCaseKey=LPDC-T1287
   Scenario Outline: Visualizar campos de Total e Valor - Relatorio de antecipacoes
@@ -61,6 +67,11 @@ Feature: Relatorio de antecipacoes
       | alianca    | menu          | submenu | abaRelatorio                | campos                                                                                                                                          |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Valor bruto das vendas;Valor líquido das vendas;Total de desconto valor líquido;Valor antecipado pago;Total de desconto valor antecipado pago" |
 
+    @corujacapital
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | campos                                                                                                                                          |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Valor bruto das vendas;Valor líquido das vendas;Total de desconto valor líquido;Valor antecipado pago;Total de desconto valor antecipado pago" |
+
   @totalizadores
   @TestCaseKey=LPDC-T1472
   Scenario Outline: Validar totalizadores - Relatorio de antecipacoes
@@ -87,6 +98,11 @@ Feature: Relatorio de antecipacoes
     Examples:
       | alianca    | menu          | submenu | abaRelatorio                |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" |
 
   @periodo
   @TestCaseKey=LPDC-T1283
@@ -127,6 +143,14 @@ Feature: Relatorio de antecipacoes
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 7 Dias"  |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 14 Dias" |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Mês Passado"     |
+
+    @corujacapital
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | periodo           |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Ontem"           |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 7 Dias"  |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Últimos 14 Dias" |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Mês Passado"     |
 
   @filtro
   @TestCaseKey=LPDC-T1284
@@ -243,6 +267,33 @@ Feature: Relatorio de antecipacoes
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "todos"      |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Automática" |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Manual"     |
+
+    @corujacapital
+    @numeroSimulacao
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | filtro                | valor              |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "primeiroRegistro" |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Número da simulação" | "WWW333"           |
+
+    @corujacapital
+    @bandeira
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | filtro     | valor        |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "todos"      |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Visa"       |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Mastercard" |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Amex"       |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Cabal"      |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Elo"        |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Bandeira" | "Hipercard"  |
+
+    @corujacapital
+    @tipos
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | filtro  | valor        |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "todos"      |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Automática" |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Tipos" | "Manual"     |
 
   @gerarArquivo
   @nomeArquivo
@@ -364,6 +415,34 @@ Feature: Relatorio de antecipacoes
       | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   |
 
+    @corujacapital
+    @excel
+    @simplificado
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" |
+
+    @corujacapital
+    @excel
+    @detalhado
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   |
+
+    @corujacapital
+    @csv
+    @simplificado
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" |
+
+    @corujacapital
+    @csv
+    @detalhado
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   |
+
   @gerarArquivo
   @colunasArquivo
   @TestCaseKey=LPDC-T1285
@@ -484,3 +563,30 @@ Feature: Relatorio de antecipacoes
       | alianca    | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
       | "claropay" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
 
+    @corujacapital
+    @excel
+    @simplificado
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
+
+    @corujacapital
+    @excel
+    @detalhado
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "Excel"     | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |
+
+    @corujacapital
+    @csv
+    @simplificado
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                   |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "simplificado" | "Número da simulação;Data da solicitação;Data do pagamento;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago;Tipo" |
+
+    @corujacapital
+    @csv
+    @detalhado
+    Examples:
+      | alianca         | menu          | submenu | abaRelatorio                | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                    |
+      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" | "CSV"       | "detalhado"   | "Número da simulação;Data da solicitação;Data do pagamento;Tipo;Bandeira;Produto;Valor bruto das vendas;Valor desconto MDR;Valor líquido das vendas;Valor desconto antecipação;Valor pago" |

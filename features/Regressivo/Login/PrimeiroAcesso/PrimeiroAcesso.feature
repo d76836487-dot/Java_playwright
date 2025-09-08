@@ -4,6 +4,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
+@Login
 @PrimeiroAcesso
 Feature: Primeiro acesso
 
@@ -75,3 +76,26 @@ Feature: Primeiro acesso
       | alianca    | fluxo             | usuario          | receberPor | senha          |
       | "claropay" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
 
+    @banqi
+    @email
+    Examples:
+      | alianca | fluxo             | usuario          | receberPor | senha          |
+      | "banqi" | "Primeiro acesso" | "75211485000161" | "E-mail"   | "Fiserv@12345" |
+
+    @banqi
+    @sms
+    Examples:
+      | alianca | fluxo             | usuario          | receberPor | senha          |
+      | "banqi" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
+
+    @corujacapital
+    @email
+    Examples:
+      | alianca         | fluxo             | usuario          | receberPor | senha          |
+      | "corujacapital" | "Primeiro acesso" | "75211485000161" | "E-mail"   | "Fiserv@12345" |
+
+    @corujacapital
+    @sms
+    Examples:
+      | alianca         | fluxo             | usuario          | receberPor | senha          |
+      | "corujacapital" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
