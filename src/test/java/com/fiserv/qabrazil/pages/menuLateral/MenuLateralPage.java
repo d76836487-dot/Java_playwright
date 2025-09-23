@@ -20,6 +20,7 @@ public class MenuLateralPage extends GeneralUtils {
     private Locator menuRecebimentos;
     private Locator subMenuRecebimentosResumo;
     private Locator menuAntecipacao;
+    private Locator menuNegocio;
 
     @PostConstruct
     private void loadLocators() {
@@ -29,6 +30,7 @@ public class MenuLateralPage extends GeneralUtils {
         this.menuRecebimentos = page.locator("//*[@data-testid='menu-recebimentos']");
         this.subMenuRecebimentosResumo = page.locator("//*[@data-testid='menu-recebimentos-resumo']");
         this.menuAntecipacao = page.locator("//*[@data-testid='menu-antecipacao']");
+        this.menuNegocio = page.locator("//*[@data-testid='menu-negocio']");
     }
 
     private void verificarMenuSubmenuClick(Locator menuSubmenu) {
@@ -56,6 +58,8 @@ public class MenuLateralPage extends GeneralUtils {
             }
         } else if (menu.equalsIgnoreCase("antecipacao")) {
             this.verificarMenuSubmenuClick(this.menuAntecipacao);
+        } else if (menu.equalsIgnoreCase("negocio")) {
+            this.verificarMenuSubmenuClick(this.menuNegocio);
         }
     }
 }
