@@ -7,6 +7,7 @@
 @Negocio
 Feature: Negocio
 
+  @TestCaseKey=LPDC-T1554
   Scenario Outline: Validar troca de estabelecimento - Negocio
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -33,8 +34,8 @@ Feature: Negocio
 
     @claropay
     Examples:
-      | alianca     | menu      | submenu |
-      | "claropay"  | "negocio" | ""      |
+      | alianca    | menu      | submenu |
+      | "claropay" | "negocio" | ""      |
 
     @banqi
     Examples:
@@ -46,6 +47,7 @@ Feature: Negocio
       | alianca         | menu      | submenu |
       | "corujacapital" | "negocio" | ""      |
 
+  @TestCaseKey=LPDC-T1555
   Scenario Outline: Verificar Dados Cadastrais - Negocio
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -72,8 +74,8 @@ Feature: Negocio
 
     @claropay
     Examples:
-      | alianca     | menu      | submenu |
-      | "claropay"  | "negocio" | ""      |
+      | alianca    | menu      | submenu |
+      | "claropay" | "negocio" | ""      |
 
     @banqi
     Examples:
@@ -85,6 +87,7 @@ Feature: Negocio
       | alianca         | menu      | submenu |
       | "corujacapital" | "negocio" | ""      |
 
+  @TestCaseKey=LPDC-T1559
   Scenario Outline: Realizar filtros em Meus Domicilios - <filtro>: <valor> - Negocio
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -110,20 +113,20 @@ Feature: Negocio
     @bin
     @produtos
     Examples:
-      | alianca | menu      | submenu | filtro      | valor   |
-      | "bin"   | "negocio" | ""      | "Produtos"  | "todos" |
+      | alianca | menu      | submenu | filtro     | valor   |
+      | "bin"   | "negocio" | ""      | "Produtos" | "todos" |
 
     @bin
     @produtos
     Examples:
-      | alianca | menu      | submenu | filtro      | valor     |
-      | "bin"   | "negocio" | ""      | "Produtos"  | "Crédito" |
+      | alianca | menu      | submenu | filtro     | valor     |
+      | "bin"   | "negocio" | ""      | "Produtos" | "Crédito" |
 
     @bin
     @produtos
     Examples:
-      | alianca | menu      | submenu | filtro      | valor     |
-      | "bin"   | "negocio" | ""      | "Produtos"  | "Débito"  |
+      | alianca | menu      | submenu | filtro     | valor    |
+      | "bin"   | "negocio" | ""      | "Produtos" | "Débito" |
 
     @bin
     @bandeiras
@@ -134,20 +137,20 @@ Feature: Negocio
     @bin
     @bandeiras
     Examples:
-      | alianca | menu      | submenu | filtro      | valor         |
-      | "bin"   | "negocio" | ""      | "Bandeiras" | "Mastercard"  |
+      | alianca | menu      | submenu | filtro      | valor        |
+      | "bin"   | "negocio" | ""      | "Bandeiras" | "Mastercard" |
 
     @bin
     @bandeiras
     Examples:
-      | alianca | menu      | submenu | filtro      | valor   |
-      | "bin"   | "negocio" | ""      | "Bandeiras" | "Visa"  |
+      | alianca | menu      | submenu | filtro      | valor  |
+      | "bin"   | "negocio" | ""      | "Bandeiras" | "Visa" |
 
     @bin
     @bandeiras
     Examples:
-      | alianca | menu      | submenu | filtro      | valor   |
-      | "bin"   | "negocio" | ""      | "Bandeiras" | "Amex"  |
+      | alianca | menu      | submenu | filtro      | valor  |
+      | "bin"   | "negocio" | ""      | "Bandeiras" | "Amex" |
 
     @bin
     @bandeiras
@@ -188,20 +191,20 @@ Feature: Negocio
     @sicredi
     @produtos
     Examples:
-      | alianca   | menu      | submenu | filtro      | valor   |
-      | "sicredi" | "negocio" | ""      | "Produtos"  | "todos" |
+      | alianca   | menu      | submenu | filtro     | valor   |
+      | "sicredi" | "negocio" | ""      | "Produtos" | "todos" |
 
     @sicredi
     @produtos
     Examples:
-      | alianca   | menu      | submenu | filtro      | valor     |
-      | "sicredi" | "negocio" | ""      | "Produtos"  | "Crédito" |
+      | alianca   | menu      | submenu | filtro     | valor     |
+      | "sicredi" | "negocio" | ""      | "Produtos" | "Crédito" |
 
     @sicredi
     @produtos
     Examples:
-      | alianca   | menu      | submenu | filtro      | valor     |
-      | "sicredi" | "negocio" | ""      | "Produtos"  | "Débito"  |
+      | alianca   | menu      | submenu | filtro     | valor    |
+      | "sicredi" | "negocio" | ""      | "Produtos" | "Débito" |
 
     @sicredi
     @bandeiras
@@ -212,20 +215,20 @@ Feature: Negocio
     @sicredi
     @bandeiras
     Examples:
-      | alianca   | menu      | submenu | filtro      | valor         |
-      | "sicredi" | "negocio" | ""      | "Bandeiras" | "Mastercard"  |
+      | alianca   | menu      | submenu | filtro      | valor        |
+      | "sicredi" | "negocio" | ""      | "Bandeiras" | "Mastercard" |
 
     @sicredi
     @bandeiras
     Examples:
-      | alianca   | menu      | submenu | filtro      | valor   |
-      | "sicredi" | "negocio" | ""      | "Bandeiras" | "Visa"  |
+      | alianca   | menu      | submenu | filtro      | valor  |
+      | "sicredi" | "negocio" | ""      | "Bandeiras" | "Visa" |
 
     @sicredi
     @bandeiras
     Examples:
-      | alianca   | menu      | submenu | filtro      | valor   |
-      | "sicredi" | "negocio" | ""      | "Bandeiras" | "Amex"  |
+      | alianca   | menu      | submenu | filtro      | valor  |
+      | "sicredi" | "negocio" | ""      | "Bandeiras" | "Amex" |
 
     @sicredi
     @bandeiras
@@ -266,20 +269,20 @@ Feature: Negocio
     @azulzinha
     @produtos
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor   |
-      | "azulzinha" | "negocio" | ""      | "Produtos"  | "todos" |
+      | alianca     | menu      | submenu | filtro     | valor   |
+      | "azulzinha" | "negocio" | ""      | "Produtos" | "todos" |
 
     @azulzinha
     @produtos
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor     |
-      | "azulzinha" | "negocio" | ""      | "Produtos"  | "Crédito" |
+      | alianca     | menu      | submenu | filtro     | valor     |
+      | "azulzinha" | "negocio" | ""      | "Produtos" | "Crédito" |
 
     @azulzinha
     @produtos
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor     |
-      | "azulzinha" | "negocio" | ""      | "Produtos"  | "Débito"  |
+      | alianca     | menu      | submenu | filtro     | valor    |
+      | "azulzinha" | "negocio" | ""      | "Produtos" | "Débito" |
 
     @azulzinha
     @bandeiras
@@ -290,20 +293,20 @@ Feature: Negocio
     @azulzinha
     @bandeiras
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor         |
-      | "azulzinha" | "negocio" | ""      | "Bandeiras" | "Mastercard"  |
+      | alianca     | menu      | submenu | filtro      | valor        |
+      | "azulzinha" | "negocio" | ""      | "Bandeiras" | "Mastercard" |
 
     @azulzinha
     @bandeiras
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor   |
-      | "azulzinha" | "negocio" | ""      | "Bandeiras" | "Visa"  |
+      | alianca     | menu      | submenu | filtro      | valor  |
+      | "azulzinha" | "negocio" | ""      | "Bandeiras" | "Visa" |
 
     @azulzinha
     @bandeiras
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor   |
-      | "azulzinha" | "negocio" | ""      | "Bandeiras" | "Amex"  |
+      | alianca     | menu      | submenu | filtro      | valor  |
+      | "azulzinha" | "negocio" | ""      | "Bandeiras" | "Amex" |
 
     @azulzinha
     @bandeiras
@@ -344,20 +347,20 @@ Feature: Negocio
     @afinz
     @produtos
     Examples:
-      | alianca | menu      | submenu | filtro      | valor   |
-      | "afinz" | "negocio" | ""      | "Produtos"  | "todos" |
+      | alianca | menu      | submenu | filtro     | valor   |
+      | "afinz" | "negocio" | ""      | "Produtos" | "todos" |
 
     @afinz
     @produtos
     Examples:
-      | alianca | menu      | submenu | filtro      | valor     |
-      | "afinz" | "negocio" | ""      | "Produtos"  | "Crédito" |
+      | alianca | menu      | submenu | filtro     | valor     |
+      | "afinz" | "negocio" | ""      | "Produtos" | "Crédito" |
 
     @afinz
     @produtos
     Examples:
-      | alianca | menu      | submenu | filtro      | valor     |
-      | "afinz" | "negocio" | ""      | "Produtos"  | "Débito"  |
+      | alianca | menu      | submenu | filtro     | valor    |
+      | "afinz" | "negocio" | ""      | "Produtos" | "Débito" |
 
     @afinz
     @bandeiras
@@ -368,20 +371,20 @@ Feature: Negocio
     @afinz
     @bandeiras
     Examples:
-      | alianca | menu      | submenu | filtro      | valor         |
-      | "afinz" | "negocio" | ""      | "Bandeiras" | "Mastercard"  |
+      | alianca | menu      | submenu | filtro      | valor        |
+      | "afinz" | "negocio" | ""      | "Bandeiras" | "Mastercard" |
 
     @afinz
     @bandeiras
     Examples:
-      | alianca | menu      | submenu | filtro      | valor   |
-      | "afinz" | "negocio" | ""      | "Bandeiras" | "Visa"  |
+      | alianca | menu      | submenu | filtro      | valor  |
+      | "afinz" | "negocio" | ""      | "Bandeiras" | "Visa" |
 
     @afinz
     @bandeiras
     Examples:
-      | alianca | menu      | submenu | filtro      | valor   |
-      | "afinz" | "negocio" | ""      | "Bandeiras" | "Amex"  |
+      | alianca | menu      | submenu | filtro      | valor  |
+      | "afinz" | "negocio" | ""      | "Bandeiras" | "Amex" |
 
     @afinz
     @bandeiras
@@ -404,80 +407,80 @@ Feature: Negocio
     @claropay
     @banco
     Examples:
-      | alianca     | menu      | submenu | filtro  | valor |
-      | "claropay"  | "negocio" | ""      | "Banco" | ""    |
+      | alianca    | menu      | submenu | filtro  | valor |
+      | "claropay" | "negocio" | ""      | "Banco" | ""    |
 
     @claropay
     @agencia
     Examples:
-      | alianca     | menu      | submenu | filtro    | valor |
-      | "claropay"  | "negocio" | ""      | "Agência" | ""    |
+      | alianca    | menu      | submenu | filtro    | valor |
+      | "claropay" | "negocio" | ""      | "Agência" | ""    |
 
     @claropay
     @conta
     Examples:
-      | alianca     | menu      | submenu | filtro  | valor |
-      | "claropay"  | "negocio" | ""      | "Conta" | ""    |
+      | alianca    | menu      | submenu | filtro  | valor |
+      | "claropay" | "negocio" | ""      | "Conta" | ""    |
 
     @claropay
     @produtos
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor   |
-      | "claropay"  | "negocio" | ""      | "Produtos"  | "todos" |
+      | alianca    | menu      | submenu | filtro     | valor   |
+      | "claropay" | "negocio" | ""      | "Produtos" | "todos" |
 
     @claropay
     @produtos
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor     |
-      | "claropay"  | "negocio" | ""      | "Produtos"  | "Crédito" |
+      | alianca    | menu      | submenu | filtro     | valor     |
+      | "claropay" | "negocio" | ""      | "Produtos" | "Crédito" |
 
     @claropay
     @produtos
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor     |
-      | "claropay"  | "negocio" | ""      | "Produtos"  | "Débito"  |
+      | alianca    | menu      | submenu | filtro     | valor    |
+      | "claropay" | "negocio" | ""      | "Produtos" | "Débito" |
 
     @claropay
     @bandeiras
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor   |
-      | "claropay"  | "negocio" | ""      | "Bandeiras" | "todos" |
+      | alianca    | menu      | submenu | filtro      | valor   |
+      | "claropay" | "negocio" | ""      | "Bandeiras" | "todos" |
 
     @claropay
     @bandeiras
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor         |
-      | "claropay"  | "negocio" | ""      | "Bandeiras" | "Mastercard"  |
+      | alianca    | menu      | submenu | filtro      | valor        |
+      | "claropay" | "negocio" | ""      | "Bandeiras" | "Mastercard" |
 
     @claropay
     @bandeiras
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor   |
-      | "claropay"  | "negocio" | ""      | "Bandeiras" | "Visa"  |
+      | alianca    | menu      | submenu | filtro      | valor  |
+      | "claropay" | "negocio" | ""      | "Bandeiras" | "Visa" |
 
     @claropay
     @bandeiras
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor   |
-      | "claropay"  | "negocio" | ""      | "Bandeiras" | "Amex"  |
+      | alianca    | menu      | submenu | filtro      | valor  |
+      | "claropay" | "negocio" | ""      | "Bandeiras" | "Amex" |
 
     @claropay
     @bandeiras
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor   |
-      | "claropay"  | "negocio" | ""      | "Bandeiras" | "Cabal" |
+      | alianca    | menu      | submenu | filtro      | valor   |
+      | "claropay" | "negocio" | ""      | "Bandeiras" | "Cabal" |
 
     @claropay
     @bandeiras
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor       |
-      | "claropay"  | "negocio" | ""      | "Bandeiras" | "Hipercard" |
+      | alianca    | menu      | submenu | filtro      | valor       |
+      | "claropay" | "negocio" | ""      | "Bandeiras" | "Hipercard" |
 
     @claropay
     @bandeiras
     Examples:
-      | alianca     | menu      | submenu | filtro      | valor |
-      | "claropay"  | "negocio" | ""      | "Bandeiras" | "Elo" |
+      | alianca    | menu      | submenu | filtro      | valor |
+      | "claropay" | "negocio" | ""      | "Bandeiras" | "Elo" |
 
     @banqi
     @banco
@@ -500,20 +503,20 @@ Feature: Negocio
     @banqi
     @produtos
     Examples:
-      | alianca | menu      | submenu | filtro      | valor   |
-      | "banqi" | "negocio" | ""      | "Produtos"  | "todos" |
+      | alianca | menu      | submenu | filtro     | valor   |
+      | "banqi" | "negocio" | ""      | "Produtos" | "todos" |
 
     @banqi
     @produtos
     Examples:
-      | alianca | menu      | submenu | filtro      | valor     |
-      | "banqi" | "negocio" | ""      | "Produtos"  | "Crédito" |
+      | alianca | menu      | submenu | filtro     | valor     |
+      | "banqi" | "negocio" | ""      | "Produtos" | "Crédito" |
 
     @banqi
     @produtos
     Examples:
-      | alianca | menu      | submenu | filtro      | valor     |
-      | "banqi" | "negocio" | ""      | "Produtos"  | "Débito"  |
+      | alianca | menu      | submenu | filtro     | valor    |
+      | "banqi" | "negocio" | ""      | "Produtos" | "Débito" |
 
     @banqi
     @bandeiras
@@ -524,20 +527,20 @@ Feature: Negocio
     @banqi
     @bandeiras
     Examples:
-      | alianca | menu      | submenu | filtro      | valor         |
-      | "banqi" | "negocio" | ""      | "Bandeiras" | "Mastercard"  |
+      | alianca | menu      | submenu | filtro      | valor        |
+      | "banqi" | "negocio" | ""      | "Bandeiras" | "Mastercard" |
 
     @banqi
     @bandeiras
     Examples:
-      | alianca | menu      | submenu | filtro      | valor   |
-      | "banqi" | "negocio" | ""      | "Bandeiras" | "Visa"  |
+      | alianca | menu      | submenu | filtro      | valor  |
+      | "banqi" | "negocio" | ""      | "Bandeiras" | "Visa" |
 
     @banqi
     @bandeiras
     Examples:
-      | alianca | menu      | submenu | filtro      | valor   |
-      | "banqi" | "negocio" | ""      | "Bandeiras" | "Amex"  |
+      | alianca | menu      | submenu | filtro      | valor  |
+      | "banqi" | "negocio" | ""      | "Bandeiras" | "Amex" |
 
     @banqi
     @bandeiras
@@ -578,20 +581,20 @@ Feature: Negocio
     @corujacapital
     @produtos
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor   |
-      | "corujacapital" | "negocio" | ""      | "Produtos"  | "todos" |
+      | alianca         | menu      | submenu | filtro     | valor   |
+      | "corujacapital" | "negocio" | ""      | "Produtos" | "todos" |
 
     @corujacapital
     @produtos
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor     |
-      | "corujacapital" | "negocio" | ""      | "Produtos"  | "Crédito" |
+      | alianca         | menu      | submenu | filtro     | valor     |
+      | "corujacapital" | "negocio" | ""      | "Produtos" | "Crédito" |
 
     @corujacapital
     @produtos
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor     |
-      | "corujacapital" | "negocio" | ""      | "Produtos"  | "Débito"  |
+      | alianca         | menu      | submenu | filtro     | valor    |
+      | "corujacapital" | "negocio" | ""      | "Produtos" | "Débito" |
 
     @corujacapital
     @bandeiras
@@ -602,20 +605,20 @@ Feature: Negocio
     @corujacapital
     @bandeiras
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor         |
-      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Mastercard"  |
+      | alianca         | menu      | submenu | filtro      | valor        |
+      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Mastercard" |
 
     @corujacapital
     @bandeiras
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor   |
-      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Visa"  |
+      | alianca         | menu      | submenu | filtro      | valor  |
+      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Visa" |
 
     @corujacapital
     @bandeiras
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor   |
-      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Amex"  |
+      | alianca         | menu      | submenu | filtro      | valor  |
+      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Amex" |
 
     @corujacapital
     @bandeiras
@@ -635,6 +638,7 @@ Feature: Negocio
       | alianca         | menu      | submenu | filtro      | valor |
       | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Elo" |
 
+  @TestCaseKey=LPDC-T1557
   Scenario Outline: Validar acesso ao Inteligencia financeira - Negocio
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -661,8 +665,8 @@ Feature: Negocio
 
     @claropay
     Examples:
-      | alianca     | menu      | submenu |
-      | "claropay"  | "negocio" | ""      |
+      | alianca    | menu      | submenu |
+      | "claropay" | "negocio" | ""      |
 
     @banqi
     Examples:
@@ -674,6 +678,7 @@ Feature: Negocio
       | alianca         | menu      | submenu |
       | "corujacapital" | "negocio" | ""      |
 
+  @TestCaseKey=LPDC-T1560
   Scenario Outline: Validar busca por terminal no link Ver todos os terminais - Negocio
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -700,8 +705,8 @@ Feature: Negocio
 
     @claropay
     Examples:
-      | alianca     | menu      | submenu |
-      | "claropay"  | "negocio" | ""      |
+      | alianca    | menu      | submenu |
+      | "claropay" | "negocio" | ""      |
 
     @banqi
     Examples:
@@ -713,6 +718,7 @@ Feature: Negocio
       | alianca         | menu      | submenu |
       | "corujacapital" | "negocio" | ""      |
 
+  @TestCaseKey=LPDC-T1556
   Scenario Outline: Validar Meus Terminais - Negocio
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -739,8 +745,8 @@ Feature: Negocio
 
     @claropay
     Examples:
-      | alianca     | menu      | submenu |
-      | "claropay"  | "negocio" | ""      |
+      | alianca    | menu      | submenu |
+      | "claropay" | "negocio" | ""      |
 
     @banqi
     Examples:
@@ -752,6 +758,7 @@ Feature: Negocio
       | alianca         | menu      | submenu |
       | "corujacapital" | "negocio" | ""      |
 
+  @TestCaseKey=LPDC-T1558
   Scenario Outline: Validar Taxas e Tarifas por Bandeira <bandeira> - Negocio
     Given realizar login no portal <alianca>
     When acessar menu <menu> e submenu <submenu>
@@ -759,32 +766,32 @@ Feature: Negocio
     @bin
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira      |
-      | "bin"   | "negocio" | ""      | "Mastercard"  |
+      | alianca | menu      | submenu | bandeira     |
+      | "bin"   | "negocio" | ""      | "Mastercard" |
 
     @bin
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "bin"   | "negocio" | ""      | "Visa"    |
+      | alianca | menu      | submenu | bandeira |
+      | "bin"   | "negocio" | ""      | "Visa"   |
 
     @bin
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "bin"   | "negocio" | ""      | "ELO"     |
+      | alianca | menu      | submenu | bandeira |
+      | "bin"   | "negocio" | ""      | "ELO"    |
 
     @bin
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "bin"   | "negocio" | ""      | "Cabal"   |
+      | alianca | menu      | submenu | bandeira |
+      | "bin"   | "negocio" | ""      | "Cabal"  |
 
     @bin
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "bin"   | "negocio" | ""      | "AMEX"    |
+      | alianca | menu      | submenu | bandeira |
+      | "bin"   | "negocio" | ""      | "AMEX"   |
 
     @bin
     @bandeira
@@ -795,32 +802,32 @@ Feature: Negocio
     @sicredi
     @bandeira
     Examples:
-      | alianca   | menu      | submenu | bandeira      |
-      | "sicredi" | "negocio" | ""      | "Mastercard"  |
+      | alianca   | menu      | submenu | bandeira     |
+      | "sicredi" | "negocio" | ""      | "Mastercard" |
 
     @sicredi
     @bandeira
     Examples:
-      | alianca   | menu      | submenu | bandeira  |
-      | "sicredi" | "negocio" | ""      | "Visa"    |
+      | alianca   | menu      | submenu | bandeira |
+      | "sicredi" | "negocio" | ""      | "Visa"   |
 
     @sicredi
     @bandeira
     Examples:
-      | alianca   | menu      | submenu | bandeira  |
-      | "sicredi" | "negocio" | ""      | "ELO"     |
+      | alianca   | menu      | submenu | bandeira |
+      | "sicredi" | "negocio" | ""      | "ELO"    |
 
     @sicredi
     @bandeira
     Examples:
-      | alianca   | menu      | submenu | bandeira  |
-      | "sicredi" | "negocio" | ""      | "Cabal"   |
+      | alianca   | menu      | submenu | bandeira |
+      | "sicredi" | "negocio" | ""      | "Cabal"  |
 
     @sicredi
     @bandeira
     Examples:
-      | alianca   | menu      | submenu | bandeira  |
-      | "sicredi" | "negocio" | ""      | "AMEX"    |
+      | alianca   | menu      | submenu | bandeira |
+      | "sicredi" | "negocio" | ""      | "AMEX"   |
 
     @sicredi
     @bandeira
@@ -831,32 +838,32 @@ Feature: Negocio
     @azulzinha
     @bandeira
     Examples:
-      | alianca     | menu      | submenu | bandeira      |
-      | "azulzinha" | "negocio" | ""      | "Mastercard"  |
+      | alianca     | menu      | submenu | bandeira     |
+      | "azulzinha" | "negocio" | ""      | "Mastercard" |
 
     @azulzinha
     @bandeira
     Examples:
-      | alianca     | menu      | submenu | bandeira  |
-      | "azulzinha" | "negocio" | ""      | "Visa"    |
+      | alianca     | menu      | submenu | bandeira |
+      | "azulzinha" | "negocio" | ""      | "Visa"   |
 
     @azulzinha
     @bandeira
     Examples:
-      | alianca     | menu      | submenu | bandeira  |
-      | "azulzinha" | "negocio" | ""      | "ELO"     |
+      | alianca     | menu      | submenu | bandeira |
+      | "azulzinha" | "negocio" | ""      | "ELO"    |
 
     @azulzinha
     @bandeira
     Examples:
-      | alianca     | menu      | submenu | bandeira  |
-      | "azulzinha" | "negocio" | ""      | "Cabal"   |
+      | alianca     | menu      | submenu | bandeira |
+      | "azulzinha" | "negocio" | ""      | "Cabal"  |
 
     @azulzinha
     @bandeira
     Examples:
-      | alianca     | menu      | submenu | bandeira  |
-      | "azulzinha" | "negocio" | ""      | "AMEX"    |
+      | alianca     | menu      | submenu | bandeira |
+      | "azulzinha" | "negocio" | ""      | "AMEX"   |
 
     @azulzinha
     @bandeira
@@ -867,32 +874,32 @@ Feature: Negocio
     @afinz
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira      |
-      | "afinz" | "negocio" | ""      | "Mastercard"  |
+      | alianca | menu      | submenu | bandeira     |
+      | "afinz" | "negocio" | ""      | "Mastercard" |
 
     @afinz
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "afinz" | "negocio" | ""      | "Visa"    |
+      | alianca | menu      | submenu | bandeira |
+      | "afinz" | "negocio" | ""      | "Visa"   |
 
     @afinz
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "afinz" | "negocio" | ""      | "ELO"     |
+      | alianca | menu      | submenu | bandeira |
+      | "afinz" | "negocio" | ""      | "ELO"    |
 
     @afinz
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "afinz" | "negocio" | ""      | "Cabal"   |
+      | alianca | menu      | submenu | bandeira |
+      | "afinz" | "negocio" | ""      | "Cabal"  |
 
     @afinz
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "afinz" | "negocio" | ""      | "AMEX"    |
+      | alianca | menu      | submenu | bandeira |
+      | "afinz" | "negocio" | ""      | "AMEX"   |
 
     @afinz
     @bandeira
@@ -903,68 +910,68 @@ Feature: Negocio
     @claropay
     @bandeira
     Examples:
-      | alianca     | menu      | submenu | bandeira      |
-      | "claropay"  | "negocio" | ""      | "Mastercard"  |
+      | alianca    | menu      | submenu | bandeira     |
+      | "claropay" | "negocio" | ""      | "Mastercard" |
 
     @claropay
     @bandeira
     Examples:
-      | alianca     | menu      | submenu | bandeira  |
-      | "claropay"  | "negocio" | ""      | "Visa"    |
+      | alianca    | menu      | submenu | bandeira |
+      | "claropay" | "negocio" | ""      | "Visa"   |
 
     @claropay
     @bandeira
     Examples:
-      | alianca     | menu      | submenu | bandeira  |
-      | "claropay"  | "negocio" | ""      | "ELO"     |
+      | alianca    | menu      | submenu | bandeira |
+      | "claropay" | "negocio" | ""      | "ELO"    |
 
     @claropay
     @bandeira
     Examples:
-      | alianca     | menu      | submenu | bandeira  |
-      | "claropay"  | "negocio" | ""      | "Cabal"   |
+      | alianca    | menu      | submenu | bandeira |
+      | "claropay" | "negocio" | ""      | "Cabal"  |
 
     @claropay
     @bandeira
     Examples:
-      | alianca     | menu      | submenu | bandeira  |
-      | "claropay"  | "negocio" | ""      | "AMEX"    |
+      | alianca    | menu      | submenu | bandeira |
+      | "claropay" | "negocio" | ""      | "AMEX"   |
 
     @claropay
     @bandeira
     Examples:
-      | alianca     | menu      | submenu | bandeira    |
-      | "claropay"  | "negocio" | ""      | "Hipercard" |
+      | alianca    | menu      | submenu | bandeira    |
+      | "claropay" | "negocio" | ""      | "Hipercard" |
 
     @banqi
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira      |
-      | "banqi" | "negocio" | ""      | "Mastercard"  |
+      | alianca | menu      | submenu | bandeira     |
+      | "banqi" | "negocio" | ""      | "Mastercard" |
 
     @banqi
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "banqi" | "negocio" | ""      | "Visa"    |
+      | alianca | menu      | submenu | bandeira |
+      | "banqi" | "negocio" | ""      | "Visa"   |
 
     @banqi
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "banqi" | "negocio" | ""      | "ELO"     |
+      | alianca | menu      | submenu | bandeira |
+      | "banqi" | "negocio" | ""      | "ELO"    |
 
     @banqi
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "banqi" | "negocio" | ""      | "Cabal"   |
+      | alianca | menu      | submenu | bandeira |
+      | "banqi" | "negocio" | ""      | "Cabal"  |
 
     @banqi
     @bandeira
     Examples:
-      | alianca | menu      | submenu | bandeira  |
-      | "banqi" | "negocio" | ""      | "AMEX"    |
+      | alianca | menu      | submenu | bandeira |
+      | "banqi" | "negocio" | ""      | "AMEX"   |
 
     @banqi
     @bandeira
@@ -975,35 +982,36 @@ Feature: Negocio
     @corujacapital
     @bandeira
     Examples:
-      | alianca         | menu      | submenu | bandeira      |
-      | "corujacapital" | "negocio" | ""      | "Mastercard"  |
+      | alianca         | menu      | submenu | bandeira     |
+      | "corujacapital" | "negocio" | ""      | "Mastercard" |
 
     @corujacapital
     @bandeira
     Examples:
-      | alianca         | menu      | submenu | bandeira  |
-      | "corujacapital" | "negocio" | ""      | "Visa"    |
+      | alianca         | menu      | submenu | bandeira |
+      | "corujacapital" | "negocio" | ""      | "Visa"   |
 
     @corujacapital
     @bandeira
     Examples:
-      | alianca         | menu      | submenu | bandeira  |
-      | "corujacapital" | "negocio" | ""      | "ELO"     |
+      | alianca         | menu      | submenu | bandeira |
+      | "corujacapital" | "negocio" | ""      | "ELO"    |
 
     @corujacapital
     @bandeira
     Examples:
-      | alianca         | menu      | submenu | bandeira  |
-      | "corujacapital" | "negocio" | ""      | "Cabal"   |
+      | alianca         | menu      | submenu | bandeira |
+      | "corujacapital" | "negocio" | ""      | "Cabal"  |
 
     @corujacapital
     @bandeira
     Examples:
-      | alianca         | menu      | submenu | bandeira  |
-      | "corujacapital" | "negocio" | ""      | "AMEX"    |
+      | alianca         | menu      | submenu | bandeira |
+      | "corujacapital" | "negocio" | ""      | "AMEX"   |
 
     @corujacapital
     @bandeira
     Examples:
       | alianca         | menu      | submenu | bandeira    |
       | "corujacapital" | "negocio" | ""      | "Hipercard" |
+
