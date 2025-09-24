@@ -189,7 +189,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("portal239")
         ,"master"
         ,"33414095000149"
-        ,"ClaroPay@123"
+        ,"Fiserv@12345678"
         ,"239"
         ,setInstituicao("7")
     )
@@ -207,7 +207,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("portal239")
         ,"cedidos"
         ,"33414095000149"
-        ,"ClaroPay@123"
+        ,"Fiserv@12345678"
         ,"239"
         ,setInstituicao("7")
     )
@@ -216,7 +216,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("portal239")
         ,"franqueador"
         ,"33414095000149"
-        ,"ClaroPay@123"
+        ,"Fiserv@12345678"
         ,"239"
         ,setInstituicao("7")
     ),CLAROPAY_FRANQUEADO(
@@ -224,7 +224,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("portal239")
         ,"franqueado"
         ,"33414095000149"
-        ,"ClaroPay@123"
+        ,"Fiserv@12345678"
         ,"239"
         ,setInstituicao("7")
     )
@@ -277,8 +277,8 @@ public enum PerfilAcessoEnum {
         "corujacapital"
         ,setUrlPortal("portal240")
         ,"master"
-        ,"08003345000100"
-        ,"Coruja@12345"
+        ,"39341574000169"
+        ,"CorujaCapital@123"
         ,"242"
         ,setInstituicao("7")
     )
@@ -287,7 +287,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("portal240")
         ,"secundario"
         ,"max@afinz"
-        ,"Coruja@12345"
+        ,"CorujaCapital@123"
         ,"242"
         ,setInstituicao("7")
     )
@@ -295,8 +295,8 @@ public enum PerfilAcessoEnum {
         "corujacapital"
         ,setUrlPortal("portal240")
         ,"cedidos"
-        ,"08003345000100"
-        ,"Coruja@12345"
+        ,"39341574000169"
+        ,"CorujaCapital@123"
         ,"242"
         ,setInstituicao("7")
     )
@@ -304,8 +304,8 @@ public enum PerfilAcessoEnum {
         "corujacapital"
         ,setUrlPortal("portal240")
         ,"franqueador"
-        ,"08003345000100"
-        ,"Coruja@12345"
+        ,"39341574000169"
+        ,"CorujaCapital@123"
         ,"242"
         ,setInstituicao("7")
     )
@@ -313,8 +313,8 @@ public enum PerfilAcessoEnum {
         "corujacapital"
         ,setUrlPortal("portal240")
         ,"franqueado"
-        ,"08003345000100"
-        ,"Coruja@12345"
+        ,"39341574000169"
+        ,"CorujaCapital@123"
         ,"242"
         ,setInstituicao("7")
     );

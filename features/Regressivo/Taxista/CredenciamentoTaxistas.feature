@@ -4,6 +4,8 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=High
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
+@Automacao
+@CredenciamentoTaxistas
 Feature: Credenciamento de Taxistas
 
   @TestCaseKey=LPDC-T866
