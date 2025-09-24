@@ -336,3 +336,4 @@ Feature: Historico
     Examples:
       | alianca         | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
       | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
+

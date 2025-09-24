@@ -234,10 +234,10 @@ Feature: Pagos
     @banqi
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | periodo       |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Hoje"        |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Essa Semana" |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Este Mês"    |
+      | alianca        | menu           | submenu              | abaRelatorio            | periodo       |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Hoje"        |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Essa Semana" |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Este Mês"    |
 
     @corujacapital
     @meusDomicilios
@@ -250,10 +250,10 @@ Feature: Pagos
     @corujacapital
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | periodo       |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Hoje"        |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Essa Semana" |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Este Mês"    |
+      | alianca                | menu           | submenu              | abaRelatorio            | periodo       |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Hoje"        |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Essa Semana" |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Este Mês"    |
 
   @personalizarColunas
   @TestCaseKey=LPDC-T1270
@@ -354,10 +354,10 @@ Feature: Pagos
     @banqi
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | colunas                                                                        |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto;Tipo;Código de pagamento;Status"                                      |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
+      | alianca        | menu           | submenu              | abaRelatorio            | colunas                                                                        |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto;Tipo;Código de pagamento;Status"                                      |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
     @corujacapital
     @meusDomicilios
@@ -370,10 +370,10 @@ Feature: Pagos
     @corujacapital
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | colunas                                                                        |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto;Tipo;Código de pagamento;Status"                                      |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
+      | alianca                | menu           | submenu              | abaRelatorio            | colunas                                                                        |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Banco;EC;Valor de pagamento"                                         |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto;Tipo;Código de pagamento;Status"                                      |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira;Produto;Banco;Tipo;EC;Código de pagamento;Valor de pagamento;Status" |
 
   @filtro
   @TestCaseKey=LPDC-T1265
@@ -1190,74 +1190,74 @@ Feature: Pagos
     @codPagamento
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | filtro              | valor              |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "primeiroRegistro" |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "WWW333"           |
+      | alianca        | menu           | submenu              | abaRelatorio            | filtro              | valor              |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "primeiroRegistro" |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "WWW333"           |
 
     @banqi
     @status
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | filtro   | valor     |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "todos"   |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Enviado" |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Pago"    |
+      | alianca        | menu           | submenu              | abaRelatorio            | filtro   | valor     |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "todos"   |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Enviado" |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Pago"    |
 
     @banqi
     @produto
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | filtro    | valor     |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "todos"   |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Crédito" |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Débito"  |
+      | alianca        | menu           | submenu              | abaRelatorio            | filtro    | valor     |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "todos"   |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Crédito" |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Débito"  |
 
     @banqi
     @bandeira
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | filtro     | valor             |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "todos"           |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Visa"            |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Hipercard/Hiper" |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Mastercard"      |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "ELO Full"        |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Amex Full"       |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "CABAL"           |
+      | alianca        | menu           | submenu              | abaRelatorio            | filtro     | valor             |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "todos"           |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Visa"            |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Hipercard/Hiper" |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Mastercard"      |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "ELO Full"        |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Amex Full"       |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "CABAL"           |
 
     @banqi
     @valores
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | filtro    | valor       |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "2000;3000" |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "5000;8000" |
+      | alianca        | menu           | submenu              | abaRelatorio            | filtro    | valor       |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "2000;3000" |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "5000;8000" |
 
     @banqi
     @estabelecimento
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | filtro            | valor      |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "todos"    |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "99990095" |
+      | alianca        | menu           | submenu              | abaRelatorio            | filtro            | valor      |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "todos"    |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "99990095" |
 
     @banqi
     @banco
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | filtro  | valor                      |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "todos"                    |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "341 - Itaú Unibanco S.A." |
+      | alianca        | menu           | submenu              | abaRelatorio            | filtro  | valor                      |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "todos"                    |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "341 - Itaú Unibanco S.A." |
 
     @banqi
     @tipos
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "todos"                  |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Liquidação de venda"    |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação automática" |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
+      | alianca        | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "todos"                  |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Liquidação de venda"    |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação automática" |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
 
     @corujacapital
     @codPagamento
@@ -1336,74 +1336,74 @@ Feature: Pagos
     @codPagamento
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | filtro              | valor              |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "primeiroRegistro" |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "WWW333"           |
+      | alianca                | menu           | submenu              | abaRelatorio            | filtro              | valor              |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "primeiroRegistro" |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Cód. de pagamento" | "WWW333"           |
 
     @corujacapital
     @status
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | filtro   | valor     |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "todos"   |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Enviado" |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Pago"    |
+      | alianca                | menu           | submenu              | abaRelatorio            | filtro   | valor     |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "todos"   |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Enviado" |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Status" | "Pago"    |
 
     @corujacapital
     @produto
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | filtro    | valor     |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "todos"   |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Crédito" |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Débito"  |
+      | alianca                | menu           | submenu              | abaRelatorio            | filtro    | valor     |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "todos"   |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Crédito" |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Produto" | "Débito"  |
 
     @corujacapital
     @bandeira
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | filtro     | valor             |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "todos"           |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Visa"            |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Hipercard/Hiper" |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Mastercard"      |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "ELO Full"        |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Amex Full"       |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "CABAL"           |
+      | alianca                | menu           | submenu              | abaRelatorio            | filtro     | valor             |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "todos"           |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Visa"            |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Hipercard/Hiper" |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Mastercard"      |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "ELO Full"        |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "Amex Full"       |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Bandeira" | "CABAL"           |
 
     @corujacapital
     @valores
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | filtro    | valor       |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "2000;3000" |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "5000;8000" |
+      | alianca                | menu           | submenu              | abaRelatorio            | filtro    | valor       |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "2000;3000" |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Valores" | "5000;8000" |
 
     @corujacapital
     @estabelecimento
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | filtro            | valor      |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "todos"    |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "99990095" |
+      | alianca                | menu           | submenu              | abaRelatorio            | filtro            | valor      |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "todos"    |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Estabelecimento" | "99990095" |
 
     @corujacapital
     @banco
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | filtro  | valor                      |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "todos"                    |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "341 - Itaú Unibanco S.A." |
+      | alianca                | menu           | submenu              | abaRelatorio            | filtro  | valor                      |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "todos"                    |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Banco" | "341 - Itaú Unibanco S.A." |
 
     @corujacapital
     @tipos
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "todos"                  |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Liquidação de venda"    |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação automática" |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
+      | alianca                | menu           | submenu              | abaRelatorio            | filtro  | valor                    |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "todos"                  |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Liquidação de venda"    |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação automática" |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Tipos" | "Antecipação manual"     |
 
   @gerarArquivo
   @nomeArquivo
@@ -1770,32 +1770,32 @@ Feature: Pagos
     @simplificado
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" |
+      | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" |
 
     @banqi
     @excel
     @detalhado
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   |
+      | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   |
 
     @banqi
     @csv
     @simplificado
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" |
+      | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" |
 
     @banqi
     @csv
     @detalhado
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   |
+      | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   |
 
     @corujacapital
     @excel
@@ -1834,32 +1834,32 @@ Feature: Pagos
     @simplificado
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" |
 
     @corujacapital
     @excel
     @detalhado
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   |
 
     @corujacapital
     @csv
     @simplificado
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" |
 
     @corujacapital
     @csv
     @detalhado
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   |
 
   @gerarArquivo
   @colunasArquivo
@@ -2226,32 +2226,32 @@ Feature: Pagos
     @simplificado
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                  |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
+      | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                  |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
     @banqi
     @excel
     @detalhado
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
+      | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
     @banqi
     @csv
     @simplificado
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                     |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
+      | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                     |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
     @banqi
     @csv
     @detalhado
     @valoresCedidos
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
-      | "banqiCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
+      | alianca        | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
+      | "banqiCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
     @corujacapital
     @excel
@@ -2290,29 +2290,30 @@ Feature: Pagos
     @simplificado
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                  |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                  |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
     @corujacapital
     @excel
     @detalhado
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
 
     @corujacapital
     @csv
     @simplificado
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                     |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                     |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "simplificado" | "Data do pagamento;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor do pagamento;Status" |
 
     @corujacapital
     @csv
     @detalhado
     @valoresCedidos
     Examples:
-      | alianca                 | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
-      | "corujacapitalCedidos"  | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                |
+      | "corujacapitalCedidos" | "recebimentos" | "resumoRecebimentos" | "Pagos_Valores Cedidos" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor bruto da transação;Valor bruto da parcela paga;Valor da taxa (MDR);Valor líquido da parcela/transação;Número do cartão;Banco;Agência;Conta" |
+

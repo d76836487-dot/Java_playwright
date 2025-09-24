@@ -102,3 +102,4 @@ Feature: Solicitar Antecipacao
       | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa;ELO"                             | "Crédito à vista"   | "N"         | "D0"            | "D+2"  | "1000" | "maximo"     |
       | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard"                           | "Crédito Parcelado" | "N"         | "D+1"           | "D+4"  | "800"  | "maximo"     |
       | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa"                                 | "Todos"             | "S"         | ""              | ""     | "1500" | "minimo"     |
+

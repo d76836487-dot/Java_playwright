@@ -99,3 +99,4 @@ Feature: Primeiro acesso
     Examples:
       | alianca         | fluxo             | usuario          | receberPor | senha          |
       | "corujacapital" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
+
