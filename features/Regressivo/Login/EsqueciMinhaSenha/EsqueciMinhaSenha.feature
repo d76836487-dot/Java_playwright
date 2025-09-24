@@ -99,3 +99,4 @@ Feature: Esqueci minha senha
     Examples:
       | alianca         | fluxo                 | usuario          | receberPor | senha           |
       | "corujacapital" | "Esqueci minha senha" | "75213076000102" | "SMS"      | "Fiserv@123456" |
+

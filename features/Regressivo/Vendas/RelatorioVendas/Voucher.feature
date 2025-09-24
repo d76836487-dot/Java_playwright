@@ -895,3 +895,4 @@ Feature: Voucher
     Examples:
       | alianca         | menu     | submenu           | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                         |
       | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    | "CSV"       | "N"           | "Data da venda;Cód. de autorização;Comprovante;Produto;Parcelas;Bandeira;Canal;Número do terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão" |
+

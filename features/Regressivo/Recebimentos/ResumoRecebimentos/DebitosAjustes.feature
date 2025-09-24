@@ -537,3 +537,4 @@ Feature: Debitos e ajustes
     Examples:
       | alianca         | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
       | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+

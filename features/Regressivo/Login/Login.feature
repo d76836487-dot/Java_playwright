@@ -642,3 +642,4 @@ Feature: Login
     Examples:
       | alianca                   | fluxo | receberPor |
       | "corujacapitalSecundario" | "MFA" | "SMS"      |
+
