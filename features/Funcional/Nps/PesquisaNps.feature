@@ -13,17 +13,17 @@ Scenario Outline: Apresentar perguntas NPS após diferentes eventos
     Then são apresentadas as perguntas 1 e 2 do NPS
 
     Examples:
-      | evento                                                         |
-      | contratação de uma antecipação                                 |
-      | exportação de PDF no menu vendas > histórico de vendas > detalhe da venda |
-      | exportação de PDF no menu Recebimentos > pagos > detalhe do pagamento |
-      | solicitação de relatório na aba Relatórios                    |
-      | exportação de Excel no menu Vendas > hoje                      |
-      | exportação de Excel no menu Vendas > histórico de vendas        |
-      | exportação de Excel no menu Recebimentos > Pagos               |
-      | consulta na FAQ/Suporte através do Menu Ajuda                   |
-      | abertura de chamados através do menu Solicitações                |
-      | clique em sair do Portal                                       |
+      | evento|
+      | contratação de uma antecipação|
+      | exportação de PDF no menu vendas > histórico de vendas > detalhe da venda|
+      | exportação de PDF no menu Recebimentos > pagos > detalhe do pagamento|
+      | solicitação de relatório na aba Relatórios|
+      | exportação de Excel no menu Vendas > hoje|
+      | exportação de Excel no menu Vendas > histórico de vendas|
+      | exportação de Excel no menu Recebimentos > Pagos|
+      | consulta na FAQ/Suporte através do Menu Ajuda|
+      | abertura de chamados através do menu Solicitações|
+      | clique em sair do Portal|
 
 
 Scenario Outline: Não apresentar perguntas NPS quando o usuário não é elegível
@@ -32,17 +32,17 @@ Scenario Outline: Não apresentar perguntas NPS quando o usuário não é elegí
     Then as perguntas do NPS não são apresentadas
 
   Examples:
-    | evento                                                         |
-    | contratação de uma antecipação                                 |
-    | exportação de PDF no menu vendas > histórico de vendas > detalhe da venda |
-    | exportação de PDF no menu Recebimentos > pagos > detalhe do pagamento |
-    | solicitação de relatório na aba Relatórios                    |
-    | exportação de Excel no menu Vendas > hoje                      |
-    | exportação de Excel no menu Vendas > histórico de vendas        |
-    | exportação de Excel no menu Recebimentos > Pagos               |
-    | consulta na FAQ/Suporte através do Menu Ajuda                   |
-    | abertura de chamados através do menu Solicitações                |
-    | clique em sair do Portal
+    | evento|
+    | contratação de uma antecipação|
+    | exportação de PDF no menu vendas > histórico de vendas > detalhe da venda|
+    | exportação de PDF no menu Recebimentos > pagos > detalhe do pagamento|
+    | solicitação de relatório na aba Relatório|
+    | exportação de Excel no menu Vendas > hoje|
+    | exportação de Excel no menu Vendas > histórico de vendas|
+    | exportação de Excel no menu Recebimentos > Pagos|
+    | consulta na FAQ/Suporte através do Menu Ajuda|
+    | abertura de chamados através do menu Solicitações|
+    | clique em sair do Portal|
 
 Scenario Outline: Gerar relatório de NPS com filtro de canais
     Given acesso plataforma de relatórios de NPS
