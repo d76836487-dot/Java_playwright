@@ -2,7 +2,6 @@
 @Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/FiltrosVendasHoje
 @Zephyr:Status=Approved
-@Zephyr:Component=BDD Finalizado
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: FiltrosVendasHoje
