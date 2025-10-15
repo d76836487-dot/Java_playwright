@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/FiltrosAbaVendasHoje
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/FiltrosNovaAbaVendasHoje
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: FiltrosAbaVendasHoje
+Feature: FiltrosNovaAbaVendasHoje
 
   Scenario: Remover filtros "Cancelada" e "Cancelada parcial" da aba "Hoje"
     Given acesso a aba de vendas "Hoje"
@@ -49,5 +49,3 @@ Feature: FiltrosAbaVendasHoje
     Given acesso a aba de vendas "Hoje"
     When aplico o filtro "Concluída"
     Then deve retornar resultados correspondentes ao filtro "Concluída"
-
-
