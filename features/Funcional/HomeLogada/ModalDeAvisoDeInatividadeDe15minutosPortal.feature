@@ -1,6 +1,6 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/HomeLogada/ModalDeAvisoDeInatividadeDe15minutosPortalpréstimo
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/HomeLogada/ModalDeAvisoDeInatividadeDe15minutosPortal
 @Zephyr:Status=Approved
 @Zephyr:Component=BDD Finalizado
 @Zephyr:Priority=Normal
