@@ -126,20 +126,21 @@ Feature: OfertaCloverCapital
     When o usuário fechar o modal
     Then o banner de elegibilidade do Clover Capital deve continuar visível na home
 
+  @TestCaseKey=LPDC-T1776
   Scenario Outline: Verificar visibilidade da aba "Clover Capital" para usuários elegíveis
     Given que o usuário acessa o portal
     When o usuário demonstrou interesse na jornada do banner e clicou em "solicitar contato"
     Then a aba "Clover Capital" deve estar visível no menu lateral abaixo da opção "Negócio"
     Examples:
-      |usuario               |
-      |usuario elegivel      |
-      |usuario nao elegivel  |
+      | usuario              |
+      | usuario elegivel     |
+      | usuario nao elegivel |
 
+  @TestCaseKey=LPDC-T1771
   Scenario: Verificar feature toggle por aliança
     Given que o usuário acessa o portal
     When a feature toggle está habilitada para a aliança "Bin"
     Then a aba "Clover Capital" deve estar visível no menu lateral abaixo da opção "Negócio"
     And quando a feature toggle está desabilitada para a aliança "Bin"
     Then a aba "Clover Capital" não deve estar visível no menu lateral
-
 
