@@ -76,15 +76,15 @@ Feature: OfertaCloverCapital
   @TestCaseKey=LPDC-T1638
   Scenario Outline: Verificar comportamento com diferentes alianças
     Given a feature toggle está ativado
-    And o usuário pertence à aliança <aliança>
+    And o usuário pertence à aliança <alianca>
     And consulta a API de elegibilidade retorna <status>
-    Then o banner de elegibilidade do Clover Capital deve <ação>
+    Then o banner de elegibilidade do Clover Capital deve <acao>
     Examples:
-      | aliança | status       | ação                                                |
-      | Bin     | elegível     | ser exibido com o valor pré-aprovado correspondente |
-      | Bin     | não elegível | não ser exibido                                     |
-      | Outro   | elegível     | não ser exibido                                     |
-      | Outro   | não elegível | não ser exibido                                     |
+      | alianca | status       | acao                                                |
+      | Bin     | elegivel     | ser exibido com o valor pre-aprovado correspondente |
+      | Bin     | nao elegivel | nao ser exibido                                     |
+      | Outro   | elegivel     | nao ser exibido                                     |
+      | Outro   | nao elegivel | nao ser exibido                                     |
 
   @TestCaseKey=LPDC-T1635
   Scenario: Banner não é exibido quando feature toggle está desativado
@@ -125,4 +125,21 @@ Feature: OfertaCloverCapital
     And o modal está aberto
     When o usuário fechar o modal
     Then o banner de elegibilidade do Clover Capital deve continuar visível na home
+
+  Scenario Outline: Verificar visibilidade da aba "Clover Capital" para usuários elegíveis
+    Given que o usuário acessa o portal
+    When o usuário demonstrou interesse na jornada do banner e clicou em "solicitar contato"
+    Then a aba "Clover Capital" deve estar visível no menu lateral abaixo da opção "Negócio"
+    Examples:
+      |usuario               |
+      |usuario elegivel      |
+      |usuario nao elegivel  |
+
+  Scenario: Verificar feature toggle por aliança
+    Given que o usuário acessa o portal
+    When a feature toggle está habilitada para a aliança "Bin"
+    Then a aba "Clover Capital" deve estar visível no menu lateral abaixo da opção "Negócio"
+    And quando a feature toggle está desabilitada para a aliança "Bin"
+    Then a aba "Clover Capital" não deve estar visível no menu lateral
+
 
