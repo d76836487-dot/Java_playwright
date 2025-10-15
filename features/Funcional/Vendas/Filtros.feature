@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/FiltrosNovaAbaVendasHoje
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/Filtros
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: FiltrosNovaAbaVendasHoje
+Feature: FiltrosNova
 
   Scenario: Remover filtros "Cancelada" e "Cancelada parcial" da aba "Hoje"
     Given acesso a aba de vendas "Hoje"
