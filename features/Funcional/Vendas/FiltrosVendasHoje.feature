@@ -1,6 +1,6 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/FiltrosVendasHoje/FiltrosVendasHoje
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/FiltrosVendasHoje
 @Zephyr:Status=Approved
 @Zephyr:Component=BDD&Finalizado
 @Zephyr:Priority=Normal
