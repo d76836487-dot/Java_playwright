@@ -1,10 +1,10 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Nps/NotificaçãoConclusãoDeRelatório
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Nps/NotificacaoConclusaoDeRelatorio
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: NotificaçãoConclusãoDeRelatório
+Feature: NotificacaoConclusaoDeRelatorio
 
   Scenario: Exibir modal de alerta de conclusão de relatório
       Given que o usuário tenha solicitado um relatório
