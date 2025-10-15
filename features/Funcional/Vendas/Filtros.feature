@@ -7,45 +7,45 @@
 Feature: Filtros
 
   Scenario: Remover filtros Cancelada e Cancelada parcial da aba Hoje
-    Given acesso a aba de vendas Hoje
+    Given acesso no menu de vendas Hoje
     When verifico os filtros disponíveis
     Then os filtros Cancelada e Cancelada parcial não devem estar presentes
 
   Scenario: Verificar filtros disponíveis na aba Hoje
-    Given acesso a aba de vendas Hoje
-    When verifico os filtros disponíveis
+    Given acesso a aba de vendas Hoje no menu vendas
+    When verifico o filtros disponíveis
     Then os filtros disponíveis devem ser:
       | Filtro         |
       | Ativa          |
       | Pendente       |
-      | Concluída      |
+      | Concluida      |
 
   Scenario: Validar que filtros Cancelada e Cancelada parcial não retornam resultados na aba Hoje
-    Given acesso a aba de vendas Hoje
+    Given acesso a aba vendas Hoje
     When aplico o filtro Cancelada
     Then não deve retornar nenhum resultado
 
   Scenario Outline: Verificar comportamento de filtros na aba Hoje
-    Given acesso a aba de vendas Hoje
+    Given acesso a aba de vendas Hoje no aba
     When aplico o filtro <filtro>
     Then deve retornar resultados correspondentes ao filtro <filtro>
     Examples:
       | filtro    |
       | Ativa     |
       | Pendente  |
-      | Concluída |
+      | Concluida |
 
   Scenario: Validar que filtros removidos não afetam outros filtros na aba Hoje
-    Given acesso a aba de vendas Hoje
+    Given acesso aba de vendas Hoje
     When aplico o filtro Ativa
     Then deve retornar resultados correspondentes ao filtro Ativa
 
-  Scenario: Validar que filtros removidos não afetam outros filtros na aba Hoje
+  Scenario: Validar que filtros estão removidos não afetam outros filtros na aba Hoje
     Given acesso a aba de vendas Hoje
     When aplico o filtro Pendente
     Then deve retornar resultados correspondentes ao filtro Pendente
 
-  Scenario: Validar que filtros removidos não afetam outros filtros na aba Hoje
-    Given acesso a aba de vendas Hoje
+  Scenario: Validar que os filtros removidos não afetam outros filtros na aba Hoje
+    Given acesso vendas Hoje
     When aplico o filtro Concluída
     Then deve retornar resultados correspondentes ao filtro Concluída
