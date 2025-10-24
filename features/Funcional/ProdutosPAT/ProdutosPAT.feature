@@ -207,7 +207,7 @@ Feature:PAT
     When navego até a aba "Agenda de Recebimentos UR"
     Then devo ver os arranjos de pagamento das bandeiras Voucher PAT (Elo, Visa e Master)
 
-  Scenario: Validar perfis de acesso para visualizar arranjos na aba Agenda de Recebimentos UR
+  Scenario: Validar perfis de acesso para visualizar arranjos na aba de Agenda de Recebimentos UR
     Given acesso a plataforma de recebimentos com perfil "Operador"
     When navego até a aba "Agenda de Recebimentos UR"
     Then devo ver os arranjos de pagamento das bandeiras Voucher PAT (Elo, Visa e Master)
