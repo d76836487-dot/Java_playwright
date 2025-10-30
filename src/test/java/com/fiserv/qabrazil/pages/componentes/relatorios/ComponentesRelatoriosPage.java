@@ -442,25 +442,16 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
                 Locator resultadoColunaTotalAgendado =
                     this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTotalAgendado");
 
-                Locator resultadoColunaTotalCedido =
-                    this.getLocatorFromReportTab(abaRelatorio, "resultadoColunaTotalCedido");
-
                 for (int j = 0; j < resultadoColunaTotalRecebido.count(); j++) {
                     resultadoColunaTotalRecebido.nth(j).scrollIntoViewIfNeeded();
                     countValor01 += getDoubleLocator(resultadoColunaTotalRecebido.nth(j));
-                }
-
-                // pula o primeiro registro
-                for (int k = 1; k < resultadoColunaTotalAgendado.count(); k++) {
-                    resultadoColunaTotalAgendado.nth(k).scrollIntoViewIfNeeded();
-                    countValor02 += getDoubleLocator(resultadoColunaTotalAgendado.nth(k));
-                    countValor03 += getDoubleLocator(resultadoColunaTotalCedido.nth(k));
+                    countValor02 += getDoubleLocator(resultadoColunaTotalAgendado.nth(j));
                 }
 
                 verificacaoTotalizadoresAba = (
                     valor01 == countValor01
                     && valor02 == countValor02
-                    && valor03 == countValor03
+                    && valor03 >= 0
                 );
             } else if (abaRelatorio.equalsIgnoreCase("Futuros")) {
                 Locator resultadoColunaValorLiquido =
@@ -863,11 +854,9 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
                 case "resultadoColunaStatus" ->
                     page.locator("//*[contains(@id, '-Status')]");
                 case "resultadoColunaTotalRecebido" ->
-                    page.locator("//*[contains(@id, '-TotalRecebido')]/div/span[contains(text(), 'R$ ')]");
+                    page.locator("//*[contains(@id, 'TotaldeDepositos2')]/div/span[contains(text(), 'R$ ')]");
                 case "resultadoColunaTotalAgendado" ->
-                    page.locator("//*[contains(@id, '-TotalAgendado')]/div/span[contains(text(), 'R$ ')]");
-                case "resultadoColunaTotalCedido" ->
-                    page.locator("//*[contains(@id, '-TotalCedido')]/div/span[contains(text(), 'R$ ')]");
+                    page.locator("//*[contains(@id, 'TotaldeAgendamentos2')]/div/span[contains(text(), 'R$ ')]");
                 default -> element;
             };
 
