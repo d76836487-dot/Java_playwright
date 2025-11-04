@@ -57,3 +57,4 @@ Feature: Gas do Povo
       | CSV     | Detalhado    |
       | PDF     | Simplificado |
       | PDF     | Detalhado    |
+
