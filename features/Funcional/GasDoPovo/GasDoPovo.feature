@@ -58,6 +58,7 @@ Feature: Gas do Povo
       | PDF     | Simplificado |
       | PDF     | Detalhado    |
 
+  @TestCaseKey=LPDC-T1913
   Scenario: Validar transação de um "Novo credenciamento" "Gás do povo" com status "Aprovada" na aba "Hoje"
     Given acesso a aba "Hoje"
     When visualizo as transações passadas
@@ -66,6 +67,7 @@ Feature: Gas do Povo
     And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
     And o status deve estar como "Aprovada"
 
+  @TestCaseKey=LPDC-T1915
   Scenario: Validar transação de um "Novo credenciamento" "Gás do povo" com status "Aprovada" na aba "Histórico de vendas"
     Given acesso a aba "Histórico de vendas"
     When visualizo as transações passadas
@@ -74,6 +76,7 @@ Feature: Gas do Povo
     And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
     And o status deve estar como "Aprovada"
 
+  @TestCaseKey=LPDC-T1914
   Scenario: Validar transação de um "Novo credenciamento" "Gás do povo" com status "Estornada" na aba "Hoje"
     Given acesso a aba "Hoje"
     When visualizo as transações passadas
@@ -82,6 +85,7 @@ Feature: Gas do Povo
     And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
     And o status deve estar como "Estornada"
 
+  @TestCaseKey=LPDC-T1916
   Scenario: Validar transação de um "Novo credenciamento" "Gás do povo" com status "Estornada" na aba "Histórico de vendas"
     Given acesso a aba "Histórico de vendas"
     When visualizo as transações passadas
@@ -90,6 +94,7 @@ Feature: Gas do Povo
     And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
     And o status deve estar como "Estornada"
 
+  @TestCaseKey=LPDC-T1917
   Scenario: Validar transação de um "EC credenciado" "Gás do povo" com status "Aprovada" na aba "Hoje"
     Given acesso a aba "Hoje"
     When visualizo as transações passadas
@@ -98,6 +103,7 @@ Feature: Gas do Povo
     And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
     And o status deve estar como "Aprovada"
 
+  @TestCaseKey=LPDC-T1912
   Scenario: Validar transação de um "EC credenciado" "Gás do povo" com status "Aprovada" na aba "Histórico de vendas"
     Given acesso a aba "Histórico de vendas"
     When visualizo as transações passadas
@@ -105,3 +111,4 @@ Feature: Gas do Povo
     And os valores das transações devem estar corretos
     And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
     And o status deve estar como "Aprovada"
+
