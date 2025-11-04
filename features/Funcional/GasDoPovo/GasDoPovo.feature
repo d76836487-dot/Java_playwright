@@ -58,3 +58,50 @@ Feature: Gas do Povo
       | PDF     | Simplificado |
       | PDF     | Detalhado    |
 
+  Scenario: Validar transação de um "Novo credenciamento" "Gás do povo" com status "Aprovada" na aba "Hoje"
+    Given acesso a aba "Hoje"
+    When visualizo as transações passadas
+    Then o tipo de transação deve ser "Gás do povo"
+    And os valores das transações devem estar corretos
+    And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
+    And o status deve estar como "Aprovada"
+
+  Scenario: Validar transação de um "Novo credenciamento" "Gás do povo" com status "Aprovada" na aba "Histórico de vendas"
+    Given acesso a aba "Histórico de vendas"
+    When visualizo as transações passadas
+    Then o tipo de transação deve ser "Gás do povo"
+    And os valores das transações devem estar corretos
+    And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
+    And o status deve estar como "Aprovada"
+
+  Scenario: Validar transação de um "Novo credenciamento" "Gás do povo" com status "Estornada" na aba "Hoje"
+    Given acesso a aba "Hoje"
+    When visualizo as transações passadas
+    Then o tipo de transação deve ser "Gás do povo"
+    And os valores das transações devem estar corretos
+    And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
+    And o status deve estar como "Estornada"
+
+  Scenario: Validar transação de um "Novo credenciamento" "Gás do povo" com status "Estornada" na aba "Histórico de vendas"
+    Given acesso a aba "Histórico de vendas"
+    When visualizo as transações passadas
+    Then o tipo de transação deve ser "Gás do povo"
+    And os valores das transações devem estar corretos
+    And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
+    And o status deve estar como "Estornada"
+
+  Scenario: Validar transação de um "EC credenciado" "Gás do povo" com status "Aprovada" na aba "Hoje"
+    Given acesso a aba "Hoje"
+    When visualizo as transações passadas
+    Then o tipo de transação deve ser "Gás do povo"
+    And os valores das transações devem estar corretos
+    And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
+    And o status deve estar como "Aprovada"
+
+  Scenario: Validar transação de um "EC credenciado" "Gás do povo" com status "Aprovada" na aba "Histórico de vendas"
+    Given acesso a aba "Histórico de vendas"
+    When visualizo as transações passadas
+    Then o tipo de transação deve ser "Gás do povo"
+    And os valores das transações devem estar corretos
+    And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
+    And o status deve estar como "Aprovada"
