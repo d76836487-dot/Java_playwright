@@ -47,7 +47,7 @@ Feature: Gas do Povo
   @TestCaseKey=LPDC-T1840
   Scenario Outline: Gerar relatório <relatorio> arquivo <arquivo> com dados "Gás do povo" na aba "Histórico de vendas"
     Given acesso a aba "Histórico de vendas"
-    When seleciono a opção de exportar dados simplificados
+    When seleciono a opção de exportar dados <relatorio>
     Then deve ser gerado um relatório <relatorio> arquivo <arquivo> com os dados "Gás do povo"
     Examples:
       | arquivo | relatorio    |
@@ -57,4 +57,3 @@ Feature: Gas do Povo
       | CSV     | Detalhado    |
       | PDF     | Simplificado |
       | PDF     | Detalhado    |
-
