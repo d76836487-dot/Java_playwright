@@ -258,3 +258,87 @@ Feature: PAT
     When navego até a aba "Agenda de Recebimentos UR"
     Then devo ver as alianças Bin e Caixa para os arranjos de pagamento das bandeiras Voucher PAT (Elo, Visa e Master)
 
+Scenario: Visualizar detalhes de venda de voucher PAT
+    Given acesso a aba "Histórico de vendas"
+    When clico em uma venda de voucher das bandeiras Elo, Visa ou Mastercard
+    Then vejo os detalhes da venda com os seguintes campos:
+      | Campo                       |
+      | Data e horario              |
+      | Valor bruto                 |
+      | Bandeira                    |
+      | Status                      |
+      | Modalidade                  |
+      | Produto                     |
+      | Status (Order ID)           |
+      | Metodo de captura           |
+      | Numero do terminal          |
+      | Estabelecimento             |
+      | Numero do cartao            |
+      | Cod. de autorizacao         |
+      | CV                          |
+      | Codigo de referencia do cartao |
+      | Valor liquido               |
+      | Valor da taxa (MDR)         |
+      | Previsao de pagamento em    |
+      | Pago em                     |
+
+Scenario: Verificar campo "Produto" em venda de voucher PAT
+    Given acesso a aba "Histórico de vendas"
+    When clico em uma venda de voucher das bandeiras Elo, Visa ou Mastercard
+    Then o campo "Produto" deve exibir "Voucher"
+
+Scenario: Verificar campo "Modalidade" em venda de voucher PAT
+    Given acesso a aba "Histórico de vendas"
+    When clico em uma venda de voucher das bandeiras Elo, Visa ou Mastercard
+    Then o campo "Modalidade" deve exibir "Voucher"
+
+Scenario: Gerar comprovante em PDF de venda de voucher PAT
+    Given acesso a aba "Histórico de vendas"
+    When clico em uma venda de voucher das bandeiras Elo, Visa ou Mastercard
+    And gero o comprovante em PDF
+    Then o comprovante deve conter os mesmos campos listados nos detalhes da venda
+
+Scenario: Cancelar venda de voucher PAT
+    Given acesso a aba "Histórico de vendas"
+    When clico em uma venda de voucher das bandeiras Elo, Visa ou Mastercard
+    And seleciono a opção de cancelar a venda
+    Then a venda deve ser cancelada com sucesso
+
+Scenario Outline: Verificar detalhes de venda de voucher PAT para diferentes bandeiras
+    Given acesso a aba "Histórico de vendas"
+    When clico em uma venda de voucher da bandeira <bandeira>
+    Then vejo os detalhes da venda com os seguintes campos:
+      | Campo                       |
+      | Data e horario              |
+      | Valor bruto                 |
+      | Bandeira                    |
+      | Status                      |
+      | Modalidade                  |
+      | Produto                     |
+      | Status (Order ID)           |
+      | Metodo de captura           |
+      | Numero do terminal          |
+      | Estabelecimento             |
+      | Numero do cartao            |
+      | Cod. de autorizacao         |
+      | CV                          |
+      | Codigo de referencia do cartao |
+      | Valor liquido               |
+      | Valor da taxa (MDR)         |
+      | Previsao de pagamento em    |
+      | Pago em                     |
+    Examples:
+      | bandeira  |
+      | Elo       |
+      | Visa      |
+      | Mastercard|
+
+Scenario: Verificar ausência de mensagem em cinza em venda de voucher PAT
+    Given acesso a aba "Histórico de vendas"
+    When clico em uma venda de voucher das bandeiras Elo, Visa ou Mastercard
+    Then não deve haver nenhuma mensagem em cinza no canto inferior da tela
+
+Scenario: Manter botão e processo de cancelamento de vendas de voucher PAT
+    Given acesso a aba "Histórico de vendas"
+    When clico em uma venda de voucher das bandeiras Elo, Visa ou Mastercard
+    Then o botão e o processo de cancelamento de vendas devem estar disponíveis
