@@ -57,3 +57,20 @@ Feature: Filtros
     When aplico o filtro Concluída
     Then deve retornar resultados correspondentes ao filtro Concluída
 
+  Scenario: Apresentar botão "Carta de cancelamento" para venda cancelada
+    Given que estou no "Histórico de vendas"
+    And a venda possui status "Cancelada"
+    When visualizo os detalhes da venda
+    Then deve ser apresentado o botão "Carta de cancelamento"
+
+  Scenario: Apresentar botão "Carta de cancelamento" para venda cancelada parcialmente
+    Given que estou no "Histórico de vendas"
+    And a venda possui status "Cancelada Parcial"
+    When visualizo os detalhes da venda
+    Then deve ser apresentado o botão "Carta de cancelamento"
+
+  Scenario: Apresentar múltiplas cartas de cancelamento para múltiplos cancelamentos
+    Given que estou no "Histórico de vendas"
+    And a venda possui múltiplos cancelamentos
+    When visualizo os detalhes da venda
+    Then deve ser apresentado todas as cartas de cancelamento disponíveis

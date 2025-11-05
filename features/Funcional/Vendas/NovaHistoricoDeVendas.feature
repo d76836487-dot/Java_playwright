@@ -515,3 +515,91 @@ Feature: NovaHistoricoDeVendas
     When exporto o comprovante de venda em PDF
     Then o comprovante deve mostrar as informações específicas da transação Pix Fiserv
 
+  Scenario: Exportar relatório histórico de vendas em Excel simplificado
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "Excel" e tipo "Simplificado"
+    Then o relatório deve ser gerado com os totalizadores e colunas especificadas
+
+  Scenario: Exportar relatório histórico de vendas em CSV simplificado
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "CSV" e tipo "Simplificado"
+    Then o relatório deve ser gerado com as colunas especificadas, sem totalizadores
+
+  Scenario: Exportar relatório histórico de vendas em Excel detalhado
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "Excel" e tipo "Detalhado"
+    Then o relatório deve ser gerado com os totalizadores e colunas especificadas
+
+  Scenario: Exportar relatório histórico de vendas em CSV detalhado
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "CSV" e tipo "Detalhado"
+    Then o relatório deve ser gerado com as colunas especificadas, sem totalizadores
+
+  Scenario: Exportar relatório histórico de vendas em PDF
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "PDF"
+    Then o relatório deve ser gerado com a estrutura de campos e informações especificadas
+
+  Scenario Outline: Verificar totalizadores no relatório Excel simplificado
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "Excel" e tipo "Simplificado"
+    Then o relatório deve conter os totalizadores:
+      | Nome do relatório           | Período de venda     | Emitido em           | Estabelecimento comercial | Total de vendas | Valor bruto | Valor cancelado | Valor estornado, desfeito e recusado | Valor líquido |
+      | Relatório Histórico de vendas | <periodo_venda>      | <emitido_em>         | <estabelecimento_comercial> | <total_vendas>  | <valor_bruto> | <valor_cancelado> | <valor_estornado_desfeito_recusado> | <valor_liquido> |
+    Examples:
+      | periodo_venda       | emitido_em           | estabelecimento_comercial | total_vendas | valor_bruto | valor_cancelado | valor_estornado_desfeito_recusado | valor_liquido |
+      | 01/01/2023 à 31/01/2023 | 01/02/2023 10:00:00 | Loja A                   | 100          | 10000.00    | 500.00          | 200.00                          | 9500.00       |
+      | 01/02/2023 à 28/02/2023 | 01/03/2023 10:00:00 | Loja B                   | 150          | 15000.00    | 750.00          | 300.00                          | 14250.00      |
+
+  Scenario Outline: Verificar colunas no relatório Excel detalhado
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "Excel" e tipo "Detalhado"
+    Then o relatório deve conter as colunas:
+      | Data e hora da venda | Cód. de autorização | Número do estabelecimento | Modalidade | Produto | Parcelas | Bandeira | Canal | Valor bruto de transação | Valor bruto da parcela | Valor da taxa (MDR) | Valor líquido da parcela/transação | Status | Número do terminal | Comprovante da venda | Cód. do pedido | Descrição (Order ID) | Número do cartão | Cartão pré-pago | Status do pagamento da venda | Data prevista de pagamento da venda | Data efetiva do pagamento da venda | Código de pagamento | Cód. Ref. Cartão | Banco liquidação Pix | Cod. PSP |
+    Examples:
+      | Data e hora da venda | Cód. de autorização | Número do estabelecimento | Modalidade | Produto | Parcelas | Bandeira | Canal | Valor bruto de transação | Valor bruto da parcela | Valor da taxa (MDR) | Valor líquido da parcela/transação | Status | Número do terminal | Comprovante da venda | Cód. do pedido | Descrição (Order ID) | Número do cartão | Cartão pré-pago | Status do pagamento da venda | Data prevista de pagamento da venda | Data efetiva do pagamento da venda | Código de pagamento | Cód. Ref. Cartão | Banco liquidação Pix | Cod. PSP |
+      | 01/01/2023 10:00:00  | 123456              | 001                       | Crédito    | Produto A | 1 de 3   | Visa     | Online | 100.00                  | 33.33                   | 1.00                | 32.33                          | Aprovado | 1234               | Comprovante 1        | 001            | Pedido 1            | 1234            | Não            | Pago                      | 01/02/2023                      | 01/02/2023                      | 001                | 1234             | Banco A               | PSP A   |
+      | 02/01/2023 11:00:00  | 654321              | 002                       | Débito     | Produto B | 2 de 5   | MasterCard| Loja   | 200.00                  | 40.00                   | 2.00                | 38.00                          | Cancelado | 5678               | Comprovante 2        | 002            | Pedido 2            | 5678            | Sim            | Não Pago                  | 02/02/2023                      | 02/02/2023                      | 002                | 5678             | Banco B               | PSP B   |
+
+  Scenario: Verificar geração de arquivo Excel simplificado com nome correto
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "Excel" e tipo "Simplificado"
+    Then o arquivo gerado deve ter o nome "Relatorio_Simplificado_Vendas_DD-MM-AAAA_HHMM"
+
+  Scenario: Verificar geração de arquivo CSV simplificado com nome correto
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "CSV" e tipo "Simplificado"
+    Then o arquivo gerado deve ter o nome "Relatorio_Simplificado_Vendas_DD-MM-AAAA_HHMM"
+
+  Scenario: Verificar geração de arquivo Excel detalhado com nome correto
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "Excel" e tipo "Detalhado"
+    Then o arquivo gerado deve ter o nome "Relatorio_Detalhado_Vendas_DD-MM-AAAA_HHMM"
+
+  Scenario: Verificar geração de arquivo CSV detalhado com nome correto
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "CSV" e tipo "Detalhado"
+    Then o arquivo gerado deve ter o nome "Relatorio_Detalhado_Vendas_DD-MM-AAAA_HHMM"
+
+  Scenario: Verificar campos vazios no relatório Excel simplificado
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "Excel" e tipo "Simplificado"
+    Then os campos vazios no relatório devem ser apresentados como "-"
+
+  Scenario: Verificar campos vazios no relatório Excel detalhado
+    Given que o usuário esteja na aba "Histórico de vendas"
+    When o usuário clicar no botão "Exportar Relatório"
+    And selecionar o formato "Excel" e tipo "Detalhado"
+    Then os campos vazios no relatório devem ser apresentados como "-"
