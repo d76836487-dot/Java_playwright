@@ -6,7 +6,7 @@ import java.sql.*;
 
 @ScenarioComponent
 public class ConnectionToOracleDatabase {
-    private static final String JDBC_URL = "jdbc:oracle:thin:@//brsao02t01c1-dbvm01.fiserv.one:1521/SBACAT.fiserv.one";
+    private static final String JDBC_URL = "jdbc:oracle:thin:@//brbri01t02c4-dbvm01.fiserv.one:1521/SBACAT.fiserv.one";
     private static final String USERNAME = "F7B07NV";
     private static final String PASSWORD = "access#FGV135";
 

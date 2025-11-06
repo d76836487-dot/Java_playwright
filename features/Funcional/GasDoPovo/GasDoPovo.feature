@@ -112,3 +112,12 @@ Feature: Gas do Povo
     And o produto e a modalidade devem ter a descrição e experiência como "Voucher"
     And o status deve estar como "Aprovada"
 
+  Scenario: Validar transação Pix na aba "Hoje"
+    Given acesso a aba "Hoje"
+    When visualizo as transações passadas
+    Then o tipo de transação deve ser Pix
+
+  Scenario: Validar transação Tap on Phone na aba "Hoje"
+    Given acesso a aba "Hoje"
+    When visualizo as transações passadas
+    Then deve apresentar uma transação Tap on Phone
