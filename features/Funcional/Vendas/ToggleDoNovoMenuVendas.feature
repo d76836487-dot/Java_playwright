@@ -6,6 +6,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: ToggleDoNovoMenuVendas
 
+
 Scenario: Verificar toggle por aliança para diferentes perfis
     Given acesso a plataforma de vendas como "Master"
     When seleciono a opção de histórico de vendas
