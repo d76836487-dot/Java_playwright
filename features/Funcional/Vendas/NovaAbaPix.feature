@@ -152,13 +152,15 @@ Feature: NovaAbaPix
     And Clicar na Aba Pix
     Then visualizara a seguinte mensagem Conecte sua chave Pix!
 
-
-Scenario: Desabilitar botão "Consultar detalhes da chave pix" na aba "Hoje"
+  @TestCaseKey=LPDC-T1977
+  Scenario: Desabilitar botão "Consultar detalhes da chave pix" na aba "Hoje"
     Given acesso a aba de vendas "Hoje"
     When visualizo os detalhes de uma transação Pix
     Then o botão "Consultar detalhes da chave pix" deve estar desabilitado
 
-Scenario: Desabilitar botão "Consultar detalhes da chave pix" na aba "Histórico de vendas"
+  @TestCaseKey=LPDC-T1978
+  Scenario: Desabilitar botão "Consultar detalhes da chave pix" na aba "Histórico de vendas"
     Given acesso a aba de vendas "Histórico de vendas"
     When visualizo os detalhes de uma transação Pix
     Then o botão "Consultar detalhes da chave pix" deve estar desabilitado
+
