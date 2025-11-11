@@ -124,42 +124,47 @@ Feature: Gas do Povo
     When visualizo as transações passadas
     Then deve apresentar uma transação Tap on Phone
 
+  @TestCaseKey=LPDC-T1982
   Scenario: Verificar bandeiras na aba Voucher do menu de vendas antigo
     Given que estou na aba "Voucher" do menu de vendas antigo
     When faço uma requisição de bandeiras
     Then as bandeiras retornadas devem incluir:
-      | Bandeira       |
-      | Gas do povo    |
-      | Cabal          |
-      | Banese         |
-      | Ticket         |
-      | Alelo          |
-      | Sorocred       |
-      | Banestes       |
-      | Pluxee         |
-      | VR             |
-      | Softnex        |
-      | Redecompras    |
-      | Fepas          |
-      | Sodexo         |
+      | Bandeira    |
+      | Gas do povo |
+      | Cabal       |
+      | Banese      |
+      | Ticket      |
+      | Alelo       |
+      | Sorocred    |
+      | Banestes    |
+      | Pluxee      |
+      | VR          |
+      | Softnex     |
+      | Redecompras |
+      | Fepas       |
+      | Sodexo      |
 
+  @TestCaseKey=LPDC-T1981
   Scenario: Validar resposta da API com a bandeira "Gás do povo"
     Given que estou na aba "Voucher" do menu de vendas antigo
     When faço uma requisição de bandeiras para a API
     Then a resposta da API deve conter a bandeira "Gás do povo"
 
+  @TestCaseKey=LPDC-T1980
   Scenario: Verificar bandeira "Gás do povo" para EC credenciado (legado)
     Given que estou na aba "Voucher" do menu de vendas antigo
     And o EC está credenciado com os dados:
-      | EC            | CNPJ           | Email          |
-      | 91088751      | 15233795000155 | Fiserv@12345   |
+      | EC       | CNPJ           | Email        |
+      | 91088751 | 15233795000155 | Fiserv@12345 |
     When faço uma requisição de bandeiras
     Then a bandeira "Gás do povo" deve estar presente na resposta
 
+  @TestCaseKey=LPDC-T1983
   Scenario: Verificar bandeira "Gás do povo" para novo credenciamento
     Given que estou na aba "Voucher" do menu de vendas antigo
     And o EC está credenciado com os dados:
-      | EC            | CNPJ           | Email          |
-      | 91943342      | 09268929000170 | Fiserv@12345   |
+      | EC       | CNPJ           | Email        |
+      | 91943342 | 09268929000170 | Fiserv@12345 |
     When faço uma requisição de bandeiras
     Then a bandeira "Gás do povo" deve estar presente na resposta
+
