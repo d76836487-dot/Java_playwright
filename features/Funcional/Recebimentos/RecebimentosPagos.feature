@@ -19,3 +19,4 @@ Feature: RecebimentosPagos
     And estou na aba "Recebimentos Pagos"
     When navego para a aba "Outros Recebimentos" e retorno para a aba "Recebimentos Pagos"
     Then não deve haver nenhuma mensagem em amarelo sobre cessão e gravame
+
