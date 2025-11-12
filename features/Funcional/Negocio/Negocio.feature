@@ -32,7 +32,8 @@ Feature: Negocio
     When a API retorna status "ATIVO" para qualquer bandeira
     Then todas as bandeiras (Elo, Visa, Mastercard, Amex e Cabal) devem ser exibidas
     Examples:
-      |perfil|
-      |Master     |
-      |Secundario |
-      |Operador   |
+      | perfil     |
+      | Master     |
+      | Secundario |
+      | Operador   |
+
