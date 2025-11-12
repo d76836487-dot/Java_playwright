@@ -17,7 +17,7 @@ Feature: Carta De Cancelamento
     Then a tela deve exibir os cancelamentos correspondentes ao Order Id "X"
 
   Scenario: Exibição de informações não clicáveis
-    Given que o usuário esteja logado no portal de cancelamento de carta
+    Given que o usuario esteja logado no portal de cancelamento de carta
     When o usuário acessa a tela de consulta de carta de cancelamento
-    And as informações de data do cancelamento, valor do cancelamento, bandeira, produto, status e
-    Then a opção de download da carta de cancelamento devem ser exibidas por linha e não devem ser clicáveis
+    And as informacoes de data do cancelamento, valor do cancelamento, bandeira, produto, status e
+    Then a opcao de download da carta de cancelamento devem ser exibidas por linha e nao devem ser clicaveis
