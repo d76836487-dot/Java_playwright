@@ -17,3 +17,27 @@ Feature: Negocio
     And na aba Taxas e Tarifas
     Then devo ver as bandeiras com suas respectivas taxas
 
+  Scenario: Verificar mensagem de ausência de informações quando nenhuma bandeira está ativa
+    Given acesso o menu "Negócio"
+    And acesso o card "Taxas e tarifas"
+    When a API não retorna status "ATIVO" para nenhuma bandeira
+    Then deve ser exibida a mensagem "Sem informações a serem apresentadas."
+
+  Scenario: Verificar acesso ao card "Taxas e tarifas" por diferentes perfis de usuário
+    Given acesso o menu "Negócio"
+    When o usuário tem o perfil "Master"
+    And o card "Taxas e tarifas" deve estar acessível
+    When a API retorna status "ATIVO" para qualquer bandeira
+    Then todas as bandeiras (Elo, Visa, Mastercard, Amex e Cabal) devem ser exibidas
+
+    Given acesso o menu "Negócio"
+    When o usuário tem o perfil "Secundário"
+    And o card "Taxas e tarifas" deve estar acessível
+    When a API retorna status "ATIVO" para qualquer bandeira
+    Then todas as bandeiras (Elo, Visa, Mastercard, Amex e Cabal) devem ser exibidas
+
+    Given acesso o menu "Negócio"
+    When o usuário tem o perfil "Operador"
+    And o card "Taxas e tarifas" deve estar acessível
+    When a API retorna status "ATIVO" para qualquer bandeira
+    Then todas as bandeiras (Elo, Visa, Mastercard, Amex e Cabal) devem ser exibidas
