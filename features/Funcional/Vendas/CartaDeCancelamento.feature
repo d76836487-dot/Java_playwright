@@ -4,7 +4,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Carta de Cancelamento
+Feature: Carta de cancelamento
 
   Scenario: Filtro de datas padrão
     Given que o usuário esteja logado no portal de cancelamento de carta
