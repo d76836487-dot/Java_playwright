@@ -20,3 +20,4 @@ Feature: Carta De Cancelamento
     Given que o usuário esteja logado no portal de cancelamento de carta
     When o usuário acessa a tela de consulta de carta de cancelamento
     Then as informações de data do cancelamento, valor do cancelamento, bandeira, produto, status e a opção de download da carta de cancelamento devem ser exibidas por linha e não devem ser clicáveis
+
