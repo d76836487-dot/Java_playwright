@@ -43,13 +43,14 @@ Feature: TourGuiadoDoNovoMenuVendas
     Then o sistema deve apresentar o "Tour guiado" de apresentação do novo menu Vendas
     And o sistema deve apresentar as telas específicas da aliança do usuário conforme o Figma
 
-
-Scenario Outline: Validar carregamento das imagens Tour Guiado com sucesso para as alianças
+  @TestCaseKey=LPDC-T1996
+  Scenario Outline: Validar carregamento das imagens Tour Guiado com sucesso para as alianças
     Given que estou logado na alianca <alianca>
     When na aba do menu lateral vandas hoje
     Then devo validar o carregamento das imagens Tour Guiado com sucesso para <alianca>
     Examples:
-    |alianca|
-    |BCJ   |
-    |Nubank|
-    |Bin   |
+      | alianca |
+      | BCJ     |
+      | Nubank  |
+      | Bin     |
+
