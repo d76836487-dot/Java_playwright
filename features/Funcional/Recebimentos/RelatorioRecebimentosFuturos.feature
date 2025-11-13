@@ -54,3 +54,20 @@ Feature: RelatorioRecebimentosFuturos
     And clica em Mostrar Resultados
     Then aparecera em Tipo de Arquivo os arquivos gerados de pagamentos futuros
 
+Scenario: Verificar soma de recebimentos futuros previstos por estabelecimento na Home inicial logada
+    Given acesso a plataforma a alianca
+    When consulto recebimentos futuros na Home inicial para múltiplos estabelecimentos
+    Then a soma dos recebimentos futuros previstos é exibida corretamente
+
+Scenario Outline: Verificar recebimentos futuros previstos para diferentes datas
+    Given acesso a plataforma com <alianca> x
+    When consulto o endpoint de recebimentos futuros previstos para cada <alianca>
+    Then os dados de recebimentos futuros previstos para cada <alianca> são exibidos corretamente
+      Examples:
+        | alianca  |
+        | Nubank   |
+        | BCJ      |
+        | Sicredi  |
+        | Bin      |
+        | Caixa    |
+
