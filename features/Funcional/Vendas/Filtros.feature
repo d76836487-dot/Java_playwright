@@ -78,3 +78,8 @@ Feature: Filtros
     When visualizo os detalhes da venda
     Then deve ser apresentado todas as cartas de cancelamento disponíveis
 
+Scenario: Verificar mensagem de erro ao não carregar a API na aba Hoje
+    Given acesso a aba "Hoje" no menu Vendas
+    When clico no filtro "Terminal"
+    And a API não carrega os dados
+    Then deve ser mostrada uma mensagem de erro "Erro ao carregar os dados. Tente novamente."
