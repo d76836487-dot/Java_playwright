@@ -6,7 +6,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 @Automacao
 @SplitPagamentos
-Feature: Novo campo tipo de cartao no detalhe das Vendas
+Feature: NovoCampoTipoDeCartaoNoDetalheDasVendas
 
 Scenario Outline: Verificar valor do campo "Tipo de cartão" para transação nacional
     Given acesso a plataforma de vendas
