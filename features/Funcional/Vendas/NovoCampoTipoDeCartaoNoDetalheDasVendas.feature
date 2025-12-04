@@ -1,6 +1,6 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
-@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/NovoCampoTipoDeCartaoNoDetalheDasVendas/NovoCampoTipoDeCartaoNoDetalheDasVendas
+@Zephyr:Folder=/Portal_do_Cliente/Funcional/Vendas/NovoCampoTipoDeCartaoNoDetalheDasVendas
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
