@@ -8,25 +8,25 @@
 @SplitPagamentos
 Feature: NovoCampoTipoDeCartaoNoDetalheDasVendas
 
-Scenario Outline: Verificar valor do campo "Tipo de cartão" para transação nacional
+  @TestCaseKey=LPDC-T2013
+  Scenario Outline: Verificar valor do campo "Tipo de cartão" para transação nacional
     Given acesso a plataforma de vendas
     When abro detalhes de uma venda na aba "Histórico" com o código de tipo de cartão <codigo>
     Then o campo "Tipo de cartão" deve exibir "<tipo_cartao>"
-
     Examples:
-      | codigo | tipo_cartao  |
-      | 002    | Nacional     |
-      | 898    | Nacional     |
+      | codigo | tipo_cartao |
+      | 002    | Nacional    |
+      | 898    | Nacional    |
 
-Scenario: Garantir que perfis Master, Secundário e Operador consigam visualizar o campo "Tipo de cartão"
+  @TestCaseKey=LPDC-T2014
+  Scenario: Garantir que perfis Master, Secundário e Operador consigam visualizar o campo "Tipo de cartão"
     Given acesso a plataforma de vendas como usuário Master
     When abro detalhes de uma venda na aba "Histórico"
     Then o campo "Tipo de cartão" deve ser exibido
-
     Given acesso a plataforma de vendas como usuário Secundário
     When abro detalhes de uma venda na aba "Histórico"
     Then o campo "Tipo de cartão" deve ser exibido
-
     Given acesso a plataforma de vendas como usuário Operador
     When abro detalhes de uma venda na aba "Histórico"
     Then o campo "Tipo de cartão" deve ser 'exibido'
+
