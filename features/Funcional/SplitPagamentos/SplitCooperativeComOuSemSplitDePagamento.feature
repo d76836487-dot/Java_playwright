@@ -4,7 +4,7 @@
 @Zephyr:Status=Approved
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
-Feature: Validação com ou sem split de pagamento no Histórico de vendas
+Feature: Split Cooperative com ou sem split de pagamento
 
 Scenario: Validação de transações com split de pagamento
     Given usuário identificado com o split de pagamento cooperative e perfilamento de vendedor
