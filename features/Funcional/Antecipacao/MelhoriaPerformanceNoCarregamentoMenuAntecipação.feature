@@ -6,7 +6,6 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: MelhoriaPerformanceNoCarregamentoMenuAntecipação
 
-
 Scenario: Acesso ao menu de Antecipação
     Given o usuário está autenticado na plataforma
     When o usuário acessa a funcionalidade "Antecipação" a partir da home
