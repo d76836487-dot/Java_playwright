@@ -76,3 +76,10 @@ Feature: HomeLogadaBCJPay
       | Operador F                      |
       | Operador sem F                  |
 
+  @TestCaseKey=LPDC-T2000
+  Scenario: Alteração de ícone do portal BCJ Pay
+    Given que estou logado no portal
+    And estou na página principal do portal BCJ
+    And valido as imagens de logo da aliança BCJ Pay nas demais abas do portal
+    Then os ícones das demais abas devem está no formanto esperado de acorodo com o Figma
+

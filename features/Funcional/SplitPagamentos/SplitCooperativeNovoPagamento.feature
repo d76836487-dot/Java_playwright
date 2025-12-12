@@ -7,22 +7,18 @@
 Feature: SplitCooperativeNovoPagamento
 
   Scenario: Apresentar jornada comum para agente cooperative
-    Given que o <usuário> tenha o perfilamento cooperative agente
     When acessar Portal do Cliente
     Then deve apresentar as mesmas jornadas que um usuário com perfilamento comum
       | usuario             |
       | Master              |
-      | Segundario Operacão |
       | Segundario Consulta |
       | Operador Com F      |
 
   Scenario: Apresentar menu de vendas antigo para vendedor cooperative
-    Given que o <usuário> tenha o perfilamento cooperative vendedor
     When acessar Portal do Cliente
     Then deve apresentar o menu de vendas antigo
       | usuario             |
       | Master              |
-      | Segundario Operacão |
       | Segundario Consulta |
       | Operador Com F      |
 
@@ -47,7 +43,6 @@ Feature: SplitCooperativeNovoPagamento
     When exportar arquio Excel ou CSV em Historico de Vendas
     Then as colunas devem vir ajustadas para:
       | Simplificado  | Detalhado                  |
-      | Valor repasse | Valor repasse da transação |
       |               | Valor repasse da parcela   |
 
   Scenario: Ajustar nomenclaturas de royalties para repasse nos relatórios de recebimentos pagos
@@ -56,11 +51,9 @@ Feature: SplitCooperativeNovoPagamento
     Then a coluna deve ser ajustada de Valor royalties da parcela para Valor repasse da parcela
 
   Scenario: Verificar aba de split de pagamento não visível para Agentes e Vendedores
-    Given que o <usuário> tenha o perfilamento agente ou vendedor do tipo cooperative
     When acessar Portal do Cliente
     Then a aba de split de pagamento não deve ser visível
       | usuario             |
       | Master              |
-      | Segundario Operacão |
       | Segundario Consulta |
       | Operador Com F      |

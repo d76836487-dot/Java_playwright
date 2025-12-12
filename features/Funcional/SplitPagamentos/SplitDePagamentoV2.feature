@@ -221,3 +221,10 @@ Feature: SplitDePagamentoV2
     When o franqueador tenta editar essa regra
     Then a edição deve esta inabilitada
 
+  @TestCaseKey=LPDC-T1999
+  Scenario: Visualização correta do campo "Nome e EC" para um split ativo
+    Given que o usuário está logado no sistema
+    When o usuário navega para a aba "Split de pagamento"
+    And existe um registro de split de pagamento com o novo campo da API preenchido
+    Then o valor exibido na coluna "Nome e EC" deve corresponder ao valor do novo campo da API
+
