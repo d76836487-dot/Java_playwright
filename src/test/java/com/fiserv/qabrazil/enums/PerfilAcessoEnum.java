@@ -54,7 +54,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("sicredi")
         ,"master"
         ,"79750866000170"
-        ,"Fiserv@1234"
+        ,"Fiserv@12345"
         ,"110"
         ,setInstituicao("4")
     )
@@ -72,7 +72,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("sicredi")
         ,"cedidos"
         ,"79750866000170"
-        ,"Fiserv@1234"
+        ,"Fiserv@12345"
         ,"110"
         ,setInstituicao("4")
     )
@@ -90,7 +90,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("sicredi")
         ,"franqueado"
         ,"79750866000170"
-        ,"Fiserv@1234"
+        ,"Fiserv@12345"
         ,"110"
         ,setInstituicao("4")
     )

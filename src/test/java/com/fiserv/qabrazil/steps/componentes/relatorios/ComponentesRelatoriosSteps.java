@@ -12,6 +12,7 @@ public class ComponentesRelatoriosSteps {
     @Autowired
     ComponentesRelatoriosPage componentesRelatoriosPage;
 
+    @Then("exibe a aba {string} com sucesso")
     @Then("valida que a aba {string} do relatorio foi acessada com sucesso")
     public void valida_que_a_aba_do_relatorio_foi_acessada_com_sucesso(String abaRelatorio) {
         componentesRelatoriosPage.validarCarregamentoAbaRelatorio(abaRelatorio);
@@ -75,5 +76,10 @@ public class ComponentesRelatoriosSteps {
     @And("valida as colunas {string} do arquivo para o Tipo de arquivo {string} e Tipo de relatorio {string} gerado - {string}")
     public void valida_as_colunas_do_arquivo_para_o_Tipo_de_arquivo_e_Tipo_de_relatorio__gerado(String colunas, String tipoArquivo, String tipoRelatorio, String abaRelatorio) throws IOException {
         componentesRelatoriosPage.validarCabecalhoArquivo(colunas, tipoArquivo, tipoRelatorio, abaRelatorio);
+    }
+
+    @And("é validado o relatório da aba {string} - Tipo de arquivo {string} - Tipo de relatório {string}")
+    public void e_validado_o_relatorio_da_aba_Tipo_de_arquivo_Tipo_de_relatorio(String abaRelatorio, String tipoArquivo, String tipoRelatorio) throws IOException {
+        componentesRelatoriosPage.exportarRelatorio(abaRelatorio, tipoArquivo, tipoRelatorio);
     }
 }

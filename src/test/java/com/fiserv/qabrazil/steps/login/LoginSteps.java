@@ -37,6 +37,7 @@ public class LoginSteps {
     @Autowired
     SenhaCadastradaComSucessoPage senhaCadastradaComSucessoPage;
 
+    @Given("que realizei Login no Portal pela aliança {string}")
     @Given("realizar login no portal {string}")
     public void realizar_login_no_portal(String alianca) {
         loginPage.acessarLoginPortal(alianca);
