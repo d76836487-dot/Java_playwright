@@ -7,6 +7,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: HistoricoDeVendasRelatorioSimplificadoInclusãoDaHoraDaVenda
 
+  @TestCaseKey=LPDC-T2091
   Scenario Outline: Acessar e visualizar horário da venda no relatório simplificado com diferentes perfis
     Given que acesso o portal como usuário <perfil>
     When acesso o relatório simplificado do histórico de vendas
@@ -21,3 +22,4 @@ Feature: HistoricoDeVendasRelatorioSimplificadoInclusãoDaHoraDaVenda
       | operador sem F         |
       | franqueado             |
       | franqueador            |
+
