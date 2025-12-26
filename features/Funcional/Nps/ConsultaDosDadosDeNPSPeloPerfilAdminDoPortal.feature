@@ -104,3 +104,24 @@ Feature: ConsultaDosDadosDeNPSPeloPerfilAdminDoPortal
     And clico em "Gerar Relatório"
     Then o relatório deve incluir todos os triggers do App ou Portal
 
+
+Scenario: Verificar nome do arquivo gerado para extração via Portal
+    Given solicito uma extração via Portal
+    When o arquivo é gerado
+    Then o nome do arquivo deve conter "PORTAL"
+      | Nome do Arquivo                           |
+      | BIN_NPS_PORTAL_01-12-2025_23-12-2025_23-12_15:57.xlsx |
+
+Scenario: Verificar nome do arquivo gerado para extração via App
+    Given solicito uma extração via App
+    When o arquivo é gerado
+    Then o nome do arquivo deve conter "APP"
+      | Nome do Arquivo                         |
+      | BIN_NPS_APP_01-12-2025_23-12-2025_23-12_15:56.xlsx |
+
+Scenario: Verificar nome do arquivo gerado para extração via Ambos (Portal e App)
+    Given solicito uma extração via Ambos (Portal e App)
+    When o arquivo é gerado
+    Then o nome do arquivo deve conter "AMBOS"
+      | Nome do Arquivo                          |
+      | BIN_NPS_AMBOS_01-12-2025_23-12-2025_23-12_15:53.xlsx |
