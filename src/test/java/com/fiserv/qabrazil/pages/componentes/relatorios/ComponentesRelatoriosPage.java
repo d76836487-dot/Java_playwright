@@ -211,11 +211,13 @@ public class ComponentesRelatoriosPage extends GeneralUtils {
             click(this.abaSolicitarAntecipacao);
             solicitarAntecipacaoPage.waitForLoadSolicitarAntecipacao();
         } else if (abaRelatorio.equalsIgnoreCase("Histórico")) {
+            waitForSeconds(Config.WAIT_10_SECONDS);
             click(this.abaHistorico);
-            waitIsVisibleForSeconds(titleHistorico, Config.WAIT_20_SECONDS);
+            waitIsVisibleForSeconds(titleHistorico, Config.WAIT_10_SECONDS);
         } else if (abaRelatorio.equalsIgnoreCase("Relatório de antecipações")) {
+            waitForSeconds(Config.WAIT_10_SECONDS);
             click(this.abaRelatorioAntecipacoes);
-            waitIsVisibleForSeconds(titleRelatorioAntecipacoes, Config.WAIT_20_SECONDS);
+            waitIsVisibleForSeconds(titleRelatorioAntecipacoes, Config.WAIT_10_SECONDS);
         }
     }
 

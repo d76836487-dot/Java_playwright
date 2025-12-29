@@ -8,7 +8,6 @@
 @PrimeiroAcesso
 Feature: Primeiro acesso
 
-  @ga
   @TestCaseKey=LPDC-T1428
   Scenario Outline: Validar Primeiro acesso - <alianca>
     Given que foi acessado o portal <alianca>

@@ -5,6 +5,7 @@ import com.microsoft.playwright.Locator;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.time.Duration;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -102,6 +103,16 @@ public class GeneralUtils extends WaitUtil {
     public static int convertToInt(String value) { return Integer.parseInt(value.trim()); }
 
     public static double convertToDouble(String value) { return replaceMonetaryValue(value); }
+
+    public static double convertStringToBigDecimal(String valueString) {
+        valueString = valueString
+            .replace(" ", "")
+            .replace(".", "")
+            .replace(",", ".")
+            .replace("R$", "");
+        BigDecimal valueBigDecimal = new BigDecimal(valueString);
+        return valueBigDecimal.doubleValue();
+    }
 
     public static double roundNumber(double number, int scale, String upDown) {
         BigDecimal bigDecimal = new BigDecimal(number);

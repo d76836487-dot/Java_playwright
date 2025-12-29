@@ -242,15 +242,11 @@ public class GeracaoArquivos {
             if (row != null) {
                 Cell cell = row.getCell(columnIndex);
                 count++;
-                sum += GeneralUtils.roundNumber(
-                     Double.parseDouble(cell.toString())
-                    , 2
-                    , "UP"
-                );
+                sum += GeneralUtils.convertStringToBigDecimal(cell.toString());
             }
         }
 
-        return count + ";" + GeneralUtils.roundNumber(sum, 2, "UP");
+        return count + ";" + GeneralUtils.convertStringToBigDecimal(String.valueOf(sum));
     }
 
     private static boolean validarColunasExcel(String abaRelatorio, String tipoRelatorio, File arquivo) throws IOException {
@@ -262,7 +258,6 @@ public class GeracaoArquivos {
         String title;
         String[] countSumColumn;
 
-        // Totalizadores
         int total01 = 0;
         int countTotal01 = 0;
         double valor01 = 0;
@@ -440,15 +435,11 @@ public class GeracaoArquivos {
 
             if (!cellValue.isEmpty() && !cellValue.equalsIgnoreCase("-")) {
                 count++;
-                sum += GeneralUtils.roundNumber(
-                     GeneralUtils.convertToDouble(cellValue)
-                    , 2
-                    , "UP"
-                );
+                sum += GeneralUtils.convertStringToBigDecimal(cellValue);
             }
         }
 
-        return count + ";" + GeneralUtils.roundNumber(sum, 2, "UP");
+        return count + ";" + GeneralUtils.convertStringToBigDecimal(String.valueOf(sum));
     }
 
     private static boolean validarColunasCSV(String abaRelatorio, String tipoRelatorio, File arquivo) throws IOException {
@@ -459,7 +450,6 @@ public class GeracaoArquivos {
         String title;
         String[] countSumColumn;
 
-        // Totalizadores
         double valor01 = 0;
         int countValor01 = 0;
         double valor02 = 0;

@@ -9,7 +9,6 @@
 @Voucher
 Feature: Voucher
 
-  @navegacao
   @TestCaseKey=LPDC-T1214
   Scenario Outline: Verificar texto do rodape - Voucher
     Given realizar login no portal <alianca>
@@ -51,7 +50,6 @@ Feature: Voucher
       | alianca         | menu     | submenu           | abaRelatorio |
       | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    |
 
-  @navegacao
   @TestCaseKey=LPDC-T1207
   Scenario Outline: Visualizar campos de Total e Valor - Voucher
     Given realizar login no portal <alianca>

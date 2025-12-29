@@ -9,7 +9,6 @@
 @Hoje
 Feature: Vendas Hoje
 
-  @navegacao
   @TestCaseKey=LPDC-T1229
   Scenario Outline: Verificar texto do rodape - Vendas Hoje
     Given realizar login no portal <alianca>
@@ -51,7 +50,6 @@ Feature: Vendas Hoje
       | alianca         | menu     | submenu           | abaRelatorio |
       | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       |
 
-  @navegacao
   @TestCaseKey=LPDC-T1232
   Scenario Outline: Visualizar campos de Total e Valor - Vendas Hoje
     Given realizar login no portal <alianca>

@@ -54,7 +54,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("sicredi")
         ,"master"
         ,"79750866000170"
-        ,"Fiserv@12345"
+        ,"Fiserv@1234567"
         ,"110"
         ,setInstituicao("4")
     )
@@ -72,7 +72,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("sicredi")
         ,"cedidos"
         ,"79750866000170"
-        ,"Fiserv@12345"
+        ,"Fiserv@1234567"
         ,"110"
         ,setInstituicao("4")
     )
@@ -90,7 +90,7 @@ public enum PerfilAcessoEnum {
         ,setUrlPortal("sicredi")
         ,"franqueado"
         ,"79750866000170"
-        ,"Fiserv@12345"
+        ,"Fiserv@1234567"
         ,"110"
         ,setInstituicao("4")
     )
@@ -275,46 +275,46 @@ public enum PerfilAcessoEnum {
     )
     ,CORUJACAPITAL(
         "corujacapital"
-        ,setUrlPortal("portal240")
+        ,setUrlPortal("portal242")
         ,"master"
         ,"39341574000169"
-        ,"CorujaCapital@123"
+        ,"CorujaPay@951"
         ,"242"
         ,setInstituicao("7")
     )
     ,CORUJACAPITAL_SECUNDARIO(
         "corujacapital"
-        ,setUrlPortal("portal240")
+        ,setUrlPortal("portal242")
         ,"secundario"
         ,"max@afinz"
-        ,"CorujaCapital@123"
+        ,"CorujaPay@951"
         ,"242"
         ,setInstituicao("7")
     )
     ,CORUJACAPITAL_CEDIDOS(
         "corujacapital"
-        ,setUrlPortal("portal240")
+        ,setUrlPortal("portal242")
         ,"cedidos"
         ,"39341574000169"
-        ,"CorujaCapital@123"
+        ,"CorujaPay@951"
         ,"242"
         ,setInstituicao("7")
     )
     ,CORUJACAPITAL_FRANQUEADOR(
         "corujacapital"
-        ,setUrlPortal("portal240")
+        ,setUrlPortal("portal242")
         ,"franqueador"
         ,"39341574000169"
-        ,"CorujaCapital@123"
+        ,"CorujaPay@951"
         ,"242"
         ,setInstituicao("7")
     )
     ,CORUJACAPITAL_FRANQUEADO(
         "corujacapital"
-        ,setUrlPortal("portal240")
+        ,setUrlPortal("portal242")
         ,"franqueado"
         ,"39341574000169"
-        ,"CorujaCapital@123"
+        ,"CorujaPay@951"
         ,"242"
         ,setInstituicao("7")
     );

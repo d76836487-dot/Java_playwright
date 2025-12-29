@@ -9,7 +9,6 @@
 @HistoricoVendas
 Feature: Historico de vendas
 
-  @navegacao
   @TestCaseKey=LPDC-T1218
   Scenario Outline: Verificar texto do rodape - Historico de vendas
     Given realizar login no portal <alianca>
@@ -51,7 +50,6 @@ Feature: Historico de vendas
       | alianca         | menu     | submenu           | abaRelatorio          |
       | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
-  @navegacao
   @TestCaseKey=LPDC-T1215
   Scenario Outline: Visualizar campos de Total e Valor - Historico de vendas
     Given realizar login no portal <alianca>
@@ -199,7 +197,6 @@ Feature: Historico de vendas
       | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14 Dias" |
       | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"       |
 
-  @navegacao
   @maisDetalhes
   @TestCaseKey=LPDC-T1217
   Scenario Outline: Verificar dados do link Mais detalhes - Historico de vendas

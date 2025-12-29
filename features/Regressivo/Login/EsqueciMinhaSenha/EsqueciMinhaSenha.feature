@@ -8,7 +8,6 @@
 @EsqueciMinhaSenha
 Feature: Esqueci minha senha
 
-  @ga
   @TestCaseKey=LPDC-T1426
   Scenario Outline: Validar Esqueci minha senha - <alianca>
     Given que foi acessado o portal <alianca>
