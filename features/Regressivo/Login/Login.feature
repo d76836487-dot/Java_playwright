@@ -455,13 +455,13 @@ Feature: Login
     @bin
     @email
     Examples:
-      | alianca     | fluxo | receberPor |
+      | alianca         | fluxo | receberPor |
       | "binSecundario" | "MFA" | "E-mail"   |
 
     @bin
     @sms
     Examples:
-      | alianca     | fluxo | receberPor |
+      | alianca         | fluxo | receberPor |
       | "binSecundario" | "MFA" | "SMS"      |
 
     @sicredi
