@@ -26,21 +26,6 @@ Feature: Login
 
     @bin
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio     |
-      | "bin"   | "vendas" | "relatorioVendas" | "Não efetivadas" |
-
-    @bin
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio       |
-      | "bin"   | "vendas" | "relatorioVendas" | "Pré-autorizações" |
-
-    @bin
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio |
-      | "bin"   | "vendas" | "relatorioVendas" | "Voucher"    |
-
-    @bin
-    Examples:
       | alianca | menu           | submenu              | abaRelatorio |
       | "bin"   | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
@@ -78,21 +63,6 @@ Feature: Login
     Examples:
       | alianca   | menu     | submenu           | abaRelatorio          |
       | "sicredi" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
-
-    @sicredi
-    Examples:
-      | alianca   | menu     | submenu           | abaRelatorio     |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Não efetivadas" |
-
-    @sicredi
-    Examples:
-      | alianca   | menu     | submenu           | abaRelatorio       |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
-
-    @sicredi
-    Examples:
-      | alianca   | menu     | submenu           | abaRelatorio |
-      | "sicredi" | "vendas" | "relatorioVendas" | "Voucher"    |
 
     @sicredi
     Examples:
@@ -136,21 +106,6 @@ Feature: Login
 
     @azulzinha
     Examples:
-      | alianca     | menu     | submenu           | abaRelatorio     |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Não efetivadas" |
-
-    @azulzinha
-    Examples:
-      | alianca     | menu     | submenu           | abaRelatorio       |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
-
-    @azulzinha
-    Examples:
-      | alianca     | menu     | submenu           | abaRelatorio |
-      | "azulzinha" | "vendas" | "relatorioVendas" | "Voucher"    |
-
-    @azulzinha
-    Examples:
       | alianca     | menu           | submenu              | abaRelatorio |
       | "azulzinha" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
@@ -191,21 +146,6 @@ Feature: Login
 
     @afinz
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio     |
-      | "afinz" | "vendas" | "relatorioVendas" | "Não efetivadas" |
-
-    @afinz
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio       |
-      | "afinz" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
-
-    @afinz
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio |
-      | "afinz" | "vendas" | "relatorioVendas" | "Voucher"    |
-
-    @afinz
-    Examples:
       | alianca | menu           | submenu              | abaRelatorio |
       | "afinz" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
@@ -228,21 +168,6 @@ Feature: Login
     Examples:
       | alianca    | menu     | submenu           | abaRelatorio          |
       | "claropay" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
-
-    @claropay
-    Examples:
-      | alianca    | menu     | submenu           | abaRelatorio     |
-      | "claropay" | "vendas" | "relatorioVendas" | "Não efetivadas" |
-
-    @claropay
-    Examples:
-      | alianca    | menu     | submenu           | abaRelatorio       |
-      | "claropay" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
-
-    @claropay
-    Examples:
-      | alianca    | menu     | submenu           | abaRelatorio |
-      | "claropay" | "vendas" | "relatorioVendas" | "Voucher"    |
 
     @claropay
     Examples:
@@ -286,21 +211,6 @@ Feature: Login
 
     @banqi
     Examples:
-      | alianca | menu     | submenu           | abaRelatorio     |
-      | "banqi" | "vendas" | "relatorioVendas" | "Não efetivadas" |
-
-    @banqi
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio       |
-      | "banqi" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
-
-    @banqi
-    Examples:
-      | alianca | menu     | submenu           | abaRelatorio |
-      | "banqi" | "vendas" | "relatorioVendas" | "Voucher"    |
-
-    @banqi
-    Examples:
       | alianca | menu           | submenu              | abaRelatorio |
       | "banqi" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
@@ -314,60 +224,45 @@ Feature: Login
       | alianca | menu           | submenu              | abaRelatorio        |
       | "banqi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio |
-      | "corujacapital" | "vendas" | "relatorioVendas" | "Hoje"       |
+      | alianca     | menu     | submenu           | abaRelatorio |
+      | "corujapay" | "vendas" | "relatorioVendas" | "Hoje"       |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio          |
-      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
+      | alianca     | menu     | submenu           | abaRelatorio          |
+      | "corujapay" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio     |
-      | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" |
+      | alianca     | menu           | submenu              | abaRelatorio |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio       |
-      | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
+      | alianca     | menu           | submenu              | abaRelatorio |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio |
-      | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    |
+      | alianca     | menu           | submenu              | abaRelatorio        |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Pagos"      |
+      | alianca     | menu          | submenu | abaRelatorio            |
+      | "corujapay" | "antecipacao" | ""      | "Solicitar antecipação" |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Futuros"    |
+      | alianca     | menu          | submenu | abaRelatorio |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
-
-    @corujacapital
-    Examples:
-      | alianca         | menu          | submenu | abaRelatorio            |
-      | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" |
-
-    @corujacapital
-    Examples:
-      | alianca         | menu          | submenu | abaRelatorio |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  |
-
-    @corujacapital
-    Examples:
-      | alianca         | menu          | submenu | abaRelatorio                |
-      | "corujacapital" | "antecipacao" | ""      | "Relatório de antecipações" |
+      | alianca     | menu          | submenu | abaRelatorio                |
+      | "corujapay" | "antecipacao" | ""      | "Relatório de antecipações" |
 
   @navegacao
   @TestCaseKey=LPDC-T1327
@@ -447,19 +342,18 @@ Feature: Login
       | "banqi" | "recebimentos"             | "Pagos"      |
       | "banqi" | "agendaRecebimentosSemana" | "Pagos"      |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | dashboard       | abaRelatorio |
-      | "corujacapital" | "vendasHoje"    | "Hoje"       |
-      | "corujacapital" | "ultimasVendas" | "Hoje"       |
+      | alianca     | dashboard       | abaRelatorio |
+      | "corujapay" | "vendasHoje"    | "Hoje"       |
+      | "corujapay" | "ultimasVendas" | "Hoje"       |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | dashboard                  | abaRelatorio |
-      | "corujacapital" | "recebimentos"             | "Pagos"      |
-      | "corujacapital" | "agendaRecebimentosSemana" | "Pagos"      |
+      | alianca     | dashboard                  | abaRelatorio |
+      | "corujapay" | "recebimentos"             | "Pagos"      |
+      | "corujapay" | "agendaRecebimentosSemana" | "Pagos"      |
 
-  @ga
   @mfa
   @master
   @TestCaseKey=LPDC-T1429
@@ -539,19 +433,18 @@ Feature: Login
       | alianca | fluxo | receberPor |
       | "banqi" | "MFA" | "SMS"      |
 
-    @corujacapital
+    @corujapay
     @email
     Examples:
-      | alianca         | fluxo | receberPor |
-      | "corujacapital" | "MFA" | "E-mail"   |
+      | alianca     | fluxo | receberPor |
+      | "corujapay" | "MFA" | "E-mail"   |
 
-    @corujacapital
+    @corujapay
     @sms
     Examples:
-      | alianca         | fluxo | receberPor |
-      | "corujacapital" | "MFA" | "SMS"      |
+      | alianca     | fluxo | receberPor |
+      | "corujapay" | "MFA" | "SMS"      |
 
-  @ga
   @mfa
   @secundario
   @TestCaseKey=LPDC-T1427
@@ -631,15 +524,15 @@ Feature: Login
       | alianca           | fluxo | receberPor |
       | "banqiSecundario" | "MFA" | "SMS"      |
 
-    @corujacapital
+    @corujapay
     @email
     Examples:
-      | alianca                   | fluxo | receberPor |
-      | "corujacapitalSecundario" | "MFA" | "E-mail"   |
+      | alianca               | fluxo | receberPor |
+      | "corujapaySecundario" | "MFA" | "E-mail"   |
 
-    @corujacapital
+    @corujapay
     @sms
     Examples:
-      | alianca                   | fluxo | receberPor |
-      | "corujacapitalSecundario" | "MFA" | "SMS"      |
+      | alianca               | fluxo | receberPor |
+      | "corujapaySecundario" | "MFA" | "SMS"      |
 

@@ -8,7 +8,6 @@
 @EsqueciMinhaSenha
 Feature: Esqueci minha senha 
 
-  @ga
   @TestCaseKey=LPDC-T1426
   Scenario Outline: Validar Esqueci minha senha - <alianca>
     Given que foi acessado o portal <alianca>
@@ -88,15 +87,15 @@ Feature: Esqueci minha senha
       | alianca | fluxo                 | usuario          | receberPor | senha           |
       | "banqi" | "Esqueci minha senha" | "75213076000102" | "SMS"      | "Fiserv@123456" |
 
-    @corujacapital
+    @corujapay
     @email
     Examples:
-      | alianca         | fluxo                 | usuario          | receberPor | senha           |
-      | "corujacapital" | "Esqueci minha senha" | "75213076000102" | "E-mail"   | "Fiserv@123456" |
+      | alianca     | fluxo                 | usuario          | receberPor | senha           |
+      | "corujapay" | "Esqueci minha senha" | "75213076000102" | "E-mail"   | "Fiserv@123456" |
 
-    @corujacapital
+    @corujapay
     @sms
     Examples:
-      | alianca         | fluxo                 | usuario          | receberPor | senha           |
-      | "corujacapital" | "Esqueci minha senha" | "75213076000102" | "SMS"      | "Fiserv@123456" |
+      | alianca     | fluxo                 | usuario          | receberPor | senha           |
+      | "corujapay" | "Esqueci minha senha" | "75213076000102" | "SMS"      | "Fiserv@123456" |
 

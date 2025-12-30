@@ -36,10 +36,10 @@ Feature: Historico
       | alianca    | menu          | submenu | abaRelatorio |
       | "claropay" | "antecipacao" | ""      | "Histórico"  |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu          | submenu | abaRelatorio |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  |
+      | alianca     | menu          | submenu | abaRelatorio |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  |
 
   @navegacao
   @TestCaseKey=LPDC-T1329
@@ -68,10 +68,10 @@ Feature: Historico
       | alianca    | menu          | submenu | abaRelatorio | campos                                           |
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "Total de antecipações pagas;Valor líquido pago" |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu          | submenu | abaRelatorio | campos                                           |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "Total de antecipações pagas;Valor líquido pago" |
+      | alianca     | menu          | submenu | abaRelatorio | campos                                           |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "Total de antecipações pagas;Valor líquido pago" |
 
   @totalizadores
   @TestCaseKey=LPDC-T1471
@@ -100,10 +100,10 @@ Feature: Historico
       | alianca    | menu          | submenu | abaRelatorio |
       | "claropay" | "antecipacao" | ""      | "Histórico"  |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu          | submenu | abaRelatorio |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  |
+      | alianca     | menu          | submenu | abaRelatorio |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  |
 
   @periodo
   @TestCaseKey=LPDC-T1330
@@ -133,10 +133,10 @@ Feature: Historico
       | alianca    | menu          | submenu | abaRelatorio | periodo |
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "Hoje"  |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu          | submenu | abaRelatorio | periodo |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "Hoje"  |
+      | alianca     | menu          | submenu | abaRelatorio | periodo |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "Hoje"  |
 
   @filtro
   @TestCaseKey=LPDC-T1333
@@ -190,16 +190,16 @@ Feature: Historico
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "Status" | "Não Efetuada"     |
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "Status" | "Pago"             |
 
-    @corujacapital
+    @corujapay
     @status
     Examples:
-      | alianca         | menu          | submenu | abaRelatorio | filtro   | valor              |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "Status" | "todos"            |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "Status" | "Em Andamento"     |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "Status" | "Efetuada"         |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "Status" | "Efetuada Parcial" |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "Status" | "Não Efetuada"     |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "Status" | "Pago"             |
+      | alianca     | menu          | submenu | abaRelatorio | filtro   | valor              |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "Status" | "todos"            |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "Status" | "Em Andamento"     |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "Status" | "Efetuada"         |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "Status" | "Efetuada Parcial" |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "Status" | "Não Efetuada"     |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "Status" | "Pago"             |
 
   @gerarArquivo
   @nomeArquivo
@@ -257,17 +257,17 @@ Feature: Historico
       | alianca    | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           |
 
-    @corujacapital
+    @corujapay
     @excel
     Examples:
-      | alianca         | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           |
+      | alianca     | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           |
 
-    @corujacapital
+    @corujapay
     @csv
     Examples:
-      | alianca         | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           |
+      | alianca     | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           |
 
   @gerarArquivo
   @colunasArquivo
@@ -325,15 +325,15 @@ Feature: Historico
       | alianca    | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
       | "claropay" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
 
-    @corujacapital
+    @corujapay
     @excel
     Examples:
-      | alianca         | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
+      | alianca     | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "Excel"     | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
 
-    @corujacapital
+    @corujapay
     @csv
     Examples:
-      | alianca         | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
-      | "corujacapital" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
+      | alianca     | menu          | submenu | abaRelatorio | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                  |
+      | "corujapay" | "antecipacao" | ""      | "Histórico"  | "CSV"       | "N"           | "Status;Data da solicitação;Valor bruto solicitado;Valor do desconto;Valor líquido solicitado;Valor líquido aprovado;Tipo;Taxa;Código de antecipação;Pagamento efetuado" |
 

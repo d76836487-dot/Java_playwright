@@ -1,7 +1,7 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Regressivo/Vendas/RelatorioVendas/Pre_autorizacoes
-@Zephyr:Status=Approved
+@Zephyr:Status=Deprecated
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 @Automacao
@@ -9,7 +9,6 @@
 @PreAutorizacoes
 Feature: Pre autorizacoes 
 
-  @navegacao
   @TestCaseKey=LPDC-T1224
   Scenario Outline: Verificar texto do rodape - Pre autorizacoes
     Given realizar login no portal <alianca>
@@ -51,7 +50,6 @@ Feature: Pre autorizacoes
       | alianca         | menu     | submenu           | abaRelatorio       |
       | "corujacapital" | "vendas" | "relatorioVendas" | "Pré-autorizações" |
 
-  @navegacao
   @TestCaseKey=LPDC-T1219
   Scenario Outline: Visualizar campos de Total e Valor - Pre autorizacoes
     Given realizar login no portal <alianca>

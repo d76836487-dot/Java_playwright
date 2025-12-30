@@ -1,15 +1,19 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Regressivo/Vendas/RelatorioVendas/Voucher
-@Zephyr:Status=Approved
+@Zephyr:Status=Deprecated
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 @Automacao
 @Vendas
 @Voucher
 Feature: Voucher
+<<<<<<< HEAD
  
   @navegacao
+=======
+
+>>>>>>> 86ba97a093aa34f41e97ceb03232b20799192940
   @TestCaseKey=LPDC-T1214
   Scenario Outline: Verificar texto do rodape - Voucher
     Given realizar login no portal <alianca>
@@ -51,7 +55,6 @@ Feature: Voucher
       | alianca         | menu     | submenu           | abaRelatorio |
       | "corujacapital" | "vendas" | "relatorioVendas" | "Voucher"    |
 
-  @navegacao
   @TestCaseKey=LPDC-T1207
   Scenario Outline: Visualizar campos de Total e Valor - Voucher
     Given realizar login no portal <alianca>

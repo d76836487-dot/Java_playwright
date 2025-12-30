@@ -1,15 +1,19 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Regressivo/Vendas/RelatorioVendas/Historico_de_vendas
-@Zephyr:Status=Approved
+@Zephyr:Status=Deprecated
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 @Automacao
 @Vendas
 @HistoricoVendas
 Feature: Historico de vendas
+<<<<<<< HEAD
  
   @navegacao
+=======
+
+>>>>>>> 86ba97a093aa34f41e97ceb03232b20799192940
   @TestCaseKey=LPDC-T1218
   Scenario Outline: Verificar texto do rodape - Historico de vendas
     Given realizar login no portal <alianca>
@@ -51,7 +55,6 @@ Feature: Historico de vendas
       | alianca         | menu     | submenu           | abaRelatorio          |
       | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" |
 
-  @navegacao
   @TestCaseKey=LPDC-T1215
   Scenario Outline: Visualizar campos de Total e Valor - Historico de vendas
     Given realizar login no portal <alianca>
@@ -199,7 +202,6 @@ Feature: Historico de vendas
       | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Últimos 14 Dias" |
       | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Mês Atual"       |
 
-  @navegacao
   @maisDetalhes
   @TestCaseKey=LPDC-T1217
   Scenario Outline: Verificar dados do link Mais detalhes - Historico de vendas

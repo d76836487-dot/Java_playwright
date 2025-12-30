@@ -6,70 +6,63 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: SplitCooperativeNovoPagamento
 
-  @TestCaseKey=LPDC-T2004
+  @TestCaseKey=LPDC-T2045
   Scenario: Apresentar jornada comum para agente cooperative
-    Given que o <usuario> tenha o perfilamento cooperative agente
     When acessar Portal do Cliente
     Then deve apresentar as mesmas jornadas que um usuário com perfilamento comum
       | usuario             |
       | Master              |
-      | Segundario Operacao |
       | Segundario Consulta |
       | Operador Com F      |
 
-  @TestCaseKey=LPDC-T2006
+  @TestCaseKey=LPDC-T2046
   Scenario: Apresentar menu de vendas antigo para vendedor cooperative
-    Given que o <usuario> tenha o perfilamento cooperative vendedor
     When acessar Portal do Cliente
     Then deve apresentar o menu de vendas antigo
       | usuario             |
       | Master              |
-      | Segundario Operacao |
       | Segundario Consulta |
       | Operador Com F      |
 
-  @TestCaseKey=LPDC-T2003
+  @TestCaseKey=LPDC-T2041
   Scenario: Alterar nomenclatura de royalties para repasse no totalizador principal em Historico de Vendas
     Given que o usuário tenha o perfilamento cooperative vendedor
     When acessar Portal do Cliente
     Then o totalizador principal deve exibir "Valor total de repasse" ao invés de "Valor total de royalties"
 
-  @TestCaseKey=LPDC-T2005
+  @TestCaseKey=LPDC-T2043
   Scenario: Alterar nomenclatura de royalties para repasse na sumarização de vendas por dia
     Given que o usuário tenha o perfilamento cooperative vendedor
     When acessar Portal do Cliente
     Then sumarização de vendas no Historico de Vendas deve exibir "Valor total de repasse" ao invés de "Valor total de royalties"
 
-  @TestCaseKey=LPDC-T2009
+  @TestCaseKey=LPDC-T2042
   Scenario: Alterar nomenclatura de royalties para repasse na transação
     Given que o usuário tenha o perfilamento cooperative vendedor
     When acessar Portal do Cliente
     And em Historico de Vendas ele selecionar uma venda
     Then transação deve exibir o campo "Valor repasse" ao invés de "Valor royalties"
 
-  @TestCaseKey=LPDC-T2002
+  @TestCaseKey=LPDC-T2047
   Scenario: Ajustar nomenclaturas de royalties para repasse nos relatórios Historico de Vendas
     Given que o usuário tenha o perfilamento cooperative vendedor
     When exportar arquio Excel ou CSV em Historico de Vendas
     Then as colunas devem vir ajustadas para:
-      | Simplificado  | Detalhado                  |
-      | Valor repasse | Valor repasse da transacao |
-      |               | Valor repasse da parcela   |
+      | Simplificado | Detalhado                |
+      |              | Valor repasse da parcela |
 
-  @TestCaseKey=LPDC-T2007
+  @TestCaseKey=LPDC-T2040
   Scenario: Ajustar nomenclaturas de royalties para repasse nos relatórios de recebimentos pagos
     Given que o usuário tenha o perfilamento cooperative vendedor
     When ao exportar um relatório detalhado de Recebimentos Pagos em Excel e CSV
     Then a coluna deve ser ajustada de Valor royalties da parcela para Valor repasse da parcela
 
-  @TestCaseKey=LPDC-T2008
+  @TestCaseKey=LPDC-T2044
   Scenario: Verificar aba de split de pagamento não visível para Agentes e Vendedores
-    Given que o <usuario> tenha o perfilamento agente ou vendedor do tipo cooperative
     When acessar Portal do Cliente
     Then a aba de split de pagamento não deve ser visível
       | usuario             |
       | Master              |
-      | Segundario Operacao |
       | Segundario Consulta |
       | Operador Com F      |
 

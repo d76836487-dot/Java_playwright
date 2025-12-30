@@ -1,7 +1,7 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Regressivo/Vendas/RelatorioVendas/Nao_efetivadas
-@Zephyr:Status=Approved
+@Zephyr:Status=Deprecated
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 @Automacao
@@ -9,7 +9,6 @@
 @NaoEfetivadas 
 Feature: Nao efetivadas
 
-  @navegacao
   @TestCaseKey=LPDC-T1199
   Scenario Outline: Verificar texto do rodape - Nao efetivadas
     Given realizar login no portal <alianca>
@@ -51,7 +50,6 @@ Feature: Nao efetivadas
       | alianca         | menu     | submenu           | abaRelatorio     |
       | "corujacapital" | "vendas" | "relatorioVendas" | "Não efetivadas" |
 
-  @navegacao
   @TestCaseKey=LPDC-T1201
   Scenario Outline: Visualizar campos de Total e Valor - Nao efetivadas
     Given realizar login no portal <alianca>

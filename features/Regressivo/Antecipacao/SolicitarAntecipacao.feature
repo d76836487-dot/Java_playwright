@@ -48,13 +48,13 @@ Feature: Solicitar Antecipacao
       | "claropay" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa"                                 | "Crédito Parcelado" | "Quinzenal" | "16-30"        |
       | "claropay" | "antecipacao" | ""      | "Solicitar antecipação" | "Amex;Cabal;Hiper;ELO"                 | "Todos"             | "Mensal"    | "31"           |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu          | submenu | abaRelatorio            | bandeiras                              | produtos            | frequencia  | diaRecebimento |
-      | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard;Visa;Amex;Cabal;Hiper;ELO" | "Todos"             | "Diária"    | "Diário"       |
-      | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard"                           | "Crédito à vista"   | "Semanal"   | "Sexta-feira"  |
-      | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa"                                 | "Crédito Parcelado" | "Quinzenal" | "16-30"        |
-      | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" | "Amex;Cabal;Hiper;ELO"                 | "Todos"             | "Mensal"    | "31"           |
+      | alianca     | menu          | submenu | abaRelatorio            | bandeiras                              | produtos            | frequencia  | diaRecebimento |
+      | "corujapay" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard;Visa;Amex;Cabal;Hiper;ELO" | "Todos"             | "Diária"    | "Diário"       |
+      | "corujapay" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard"                           | "Crédito à vista"   | "Semanal"   | "Sexta-feira"  |
+      | "corujapay" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa"                                 | "Crédito Parcelado" | "Quinzenal" | "16-30"        |
+      | "corujapay" | "antecipacao" | ""      | "Solicitar antecipação" | "Amex;Cabal;Hiper;ELO"                 | "Todos"             | "Mensal"    | "31"           |
 
   @eventual
   @TestCaseKey=LPDC-T1332
@@ -95,11 +95,11 @@ Feature: Solicitar Antecipacao
       | "claropay" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard"                           | "Crédito Parcelado" | "N"         | "D+1"           | "D+4"  | "800"  | "maximo"     |
       | "claropay" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa"                                 | "Todos"             | "S"         | ""              | ""     | "1500" | "minimo"     |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu          | submenu | abaRelatorio            | bandeiras                              | produtos            | todoPeriodo | diaVencimentoDe | diaAte | valor  | minimoMaximo |
-      | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard;Visa;Amex;Cabal;Hiper;ELO" | "Todos"             | "S"         | ""              | ""     | "1200" | "minimo"     |
-      | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa;ELO"                             | "Crédito à vista"   | "N"         | "D0"            | "D+2"  | "1000" | "maximo"     |
-      | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard"                           | "Crédito Parcelado" | "N"         | "D+1"           | "D+4"  | "800"  | "maximo"     |
-      | "corujacapital" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa"                                 | "Todos"             | "S"         | ""              | ""     | "1500" | "minimo"     |
+      | alianca     | menu          | submenu | abaRelatorio            | bandeiras                              | produtos            | todoPeriodo | diaVencimentoDe | diaAte | valor  | minimoMaximo |
+      | "corujapay" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard;Visa;Amex;Cabal;Hiper;ELO" | "Todos"             | "S"         | ""              | ""     | "1200" | "minimo"     |
+      | "corujapay" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa;ELO"                             | "Crédito à vista"   | "N"         | "D0"            | "D+2"  | "1000" | "maximo"     |
+      | "corujapay" | "antecipacao" | ""      | "Solicitar antecipação" | "MasterCard"                           | "Crédito Parcelado" | "N"         | "D+1"           | "D+4"  | "800"  | "maximo"     |
+      | "corujapay" | "antecipacao" | ""      | "Solicitar antecipação" | "Visa"                                 | "Todos"             | "S"         | ""              | ""     | "1500" | "minimo"     |
 

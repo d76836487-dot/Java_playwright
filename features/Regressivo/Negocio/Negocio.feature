@@ -43,10 +43,10 @@ Feature: Negocio
       | alianca | menu      | submenu |
       | "banqi" | "negocio" | ""      |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu      | submenu |
-      | "corujacapital" | "negocio" | ""      |
+      | alianca     | menu      | submenu |
+      | "corujapay" | "negocio" | ""      |
 
   @TestCaseKey=LPDC-T1555
   Scenario Outline: Verificar Dados Cadastrais - Negocio
@@ -83,10 +83,10 @@ Feature: Negocio
       | alianca | menu      | submenu |
       | "banqi" | "negocio" | ""      |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu      | submenu |
-      | "corujacapital" | "negocio" | ""      |
+      | alianca     | menu      | submenu |
+      | "corujapay" | "negocio" | ""      |
 
   @TestCaseKey=LPDC-T1559
   Scenario Outline: Realizar filtros em Meus Domicilios - <filtro>: <valor> - Negocio
@@ -561,83 +561,83 @@ Feature: Negocio
       | alianca | menu      | submenu | filtro      | valor |
       | "banqi" | "negocio" | ""      | "Bandeiras" | "Elo" |
 
-    @corujacapital
+    @corujapay
     @banco
     Examples:
-      | alianca         | menu      | submenu | filtro  | valor |
-      | "corujacapital" | "negocio" | ""      | "Banco" | ""    |
+      | alianca     | menu      | submenu | filtro  | valor |
+      | "corujapay" | "negocio" | ""      | "Banco" | ""    |
 
-    @corujacapital
+    @corujapay
     @agencia
     Examples:
-      | alianca         | menu      | submenu | filtro    | valor |
-      | "corujacapital" | "negocio" | ""      | "Agência" | ""    |
+      | alianca     | menu      | submenu | filtro    | valor |
+      | "corujapay" | "negocio" | ""      | "Agência" | ""    |
 
-    @corujacapital
+    @corujapay
     @conta
     Examples:
-      | alianca         | menu      | submenu | filtro  | valor |
-      | "corujacapital" | "negocio" | ""      | "Conta" | ""    |
+      | alianca     | menu      | submenu | filtro  | valor |
+      | "corujapay" | "negocio" | ""      | "Conta" | ""    |
 
-    @corujacapital
+    @corujapay
     @produtos
     Examples:
-      | alianca         | menu      | submenu | filtro     | valor   |
-      | "corujacapital" | "negocio" | ""      | "Produtos" | "todos" |
+      | alianca     | menu      | submenu | filtro     | valor   |
+      | "corujapay" | "negocio" | ""      | "Produtos" | "todos" |
 
-    @corujacapital
+    @corujapay
     @produtos
     Examples:
-      | alianca         | menu      | submenu | filtro     | valor     |
-      | "corujacapital" | "negocio" | ""      | "Produtos" | "Crédito" |
+      | alianca     | menu      | submenu | filtro     | valor     |
+      | "corujapay" | "negocio" | ""      | "Produtos" | "Crédito" |
 
-    @corujacapital
+    @corujapay
     @produtos
     Examples:
-      | alianca         | menu      | submenu | filtro     | valor    |
-      | "corujacapital" | "negocio" | ""      | "Produtos" | "Débito" |
+      | alianca     | menu      | submenu | filtro     | valor    |
+      | "corujapay" | "negocio" | ""      | "Produtos" | "Débito" |
 
-    @corujacapital
+    @corujapay
     @bandeiras
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor   |
-      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "todos" |
+      | alianca     | menu      | submenu | filtro      | valor   |
+      | "corujapay" | "negocio" | ""      | "Bandeiras" | "todos" |
 
-    @corujacapital
+    @corujapay
     @bandeiras
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor        |
-      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Mastercard" |
+      | alianca     | menu      | submenu | filtro      | valor        |
+      | "corujapay" | "negocio" | ""      | "Bandeiras" | "Mastercard" |
 
-    @corujacapital
+    @corujapay
     @bandeiras
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor  |
-      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Visa" |
+      | alianca     | menu      | submenu | filtro      | valor  |
+      | "corujapay" | "negocio" | ""      | "Bandeiras" | "Visa" |
 
-    @corujacapital
+    @corujapay
     @bandeiras
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor  |
-      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Amex" |
+      | alianca     | menu      | submenu | filtro      | valor  |
+      | "corujapay" | "negocio" | ""      | "Bandeiras" | "Amex" |
 
-    @corujacapital
+    @corujapay
     @bandeiras
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor   |
-      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Cabal" |
+      | alianca     | menu      | submenu | filtro      | valor   |
+      | "corujapay" | "negocio" | ""      | "Bandeiras" | "Cabal" |
 
-    @corujacapital
+    @corujapay
     @bandeiras
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor       |
-      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Hipercard" |
+      | alianca     | menu      | submenu | filtro      | valor       |
+      | "corujapay" | "negocio" | ""      | "Bandeiras" | "Hipercard" |
 
-    @corujacapital
+    @corujapay
     @bandeiras
     Examples:
-      | alianca         | menu      | submenu | filtro      | valor |
-      | "corujacapital" | "negocio" | ""      | "Bandeiras" | "Elo" |
+      | alianca     | menu      | submenu | filtro      | valor |
+      | "corujapay" | "negocio" | ""      | "Bandeiras" | "Elo" |
 
   @TestCaseKey=LPDC-T1557
   Scenario Outline: Validar acesso ao Inteligencia financeira - Negocio
@@ -674,10 +674,10 @@ Feature: Negocio
       | alianca | menu      | submenu |
       | "banqi" | "negocio" | ""      |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu      | submenu |
-      | "corujacapital" | "negocio" | ""      |
+      | alianca     | menu      | submenu |
+      | "corujapay" | "negocio" | ""      |
 
   @TestCaseKey=LPDC-T1560
   Scenario Outline: Validar busca por terminal no link Ver todos os terminais - Negocio
@@ -714,10 +714,10 @@ Feature: Negocio
       | alianca | menu      | submenu |
       | "banqi" | "negocio" | ""      |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu      | submenu |
-      | "corujacapital" | "negocio" | ""      |
+      | alianca     | menu      | submenu |
+      | "corujapay" | "negocio" | ""      |
 
   @TestCaseKey=LPDC-T1556
   Scenario Outline: Validar Meus Terminais - Negocio
@@ -754,10 +754,10 @@ Feature: Negocio
       | alianca | menu      | submenu |
       | "banqi" | "negocio" | ""      |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu      | submenu |
-      | "corujacapital" | "negocio" | ""      |
+      | alianca     | menu      | submenu |
+      | "corujapay" | "negocio" | ""      |
 
   @TestCaseKey=LPDC-T1558
   Scenario Outline: Validar Taxas e Tarifas por Bandeira <bandeira> - Negocio
@@ -980,39 +980,39 @@ Feature: Negocio
       | alianca | menu      | submenu | bandeira    |
       | "banqi" | "negocio" | ""      | "Hipercard" |
 
-    @corujacapital
+    @corujapay
     @bandeira
     Examples:
-      | alianca         | menu      | submenu | bandeira     |
-      | "corujacapital" | "negocio" | ""      | "Mastercard" |
+      | alianca     | menu      | submenu | bandeira     |
+      | "corujapay" | "negocio" | ""      | "Mastercard" |
 
-    @corujacapital
+    @corujapay
     @bandeira
     Examples:
-      | alianca         | menu      | submenu | bandeira |
-      | "corujacapital" | "negocio" | ""      | "Visa"   |
+      | alianca     | menu      | submenu | bandeira |
+      | "corujapay" | "negocio" | ""      | "Visa"   |
 
-    @corujacapital
+    @corujapay
     @bandeira
     Examples:
-      | alianca         | menu      | submenu | bandeira |
-      | "corujacapital" | "negocio" | ""      | "ELO"    |
+      | alianca     | menu      | submenu | bandeira |
+      | "corujapay" | "negocio" | ""      | "ELO"    |
 
-    @corujacapital
+    @corujapay
     @bandeira
     Examples:
-      | alianca         | menu      | submenu | bandeira |
-      | "corujacapital" | "negocio" | ""      | "Cabal"  |
+      | alianca     | menu      | submenu | bandeira |
+      | "corujapay" | "negocio" | ""      | "Cabal"  |
 
-    @corujacapital
+    @corujapay
     @bandeira
     Examples:
-      | alianca         | menu      | submenu | bandeira |
-      | "corujacapital" | "negocio" | ""      | "AMEX"   |
+      | alianca     | menu      | submenu | bandeira |
+      | "corujapay" | "negocio" | ""      | "AMEX"   |
 
-    @corujacapital
+    @corujapay
     @bandeira
     Examples:
-      | alianca         | menu      | submenu | bandeira    |
-      | "corujacapital" | "negocio" | ""      | "Hipercard" |
+      | alianca     | menu      | submenu | bandeira    |
+      | "corujapay" | "negocio" | ""      | "Hipercard" |
 

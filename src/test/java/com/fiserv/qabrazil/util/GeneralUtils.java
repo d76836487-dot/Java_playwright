@@ -103,6 +103,16 @@ public class GeneralUtils extends WaitUtil {
 
     public static double convertToDouble(String value) { return replaceMonetaryValue(value); }
 
+    public static double convertStringToBigDecimal(String valueString) {
+        valueString = valueString
+            .replace(" ", "")
+            .replace(".", "")
+            .replace(",", ".")
+            .replace("R$", "");
+        BigDecimal valueBigDecimal = new BigDecimal(valueString);
+        return valueBigDecimal.doubleValue();
+    }
+
     public static double roundNumber(double number, int scale, String upDown) {
         BigDecimal bigDecimal = new BigDecimal(number);
         RoundingMode roundingMode = upDown.equalsIgnoreCase("UP") ? RoundingMode.UP : RoundingMode.DOWN;
@@ -141,11 +151,11 @@ public class GeneralUtils extends WaitUtil {
             case "banqiCedidos" -> PerfilAcessoEnum.BANQI_CEDIDOS;
             case "banqiFranqueador" -> PerfilAcessoEnum.BANQI_FRANQUEADOR;
             case "banqiFranqueado" -> PerfilAcessoEnum.BANQI_FRANQUEADO;
-            case "corujacapital" -> PerfilAcessoEnum.CORUJACAPITAL;
-            case "corujacapitalSecundario" -> PerfilAcessoEnum.CORUJACAPITAL_SECUNDARIO;
-            case "corujacapitalCedidos" -> PerfilAcessoEnum.CORUJACAPITAL_CEDIDOS;
-            case "corujacapitalFranqueador" -> PerfilAcessoEnum.CORUJACAPITAL_FRANQUEADOR;
-            case "corujacapitalFranqueado" -> PerfilAcessoEnum.CORUJACAPITAL_FRANQUEADO;
+            case "corujapay" -> PerfilAcessoEnum.CORUJAPAY;
+            case "corujapaySecundario" -> PerfilAcessoEnum.CORUJAPAY_SECUNDARIO;
+            case "corujapayCedidos" -> PerfilAcessoEnum.CORUJAPAY_CEDIDOS;
+            case "corujapayFranqueador" -> PerfilAcessoEnum.CORUJAPAY_FRANQUEADOR;
+            case "corujapayFranqueado" -> PerfilAcessoEnum.CORUJAPAY_FRANQUEADO;
             default -> PerfilAcessoEnum.BIN;
         };
     }

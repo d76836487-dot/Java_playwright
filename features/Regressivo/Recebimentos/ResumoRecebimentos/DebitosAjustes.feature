@@ -46,10 +46,10 @@ Feature: Debitos e ajustes
       | alianca | menu           | submenu              | abaRelatorio        |
       | "banqi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
+      | alianca     | menu           | submenu              | abaRelatorio        |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
   @navegacao
   @TestCaseKey=LPDC-T1272
@@ -88,10 +88,10 @@ Feature: Debitos e ajustes
       | alianca | menu           | submenu              | abaRelatorio        | campos                                                       |
       | "banqi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        | campos                                                       |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
+      | alianca     | menu           | submenu              | abaRelatorio        | campos                                                       |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Total de cobranças de aluguel;Total de cobranças pendentes" |
 
   @totalizadores
   @TestCaseKey=LPDC-T1452
@@ -130,10 +130,10 @@ Feature: Debitos e ajustes
       | alianca | menu           | submenu              | abaRelatorio        |
       | "banqi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
+      | alianca     | menu           | submenu              | abaRelatorio        |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" |
 
   @periodo
   @TestCaseKey=LPDC-T1278
@@ -185,12 +185,12 @@ Feature: Debitos e ajustes
       | "banqi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M0"    |
       | "banqi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M+1"   |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        | periodo |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M-1"   |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M0"    |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M+1"   |
+      | alianca     | menu           | submenu              | abaRelatorio        | periodo |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M-1"   |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M0"    |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "M+1"   |
 
   @filtro
   @TestCaseKey=LPDC-T1276
@@ -332,27 +332,27 @@ Feature: Debitos e ajustes
       | "banqi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "todos"    |
       | "banqi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "91913769" |
 
-    @corujacapital
+    @corujapay
     @status
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        | filtro   | valor      |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "todos"    |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Pendente" |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Debitado" |
+      | alianca     | menu           | submenu              | abaRelatorio        | filtro   | valor      |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "todos"    |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Pendente" |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Status" | "Debitado" |
 
-    @corujacapital
+    @corujapay
     @valores
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        | filtro    | valor     |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "10;50"   |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "-10;-50" |
+      | alianca     | menu           | submenu              | abaRelatorio        | filtro    | valor     |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "10;50"   |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Valores" | "-10;-50" |
 
-    @corujacapital
+    @corujapay
     @estabelecimento
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        | filtro            | valor      |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "todos"    |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "91913769" |
+      | alianca     | menu           | submenu              | abaRelatorio        | filtro            | valor      |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "todos"    |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Estabelecimento" | "91913769" |
 
   @gerarArquivo
   @nomeArquivo
@@ -434,17 +434,17 @@ Feature: Debitos e ajustes
       | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
       | "banqi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           |
 
-    @corujacapital
+    @corujapay
     @excel
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           |
+      | alianca     | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           |
 
-    @corujacapital
+    @corujapay
     @csv
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           |
+      | alianca     | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           |
 
   @gerarArquivo
   @colunasArquivo
@@ -526,15 +526,15 @@ Feature: Debitos e ajustes
       | alianca | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
       | "banqi" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
 
-    @corujacapital
+    @corujapay
     @excel
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+      | alianca     | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "Excel"     | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
 
-    @corujacapital
+    @corujapay
     @csv
     Examples:
-      | alianca         | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
-      | "corujacapital" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
+      | alianca     | menu           | submenu              | abaRelatorio        | tipoArquivo | tipoRelatorio | colunas                                                                                                  |
+      | "corujapay" | "recebimentos" | "resumoRecebimentos" | "Débitos e ajustes" | "CSV"       | "N"           | "Data do ajuste;Valor do aluguel;Comprovante;Tecnologia;Estabelecimento;Data efetiva da cobrança;Status" |
 

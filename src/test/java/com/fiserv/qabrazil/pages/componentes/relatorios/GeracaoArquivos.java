@@ -22,6 +22,94 @@ import java.util.List;
 public class GeracaoArquivos {
     private static final DataFormatter dataFormatter = new DataFormatter();
 
+    private static String atribuirPrefixoNomeArquivo(String abaRelatorio, String tipoRelatorio) {
+        return switch (abaRelatorio) {
+            // Vendas
+            case "Hoje" -> "Relatorio_de_Vendas_Hoje_";
+            case "Histórico de vendas" -> switch (tipoRelatorio) {
+                case "simplificado" -> "Relatorio_Simplificado_Vendas_ ";
+                case "detalhado" -> "Relatorio_Detalhado_Vendas_";
+                default -> "";
+            };
+
+            // Recebimentos
+            case "Pagos_Meus Domicílios" -> switch (tipoRelatorio) {
+                case "simplificado" -> "Relatório_de_Recebimentos_Pagos_Meus_Domicilios_";
+                case "detalhado" -> "Relatório_Detalhado_de_Recebimentos_Pagos_Meus_Domicilios_";
+                default -> "";
+            };
+            case "Pagos_Valores Cedidos" -> switch (tipoRelatorio) {
+                case "simplificado" -> "Relatório_de_Recebimentos_Pagos_Valores_Cedidos_";
+                case "detalhado" -> "Relatório_Detalhado_de_Recebimentos_Pagos_Valores_Cedidos_";
+                default -> "";
+            };
+            case "Futuros" -> "Relatorio_de_Recebimentos_Futuros_";
+            case "Débitos e ajustes" -> "Relatorio_Aluguel_";
+
+            // Antecipação
+            case "Histórico" -> "Relatório_de_histórico_antecipação_";
+            case "Relatório de antecipações" -> switch (tipoRelatorio) {
+                case "simplificado" -> "Relatorio_simplificado_Antecipação_";
+                case "detalhado" -> "Relatorio_Detalhado_Antecipação_";
+                default -> "";
+            };
+
+            default -> "";
+        };
+    }
+
+    private static int atribuirLinhaInicioExcel(String abaRelatorio, String tipoRelatorio) {
+        return switch (abaRelatorio) {
+            // Coluna (linha -1) -> Ex.: A2 - 1 = A1
+            case "Hoje" -> 16;
+            case "Histórico de vendas" -> switch (tipoRelatorio) {
+                case "simplificado" -> 17;
+                case "detalhado" -> 5;
+                default -> 0;
+            };
+            case "Débitos e ajustes" -> 11;
+            case "Futuros", "Histórico" -> 13;
+            case "Pagos_Meus Domicílios", "Pagos_Valores Cedidos" -> switch (tipoRelatorio) {
+                case "simplificado" -> 13;
+                case "detalhado" -> 4;
+                default -> 0;
+            };
+            case "Relatório de antecipações" -> switch (tipoRelatorio) {
+                case "simplificado" -> 11;
+                case "detalhado" -> 10;
+                default -> 0;
+            };
+
+            default -> 0;
+        };
+    }
+
+    public static String atribuirColunasArquivo(String abaRelatorio, String tipoArquivo, String tipoRelatorio) {
+        return switch (abaRelatorio) {
+            // Vendas
+            case "Hoje" -> switch (tipoArquivo) {
+                case "Excel" -> "Data da venda;Código de autorização;Comprovante da venda;Modalidade;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do estabelecimento;Final do cartão;Cód. Ref. Cartão";
+                case "CSV" -> "Data da venda;Código de autorização;Comprovante;Modalidade;Parcelado;Bandeira;Canal;Terminal;Valor bruto;Status;Número do Estabelecimento;Final do cartão;Cód. Ref. Cartão";
+                default -> "";
+            };
+            case "Histórico de vendas" -> switch (tipoArquivo) {
+                case "Excel" -> switch (tipoRelatorio) {
+                    case "simplificado" -> "Data e hora da venda;Cód. de autorização;Número do estabelecimento;Modalidade;Produto;Parcelas;Bandeira;Canal;Valor Bruto;Valor da taxa (MDR);Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante de venda;Cód. do pedido;Descrição (Order ID);Número do cartão;Cod. Ref. Cartão;Banco liquidação PIX;Cod. PSP";
+                    case "detalhado" -> "Data e hora da venda;Código de autorização;Código do estabelecimento;Modalidade;Produto;Parcelas;Bandeira;Canal;Valor bruto transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Status;Número do terminal;Comprovante de venda;Código do pedido;Descrição (Order ID);Número do cartão;Cartão pré-pago;Status do pagamento da venda;Data prevista pagamento da venda;Data efetiva do pagamento da venda;Código do pagamento;Cod. Ref. Cartão;Banco liquidação PIX;Cod. PSP";
+                    default -> "";
+                };
+                case "CSV" -> switch (tipoRelatorio) {
+                    case "simplificado" -> "Data e hora da venda;Cód. de autorização;Número do estabelecimento;Modalidade;Produto;Parcelas;Bandeira;Canal;Valor bruto;Valor taxa (MDR);Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Descrição (Order ID);Número do cartão;Cod. Ref. Cartão;Banco líquio Pix;Cod. PSP";
+                    case "detalhado" -> "Data e hora da venda;Cód. de autorização;Número do estabelecimento;Modalidade;Produto;Parcelas;Bandeira;Canal;Valor bruto de transação;Valor bruto da parcela;Valor vda taxa (MDR);Valor líquido da parcela/transação;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Descrição (Order ID);Número do cartão;Cartão pré-pago;Status do pagamento da venda;Data prevista de pagamento da venda;Data efetiva do pagamento da venda;Cód. de pagamento;Cod. Ref. Cartão;Banco líquio Pix;Cod. PSP";
+                    default -> "";
+                };
+                default -> "";
+            };
+
+            default -> "";
+        };
+    }
+
     public static String getExtensao(String tipoArquivo) {
         String extensao = "";
         if (tipoArquivo.equalsIgnoreCase("Excel"))
@@ -32,7 +120,7 @@ public class GeracaoArquivos {
         return extensao;
     }
 
-    public static boolean validarNomeTipoArquivo(String tipoArquivo, String nomeArquivo, Download download) {
+    public static boolean validarNomeTipoArquivo(String abaRelatorio, String tipoArquivo, String tipoRelatorio, Download download) {
         boolean retorno = false;
 
         // Captura e formata a data atual
@@ -41,6 +129,7 @@ public class GeracaoArquivos {
         String fullDate = now.format(format);
 
         // Concatena o nome completo do arquivo
+        String nomeArquivo = atribuirPrefixoNomeArquivo(abaRelatorio, tipoRelatorio);
         nomeArquivo = nomeArquivo.concat(fullDate);
         String extensao = getExtensao(tipoArquivo);
 
@@ -67,14 +156,15 @@ public class GeracaoArquivos {
         return novoDiretorio.toFile();
     }
 
-    public static boolean validarCabecalhoTipoArquivo(File arquivo, int linhaInicio, List<String> listaColunas) throws IOException {
+    public static boolean validarCabecalhoTipoArquivo(String abaRelatorio, String tipoRelatorio, File arquivo, List<String> listaColunas) throws IOException {
         boolean retorno = false;
 
         String nomeArquivo = arquivo.getName();
 
-        if (nomeArquivo.endsWith(".xlsx"))
+        if (nomeArquivo.endsWith(".xlsx")) {
+            int linhaInicio = atribuirLinhaInicioExcel(abaRelatorio, tipoRelatorio);
             retorno = validarCabecalhoExcel(arquivo, linhaInicio, listaColunas);
-        else if (nomeArquivo.endsWith(".csv"))
+        } else if (nomeArquivo.endsWith(".csv"))
             retorno = validarCabecalhoCSV(arquivo, listaColunas);
 
         return retorno;
@@ -151,16 +241,12 @@ public class GeracaoArquivos {
             Row row = sheet.getRow(i);
             if (row != null) {
                 Cell cell = row.getCell(columnIndex);
-                if (cell != null && cell.getCellType() == CellType.STRING) {
-                    count++;
-                    sum += GeneralUtils.convertToDouble(
-                        dataFormatter.formatCellValue(cell)
-                    );
-                }
+                count++;
+                sum += GeneralUtils.convertStringToBigDecimal(cell.toString());
             }
         }
 
-        return count + ";" + sum;
+        return count + ";" + GeneralUtils.convertStringToBigDecimal(String.valueOf(sum));
     }
 
     private static boolean validarColunasExcel(String abaRelatorio, String tipoRelatorio, File arquivo) throws IOException {
@@ -172,7 +258,6 @@ public class GeracaoArquivos {
         String title;
         String[] countSumColumn;
 
-        // Totalizadores
         int total01 = 0;
         int countTotal01 = 0;
         double valor01 = 0;
@@ -188,15 +273,15 @@ public class GeracaoArquivos {
         double valor06 = 0;
         double countValor06 = 0;
 
-        // XLSX = Célula -1 -> Ex.: A2 = A1
+        // XLSX = Totalizadores (célula exata) -> Ex.: A2 = A2 | Coluna (linha -1) -> Ex.: A2 - 1 = A1
         // Vendas
         if (abaRelatorio.equalsIgnoreCase("Hoje"))
-            cellList = "A12_Total de vendas: ;A13_Valor bruto: ;A14_Valor não efetivadas: ;I17_Valor bruto".split(";");
+            cellList = "A13_Total de vendas: ;A14_Valor total de vendas bruto: ;A15_Valor total de vendas rejeitadas: ;I17_Valor bruto".split(";");
         else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
             if (tipoRelatorio.equalsIgnoreCase("simplificado"))
-                cellList = "A9_Total de vendas: ;A10_Valor bruto: ;A11_Valor líquido: ;A12_Valor cancelado: ;G16_Valor bruto;I16_Valor líquido;J16_Valor cancelado".split(";");
+                cellList = "A10_Total de vendas: ;A11_Valor bruto: ;A12_Total pix: ;A13_Total voucher: ;A14_Valor cancelado: ;A15_Valor estornado, desfeito e recusado: ;A16_Valor líquido: ;I18_Valor Bruto;J18_Valor da taxa (MDR);k18_Valor líquido;l18_Valor cancelado".split(";");
             else if (tipoRelatorio.equalsIgnoreCase("detalhado"))
-                cellList = "P5_Valor bruto da parcela;Q5_Valor da taxa (MDR);R5_Valor líquido da parcela/transação".split(";");
+                cellList = "I6_Valor bruto transação;J6_Valor bruto da parcela;K6_Valor da taxa (MDR);L6_Valor líquido da parcela/transação".split(";");
         } else if (abaRelatorio.equalsIgnoreCase("Não efetivadas"))
             cellList = "A8_Total de Vendas Recusadas: ;A9_Total de Vendas Estornadas: ;I12_Valor bruto;J12_Status".split(";");
         else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações"))
@@ -244,16 +329,16 @@ public class GeracaoArquivos {
                     if (title.equalsIgnoreCase("Total de vendas: ")) {
                         cellValue = cellValue.replace(title, "");
                         total01 = GeneralUtils.convertToInt(cellValue);
-                    } else if (title.equalsIgnoreCase("Valor bruto: ")) {
+                    } else if (title.equalsIgnoreCase("Valor total de vendas bruto: ")) {
                         cellValue = cellValue.replace(title, "");
                         valor01 = GeneralUtils.convertToDouble(cellValue);
-                    } else if (title.equalsIgnoreCase("Valor não efetivadas: ")) {
+                    } else if (title.equalsIgnoreCase("Valor total de vendas rejeitadas: ")) {
                         cellValue = cellValue.replace(title, "");
                         valor02 = GeneralUtils.convertToDouble(cellValue);
                     } else if (title.equalsIgnoreCase("Valor bruto")) {
                         countSumColumn = getCountAndSumFromColumnExcel(sheet, chosenCell).split(";");
                         countTotal01 = GeneralUtils.convertToInt(countSumColumn[0]);
-                        countValor03 = GeneralUtils.convertToDouble(countSumColumn[1]);
+                        countValor03 = Double.parseDouble(countSumColumn[1]);
                     }
 
                     verificacaoTotalizadoresArquivo = (
@@ -267,45 +352,67 @@ public class GeracaoArquivos {
                             total01 = GeneralUtils.convertToInt(cellValue);
                         } else if (title.equalsIgnoreCase("Valor bruto: ")) {
                             cellValue = cellValue.replace(title, "");
-                            valor01 = GeneralUtils.convertToInt(cellValue);
-                        } else if (title.equalsIgnoreCase("Valor líquido: ")) {
+                            valor01 = GeneralUtils.convertToDouble(cellValue);
+                        } else if (title.equalsIgnoreCase("Total pix: ")) {
                             cellValue = cellValue.replace(title, "");
-                            valor02 = GeneralUtils.convertToInt(cellValue);
+                            valor02 = GeneralUtils.convertToDouble(cellValue);
+                        } else if (title.equalsIgnoreCase("Total voucher: ")) {
+                            cellValue = cellValue.replace(title, "");
+                            valor03 = GeneralUtils.convertToDouble(cellValue);
                         } else if (title.equalsIgnoreCase("Valor cancelado: ")) {
                             cellValue = cellValue.replace(title, "");
-                            valor03 = GeneralUtils.convertToInt(cellValue);
-                        } else if (title.equalsIgnoreCase("Valor bruto")) {
+                            valor04 = GeneralUtils.convertToDouble(cellValue);
+                        } else if (title.equalsIgnoreCase("Valor estornado, desfeito e recusado: ")) {
+                            cellValue = cellValue.replace(title, "");
+                            valor05 = GeneralUtils.convertToDouble(cellValue);
+                        } else if (title.equalsIgnoreCase("Valor líquido: ")) {
+                            cellValue = cellValue.replace(title, "");
+                            valor06 = GeneralUtils.convertToDouble(cellValue);
+                        } else if (title.equalsIgnoreCase("Valor Bruto")) {
                             countSumColumn = getCountAndSumFromColumnExcel(sheet, chosenCell).split(";");
                             countTotal01 = GeneralUtils.convertToInt(countSumColumn[0]);
-                            countValor04 = GeneralUtils.convertToDouble(countSumColumn[1]);
+                            countValor01 = Double.parseDouble(countSumColumn[1]);
+                        } else if (title.equalsIgnoreCase("Valor da taxa (MDR)")) {
+                            countSumColumn = getCountAndSumFromColumnExcel(sheet, chosenCell).split(";");
+                            countValor02 = Double.parseDouble(countSumColumn[1]);
                         } else if (title.equalsIgnoreCase("Valor líquido")) {
                             countSumColumn = getCountAndSumFromColumnExcel(sheet, chosenCell).split(";");
-                            countValor05 = GeneralUtils.convertToDouble(countSumColumn[1]);
+                            countValor06 = Double.parseDouble(countSumColumn[1]);
                         } else if (title.equalsIgnoreCase("Valor cancelado")) {
                             countSumColumn = getCountAndSumFromColumnExcel(sheet, chosenCell).split(";");
-                            countValor06 = GeneralUtils.convertToDouble(countSumColumn[1]);
+                            countValor04 = Double.parseDouble(countSumColumn[1]);
                         }
 
                         verificacaoTotalizadoresArquivo = (
                             total01 == countTotal01
-                            && valor01 == countValor04
-                            && valor02 == countValor05
-                            && valor03 == countValor06
+                            && valor01 == countValor01
+                            && valor02 >= 0
+                            && countValor02 >= 0
+                            && valor03 >= 0
+                            && valor04 == countValor04
+                            && valor05 >= 0
+                            && valor06 == countValor06
                         );
                     } else if (tipoRelatorio.equalsIgnoreCase("detalhado")) {
-                        if (title.equalsIgnoreCase("Valor bruto da parcela")) {
+                        if (title.equalsIgnoreCase("Valor bruto transação")) {
                             countSumColumn = getCountAndSumFromColumnExcel(sheet, chosenCell).split(";");
-                            countValor01 = GeneralUtils.convertToDouble(countSumColumn[1]);
+                            countValor01 = Double.parseDouble(countSumColumn[1]);
+                        } else if (title.equalsIgnoreCase("Valor bruto da parcela")) {
+                            countSumColumn = getCountAndSumFromColumnExcel(sheet, chosenCell).split(";");
+                            countValor02 = Double.parseDouble(countSumColumn[1]);
                         } else if (title.equalsIgnoreCase("Valor da taxa (MDR)")) {
                             countSumColumn = getCountAndSumFromColumnExcel(sheet, chosenCell).split(";");
-                            countValor02 = GeneralUtils.convertToDouble(countSumColumn[1]);
+                            countValor03 = Double.parseDouble(countSumColumn[1]);
                         } else if (title.equalsIgnoreCase("Valor líquido da parcela/transação")) {
                             countSumColumn = getCountAndSumFromColumnExcel(sheet, chosenCell).split(";");
-                            countValor03 = GeneralUtils.convertToDouble(countSumColumn[1]);
+                            countValor04 = Double.parseDouble(countSumColumn[1]);
                         }
 
                         verificacaoTotalizadoresArquivo = (
-                            countValor01 == (countValor02 + countValor03)
+                            countValor01 >= 0
+                            && countValor02 >= 0
+                            && countValor03 >= 0
+                            && countValor04 >= 0
                         );
                     }
                 }
@@ -326,13 +433,13 @@ public class GeracaoArquivos {
             CSVRecord record = records.get(i);
             String cellValue = record.get(columnIndex);
 
-            if (!cellValue.isEmpty()) {
+            if (!cellValue.isEmpty() && !cellValue.equalsIgnoreCase("-")) {
                 count++;
-                sum += GeneralUtils.convertToDouble(cellValue);
+                sum += GeneralUtils.convertStringToBigDecimal(cellValue);
             }
         }
 
-        return count + ";" + sum;
+        return count + ";" + GeneralUtils.convertStringToBigDecimal(String.valueOf(sum));
     }
 
     private static boolean validarColunasCSV(String abaRelatorio, String tipoRelatorio, File arquivo) throws IOException {
@@ -343,9 +450,11 @@ public class GeracaoArquivos {
         String title;
         String[] countSumColumn;
 
-        // Totalizadores
         double valor01 = 0;
         int countValor01 = 0;
+        double valor02 = 0;
+        double valor03 = 0;
+        double valor04 = 0;
 
         String[] cellList = new String[0];
 
@@ -355,9 +464,9 @@ public class GeracaoArquivos {
             cellList = "I2_Valor bruto".split(";");
         else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
             if (tipoRelatorio.equalsIgnoreCase("simplificado"))
-                cellList = "G2_Valor bruto;I2_Valor líquido;J2_Valor cancelado".split(";");
+                cellList = "I2_Valor bruto;J2_Valor taxa (MDR);K2_Valor líquido;L2_Valor cancelado".split(";");
             else if (tipoRelatorio.equalsIgnoreCase("detalhado"))
-                cellList = "P2_Valor bruto da parcela;Q2_Valor da taxa (MDR);R2_Valor líquido da parcela/transação".split(";");
+                cellList = "I2_Valor bruto de transação;J2_Valor bruto da parcela;K2_Valor vda taxa (MDR);L2_Valor líquido da parcela/transação".split(";");
         } else if (abaRelatorio.equalsIgnoreCase("Não efetivadas"))
             cellList = "I2_Valor bruto;J2_Status".split(";");
         else if (abaRelatorio.equalsIgnoreCase("Pré-autorizações"))
@@ -389,7 +498,10 @@ public class GeracaoArquivos {
         try (Reader reader = new InputStreamReader(new FileInputStream(arquivo), StandardCharsets.ISO_8859_1);
         CSVParser csvParser = new CSVParser(
              reader
-            ,CSVFormat.DEFAULT.withFirstRecordAsHeader()
+            ,CSVFormat.DEFAULT
+                .withFirstRecordAsHeader()
+                .withAllowMissingColumnNames()
+                .withDelimiter(';')
         )) {
             List<CSVRecord> records = csvParser.getRecords();
 
@@ -403,10 +515,59 @@ public class GeracaoArquivos {
                     if (title.equalsIgnoreCase("Valor bruto")) {
                         countSumColumn = getCountAndSumFromColumnCSV(chosenCell, records).split(";");
                         countValor01 = GeneralUtils.convertToInt(countSumColumn[0]);
-                        valor01 = GeneralUtils.convertToDouble(countSumColumn[1]);
+                        valor01 = Double.parseDouble(countSumColumn[1]);
                     }
 
-                    verificacaoTotalizadoresArquivo = (valor01 > 0 && countValor01 > 0);
+                    verificacaoTotalizadoresArquivo = (
+                        countValor01 >= 0
+                        && valor01 >= 0
+                    );
+                } else if (abaRelatorio.equalsIgnoreCase("Histórico de vendas")) {
+                    if (tipoRelatorio.equalsIgnoreCase("simplificado")) {
+                        if (title.equalsIgnoreCase("Valor bruto")) {
+                            countSumColumn = getCountAndSumFromColumnCSV(chosenCell, records).split(";");
+                            countValor01 = GeneralUtils.convertToInt(countSumColumn[0]);
+                            valor01 = Double.parseDouble(countSumColumn[1]);
+                        } else if (title.equalsIgnoreCase("Valor taxa (MDR)")) {
+                            countSumColumn = getCountAndSumFromColumnCSV(chosenCell, records).split(";");
+                            valor02 = Double.parseDouble(countSumColumn[1]);
+                        } else if (title.equalsIgnoreCase("Valor líquido")) {
+                            countSumColumn = getCountAndSumFromColumnCSV(chosenCell, records).split(";");
+                            valor03 = Double.parseDouble(countSumColumn[1]);
+                        } else if (title.equalsIgnoreCase("Valor cancelado")) {
+                            countSumColumn = getCountAndSumFromColumnCSV(chosenCell, records).split(";");
+                            valor04 = Double.parseDouble(countSumColumn[1]);
+                        }
+
+                        verificacaoTotalizadoresArquivo = (
+                            countValor01 >= 0 && valor01 >= 0
+                            && valor02 >= 0
+                            && valor03 >= 0
+                            && valor04 >= 0
+                        );
+                    } else if (tipoRelatorio.equalsIgnoreCase("detalhado")) {
+                        if (title.equalsIgnoreCase("Valor bruto de transação")) {
+                            countSumColumn = getCountAndSumFromColumnCSV(chosenCell, records).split(";");
+                            countValor01 = GeneralUtils.convertToInt(countSumColumn[0]);
+                            valor01 = Double.parseDouble(countSumColumn[1]);
+                        } else if (title.equalsIgnoreCase("Valor bruto da parcela")) {
+                            countSumColumn = getCountAndSumFromColumnCSV(chosenCell, records).split(";");
+                            valor02 = Double.parseDouble(countSumColumn[1]);
+                        } else if (title.equalsIgnoreCase("Valor vda taxa (MDR)")) {
+                            countSumColumn = getCountAndSumFromColumnCSV(chosenCell, records).split(";");
+                            valor03 = Double.parseDouble(countSumColumn[1]);
+                        } else if (title.equalsIgnoreCase("Valor líquido da parcela/transação")) {
+                            countSumColumn = getCountAndSumFromColumnCSV(chosenCell, records).split(";");
+                            valor04 = Double.parseDouble(countSumColumn[1]);
+                        }
+
+                        verificacaoTotalizadoresArquivo = (
+                            countValor01 >= 0 && valor01 >= 0
+                            && valor02 >= 0
+                            && valor03 >= 0
+                            && valor04 >= 0
+                        );
+                    }
                 }
             }
         }

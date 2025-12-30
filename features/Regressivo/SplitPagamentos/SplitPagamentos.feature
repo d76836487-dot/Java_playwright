@@ -159,29 +159,29 @@ Feature: Split de pagamentos
       | alianca           | menu     | submenu           | abaRelatorio          | apresentacao |
       | "banqiFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "apresenta"  |
 
-    @corujacapital
+    @corujapay
     @franqueador
     Examples:
-      | alianca                    | menu     | submenu           | abaRelatorio | apresentacao    |
-      | "corujacapitalFranqueador" | "vendas" | "relatorioVendas" | "Hoje"       | "não apresenta" |
+      | alianca                | menu     | submenu           | abaRelatorio | apresentacao    |
+      | "corujapayFranqueador" | "vendas" | "relatorioVendas" | "Hoje"       | "não apresenta" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     Examples:
-      | alianca                    | menu     | submenu           | abaRelatorio          | apresentacao |
-      | "corujacapitalFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "apresenta"  |
+      | alianca                | menu     | submenu           | abaRelatorio          | apresentacao |
+      | "corujapayFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "apresenta"  |
 
-    @corujacapital
+    @corujapay
     @franqueado
     Examples:
-      | alianca                   | menu     | submenu           | abaRelatorio | apresentacao |
-      | "corujacapitalFranqueado" | "vendas" | "relatorioVendas" | "Hoje"       | "apresenta"  |
+      | alianca               | menu     | submenu           | abaRelatorio | apresentacao |
+      | "corujapayFranqueado" | "vendas" | "relatorioVendas" | "Hoje"       | "apresenta"  |
 
-    @corujacapital
+    @corujapay
     @franqueado
     Examples:
-      | alianca                   | menu     | submenu           | abaRelatorio          | apresentacao |
-      | "corujacapitalFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "apresenta"  |
+      | alianca               | menu     | submenu           | abaRelatorio          | apresentacao |
+      | "corujapayFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "apresenta"  |
 
   @dashboard
   @TestCaseKey=LPDC-T1411
@@ -273,19 +273,19 @@ Feature: Split de pagamentos
       | "banqiFranqueado" | "vendasHoje"    | "está visível" |
       | "banqiFranqueado" | "ultimasVendas" | "está visível" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     Examples:
-      | alianca                    | dashboard       | visivel            |
-      | "corujacapitalFranqueador" | "vendasHoje"    | "não está visível" |
-      | "corujacapitalFranqueador" | "ultimasVendas" | "não está visível" |
+      | alianca                | dashboard       | visivel            |
+      | "corujapayFranqueador" | "vendasHoje"    | "não está visível" |
+      | "corujapayFranqueador" | "ultimasVendas" | "não está visível" |
 
-    @corujacapital
+    @corujapay
     @franqueado
     Examples:
-      | alianca                   | dashboard       | visivel        |
-      | "corujacapitalFranqueado" | "vendasHoje"    | "está visível" |
-      | "corujacapitalFranqueado" | "ultimasVendas" | "está visível" |
+      | alianca               | dashboard       | visivel        |
+      | "corujapayFranqueado" | "vendasHoje"    | "está visível" |
+      | "corujapayFranqueado" | "ultimasVendas" | "está visível" |
 
   @personalizarColunas
   @master
@@ -325,10 +325,10 @@ Feature: Split de pagamentos
       | alianca | menu     | submenu           | abaRelatorio          | colunas                   |
       | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valor original da venda" |
 
-    @corujacapital
+    @corujapay
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio          | colunas                   |
-      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valor original da venda" |
+      | alianca     | menu     | submenu           | abaRelatorio          | colunas                   |
+      | "corujapay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valor original da venda" |
 
   @personalizarColunas
   @TestCaseKey=LPDC-T1409
@@ -410,17 +410,17 @@ Feature: Split de pagamentos
       | alianca           | menu     | submenu           | abaRelatorio          | colunas                   |
       | "banqiFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valor original da venda" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     Examples:
-      | alianca                    | menu     | submenu           | abaRelatorio          | colunas                   |
-      | "corujacapitalFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valor original da venda" |
+      | alianca                | menu     | submenu           | abaRelatorio          | colunas                   |
+      | "corujapayFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valor original da venda" |
 
-    @corujacapital
+    @corujapay
     @franqueado
     Examples:
-      | alianca                   | menu     | submenu           | abaRelatorio          | colunas                   |
-      | "corujacapitalFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valor original da venda" |
+      | alianca               | menu     | submenu           | abaRelatorio          | colunas                   |
+      | "corujapayFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Valor original da venda" |
 
   @detalhesVenda
   @TestCaseKey=LPDC-T1432
@@ -537,23 +537,23 @@ Feature: Split de pagamentos
       | alianca           | menu     | submenu           | abaRelatorio          | visivel        |
       | "banqiFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
-    @corujacapital
+    @corujapay
     @master
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio          | visivel            |
-      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "não está visível" |
+      | alianca     | menu     | submenu           | abaRelatorio          | visivel            |
+      | "corujapay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "não está visível" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     Examples:
-      | alianca                    | menu     | submenu           | abaRelatorio          | visivel        |
-      | "corujacapitalFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
+      | alianca                | menu     | submenu           | abaRelatorio          | visivel        |
+      | "corujapayFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
-    @corujacapital
+    @corujapay
     @franqueado
     Examples:
-      | alianca                   | menu     | submenu           | abaRelatorio          | visivel        |
-      | "corujacapitalFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
+      | alianca               | menu     | submenu           | abaRelatorio          | visivel        |
+      | "corujapayFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "está visível" |
 
   @gerarArquivo
   @colunasArquivo
@@ -732,33 +732,33 @@ Feature: Split de pagamentos
       | alianca | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
       | "banqi" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @excel
     @simplificado
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                         |
-      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Número do cartão;Cód. Ref. Cartão" |
+      | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                         |
+      | "corujapay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Número do cartão;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @excel
     @detalhado
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
+      | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+      | "corujapay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @csv
     @simplificado
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                   |
-      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Num cartão;Cód. Ref. Cartão" |
+      | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                   |
+      | "corujapay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Num cartão;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @csv
     @detalhado
     Examples:
-      | alianca         | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-      | "corujacapital" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
+      | alianca     | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+      | "corujapay" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
   @gerarArquivo
   @colunasArquivo
@@ -1536,131 +1536,131 @@ Feature: Split de pagamentos
       | alianca           | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
       | "banqiFranqueado" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor original da venda;Valor original da parcela;Valor royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela paga parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Número do cartão;Banco;Agência;Conta" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     @excel
     @simplificado
     Examples:
-      | alianca                    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                                                                                   |
-      | "corujacapitalFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor royalties;Valor bruto parceiro;Valor da taxa;Valor líquido parceiro;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Número do cartão;Cód. Ref. Cartão" |
+      | alianca                | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                                                                                   |
+      | "corujapayFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor royalties;Valor bruto parceiro;Valor da taxa;Valor líquido parceiro;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Número do cartão;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     @excel
     @detalhado
     Examples:
-      | alianca                    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-      | "corujacapitalFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor Original da Venda;Valor Royalties da transação;Valor Royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
+      | alianca                | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+      | "corujapayFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor Original da Venda;Valor Royalties da transação;Valor Royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     @csv
     @simplificado
     Examples:
-      | alianca                    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                                                                             |
-      | "corujacapitalFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor royalties;Valor bruto parceiro;Valor da taxa;Valor líquido parceiro;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Num cartão;Cód. Ref. Cartão" |
+      | alianca                | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                                                                             |
+      | "corujapayFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor royalties;Valor bruto parceiro;Valor da taxa;Valor líquido parceiro;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Num cartão;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     @csv
     @detalhado
     Examples:
-      | alianca                    | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-      | "corujacapitalFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor royalties da transação;Valor royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
+      | alianca                | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+      | "corujapayFranqueador" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor royalties da transação;Valor royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @franqueado
     @excel
     @simplificado
     Examples:
-      | alianca                   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                                                                 |
-      | "corujacapitalFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor royalties;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Número do cartão;Cód. Ref. Cartão" |
+      | alianca               | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                                                                 |
+      | "corujapayFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor royalties;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Número do cartão;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @franqueado
     @excel
     @detalhado
     Examples:
-      | alianca                   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-      | "corujacapitalFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor Original da Venda;Valor Royalties da transação;Valor Royalties da parcela;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
+      | alianca               | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+      | "corujapayFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "Excel"     | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor Original da Venda;Valor Royalties da transação;Valor Royalties da parcela;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @franqueado
     @csv
     @simplificado
     Examples:
-      | alianca                   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                                                           |
-      | "corujacapitalFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor royalties;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Num cartão;Cód. Ref. Cartão" |
+      | alianca               | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio  | colunas                                                                                                                                                                                                                                                                                                                           |
+      | "corujapayFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "simplificado" | "Data da venda;Cód. de autorização;Produto;Parcelas;Bandeira;Canal;Valor original da venda;Valor royalties;Valor bruto;Valor da taxa;Valor líquido;Valor cancelado;Status;Número do terminal;Comprovante da venda;Cód. do pedido;Número do estabelecimento;Nome do estabelecimento;Descrição do link;Num cartão;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @franqueado
     @csv
     @detalhado
     Examples:
-      | alianca                   | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-      | "corujacapitalFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor royalties da transação;Valor royalties da parcela;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
+      | alianca               | menu     | submenu           | abaRelatorio          | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+      | "corujapayFranqueado" | "vendas" | "relatorioVendas" | "Histórico de vendas" | "CSV"       | "detalhado"   | "Data da venda;Hora da venda;Código de autorização;Código do estabelecimento;Nome do estabelecimento;Comprovante de venda;Código do pedido;Canal;Número do Terminal;Produto;Parcelas;Tipo de cartão;Bandeira;Status;Valor original da venda;Valor royalties da transação;Valor royalties da parcela;Valor bruto da transação;Valor bruto da parcela;Valor da taxa (MDR);Valor líquido da parcela/transação;Descrição do link;Número do cartão;Cartão pré pago;Data prevista de pagamento da venda;Status do pagamento da venda;Data efetiva do pagamento da venda;Código de pagamento;Cód. Ref. Cartão" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     @excel
     @simplificado
     Examples:
-      | alianca                    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
-      | "corujacapitalFranqueador" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
+      | "corujapayFranqueador" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     @excel
     @detalhado
     Examples:
-      | alianca                    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-      | "corujacapitalFranqueador" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor original da venda;Valor original da parcela;Valor royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela paga parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Número do cartão;Banco;Agência;Conta" |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+      | "corujapayFranqueador" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor original da venda;Valor original da parcela;Valor royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela paga parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Número do cartão;Banco;Agência;Conta" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     @csv
     @simplificado
     Examples:
-      | alianca                    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
-      | "corujacapitalFranqueador" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
+      | "corujapayFranqueador" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @corujacapital
+    @corujapay
     @franqueador
     @csv
     @detalhado
     Examples:
-      | alianca                    | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-      | "corujacapitalFranqueador" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor original da venda;Valor original da parcela;Valor royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela paga parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Número do cartão;Banco;Agência;Conta" |
+      | alianca                | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+      | "corujapayFranqueador" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor original da venda;Valor original da parcela;Valor royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela paga parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Número do cartão;Banco;Agência;Conta" |
 
-    @corujacapital
+    @corujapay
     @franqueado
     @excel
     @simplificado
     Examples:
-      | alianca                   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
-      | "corujacapitalFranqueado" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
+      | alianca               | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
+      | "corujapayFranqueado" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @corujacapital
+    @corujapay
     @franqueado
     @excel
     @detalhado
     Examples:
-      | alianca                   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-      | "corujacapitalFranqueado" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor original da venda;Valor original da parcela;Valor royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela paga parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Número do cartão;Banco;Agência;Conta" |
+      | alianca               | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+      | "corujapayFranqueado" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "Excel"     | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor original da venda;Valor original da parcela;Valor royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela paga parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Número do cartão;Banco;Agência;Conta" |
 
-    @corujacapital
+    @corujapay
     @franqueado
     @csv
     @simplificado
     Examples:
-      | alianca                   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
-      | "corujacapitalFranqueado" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
+      | alianca               | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio  | colunas                                                                                                   |
+      | "corujapayFranqueado" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "simplificado" | "Data do pagamento;Bandeira;Produto;Banco;Agência;Conta;Tipo;EC;Cód. de pagamento;Valor pagamento;Status" |
 
-    @corujacapital
+    @corujapay
     @franqueado
     @csv
     @detalhado
     Examples:
-      | alianca                   | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-      | "corujacapitalFranqueado" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor original da venda;Valor original da parcela;Valor royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela paga parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Número do cartão;Banco;Agência;Conta" |
+      | alianca               | menu           | submenu              | abaRelatorio            | tipoArquivo | tipoRelatorio | colunas                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+      | "corujapayFranqueado" | "recebimentos" | "resumoRecebimentos" | "Pagos_Meus Domicílios" | "CSV"       | "detalhado"   | "Data de pagamento;Código de pagamento;Tipo de pagamento;Data da venda;Hora da venda;Número do estabelecimento;Nome do estabelecimento;Código de autorização;Comprovante da venda;Código do pedido;Canal;Número do terminal;Produto;Parcelas;Tipo de Cartão;Bandeira;Status da venda;Valor original da venda;Valor original da parcela;Valor royalties da parcela;Valor bruto da transação parceiro;Valor bruto da parcela paga parceiro;Valor da taxa (MDR);Valor líquido da parcela/transação parceiro;Número do cartão;Banco;Agência;Conta" |
 
