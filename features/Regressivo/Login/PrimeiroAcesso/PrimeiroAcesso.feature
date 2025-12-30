@@ -5,7 +5,7 @@
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 @Automacao
-@PrimeiroAcesso
+@PrimeiroAcesso 
 Feature: Primeiro acesso
 
   @ga

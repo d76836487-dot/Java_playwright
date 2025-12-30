@@ -5,7 +5,7 @@
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: AlteraçãoSenhaHomeLogada
-
+ 
   @TestCaseKey=LPDC-T880
   Scenario: Login no Portal após alterar senha
     Given que eu alterei a senha na jornada do Portal,

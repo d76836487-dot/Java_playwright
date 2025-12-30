@@ -6,7 +6,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: AntecipacaoD0
 
-  # Contratação D0 ou D1 via banner de topo no Portal
+  # Contratação D0 ou D1 via banner de topo no Portal 
   @TestCaseKey=LPDC-T1361
   Scenario: Cliente elegivel entrando no fluxo de contratacao atraves do menu lateral
     Given usuario esta logado no Portal do cliente

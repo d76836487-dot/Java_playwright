@@ -16,7 +16,7 @@ public class HistoricoVendasPage extends GeneralUtils {
 
     private Locator primeiroRegistro;
 
-    // Campos - Total/Valor
+    // Campos - Total/Valor 
     private Locator totalVendas;
     private Locator valorBruto;
     private Locator valorLiquido;

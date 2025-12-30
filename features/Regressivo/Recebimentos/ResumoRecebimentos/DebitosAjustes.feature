@@ -7,7 +7,7 @@
 @Automacao
 @Recebimentos
 @DebitosAjustes
-Feature: Debitos e ajustes
+Feature: Debitos e ajustes 
 
   @navegacao
   @TestCaseKey=LPDC-T1275

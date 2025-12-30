@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class PrimeiroAcessoEtapa1Page extends GeneralUtils {
     @Autowired
     private Page page;
-
+ 
     private Locator title;
     private Locator txtUsuario;
     private Locator btnContinuar;

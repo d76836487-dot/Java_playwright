@@ -10,7 +10,7 @@ import io.cucumber.java.Scenario;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class PlaywrightHook {
-
+ 
     @Autowired
     PlaywrightScenarioService playwrightScenarioService;
 

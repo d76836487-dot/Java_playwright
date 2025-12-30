@@ -15,7 +15,7 @@ import java.lang.reflect.Type;
 @SpringBootTest(classes = {PlaywrightConfiguration.class, CommonConfiguration.class})
 @CucumberContextConfiguration
 public class CucumberContext {
-
+ 
     @Autowired
     ObjectMapper objectMapper;
 

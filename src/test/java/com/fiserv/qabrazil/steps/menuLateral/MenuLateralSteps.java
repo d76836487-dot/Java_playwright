@@ -12,4 +12,4 @@ public class MenuLateralSteps {
     public void acessar_menu_e_submenu(String menu, String submenu) {
         menuLateralPage.acessarMenuSubmenu(menu, submenu);
     }
-}
+} 

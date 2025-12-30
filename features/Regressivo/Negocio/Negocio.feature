@@ -6,7 +6,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 @Automacao
 @Negocio
-Feature: Negocio
+Feature: Negocio 
 
   @TestCaseKey=LPDC-T1554
   Scenario Outline: Validar troca de estabelecimento - Negocio

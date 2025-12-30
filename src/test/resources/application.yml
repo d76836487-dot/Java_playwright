@@ -17,7 +17,7 @@ framework:
       skipBrowserDownload: false
     launch-options:
       # Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary"
-      channel: chrome
+      channel: chrome 
       headless: true
       args:
         - --ignore-certificate-errors

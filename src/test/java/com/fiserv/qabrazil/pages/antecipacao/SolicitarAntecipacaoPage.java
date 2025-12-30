@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @ScenarioComponent
 public class SolicitarAntecipacaoPage extends GeneralUtils {
     @Autowired
-    private Page page;
+    private Page page; 
 
     private Locator titleSolicitarAntecipacao;
     private Locator btnSolicitarAtencipacaoAutomatica;

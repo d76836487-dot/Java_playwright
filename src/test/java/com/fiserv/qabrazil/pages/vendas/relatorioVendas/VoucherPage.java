@@ -14,7 +14,7 @@ public class VoucherPage extends GeneralUtils {
 
     // Campos - Total/Valor
     private Locator totalVendas;
-    private Locator valorBruto;
+    private Locator valorBruto; 
 
     @PostConstruct
     private void loadLocators() {

@@ -12,9 +12,9 @@ public class PreAutorizacoesPage extends GeneralUtils {
     @Autowired
     private Page page;
 
-    // Campos - Total/Valor
+    // Campos - Total/Valor 
     private Locator totalVendas;
-    private Locator valorBrutoAutorizado;
+    private Locator valorBrutoAutorizado; 
     private Locator valorBrutoConfirmar;
 
     @PostConstruct

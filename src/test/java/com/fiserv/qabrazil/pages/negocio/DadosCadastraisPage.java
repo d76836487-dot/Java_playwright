@@ -12,7 +12,7 @@ import org.testng.Assert;
 @ScenarioComponent
 public class DadosCadastraisPage extends GeneralUtils {
     @Autowired
-    private Page page;
+    private Page page; 
 
     private Locator title;
     private Locator nomeFantasia;

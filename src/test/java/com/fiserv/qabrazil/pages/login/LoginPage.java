@@ -13,7 +13,7 @@ public class LoginPage extends GeneralUtils {
     @Autowired
     private Page page;
 
-    private Locator title;
+    private Locator title; 
     private Locator txtLogin;
     private Locator txtPassword;
     private Locator linkEsqueciMinhaSenha;

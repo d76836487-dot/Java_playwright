@@ -12,7 +12,7 @@ public class HistoricoVendasSteps {
     public void verifica_os_dados_do_link_Mais_detalhes() {
         historicoVendasPage.verificarDadosMaisDetalhes();
     }
-
+ 
     @And("verifica se o Valor original da venda {string}")
     public void verifica_se_o_Valor_original_da_venda(String visivel) {
         historicoVendasPage.verificarValorOriginalVenda(visivel);

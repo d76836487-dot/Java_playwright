@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDate;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
+ 
 @ScenarioComponent
 public class HomePage extends GeneralUtils {
     @Autowired

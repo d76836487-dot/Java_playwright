@@ -8,7 +8,7 @@
 @Vendas
 @Voucher
 Feature: Voucher
-
+ 
   @navegacao
   @TestCaseKey=LPDC-T1214
   Scenario Outline: Verificar texto do rodape - Voucher

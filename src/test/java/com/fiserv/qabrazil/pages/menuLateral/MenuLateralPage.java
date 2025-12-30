@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-@ScenarioComponent
+@ScenarioComponent 
 public class MenuLateralPage extends GeneralUtils {
     @Autowired
     private Page page;

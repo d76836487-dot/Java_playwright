@@ -15,7 +15,7 @@ public class GeneralUtils extends WaitUtil {
 
         while (i > 0) {
             sleep(Duration.ofMillis(1000L));
-            i--;
+            i--; 
         }
     }
 

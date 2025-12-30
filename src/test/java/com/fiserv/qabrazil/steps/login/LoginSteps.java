@@ -8,7 +8,7 @@ import com.fiserv.qabrazil.pages.login.primeiroAcesso.PrimeiroAcessoEtapa1Page;
 import com.fiserv.qabrazil.pages.login.primeiroAcesso.PrimeiroAcessoEtapa3Page;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.When; 
 import io.cucumber.java.en.Then;
 import org.springframework.beans.factory.annotation.Autowired;
 

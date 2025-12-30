@@ -15,7 +15,7 @@ public class SolicitarAntecipacaoSteps {
     public void solicitar_anticipacao_automatica_contendo_os_seguintes_valores_Bandeiras_Produtos_Frequencia__e_Dia_de_recebimento(
      String bandeiras
     ,String produtos
-    ,String frequencia
+    ,String frequencia 
     ,String diaRecebimento) {
         antecipacaoAutomaticaPage.solicitarAntecipacaoAutomatica(
          bandeiras

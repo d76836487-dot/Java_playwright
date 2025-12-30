@@ -1,12 +1,12 @@
 package com.fiserv.qabrazil.enums;
 
 import lombok.Getter;
-
+ 
 @Getter
 public enum PerfilAcessoEnum {
     BIN(
         "bin"
-        ,setUrlPortal("bin")
+        ,setUrlPortal("bin") 
         ,"master"
         ,"18711403829"
         ,"Bin@12345678"

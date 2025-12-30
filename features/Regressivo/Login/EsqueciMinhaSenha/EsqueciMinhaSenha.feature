@@ -6,7 +6,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 @Automacao
 @EsqueciMinhaSenha
-Feature: Esqueci minha senha
+Feature: Esqueci minha senha 
 
   @ga
   @TestCaseKey=LPDC-T1426

@@ -8,7 +8,7 @@
 @Vendas
 @HistoricoVendas
 Feature: Historico de vendas
-
+ 
   @navegacao
   @TestCaseKey=LPDC-T1218
   Scenario Outline: Verificar texto do rodape - Historico de vendas

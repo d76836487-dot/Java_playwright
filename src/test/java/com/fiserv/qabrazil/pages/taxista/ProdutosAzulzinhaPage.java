@@ -14,7 +14,7 @@ public class ProdutosAzulzinhaPage extends GeneralUtils {
     private Page page;
 
     private Locator title;
-    private Locator cbAzulzinhaPro;
+    private Locator cbAzulzinhaPro; 
     private Locator cbAzulzinhaAproxima;
     private Locator linkTaxas;
     private Locator linkAzulzinhaPro;

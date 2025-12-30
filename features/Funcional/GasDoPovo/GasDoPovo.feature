@@ -6,7 +6,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: Gas do Povo
 
-  @TestCaseKey=LPDC-T1837
+  @TestCaseKey=LPDC-T1837 
   Scenario: Validar transação "Gás do povo" na aba "Hoje"
     Given acesso a aba "Hoje"
     When visualizo as transações do dia

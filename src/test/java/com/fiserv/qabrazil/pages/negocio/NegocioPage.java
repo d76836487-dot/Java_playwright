@@ -17,7 +17,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class NegocioPage extends GeneralUtils {
     @Autowired
     private Page page;
-
+ 
     @Autowired
     TrocarEstabelecimentoPage trocarEstabelecimentoPage;
     @Autowired

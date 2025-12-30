@@ -5,7 +5,7 @@
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 @Automacao
-@SplitPagamentos
+@SplitPagamentos 
 Feature: Split de pagamentos
 
   @transacoes

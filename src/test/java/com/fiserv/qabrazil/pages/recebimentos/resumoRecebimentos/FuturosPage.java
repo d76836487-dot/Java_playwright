@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class FuturosPage extends GeneralUtils {
     @Autowired
     private Page page;
-
+ 
     // Campos - Total/Valor
     private Locator totalVendas;
     private Locator totalLiquidoPrevisto;

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class HomeSteps {    @Autowired
     HomePage homePage;
-
+ 
     @When("acessar dashboard {string}")
     public void acessar_dashboard(String dashboard) {
         homePage.acessarDashboard(dashboard);

@@ -7,7 +7,7 @@
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: MenuCloverCapitalTrackingDePropostaDeEmpréstimo
-
+ 
   @TestCaseKey=LPDC-T1774
   Scenario: Verificar status "Solicitação de contato enviada"
     Given que o usuário acessa a aba "Clover Capital"

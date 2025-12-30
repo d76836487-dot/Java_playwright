@@ -15,7 +15,7 @@ public class NaoEfetivadasPage extends GeneralUtils {
     // Campos - Total/Valor
     private Locator totalRecusadas;
     private Locator totalEstornadas;
-
+ 
     @PostConstruct
     private void loadLocators() {
         // Campos - Total/Valor

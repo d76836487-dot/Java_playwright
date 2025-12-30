@@ -13,7 +13,7 @@ public class HojePage extends GeneralUtils {
     private Page page;
 
     // Campos - Total/Valor
-    private Locator totalVendas;
+    private Locator totalVendas; 
     private Locator valorBruto;
 
     @PostConstruct

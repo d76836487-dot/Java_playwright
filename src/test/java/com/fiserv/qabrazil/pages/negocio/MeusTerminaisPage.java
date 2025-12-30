@@ -15,7 +15,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 @ScenarioComponent
 public class MeusTerminaisPage extends GeneralUtils {
     @Autowired
-    private Page page;
+    private Page page; 
 
     private Locator title;
     private Locator linkVoltar;

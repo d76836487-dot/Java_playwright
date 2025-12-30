@@ -12,7 +12,7 @@ public class NegocioSteps {
     public void valido_a_troca_do_estabelecimento() {
         negocioPage.validarTrocaEstabelecimento();
     }
-
+ 
     @Then("verifico os Dados Cadastrais")
     public void verifico_os_Dados_Cadastrais() {
         negocioPage.validarDadosCadastrais();

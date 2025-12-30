@@ -13,7 +13,7 @@ public class ReviseSeuPedidoPage extends GeneralUtils {
     @Autowired
     private Page page;
 
-    private Locator title;
+    private Locator title; 
     private Locator linkAlterarSobreVoce;
     private Locator linkAlterarSobreSeuNegocio;
     private Locator linkAlterarEndereco;

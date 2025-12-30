@@ -5,7 +5,7 @@
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: HomeLogadaBCJPay
-
+ 
   @TestCaseKey=LPDC-T1764
   Scenario: Verificar o look & feel da aliança BCJ Pay
     Given acesso no portal com a aliança BCJ Pay configurada

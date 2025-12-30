@@ -16,7 +16,7 @@ public class TrocarEstabelecimentoPage extends GeneralUtils {
     private Locator title;
     private Locator rbEC;
     private Locator btnSelecionar;
-
+ 
     @PostConstruct
     private void loadLocators() {
         this.title = page.locator("//*[text()='Selecionar Estabelecimento comercial']");

@@ -6,7 +6,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: DirfNativaHomeLogada
 
-  @TestCaseKey=LPDC-T907
+  @TestCaseKey=LPDC-T907 
   Scenario: Acessar o menu Informe de Rendimento a partir do acesso rápido da home logada (personalizada)
     Given que o usuário está logado na home
     When usuário clica no acesso rápido

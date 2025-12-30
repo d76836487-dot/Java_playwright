@@ -7,7 +7,7 @@
 @Automacao
 @Vendas
 @Hoje
-Feature: Vendas Hoje
+Feature: Vendas Hoje 
 
   @navegacao
   @TestCaseKey=LPDC-T1229

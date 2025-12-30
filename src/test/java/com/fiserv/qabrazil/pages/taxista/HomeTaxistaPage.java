@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 @ScenarioComponent
 public class HomeTaxistaPage extends GeneralUtils {
     @Autowired
-    private Page page;
+    private Page page; 
 
     private Locator title;
     private Locator btnQueroMinhaAzulzinha;

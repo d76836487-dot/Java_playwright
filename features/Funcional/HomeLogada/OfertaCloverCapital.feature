@@ -5,7 +5,7 @@
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: OfertaCloverCapital
-
+ 
   @TestCaseKey=LPDC-T1640
   Scenario: Exibir banner de elegibilidade quando usuário é elegível
     Given a feature toggle está ativado

@@ -6,7 +6,7 @@
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 @Automacao
 @Antecipacao
-@Historico
+@Historico 
 Feature: Historico
 
   @navegacao

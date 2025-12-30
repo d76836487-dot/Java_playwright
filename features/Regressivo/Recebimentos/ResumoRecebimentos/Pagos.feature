@@ -7,7 +7,7 @@
 @Automacao
 @Recebimentos
 @Pagos
-Feature: Pagos
+Feature: Pagos 
 
   @navegacao
   @TestCaseKey=LPDC-T1258

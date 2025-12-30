@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @ScenarioComponent
 public class RelatorioAntecipacoesPage extends GeneralUtils {
     @Autowired
-    private Page page;
+    private Page page;  
 
     // Campos - Total/Valor
     private Locator valorBrutoVendas;

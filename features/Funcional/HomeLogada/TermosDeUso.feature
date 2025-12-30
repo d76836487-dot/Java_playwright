@@ -5,7 +5,7 @@
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: TermosDeUso
-
+ 
   @TestCaseKey=LPDC-T810
   Scenario: Primeiro acesso sem aceitar os Termos
     Given Usuário inseriu senha que está de acordo com os pré-requisitos

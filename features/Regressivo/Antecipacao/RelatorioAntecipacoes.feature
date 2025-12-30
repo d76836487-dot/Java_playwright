@@ -7,7 +7,7 @@
 @Automacao
 @Antecipacao
 @RelatorioAntecipacoes
-Feature: Relatorio de antecipacoes
+Feature: Relatorio de antecipacoes 
 
   @navegacao
   @TestCaseKey=LPDC-T1281

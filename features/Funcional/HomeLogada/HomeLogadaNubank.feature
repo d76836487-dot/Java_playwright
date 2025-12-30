@@ -7,7 +7,7 @@
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: HomeLogadaNubank
-
+ 
   @TestCaseKey=LPDC-T1735
   Scenario: Verificar transações permitidas para a aliança Nubank
     Given que a aliança "Nubank" está configurada

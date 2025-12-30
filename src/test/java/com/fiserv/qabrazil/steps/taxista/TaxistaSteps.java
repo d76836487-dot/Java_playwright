@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class TaxistaSteps {
     @Autowired
     private HomeTaxistaPage homeTaxistaPage;
-
+ 
     @Autowired
     private ParaComecarSeuCadastroPage paraComecarSeuCadastroPage;
 

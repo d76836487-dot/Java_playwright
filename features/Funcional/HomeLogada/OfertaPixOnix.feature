@@ -5,7 +5,7 @@
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: OfertaPixOnix
-
+ 
   @TestCaseKey=LPDC-T1340
   Scenario: Clientes Com interesse no Pix
     Given que o usuario esta logado no portal do cliente,

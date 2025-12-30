@@ -8,7 +8,7 @@ import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-
+ 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @ScenarioComponent

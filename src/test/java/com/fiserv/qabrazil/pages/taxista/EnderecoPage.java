@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class EnderecoPage extends GeneralUtils {
     @Autowired
     private Page page;
-
+ 
     private Locator title;
     private Locator txtCep;
     private Locator txtLogradouro;

@@ -2,7 +2,7 @@
          xsi:schemaLocation="https://www.mojohaus.org/VERSIONS/RULE/2.1.0 https://www.mojohaus.org/versions/versions-model/xsd/rule-2.1.0.xsd"
          comparisonMethod="maven">
     <rules>
-        <!--
+        <!-- 
 
         Ignores based on a regex
 

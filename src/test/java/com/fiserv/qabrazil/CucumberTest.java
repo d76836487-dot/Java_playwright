@@ -9,4 +9,4 @@ public class CucumberTest extends AbstractTestNGCucumberTests {
     public Object[][] scenarios() {
         return super.scenarios();
     }
-}
+} 

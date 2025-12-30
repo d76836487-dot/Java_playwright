@@ -1,17 +1,19 @@
 package com.fiserv.qabrazil.pages.antecipacao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.Assert;
+
 import com.fiserv.automation.framework.common.annotations.ScenarioComponent;
 import com.fiserv.qabrazil.util.Config;
 import com.fiserv.qabrazil.util.GeneralUtils;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.testng.Assert;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import jakarta.annotation.PostConstruct;
 
 @ScenarioComponent
 public class AntecipacaoAutomaticaPage extends GeneralUtils {

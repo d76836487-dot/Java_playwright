@@ -8,7 +8,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
-
+ 
 @ScenarioComponent
 public class EsqueciMinhaSenhaEtapa1Page extends GeneralUtils {
     @Autowired

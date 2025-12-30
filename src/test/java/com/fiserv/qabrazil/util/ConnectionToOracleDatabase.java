@@ -12,7 +12,7 @@ public class ConnectionToOracleDatabase {
 
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
-    }
+    } 
 
     public String getTokenByTypeFlow(String fluxo) {
         String token = "";

@@ -7,7 +7,7 @@
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Pending
 Feature: ModalDeAvisoDeInatividadeDe15minutosPortal
-
+ 
   @TestCaseKey=LPDC-T1778
   Scenario: Aviso de queda de sessão após 12 minutos de inatividade
     Given que o usuário esteja logado no Portal

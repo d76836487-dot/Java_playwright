@@ -9,7 +9,7 @@ public class Config {
     public static final int WAIT_30_SECONDS = 30;
     public static final int WAIT_60_SECONDS = 60;
     public static final int WAIT_90_SECONDS = 90;
-
+ 
     // tag do cucumber
     public static final String TAG_CUCUMBER = "@Automacao and @navegacao";
 }

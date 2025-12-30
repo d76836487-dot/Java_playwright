@@ -15,9 +15,9 @@ public class ComponentesRelatoriosSteps {
     @Then("valida que a aba {string} do relatorio foi acessada com sucesso")
     public void valida_que_a_aba_do_relatorio_foi_acessada_com_sucesso(String abaRelatorio) {
         componentesRelatoriosPage.validarCarregamentoAbaRelatorio(abaRelatorio);
-    }
+    } 
 
-    @And("valida que {string} as transacoes")
+    @And("valida que {string} as transacoes") 
     public void valida_que_as_transacoes(String apresentacao) {
         componentesRelatoriosPage.validarApresentacaoTransacoes(apresentacao);
     }

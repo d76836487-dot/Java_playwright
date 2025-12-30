@@ -7,7 +7,7 @@
 @Automacao
 @Vendas
 @PreAutorizacoes
-Feature: Pre autorizacoes
+Feature: Pre autorizacoes 
 
   @navegacao
   @TestCaseKey=LPDC-T1224

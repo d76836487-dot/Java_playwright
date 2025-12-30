@@ -13,7 +13,7 @@ public class ParaComecarSeuCadastroPage extends GeneralUtils {
     @Autowired
     private Page page;
 
-    private Locator title;
+    private Locator title; 
     private Locator txtNomeCompleto;
     private Locator txtDataNascimento;
     private Locator txtCelular;

@@ -13,7 +13,7 @@ public class PedidoConfirmadoPage extends GeneralUtils {
     @Autowired
     private Page page;
 
-    private Locator title;
+    private Locator title; 
 
     @PostConstruct
     private void loadLocators() {

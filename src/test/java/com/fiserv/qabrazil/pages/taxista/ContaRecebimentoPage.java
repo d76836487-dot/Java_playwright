@@ -13,7 +13,7 @@ public class ContaRecebimentoPage extends GeneralUtils {
     @Autowired
     private Page page;
 
-    private Locator title;
+    private Locator title; 
     private Locator slcTipoConta;
     private Locator txtAgencia;
     private Locator slcOperacao;
