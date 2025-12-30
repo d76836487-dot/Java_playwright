@@ -5,7 +5,6 @@ import com.microsoft.playwright.Locator;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.time.Duration;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -152,11 +151,11 @@ public class GeneralUtils extends WaitUtil {
             case "banqiCedidos" -> PerfilAcessoEnum.BANQI_CEDIDOS;
             case "banqiFranqueador" -> PerfilAcessoEnum.BANQI_FRANQUEADOR;
             case "banqiFranqueado" -> PerfilAcessoEnum.BANQI_FRANQUEADO;
-            case "corujacapital" -> PerfilAcessoEnum.CORUJACAPITAL;
-            case "corujacapitalSecundario" -> PerfilAcessoEnum.CORUJACAPITAL_SECUNDARIO;
-            case "corujacapitalCedidos" -> PerfilAcessoEnum.CORUJACAPITAL_CEDIDOS;
-            case "corujacapitalFranqueador" -> PerfilAcessoEnum.CORUJACAPITAL_FRANQUEADOR;
-            case "corujacapitalFranqueado" -> PerfilAcessoEnum.CORUJACAPITAL_FRANQUEADO;
+            case "corujapay" -> PerfilAcessoEnum.CORUJAPAY;
+            case "corujapaySecundario" -> PerfilAcessoEnum.CORUJAPAY_SECUNDARIO;
+            case "corujapayCedidos" -> PerfilAcessoEnum.CORUJAPAY_CEDIDOS;
+            case "corujapayFranqueador" -> PerfilAcessoEnum.CORUJAPAY_FRANQUEADOR;
+            case "corujapayFranqueado" -> PerfilAcessoEnum.CORUJAPAY_FRANQUEADO;
             default -> PerfilAcessoEnum.BIN;
         };
     }

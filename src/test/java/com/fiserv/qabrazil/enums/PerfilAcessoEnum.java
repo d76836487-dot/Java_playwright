@@ -273,8 +273,8 @@ public enum PerfilAcessoEnum {
         ,"240"
         ,setInstituicao("7")
     )
-    ,CORUJACAPITAL(
-        "corujacapital"
+    ,CORUJAPAY(
+        "corujapay"
         ,setUrlPortal("portal242")
         ,"master"
         ,"39341574000169"
@@ -282,8 +282,8 @@ public enum PerfilAcessoEnum {
         ,"242"
         ,setInstituicao("7")
     )
-    ,CORUJACAPITAL_SECUNDARIO(
-        "corujacapital"
+    ,CORUJAPAY_SECUNDARIO(
+        "corujapay"
         ,setUrlPortal("portal242")
         ,"secundario"
         ,"max@afinz"
@@ -291,8 +291,8 @@ public enum PerfilAcessoEnum {
         ,"242"
         ,setInstituicao("7")
     )
-    ,CORUJACAPITAL_CEDIDOS(
-        "corujacapital"
+    ,CORUJAPAY_CEDIDOS(
+        "corujapay"
         ,setUrlPortal("portal242")
         ,"cedidos"
         ,"39341574000169"
@@ -300,8 +300,8 @@ public enum PerfilAcessoEnum {
         ,"242"
         ,setInstituicao("7")
     )
-    ,CORUJACAPITAL_FRANQUEADOR(
-        "corujacapital"
+    ,CORUJAPAY_FRANQUEADOR(
+        "corujapay"
         ,setUrlPortal("portal242")
         ,"franqueador"
         ,"39341574000169"
@@ -309,8 +309,8 @@ public enum PerfilAcessoEnum {
         ,"242"
         ,setInstituicao("7")
     )
-    ,CORUJACAPITAL_FRANQUEADO(
-        "corujacapital"
+    ,CORUJAPAY_FRANQUEADO(
+        "corujapay"
         ,setUrlPortal("portal242")
         ,"franqueado"
         ,"39341574000169"

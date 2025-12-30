@@ -185,31 +185,31 @@ Feature: Histórico de vendas
       | alianca | menu     | submenu               | abaRelatorio          | tipoArquivo | tipoRelatorio |
       | "banqi" | "Vendas" | "Relatório de vendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
 
-    @corujacapital
+    @corujapay
     @excel
     @simplificado
     Examples:
-      | alianca         | menu     | submenu               | abaRelatorio          | tipoArquivo | tipoRelatorio  |
-      | "corujacapital" | "Vendas" | "Relatório de vendas" | "Histórico de vendas" | "Excel"     | "simplificado" |
+      | alianca     | menu     | submenu               | abaRelatorio          | tipoArquivo | tipoRelatorio  |
+      | "corujapay" | "Vendas" | "Relatório de vendas" | "Histórico de vendas" | "Excel"     | "simplificado" |
 
-    @corujacapital
+    @corujapay
     @excel
     @detalhado
     Examples:
-      | alianca         | menu     | submenu               | abaRelatorio          | tipoArquivo | tipoRelatorio |
-      | "corujacapital" | "Vendas" | "Relatório de vendas" | "Histórico de vendas" | "Excel"     | "detalhado"   |
+      | alianca     | menu     | submenu               | abaRelatorio          | tipoArquivo | tipoRelatorio |
+      | "corujapay" | "Vendas" | "Relatório de vendas" | "Histórico de vendas" | "Excel"     | "detalhado"   |
 
-    @corujacapital
+    @corujapay
     @csv
     @simplificado
     Examples:
-      | alianca         | menu     | submenu               | abaRelatorio          | tipoArquivo | tipoRelatorio  |
-      | "corujacapital" | "Vendas" | "Relatório de vendas" | "Histórico de vendas" | "CSV"       | "simplificado" |
+      | alianca     | menu     | submenu               | abaRelatorio          | tipoArquivo | tipoRelatorio  |
+      | "corujapay" | "Vendas" | "Relatório de vendas" | "Histórico de vendas" | "CSV"       | "simplificado" |
 
-    @corujacapital
+    @corujapay
     @csv
     @detalhado
     Examples:
-      | alianca         | menu     | submenu               | abaRelatorio          | tipoArquivo | tipoRelatorio |
-      | "corujacapital" | "Vendas" | "Relatório de vendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
+      | alianca     | menu     | submenu               | abaRelatorio          | tipoArquivo | tipoRelatorio |
+      | "corujapay" | "Vendas" | "Relatório de vendas" | "Histórico de vendas" | "CSV"       | "detalhado"   |
 

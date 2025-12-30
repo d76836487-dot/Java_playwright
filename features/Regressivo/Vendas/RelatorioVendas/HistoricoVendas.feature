@@ -1,7 +1,7 @@
 #language: en
 @Zephyr:ProjectKey=LPDC
 @Zephyr:Folder=/Portal_do_Cliente/Regressivo/Vendas/RelatorioVendas/Historico_de_vendas
-@Zephyr:Status=Approved
+@Zephyr:Status=Deprecated
 @Zephyr:Priority=Normal
 @Zephyr:CustomFields=Ambiente=SIT,UAT;Plataforma=Web;Tipo_de_teste=Regressivo;Automation=Automated
 @Automacao

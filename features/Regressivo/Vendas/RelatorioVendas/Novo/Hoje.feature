@@ -89,15 +89,15 @@ Feature: Hoje
       | alianca | menu     | submenu               | abaRelatorio | tipoArquivo | tipoRelatorio |
       | "banqi" | "Vendas" | "Relatório de vendas" | "Hoje"       | "CSV"       | ""            |
 
-    @corujacapital
+    @corujapay
     @excel
     Examples:
-      | alianca         | menu     | submenu               | abaRelatorio | tipoArquivo | tipoRelatorio |
-      | "corujacapital" | "Vendas" | "Relatório de vendas" | "Hoje"       | "Excel"     | ""            |
+      | alianca     | menu     | submenu               | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "corujapay" | "Vendas" | "Relatório de vendas" | "Hoje"       | "Excel"     | ""            |
 
-    @corujacapital
+    @corujapay
     @csv
     Examples:
-      | alianca         | menu     | submenu               | abaRelatorio | tipoArquivo | tipoRelatorio |
-      | "corujacapital" | "Vendas" | "Relatório de vendas" | "Hoje"       | "CSV"       | ""            |
+      | alianca     | menu     | submenu               | abaRelatorio | tipoArquivo | tipoRelatorio |
+      | "corujapay" | "Vendas" | "Relatório de vendas" | "Hoje"       | "CSV"       | ""            |
 

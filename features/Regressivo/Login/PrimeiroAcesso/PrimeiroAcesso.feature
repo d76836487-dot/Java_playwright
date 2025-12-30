@@ -87,15 +87,15 @@ Feature: Primeiro acesso
       | alianca | fluxo             | usuario          | receberPor | senha          |
       | "banqi" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
 
-    @corujacapital
+    @corujapay
     @email
     Examples:
-      | alianca         | fluxo             | usuario          | receberPor | senha          |
-      | "corujacapital" | "Primeiro acesso" | "75211485000161" | "E-mail"   | "Fiserv@12345" |
+      | alianca     | fluxo             | usuario          | receberPor | senha          |
+      | "corujapay" | "Primeiro acesso" | "75211485000161" | "E-mail"   | "Fiserv@12345" |
 
-    @corujacapital
+    @corujapay
     @sms
     Examples:
-      | alianca         | fluxo             | usuario          | receberPor | senha          |
-      | "corujacapital" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
+      | alianca     | fluxo             | usuario          | receberPor | senha          |
+      | "corujapay" | "Primeiro acesso" | "75211485000161" | "SMS"      | "Fiserv@12345" |
 
